@@ -1,0 +1,740 @@
+{
+  "schema": 1,
+  "status": "blocked",
+  "started_utc": "2026-10-22T20:26:24.358872+00:00",
+  "finished_utc": "2026-10-22T20:26:46.382805+00:00",
+  "scope": "selected upstream Python suite qualification only",
+  "profile": "chromium-software-webgpu",
+  "deployed": false,
+  "hardware_verified": false,
+  "native_oracle_compared": false,
+  "full_parity": false,
+  "selected_suites_passed": true,
+  "summary": {
+    "expected_suites": 3,
+    "observed_suites": 3,
+    "totals": {
+      "discovered": 48,
+      "executed": 48,
+      "passed": 48,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 0
+    },
+    "suites": [
+      {
+        "upstream_path": "tests/python/bl_id_management.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 8,
+          "executed": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      },
+      {
+        "upstream_path": "tests/python/bl_rna_accessors.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 1,
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      },
+      {
+        "upstream_path": "tests/python/bl_pyapi_idprop.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 39,
+          "executed": 39,
+          "passed": 39,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      }
+    ],
+    "required_case_inventory": {
+      "fixed_for_all_requested_suites": true,
+      "expected_cases": 48,
+      "missing_cases": 0,
+      "suites": [
+        {
+          "upstream_path": "tests/python/bl_id_management.py",
+          "expected_cases": 8,
+          "missing_cases": 0,
+          "missing_case_ids": [],
+          "unexpected_case_ids": []
+        },
+        {
+          "upstream_path": "tests/python/bl_rna_accessors.py",
+          "expected_cases": 1,
+          "missing_cases": 0,
+          "missing_case_ids": [],
+          "unexpected_case_ids": []
+        },
+        {
+          "upstream_path": "tests/python/bl_pyapi_idprop.py",
+          "expected_cases": 39,
+          "missing_cases": 0,
+          "missing_case_ids": [],
+          "unexpected_case_ids": []
+        }
+      ]
+    }
+  },
+  "blockers": [
+    {
+      "scope": "provenance",
+      "status": "blocked",
+      "reason": "engine build hash unavailable; executed suites do not establish reference provenance"
+    }
+  ],
+  "source_correspondence_verified": false,
+  "candidate": {
+    "repository": "gessa-ai/blender-web",
+    "tag": "v0.1.1",
+    "source_commit": "cc22090b88da63cc617d48b218f4945175928844"
+  },
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+  },
+  "artifact": {
+    "url": "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz",
+    "expected_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0",
+    "expected_bytes": 108802132,
+    "observed_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0",
+    "observed_bytes": 108802132
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_id_management.py",
+      "sha256": "20ecc8140064b231952f884223df200f40c6929aa696ac78d1096fce249d83f6",
+      "bytes": 9543,
+      "expected_cases": 8,
+      "case_ids": [
+        "TestIdAddNameManagement.test_add_head_tail",
+        "TestIdAddNameManagement.test_add_invalid_number_suffixes",
+        "TestIdAddNameManagement.test_add_long_names",
+        "TestIdAddNameManagement.test_add_remove_single",
+        "TestIdAddNameManagement.test_add_use_smallest_free_number",
+        "TestIdRename.test_rename",
+        "TestIdRename.test_rename_api",
+        "TestRNAIDTypes.test_rna_idtypes"
+      ],
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_id_management.py"
+    },
+    {
+      "upstream_path": "tests/python/bl_rna_accessors.py",
+      "sha256": "e12ad22b63a3812bf297b87e3f9d5f733343febe25743384ff7fd184bfd9e613",
+      "bytes": 3313,
+      "expected_cases": 1,
+      "case_ids": [
+        "TestRnaProperties.test_paths_generation"
+      ],
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_rna_accessors.py"
+    },
+    {
+      "upstream_path": "tests/python/bl_pyapi_idprop.py",
+      "sha256": "b8da476e91431c871759eff6b7e9ea9041f7445d482d3469ba487095a9068d1e",
+      "bytes": 28502,
+      "expected_cases": 39,
+      "case_ids": [
+        "TestBufferProtocol.test_copy",
+        "TestBufferProtocol.test_memview_attributes",
+        "TestBufferProtocol_Numpy.test_double",
+        "TestBufferProtocol_Numpy.test_float",
+        "TestBufferProtocol_Numpy.test_full_update",
+        "TestBufferProtocol_Numpy.test_int",
+        "TestBufferProtocol_Numpy.test_partial_update",
+        "TestIdPropertyCreation.test_bytes",
+        "TestIdPropertyCreation.test_double",
+        "TestIdPropertyCreation.test_enum",
+        "TestIdPropertyCreation.test_int",
+        "TestIdPropertyCreation.test_invalid_type",
+        "TestIdPropertyCreation.test_mapping_complex",
+        "TestIdPropertyCreation.test_mapping_simple",
+        "TestIdPropertyCreation.test_name_empty",
+        "TestIdPropertyCreation.test_name_too_long",
+        "TestIdPropertyCreation.test_rename",
+        "TestIdPropertyCreation.test_sequence_double_array",
+        "TestIdPropertyCreation.test_sequence_double_list",
+        "TestIdPropertyCreation.test_sequence_float_array",
+        "TestIdPropertyCreation.test_sequence_int_array",
+        "TestIdPropertyCreation.test_sequence_int_list",
+        "TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+        "TestIdPropertyCreation.test_sequence_mixed_type",
+        "TestIdPropertyCreation.test_sequence_other_array",
+        "TestIdPropertyCreation.test_sequence_str_list",
+        "TestIdPropertyCreation.test_unicode",
+        "TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+        "TestIdPropertyDynamicRNA.test_get_set_transform",
+        "TestIdPropertyDynamicRNA.test_static_type",
+        "TestIdPropertyGroupView.test_basic",
+        "TestIdPropertyGroupView.test_contains",
+        "TestIdPropertyGroupView.test_type",
+        "TestIdPropertyUIData.test_double",
+        "TestIdPropertyUIData.test_enum",
+        "TestIdPropertyUIData.test_int",
+        "TestIdPropertyUIData.test_unicode",
+        "TestRNAData.test_custom_properties_access",
+        "TestRNAData.test_custom_properties_none"
+      ],
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_idprop.py"
+    }
+  ],
+  "browser_errors": [],
+  "execution": {
+    "exception": null,
+    "identity": {
+      "binary_path": "/this.program",
+      "build_branch": "Unknown",
+      "build_hash": "Unknown",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "suites": [
+      {
+        "discovered": 8,
+        "discovered_ids": [
+          "blended_upstream_0.TestIdAddNameManagement.test_add_head_tail",
+          "blended_upstream_0.TestIdAddNameManagement.test_add_invalid_number_suffixes",
+          "blended_upstream_0.TestIdAddNameManagement.test_add_long_names",
+          "blended_upstream_0.TestIdAddNameManagement.test_add_remove_single",
+          "blended_upstream_0.TestIdAddNameManagement.test_add_use_smallest_free_number",
+          "blended_upstream_0.TestIdRename.test_rename",
+          "blended_upstream_0.TestIdRename.test_rename_api",
+          "blended_upstream_0.TestRNAIDTypes.test_rna_idtypes"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdAddNameManagement.test_add_head_tail",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdAddNameManagement.test_add_invalid_number_suffixes",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdAddNameManagement.test_add_long_names",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdAddNameManagement.test_add_remove_single",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdAddNameManagement.test_add_use_smallest_free_number",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdRename.test_rename",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestIdRename.test_rename_api",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TestRNAIDTypes.test_rna_idtypes",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "20ecc8140064b231952f884223df200f40c6929aa696ac78d1096fce249d83f6",
+        "skipped": 0,
+        "testsRun": 8,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_id_management.py"
+      },
+      {
+        "discovered": 1,
+        "discovered_ids": [
+          "blended_upstream_1.TestRnaProperties.test_paths_generation"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestRnaProperties.test_paths_generation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "e12ad22b63a3812bf297b87e3f9d5f733343febe25743384ff7fd184bfd9e613",
+        "skipped": 0,
+        "testsRun": 1,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_rna_accessors.py"
+      },
+      {
+        "discovered": 39,
+        "discovered_ids": [
+          "blended_upstream_2.TestBufferProtocol.test_copy",
+          "blended_upstream_2.TestBufferProtocol.test_memview_attributes",
+          "blended_upstream_2.TestBufferProtocol_Numpy.test_double",
+          "blended_upstream_2.TestBufferProtocol_Numpy.test_float",
+          "blended_upstream_2.TestBufferProtocol_Numpy.test_full_update",
+          "blended_upstream_2.TestBufferProtocol_Numpy.test_int",
+          "blended_upstream_2.TestBufferProtocol_Numpy.test_partial_update",
+          "blended_upstream_2.TestIdPropertyCreation.test_bytes",
+          "blended_upstream_2.TestIdPropertyCreation.test_double",
+          "blended_upstream_2.TestIdPropertyCreation.test_enum",
+          "blended_upstream_2.TestIdPropertyCreation.test_int",
+          "blended_upstream_2.TestIdPropertyCreation.test_invalid_type",
+          "blended_upstream_2.TestIdPropertyCreation.test_mapping_complex",
+          "blended_upstream_2.TestIdPropertyCreation.test_mapping_simple",
+          "blended_upstream_2.TestIdPropertyCreation.test_name_empty",
+          "blended_upstream_2.TestIdPropertyCreation.test_name_too_long",
+          "blended_upstream_2.TestIdPropertyCreation.test_rename",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_double_array",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_double_list",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_float_array",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_int_array",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_int_list",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_mixed_type",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_other_array",
+          "blended_upstream_2.TestIdPropertyCreation.test_sequence_str_list",
+          "blended_upstream_2.TestIdPropertyCreation.test_unicode",
+          "blended_upstream_2.TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+          "blended_upstream_2.TestIdPropertyDynamicRNA.test_get_set_transform",
+          "blended_upstream_2.TestIdPropertyDynamicRNA.test_static_type",
+          "blended_upstream_2.TestIdPropertyGroupView.test_basic",
+          "blended_upstream_2.TestIdPropertyGroupView.test_contains",
+          "blended_upstream_2.TestIdPropertyGroupView.test_type",
+          "blended_upstream_2.TestIdPropertyUIData.test_double",
+          "blended_upstream_2.TestIdPropertyUIData.test_enum",
+          "blended_upstream_2.TestIdPropertyUIData.test_int",
+          "blended_upstream_2.TestIdPropertyUIData.test_unicode",
+          "blended_upstream_2.TestRNAData.test_custom_properties_access",
+          "blended_upstream_2.TestRNAData.test_custom_properties_none"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol.test_copy",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol.test_memview_attributes",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol_Numpy.test_double",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol_Numpy.test_float",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol_Numpy.test_full_update",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol_Numpy.test_int",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestBufferProtocol_Numpy.test_partial_update",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_bytes",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_double",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_enum",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_int",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_invalid_type",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_mapping_complex",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_mapping_simple",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_name_empty",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_name_too_long",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_rename",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_double_array",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_double_list",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_float_array",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_int_array",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_int_list",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_mixed_type",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_other_array",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_sequence_str_list",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyCreation.test_unicode",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyDynamicRNA.test_get_set_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyDynamicRNA.test_static_type",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyGroupView.test_basic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyGroupView.test_contains",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyGroupView.test_type",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyUIData.test_double",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyUIData.test_enum",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyUIData.test_int",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestIdPropertyUIData.test_unicode",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestRNAData.test_custom_properties_access",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_2.TestRNAData.test_custom_properties_none",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "b8da476e91431c871759eff6b7e9ea9041f7445d482d3469ba487095a9068d1e",
+        "skipped": 0,
+        "testsRun": 39,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_idprop.py"
+      }
+    ]
+  },
+  "cohort": {
+    "id": "data-5.2",
+    "manifest_sha256": "3a1d1a942978461f655ab127faad4bc0c2c3b32210029af9117f5ded03e55085",
+    "expected_cases": 48,
+    "suite_kind": "unittest",
+    "complete_cohort_requested": true
+  },
+  "engine_files": [
+    {
+      "path": "blender-web-local/bin/blender_browser.data",
+      "sha256": "095d0ba748c3cdc2fcd0956def221e0f0d347d41d95e0a150a28670ab1cea24c",
+      "bytes": 168637598
+    },
+    {
+      "path": "blender-web-local/bin/blender_browser.js",
+      "sha256": "52a9a025783071e959daf55d0c07772d9a737220d13b524df9d07abc8ac5f2f0",
+      "bytes": 707565
+    },
+    {
+      "path": "blender-web-local/bin/blender_browser.wasm",
+      "sha256": "69b2f10ebac7fe9ae86ad0e230ea8e4ea414e76e0c662a76600128d2b4c53a11",
+      "bytes": 120511178
+    }
+  ],
+  "shell": {
+    "entry": "windowed.html",
+    "boot_sha256": "df8b83add4a1e14807b636ea46036937e8eef1c9933dc3ddac8f9f8893f01d80",
+    "modified": false
+  },
+  "url": "http://127.0.0.1:40769/",
+  "browser": {
+    "version": "155.0.8059.39",
+    "flags": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu-watchdog",
+      "--enable-unsafe-webgpu",
+      "--enable-unsafe-swiftshader",
+      "--use-angle=swiftshader"
+    ]
+  },
+  "runner_sha256": "fd7e94dd218bc8acec5d925c2dca7e799431bcaba3fe38348af60a0516e7e333",
+  "capabilities": {
+    "crossOriginIsolated": true,
+    "sharedArrayBuffer": true,
+    "webgpu": true,
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "features": [
+        "depth32float-stencil8",
+        "rg11b10ufloat-renderable",
+        "bgra8unorm-storage",
+        "texture-compression-bc",
+        "chromium-experimental-sampling-resource-table",
+        "core-features-and-limits",
+        "chromium-experimental-timestamp-query-inside-passes",
+        "float32-filterable",
+        "indirect-first-instance",
+        "texture-compression-astc-sliced-3d",
+        "float32-blendable",
+        "subgroup-size-control",
+        "texture-compression-unaligned",
+        "texture-compression-astc",
+        "texture-compression-etc2",
+        "depth-clip-control",
+        "texture-compression-bc-sliced-3d",
+        "timestamp-query",
+        "clip-distances",
+        "texture-component-swizzle",
+        "subgroups"
+      ]
+    }
+  },
+  "adapter_measurement_scope": "Independent navigator.gpu.requestAdapter probe; engine-selected adapter is not instrumented.",
+  "transport": {
+    "protocol": "marker-prefixed-json-v1",
+    "result_markers": 1,
+    "recovered_json_prefix": false,
+    "trailing_runtime_text": null
+  },
+  "upstream_build_hash_verified": false,
+  "identity_limit": "engine build hash unavailable; executed suites do not establish reference provenance",
+  "reason": "provenance: engine build hash unavailable; executed suites do not establish reference provenance"
+}
