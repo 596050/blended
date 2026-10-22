@@ -763,7 +763,8 @@ def probe(args, report):
                         except ImportError:
                             from probe_io_files import acknowledge_browser_transfer
                         report["output_transfer_acknowledgement"] = acknowledge_browser_transfer(
-                            page, result.get("output_transfer_handshake"), io_root, marker,
+                            page, result.get("output_transfer_handshake"), io_root,
+                            hashlib.sha256(marker.encode("utf-8")).hexdigest(),
                             report.get("generated_file_transfer"))
                     except Exception as error:
                         report["output_transfer_acknowledgement"] = {"status": "failed", "reason": str(error)}

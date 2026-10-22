@@ -258,7 +258,8 @@ def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_outpu
     handshake = None
     if wait_for_output_transfer and root is not None and root.is_dir():
         import os
-        handshake = {"required": True, "protocol": "blended-output-transfer-v1", "token": marker,
+        handshake = {"required": True, "protocol": "blended-output-transfer-v1",
+                     "token": hashlib.sha256(marker.encode("utf-8")).hexdigest(),
                      "ack_path": str(root / "transfer-ack.json"), "timeout_seconds": 60,
                      "exclusive_create_flags": os.O_WRONLY | os.O_CREAT | os.O_EXCL}
     report["output_transfer_handshake"] = handshake
@@ -279,7 +280,7 @@ def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_outpu
             raise RuntimeError("output transfer acknowledgement exceeds its bound")
         ack = json.loads(raw_ack)
         if (not isinstance(ack, dict) or ack.get("protocol") != handshake["protocol"] or
-                ack.get("token") != marker or ack.get("status") != "verified" or
+                ack.get("token") != handshake["token"] or ack.get("status") != "verified" or
                 ack.get("files") != report["generated_files"]["files"]):
             raise RuntimeError("output transfer acknowledgement did not verify the original file inventory")
 '''

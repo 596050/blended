@@ -155,6 +155,9 @@ class BlendFileIOAdapterTests(unittest.TestCase):
         self.assertIsNone(result["exception"])
         self.assertTrue(result["output_transfer_handshake"]["required"])
         self.assertEqual(result["output_transfer_handshake"]["timeout_seconds"], 60)
+        decoded, suffix = shared.decode_qualification_event("IO_RESULT:" + json.dumps(result), "IO_RESULT:")
+        self.assertEqual(decoded, result)
+        self.assertEqual(suffix, "")
         self.assertEqual(shared.summarize_execution(result, [row])["status"], "passed")
         for bad in ("changed", "failed"):
             with self.subTest(bad=bad), self.assertRaisesRegex(RuntimeError, "output transfer"):
