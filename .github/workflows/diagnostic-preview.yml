@@ -1,0 +1,143 @@
+name: Publish diagnostic preview (not production)
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/diagnostic-preview.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  publish-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    outputs:
+      url: ${{ steps.publish.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: site
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39828263749
+          name: mesa-browser-evidence
+          path: site/verification/predeploy
+      - name: Label known renderer failures prominently; do not change failed tests
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('site/index.html');s=p.read_text()
+          s=s.replace('DEVELOPMENT','DIAGNOSTIC PREVIEW')
+          s=s.replace('A studio foundation.<br>A measurable compatibility target.','A compatibility workbench.<br>An experimental 3D studio.')
+          s=s.replace('Create procedural geometry, inspect models and render in your browser using the pinned Solarxy foundation. Blended\'s separate Rust compatibility core is being tested against Blender\'s source tests.', 'The Rust compatibility checks below run in your browser. The compiled Solarxy studio is included for diagnosis, but automated tests currently fail to render an imported model. It is not ready for production.')
+          s=s.replace('Open 3D studio ↗','Open experimental studio ↗')
+          warning='<section role="alert" style="background:#fff0e9;border:2px solid #a8492c;border-radius:10px;padding:20px;margin:24px 0"><strong>Rendering acceptance test: FAILED.</strong><p>The editor opens and imports a model, but automated browser checks produce a blank viewport. Some runs also lose the GPU device. The cause is unresolved; hardware-GPU behaviour is not verified. This preview is not a finished Blender replacement.</p><p><a href="verification/predeploy/result.json">Read the actual failed render test</a>. Use public sample data only: this free preview CDN uses a shared origin. Export work rather than relying on browser autosave.</p></section>'
+          s=s.replace('<div class="actions">',warning+'<div class="actions">')
+          p.write_text(s)
+          p=Path('site/assets/app.js');s=p.read_text().replace('Studio built; deployment tests are reported in CI','Diagnostic build; scene-rendering acceptance is failing')
+          p.write_text(s)
+          p=Path('site/studio/app.html');s=p.read_text()
+          banner='<div role="alert" style="position:fixed;bottom:36px;right:12px;z-index:99999;max-width:320px;background:#fff0e9;color:#7e321d;border:1px solid #a8492c;border-radius:6px;padding:10px;font:12px system-ui;pointer-events:none">BLENDED DIAGNOSTIC PREVIEW: rendering acceptance tests are failing. No Blender parity. Use public sample files only.</div>'
+          s=s.replace('</body>',banner+'</body>');p.write_text(s)
+          p=Path('site/build.json');d=json.loads(p.read_text())
+          d.update(release_stage='diagnostic-preview',production_ready=False,renderer_acceptance='failed',public_url_test_status='pending; see CI',preview_changes='Diagnostic labelling only; WASM and studio runtime unchanged')
+          p.write_text(json.dumps(d,indent=2)+'\n')
+          Path('site/README.md').write_text('# Blended diagnostic preview\n\nNot a production release. Built source: 15054f12babb91e58b73a6afad3d8c2666a603cc. HTML/metadata labels added by the diagnostic-preview workflow. Actual renderer acceptance is failing. The binary and complete corresponding source archives are retained.\n\nThis branch contains published static files. Development source is on main; diagnostic scripts are on diagnostics/source-bundle.\n')
+          for f in Path('site').rglob('*'):
+              if f.is_file() and f.stat().st_size>=95000000:raise SystemExit(f'Oversized file: {f}')
+          PY
+      - name: Verify the compatibility workbench before publishing
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m http.server 8765 --directory site >/tmp/preview-http.log 2>&1 &
+          python3 - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as pw:
+              b=pw.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
+              p=b.new_page();p.goto('http://127.0.0.1:8765/index.html',wait_until='networkidle')
+              p.get_by_role('button',name='Run browser checks').click()
+              p.wait_for_function('window.__blendedTestResults.status === "passed"',timeout=30000)
+              r=p.evaluate('window.__blendedTestResults')
+              assert r['passed']==17 and len(r['cases'])==17
+              assert p.get_by_text('Rendering acceptance test: FAILED.',exact=True).is_visible()
+              Path('site/verification/workbench.json').write_text(json.dumps(r,indent=2)+'\n')
+              p.screenshot(path='site/verification/workbench.png',full_page=True)
+              b.close()
+          PY
+      - name: Publish diagnostic files to GitHub, without declaring release acceptance
+        id: publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          git init --initial-branch=web-build published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin web-build >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin web-build
+            git -C published reset --mixed FETCH_HEAD
+          fi
+          cp -a site/. published/
+          git -C published add -A
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Publish diagnostic preview: renderer failing, 17 WASM maths checks passing'
+          git -C published push origin HEAD:refs/heads/web-build
+          SHA=$(git -C published rev-parse HEAD)
+          URL="https://rawcdn.githack.com/${REPO}/${SHA}/index.html"
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+          echo "Diagnostic preview, NOT a passing production release: ${URL}" >> "$GITHUB_STEP_SUMMARY"
+  public-acceptance:
+    needs: publish-diagnostic
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install acceptance runner
+        run: |
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          curl -fsSL https://raw.githubusercontent.com/596050/blended/15054f12babb91e58b73a6afad3d8c2666a603cc/tools/browser_check.py -o tools/browser_check.py
+      - name: Run actual public URL acceptance; failures remain failures
+        timeout-minutes: 7
+        run: python3 tools/check_release.py --url "${{ needs.publish-diagnostic.outputs.url }}" --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --output evidence/public
+      - name: Retain public URL results including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-public-acceptance
+          path: evidence/public/
+          retention-days: 3
+      - name: Preserve public acceptance evidence beyond artifact expiry
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PREVIEW_URL: ${{ needs.publish-diagnostic.outputs.url }}
+        run: |
+          test -f evidence/public/result.json
+          printf '%s\n' "$PREVIEW_URL" > evidence/public/deployment-url.txt
+          git init --initial-branch=deployment-evidence published-evidence
+          git -C published-evidence remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published-evidence ls-remote --exit-code --heads origin deployment-evidence >/dev/null 2>&1; then
+            git -C published-evidence fetch --depth=1 origin deployment-evidence
+            git -C published-evidence reset --mixed FETCH_HEAD
+          fi
+          cp -a evidence/public/. published-evidence/
+          git -C published-evidence add -A
+          git -C published-evidence -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve actual public URL acceptance results without converting failures to passes'
+          git -C published-evidence push origin HEAD:refs/heads/deployment-evidence
