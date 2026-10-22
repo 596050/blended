@@ -5,6 +5,7 @@ on:
     paths:
       - upstream.lock.json
       - tools/inventory.py
+      - tools/fetch_upstreams.py
       - tests/test_inventory.py
       - .github/workflows/upstream-inventory.yml
   workflow_dispatch:
@@ -20,13 +21,13 @@ jobs:
           persist-credentials: false
       - name: Run inventory infrastructure tests
         run: python3 -m unittest discover -s tests -p test_inventory.py -v
-      - name: Fetch pinned reference repositories
+      - name: Fetch pinned reference repositories with fixture availability explicit
         run: python3 tools/fetch_upstreams.py blender cycles solarxy
       - name: Enumerate source candidates without inventing runtime results
         run: |
           mkdir -p evidence/inventory
           python3 - <<'PY'
-          import json, subprocess
+          import json
           from pathlib import Path
           from tools.inventory import inventory
           lock=json.loads(Path('upstream.lock.json').read_text())['upstreams']
@@ -34,7 +35,7 @@ jobs:
           for name,entry in lock.items():
               result=inventory(Path('.upstream')/name,name,entry['commit'])
               Path(f'evidence/inventory/{name}.json').write_text(json.dumps(result,indent=2)+'\n')
-              summary[name]={'source_candidates':len(result['cases']),'files_scanned':len(result['files']),'fixture_files':len(result['fixtures']),'unreadable_files':len(result['unreadable_files']),'runtime_enumeration_complete':False,'executed':0,'passed':0}
+              summary[name]={'source_candidates':len(result['cases']),'files_scanned':len(result['files']),'fixture_files':len(result['fixtures']),'lfs_pointers':sum(f['status']=='lfs_pointer' for f in result['fixtures']),'unreadable_files':len(result['unreadable_files']),'runtime_enumeration_complete':False,'executed':0,'passed':0}
           Path('evidence/inventory/summary.json').write_text(json.dumps(summary,indent=2)+'\n')
           print(json.dumps(summary,indent=2))
           PY
