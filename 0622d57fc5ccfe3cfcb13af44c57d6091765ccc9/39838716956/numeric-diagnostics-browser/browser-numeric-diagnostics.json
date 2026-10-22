@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "engine": "browser",
+  "diagnostic_only": true,
+  "acceptance_status": "not_evaluated",
+  "full_parity": false,
+  "status": "blocked",
+  "diagnostics_complete": false,
+  "hardware_verified": false,
+  "upstream_build_hash_verified": false,
+  "source_correspondence_verified": false,
+  "started_utc": "2026-10-22T19:17:17.910408+00:00",
+  "execution": null,
+  "blockers": [
+    {
+      "scope": "infrastructure",
+      "reason": "numeric diagnostic result marker contains invalid or incomplete JSON"
+    }
+  ],
+  "profile": "chromium-software-webgpu",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": "5.2.0"
+  },
+  "transport_sources": [
+    {
+      "path": "probe_numeric_diagnostics.py",
+      "sha256": "c138c420177fb705b8310771707341b1a805e95eee60dcfca9bc91c9092c4d5d"
+    },
+    {
+      "path": "probe_browser_port.py",
+      "sha256": "322986256e7dc24d554144a4a073c1f8f4d03ef8ecbb0aa0073fa8a64bc21d02"
+    },
+    {
+      "path": "probe_native_reference.py",
+      "sha256": "2ca7fde8fa3c67dc89c92f13a76e45966b6ac6f08f2360a31fc6f218c85f1316"
+    }
+  ],
+  "artifact": {
+    "url": "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz",
+    "expected_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0",
+    "expected_bytes": 108802132,
+    "observed_bytes": 108802132,
+    "observed_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0"
+  },
+  "candidate": {
+    "repository": "gessa-ai/blender-web",
+    "tag": "v0.1.1",
+    "source_commit": "cc22090b88da63cc617d48b218f4945175928844"
+  },
+  "payload": {
+    "path": "numeric-diagnostic-payload.py",
+    "sha256": "afd4b3be3b7a82c3a460d5f15a61075c7cd303b8f97b7db12583754baa5ad460",
+    "bytes": 14729
+  },
+  "engine_files": [
+    {
+      "path": "blender-web-local/bin/blender_browser.data",
+      "sha256": "095d0ba748c3cdc2fcd0956def221e0f0d347d41d95e0a150a28670ab1cea24c",
+      "bytes": 168637598
+    },
+    {
+      "path": "blender-web-local/bin/blender_browser.js",
+      "sha256": "52a9a025783071e959daf55d0c07772d9a737220d13b524df9d07abc8ac5f2f0",
+      "bytes": 707565
+    },
+    {
+      "path": "blender-web-local/bin/blender_browser.wasm",
+      "sha256": "69b2f10ebac7fe9ae86ad0e230ea8e4ea414e76e0c662a76600128d2b4c53a11",
+      "bytes": 120511178
+    }
+  ],
+  "shell": {
+    "entry": "windowed.html",
+    "boot_sha256": "df8b83add4a1e14807b636ea46036937e8eef1c9933dc3ddac8f9f8893f01d80",
+    "modified": false
+  },
+  "browser": {
+    "version": "155.0.8059.39",
+    "flags": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu-watchdog",
+      "--enable-unsafe-webgpu",
+      "--enable-unsafe-swiftshader",
+      "--use-angle=swiftshader"
+    ]
+  },
+  "capabilities": {
+    "crossOriginIsolated": true,
+    "sharedArrayBuffer": true,
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    }
+  },
+  "adapter_measurement_scope": "Independent navigator.gpu adapter probe; engine-selected adapter is not instrumented.",
+  "browser_errors": [],
+  "finished_utc": "2026-10-22T19:17:40.503985+00:00",
+  "log": {
+    "path": "browser-numeric-diagnostics.log",
+    "sha256": "6a9c4ef2bb3b836907fa78b2a45c5bc11df62e6a6f590d32cf57784a0fcb0052",
+    "bytes": 598348
+  }
+}

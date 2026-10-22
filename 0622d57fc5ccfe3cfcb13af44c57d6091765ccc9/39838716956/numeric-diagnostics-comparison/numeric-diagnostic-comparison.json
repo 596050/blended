@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "diagnostic_only": true,
+  "acceptance_status": "not_evaluated",
+  "full_parity": false,
+  "status": "blocked",
+  "pairing_complete": false,
+  "diagnostics_complete": false,
+  "upstream_build_hash_verified": false,
+  "cases": [],
+  "blockers": [
+    {
+      "scope": "pairing",
+      "reason": "diagnostic payload scope or schema changed"
+    }
+  ],
+  "counters": {
+    "paired_cases": 0,
+    "cases_with_differences": 0,
+    "different_fields": 0
+  },
+  "payload_sha256": "afd4b3be3b7a82c3a460d5f15a61075c7cd303b8f97b7db12583754baa5ad460",
+  "source_reports": [
+    {
+      "engine": "native",
+      "path": "native-numeric-diagnostics.json",
+      "sha256": "d50b102a47eaa0f6095ef6359ef3b2393abb23875d031aa0c349c2a5f5852f66"
+    },
+    {
+      "engine": "browser",
+      "path": "browser-numeric-diagnostics.json",
+      "sha256": "298d851e59cdd1690942b1fb192555157964c5b32128dcc4ff8e177a16481887"
+    }
+  ]
+}
