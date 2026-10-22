@@ -1,0 +1,65 @@
+name: Verify pinned Blender test fixture payloads
+on:
+  push:
+    branches: [compat/complete-test-port]
+    paths: [.github/workflows/test-fixture-verification.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fixtures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record expected hashes before resolving Git LFS pointers
+        run: |
+          python3 tools/fetch_upstreams.py blender
+          mkdir -p evidence
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('.upstream/blender/tests/files');objects=[]
+          for p in sorted(root.rglob('*')):
+            if not p.is_file() or p.is_symlink():continue
+            with p.open('rb') as f:head=f.read(256)
+            if not head.startswith(b'version https://git-lfs.github.com/spec/'):continue
+            text=head.decode('ascii')
+            objects.append({'path':str(p),'oid':re.search(r'oid sha256:([0-9a-f]{64})',text)[1],'bytes':int(re.search(r'\nsize (\d+)',text)[1])})
+          total=sum(x['bytes'] for x in objects)
+          if not objects or total>2*1024**3:raise SystemExit('Empty or over-budget fixture fetch; manual review required')
+          Path('evidence/fixture-expected.json').write_text(json.dumps({'reference_commit':'94363991e7dcf39e2d70614aa002ab6f67764a5d','scope':'tests/files/**','count':len(objects),'bytes':total,'objects':objects},indent=2))
+          print('Expected fixture objects',len(objects),'bytes',total)
+          PY
+      - name: Resolve public upstream assets, not the GitHub mirror's missing LFS objects
+        run: |
+          git -C .upstream/blender lfs install --local
+          git -C .upstream/blender config lfs.url https://projects.blender.org/blender/blender.git/info/lfs
+          git -C .upstream/blender config lfs.https://projects.blender.org/blender/blender.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender lfs pull --include='tests/files/**' --exclude=''
+      - name: Independently check every expected SHA-256 and byte count
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,sys
+          from pathlib import Path
+          expected=json.loads(Path('evidence/fixture-expected.json').read_text());results=[]
+          for o in expected['objects']:
+            p=Path(o['path']);h=hashlib.sha256()
+            with p.open('rb') as f:
+              for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
+            results.append(dict(o,actual_sha256=h.hexdigest(),actual_bytes=p.stat().st_size,verified=h.hexdigest()==o['oid'] and p.stat().st_size==o['bytes']))
+          passed=sum(o['verified'] for o in results)
+          report={'reference_commit':expected['reference_commit'],'scope':expected['scope'],'expected':len(results),'verified':passed,'unavailable':len(results)-passed,'fixture_scope_complete':passed==len(results) and passed>0,'complete_test_port':False,'objects':results}
+          Path('evidence/fixture-verification.json').write_text(json.dumps(report,indent=2))
+          print('Verified',passed,'of',len(results),'test assets. This does not execute Blender tests.')
+          sys.exit(0 if report['fixture_scope_complete'] else 1)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blender-fixture-hash-evidence
+          path: evidence/fixture-*.json
+          retention-days: 3
