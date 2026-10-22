@@ -1,0 +1,354 @@
+{
+  "schema": 2,
+  "url": "https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/index.html",
+  "expected_commit": "15054f12babb91e58b73a6afad3d8c2666a603cc",
+  "started_utc": "2026-10-22T18:11:25.981003+00:00",
+  "status": "failed",
+  "checks": [
+    {
+      "name": "dashboard_http",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "traceability_rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "parity_disclosure",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exact_deployed_commit",
+      "passed": true,
+      "detail": "15054f12babb91e58b73a6afad3d8c2666a603cc"
+    },
+    {
+      "name": "studio_built",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "rust_wasm_conformance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "editor_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "obj_cube_import",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "rendered_geometry_not_blank",
+      "passed": false,
+      "detail": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "errors": [],
+  "console": [
+    {
+      "type": "error",
+      "text": "panicked at /home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wgpu-27.0.1/src/backend/webgpu.rs:2275:63:\ncalled `Result::unwrap()` on an `Err` value: JsValue(RangeError: Failed to execute 'createBuffer' on 'GPUDevice': createBuffer failed, size (160) is too large for the implementation when mappedAtCreation == true\nRangeError: createBuffer failed, size (160) is too large for the implementation when mappedAtCreation == true\n    at GPUDevice.createBuffer (<anonymous>:18:29)\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/playerConfig-D10d7Vbl.js:1:26750\n    at m (https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/playerConfig-D10d7Vbl.js:2:767)\n    at __wbg_createBuffer_e2b25dd1471f92f7 (https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/playerConfig-D10d7Vbl.js:1:26721)\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[3768]:0x4fe886\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[1210]:0x390f86\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[1713]:0x414c8d\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[818]:0x2e006f\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[369]:0x60eb7\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[456]:0x168e24)\n\nStack:\n\nError\n    at __wbg_new_227d7c05414eb861 (https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/playerConfig-D10d7Vbl.js:1:35255)\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[2587]:0x49cbb8\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[6691]:0x53ae43\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[3905]:0x505dbf\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[4273]:0x516395\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[6679]:0x53adcd\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[5549]:0x5358e7\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[5552]:0x53596e\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[4488]:0x51dd2b\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[3768]:0x4fe925\n\n"
+    },
+    {
+      "type": "error",
+      "text": "frame failed RuntimeError: unreachable\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[6769]:0x53b04e\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[6721]:0x53af2b\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[6050]:0x538f86\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[3905]:0x505df7\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[4273]:0x516395\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[6679]:0x53adcd\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[5549]:0x5358e7\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[5552]:0x53596e\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[4488]:0x51dd2b\n    at https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/studio/assets/solarxy_web_bg-25xLMbMG.wasm:wasm-function[3768]:0x4fe925"
+    }
+  ],
+  "full_parity": false,
+  "gpu_execution": "Software GPU, not a performance benchmark",
+  "browser_version": "155.0.8059.39",
+  "wasm": {
+    "status": "passed",
+    "passed": 17,
+    "cases": [
+      {
+        "id": "math_vector.ClampVecWithFloats",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.test_invert_v3_safe",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.Clamp",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.MinList",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.MaxList",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.InterpolateInt",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.InterpolateFloat",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.CeilToMultiple",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.DivideCeil",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.Sign",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.sqrt",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.safe_sqrt",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.rcp",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.safe_rcp",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.exp",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.log",
+        "passed": true,
+        "return_code": 1
+      },
+      {
+        "id": "math_vector.square",
+        "passed": true,
+        "return_code": 1
+      }
+    ],
+    "scope": "Standalone maths slice, not full Blender parity"
+  },
+  "interior_variance": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "failure": "rendered_geometry_not_blank: [0.0, 0.0, 0.0]",
+  "gpu": {
+    "buffers": 49,
+    "submissions": 34,
+    "recent": [
+      {
+        "label": "Selection Tint Color",
+        "size": 16,
+        "mapped": true
+      },
+      {
+        "label": "Outline Mask White",
+        "size": 16,
+        "mapped": true
+      },
+      {
+        "label": "Outline Params",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Outline JFA Step 16",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Outline JFA Step 8",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Outline JFA Step 4",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Outline JFA Step 2",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Outline JFA Step 1",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Manipulator Lines",
+        "size": 65536,
+        "mapped": false
+      },
+      {
+        "label": "Manipulator Tris",
+        "size": 65536,
+        "mapped": false
+      },
+      {
+        "label": "Light Helpers",
+        "size": 262144,
+        "mapped": false
+      },
+      {
+        "label": "Light Markers",
+        "size": 65536,
+        "mapped": false
+      },
+      {
+        "label": "Camera Helpers",
+        "size": 262144,
+        "mapped": false
+      },
+      {
+        "label": "Floor Vertex Buffer",
+        "size": 224,
+        "mapped": true
+      },
+      {
+        "label": "Floor Index Buffer",
+        "size": 24,
+        "mapped": true
+      },
+      {
+        "label": "Grid Vertex Buffer",
+        "size": 48,
+        "mapped": true
+      },
+      {
+        "label": "Grid Index Buffer",
+        "size": 24,
+        "mapped": true
+      },
+      {
+        "label": "Grid Uniform Buffer",
+        "size": 32,
+        "mapped": true
+      },
+      {
+        "label": "Vertex Normals Buffer",
+        "size": 12,
+        "mapped": true
+      },
+      {
+        "label": "Face Normals Buffer",
+        "size": 12,
+        "mapped": true
+      },
+      {
+        "label": "Face Normals Color Buffer",
+        "size": 16,
+        "mapped": true
+      },
+      {
+        "label": "Vertex Normals Color Buffer",
+        "size": 16,
+        "mapped": true
+      },
+      {
+        "label": "Axes Vertex Buffer",
+        "size": 144,
+        "mapped": true
+      },
+      {
+        "label": "Local Axes Buffer",
+        "size": 144,
+        "mapped": true
+      },
+      {
+        "label": "Bounds Whole Buffer",
+        "size": 576,
+        "mapped": true
+      },
+      {
+        "label": "Bounds Per Mesh Buffer",
+        "size": 24,
+        "mapped": true
+      },
+      {
+        "label": "Attr Vectors Buffer",
+        "size": 24,
+        "mapped": true
+      },
+      {
+        "label": "Instance Buffer",
+        "size": 100,
+        "mapped": true
+      },
+      {
+        "label": "Light VB",
+        "size": 816,
+        "mapped": true
+      },
+      {
+        "label": "Shadow Uniform Buffer",
+        "size": 64,
+        "mapped": true
+      },
+      {
+        "label": "Camera Buffer",
+        "size": 320,
+        "mapped": true
+      },
+      {
+        "label": "clay_default_material_uniform",
+        "size": 160,
+        "mapped": true
+      }
+    ],
+    "errors": [
+      "RangeError: Failed to execute 'createBuffer' on 'GPUDevice': createBuffer failed, size (160) is too large for the implementation when mappedAtCreation == true"
+    ],
+    "lost": [
+      {
+        "reason": "destroyed",
+        "message": "Device was destroyed."
+      }
+    ],
+    "adapters": [
+      {
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "device": "",
+        "description": ""
+      }
+    ]
+  },
+  "finished_utc": "2026-10-22T18:12:37.254675+00:00"
+}
