@@ -1,37 +1,67 @@
 #!/usr/bin/env python3
-"""Exercise actual built/deployed browser software. Failures are never skipped."""
+"""Exercise real browser rendering; software GPU CI is not a hardware benchmark."""
 import argparse
-from datetime import datetime,timezone
+from datetime import datetime, timezone
 from io import BytesIO
 import json
 from pathlib import Path
 import shutil
 import sys
 import time
-from urllib.parse import urljoin,urlparse
-from PIL import Image,ImageChops,ImageStat
-from playwright.sync_api import sync_playwright,TimeoutError as BrowserTimeout
+from urllib.parse import urljoin, urlparse
+from PIL import Image, ImageChops, ImageStat
+from playwright.sync_api import sync_playwright, TimeoutError as BrowserTimeout
+
+# Observe real GPU calls without replacing results, suppressing errors, or
+# providing a mock GPU. This differentiates engine faults from device loss.
+GPU_DIAGNOSTICS = r'''(() => {
+  const d = window.__blendedGpuDiagnostics = {buffers:0, submissions:0, recent:[], errors:[], lost:[], adapters:[]};
+  if (!globalThis.GPUAdapter || !globalThis.GPUDevice) return;
+  const requestDevice = GPUAdapter.prototype.requestDevice;
+  GPUAdapter.prototype.requestDevice = async function(...args) {
+    const info=this.info;
+    if(info)d.adapters.push({vendor:info.vendor,architecture:info.architecture,device:info.device,description:info.description});
+    const device=await requestDevice.apply(this,args);
+    device.addEventListener('uncapturederror',e=>d.errors.push(String(e.error?.message ?? e.error)));
+    device.lost.then(info=>d.lost.push({reason:info.reason,message:info.message}));
+    return device;
+  };
+  const createBuffer=GPUDevice.prototype.createBuffer;
+  GPUDevice.prototype.createBuffer=function(desc) {
+    d.buffers++; d.recent.push({label:desc.label,size:desc.size,mapped:desc.mappedAtCreation});
+    if(d.recent.length>32)d.recent.shift();
+    try{return createBuffer.call(this,desc);}catch(e){d.errors.push(String(e));throw e;}
+  };
+  const submit=GPUQueue.prototype.submit;
+  GPUQueue.prototype.submit=function(...args){const result=submit.apply(this,args);d.submissions++;return result;};
+})();'''
+
+def centre_image(png):
+    image=Image.open(BytesIO(png)).convert('RGB');w,h=image.size
+    # Exclude DOM toolbars, panel edges and overlay labels. Their pixels must
+    # not make a white/non-rendering WebGPU canvas appear to pass.
+    return image.crop((int(w*.25),int(h*.25),int(w*.75),int(h*.75)))
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--url',required=True);p.add_argument('--expected-commit',required=True)
     p.add_argument('--output',type=Path,default=Path('evidence/browser'));p.add_argument('--executable')
     args=p.parse_args();args.output.mkdir(parents=True,exist_ok=True)
-    result={'schema':1,'url':args.url,'expected_commit':args.expected_commit,'started_utc':datetime.now(timezone.utc).isoformat(),'status':'failed','checks':[],'errors':[],'console':[],'full_parity':False}
+    result={'schema':1,'url':args.url,'expected_commit':args.expected_commit,'started_utc':datetime.now(timezone.utc).isoformat(),'status':'failed','checks':[],'errors':[],'console':[],'full_parity':False,'gpu_execution':'SwiftShader software WebGPU; not a hardware performance result'}
     def check(name,passed,detail=''):
         result['checks'].append({'name':name,'passed':bool(passed),'detail':detail})
-        print(name, bool(passed),flush=True)
+        print(name,bool(passed),flush=True)
         if not passed:raise AssertionError(name+': '+str(detail))
     code=1
     with sync_playwright() as pw:
-        launch={'headless':True,'args':['--no-sandbox','--enable-unsafe-webgpu','--use-angle=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface']}
+        launch={'headless':True,'args':['--no-sandbox','--disable-dev-shm-usage','--enable-unsafe-webgpu','--use-angle=vulkan','--use-vulkan=swiftshader','--use-webgpu-adapter=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface']}
         executable=args.executable or shutil.which('google-chrome') or shutil.which('chromium')
         if executable:launch['executable_path']=executable
         browser=pw.chromium.launch(**launch)
         context=browser.new_context(viewport={'width':1440,'height':1000},accept_downloads=True)
+        context.add_init_script(GPU_DIAGNOSTICS)
         if urlparse(args.url).hostname=='rawcdn.githack.com':
-            # The service documents this opt-out for automated browser testing.
-            # Human visitors still see its repository confirmation page.
+            # Documented public-service automation opt-out for its interstitial.
             context.add_cookies([{'name':'__Http-phish','value':'1','domain':'rawcdn.githack.com','path':'/','secure':True,'httpOnly':True,'sameSite':'Lax'}])
         page=context.new_page()
         page.on('pageerror',lambda error:result['errors'].append(str(error)))
@@ -57,25 +87,32 @@ def main():
             try:
                 skip=page.get_by_role('button',name='Skip',exact=True)
                 skip.wait_for(state='visible',timeout=5000);skip.click()
-            except BrowserTimeout:
-                page.keyboard.press('Escape')
+            except BrowserTimeout:page.keyboard.press('Escape')
+            page.wait_for_function('window.__blendedGpuDiagnostics.submissions > 2 || window.__blendedGpuDiagnostics.errors.length || window.__blendedGpuDiagnostics.lost.length',timeout=90000)
+            gpu=page.evaluate('window.__blendedGpuDiagnostics')
+            check('gpu_device_alive',not gpu['errors'] and not gpu['lost'],str(gpu))
+            check('real_gpu_commands_submitted',gpu['submissions']>2,str(gpu['submissions']))
             canvas=page.locator('canvas.viewport-canvas')
-            before_png=canvas.screenshot(path=str(args.output/'viewport-before.png'))
-            before_image=Image.open(BytesIO(before_png)).convert('RGB')
-            check('viewport_not_blank',sum(ImageStat.Stat(before_image).var)>1.0)
+            deadline=time.monotonic()+30
+            while True:
+                before_png=canvas.screenshot();before_image=centre_image(before_png)
+                if sum(ImageStat.Stat(before_image).var)>1.0 or time.monotonic()>deadline:break
+                page.wait_for_timeout(250)
+            (args.output/'viewport-before.png').write_bytes(before_png)
+            check('viewport_interior_not_blank',sum(ImageStat.Stat(before_image).var)>1.0)
             nodes=page.locator('.react-flow__node');before=nodes.count()
             page.get_by_text('File',exact=True).first.click()
             with page.expect_file_chooser() as chooser:page.get_by_text('Import Model...',exact=True).click()
             chooser.value.set_files({'name':'compat-triangle.obj','mimeType':'text/plain','buffer':b'o CompatTriangle\nv -1 -1 0\nv 1 -1 0\nv 0 1 0\nf 1 2 3\n'})
             page.wait_for_function('(n)=>document.querySelectorAll(".react-flow__node").length>n',arg=before,timeout=30000)
             after=nodes.count();check('obj_import',after>before)
-            changed=False;deadline=time.monotonic()+20
+            changed=False;deadline=time.monotonic()+30
             while time.monotonic()<deadline:
-                after_png=canvas.screenshot();after_image=Image.open(BytesIO(after_png)).convert('RGB')
+                after_png=canvas.screenshot();after_image=centre_image(after_png)
                 if before_image.size==after_image.size and ImageChops.difference(before_image,after_image).getbbox() is not None:changed=True;break
                 page.wait_for_timeout(200)
-            check('viewport_changes_after_import',changed,'Pixel-change smoke check, not a reference-render comparison')
             (args.output/'viewport-after.png').write_bytes(after_png)
+            check('viewport_interior_changes_after_import',changed,'Smoke check, not Cycles reference-render parity')
             page.keyboard.press('Control+z')
             page.wait_for_function('(n)=>document.querySelectorAll(".react-flow__node").length===n',arg=before,timeout=15000)
             check('undo_import',nodes.count()==before)
@@ -83,7 +120,9 @@ def main():
             page.wait_for_function('(n)=>document.querySelectorAll(".react-flow__node").length===n',arg=after,timeout=15000)
             check('redo_import',nodes.count()==after)
             page.screenshot(path=str(args.output/'studio.png'),full_page=True)
-            check('no_uncaught_javascript_errors',not result['errors'],str(result['errors']))
+            gpu=page.evaluate('window.__blendedGpuDiagnostics')
+            check('no_gpu_errors',not gpu['errors'] and not gpu['lost'],str(gpu))
+            check('no_javascript_or_logged_errors',not result['errors'] and not any(c['type']=='error' for c in result['console']),str(result['errors']))
             result['status']='passed';code=0
         except Exception as exc:
             result['failure']=str(exc)
@@ -92,6 +131,8 @@ def main():
                 (args.output/'page.txt').write_text(page.locator('body').inner_text())
             except Exception:pass
         finally:
+            try:result['gpu']=page.evaluate('window.__blendedGpuDiagnostics')
+            except Exception:pass
             result['finished_utc']=datetime.now(timezone.utc).isoformat()
             (args.output/'result.json').write_text(json.dumps(result,indent=2)+'\n')
             print(json.dumps(result,indent=2));browser.close()
