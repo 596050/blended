@@ -1,0 +1,1744 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "started_utc": "2026-10-22T19:37:15.611882+00:00",
+  "finished_utc": "2026-10-22T19:37:48.293873+00:00",
+  "scope": "selected Blender 5.2.0 candidate native reference qualification only",
+  "profile": "native-reference",
+  "full_parity": false,
+  "browser_parity": false,
+  "product_target_parity": false,
+  "selected_suites_passed": true,
+  "official_release_checksum_verified": true,
+  "upstream_build_hash_verified": true,
+  "source_correspondence_verified": false,
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": "5.2.0"
+  },
+  "artifact": {
+    "url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "expected_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "expected_bytes": 384441228,
+    "observed_bytes": 384441228,
+    "observed_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48"
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_mathutils.py",
+      "sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+      "bytes": 41853,
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_mathutils.py"
+    },
+    {
+      "upstream_path": "tests/python/bl_pyapi_bmesh.py",
+      "sha256": "7dd9b28372ca371420c98e11bed49aff07f4fbe008c0fc1685cb9b5bc6721329",
+      "bytes": 32918,
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_bmesh.py"
+    }
+  ],
+  "summary": {
+    "expected_suites": 2,
+    "observed_suites": 2,
+    "totals": {
+      "discovered": 192,
+      "executed": 192,
+      "passed": 192,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 6
+    },
+    "suites": [
+      {
+        "upstream_path": "tests/python/bl_pyapi_mathutils.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 180,
+          "executed": 180,
+          "passed": 180,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      },
+      {
+        "upstream_path": "tests/python/bl_pyapi_bmesh.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 12,
+          "executed": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 6
+        },
+        "failure_events": []
+      }
+    ]
+  },
+  "execution": {
+    "exception": null,
+    "identity": {
+      "binary_path": "/tmp/blended-native-reference-16jgos9u/unpacked/blender-5.2.0-linux-x64/blender",
+      "build_branch": "blender-v5.2-release",
+      "build_hash": "fbe6228777e7",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "suites": [
+      {
+        "discovered": 180,
+        "discovered_ids": [
+          "blended_upstream_0.ColorTesting.test_buffer_protocol",
+          "blended_upstream_0.ColorTestingSlice.test_slice_get",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.ColorTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.EulerTesting.test_buffer_protocol",
+          "blended_upstream_0.EulerTestingSlice.test_slice_get",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.EulerTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_empty",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_grid",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_grid_filter_pairs",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_grid_filter_simple",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_invalid_balance",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_invalid_filter",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_invalid_size",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_line",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_single",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_without_balance",
+          "blended_upstream_0.KDTreeTesting.test_kdtree_without_balance_and_insert",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_get",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_get",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_get",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_get",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_get",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_get",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.MatrixTesting.test_buffer_protocol",
+          "blended_upstream_0.MatrixTesting.test_item_access",
+          "blended_upstream_0.MatrixTesting.test_item_assignment",
+          "blended_upstream_0.MatrixTesting.test_loc_rot_scale",
+          "blended_upstream_0.MatrixTesting.test_mat4x4_vec3D_matmul",
+          "blended_upstream_0.MatrixTesting.test_mat_vec_matmul",
+          "blended_upstream_0.MatrixTesting.test_matrix_column_access",
+          "blended_upstream_0.MatrixTesting.test_matrix_freeze_is_read_only",
+          "blended_upstream_0.MatrixTesting.test_matrix_freeze_iter",
+          "blended_upstream_0.MatrixTesting.test_matrix_inverse",
+          "blended_upstream_0.MatrixTesting.test_matrix_inverse_safe",
+          "blended_upstream_0.MatrixTesting.test_matrix_matmult",
+          "blended_upstream_0.MatrixTesting.test_matrix_mul",
+          "blended_upstream_0.MatrixTesting.test_matrix_non_square_matmul",
+          "blended_upstream_0.MatrixTesting.test_matrix_square_matmul",
+          "blended_upstream_0.MatrixTesting.test_matrix_to_3x3",
+          "blended_upstream_0.MatrixTesting.test_matrix_to_translation",
+          "blended_upstream_0.MatrixTesting.test_matrix_translation",
+          "blended_upstream_0.QuaternionTesting.test_buffer_protocol",
+          "blended_upstream_0.QuaternionTesting.test_expmap_axis_normalization",
+          "blended_upstream_0.QuaternionTesting.test_from_expmap",
+          "blended_upstream_0.QuaternionTesting.test_to_expmap",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_get",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_frozen",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_identity_preserved",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_length_mismatch",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_self_aliased_full",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.QuaternionTestingSlice.test_slice_set_type_error_atomic",
+          "blended_upstream_0.TesselatePolygon.test_2d",
+          "blended_upstream_0.TesselatePolygon.test_3d",
+          "blended_upstream_0.TesselatePolygon.test_3d_degenerate",
+          "blended_upstream_0.TesselatePolygon.test_empty",
+          "blended_upstream_0.TypeTesting.test_keywords_unsupported_color",
+          "blended_upstream_0.TypeTesting.test_keywords_unsupported_euler",
+          "blended_upstream_0.TypeTesting.test_keywords_unsupported_matrix",
+          "blended_upstream_0.TypeTesting.test_keywords_unsupported_vector",
+          "blended_upstream_0.TypeTesting.test_subclass_color",
+          "blended_upstream_0.TypeTesting.test_subclass_euler",
+          "blended_upstream_0.TypeTesting.test_subclass_matrix",
+          "blended_upstream_0.TypeTesting.test_subclass_quaternion",
+          "blended_upstream_0.TypeTesting.test_subclass_vector",
+          "blended_upstream_0.VectorTesting.test_buffer_protocol",
+          "blended_upstream_0.VectorTesting.test_orthogonal",
+          "blended_upstream_0.VectorTesting.test_vector_freeze_is_read_only",
+          "blended_upstream_0.VectorTesting.test_vector_imatmul",
+          "blended_upstream_0.VectorTesting.test_vector_imul",
+          "blended_upstream_0.VectorTesting.test_vector_matmul",
+          "blended_upstream_0.VectorTesting.test_vector_mul",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_get",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_frozen",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_identity_preserved",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_length_mismatch",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_self_aliased_full",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.VectorTestingSlice10.test_slice_set_type_error_atomic",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_get",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_frozen",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_identity_preserved",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_length_mismatch",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_self_aliased_full",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.VectorTestingSlice2.test_slice_set_type_error_atomic",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_get",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_frozen",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_identity_preserved",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_length_mismatch",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_self_aliased_full",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.VectorTestingSlice3.test_slice_set_type_error_atomic",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_get",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_empty_slice_empty_seq",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_frozen",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_identity_preserved",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_length_mismatch",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_nonempty_seq_into_empty_slice",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_self_aliased_full",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_self_aliased_reverse",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_seq_longer_than_slice",
+          "blended_upstream_0.VectorTestingSlice4.test_slice_set_type_error_atomic"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.ColorTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.EulerTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_empty",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_grid",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_grid_filter_pairs",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_grid_filter_simple",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_invalid_balance",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_invalid_filter",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_invalid_size",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_line",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_single",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_without_balance",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.KDTreeTesting.test_kdtree_without_balance_and_insert",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix3x3TestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.Matrix4x4TestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3ColTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess3x3RowTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4ColTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixAccess4x4RowTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_item_access",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_item_assignment",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_loc_rot_scale",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_mat4x4_vec3D_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_mat_vec_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_column_access",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_freeze_is_read_only",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_freeze_iter",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_inverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_inverse_safe",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_matmult",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_mul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_non_square_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_square_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_to_3x3",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_to_translation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.MatrixTesting.test_matrix_translation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTesting.test_expmap_axis_normalization",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTesting.test_from_expmap",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTesting.test_to_expmap",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.QuaternionTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TesselatePolygon.test_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TesselatePolygon.test_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TesselatePolygon.test_3d_degenerate",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TesselatePolygon.test_empty",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_keywords_unsupported_color",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_keywords_unsupported_euler",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_keywords_unsupported_matrix",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_keywords_unsupported_vector",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_subclass_color",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_subclass_euler",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_subclass_matrix",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_subclass_quaternion",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.TypeTesting.test_subclass_vector",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_orthogonal",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_vector_freeze_is_read_only",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_vector_imatmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_vector_imul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_vector_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTesting.test_vector_mul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice10.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice2.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice3.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_0.VectorTestingSlice4.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+        "skipped": 0,
+        "testsRun": 180,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_mathutils.py"
+      },
+      {
+        "discovered": 12,
+        "discovered_ids": [
+          "blended_upstream_1.TestBMeshBasic.test_create_uvsphere",
+          "blended_upstream_1.TestBMeshOperators.test_spin_primitive",
+          "blended_upstream_1.TestBMeshOperators.test_spin_screw",
+          "blended_upstream_1.TestBMeshOperators.test_spin_screw_complex",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_contiguous_verts",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_grid",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_flush",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_flush_mode",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_foreach_set",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_foreach_set_from_mesh",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_sync_from_mesh",
+          "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_sync_to_mesh"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshBasic.test_create_uvsphere",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_primitive (do_dupli=False)",
+            "kind": "subtest",
+            "parent_id": "blended_upstream_1.TestBMeshOperators.test_spin_primitive",
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_primitive (do_dupli=True)",
+            "kind": "subtest",
+            "parent_id": "blended_upstream_1.TestBMeshOperators.test_spin_primitive",
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_primitive",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_screw (do_dupli=False)",
+            "kind": "subtest",
+            "parent_id": "blended_upstream_1.TestBMeshOperators.test_spin_screw",
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_screw (do_dupli=True)",
+            "kind": "subtest",
+            "parent_id": "blended_upstream_1.TestBMeshOperators.test_spin_screw",
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_screw",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_screw_complex (do_dupli=False)",
+            "kind": "subtest",
+            "parent_id": "blended_upstream_1.TestBMeshOperators.test_spin_screw_complex",
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_screw_complex (do_dupli=True)",
+            "kind": "subtest",
+            "parent_id": "blended_upstream_1.TestBMeshOperators.test_spin_screw_complex",
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshOperators.test_spin_screw_complex",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_contiguous_verts",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_grid",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_flush",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_flush_mode",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_foreach_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_foreach_set_from_mesh",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_sync_from_mesh",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_upstream_1.TestBMeshUVSelectSimple.test_uv_select_sync_to_mesh",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "7dd9b28372ca371420c98e11bed49aff07f4fbe008c0fc1685cb9b5bc6721329",
+        "skipped": 0,
+        "testsRun": 12,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_bmesh.py"
+      }
+    ]
+  },
+  "blockers": [],
+  "extraction": {
+    "members": 6546,
+    "unpacked_bytes": 1238222253,
+    "filter": "data"
+  },
+  "executable": {
+    "path": "blender-5.2.0-linux-x64/blender",
+    "sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "bytes": 174666336
+  },
+  "runner_sha256": "eb125314c64466ef5f4c307eeefb25e1cc98d52dbe4f074db6f8fc3aa05b7ce3",
+  "process": {
+    "flags": [
+      "--background",
+      "--factory-startup",
+      "--threads",
+      "1",
+      "--python-exit-code",
+      "1"
+    ],
+    "timeout_seconds": 240,
+    "returncode": 0
+  },
+  "reason": "Both unchanged upstream unittest files passed on the checksum-verified official Blender 5.2.0 native release, with matching reported upstream build identity.",
+  "log": {
+    "path": "native-reference.log",
+    "sha256": "918001285defc4fb1af66e1efd1a79d0636953930a45c4b11ce41fc1e86a26a3",
+    "bytes": 64175
+  }
+}
