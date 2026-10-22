@@ -1,0 +1,56 @@
+name: Check WebGPU ownership and rendering
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/gpu-lifetime-check.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        display: [headless, headful]
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: compiled
+      - run: |
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          curl -fsSL https://raw.githubusercontent.com/596050/blended/15054f12babb91e58b73a6afad3d8c2666a603cc/tools/browser_check.py -o tools/browser_check.py
+      - name: Retain real GPU objects and record any explicit destroy calls
+        env:
+          DISPLAY_MODE: ${{ matrix.display }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          p=Path('tools/browser_check.py');s=p.read_text()
+          s=s.replace('if (!globalThis.GPUAdapter || !globalThis.GPUDevice) return;', '''if (!globalThis.GPUAdapter || !globalThis.GPUDevice) return;
+            const roots=window.__blendedGpuRoots=[navigator.gpu];
+            d.destroyCalls=[];
+            const destroy=GPUDevice.prototype.destroy;
+            GPUDevice.prototype.destroy=function(...args){d.destroyCalls.push(new Error('device.destroy call').stack);return destroy.apply(this,args);};''')
+          s=s.replace('const device=await requestDevice.apply(this,args);','const device=await requestDevice.apply(this,args); roots.push(this,device,device.queue);')
+          p.write_text(s)
+          p=Path('tools/check_release.py');s=p.read_text()
+          if os.environ['DISPLAY_MODE']=='headful':s=s.replace('headless=True','headless=False')
+          p.write_text(s)
+          PY
+          python3 -m http.server 8765 --directory compiled >/tmp/http.log 2>&1 &
+          xvfb-run -a python3 tools/check_release.py --url http://127.0.0.1:8765/index.html --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --output evidence/${{ matrix.display }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gpu-lifetime-${{ matrix.display }}
+          path: evidence/
+          retention-days: 3
