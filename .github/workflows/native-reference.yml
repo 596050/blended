@@ -27,12 +27,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Fetch exact reference and pinned library submodule
+      - name: Fetch exact reference, startup assets and pinned library submodule
         run: |
           set -euo pipefail
           mkdir -p evidence/native-reference
           python3 tools/fetch_upstreams.py blender
           git -C .upstream/blender rev-parse HEAD > evidence/native-reference/blender-commit.txt
+          git -C .upstream/blender lfs install --local
+          git -C .upstream/blender config lfs.url https://projects.blender.org/blender/blender.git/info/lfs
+          git -C .upstream/blender config lfs.https://projects.blender.org/blender/blender.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender lfs pull --include='release/datafiles/**' --exclude=''
           GIT_LFS_SKIP_SMUDGE=1 git -C .upstream/blender submodule update --init --depth=1 --checkout lib/linux_x64
           git -C .upstream/blender/lib/linux_x64 rev-parse HEAD > evidence/native-reference/libraries-commit.txt
           git -C .upstream/blender/lib/linux_x64 lfs install --local
