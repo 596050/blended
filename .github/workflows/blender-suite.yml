@@ -2,9 +2,9 @@ name: Complete Blender test-port requirement
 on:
   push:
     branches: [main, 'compat/full-blender-tests']
-    paths: ['tools/blender_suite.py', 'tests/test_blender_suite.py', 'compatibility/**', '.github/workflows/blender-suite.yml', upstream.lock.json, .gitmodules, 'crates/**', 'modeller/**']
+    paths: ['tools/blender_suite.py', 'tools/corpus_git.py', 'tests/test_blender_suite.py', 'tests/test_corpus_git.py', 'compatibility/**', '.github/workflows/blender-suite.yml', upstream.lock.json, .gitmodules, 'crates/**', 'modeller/**']
   pull_request:
-    paths: ['tools/blender_suite.py', 'tests/test_blender_suite.py', 'compatibility/**', '.github/workflows/blender-suite.yml', upstream.lock.json, .gitmodules, 'crates/**', 'modeller/**']
+    paths: ['tools/blender_suite.py', 'tools/corpus_git.py', 'tests/test_blender_suite.py', 'tests/test_corpus_git.py', 'compatibility/**', '.github/workflows/blender-suite.yml', upstream.lock.json, .gitmodules, 'crates/**', 'modeller/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,11 +19,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Test completeness accounting, not Blender feature functionality
+      - name: Test accounting and byte-exact preservation, not Blender features
         run: |
           mkdir -p evidence
           set -o pipefail
           python3 -m unittest discover -s tests -p test_blender_suite.py -v 2>&1 | tee evidence/gate-regressions.txt
+          python3 -m unittest discover -s tests -p test_corpus_git.py -v 2>&1 | tee evidence/corpus-preservation.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -38,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Fetch and check the entire immutable reference source
+      - name: Audit every tracked immutable reference file
         run: |
           python3 tools/fetch_upstreams.py blender
           PIN=$(python3 -c "import json;print(json.load(open('upstream.lock.json'))['upstreams']['blender']['commit'])")
@@ -47,7 +48,7 @@ jobs:
           python3 tools/prepare_site.py
           cp compatibility/ports.json evidence/full-suite/existing-partial-ports.json
           cp compatibility/blender-suite-policy.json evidence/full-suite/policy.json
-      - name: Attempt every pinned LFS payload from Blender's public upstream, not GitHub's incomplete mirror
+      - name: Download and individually verify all main-tree LFS objects
         env:
           GIT_TERMINAL_PROMPT: '0'
         run: |
@@ -65,7 +66,7 @@ jobs:
           printf '{"fetch_exit_code":%s,"audit_exit_code":%s}\n' "$FETCH_STATUS" "$AUDIT_STATUS" > evidence/full-suite/fixture-fetch-status.json
           cat evidence/full-suite/fixture-audit.log
           test -f evidence/full-suite/fixture-audit.json
-      - name: Prepare the explicit completion report; this is not the acceptance gate
+      - name: Generate the actual completion report, including gaps
         run: |
           COMMIT=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['source_commit'])")
           URL=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['url'])")
@@ -91,7 +92,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
-      - name: Re-test the real deployed alpha; do not confuse this subset with the complete suite
+      - name: Re-test the deployed alpha without claiming complete Blender coverage
         run: |
           mkdir -p evidence/alpha
           COMMIT=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['source_commit'])")
@@ -112,7 +113,7 @@ jobs:
         with:
           name: original-blender-test-corpus
           path: corpus
-      - name: A partial import or a passing alpha cannot satisfy the full test-port requirement
+      - name: Fail when the complete port is not established
         run: |
           python3 - <<'PY'
           import json,sys
@@ -131,6 +132,9 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/download-artifact@v4
         with:
           name: original-blender-test-corpus
@@ -143,7 +147,7 @@ jobs:
         with:
           name: blender-suite-gate-regressions
           path: corpus/tooling-tests
-      - name: Keep original assertions and failed completion evidence in Git history
+      - name: Preserve exact assertions and real evidence in Git history
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -157,11 +161,9 @@ jobs:
           python3 - <<'PY'
           import json,os
           from pathlib import Path
-          root=Path('corpus');summary=json.loads((root/'summary.json').read_text())
-          fixtures=json.loads((root/'fixture-audit.json').read_text())
-          gate=json.loads((root/'full-port-report.json').read_text())
-          data={'schema':1,'producer_run':int(os.environ['PRODUCER_RUN']),'producer_commit':os.environ['SOURCE_SHA'],'upstream_commit':summary['upstream_commit'],'verified_original_files':summary['original_corpus_files'],'verified_main_tree_lfs_objects':fixtures['statuses'].get('verified',0),'fixture_payloads_in_this_branch':False,'test_port_complete':gate['test_port_complete']}
-          (root/'provenance.json').write_text(json.dumps(data,indent=2)+'\n')
+          root=Path('corpus');s=json.loads((root/'summary.json').read_text());f=json.loads((root/'fixture-audit.json').read_text());g=json.loads((root/'full-port-report.json').read_text())
+          p={'schema':1,'producer_run':int(os.environ['PRODUCER_RUN']),'producer_commit':os.environ['SOURCE_SHA'],'upstream_commit':s['upstream_commit'],'verified_original_files':s['original_corpus_files'],'verified_main_tree_lfs_objects':f['statuses'].get('verified',0),'fixture_payloads_in_this_branch':False,'test_port_complete':g['test_port_complete']}
+          (root/'provenance.json').write_text(json.dumps(p,indent=2)+'\n')
           PY
           git init --initial-branch=blender-test-corpus published
           git -C published config user.name "$GIT_AUTHOR_NAME"
@@ -172,7 +174,6 @@ jobs:
             git -C published fetch --depth=1 origin blender-test-corpus
             git -C published reset --mixed FETCH_HEAD
           fi
-          cp -a corpus/. published/
-          git -C published add -A
-          git -C published commit --allow-empty -m "Preserve original Blender suite and explicit completeness gaps from ${SOURCE_SHA}"
-          git -C published push origin HEAD:refs/heads/blender-test-corpus
+          python3 tools/corpus_git.py --source corpus --repository published
+          git -C published -c core.hooksPath=/dev/null commit --allow-empty -m "Preserve byte-exact original Blender suite and completion gaps from ${SOURCE_SHA}"
+          git -C published -c core.hooksPath=/dev/null push origin HEAD:refs/heads/blender-test-corpus
