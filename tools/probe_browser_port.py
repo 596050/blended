@@ -99,6 +99,80 @@ def validate_suite_execution(result, expected_sources):
             raise RuntimeError("complete passing outcomes were not recorded for every discovered test")
 
 
+def summarize_execution(result, expected_sources, browser_errors=()):
+    """Collect every suite failure and provenance blocker without double counts.
+
+    A failing subtest and a later failure in its enclosing test are separate
+    failure events but exactly one failed discovered test. A successful parent
+    outcome is required to count a test as passed.
+    """
+    keys = ("discovered", "executed", "passed", "failed", "skipped",
+            "expected_failures", "missing_outcomes", "failure_events", "subtest_events")
+    totals = {key: 0 for key in keys}
+    blockers, summaries = [], []
+    rows = result.get("suites", [])
+    expected_by_path = {entry["upstream_path"]: entry for entry in expected_sources}
+    observed_paths = [row.get("upstream_path") for row in rows]
+    if (not expected_sources or len(rows) != len(expected_sources) or
+            len(set(observed_paths)) != len(observed_paths) or
+            set(observed_paths) != set(expected_by_path)):
+        blockers.append({"scope": "suite_inventory", "status": "failed",
+                         "reason": "not every requested suite executed exactly once"})
+    if result.get("exception"):
+        blockers.append({"scope": "runner", "status": "failed", "reason": result["exception"]})
+    for row in rows:
+        path = row.get("upstream_path")
+        counts = {key: 0 for key in keys}
+        ids = list(dict.fromkeys(row.get("discovered_ids", [])))
+        outcomes = row.get("outcomes", [])
+        counts["discovered"], counts["executed"] = len(ids), row.get("testsRun", 0)
+        counts["subtest_events"] = sum(item.get("kind") == "subtest" for item in outcomes)
+        failure_events = [item for item in outcomes if item.get("status") in {"failed", "error", "unexpected_success"}]
+        counts["failure_events"] = len(failure_events)
+        for case_id in ids:
+            related = [item for item in outcomes if item.get("id") == case_id or
+                       (item.get("kind") == "subtest" and item.get("parent_id") == case_id)]
+            statuses = {item.get("status") for item in related}
+            if statuses & {"failed", "error", "unexpected_success"}:
+                counts["failed"] += 1
+            elif "skipped" in statuses:
+                counts["skipped"] += 1
+            elif "expected_failure" in statuses:
+                counts["expected_failures"] += 1
+            elif statuses == {"passed"} and any(item.get("kind") == "test" and
+                                               item.get("id") == case_id for item in related):
+                counts["passed"] += 1
+            else:
+                counts["missing_outcomes"] += 1
+        suite_status = "passed"
+        try:
+            validate_suite_execution({"suites": [row], "exception": None},
+                                     [expected_by_path[path]] if path in expected_by_path else [])
+        except (RuntimeError, KeyError, TypeError, ValueError) as error:
+            suite_status = "failed"
+            blockers.append({"scope": "suite", "suite": path, "status": "failed", "reason": str(error)})
+        summaries.append({"upstream_path": path, "status": suite_status, "counts": counts,
+                          "failure_events": [{key: item.get(key) for key in ("id", "parent_id", "kind", "status")}
+                                             for item in failure_events]})
+        for key in keys:
+            totals[key] += counts[key]
+    suites_passed = not blockers
+    identity = result.get("identity", {})
+    hash_verified = str(identity.get("build_hash", "")).strip().lower() in (UPSTREAM_SHA, UPSTREAM_SHA[:12])
+    try:
+        validate_build_identity(identity)
+    except Blocked as error:
+        blockers.append({"scope": "provenance", "status": "blocked", "reason": str(error)})
+    for error in browser_errors:
+        blockers.append({"scope": "browser_runtime", "status": "failed", "reason": str(error)})
+    status = ("failed" if any(b["status"] == "failed" for b in blockers) else
+              "blocked" if blockers else "passed")
+    return {"status": status, "selected_suites_passed": suites_passed,
+            "upstream_build_hash_verified": hash_verified,
+            "summary": {"expected_suites": len(expected_sources), "observed_suites": len(rows),
+                        "totals": totals, "suites": summaries}, "blockers": blockers}
+
+
 def download(url, destination, limit):
     request = urllib.request.Request(url, headers={"User-Agent": "Blended-port-qualification/1"})
     size = 0
@@ -378,20 +452,14 @@ def probe(args, report):
                     raise RuntimeError("duplicate qualification result markers")
                 result = received[0]
                 report["execution"] = result
-                validate_suite_execution(result, report["suite_sources"])
-                report["selected_suites_passed"] = True
-                identity = result.get("identity", {})
-                report["upstream_build_hash_verified"] = (
-                    str(identity.get("build_hash", "")).strip().lower() in (UPSTREAM_SHA, UPSTREAM_SHA[:12]))
-                report["identity_limit"] = None if report["upstream_build_hash_verified"] else (
-                    "Build hash unavailable; only artifact bytes and reported Blender version were checked. Source correspondence is unverified.")
-                validate_build_identity(identity)
-                if browser_errors:
-                    raise RuntimeError("browser runtime errors accompanied suite execution")
-                report["status"] = "passed"
+                report.update(summarize_execution(result, report["suite_sources"], browser_errors))
+                report["identity_limit"] = next((b["reason"] for b in report["blockers"]
+                                                 if b["scope"] == "provenance"), None)
                 report["reason"] = (
                     "Whole selected upstream unittest files passed on the pinned artifact in a local browser; "
-                    "reported upstream build identity matched. Observed probe profile: " + report["profile"] + ".")
+                    "reported upstream build identity matched. Observed probe profile: " + report["profile"] + "."
+                    if report["status"] == "passed" else
+                    "; ".join(b["scope"] + ": " + b["reason"] for b in report["blockers"]))
                 browser.close()
         finally:
             report["browser_errors"] = browser_errors
@@ -414,6 +482,7 @@ def main(argv=None):
         "profile": "chromium-webgpu-unclassified", "deployed": False,
         "hardware_verified": False, "native_oracle_compared": False, "full_parity": False,
         "selected_suites_passed": False,
+        "summary": None, "blockers": [],
         "source_correspondence_verified": False,
         "candidate": {"repository": "gessa-ai/blender-web", "tag": "v0.1.1", "source_commit": PORT_SOURCE_SHA},
         "upstream": {"repository": "blender/blender", "commit": UPSTREAM_SHA},
@@ -426,8 +495,10 @@ def main(argv=None):
         probe(args, report)
     except Blocked as error:
         report["status"], report["reason"] = "blocked", str(error)
+        report["blockers"].append({"scope": "infrastructure", "status": "blocked", "reason": str(error)})
     except Exception as error:
         report["status"], report["reason"] = "failed", str(error)
+        report["blockers"].append({"scope": "infrastructure", "status": "failed", "reason": str(error)})
         report["traceback"] = traceback.format_exc()
     finally:
         report["finished_utc"] = now()

@@ -89,6 +89,62 @@ class Example(unittest.TestCase):
                          "chromium-webgpu-unverified")
         self.assertEqual(probe.adapter_profile(None), "chromium-webgpu-unavailable")
 
+    def test_summary_retains_every_suite_failure_and_provenance_blocker(self):
+        first, expected_first = self.run_payload('''
+import unittest
+class Example(unittest.TestCase):
+    def test_bad(self):
+        with self.subTest(value=1):
+            self.fail("first numeric assertion")
+        self.fail("later assertion in same parent")
+    def test_good(self):
+        self.assertTrue(True)
+''')
+        second, expected_second = self.run_payload('''
+import unittest
+class Example(unittest.TestCase):
+    def test_bad(self):
+        self.fail("independent second suite failure")
+    def test_good(self):
+        self.assertTrue(True)
+''')
+        second["suites"][0]["upstream_path"] = "tests/python/second.py"
+        expected_second[0]["upstream_path"] = "tests/python/second.py"
+        first["suites"].extend(second["suites"])
+        first["identity"]["build_hash"] = "Unknown"
+        assessment = probe.summarize_execution(first, expected_first + expected_second)
+        self.assertEqual(assessment["status"], "failed")
+        counts = assessment["summary"]["totals"]
+        self.assertEqual((counts["discovered"], counts["executed"], counts["passed"], counts["failed"]), (4, 4, 2, 2))
+        self.assertEqual(counts["failure_events"], 3)
+        self.assertEqual(len([b for b in assessment["blockers"] if b["scope"] == "suite"]), 2)
+        self.assertEqual(len([b for b in assessment["blockers"] if b["scope"] == "provenance"]), 1)
+
+    def test_successful_suites_with_unknown_identity_are_still_blocked(self):
+        result, expected = self.run_payload('''
+import unittest
+class Example(unittest.TestCase):
+    def test_ok(self):
+        self.assertEqual(1, 1)
+''')
+        result["identity"]["build_hash"] = "Unknown"
+        assessment = probe.summarize_execution(result, expected)
+        self.assertEqual(assessment["status"], "blocked")
+        self.assertTrue(assessment["selected_suites_passed"])
+        self.assertEqual(assessment["summary"]["totals"]["passed"], 1)
+        self.assertFalse(assessment["upstream_build_hash_verified"])
+
+    def test_subtest_only_failure_counts_one_failed_parent(self):
+        result, expected = self.run_payload('''
+import unittest
+class Example(unittest.TestCase):
+    def test_bad(self):
+        with self.subTest(value=1):
+            self.fail("subtest assertion")
+''')
+        counts = probe.summarize_execution(result, expected)["summary"]["totals"]
+        self.assertEqual((counts["discovered"], counts["failed"], counts["missing_outcomes"]), (1, 1, 0))
+
 
 if __name__ == "__main__":
     unittest.main()

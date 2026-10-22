@@ -9,6 +9,7 @@ on:
       - compatibility/facet-inventory.json
       - tools/parity_gate.py
       - tools/probe_browser_port.py
+      - tools/probe_native_reference.py
       - tests/test_parity_gate.py
       - tests/test_browser_port_probe.py
       - .github/workflows/browser-port-parity.yml
@@ -17,6 +18,7 @@ on:
       - compatibility/**
       - tools/parity_gate.py
       - tools/probe_browser_port.py
+      - tools/probe_native_reference.py
       - tests/test_parity_gate.py
       - tests/test_browser_port_probe.py
       - .github/workflows/browser-port-parity.yml
@@ -68,6 +70,29 @@ jobs:
           path: evidence/parity/
           retention-days: 14
 
+  native-reference:
+    name: Execute the same suites in the exact official native reference
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Qualify the hash-verified official Blender 5.2 reference
+        run: >-
+          python3 tools/probe_native_reference.py
+          --output evidence/native-reference-qualification
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-reference-qualification
+          path: evidence/native-reference-qualification/
+          retention-days: 14
+
   gessa-release:
     name: Execute original Blender suites in the pinned browser release
     needs: contract
@@ -96,7 +121,7 @@ jobs:
 
   preserve-evidence:
     name: Preserve source-port qualification receipts
-    needs: [contract, gessa-release]
+    needs: [contract, native-reference, gessa-release]
     if: always() && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -114,6 +139,10 @@ jobs:
         with:
           name: product-target-parity-report
           path: target-report
+      - uses: actions/download-artifact@v4
+        with:
+          name: native-reference-qualification
+          path: native-receipt
       - name: Append evidence without promoting incomplete parity
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -127,12 +156,15 @@ jobs:
           gh auth setup-git
           if git -C published ls-remote --exit-code --heads origin browser-port-evidence >/dev/null 2>&1; then
             git -C published fetch --depth=1 origin browser-port-evidence
-            git -C published reset --mixed FETCH_HEAD
+            # Restore prior receipts into this newly created working directory.
+            # A mixed reset would leave them absent and the next add -A would delete them.
+            git -C published reset --hard FETCH_HEAD
           fi
           DESTINATION="published/${SOURCE_SHA}/${RUN_ID}"
           mkdir -p "$DESTINATION"
           cp -a receipt/. "$DESTINATION/"
           cp -a target-report/. "$DESTINATION/"
+          cp -a native-receipt/. "$DESTINATION/"
           git -C published add -A
           git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Preserve browser-port qualification ${RUN_ID} at ${SOURCE_SHA}"
           git -C published push origin HEAD:refs/heads/browser-port-evidence

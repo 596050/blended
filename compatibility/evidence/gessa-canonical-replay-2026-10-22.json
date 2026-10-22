@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-22T18:44:11Z",
+  "status": "passed",
+  "scope": "Independent canonical patch identity, pristine exact-pin source checkout, git apply --check, and scratch application only.",
+  "upstream_repository": "https://github.com/blender/blender.git",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "port_repository": "https://github.com/gessa-ai/blender-web.git",
+  "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "source_checkout": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+  "upstream_code_executed": false,
+  "build_executed": false,
+  "runtime_executed": false,
+  "release_binary_source_correspondence_verified": false,
+  "deployed": false,
+  "paid_resources_used": false,
+  "published_full_tree_manifest_reproduced": false,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": "git version 2.51.1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/gessa",
+      "exit_code": 0,
+      "stdout": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": "fbe6228777e7d9afefcd61a413844e790ae75db7\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": "8a0e127915a507f86fe2852c8d3f4529b4369eb7\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "apply",
+        "--check",
+        "/workspace/scratch/d63596d831b2/research_ports/gessa/patches/PREVIEW_SNAPSHOT.patch"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "apply",
+        "/workspace/scratch/d63596d831b2/research_ports/gessa/patches/PREVIEW_SNAPSHOT.patch"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": " M CMakeLists.txt\n M build_files/cmake/macros.cmake\n M extern/glog/src/config.h\n M intern/cycles/blender/display_driver.cpp\n M intern/cycles/blender/session.cpp\n M intern/ghost/CMakeLists.txt\n M intern/ghost/GHOST_Types.hh\n M intern/ghost/intern/GHOST_ISystem.cc\n M intern/ghost/intern/GHOST_SystemHeadless.hh\n M intern/opensubdiv/CMakeLists.txt\n M intern/opensubdiv/internal/evaluator/eval_output_gpu.h\n M intern/opensubdiv/internal/evaluator/evaluator_capi.cc\n M intern/opensubdiv/internal/evaluator/gpu_compute_evaluator.cc\n M scripts/addons_core/io_scene_gltf2/blender/exp/export.py\n M scripts/addons_core/io_scene_gltf2/blender/imp/mesh.py\n M scripts/addons_core/io_scene_gltf2/io/com/library.py\n M scripts/addons_core/io_scene_gltf2/io/exp/meshopt.py\n M scripts/addons_core/io_scene_gltf2/io/imp/gltf2_io_binary_meshopt.py\n M source/blender/asset_system/intern/disk_file_hash_service.cc\n M source/blender/blenkernel/BKE_idtype.hh\n M source/blender/blenkernel/BKE_wm_runtime.hh\n M source/blender/blenkernel/intern/image.cc\n M source/blender/blenlib/BLI_resource_scope.hh\n M source/blender/blenlib/BLI_task.h\n M source/blender/blenlib/CMakeLists.txt\n M source/blender/blenlib/intern/expr_pylike_eval.cc\n M source/blender/blenlib/intern/path_utils.cc\n M source/blender/blenlib/intern/storage.cc\n M source/blender/blenlib/intern/task_pool.cc\n M source/blender/blenlib/intern/task_scheduler.cc\n M source/blender/blenlib/intern/threads.cc\n M source/blender/blenlib/tests/BLI_expr_pylike_eval_test.cc\n M source/blender/blenlib/tests/BLI_fileops_test.cc\n M source/blender/blenlib/tests/BLI_task_test.cc\n M source/blender/blenloader/intern/readfile.cc\n M source/blender/blenloader/intern/writefile.cc\n M source/blender/blenloader/intern/writefile.hh\n M source/blender/blentranslation/msgfmt/CMakeLists.txt\n M source/blender/bmesh/CMakeLists.txt\n M source/blender/datatoc/CMakeLists.txt\n M source/blender/draw/CMakeLists.txt\n M source/blender/draw/DRW_select_buffer.hh\n M source/blender/draw/engines/eevee/eevee_defines.hh\n M source/blender/draw/engines/eevee/eevee_depth_of_field.cc\n M source/blender/draw/engines/eevee/eevee_engine.cc\n M source/blender/draw/engines/eevee/eevee_film.cc\n M source/blender/draw/engines/eevee/eevee_film.hh\n M source/blender/draw/engines/eevee/eevee_gbuffer.hh\n M source/blender/draw/engines/eevee/eevee_instance.cc\n M source/blender/draw/engines/eevee/eevee_instance.hh\n M source/blender/draw/engines/eevee/eevee_lightcache.cc\n M source/blender/draw/engines/eevee/eevee_lightcache.hh\n M source/blender/draw/engines/eevee/eevee_lightprobe_planar.cc\n M source/blender/draw/engines/eevee/eevee_lightprobe_sphere.cc\n M source/blender/draw/engines/eevee/eevee_lightprobe_sphere.hh\n M source/blender/draw/engines/eevee/eevee_lightprobe_volume.cc\n M source/blender/draw/engines/eevee/eevee_lightprobe_volume.hh\n M source/blender/draw/engines/eevee/eevee_pipeline.cc\n M source/blender/draw/engines/eevee/eevee_pipeline.hh\n M source/blender/draw/engines/eevee/eevee_raytrace.cc\n M source/blender/draw/engines/eevee/eevee_renderbuffers.cc\n M source/blender/draw/engines/eevee/eevee_renderbuffers.hh\n M source/blender/draw/engines/eevee/eevee_shader.cc\n M source/blender/draw/engines/eevee/eevee_shader.hh\n M source/blender/draw/engines/eevee/eevee_shadow.cc\n M source/blender/draw/engines/eevee/eevee_shadow.hh\n M source/blender/draw/engines/eevee/eevee_subsurface.cc\n M source/blender/draw/engines/eevee/eevee_view.cc\n M source/blender/draw/engines/eevee/eevee_volume.cc\n M source/blender/draw/engines/eevee/eevee_volume.hh\n M source/blender/draw/engines/eevee/shaders/eevee_deferred_tile_classify.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_depth_of_field_resolve.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_light_culling.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_lightprobe_volume_bake.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_lightprobe_volume_load.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_material_variants.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_occupancy_convert.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_ray_trace_screen_lib.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_page_clear.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_page_mask.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_tag_update.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_tag_usage.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_tilemap_amend.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_tilemap_bounds.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_tilemap_finalize.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_shadow_tilemap_init.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_surf_occupancy.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_surf_shadow.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_surf_volume.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_surfel_cluster.bsl.hh\n M source/blender/draw/engines/eevee/shaders/eevee_surfel_list.bsl.hh\n M source/blender/draw/engines/eevee/shaders/infos/eevee_common_infos.hh\n M source/blender/draw/engines/select/select_instance.hh\n M source/blender/draw/engines/workbench/shaders/workbench_shadow.bsl.hh\n M source/blender/draw/engines/workbench/workbench_engine.cc\n M source/blender/draw/intern/DRW_gpu_wrapper.hh\n M source/blender/draw/intern/DRW_render.hh\n M source/blender/draw/intern/draw_cache_impl_curves.cc\n M source/blender/draw/intern/draw_cache_impl_particles.cc\n M source/blender/draw/intern/draw_cache_impl_subdivision.cc\n M source/blender/draw/intern/draw_context.cc\n M source/blender/draw/intern/draw_curves.cc\n M source/blender/draw/intern/draw_curves_defines.hh\n M source/blender/draw/intern/draw_debug.cc\n M source/blender/draw/intern/draw_hair_private.hh\n M source/blender/draw/intern/draw_select_buffer.cc\n M source/blender/draw/intern/draw_shader.cc\n M source/blender/draw/intern/draw_shader.hh\n M source/blender/draw/intern/shaders/draw_curves_infos.hh\n M source/blender/draw/intern/shaders/draw_curves_interpolation_comp.glsl\n M source/blender/draw/intern/shaders/draw_curves_test.glsl\n M source/blender/draw/intern/shaders/draw_debug_draw_display_vert.glsl\n M source/blender/draw/intern/shaders/draw_debug_infos.hh\n M source/blender/draw/intern/shaders/subdiv_patch_eval_infos.hh\n M source/blender/draw/intern/shaders/subdiv_patch_evaluation_comp.glsl\n M source/blender/draw/tests/draw_curves_test.cc\n M source/blender/draw/tests/draw_testing.cc\n M source/blender/draw/tests/draw_testing.hh\n M source/blender/draw/tests/eevee_test.cc\n M source/blender/editors/asset/intern/asset_ops.cc\n M source/blender/editors/curve/editcurve_paint.cc\n M source/blender/editors/curves/intern/curves_draw.cc\n M source/blender/editors/curves/intern/curves_pen.cc\n M source/blender/editors/gpencil_legacy/annotate_paint.cc\n M source/blender/editors/grease_pencil/intern/grease_pencil_pen.cc\n M source/blender/editors/grease_pencil/intern/grease_pencil_primitive.cc\n M source/blender/editors/grease_pencil/intern/grease_pencil_utils.cc\n M source/blender/editors/include/ED_curves.hh\n M source/blender/editors/include/ED_grease_pencil.hh\n M source/blender/editors/include/ED_particle.hh\n M source/blender/editors/include/ED_view3d.hh\n M source/blender/editors/interface/eyedroppers/eyedropper_color.cc\n M source/blender/editors/interface/eyedroppers/eyedropper_colorband.cc\n M source/blender/editors/interface/eyedroppers/eyedropper_depth.cc\n M source/blender/editors/interface/eyedroppers/eyedropper_grease_pencil_color.cc\n M source/blender/editors/interface/eyedroppers/eyedropper_intern.hh\n M source/blender/editors/interface/interface_handlers.cc\n M source/blender/editors/interface/interface_icons.cc\n M source/blender/editors/mesh/editmesh_select.cc\n M source/blender/editors/object/object_transform.cc\n M source/blender/editors/physics/particle_edit.cc\n M source/blender/editors/render/render_internal.cc\n M source/blender/editors/render/render_shading.cc\n M source/blender/editors/screen/screendump.cc\n M source/blender/editors/sculpt_paint/grease_pencil/draw_ops.cc\n M source/blender/editors/sculpt_paint/grease_pencil/fill.cc\n M source/blender/editors/sculpt_paint/grease_pencil/grease_pencil_intern.hh\n M source/blender/editors/sculpt_paint/grease_pencil/paint.cc\n M source/blender/editors/sculpt_paint/mesh/paint_image_ops_paint.cc\n M source/blender/editors/sculpt_paint/mesh/paint_image_proj.cc\n M source/blender/editors/sculpt_paint/paint_intern.hh\n M source/blender/editors/space_view3d/view3d_draw.cc\n M source/blender/editors/space_view3d/view3d_edit.cc\n M source/blender/editors/space_view3d/view3d_navigate.cc\n M source/blender/editors/space_view3d/view3d_navigate.hh\n M source/blender/editors/space_view3d/view3d_navigate_view_center_pick.cc\n M source/blender/editors/space_view3d/view3d_navigate_view_dolly.cc\n M source/blender/editors/space_view3d/view3d_navigate_view_ndof.cc\n M source/blender/editors/space_view3d/view3d_navigate_zoom_border.cc\n M source/blender/editors/space_view3d/view3d_select.cc\n M source/blender/editors/space_view3d/view3d_view.cc\n M source/blender/gpu/CMakeLists.txt\n M source/blender/gpu/GPU_framebuffer.hh\n M source/blender/gpu/GPU_platform_backend_enum.h\n M source/blender/gpu/GPU_select.hh\n M source/blender/gpu/GPU_shader_builtin.hh\n M source/blender/gpu/GPU_storage_buffer.hh\n M source/blender/gpu/GPU_texture.hh\n M source/blender/gpu/GPU_vertex_buffer.hh\n M source/blender/gpu/intern/gpu_context.cc\n M source/blender/gpu/intern/gpu_framebuffer.cc\n M source/blender/gpu/intern/gpu_framebuffer_private.hh\n M source/blender/gpu/intern/gpu_select_next.cc\n M source/blender/gpu/intern/gpu_select_private.hh\n M source/blender/gpu/intern/gpu_shader.cc\n M source/blender/gpu/intern/gpu_shader_builtin.cc\n M source/blender/gpu/intern/gpu_shader_create_info.cc\n M source/blender/gpu/intern/gpu_shader_dependency.cc\n M source/blender/gpu/intern/gpu_shader_preprocessor.cc\n M source/blender/gpu/intern/gpu_storage_buffer.cc\n M source/blender/gpu/intern/gpu_storage_buffer_private.hh\n M source/blender/gpu/intern/gpu_texture.cc\n M source/blender/gpu/intern/gpu_texture_mipmap.cc\n M source/blender/gpu/intern/gpu_texture_private.hh\n M source/blender/gpu/metal/kernels/gpu_shader_fullscreen_blit_infos.hh\n M source/blender/gpu/shader_tool/CMakeLists.txt\n M source/blender/gpu/shaders/common/gpu_shader_utildefines_lib.glsl\n M source/blender/gpu/shaders/gpu_shader_2D_update_mipmaps.bsl.hh\n M source/blender/gpu/shaders/gpu_shader_2D_widget_shadow_frag.glsl\n M source/blender/gpu/shaders/infos/gpu_shader_test_infos.hh\n M source/blender/gpu/tests/compute_test.cc\n M source/blender/gpu/tests/framebuffer_test.cc\n M source/blender/gpu/tests/gpu_testing.hh\n M source/blender/gpu/tests/immediate_test.cc\n M source/blender/gpu/tests/shader_create_info_test.cc\n M source/blender/gpu/tests/shader_test.cc\n M source/blender/gpu/tests/shaders/CMakeLists.txt\n M source/blender/gpu/tests/shaders/gpu_framebuffer_subpass_input_test.glsl\n M source/blender/gpu/tests/shaders/gpu_specialization_test.glsl\n M source/blender/gpu/tests/shaders/gpu_texture_atomic_test.glsl\n M source/blender/gpu/tests/specialization_constants_test.cc\n M source/blender/gpu/tests/texture_test.cc\n M source/blender/gpu/tests/texture_view_test.cc\n M source/blender/imbuf/CMakeLists.txt\n M source/blender/imbuf/IMB_imbuf.hh\n M source/blender/imbuf/intern/oiio/CMakeLists.txt\n M source/blender/imbuf/intern/oiio/openimageio_api.cpp\n M source/blender/imbuf/intern/oiio/openimageio_api.h\n M source/blender/imbuf/intern/openexr/CMakeLists.txt\n M source/blender/imbuf/intern/openexr/openexr_api.cpp\n M source/blender/imbuf/intern/openexr/openexr_api.h\n M source/blender/io/usd/CMakeLists.txt\n M source/blender/io/usd/intern/usd_precomp.hh\n M source/blender/io/usd/intern/usd_reader_stage.cc\n M source/blender/makesdna/DNA_sdna_pointers.hh\n M source/blender/makesdna/DNA_sdna_types.h\n M source/blender/makesdna/DNA_userdef_types.h\n M source/blender/makesdna/intern/CMakeLists.txt\n M source/blender/makesdna/intern/dna_genfile.cc\n M source/blender/makesdna/intern/makesdna.cc\n M source/blender/makesrna/intern/CMakeLists.txt\n M source/blender/makesrna/intern/rna_object.cc\n M source/blender/makesrna/intern/rna_wm.cc\n M source/blender/python/intern/bpy_interface.cc\n M source/blender/python/intern/bpy_rna_wm.cc\n M source/blender/render/RE_engine.h\n M source/blender/render/RE_pipeline.h\n M source/blender/render/intern/engine.cc\n M source/blender/render/intern/pipeline.cc\n M source/blender/render/intern/render_types.h\n M source/blender/windowmanager/CMakeLists.txt\n M source/blender/windowmanager/WM_api.hh\n M source/blender/windowmanager/intern/wm.cc\n M source/blender/windowmanager/intern/wm_draw.cc\n M source/blender/windowmanager/intern/wm_jobs.cc\n M source/blender/windowmanager/intern/wm_window.cc\n M source/creator/CMakeLists.txt\n?? extern/glog/src/config_emscripten.h\n?? intern/ghost/intern/GHOST_ContextWGPU.cc\n?? intern/ghost/intern/GHOST_ContextWGPU.hh\n?? source/blender/blenlib/tests/BLI_task_web_lifecycle.cc\n?? source/blender/draw/engines/eevee/eevee_storage_format.hh\n?? source/blender/draw/intern/shaders/draw_debug_draw_compact_comp.glsl\n?? source/blender/draw/tests/draw_debug_test.cc\n?? source/blender/gpu/GPU_readback.hh\n?? source/blender/gpu/intern/gpu_readback.cc\n?? source/blender/gpu/intern/gpu_readback_private.hh\n?? source/blender/gpu/tests/query_test.cc\n?? source/blender/gpu/tests/readback_test.cc\n?? source/blender/gpu/tests/shaders/gpu_uniform_buffer_test.glsl\n?? source/blender/gpu/webgpu/wgpu_backend.cc\n?? source/blender/gpu/webgpu/wgpu_backend.hh\n?? source/blender/gpu/webgpu/wgpu_batch.cc\n?? source/blender/gpu/webgpu/wgpu_batch.hh\n?? source/blender/gpu/webgpu/wgpu_buffer.cc\n?? source/blender/gpu/webgpu/wgpu_buffer.hh\n?? source/blender/gpu/webgpu/wgpu_common.hh\n?? source/blender/gpu/webgpu/wgpu_context.cc\n?? source/blender/gpu/webgpu/wgpu_context.hh\n?? source/blender/gpu/webgpu/wgpu_data_conversion.cc\n?? source/blender/gpu/webgpu/wgpu_data_conversion.hh\n?? source/blender/gpu/webgpu/wgpu_framebuffer.cc\n?? source/blender/gpu/webgpu/wgpu_framebuffer.hh\n?? source/blender/gpu/webgpu/wgpu_immediate.cc\n?? source/blender/gpu/webgpu/wgpu_immediate.hh\n?? source/blender/gpu/webgpu/wgpu_index_buffer.cc\n?? source/blender/gpu/webgpu/wgpu_index_buffer.hh\n?? source/blender/gpu/webgpu/wgpu_pipeline.cc\n?? source/blender/gpu/webgpu/wgpu_pipeline.hh\n?? source/blender/gpu/webgpu/wgpu_pixel_buffer.cc\n?? source/blender/gpu/webgpu/wgpu_pixel_buffer.hh\n?? source/blender/gpu/webgpu/wgpu_query.cc\n?? source/blender/gpu/webgpu/wgpu_query.hh\n?? source/blender/gpu/webgpu/wgpu_readback.cc\n?? source/blender/gpu/webgpu/wgpu_readback.hh\n?? source/blender/gpu/webgpu/wgpu_shader.cc\n?? source/blender/gpu/webgpu/wgpu_shader.hh\n?? source/blender/gpu/webgpu/wgpu_shader_cache.cc\n?? source/blender/gpu/webgpu/wgpu_shader_cache.hh\n?? source/blender/gpu/webgpu/wgpu_shader_compiler.cc\n?? source/blender/gpu/webgpu/wgpu_shader_compiler.hh\n?? source/blender/gpu/webgpu/wgpu_shader_interface_map.cc\n?? source/blender/gpu/webgpu/wgpu_shader_interface_map.hh\n?? source/blender/gpu/webgpu/wgpu_state_manager.cc\n?? source/blender/gpu/webgpu/wgpu_state_manager.hh\n?? source/blender/gpu/webgpu/wgpu_state_table.cc\n?? source/blender/gpu/webgpu/wgpu_state_table.hh\n?? source/blender/gpu/webgpu/wgpu_storage_buffer.cc\n?? source/blender/gpu/webgpu/wgpu_storage_buffer.hh\n?? source/blender/gpu/webgpu/wgpu_texture.cc\n?? source/blender/gpu/webgpu/wgpu_texture.hh\n?? source/blender/gpu/webgpu/wgpu_texture_format.cc\n?? source/blender/gpu/webgpu/wgpu_texture_format.hh\n?? source/blender/gpu/webgpu/wgpu_texture_format_list.h\n?? source/blender/gpu/webgpu/wgpu_uniform_buffer.cc\n?? source/blender/gpu/webgpu/wgpu_uniform_buffer.hh\n?? source/blender/gpu/webgpu/wgpu_vertex_buffer.cc\n?? source/blender/gpu/webgpu/wgpu_vertex_buffer.hh\n?? source/blender/imbuf/intern/oiio/openimageio_thread_policy.cpp\n?? source/blender/imbuf/intern/openexr/openexr_thread_policy.cpp\n?? source/blender/imbuf/intern/web_thread_policy.cc\n?? source/blender/imbuf/tests/IMB_web_thread_policy_test.cc\n?? source/blender/io/usd/intern/usd_hook_stub.cc\n?? source/blender/windowmanager/intern/wm_web_split_protocol.hh\n?? source/blender/windowmanager/intern/wm_web_split_protocol_test.cc\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--stat"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0,
+      "stdout": " CMakeLists.txt                                     |   26 +-\n build_files/cmake/macros.cmake                     |   78 +-\n extern/glog/src/config.h                           |    8 +-\n intern/cycles/blender/display_driver.cpp           |    2 +\n intern/cycles/blender/session.cpp                  |   15 +\n intern/ghost/CMakeLists.txt                        |   42 +\n intern/ghost/GHOST_Types.hh                        |    3 +\n intern/ghost/intern/GHOST_ISystem.cc               |    9 +\n intern/ghost/intern/GHOST_SystemHeadless.hh        |   14 +\n intern/opensubdiv/CMakeLists.txt                   |    3 +\n .../internal/evaluator/eval_output_gpu.h           |   11 +-\n .../internal/evaluator/evaluator_capi.cc           |   34 +-\n .../internal/evaluator/gpu_compute_evaluator.cc    |    7 +-\n .../io_scene_gltf2/blender/exp/export.py           |    5 +-\n .../addons_core/io_scene_gltf2/blender/imp/mesh.py |    3 +-\n .../addons_core/io_scene_gltf2/io/com/library.py   |    3 +\n .../addons_core/io_scene_gltf2/io/exp/meshopt.py   |   14 +-\n .../io/imp/gltf2_io_binary_meshopt.py              |   12 +-\n .../asset_system/intern/disk_file_hash_service.cc  |    8 +-\n source/blender/blenkernel/BKE_idtype.hh            |   11 +\n source/blender/blenkernel/BKE_wm_runtime.hh        |    4 +\n source/blender/blenkernel/intern/image.cc          |    7 +\n source/blender/blenlib/BLI_resource_scope.hh       |   10 +\n source/blender/blenlib/BLI_task.h                  |   22 +\n source/blender/blenlib/CMakeLists.txt              |   27 +\n source/blender/blenlib/intern/expr_pylike_eval.cc  |  306 +++-\n source/blender/blenlib/intern/path_utils.cc        |    8 +-\n source/blender/blenlib/intern/storage.cc           |   10 +\n source/blender/blenlib/intern/task_pool.cc         |   16 +-\n source/blender/blenlib/intern/task_scheduler.cc    |  115 +-\n source/blender/blenlib/intern/threads.cc           |   12 +-\n .../blenlib/tests/BLI_expr_pylike_eval_test.cc     |   72 +\n source/blender/blenlib/tests/BLI_fileops_test.cc   |   42 +-\n source/blender/blenlib/tests/BLI_task_test.cc      |  164 ++\n source/blender/blenloader/intern/readfile.cc       |   85 +\n source/blender/blenloader/intern/writefile.cc      |   76 +-\n source/blender/blenloader/intern/writefile.hh      |   10 +\n .../blender/blentranslation/msgfmt/CMakeLists.txt  |    9 +\n source/blender/bmesh/CMakeLists.txt                |   32 +\n source/blender/datatoc/CMakeLists.txt              |    8 +\n source/blender/draw/CMakeLists.txt                 |    6 +\n source/blender/draw/DRW_select_buffer.hh           |   71 +\n source/blender/draw/engines/eevee/eevee_defines.hh |    9 +\n .../draw/engines/eevee/eevee_depth_of_field.cc     |   11 +-\n source/blender/draw/engines/eevee/eevee_engine.cc  |  187 ++-\n source/blender/draw/engines/eevee/eevee_film.cc    |  276 +++-\n source/blender/draw/engines/eevee/eevee_film.hh    |   38 +-\n source/blender/draw/engines/eevee/eevee_gbuffer.hh |    8 +-\n .../blender/draw/engines/eevee/eevee_instance.cc   |  304 ++--\n .../blender/draw/engines/eevee/eevee_instance.hh   |   30 +-\n .../blender/draw/engines/eevee/eevee_lightcache.cc |  236 ++-\n .../blender/draw/engines/eevee/eevee_lightcache.hh |    3 +\n .../draw/engines/eevee/eevee_lightprobe_planar.cc  |    4 +-\n .../draw/engines/eevee/eevee_lightprobe_sphere.cc  |   46 +-\n .../draw/engines/eevee/eevee_lightprobe_sphere.hh  |    8 +\n .../draw/engines/eevee/eevee_lightprobe_volume.cc  |  752 ++++++---\n .../draw/engines/eevee/eevee_lightprobe_volume.hh  |   52 +\n .../blender/draw/engines/eevee/eevee_pipeline.cc   |   33 +-\n .../blender/draw/engines/eevee/eevee_pipeline.hh   |    5 +-\n .../blender/draw/engines/eevee/eevee_raytrace.cc   |   31 +-\n .../draw/engines/eevee/eevee_renderbuffers.cc      |   66 +-\n .../draw/engines/eevee/eevee_renderbuffers.hh      |   24 +-\n source/blender/draw/engines/eevee/eevee_shader.cc  |   94 +-\n source/blender/draw/engines/eevee/eevee_shader.hh  |    1 +\n source/blender/draw/engines/eevee/eevee_shadow.cc  |  160 +-\n source/blender/draw/engines/eevee/eevee_shadow.hh  |   35 +-\n .../blender/draw/engines/eevee/eevee_subsurface.cc |    4 +-\n source/blender/draw/engines/eevee/eevee_view.cc    |    5 +-\n source/blender/draw/engines/eevee/eevee_volume.cc  |   56 +-\n source/blender/draw/engines/eevee/eevee_volume.hh  |   25 +-\n .../shaders/eevee_deferred_tile_classify.bsl.hh    |    8 +\n .../shaders/eevee_depth_of_field_resolve.bsl.hh    |   17 +\n .../eevee/shaders/eevee_light_culling.bsl.hh       |   61 +\n .../shaders/eevee_lightprobe_volume_bake.bsl.hh    |  320 ++--\n .../shaders/eevee_lightprobe_volume_load.bsl.hh    |   29 +-\n .../eevee/shaders/eevee_material_variants.bsl.hh   |   10 +\n .../eevee/shaders/eevee_occupancy_convert.bsl.hh   |   85 +-\n .../shaders/eevee_ray_trace_screen_lib.bsl.hh      |    2 +-\n .../eevee/shaders/eevee_shadow_page_clear.bsl.hh   |   49 +\n .../eevee/shaders/eevee_shadow_page_mask.bsl.hh    |  184 +++\n .../eevee/shaders/eevee_shadow_tag_update.bsl.hh   |    8 +-\n .../eevee/shaders/eevee_shadow_tag_usage.bsl.hh    |    1 -\n .../shaders/eevee_shadow_tilemap_amend.bsl.hh      |  142 +-\n .../shaders/eevee_shadow_tilemap_bounds.bsl.hh     |   43 +-\n .../shaders/eevee_shadow_tilemap_finalize.bsl.hh   |  106 ++\n .../eevee/shaders/eevee_shadow_tilemap_init.bsl.hh |   31 +\n .../eevee/shaders/eevee_surf_occupancy.bsl.hh      |   73 +-\n .../engines/eevee/shaders/eevee_surf_shadow.bsl.hh |   97 ++\n .../engines/eevee/shaders/eevee_surf_volume.bsl.hh |   93 +-\n .../eevee/shaders/eevee_surfel_cluster.bsl.hh      |   36 +\n .../engines/eevee/shaders/eevee_surfel_list.bsl.hh |    7 +\n .../eevee/shaders/infos/eevee_common_infos.hh      |    2 +-\n .../blender/draw/engines/select/select_instance.hh |   14 +-\n .../workbench/shaders/workbench_shadow.bsl.hh      |    2 +-\n .../draw/engines/workbench/workbench_engine.cc     |  356 ++++-\n source/blender/draw/intern/DRW_gpu_wrapper.hh      |   24 +-\n source/blender/draw/intern/DRW_render.hh           |   21 +\n .../blender/draw/intern/draw_cache_impl_curves.cc  |   12 +-\n .../draw/intern/draw_cache_impl_particles.cc       |   20 +-\n .../draw/intern/draw_cache_impl_subdivision.cc     |   48 +-\n source/blender/draw/intern/draw_context.cc         |  190 ++-\n source/blender/draw/intern/draw_curves.cc          |    4 -\n source/blender/draw/intern/draw_curves_defines.hh  |    1 -\n source/blender/draw/intern/draw_debug.cc           |   23 +-\n source/blender/draw/intern/draw_hair_private.hh    |    9 +-\n source/blender/draw/intern/draw_select_buffer.cc   | 1032 +++++++++++-\n source/blender/draw/intern/draw_shader.cc          |    6 +\n source/blender/draw/intern/draw_shader.hh          |    1 +\n .../draw/intern/shaders/draw_curves_infos.hh       |    7 +-\n .../shaders/draw_curves_interpolation_comp.glsl    |    5 +-\n .../draw/intern/shaders/draw_curves_test.glsl      |   19 +-\n .../shaders/draw_debug_draw_display_vert.glsl      |   10 -\n .../draw/intern/shaders/draw_debug_infos.hh        |   13 +-\n .../draw/intern/shaders/subdiv_patch_eval_infos.hh |    5 +-\n .../shaders/subdiv_patch_evaluation_comp.glsl      |    4 +\n source/blender/draw/tests/draw_curves_test.cc      |   43 +-\n source/blender/draw/tests/draw_testing.cc          |   14 +\n source/blender/draw/tests/draw_testing.hh          |   16 +\n source/blender/draw/tests/eevee_test.cc            |    8 +-\n source/blender/editors/asset/intern/asset_ops.cc   |  308 +++-\n source/blender/editors/curve/editcurve_paint.cc    |  308 +++-\n .../blender/editors/curves/intern/curves_draw.cc   |  304 +++-\n source/blender/editors/curves/intern/curves_pen.cc |    9 +-\n .../editors/gpencil_legacy/annotate_paint.cc       |  687 +++++++-\n .../grease_pencil/intern/grease_pencil_pen.cc      |  383 ++++-\n .../intern/grease_pencil_primitive.cc              |  358 ++++-\n .../grease_pencil/intern/grease_pencil_utils.cc    |   64 +\n source/blender/editors/include/ED_curves.hh        |    3 +\n source/blender/editors/include/ED_grease_pencil.hh |   13 +\n source/blender/editors/include/ED_particle.hh      |   42 +-\n source/blender/editors/include/ED_view3d.hh        |   87 +\n .../interface/eyedroppers/eyedropper_color.cc      |  235 ++-\n .../interface/eyedroppers/eyedropper_colorband.cc  |  126 +-\n .../interface/eyedroppers/eyedropper_depth.cc      |  335 ++--\n .../eyedroppers/eyedropper_grease_pencil_color.cc  |   73 +-\n .../interface/eyedroppers/eyedropper_intern.hh     |   29 +\n .../editors/interface/interface_handlers.cc        |    4 +\n .../blender/editors/interface/interface_icons.cc   |    4 +-\n source/blender/editors/mesh/editmesh_select.cc     |   65 +-\n source/blender/editors/object/object_transform.cc  |  411 ++++-\n source/blender/editors/physics/particle_edit.cc    |  986 ++++++++++--\n source/blender/editors/render/render_internal.cc   |  292 +++-\n source/blender/editors/render/render_shading.cc    |    7 +\n source/blender/editors/screen/screendump.cc        |  119 +-\n .../editors/sculpt_paint/grease_pencil/draw_ops.cc |  406 ++++-\n .../editors/sculpt_paint/grease_pencil/fill.cc     |   24 +-\n .../grease_pencil/grease_pencil_intern.hh          |   13 +\n .../editors/sculpt_paint/grease_pencil/paint.cc    |  205 ++-\n .../sculpt_paint/mesh/paint_image_ops_paint.cc     |  241 ++-\n .../editors/sculpt_paint/mesh/paint_image_proj.cc  |  112 +-\n .../blender/editors/sculpt_paint/paint_intern.hh   |   25 +-\n source/blender/editors/space_view3d/view3d_draw.cc |  445 +++++-\n source/blender/editors/space_view3d/view3d_edit.cc |  245 ++-\n .../editors/space_view3d/view3d_navigate.cc        |  414 ++++-\n .../editors/space_view3d/view3d_navigate.hh        |   31 +-\n .../view3d_navigate_view_center_pick.cc            |  251 ++-\n .../space_view3d/view3d_navigate_view_dolly.cc     |  231 +--\n .../space_view3d/view3d_navigate_view_ndof.cc      |  547 ++++++-\n .../space_view3d/view3d_navigate_zoom_border.cc    |  458 +++++-\n .../blender/editors/space_view3d/view3d_select.cc  | 1670 ++++++++++++++++++--\n source/blender/editors/space_view3d/view3d_view.cc |   30 +-\n source/blender/gpu/CMakeLists.txt                  |   91 +-\n source/blender/gpu/GPU_framebuffer.hh              |   25 +\n source/blender/gpu/GPU_platform_backend_enum.h     |    1 +\n source/blender/gpu/GPU_select.hh                   |   34 +\n source/blender/gpu/GPU_shader_builtin.hh           |   14 +\n source/blender/gpu/GPU_storage_buffer.hh           |    8 +\n source/blender/gpu/GPU_texture.hh                  |   18 +\n source/blender/gpu/GPU_vertex_buffer.hh            |   12 +\n source/blender/gpu/intern/gpu_context.cc           |   28 +\n source/blender/gpu/intern/gpu_framebuffer.cc       |   64 +\n .../blender/gpu/intern/gpu_framebuffer_private.hh  |   11 +\n source/blender/gpu/intern/gpu_select_next.cc       |  397 +++++\n source/blender/gpu/intern/gpu_select_private.hh    |    9 +\n source/blender/gpu/intern/gpu_shader.cc            |   84 +\n source/blender/gpu/intern/gpu_shader_builtin.cc    |   28 +\n .../blender/gpu/intern/gpu_shader_create_info.cc   |   17 +\n source/blender/gpu/intern/gpu_shader_dependency.cc |   17 +\n .../blender/gpu/intern/gpu_shader_preprocessor.cc  |    9 +\n source/blender/gpu/intern/gpu_storage_buffer.cc    |   18 +\n .../gpu/intern/gpu_storage_buffer_private.hh       |    5 +\n source/blender/gpu/intern/gpu_texture.cc           |   90 +-\n source/blender/gpu/intern/gpu_texture_mipmap.cc    |   83 +-\n source/blender/gpu/intern/gpu_texture_private.hh   |    2 +\n .../kernels/gpu_shader_fullscreen_blit_infos.hh    |    1 +\n source/blender/gpu/shader_tool/CMakeLists.txt      |    8 +\n .../shaders/common/gpu_shader_utildefines_lib.glsl |   17 +-\n .../shaders/gpu_shader_2D_update_mipmaps.bsl.hh    |  178 ++-\n .../shaders/gpu_shader_2D_widget_shadow_frag.glsl  |    6 +-\n .../gpu/shaders/infos/gpu_shader_test_infos.hh     |   17 +-\n source/blender/gpu/tests/compute_test.cc           |   66 +\n source/blender/gpu/tests/framebuffer_test.cc       |  676 ++++++++\n source/blender/gpu/tests/gpu_testing.hh            |   24 +-\n source/blender/gpu/tests/immediate_test.cc         |  101 ++\n .../blender/gpu/tests/shader_create_info_test.cc   |   13 +\n source/blender/gpu/tests/shader_test.cc            |  112 +-\n source/blender/gpu/tests/shaders/CMakeLists.txt    |    1 +\n .../gpu_framebuffer_subpass_input_test.glsl        |   14 +\n .../gpu/tests/shaders/gpu_specialization_test.glsl |   24 +-\n .../gpu/tests/shaders/gpu_texture_atomic_test.glsl |   16 +\n .../gpu/tests/specialization_constants_test.cc     |  113 +-\n source/blender/gpu/tests/texture_test.cc           | 1387 ++++++++++++++++\n source/blender/gpu/tests/texture_view_test.cc      |  945 ++++++++++-\n source/blender/imbuf/CMakeLists.txt                |    2 +\n source/blender/imbuf/IMB_imbuf.hh                  |   13 +\n source/blender/imbuf/intern/oiio/CMakeLists.txt    |    1 +\n .../blender/imbuf/intern/oiio/openimageio_api.cpp  |    8 +-\n source/blender/imbuf/intern/oiio/openimageio_api.h |    2 +\n source/blender/imbuf/intern/openexr/CMakeLists.txt |    1 +\n .../blender/imbuf/intern/openexr/openexr_api.cpp   |    6 +\n source/blender/imbuf/intern/openexr/openexr_api.h  |    2 +\n source/blender/io/usd/CMakeLists.txt               |   26 +-\n source/blender/io/usd/intern/usd_precomp.hh        |    6 +-\n source/blender/io/usd/intern/usd_reader_stage.cc   |   19 +-\n source/blender/makesdna/DNA_sdna_pointers.hh       |    1 +\n source/blender/makesdna/DNA_sdna_types.h           |    4 +\n source/blender/makesdna/DNA_userdef_types.h        |    1 +\n source/blender/makesdna/intern/CMakeLists.txt      |    9 +\n source/blender/makesdna/intern/dna_genfile.cc      |  152 +-\n source/blender/makesdna/intern/makesdna.cc         |  166 +-\n source/blender/makesrna/intern/CMakeLists.txt      |    9 +\n source/blender/makesrna/intern/rna_object.cc       |   16 +\n source/blender/makesrna/intern/rna_wm.cc           |    1 +\n source/blender/python/intern/bpy_interface.cc      |   44 +\n source/blender/python/intern/bpy_rna_wm.cc         |    8 +\n source/blender/render/RE_engine.h                  |   26 +-\n source/blender/render/RE_pipeline.h                |   15 +\n source/blender/render/intern/engine.cc             |  473 ++++--\n source/blender/render/intern/pipeline.cc           |  338 +++-\n source/blender/render/intern/render_types.h        |   52 +\n source/blender/windowmanager/CMakeLists.txt        |   10 +\n source/blender/windowmanager/WM_api.hh             |   30 +\n source/blender/windowmanager/intern/wm.cc          |  613 +++++++\n source/blender/windowmanager/intern/wm_draw.cc     |  180 ++-\n source/blender/windowmanager/intern/wm_jobs.cc     |   10 +\n source/blender/windowmanager/intern/wm_window.cc   |   15 +\n source/creator/CMakeLists.txt                      |   12 +\n 237 files changed, 22263 insertions(+), 2626 deletions(-)\n",
+      "stderr": ""
+    }
+  ],
+  "source_acquisition": [
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-checkout",
+        "--filter=blob:none",
+        "--depth=1",
+        "--single-branch",
+        "--branch",
+        "blender-v5.2-release",
+        "https://github.com/blender/blender.git",
+        "/workspace/scratch/d63596d831b2/research_ports/native-gessa"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "fbe6228777e7d9afefcd61a413844e790ae75db7"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "fbe6228777e7d9afefcd61a413844e790ae75db7"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/research_ports/native-gessa",
+      "verification": "Completion independently checked below through HEAD and pristine index/worktree."
+    }
+  ],
+  "environment": {
+    "GIT_LFS_SKIP_SMUDGE": "1",
+    "submodules_initialized": false,
+    "git_hooks": "disabled for checkout and apply"
+  },
+  "git_version": "git version 2.51.1",
+  "patch": {
+    "path": "/workspace/scratch/d63596d831b2/research_ports/gessa/patches/PREVIEW_SNAPSHOT.patch",
+    "bytes": 2447156,
+    "sha256": "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c",
+    "receipt_sha256": "846d934cce4e98d2617b7eee4efd26b22a9277073844d2560b15ec21ad7fb122",
+    "checks": {
+      "canonical_manifest_names_patch": true,
+      "adjacent_digest_matches": true,
+      "freeze_receipt_digest_matches": true,
+      "freeze_receipt_byte_count_matches": true,
+      "freeze_receipt_reference_matches": true,
+      "freeze_receipt_pin_file_digest_matches": true
+    }
+  },
+  "actual_upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "upstream_tree": "8a0e127915a507f86fe2852c8d3f4529b4369eb7",
+  "source_initially_pristine": true,
+  "apply_check_passed": true,
+  "scratch_application_passed": true,
+  "changed_path_count": 305,
+  "reason": "Exact official source pin was pristine; independently verified canonical patch passed git apply --check and applied in scratch.",
+  "finished_at": "2026-10-22T18:45:51.514389+00:00"
+}

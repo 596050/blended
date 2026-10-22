@@ -30,7 +30,26 @@ All candidate references are pinned in the lock file. Select one canonical appli
 5. Verify source-to-binary correspondence, fixture availability, licence notices and reproducibility. A release download is an input to qualification, not evidence that the current source builds.
 6. Compare candidates on retained functionality, observed failures, patch maintenance cost and deployed operation. README claims and upstream smoke script exit codes are insufficient acceptance evidence.
 
-The initial CI probe executes the entire unmodified `bl_pyapi_mathutils.py` and `bl_pyapi_bmesh.py` modules from the candidate's exact upstream pin. It adapts the unittest invocation boundary and preserves test assertions. This is candidate qualification only: the native reference, hardware matrix, production deployment and 5.4 migration are still separate gates.
+The initial CI probe executes the entire unmodified `bl_pyapi_mathutils.py` and `bl_pyapi_bmesh.py` modules from the candidate's exact upstream pin. It adapts the unittest invocation boundary and preserves test assertions. This is selected candidate qualification only: a complete test-enabled native build, hardware matrix, production deployment and 5.4 migration are still separate gates.
+
+### Observed baseline, 22 October 2026
+
+Independent qualification has now produced the following results:
+
+| Check | Observed result | Meaning |
+|---|---|---|
+| Canonical source replay | Digest-bound patch applies cleanly to the pristine official 5.2 reference; 305 changed paths | Source reconstruction is demonstrated. A source build and release-binary correspondence are not yet demonstrated. |
+| Official native 5.2.0 | 180/180 mathutils and 12/12 BMesh tests pass | The downloaded official archive matches its published SHA-256 and the runtime reports the expected `fbe6228777e7` build hash. |
+| gessa v0.1.1 browser artifact | 179/180 mathutils and 11/12 BMesh top-level tests pass | Two observed divergences relative to the passing native baseline; the candidate qualification stays failed. |
+| Browser binary identity | Version 5.2.0, build hash `Unknown` | The exact downloaded artifact is hash-verified, but its source correspondence remains unverified. |
+| GPU profile | Independent adapter probe observes SwiftShader | Diagnostic software-GPU execution only. It does not validate the engine's selected hardware adapter or rendering parity. |
+| Product target | Incomplete inventory and zero verified 5.4 target obligations | These selected 5.2 tests are not a full-application percentage or evidence of the required version migration. |
+
+The failing tests are `VectorTesting.test_orthogonal` and `TestBMeshOperators.test_spin_screw_complex`. The first differs from its expected angle by about `7.55e-8`; the second differs in summed edge lengths by about `8.43e-5`. Both exceed their unchanged upstream criteria. The BMesh subtest failure interrupts assignment of a coordinate set, causing a subsequent parent assertion to fail. Therefore the receipt contains three failure events but only two failed top-level tests. It does not establish an independent third geometry defect.
+
+The relevant mathutils/BMesh CPU implementation files are unchanged in the independently replayed canonical source. Float arithmetic and math-library behaviour are investigation targets, not an established root cause. The released artifact's source correspondence must be resolved before attributing the issue to a particular patch or compiler flag. Preserve the original assertions and use separate diagnostics to identify the first differing numeric operation.
+
+Receipts and read-only triage are under `compatibility/evidence/`. The [first browser run](https://github.com/596050/blended/actions/runs/39833848371) and its [case-level receipt](https://github.com/596050/blended/blob/browser-port-evidence/4ebc34ca4c436b287d1e704cf94df7ad710a0c6e/39833848371/qualification.json) preserve the original failure. The workflow runs the exact native release and browser artifact separately; its evidence job retains both without converting a native pass into a browser pass.
 
 ## 2. Application architecture
 
