@@ -52,6 +52,9 @@ def expr(s):
     for a,b in [('math::min','min_f32'),('math::clamp','clamp_i32'),('math::step','step'),('math::midpoint','midpoint'),('math::interpolate','interpolate_i32')]:s=s.replace(a,b)
     s=re.sub(r'(\d+(?:\.\d*)?(?:e[+-]?\d+)?)[fF]\b',lambda m:(m[1]+'0' if m[1].endswith('.') else m[1])+'_f32',s)
     s=re.sub(r'\b(\d+)\.(?!\d)',r'\1.0',s)
+    # Unsuffixed C++ hex literals above INT_MAX select unsigned int.
+    # Rust defaults these to i32 before an `as _` cast, so preserve their source type.
+    s=re.sub(r'\b0x[0-9a-fA-F]+\b',lambda m:m[0]+'_u32' if 0x7fffffff<int(m[0],16)<=0xffffffff else m[0],s)
     match=re.fullmatch(r'(\w+)\((.*)\)',s,re.S)
     if match:
         name,args=match[1],split_args(match[2])
