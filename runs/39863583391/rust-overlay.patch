@@ -1,0 +1,96 @@
+--- additional_cases.rs
++++ shadow/additional_cases.rs
+@@ -22,11 +22,11 @@
+     }
+     ordered(a).abs_diff(ordered(b)) <= 4
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{let a=$a;$r.check(equal(a,$b as _),stringify!($a == $b),line!());}};}
+-macro_rules! feq {($r:expr,$a:expr,$b:expr)=>{{$r.check(float_equal($a as f32,$b as f32),stringify!($a ~= $b),line!());}};}
+-macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{let (a,b,e)=($a as f64,$b as f64,$e as f64);$r.check((a-b).abs()<=e,stringify!($a ~= $b within $e),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{let a=$a;$r.check(crate::fidelity_trace::eq(a,$b as _),stringify!($a == $b),line!());}};}
++macro_rules! feq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::float_eq($a as f32,$b as f32),stringify!($a ~= $b),line!());}};}
++macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ 
+ // source/blender/blenlib/tests/BLI_math_base_test.cc:17
+ pub fn math_base__CompareFFRelativeValid() -> Report {
+--- structure_cases.rs
++++ shadow/structure_cases.rs
+@@ -13,10 +13,10 @@
+     }
+     pub fn passed(&self) -> bool { self.assertions > 0 && self.failures.is_empty() }
+ }
+-macro_rules! eq { ($r:expr,$a:expr,$b:expr) => {{ $r.check($a == $b,stringify!($a == $b),line!()); }}; }
+-macro_rules! gt { ($r:expr,$a:expr,$b:expr) => {{ $r.check($a > $b,stringify!($a > $b),line!()); }}; }
+-macro_rules! yes { ($r:expr,$a:expr) => {{ $r.check($a,stringify!($a),line!()); }}; }
+-macro_rules! no { ($r:expr,$a:expr) => {{ $r.check(!$a,stringify!(!$a),line!()); }}; }
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! gt {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::gt($a,$b),stringify!($a > $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ 
+ // source/blender/blenlib/tests/BLI_index_range_test.cc:14
+ pub fn index_range__DefaultConstructor() -> Report {
+--- compat_cases.rs
++++ shadow/compat_cases.rs
+@@ -16,10 +16,10 @@
+     ordered(a).abs_diff(ordered(b))<=4
+ }
+ fn floats<const N:usize>(r:&mut Report,a:[f32;N],b:[f32;N]) {
+-    for i in 0..N {r.check(float_eq(a[i],b[i]),"EXPECT_FLOAT_EQ component");}
++    for i in 0..N {r.check(crate::fidelity_trace::float_eq(a[i],b[i]),"EXPECT_FLOAT_EQ component");}
+ }
+ fn near(r:&mut Report,a:[f32;3],b:[f32;3]) {
+-    for i in 0..3 {r.check((f64::from(a[i])-f64::from(b[i])).abs()<=f64::from(1e-6_f32),"EXPECT_NEAR component");}
++    for i in 0..3 {r.check(crate::fidelity_trace::near(f64::from(a[i]),f64::from(b[i]),f64::from(1e-6_f32)),"EXPECT_NEAR component");}
+ }
+ fn clamp_vec_with_floats()->Report {
+     let mut r=Report::default();
+@@ -34,31 +34,31 @@
+ }
+ fn clamp()->Report {
+     let mut r=Report::default();let a=clamp_i32([0,100,-100],[5,40,-95],[7,45,5]);
+-    r.check(a[0]==5,"result.x == 5");r.check(a[1]==45,"result.y == 45");r.check(a[2]==-95,"result.z == -95");
++    r.check(crate::fidelity_trace::eq(a[0],5),"result.x == 5");r.check(crate::fidelity_trace::eq(a[1],45),"result.y == 45");r.check(crate::fidelity_trace::eq(a[2],-95),"result.z == -95");
+     let b=clamp_i32([0,100,-100],[-50;3],[50;3]);
+-    r.check(b[0]==0,"result_2.x == 0");r.check(b[1]==50,"result_2.y == 50");r.check(b[2]==-50,"result_2.z == -50");r
++    r.check(crate::fidelity_trace::eq(b[0],0),"result_2.x == 0");r.check(crate::fidelity_trace::eq(b[1],50),"result_2.y == 50");r.check(crate::fidelity_trace::eq(b[2],-50),"result_2.z == -50");r
+ }
+ fn min_list()->Report {
+     let mut r=Report::default();let inf=f32::INFINITY;
+-    r.check(min3(&[[1.0,2.0,3.0]])==Some([1.0,2.0,3.0]),"single vector min");
+-    r.check(min3(&[[1.0,2.0,3.0],[0.0,5.0,2.0]])==Some([0.0,2.0,2.0]),"two vector min");
+-    r.check(min3(&[[1.0,2.0,3.0],[0.0,5.0,2.0],[2.0,4.0,1.5]])==Some([0.0,2.0,1.5]),"three vector min");
+-    r.check(min3(&[[inf,2.0,3.0],[0.0,-inf,inf],[2.0,4.0,-inf]])==Some([0.0,-inf,-inf]),"infinite vector min");
++    r.check(crate::fidelity_trace::eq(min3(&[[1.0,2.0,3.0]]),Some([1.0,2.0,3.0])),"single vector min");
++    r.check(crate::fidelity_trace::eq(min3(&[[1.0,2.0,3.0],[0.0,5.0,2.0]]),Some([0.0,2.0,2.0])),"two vector min");
++    r.check(crate::fidelity_trace::eq(min3(&[[1.0,2.0,3.0],[0.0,5.0,2.0],[2.0,4.0,1.5]]),Some([0.0,2.0,1.5])),"three vector min");
++    r.check(crate::fidelity_trace::eq(min3(&[[inf,2.0,3.0],[0.0,-inf,inf],[2.0,4.0,-inf]]),Some([0.0,-inf,-inf])),"infinite vector min");
+     let value=min3(&[[f32::NAN,2.0,3.0],[0.0,f32::NAN,2.0],[2.0,4.0,f32::NAN]]).expect("nonempty input");
+-    r.check(value[0].is_nan(),"isnan(result.x)");r.check(value[1]==2.0,"result.y == 2.0");r.check(value[2]==2.0,"result.z == 2.0");r
++    r.check(crate::fidelity_trace::boolean("TRUE",value[0].is_nan()),"isnan(result.x)");r.check(crate::fidelity_trace::eq(value[1],2.0),"result.y == 2.0");r.check(crate::fidelity_trace::eq(value[2],2.0),"result.z == 2.0");r
+ }
+ fn max_list()->Report {
+     let mut r=Report::default();let inf=f32::INFINITY;
+-    r.check(max3(&[[1.0,2.0,3.0]])==Some([1.0,2.0,3.0]),"single vector max");
+-    r.check(max3(&[[1.0,2.0,3.0],[0.0,5.0,2.0]])==Some([1.0,5.0,3.0]),"two vector max");
+-    r.check(max3(&[[1.0,2.0,3.0],[0.0,5.0,2.0],[2.0,4.0,1.5]])==Some([2.0,5.0,3.0]),"three vector max");
+-    r.check(max3(&[[inf,2.0,3.0],[0.0,-inf,inf],[2.0,4.0,-inf]])==Some([inf,4.0,inf]),"infinite vector max");
++    r.check(crate::fidelity_trace::eq(max3(&[[1.0,2.0,3.0]]),Some([1.0,2.0,3.0])),"single vector max");
++    r.check(crate::fidelity_trace::eq(max3(&[[1.0,2.0,3.0],[0.0,5.0,2.0]]),Some([1.0,5.0,3.0])),"two vector max");
++    r.check(crate::fidelity_trace::eq(max3(&[[1.0,2.0,3.0],[0.0,5.0,2.0],[2.0,4.0,1.5]]),Some([2.0,5.0,3.0])),"three vector max");
++    r.check(crate::fidelity_trace::eq(max3(&[[inf,2.0,3.0],[0.0,-inf,inf],[2.0,4.0,-inf]]),Some([inf,4.0,inf])),"infinite vector max");
+     let value=max3(&[[f32::NAN,2.0,3.0],[0.0,f32::NAN,2.0],[2.0,4.0,f32::NAN]]).expect("nonempty input");
+-    r.check(value[0].is_nan(),"isnan(result.x)");r.check(value[1]==4.0,"result.y == 4.0");r.check(value[2]==3.0,"result.z == 3.0");r
++    r.check(crate::fidelity_trace::boolean("TRUE",value[0].is_nan()),"isnan(result.x)");r.check(crate::fidelity_trace::eq(value[1],4.0),"result.y == 4.0");r.check(crate::fidelity_trace::eq(value[2],3.0),"result.z == 3.0");r
+ }
+ fn interpolate_int()->Report {
+     let mut r=Report::default();let a=lerp_i32([0,-100,50],[0,100,100],0.75);
+-    r.check(a[0]==0,"result.x == 0");r.check(a[1]==50,"result.y == 50");r.check(a[2]==87,"result.z == 87");r
++    r.check(crate::fidelity_trace::eq(a[0],0),"result.x == 0");r.check(crate::fidelity_trace::eq(a[1],50),"result.y == 50");r.check(crate::fidelity_trace::eq(a[2],87),"result.z == 87");r
+ }
+ fn interpolate_float()->Report {
+     let mut r=Report::default();floats(&mut r,lerp_f32([40.0,-100.0,50.0],[20.0,100.0,100.0],0.5),[30.0,0.0,75.0]);r
