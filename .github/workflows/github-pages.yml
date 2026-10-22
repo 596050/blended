@@ -1,0 +1,62 @@
+name: Deploy modeller to GitHub Pages (enable Pages first)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 tools/build_modeller.py --commit "${{ github.sha }}"
+      - run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - name: Verify the artifact at the same subpath used by Pages
+        run: |
+          mkdir -p build/preview
+          ln -s "$GITHUB_WORKSPACE/build/modeller" "build/preview/${{ github.event.repository.name }}"
+          python3 -m http.server 8765 --directory build/preview >/tmp/http.log 2>&1 &
+          python3 tools/test_modeller.py --url "http://127.0.0.1:8765/${{ github.event.repository.name }}/index.html" --commit "${{ github.sha }}" --output evidence/prepages
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/modeller
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    outputs:
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v4
+        id: deploy
+  deployed-test:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - run: python3 tools/test_modeller.py --url "${{ needs.deploy.outputs.url }}" --commit "${{ github.sha }}" --output evidence/pages
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: github-pages-public-evidence
+          path: evidence/pages/
+          retention-days: 3

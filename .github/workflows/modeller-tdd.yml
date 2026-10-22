@@ -1,0 +1,29 @@
+name: Browser modeller TDD
+on:
+  push:
+    branches: [compat/three-viewport]
+permissions:
+  contents: read
+jobs:
+  rust-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+      - run: cargo test --locked -p blended-core --test browser_geometry
+  state-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test modeller/model.test.mjs

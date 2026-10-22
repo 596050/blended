@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {History,validateDocument} from './model.mjs';
+const empty=()=>({schema:1,objects:[]});
+const object=(id='one')=>({id,name:'Triangle',positions:[0,0,0,1,0,0,0,1,0],indices:[0,1,2],position:[0,0,0],rotation:[0,0,0],scale:[1,1,1],colour:'#c68052',roughness:.5,metalness:0});
+const doc=()=>({schema:1,objects:[object()]});
+test('valid document is accepted',()=>assert.doesNotThrow(()=>validateDocument(doc())));
+test('unknown schema is rejected',()=>assert.throws(()=>validateDocument({schema:99,objects:[]})));
+test('invalid index is rejected',()=>{let d=doc();d.objects[0].indices[2]=3;assert.throws(()=>validateDocument(d));});
+test('nonfinite coordinates rejected',()=>{let d=doc();d.objects[0].positions[0]=NaN;assert.throws(()=>validateDocument(d));});
+test('duplicate identities rejected',()=>assert.throws(()=>validateDocument({schema:1,objects:[object(),object()]})));
+test('history undo and redo restore exact geometry',()=>{let h=new History(empty());h.commit(doc());assert.deepEqual(h.current,doc());assert.equal(h.undo(),true);assert.deepEqual(h.current,empty());assert.equal(h.redo(),true);assert.deepEqual(h.current,doc());});
+test('history snapshots do not alias callers',()=>{let d=doc();let h=new History(d);d.objects[0].name='mutated';let snapshot=h.current;snapshot.objects[0].name='also mutated';assert.equal(h.current.objects[0].name,'Triangle');});
+test('new command invalidates redo',()=>{let h=new History(empty());h.commit(doc());h.undo();let d=doc();d.objects[0].name='new';h.commit(d);assert.equal(h.redo(),false);assert.equal(h.current.objects[0].name,'new');});
+test('undo at boundary is not success',()=>{let h=new History(empty());assert.equal(h.undo(),false);assert.equal(h.redo(),false);});
+test('invalid command never changes history',()=>{let h=new History(empty());assert.throws(()=>h.commit({schema:2}));assert.deepEqual(h.current,empty());});
