@@ -12,8 +12,7 @@ from urllib.parse import urljoin, urlparse
 from PIL import Image, ImageChops, ImageStat
 from playwright.sync_api import sync_playwright, TimeoutError as BrowserTimeout
 
-# Observe real GPU calls without replacing results, suppressing errors, or
-# providing a mock GPU. This differentiates engine faults from device loss.
+# Observe real calls without mocking the GPU or suppressing validation errors.
 GPU_DIAGNOSTICS = r'''(() => {
   const d = window.__blendedGpuDiagnostics = {buffers:0, submissions:0, recent:[], errors:[], lost:[], adapters:[]};
   if (!globalThis.GPUAdapter || !globalThis.GPUDevice) return;
@@ -28,7 +27,7 @@ GPU_DIAGNOSTICS = r'''(() => {
   };
   const createBuffer=GPUDevice.prototype.createBuffer;
   GPUDevice.prototype.createBuffer=function(desc) {
-    d.buffers++; d.recent.push({label:desc.label,size:desc.size,mapped:desc.mappedAtCreation});
+    d.buffers++;d.recent.push({label:desc.label,size:desc.size,mapped:desc.mappedAtCreation});
     if(d.recent.length>32)d.recent.shift();
     try{return createBuffer.call(this,desc);}catch(e){d.errors.push(String(e));throw e;}
   };
@@ -38,8 +37,6 @@ GPU_DIAGNOSTICS = r'''(() => {
 
 def centre_image(png):
     image=Image.open(BytesIO(png)).convert('RGB');w,h=image.size
-    # Exclude DOM toolbars, panel edges and overlay labels. Their pixels must
-    # not make a white/non-rendering WebGPU canvas appear to pass.
     return image.crop((int(w*.25),int(h*.25),int(w*.75),int(h*.75)))
 
 def main():
@@ -54,14 +51,17 @@ def main():
         if not passed:raise AssertionError(name+': '+str(detail))
     code=1
     with sync_playwright() as pw:
-        launch={'headless':True,'args':['--no-sandbox','--disable-dev-shm-usage','--enable-unsafe-webgpu','--use-angle=vulkan','--use-vulkan=swiftshader','--use-webgpu-adapter=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface']}
+        # This exact backend passed real texture readback and 1,000 mapped
+        # buffer allocations in diagnostic run 39824082452. Do not require a
+        # host Vulkan device. Software rendering needs a longer GPU watchdog
+        # budget; the job/test timeouts still bound overall execution.
+        launch={'headless':True,'args':['--no-sandbox','--disable-dev-shm-usage','--disable-gpu-watchdog','--enable-unsafe-webgpu','--use-angle=swiftshader']}
         executable=args.executable or shutil.which('google-chrome') or shutil.which('chromium')
         if executable:launch['executable_path']=executable
-        browser=pw.chromium.launch(**launch)
+        browser=pw.chromium.launch(**launch);result['browser_version']=browser.version
         context=browser.new_context(viewport={'width':1440,'height':1000},accept_downloads=True)
         context.add_init_script(GPU_DIAGNOSTICS)
         if urlparse(args.url).hostname=='rawcdn.githack.com':
-            # Documented public-service automation opt-out for its interstitial.
             context.add_cookies([{'name':'__Http-phish','value':'1','domain':'rawcdn.githack.com','path':'/','secure':True,'httpOnly':True,'sameSite':'Lax'}])
         page=context.new_page()
         page.on('pageerror',lambda error:result['errors'].append(str(error)))
@@ -92,8 +92,7 @@ def main():
             gpu=page.evaluate('window.__blendedGpuDiagnostics')
             check('gpu_device_alive',not gpu['errors'] and not gpu['lost'],str(gpu))
             check('real_gpu_commands_submitted',gpu['submissions']>2,str(gpu['submissions']))
-            canvas=page.locator('canvas.viewport-canvas')
-            deadline=time.monotonic()+30
+            canvas=page.locator('canvas.viewport-canvas');deadline=time.monotonic()+30
             while True:
                 before_png=canvas.screenshot();before_image=centre_image(before_png)
                 if sum(ImageStat.Stat(before_image).var)>1.0 or time.monotonic()>deadline:break

@@ -23,9 +23,12 @@ jobs:
         run: python3 -m unittest discover -s tests -p test_inventory.py -v
       - name: Fetch pinned reference repositories with fixture availability explicit
         run: python3 tools/fetch_upstreams.py blender cycles solarxy
-      - name: Enumerate source candidates without inventing runtime results
+      - name: Enumerate source candidates and retain separate port metadata
         run: |
-          mkdir -p evidence/inventory
+          mkdir -p evidence/inventory/ports
+          python3 tools/prepare_site.py
+          cp compatibility/ports.json evidence/inventory/ports/blender.json
+          cp compatibility/cycles-ports.json evidence/inventory/ports/cycles.json
           python3 - <<'PY'
           import json
           from pathlib import Path
@@ -37,12 +40,42 @@ jobs:
               Path(f'evidence/inventory/{name}.json').write_text(json.dumps(result,indent=2)+'\n')
               summary[name]={'source_candidates':len(result['cases']),'files_scanned':len(result['files']),'fixture_files':len(result['fixtures']),'lfs_pointers':sum(f['status']=='lfs_pointer' for f in result['fixtures']),'unreadable_files':len(result['unreadable_files']),'runtime_enumeration_complete':False,'executed':0,'passed':0}
           Path('evidence/inventory/summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+          Path('evidence/inventory/README.md').write_text('# Pinned compatibility inventory\n\nGenerated source discovery, not execution or complete runtime enumeration. Source cases keep their source paths, identities, commit pins and line numbers. Macro/parameter expansion and some test kinds are not covered. Unreadable source files and missing LFS fixture payloads are explicitly listed.\n\n`ports/` separately records written Rust ports; `not_ported` in a raw discovery report is its initial classification, not the merged port ledger. Execution evidence belongs to the corresponding CI run, not this source scan.\n\nDo not calculate a full Blender compatibility percentage from these source counts.\n')
           print(json.dumps(summary,indent=2))
           PY
-      - name: Retain complete discovery reports
+      - name: Retain discovery reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: upstream-test-inventory
           path: evidence/inventory
           retention-days: 3
+  persist-ledger:
+    needs: inventory
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: upstream-test-inventory
+          path: ledger
+      - name: Preserve inventory beyond artifact expiry on a dedicated branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init --initial-branch=compatibility-index published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin compatibility-index >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin compatibility-index
+            git -C published reset --mixed FETCH_HEAD
+          fi
+          cp -a ledger/. published/
+          git -C published add -A
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Preserve pinned source inventory from ${SOURCE_SHA}; no runtime parity claim"
+          git -C published push origin HEAD:refs/heads/compatibility-index

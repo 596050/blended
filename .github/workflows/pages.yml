@@ -2,6 +2,7 @@ name: Build, publish and test browser studio
 on:
   push:
     branches: [main]
+    paths-ignore: ['README.md', 'docs/**', 'evidence/**']
   pull_request:
   workflow_dispatch:
 permissions:
@@ -43,12 +44,14 @@ jobs:
         with:
           workspaces: .upstream/solarxy
           cache-on-failure: true
+          cache-workspace-crates: true
       - name: Install matching wasm-bindgen
         run: |
           VERSION=0.2.126
           curl -fsSL "https://github.com/rustwasm/wasm-bindgen/releases/download/${VERSION}/wasm-bindgen-${VERSION}-x86_64-unknown-linux-musl.tar.gz" | tar -xz --strip-components=1 -C /usr/local/bin "wasm-bindgen-${VERSION}-x86_64-unknown-linux-musl/wasm-bindgen"
           wasm-bindgen --version
       - name: Build and test studio foundation from source
+        id: studio
         run: |
           set -o pipefail
           python3 tools/build_studio.py --base ./ --commit "${{ github.sha }}" 2>&1 | tee evidence/studio-build.txt
@@ -60,6 +63,8 @@ jobs:
           google-chrome --version
       - name: Test the built artifact before publication
         timeout-minutes: 8
+        env:
+          DEBUG: pw:browser
         run: |
           mkdir -p build/preview
           ln -s "$GITHUB_WORKSPACE/site" "build/preview/${{ github.event.repository.name }}"
@@ -74,16 +79,16 @@ jobs:
           name: predeploy-evidence
           path: evidence/
           retention-days: 3
-      - name: Retain complete built site
-        if: github.event_name != 'pull_request'
+      - name: Retain complete built site for diagnosis even when browser tests fail
+        if: always() && steps.studio.outcome == 'success' && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
           name: browser-site
           path: site/
           include-hidden-files: true
-          retention-days: 3
-      - name: Upload Pages artifact
-        if: github.event_name != 'pull_request'
+          retention-days: 1
+      - name: Upload Pages artifact only after successful browser tests
+        if: success() && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
@@ -134,7 +139,7 @@ jobs:
           echo "## Public preview" >> "$GITHUB_STEP_SUMMARY"
           echo "${URL}" >> "$GITHUB_STEP_SUMMARY"
           echo "Source commit: ${SOURCE_SHA}. Public-URL browser verification runs next." >> "$GITHUB_STEP_SUMMARY"
-          echo "Free third-party preview CDN; no uptime guarantee. Code and build files are in GitHub." >> "$GITHUB_STEP_SUMMARY"
+          echo "Free third-party shared-origin preview CDN. Use public sample data only; GitHub Pages is preferred for normal use." >> "$GITHUB_STEP_SUMMARY"
   deployed-check:
     needs: publish
     runs-on: ubuntu-latest
