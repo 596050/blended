@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "product_target": {
+    "repository": "blender/blender",
+    "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "version": "5.4.0 alpha"
+  },
+  "selection": {
+    "preferred_evaluation_candidate": "gessa",
+    "status": "provisional_pending_independent_build_and_runtime_evidence",
+    "rule": "Qualify each candidate at its own native reference pin; version migration to the product target is a separate required workstream. No candidate passes transfer across revisions."
+  },
+  "candidates": [
+    {
+      "id": "gessa",
+      "repository": "gessa-ai/blender-web",
+      "commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+      "reference": {
+        "repository": "blender/blender",
+        "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+        "version": "5.2.0 release"
+      },
+      "source_reconstruction": {
+        "manifest": "patches/canonical",
+        "warning": "Numbered patches/series is development history and is not the canonical replay path. Follow the digest-bound canonical snapshot and verify application to the exact native reference."
+      },
+      "toolchain": {
+        "emscripten": "6.0.5"
+      },
+      "qualification_release": {
+        "tag": "v0.1.1",
+        "source_commit": "cc22090b88da63cc617d48b218f4945175928844",
+        "asset_url": "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz",
+        "asset_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0",
+        "asset_bytes": 108802132,
+        "scope": "Independent runtime probe of the released binary. Does not validate candidate HEAD, reproducible source build, native differential parity, hardware performance or the 5.4 product target."
+      },
+      "upstream_suites": [
+        {
+          "path": "tests/python/bl_pyapi_mathutils.py",
+          "git_blob": "3f152413bd28842706d83957d0ff3690788c3ae7",
+          "source_url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_mathutils.py",
+          "sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+          "scope": "Entire self-contained upstream unittest module, unchanged assertions; suite execution is required and skipped tests do not count as passing."
+        },
+        {
+          "path": "tests/python/bl_pyapi_bmesh.py",
+          "git_blob": "663e8cd1b07bff9dbd8468edd346048e3179f11f",
+          "source_url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_bmesh.py",
+          "sha256": "7dd9b28372ca371420c98e11bed49aff07f4fbe008c0fc1685cb9b5bc6721329",
+          "scope": "Entire self-contained upstream unittest module, unchanged assertions; suite execution is required and skipped tests do not count as passing."
+        }
+      ],
+      "known_gaps": [
+        "Published README claims and strict milestone receipts differ; independent evidence is required.",
+        "EEVEE and several physics, media and interchange dependencies are unfinished or disabled in the published port.",
+        "Canonical source replay, exact native reference build and browser hardware validation remain qualification gates."
+      ]
+    },
+    {
+      "id": "puter",
+      "repository": "HeyPuter/blender-wasm",
+      "commit": "e73ddff77079dc96b2a7af6e7b843a7ecfbbb11a",
+      "engine": {
+        "repository": "HeyPuter/blender",
+        "commit": "fe16888d9e1e5eee3070535a221dd9ae2d671a77",
+        "version": "5.3.0 alpha"
+      },
+      "reference": {
+        "repository": "blender/blender",
+        "commit": "594182577fb6209179847d3f36b2b196cd7f9c8c",
+        "status": "merge_base_identified_port_diff_review_required"
+      },
+      "toolchain": {
+        "emscripten": "6.0.1"
+      },
+      "build_entrypoints": [
+        "Makefile",
+        "cmake/blender-wasm-cache.cmake",
+        "cmake/blender-wasm-gl-cache.cmake"
+      ],
+      "known_gaps": [
+        "Published build configurations disable WITH_TESTS and WITH_GTESTS; separate test-enabled configurations are required.",
+        "Feature availability differs between the WebGPU and OpenGL-on-WebGPU configurations.",
+        "Existing smoke/compatibility scripts must be audited for fail-on-error behavior before their outputs can be acceptance evidence.",
+        "Recent upstream CI builds failed; reproduce the toolchain issue before importing build claims."
+      ]
+    }
+  ]
+}

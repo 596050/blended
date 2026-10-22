@@ -1,0 +1,930 @@
+{
+  "schema": 1,
+  "target": {
+    "repository": "blender/blender",
+    "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d"
+  },
+  "target_version": "5.4.0 alpha",
+  "required_profiles": [
+    "native-reference",
+    "chromium-hardware"
+  ],
+  "diagnostic_profiles": [
+    "chromium-software"
+  ],
+  "scope": "Frozen Blender feature compatibility target. Candidate-port tests at earlier revisions are separate qualification results.",
+  "enumeration_policy": "Native reference runtime enumeration plus source/fixture reconciliation; source globs are discovery aids, not a complete denominator.",
+  "facets": [
+    {
+      "id": "foundation",
+      "title": "Build, memory, containers, mathematics",
+      "source_globs": [
+        "source/blender/blenlib/**",
+        "intern/guardedalloc/**",
+        "intern/atomic/**",
+        "build_files/cmake/**"
+      ],
+      "test_globs": [
+        "source/blender/blenlib/tests/*_test.cc",
+        "intern/guardedalloc/**/*test*"
+      ],
+      "fixture_globs": [],
+      "coverage_notes": "Source declarations must be expanded by runtime enumeration. Preserve each upstream assertion and numeric tolerance.",
+      "depends_on": [],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Browser host, GHOST, files, threads and events",
+      "source_globs": [
+        "intern/ghost/**",
+        "source/blender/windowmanager/**"
+      ],
+      "test_globs": [
+        "source/blender/blenlib/tests/BLI_fileops_test.cc",
+        "source/blender/blenlib/tests/BLI_path_utils_test.cc",
+        "source/blender/blenlib/tests/BLI_tempfile_test.cc",
+        "source/blender/blenlib/tests/BLI_task_test.cc",
+        "source/blender/blenlib/tests/BLI_task_graph_test.cc",
+        "tests/python/ui_simulate/test_button_input.py",
+        "tests/python/ui_simulate/test_drag_interactions.py",
+        "tests/python/ui_simulate/test_fullscreen.py"
+      ],
+      "fixture_globs": [
+        "tests/files/ui_tests/**"
+      ],
+      "coverage_notes": "Browser permissions, OPFS, input focus, clipboard, worker lifetime, cross-origin isolation, device loss and real user input need added browser acceptance tests.",
+      "depends_on": [
+        "foundation"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "python_api",
+      "title": "Embedded Python, bpy, RNA and extensions",
+      "source_globs": [
+        "source/blender/python/**",
+        "source/blender/makesrna/**"
+      ],
+      "test_globs": [
+        "tests/python/bl_pyapi_*.py",
+        "tests/python/bl_rna_*.py",
+        "tests/python/bl_operator_*_py_api.py",
+        "tests/python/bl_load_addons.py",
+        "tests/python/bl_load_py_modules.py",
+        "tests/python/bl_bundled_modules.py"
+      ],
+      "fixture_globs": [],
+      "coverage_notes": "Native-binary modules, external processes and networked extensions need explicit compatibility classifications. A Python console boot is not API parity.",
+      "depends_on": [
+        "foundation",
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "scene_data",
+      "title": "Scene graph, IDs, collections, data relationships",
+      "source_globs": [
+        "source/blender/blenkernel/**",
+        "source/blender/makesdna/**"
+      ],
+      "test_globs": [
+        "source/blender/blenkernel/intern/*_test.cc",
+        "tests/python/bl_id_management.py",
+        "tests/python/bl_geometry_attributes.py",
+        "tests/python/bl_object.py",
+        "tests/python/view_layer/**"
+      ],
+      "fixture_globs": [
+        "tests/files/layers/**",
+        "tests/files/libraries_and_linking/**"
+      ],
+      "coverage_notes": "Broad native globs intentionally overlap other facets. Current tests/python/CMakeLists.txt comments out add_subdirectory(view_layer); source presence does not mean active registration.",
+      "depends_on": [
+        "foundation",
+        "python_api"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "blend_io",
+      "title": "Native blend files, versioning, linking, overrides, recovery",
+      "source_globs": [
+        "source/blender/blenloader/**",
+        "source/blender/blenloader_core/**",
+        "source/blender/blenkernel/**"
+      ],
+      "test_globs": [
+        "source/blender/blenloader/tests/*_test.cc",
+        "tests/python/bl_blendfile_*.py",
+        "tests/python/bl_global_undo.py"
+      ],
+      "fixture_globs": [
+        "tests/files/io_tests/blend_autosave/**",
+        "tests/files/io_tests/blend_parsing/**",
+        "tests/files/libraries_and_linking/**",
+        "tests/files/invalid_blendfiles/**"
+      ],
+      "coverage_notes": "Require desktop-to-browser-to-desktop semantic round trips and recovery after reload. Do not demand byte equality of entire blend files unless a specific upstream test does.",
+      "depends_on": [
+        "scene_data",
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "depsgraph",
+      "title": "Dependency graph, evaluation and invalidation",
+      "source_globs": [
+        "source/blender/depsgraph/**",
+        "source/blender/blenkernel/**"
+      ],
+      "test_globs": [
+        "source/blender/depsgraph/intern/builder/deg_builder_rna_test.cc",
+        "source/blender/depsgraph/intern/depsgraph_query_iter_test.cc",
+        "tests/python/bl_blendfile_relationships.py"
+      ],
+      "fixture_globs": [
+        "tests/files/depsgraph/**"
+      ],
+      "coverage_notes": "Fixture directory exists, but is not proof of full registered evaluation coverage. Add linked, instanced and time-dependent scene comparisons.",
+      "depends_on": [
+        "scene_data"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "object_transforms",
+      "title": "Objects, transforms, selection, snapping and history",
+      "source_globs": [
+        "source/blender/editors/object/**",
+        "source/blender/editors/transform/**",
+        "source/blender/windowmanager/**"
+      ],
+      "test_globs": [
+        "tests/python/object_edit.py",
+        "tests/python/object_conversion.py",
+        "tests/python/bl_object.py",
+        "tests/python/bl_global_undo.py",
+        "tests/python/ui_simulate/test_transform.py",
+        "tests/python/ui_simulate/test_undo.py",
+        "tests/python/ui_simulate/test_drag_interactions.py"
+      ],
+      "fixture_globs": [
+        "tests/files/modeling/object_conversion.blend",
+        "tests/files/ui_tests/**"
+      ],
+      "coverage_notes": "Test operator state and real browser input. Numeric transformation assertions alone do not cover modal interactions.",
+      "depends_on": [
+        "platform",
+        "scene_data",
+        "depsgraph"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "mesh_edit",
+      "title": "BMesh and mesh editing operators",
+      "source_globs": [
+        "source/blender/bmesh/**",
+        "source/blender/editors/mesh/**",
+        "source/blender/geometry/**"
+      ],
+      "test_globs": [
+        "source/blender/bmesh/tests/bmesh_core_test.cc",
+        "source/blender/blenlib/tests/BLI_mesh_*_test.cc",
+        "tests/python/bl_pyapi_bmesh.py",
+        "tests/python/bevel_operator.py",
+        "tests/python/boolean_operator.py",
+        "tests/python/operators.py",
+        "tests/python/mesh_join.py",
+        "tests/python/mesh_validate.py",
+        "tests/python/bl_mesh_validate.py"
+      ],
+      "fixture_globs": [
+        "tests/files/modeling/**"
+      ],
+      "coverage_notes": "Use upstream mesh_test.py comparator. Index changes are permitted only where each fixture explicitly allows them; validate topology, custom data and selection/history.",
+      "depends_on": [
+        "object_transforms",
+        "python_api"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "modifiers",
+      "title": "Modifier evaluation and stacks",
+      "source_globs": [
+        "source/blender/modifiers/**",
+        "source/blender/blenkernel/**",
+        "intern/opensubdiv/**",
+        "intern/quadriflow/**"
+      ],
+      "test_globs": [
+        "tests/python/modeling/modifiers/*.py",
+        "tests/python/deform_modifiers.py",
+        "tests/python/bl_mesh_modifiers.py",
+        "tests/python/ui_simulate/test_modifiers_constraints_draw.py"
+      ],
+      "fixture_globs": [
+        "tests/files/modeling/modifiers/**",
+        "tests/files/modeling/deform_modifiers.blend",
+        "tests/files/modifier_stack/**"
+      ],
+      "coverage_notes": "Feature flags affect exact booleans, remesh, subdivision and volume paths. A disabled modifier remains a capability gap.",
+      "depends_on": [
+        "mesh_edit",
+        "depsgraph"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "curves_text_hair",
+      "title": "Curves, text, lattices, hair and point geometry",
+      "source_globs": [
+        "source/blender/geometry/**",
+        "source/blender/editors/curves/**",
+        "source/blender/blenkernel/**"
+      ],
+      "test_globs": [
+        "source/blender/geometry/tests/GEO_*curves_test.cc",
+        "source/blender/blenkernel/intern/curves_geometry_test.cc",
+        "source/blender/blenkernel/intern/lattice_deform_test.cc",
+        "source/blender/editors/curves/tests/curves_edit_test.cc",
+        "tests/python/curve_to_mesh.py",
+        "tests/python/curves_extrude.py",
+        "tests/python/object_conversion.py",
+        "tests/python/bl_pyapi_blf.py"
+      ],
+      "fixture_globs": [
+        "tests/files/modeling/**",
+        "tests/files/render/hair/**",
+        "tests/files/render/pointcloud/**",
+        "tests/files/blenfont/**"
+      ],
+      "coverage_notes": "Per-domain acceptance must cover text shaping, curve attributes, conversion and hair evaluation. Font rendering also depends on GPU/color.",
+      "depends_on": [
+        "scene_data",
+        "modifiers"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "geometry_nodes",
+      "title": "Geometry Nodes, fields, sockets, zones and caches",
+      "source_globs": [
+        "source/blender/nodes/**",
+        "source/blender/functions/**",
+        "source/blender/geometry/**"
+      ],
+      "test_globs": [
+        "source/blender/nodes/intern/*test*.cc",
+        "source/blender/geometry/tests/GEO_realize_instances_test.cc",
+        "tests/python/geo_node_test.py",
+        "tests/python/bl_node_*.py",
+        "tests/python/bl_geo_node_file_reporting.py",
+        "tests/python/bl_geometry_attributes.py"
+      ],
+      "fixture_globs": [
+        "tests/files/modeling/geometry_nodes/**",
+        "tests/files/node_group/**"
+      ],
+      "coverage_notes": "CMake expands each .blend fixture into geo_node_<category>_<filename>. Categories depend on Audaspace+FFTW, GMP, OpenVDB and OpenSubdiv flags.",
+      "depends_on": [
+        "python_api",
+        "depsgraph",
+        "modifiers"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "sculpt",
+      "title": "Sculpting, dyntopo, remesh, masks and multires",
+      "source_globs": [
+        "source/blender/editors/sculpt_paint/**",
+        "source/blender/blenkernel/**",
+        "intern/quadriflow/**"
+      ],
+      "test_globs": [
+        "source/blender/editors/sculpt_paint/mesh/*test*.cc",
+        "tests/python/sculpt_paint/*test*.py",
+        "tests/python/sculpt_brush_render_tests.py",
+        "tests/python/ui_simulate/test_sculpt.py",
+        "tests/python/ui_simulate/test_undo.py"
+      ],
+      "fixture_globs": [
+        "tests/files/sculpting/**",
+        "tests/files/mesh_paint/**"
+      ],
+      "coverage_notes": "Dedicated brush, masks, face sets, multires and undo cases exist. Real pen pressure, pointer capture and high-density latency need browser-specific acceptance.",
+      "depends_on": [
+        "mesh_edit",
+        "modifiers",
+        "gpu_backend"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "uv",
+      "title": "UV editing, unwrap, packing and seams",
+      "source_globs": [
+        "source/blender/editors/uvedit/**",
+        "source/blender/geometry/**",
+        "intern/slim/**"
+      ],
+      "test_globs": [
+        "tests/python/ui_simulate/test_drag_interactions.py",
+        "tests/python/operators.py",
+        "tests/python/modeling/modifiers/*.py"
+      ],
+      "fixture_globs": [
+        "tests/files/modeling/**"
+      ],
+      "coverage_notes": "Upstream tests found here do not constitute exhaustive UV feature coverage. Add explicit unwrap, pack, seam, island and modifier-interaction workflow cases.",
+      "depends_on": [
+        "mesh_edit",
+        "gpu_backend"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "painting",
+      "title": "Texture, vertex and weight painting",
+      "source_globs": [
+        "source/blender/editors/sculpt_paint/**",
+        "source/blender/blenkernel/**",
+        "source/blender/imbuf/**"
+      ],
+      "test_globs": [
+        "tests/python/sculpt_paint/texture_paint_brushes_test.py",
+        "tests/python/sculpt_paint/texture_paint_undo_test.py",
+        "tests/python/sculpt_paint/vertex_paint_brushes_test.py",
+        "tests/python/sculpt_paint/weight_paint_brushes_test.py",
+        "tests/python/vertex_group_painting.py"
+      ],
+      "fixture_globs": [
+        "tests/files/mesh_paint/**",
+        "tests/files/paint/**"
+      ],
+      "coverage_notes": "Brush acceptance compares data as well as screenshots, and must cover save/reopen of painted images and weights.",
+      "depends_on": [
+        "uv",
+        "sculpt",
+        "materials_color"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "gpu_backend",
+      "title": "WebGPU backend, buffers, shaders and synchronization",
+      "source_globs": [
+        "source/blender/gpu/**",
+        "source/blender/draw/**"
+      ],
+      "test_globs": [
+        "source/blender/gpu/tests/*_test.cc",
+        "source/blender/gpu/shader_tool/tests/*_test.cc",
+        "source/blender/gpu/vulkan/tests/*_test.cc",
+        "tests/python/bl_pyapi_gpu.py"
+      ],
+      "fixture_globs": [],
+      "coverage_notes": "Native-backend-specific cases require explicit equivalence mappings. Texture/image atomics, sync readback, query semantics and device loss need dedicated web checks; do not count software-only checks as hardware validation.",
+      "depends_on": [
+        "platform",
+        "foundation"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "workbench",
+      "title": "Workbench viewport, overlays and selection",
+      "source_globs": [
+        "source/blender/draw/**",
+        "source/blender/editors/**"
+      ],
+      "test_globs": [
+        "tests/python/workbench_render_tests.py",
+        "tests/python/overlay_render_tests.py",
+        "tests/python/overlay/**",
+        "tests/python/ui_screenshot_tests.py",
+        "tests/python/ui_simulate/test_object_type_visibility.py"
+      ],
+      "fixture_globs": [
+        "tests/files/render/workbench/**",
+        "tests/files/render/**",
+        "tests/files/screenshot/**"
+      ],
+      "coverage_notes": "Workbench, UI pixels and overlays are separate outputs; selection/picking and interaction require state assertions as well.",
+      "depends_on": [
+        "gpu_backend",
+        "scene_data",
+        "materials_color"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "materials_color",
+      "title": "Materials, shading graphs, textures and color management",
+      "source_globs": [
+        "source/blender/nodes/**",
+        "source/blender/imbuf/**",
+        "source/blender/blenkernel/**"
+      ],
+      "test_globs": [
+        "tests/python/bl_node_*.py",
+        "tests/python/bl_ocio_config_tests.py",
+        "tests/python/bl_imbuf_*.py",
+        "source/blender/imbuf/tests/*_test.cc",
+        "source/blender/imbuf/opencolorio/intern/*_test.cc",
+        "source/blender/imbuf/opencolorio/intern/libocio/*_test.cc"
+      ],
+      "fixture_globs": [
+        "tests/files/render/bsdf/**",
+        "tests/files/render/principled_bsdf/**",
+        "tests/files/render/shader/**",
+        "tests/files/render/texture/**",
+        "tests/files/render/colorspace/**",
+        "tests/files/imbuf_io/**",
+        "tests/files/materials/**"
+      ],
+      "coverage_notes": "Share graph semantics across renderers; compare each renderer separately with fixed color configuration and image inputs.",
+      "depends_on": [
+        "python_api",
+        "scene_data"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "eevee",
+      "title": "EEVEE rendering",
+      "source_globs": [
+        "source/blender/draw/**",
+        "source/blender/gpu/**"
+      ],
+      "test_globs": [
+        "tests/python/eevee_render_tests.py",
+        "tests/python/ui_simulate/test_render.py"
+      ],
+      "fixture_globs": [
+        "tests/files/render/**"
+      ],
+      "coverage_notes": "Use CMake's EEVEE category selection, including lighting_nodes, and record upstream blocklist exclusions separately. Workbench pass does not prove EEVEE.",
+      "depends_on": [
+        "gpu_backend",
+        "materials_color",
+        "depsgraph"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "cycles_cpu",
+      "title": "Cycles CPU rendering, baking and denoising",
+      "source_globs": [
+        "intern/cycles/**",
+        "source/blender/render/**"
+      ],
+      "test_globs": [
+        "intern/cycles/test/*",
+        "tests/python/cycles_render_tests.py",
+        "tests/python/cycles_osl_compile_test.py",
+        "tests/python/ui_simulate/test_render.py"
+      ],
+      "fixture_globs": [
+        "tests/files/render/**"
+      ],
+      "coverage_notes": "Use Cycles from the same Blender source pin. Standalone blender/cycles pin is a separate comparison baseline. Fixture/device/OSL/seed/sample/bounce dimensions must remain explicit.",
+      "depends_on": [
+        "materials_color",
+        "depsgraph",
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "cycles_gpu",
+      "title": "Cycles GPU rendering",
+      "source_globs": [
+        "intern/cycles/**",
+        "source/blender/gpu/**"
+      ],
+      "test_globs": [
+        "intern/cycles/test/*",
+        "tests/python/cycles_render_tests.py"
+      ],
+      "fixture_globs": [
+        "tests/files/render/**"
+      ],
+      "coverage_notes": "CPU success and a WebGPU triangle do not satisfy this facet. Browser WebGPU backend requires explicit implementation and real hardware output, capability and performance evidence.",
+      "depends_on": [
+        "cycles_cpu",
+        "gpu_backend"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "animation_rigging",
+      "title": "Animation, rigging, constraints, drivers and NLA",
+      "source_globs": [
+        "source/blender/animrig/**",
+        "source/blender/editors/animation/**",
+        "source/blender/ikplugin/**",
+        "intern/iksolver/**",
+        "intern/itasc/**"
+      ],
+      "test_globs": [
+        "source/blender/animrig/intern/*_test.cc",
+        "source/blender/editors/animation/*_test.cc",
+        "source/blender/blenkernel/intern/*armature*_test.cc",
+        "source/blender/blenkernel/intern/fcurve_test.cc",
+        "source/blender/blenkernel/intern/nla_test.cc",
+        "tests/python/bl_animation_*.py",
+        "tests/python/bl_constraints.py",
+        "tests/python/bl_rigging_symmetrize.py",
+        "tests/python/bl_pose_assets.py",
+        "tests/python/vertex_group_painting.py"
+      ],
+      "fixture_globs": [
+        "tests/files/animation/**",
+        "tests/files/constraints/**"
+      ],
+      "coverage_notes": "Compare evaluated frames, interpolation, drivers, constraints and bones, plus editing and save/reload. IK compiled out is a failure to cover, not a pass.",
+      "depends_on": [
+        "scene_data",
+        "depsgraph",
+        "python_api"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "simulation",
+      "title": "Physics, fluid, cloth, particles, caches and volumes",
+      "source_globs": [
+        "source/blender/simulation/**",
+        "source/blender/blenkernel/**",
+        "intern/mantaflow/**",
+        "intern/rigidbody/**",
+        "intern/openvdb/**"
+      ],
+      "test_globs": [
+        "tests/python/physics_*.py",
+        "tests/python/geo_node_test.py",
+        "source/blender/blenkernel/intern/bake_items_serialize_test.cc",
+        "source/blender/blenkernel/intern/volume_test.cc",
+        "tests/python/ui_simulate/test_quick_effects.py"
+      ],
+      "fixture_globs": [
+        "tests/files/physics/**",
+        "tests/files/modeling/geometry_nodes/simulation/**",
+        "tests/files/particles_and_hair/**",
+        "tests/files/render/volume/**",
+        "tests/files/render/openvdb/**"
+      ],
+      "coverage_notes": "Use upstream case-specific floating point tolerances, fixed initial state/timestep and cache round trips. Additional rigid-body and long-run cases may be needed where upstream coverage is thin.",
+      "depends_on": [
+        "depsgraph",
+        "animation_rigging",
+        "geometry_nodes",
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "grease_pencil",
+      "title": "Grease Pencil, 2D drawing and animation",
+      "source_globs": [
+        "source/blender/editors/grease_pencil/**",
+        "source/blender/blenkernel/**",
+        "source/blender/shader_fx/**"
+      ],
+      "test_globs": [
+        "source/blender/editors/grease_pencil/tests/*_test.cc",
+        "source/blender/blenkernel/intern/grease_pencil_test.cc",
+        "tests/python/bl_pyapi_grease_pencil.py",
+        "tests/python/sculpt_paint/grease_pencil_paint_tests.py",
+        "tests/python/io_grease_pencil_svg_import_test.py"
+      ],
+      "fixture_globs": [
+        "tests/files/grease_pencil/**",
+        "tests/files/render/grease_pencil/**",
+        "tests/files/modeling/geometry_nodes/grease_pencil/**"
+      ],
+      "coverage_notes": "Check strokes, layers, materials, modifiers, drawing input and file round trips separately.",
+      "depends_on": [
+        "gpu_backend",
+        "animation_rigging",
+        "materials_color"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "format_io",
+      "title": "Interchange import/export and images",
+      "source_globs": [
+        "source/blender/io/**",
+        "source/blender/imbuf/**"
+      ],
+      "test_globs": [
+        "source/blender/io/**/tests/*test*.cc",
+        "source/blender/io/common/intern/*test*.cc",
+        "tests/python/io_*test.py",
+        "tests/python/alembic_export_tests.py",
+        "tests/python/bl_alembic_io_test.py",
+        "tests/python/bl_usd_*test.py",
+        "tests/python/bl_imbuf_*.py"
+      ],
+      "fixture_globs": [
+        "tests/files/io_tests/**",
+        "tests/files/alembic/**",
+        "tests/files/usd/**",
+        "tests/files/imbuf_io/**"
+      ],
+      "coverage_notes": "Use upstream semantic IO report criteria, external-file references and format-specific round trips. A simple triangle is insufficient evidence of format parity.",
+      "depends_on": [
+        "scene_data",
+        "blend_io",
+        "materials_color"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "compositing",
+      "title": "Compositor nodes, passes, masks and file outputs",
+      "source_globs": [
+        "source/blender/compositor/**",
+        "source/blender/nodes/**",
+        "source/blender/imbuf/**"
+      ],
+      "test_globs": [
+        "tests/python/compositor_render_tests.py",
+        "tests/python/compositor_file_output_tests.py",
+        "tests/python/compositing_node_group.py"
+      ],
+      "fixture_globs": [
+        "tests/files/compositor/**"
+      ],
+      "coverage_notes": "CPU and GPU compositor configurations are distinct. LibMV-gated tracking/keying cases and file-output semantics must remain visible.",
+      "depends_on": [
+        "materials_color",
+        "gpu_backend"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "video_audio",
+      "title": "Video sequencer, codecs and audio",
+      "source_globs": [
+        "source/blender/sequencer/**",
+        "source/blender/imbuf/**",
+        "source/blender/blenkernel/**"
+      ],
+      "test_globs": [
+        "tests/python/sequencer_*.py",
+        "tests/python/ffmpeg_tests.py",
+        "tests/python/ui_simulate/test_sequencer.py",
+        "source/blender/blenkernel/intern/sound_reader_cache_test.cc"
+      ],
+      "fixture_globs": [
+        "tests/files/sequence_editing/**",
+        "tests/files/ffmpeg/**",
+        "tests/files/sound/**"
+      ],
+      "coverage_notes": "Add browser audio scheduling, sync, codec availability, seeking and export checks. FFmpeg/Audaspace disabled remains a recorded gap.",
+      "depends_on": [
+        "scene_data",
+        "materials_color",
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "tracking",
+      "title": "Motion tracking, camera solving and masks",
+      "source_globs": [
+        "intern/libmv/**",
+        "source/blender/blenkernel/**",
+        "source/blender/editors/**"
+      ],
+      "test_globs": [
+        "source/blender/blenkernel/intern/tracking_test.cc",
+        "intern/libmv/**/*_test.cc",
+        "tests/python/compositor_render_tests.py"
+      ],
+      "fixture_globs": [
+        "tests/files/tracking/**",
+        "tests/files/compositor/tracking/**",
+        "tests/files/compositor/keying/**",
+        "tests/files/compositor/mask/**"
+      ],
+      "coverage_notes": "Do not equate compositor tracking images with full tracker/solver parity. Add tracked-point, reprojection, reconstruction and UI workflows.",
+      "depends_on": [
+        "scene_data",
+        "video_audio",
+        "compositing"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "assets",
+      "title": "Asset browser, catalogs, local/remote libraries and linking",
+      "source_globs": [
+        "source/blender/asset_system/**",
+        "source/blender/editors/**"
+      ],
+      "test_globs": [
+        "source/blender/asset_system/tests/*_test.cc",
+        "tests/python/assets/**",
+        "tests/python/bl_pose_assets.py",
+        "tests/python/sculpt_paint/brush_asset_test.py",
+        "tests/python/ui_simulate/test_drop_interactions.py"
+      ],
+      "fixture_globs": [
+        "tests/files/asset_library/**",
+        "tests/files/libraries_and_linking/**"
+      ],
+      "coverage_notes": "Browser fetch/CORS, path permissions, identity and offline persistence need additional cases.",
+      "depends_on": [
+        "blend_io",
+        "python_api",
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "ui_workflows",
+      "title": "Editors, workspaces, keymaps, menus, preferences and interaction",
+      "source_globs": [
+        "source/blender/editors/**",
+        "source/blender/windowmanager/**",
+        "intern/ghost/**"
+      ],
+      "test_globs": [
+        "tests/python/ui_simulate/test_*.py",
+        "tests/python/ui_screenshot_tests.py",
+        "tests/python/bl_keymap_*.py",
+        "source/blender/editors/interface/interface_ops_test.cc"
+      ],
+      "fixture_globs": [
+        "tests/files/ui_tests/**",
+        "tests/files/screenshot/**"
+      ],
+      "coverage_notes": "Native event simulation must be supplemented with actual browser keyboard/pointer/file-picker behavior. Preserve shortcuts, modal cancel, focus, resizing, fullscreen and multi-window semantics as explicit requirements.",
+      "depends_on": [
+        "platform",
+        "gpu_backend",
+        "python_api"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    },
+    {
+      "id": "performance_reliability",
+      "title": "Startup, memory, responsiveness, sustained use and release quality",
+      "source_globs": [
+        "tests/performance/**",
+        "build_files/**"
+      ],
+      "test_globs": [
+        "tests/performance/tests/**",
+        "tests/performance/benchmark.py",
+        "source/blender/blenlib/tests/performance/*"
+      ],
+      "fixture_globs": [],
+      "coverage_notes": "Performance executables are not all CTests. Add production-bundle cold/warm start, memory-growth, context-loss recovery, long sessions, quota/error recovery and hardware/browser matrix evidence.",
+      "depends_on": [
+        "platform"
+      ],
+      "required_kinds": [
+        "upstream",
+        "workflow"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "source/blender/blenkernel/BKE_blender_version.h",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/source/blender/blenkernel/BKE_blender_version.h"
+    },
+    {
+      "path": "tests/CMakeLists.txt",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/CMakeLists.txt"
+    },
+    {
+      "path": "tests/python/CMakeLists.txt",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/python/CMakeLists.txt"
+    },
+    {
+      "path": "build_files/cmake/testing.cmake",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake"
+    },
+    {
+      "path": "tests/python/modules/mesh_test.py",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/python/modules/mesh_test.py"
+    },
+    {
+      "path": "tests/python/modules/render_report.py",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/python/modules/render_report.py"
+    },
+    {
+      "path": ".gitattributes",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/.gitattributes"
+    },
+    {
+      "path": ".gitmodules",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/.gitmodules"
+    }
+  ],
+  "provenance": {
+    "method": "Read exact pinned GitHub contents and git trees, tests/python/CMakeLists.txt, tests/CMakeLists.txt, build_files/cmake/testing.cmake, mesh_test.py and render_report.py. Globs identify source families, not executed cases or a complete acceptance denominator.",
+    "candidate_baselines": "Do not apply target test counts or passes to browser ports based on different Blender commits. Freeze a native oracle for each candidate first.",
+    "fixtures": "At this pin, fixtures reside in tests/files inside blender/blender and binary formats are Git LFS. Verify hydration, LFS SHA-256 and size. The .gitmodules file lists platform library repos only.",
+    "overlap": "Facets deliberately share dependencies and test families. Deduplicate immutable test case IDs in global totals; maintain facet membership as separate tags.",
+    "status": "Research mapping only; no Blender or browser tests were executed by this research task."
+  }
+}

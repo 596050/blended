@@ -1,0 +1,138 @@
+name: Qualify existing Blender browser ports
+
+on:
+  push:
+    branches: [main, 'parity/**']
+    paths:
+      - compatibility/browser-ports.lock.json
+      - compatibility/facets.json
+      - compatibility/facet-inventory.json
+      - tools/parity_gate.py
+      - tools/probe_browser_port.py
+      - tests/test_parity_gate.py
+      - tests/test_browser_port_probe.py
+      - .github/workflows/browser-port-parity.yml
+  pull_request:
+    paths:
+      - compatibility/**
+      - tools/parity_gate.py
+      - tools/probe_browser_port.py
+      - tests/test_parity_gate.py
+      - tests/test_browser_port_probe.py
+      - .github/workflows/browser-port-parity.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: Validate parity contract and incomplete-coverage gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run reporting infrastructure regression tests
+        run: python3 -m unittest discover -s tests -p test_parity_gate.py -v
+      - name: Verify the browser adapter preserves failures and source identity
+        run: python3 -m unittest discover -s tests -p test_browser_port_probe.py -v
+      - name: Produce explicit target report without claiming runtime execution
+        run: >-
+          python3 tools/parity_gate.py
+          --manifest compatibility/facets.json
+          --inventory compatibility/facet-inventory.json
+          --output evidence/parity/target-report.json
+          --report-only
+      - name: Verify the strict command enforces the reported gate
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+          report = json.loads(Path('evidence/parity/target-report.json').read_text())
+          command = [sys.executable, 'tools/parity_gate.py',
+                     '--manifest', 'compatibility/facets.json',
+                     '--inventory', 'compatibility/facet-inventory.json',
+                     '--output', 'evidence/parity/strict-report.json']
+          result = subprocess.run(command, check=False)
+          expected = 0 if report['full_feature_parity'] else 1
+          assert result.returncode == expected, (result.returncode, expected)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: product-target-parity-report
+          path: evidence/parity/
+          retention-days: 14
+
+  gessa-release:
+    name: Execute original Blender suites in the pinned browser release
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the browser automation dependency
+        run: python3 -m pip install playwright==1.57.0
+      - name: Qualify the exact release with unchanged upstream mathutils and BMesh tests
+        run: >-
+          python3 tools/probe_browser_port.py
+          --output evidence/browser-port-qualification
+          --timeout 240
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gessa-browser-qualification
+          path: evidence/browser-port-qualification/
+          retention-days: 14
+
+  preserve-evidence:
+    name: Preserve source-port qualification receipts
+    needs: [contract, gessa-release]
+    if: always() && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: browser-port-evidence
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: gessa-browser-qualification
+          path: receipt
+      - uses: actions/download-artifact@v4
+        with:
+          name: product-target-parity-report
+          path: target-report
+      - name: Append evidence without promoting incomplete parity
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          test -f receipt/qualification.json
+          git init --initial-branch=browser-port-evidence published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin browser-port-evidence >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin browser-port-evidence
+            git -C published reset --mixed FETCH_HEAD
+          fi
+          DESTINATION="published/${SOURCE_SHA}/${RUN_ID}"
+          mkdir -p "$DESTINATION"
+          cp -a receipt/. "$DESTINATION/"
+          cp -a target-report/. "$DESTINATION/"
+          git -C published add -A
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Preserve browser-port qualification ${RUN_ID} at ${SOURCE_SHA}"
+          git -C published push origin HEAD:refs/heads/browser-port-evidence
