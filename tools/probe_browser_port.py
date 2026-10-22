@@ -40,6 +40,8 @@ SUITES = {
     "bl_pyapi_bmesh.py": "7dd9b28372ca371420c98e11bed49aff07f4fbe008c0fc1685cb9b5bc6721329",
 }
 SUITE_BYTES = {"bl_pyapi_mathutils.py": 41853, "bl_pyapi_bmesh.py": 32918}
+DATA_SUITE_MANIFEST = Path(__file__).resolve().parents[1] / "compatibility/candidate-suites/data-5.2.json"
+DATA_SUITE_MANIFEST_SHA256 = "3a1d1a942978461f655ab127faad4bc0c2c3b32210029af9117f5ded03e55085"
 
 
 class Blocked(RuntimeError):
@@ -56,6 +58,75 @@ def digest(path):
         for data in iter(lambda: stream.read(1024 * 1024), b""):
             h.update(data)
     return h.hexdigest()
+
+
+def load_suite_catalog(cohort="numeric"):
+    """Select an independently frozen native denominator, never browser discovery."""
+    if cohort == "numeric":
+        counts = {"bl_pyapi_mathutils.py": 180, "bl_pyapi_bmesh.py": 12}
+        return {"id": "numeric-5.2", "manifest_sha256": None, "expected_cases": 192,
+                "suites": [{"upstream_path": "tests/python/" + name, "sha256": value,
+                            "bytes": SUITE_BYTES[name], "expected_cases": counts[name]}
+                           for name, value in SUITES.items()]}
+    if cohort != "data52":
+        raise Blocked("unknown candidate suite cohort: " + str(cohort))
+    if not DATA_SUITE_MANIFEST.is_file() or digest(DATA_SUITE_MANIFEST) != DATA_SUITE_MANIFEST_SHA256:
+        raise Blocked("candidate data suite manifest is missing or changed")
+    manifest = json.loads(DATA_SUITE_MANIFEST.read_text(encoding="utf-8"))
+    if (manifest.get("schema") != 1 or manifest.get("cohort_id") != "data-5.2" or
+            manifest.get("suite_kind") != "unittest" or
+            manifest.get("upstream", {}).get("commit") != UPSTREAM_SHA):
+        raise Blocked("candidate data suite manifest differs from the selected reference")
+    suites = manifest.get("suites", [])
+    if len(suites) != 3:
+        raise Blocked("candidate data cohort must retain all three original modules")
+    for row in suites:
+        ids = row.get("case_ids", [])
+        if (not ids or len(ids) != len(set(ids)) or row.get("expected_cases") != len(ids) or
+                set(row.get("mandatory_case_ids", [])) != set(ids)):
+            raise Blocked("candidate data cohort lost its fixed mandatory cases")
+    count = sum(len(row["case_ids"]) for row in suites)
+    if count != 48 or manifest.get("expected_total_cases") != count:
+        raise Blocked("candidate data cohort denominator changed")
+    return {"id": manifest["cohort_id"], "manifest_sha256": DATA_SUITE_MANIFEST_SHA256,
+            "expected_cases": count,
+            "suites": [{key: row[key] for key in
+                        ("upstream_path", "sha256", "bytes", "expected_cases", "case_ids")}
+                       for row in suites]}
+
+
+def prepare_suites(local_paths, work, catalog, require_complete=False):
+    by_name = {PurePosixPath(row["upstream_path"]).name: row for row in catalog["suites"]}
+    supplied = {}
+    for path in local_paths or []:
+        if path.name not in by_name or path.name in supplied:
+            raise Blocked("unknown or duplicate pinned suite: " + path.name)
+        supplied[path.name] = path.resolve()
+    if local_paths and (require_complete or catalog["id"] == "data-5.2") and set(supplied) != set(by_name):
+        raise Blocked("every original module in the selected cohort is required")
+    suites = []
+    for name, source in by_name.items():
+        if local_paths and name not in supplied:
+            continue
+        row = dict(source)
+        row["url"] = "https://raw.githubusercontent.com/blender/blender/" + UPSTREAM_SHA + "/" + row["upstream_path"]
+        path = supplied.get(name, work / name)
+        if not local_paths:
+            download(row["url"], path, row["bytes"])
+        if not path.is_file() or path.stat().st_size != row["bytes"]:
+            raise Blocked("suite is missing or its byte count changed: " + name)
+        data = path.read_bytes()
+        if hashlib.sha256(data).hexdigest() != row["sha256"]:
+            raise Blocked("suite bytes differ from the immutable upstream source: " + name)
+        suites.append((row, data))
+    return suites
+
+
+def canonical_case_id(value):
+    """Normalize only the injected module prefix, preserving class and method."""
+    if not isinstance(value, str) or "." not in value:
+        raise RuntimeError("case ID has no runtime module prefix")
+    return value.split(".", 1)[1]
 
 
 def validate_numeric_patchset(receipt):
@@ -201,6 +272,10 @@ def validate_suite_execution(result, expected_sources):
         if (row["testsRun"] <= 0 or row["testsRun"] != row["discovered"] or
                 row["discovered"] != len(ids) or len(set(ids)) != len(ids)):
             raise RuntimeError("suite ran zero tests or omitted/duplicated discovered tests")
+        if "expected_cases" in expected and len(ids) != expected["expected_cases"]:
+            raise RuntimeError("suite case count differs from the fixed native denominator: " + row["upstream_path"])
+        if "case_ids" in expected and {canonical_case_id(value) for value in ids} != set(expected["case_ids"]):
+            raise RuntimeError("suite cases differ from the fixed native case IDs: " + row["upstream_path"])
         if any(row[key] for key in ("failures", "errors", "skipped", "expected_failures", "unexpected_successes")):
             raise RuntimeError("upstream suite is not completely passing: " + row["upstream_path"])
         top_level = [outcome for outcome in row["outcomes"] if outcome.get("kind") == "test"]
@@ -275,12 +350,30 @@ def summarize_execution(result, expected_sources, browser_errors=()):
         blockers.append({"scope": "provenance", "status": "blocked", "reason": str(error)})
     for error in browser_errors:
         blockers.append({"scope": "browser_runtime", "status": "failed", "reason": str(error)})
+    inventory_rows = []
+    observed_by_path = {row.get("upstream_path"): row for row in rows}
+    for expected in expected_sources:
+        if "expected_cases" not in expected:
+            continue
+        observed = observed_by_path.get(expected["upstream_path"], {})
+        ids = observed.get("discovered_ids", [])
+        canonical_ids = {value.split(".", 1)[1] for value in ids if isinstance(value, str) and "." in value}
+        missing_ids = sorted(set(expected.get("case_ids", [])) - canonical_ids)
+        extra_ids = sorted(canonical_ids - set(expected["case_ids"])) if "case_ids" in expected else []
+        missing = len(missing_ids) if "case_ids" in expected else max(expected["expected_cases"] - len(ids), 0)
+        inventory_rows.append({"upstream_path": expected["upstream_path"],
+                               "expected_cases": expected["expected_cases"], "missing_cases": missing,
+                               "missing_case_ids": missing_ids, "unexpected_case_ids": extra_ids})
+    inventory = {"fixed_for_all_requested_suites": len(inventory_rows) == len(expected_sources),
+                 "expected_cases": sum(row["expected_cases"] for row in inventory_rows),
+                 "missing_cases": sum(row["missing_cases"] for row in inventory_rows),
+                 "suites": inventory_rows}
     status = ("failed" if any(b["status"] == "failed" for b in blockers) else
               "blocked" if blockers else "passed")
     return {"status": status, "selected_suites_passed": suites_passed,
             "upstream_build_hash_verified": hash_verified,
             "summary": {"expected_suites": len(expected_sources), "observed_suites": len(rows),
-                        "totals": totals, "suites": summaries}, "blockers": blockers}
+                        "totals": totals, "suites": summaries, "required_case_inventory": inventory}, "blockers": blockers}
 
 
 def download(url, destination, limit):
@@ -333,12 +426,19 @@ try:
         "build_branch": _blended_text(bpy.app.build_branch),
         "binary_path": bpy.app.binary_path,
     }
+    def _blended_case_id(test):
+        # Upstream ID-property helpers use an `id` property for a Blender ID.
+        # Call unittest's base implementation without evaluating that property.
+        if isinstance(test, unittest.TestCase):
+            return unittest.TestCase.id(test)
+        return test.id()  # unittest's non-TestCase setup/module error holders.
     class _BlendedResult(unittest.TextTestResult):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.case_outcomes = []
         def _record(self, test, status, detail=None, kind="test", parent_id=None):
-            self.case_outcomes.append({"id": test.id(), "kind": kind, "parent_id": parent_id,
+            case_id = parent_id + " " + test._subDescription() if kind == "subtest" else _blended_case_id(test)
+            self.case_outcomes.append({"id": case_id, "kind": kind, "parent_id": parent_id,
                                        "status": status, "detail": detail})
         def addSuccess(self, test):
             super().addSuccess(test); self._record(test, "passed")
@@ -356,13 +456,13 @@ try:
             super().addSubTest(test, subtest, err)
             self._record(subtest, "passed" if err is None else "failed",
                          None if err is None else self._exc_info_to_string(err, test),
-                         kind="subtest", parent_id=test.id())
+                         kind="subtest", parent_id=_blended_case_id(test))
     def _blended_ids(suite):
         for test in suite:
             if isinstance(test, unittest.TestSuite):
                 yield from _blended_ids(test)
             else:
-                yield test.id()
+                yield _blended_case_id(test)
     for _blended_index, _blended_row in enumerate(_blended_suites):
         _blended_data = base64.b64decode(_blended_row["source_b64"])
         if hashlib.sha256(_blended_data).hexdigest() != _blended_row["sha256"]:
@@ -445,25 +545,10 @@ def probe(args, report):
         if measured_digest != artifact_contract["sha256"] or archive.stat().st_size != artifact_contract["bytes"]:
             raise Blocked("candidate artifact does not match the " + artifact_contract["label"])
 
-        suites = []
-        paths = args.suite or [work / name for name in SUITES]
-        seen = set()
-        for path in paths:
-            name = path.name
-            if name not in SUITES or name in seen:
-                raise Blocked("unknown or duplicate pinned suite: " + name)
-            seen.add(name)
-            upstream_path = "tests/python/" + name
-            url = "https://raw.githubusercontent.com/blender/blender/" + UPSTREAM_SHA + "/" + upstream_path
-            if not args.suite:
-                download(url, path, 1_000_000)
-            if not path.is_file():
-                raise Blocked("suite file missing: " + str(path))
-            data = path.read_bytes()
-            if hashlib.sha256(data).hexdigest() != SUITES[name] or len(data) != SUITE_BYTES[name]:
-                raise Blocked("suite bytes differ from the immutable upstream source: " + name)
-            row = {"upstream_path": upstream_path, "sha256": SUITES[name], "bytes": len(data), "url": url}
-            suites.append((row, data))
+        catalog = load_suite_catalog(getattr(args, "cohort", "numeric"))
+        report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
+        suites = prepare_suites(args.suite, work, catalog)
+        report["cohort"]["complete_cohort_requested"] = len(suites) == len(catalog["suites"])
         report["suite_sources"] = [row for row, _ in suites]
 
         unpacked = work / "unpacked"
@@ -584,7 +669,10 @@ def main(argv=None):
                         help="Local pinned release archive, or new archive identified by --source-build-receipt")
     parser.add_argument("--source-build-receipt", type=Path,
                         help="Exact development build receipt; requires --asset and preserves all runtime/test gates")
-    parser.add_argument("--suite", action="append", type=Path, help="Exact pinned mathutils/bmesh test file; repeatable")
+    parser.add_argument("--suite", action="append", type=Path,
+                        help="Exact pinned source file from the selected cohort; repeatable")
+    parser.add_argument("--cohort", choices=("numeric", "data52"), default="numeric",
+                        help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--browser-executable")
     parser.add_argument("--timeout", type=int, default=240)

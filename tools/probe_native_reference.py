@@ -21,12 +21,12 @@ import traceback
 try:
     from .probe_browser_port import (
         Blocked, SUITES, SUITE_BYTES, UPSTREAM_SHA, digest, download, now,
-        python_payload, summarize_execution,
+        python_payload, summarize_execution, load_suite_catalog, prepare_suites,
     )
 except ImportError:
     from probe_browser_port import (
         Blocked, SUITES, SUITE_BYTES, UPSTREAM_SHA, digest, download, now,
-        python_payload, summarize_execution,
+        python_payload, summarize_execution, load_suite_catalog, prepare_suites,
     )
 
 
@@ -57,29 +57,8 @@ def extract_reference(archive, directory):
     return {"members": len(members), "unpacked_bytes": total, "filter": "data"}
 
 
-def load_suites(local_paths, work):
-    supplied = {}
-    for path in local_paths or []:
-        if path.name not in SUITES or path.name in supplied:
-            raise Blocked("unknown or duplicate pinned suite: " + path.name)
-        supplied[path.name] = path.resolve()
-    if local_paths and set(supplied) != set(SUITES):
-        raise Blocked("both pinned mathutils and BMesh suite files are required")
-    suites = []
-    for name, expected_hash in SUITES.items():
-        upstream_path = "tests/python/" + name
-        url = "https://raw.githubusercontent.com/blender/blender/" + UPSTREAM_SHA + "/" + upstream_path
-        path = supplied.get(name, work / name)
-        if not local_paths:
-            download(url, path, SUITE_BYTES[name])
-        if not path.is_file() or path.stat().st_size != SUITE_BYTES[name]:
-            raise Blocked("suite is missing or its byte count changed: " + name)
-        data = path.read_bytes()
-        if hashlib.sha256(data).hexdigest() != expected_hash:
-            raise Blocked("suite bytes differ from the immutable upstream source: " + name)
-        suites.append(({"upstream_path": upstream_path, "sha256": expected_hash,
-                        "bytes": len(data), "url": url}, data))
-    return suites
+def load_suites(local_paths, work, cohort="numeric"):
+    return prepare_suites(local_paths, work, load_suite_catalog(cohort), require_complete=True)
 
 
 def probe(args, report):
@@ -100,7 +79,11 @@ def probe(args, report):
         if measured_digest != ASSET_SHA256:
             raise Blocked("native artifact checksum differs from the pinned official release")
         report["official_release_checksum_verified"] = True
-        suites = load_suites(args.suite, work)
+        cohort = getattr(args, "cohort", "numeric")
+        catalog = load_suite_catalog(cohort)
+        report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
+        report["cohort"]["complete_cohort_requested"] = True
+        suites = load_suites(args.suite, work, cohort)
         report["suite_sources"] = [row for row, _ in suites]
         unpacked = work / "unpacked"
         unpacked.mkdir()
@@ -139,7 +122,7 @@ def probe(args, report):
             report["blockers"].append({"scope": "native_runtime", "status": "failed",
                                        "reason": "native Blender exited with code " + str(process.returncode)})
         report["reason"] = (
-            "Both unchanged upstream unittest files passed on the checksum-verified official "
+            "All selected unchanged upstream unittest files passed on the checksum-verified official "
             "Blender 5.2.0 native release, with matching reported upstream build identity."
             if report["status"] == "passed" else
             "; ".join(row["scope"] + ": " + row["reason"] for row in report["blockers"]))
@@ -149,7 +132,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--asset", type=Path, help="Local exact official Blender 5.2.0 Linux x64 tar.xz")
     parser.add_argument("--suite", action="append", type=Path,
-                        help="Local exact pinned suite file; supply both mathutils and BMesh")
+                        help="Local exact pinned suite file; supply all files in the selected cohort")
+    parser.add_argument("--cohort", choices=("numeric", "data52"), default="numeric",
+                        help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
     parser.add_argument("--output", type=Path, required=True, help="Directory for native report and native log")
     parser.add_argument("--timeout", type=int, default=240, help="Native execution bound in seconds (1 to 600)")
     args = parser.parse_args(argv)

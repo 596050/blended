@@ -172,6 +172,33 @@ identity and runtime transport errors remain blockers even when useful numeric
 observations were recovered. Diagnostics help select an engine fix; only
 rerunning the unchanged suites on the rebuilt artifact can qualify that fix.
 
+## Expand one fixed cohort at a time
+
+The opt-in `data52` cohort adds the original ID-management, RNA-accessor and
+custom-property modules. Its [native inventory](../compatibility/candidate-suites/data-5.2.json)
+requires 48 named cases: 8, 1 and 39 respectively. All five conditional NumPy
+cases are mandatory. Browser discovery cannot shrink that denominator.
+
+```sh
+python3 tools/probe_native_reference.py \
+  --cohort data52 --output evidence/data-native
+python3 tools/probe_browser_port.py \
+  --cohort data52 --output evidence/data-browser
+```
+
+The [data-cohort workflow](../.github/workflows/browser-data-parity.yml) runs
+both artifacts independently and preserves their receipts on
+`candidate-data-evidence`. Original source bytes and assertions are retained.
+Only the module prefix is normalized when matching test IDs. The adapter calls
+unittest's base ID method because Blender's custom-property tests use an `id`
+property for the datablock under test. This reporting correction does not
+change that property or the tested Blender behavior.
+
+The default remains the original 192 numerical cases. The additional cohort
+provides selected `scene_data` and `python_api` evidence; it does not complete
+either facet. The separate `.blend` I/O script uses a custom driver and is not
+counted among these 48 cases.
+
 ## Current acceptance boundary
 
 The source reconstruction and native reference have been exercised. The

@@ -1,0 +1,555 @@
+{
+  "schema": 1,
+  "scope": "unchanged upstream native suite discovery only",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "browser_executed": false,
+  "full_feature_parity": false,
+  "artifact": {
+    "archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "archive_bytes": 384441228,
+    "executable_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27"
+  },
+  "modules": [
+    {
+      "source": {
+        "path": "tests/python/bl_id_management.py",
+        "bytes": 9543,
+        "sha256": "20ecc8140064b231952f884223df200f40c6929aa696ac78d1096fce249d83f6",
+        "git_blob_sha1": "f7030951d6924fa3b3e6e3ed6164f925cc59d88d",
+        "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_id_management.py"
+      },
+      "dependencies": [
+        "bpy",
+        "unittest",
+        "random",
+        "factory startup datablocks"
+      ],
+      "external_fixtures": [],
+      "command": [
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy,json; print('BLENDED_COHORT_IDENTITY:'+json.dumps({'version':list(bpy.app.version),'build_hash':bpy.app.build_hash.decode(),'version_string':bpy.app.version_string,'binary_path':bpy.app.binary_path}),flush=True)",
+        "--python",
+        "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_id_management.py",
+        "--",
+        "--verbose"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 3.424041821999708,
+      "identity": {
+        "version": [
+          5,
+          2,
+          0
+        ],
+        "build_hash": "fbe6228777e7",
+        "version_string": "5.2.0 LTS",
+        "binary_path": "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender"
+      },
+      "identity_verified": true,
+      "log": {
+        "path": "bl_id_management.log",
+        "bytes": 1031,
+        "sha256": "5154fe58706a1d93525331a9e695bfd5909daf4b7dfe1d60f61c1d0b944ba50f"
+      },
+      "case_results": [
+        {
+          "id": "bl_id_management.py::__main__.TestIdAddNameManagement.test_add_head_tail",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestIdAddNameManagement.test_add_invalid_number_suffixes",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestIdAddNameManagement.test_add_long_names",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestIdAddNameManagement.test_add_remove_single",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestIdAddNameManagement.test_add_use_smallest_free_number",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestIdRename.test_rename",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestIdRename.test_rename_api",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_id_management.py::__main__.TestRNAIDTypes.test_rna_idtypes",
+          "interleaved_output": [],
+          "outcome": "ok"
+        }
+      ],
+      "tests_run": 8,
+      "all_reported_cases_passed": true,
+      "status": "passed"
+    },
+    {
+      "source": {
+        "path": "tests/python/bl_rna_accessors.py",
+        "bytes": 3313,
+        "sha256": "e12ad22b63a3812bf297b87e3f9d5f733343febe25743384ff7fd184bfd9e613",
+        "git_blob_sha1": "536e753aa307a5293f0dfb30f31a0d241baf362e",
+        "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_rna_accessors.py"
+      },
+      "dependencies": [
+        "bpy",
+        "unittest",
+        "factory startup datablocks"
+      ],
+      "external_fixtures": [],
+      "command": [
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy,json; print('BLENDED_COHORT_IDENTITY:'+json.dumps({'version':list(bpy.app.version),'build_hash':bpy.app.build_hash.decode(),'version_string':bpy.app.version_string,'binary_path':bpy.app.binary_path}),flush=True)",
+        "--python",
+        "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py",
+        "--",
+        "--verbose"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.7586303320058505,
+      "identity": {
+        "version": [
+          5,
+          2,
+          0
+        ],
+        "build_hash": "fbe6228777e7",
+        "version_string": "5.2.0 LTS",
+        "binary_path": "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender"
+      },
+      "identity_verified": true,
+      "log": {
+        "path": "bl_rna_accessors.log",
+        "bytes": 3854,
+        "sha256": "9b8be9f4346efb1ca28652cca122930ec77a84821585968e92d240902293d26e"
+      },
+      "case_results": [
+        {
+          "id": "bl_rna_accessors.py::__main__.TestRnaProperties.test_paths_generation",
+          "interleaved_output": [
+            "00:00.503  bpy.rna          | WARNING current value '0' matches no enum in 'View3DShading', '(null)', 'wireframe_color_type'",
+            "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py:66: DeprecationWarning: 'Scene.use_nodes' is expected to be removed in Blender 6.0",
+            "  p_data = getattr(struct, p.identifier)",
+            "00:00.508  bpy.rna          | WARNING current value '-1' matches no enum in 'ColorManagedInputColorspaceSettings', '(null)', 'name'",
+            "00:00.509  bpy.rna          | WARNING current value '-1' matches no enum in 'ColorManagedInputColorspaceSettings', '(null)', 'name'",
+            "00:00.509  bpy.rna          | WARNING current value '0' matches no enum in 'View3DShading', '(null)', 'wireframe_color_type'",
+            "00:00.510  cycles           | WARNING CUEW initialization failed: Error opening the library",
+            "00:00.512  bpy.rna          | WARNING current value '0' matches no enum in 'SpaceNodeEditor', '(null)', 'texture_type'",
+            "00:00.512  bpy.rna          | WARNING current value '6' matches no enum in 'SpaceDopeSheetEditor', '(null)', 'ui_mode'",
+            "00:00.512  bpy.rna          | WARNING current value '0' matches no enum in 'SpaceNodeEditor', '(null)', 'texture_type'",
+            "00:00.512  bpy.rna          | WARNING current value '0' matches no enum in 'SpaceNodeEditor', '(null)', 'texture_type'",
+            "00:00.513  bpy.rna          | WARNING current value '4' matches no enum in 'SpreadsheetColumn', '(null)', 'data_type'",
+            "00:00.513  bpy.rna          | WARNING current value '6' matches no enum in 'SpaceDopeSheetEditor', '(null)', 'ui_mode'",
+            "00:00.513  bpy.rna          | WARNING current value '6' matches no enum in 'SpaceDopeSheetEditor', '(null)', 'ui_mode'",
+            "00:00.515  bpy.rna          | WARNING current value '6' matches no enum in 'SpaceDopeSheetEditor', '(null)', 'ui_mode'",
+            "00:00.517  bpy.rna          | WARNING current value '0' matches no enum in 'SpaceNodeEditor', '(null)', 'texture_type'",
+            "00:00.519  bpy.rna          | WARNING current value '3' matches no enum in 'SpaceImageEditor', '(null)', 'ui_mode'",
+            "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py:66: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0",
+            "  p_data = getattr(struct, p.identifier)",
+            "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py:66: DeprecationWarning: 'PointLight.use_nodes' is expected to be removed in Blender 6.0",
+            "  p_data = getattr(struct, p.identifier)",
+            "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py:66: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0",
+            "  p_data = getattr(struct, p.identifier)",
+            "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py:66: DeprecationWarning: 'MaterialGPencilStyle.show_stroke' is expected to be removed in Blender 6.0",
+            "  p_data = getattr(struct, p.identifier)",
+            "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_rna_accessors.py:66: DeprecationWarning: 'MaterialGPencilStyle.show_fill' is expected to be removed in Blender 6.0",
+            "  p_data = getattr(struct, p.identifier)",
+            "00:00.528  bpy.rna          | WARNING current value '-1' matches no enum in 'ColorManagedInputColorspaceSettings', '(null)', 'name'",
+            "00:00.528  bpy.rna          | WARNING current value '-1' matches no enum in 'ColorManagedInputColorspaceSettings', '(null)', 'name'"
+          ],
+          "outcome": "ok"
+        }
+      ],
+      "tests_run": 1,
+      "all_reported_cases_passed": true,
+      "status": "passed"
+    },
+    {
+      "source": {
+        "path": "tests/python/bl_pyapi_idprop.py",
+        "bytes": 28502,
+        "sha256": "b8da476e91431c871759eff6b7e9ea9041f7445d482d3469ba487095a9068d1e",
+        "git_blob_sha1": "62cfc1c8c3290dc0892b25fdacbd5ec3dd6c84d3",
+        "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_idprop.py"
+      },
+      "dependencies": [
+        "bpy",
+        "rna_prop_ui",
+        "idprop",
+        "unittest",
+        "array",
+        "numpy for five conditional tests"
+      ],
+      "external_fixtures": [],
+      "command": [
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy,json; print('BLENDED_COHORT_IDENTITY:'+json.dumps({'version':list(bpy.app.version),'build_hash':bpy.app.build_hash.decode(),'version_string':bpy.app.version_string,'binary_path':bpy.app.binary_path}),flush=True)",
+        "--python",
+        "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_pyapi_idprop.py",
+        "--",
+        "--verbose"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.9698360529946513,
+      "identity": {
+        "version": [
+          5,
+          2,
+          0
+        ],
+        "build_hash": "fbe6228777e7",
+        "version_string": "5.2.0 LTS",
+        "binary_path": "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender"
+      },
+      "identity_verified": true,
+      "log": {
+        "path": "bl_pyapi_idprop.log",
+        "bytes": 3603,
+        "sha256": "bbc37402bcb984df66a88d1eaa23e80c90f79dc3e179100a93a250e3a401fc3e"
+      },
+      "case_results": [
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol.test_copy",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol.test_memview_attributes",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_double",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_float",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_full_update",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_int",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_partial_update",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_bytes",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_double",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_enum",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_int",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_invalid_type",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_mapping_complex",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_mapping_simple",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_name_empty",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_name_too_long",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_rename",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_double_array",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_double_list",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_float_array",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_int_array",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_int_list",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_mixed_type",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_other_array",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_sequence_str_list",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyCreation.test_unicode",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyDynamicRNA.test_get_set_transform",
+          "interleaved_output": [
+            "File \"/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_pyapi_idprop.py\", line 283, in <lambda>",
+            "File \"/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_pyapi_idprop.py\", line 284, in <lambda>"
+          ],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyDynamicRNA.test_static_type",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyGroupView.test_basic",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyGroupView.test_contains",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyGroupView.test_type",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyUIData.test_double",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyUIData.test_enum",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyUIData.test_int",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestIdPropertyUIData.test_unicode",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestRNAData.test_custom_properties_access",
+          "interleaved_output": [],
+          "outcome": "ok"
+        },
+        {
+          "id": "bl_pyapi_idprop.py::__main__.TestRNAData.test_custom_properties_none",
+          "interleaved_output": [],
+          "outcome": "ok"
+        }
+      ],
+      "tests_run": 39,
+      "all_reported_cases_passed": true,
+      "status": "passed",
+      "conditional_numpy_case_ids": [
+        "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_double",
+        "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_float",
+        "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_full_update",
+        "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_int",
+        "bl_pyapi_idprop.py::__main__.TestBufferProtocol_Numpy.test_partial_update"
+      ]
+    },
+    {
+      "source": {
+        "path": "tests/python/bl_blendfile_io.py",
+        "bytes": 8602,
+        "sha256": "8bdb127eef664597061e455cad061959d59a66ce5ed54e4f35a73d3753802700",
+        "git_blob_sha1": "e854b8785eb46e8684ff13e59746b0406e20b076",
+        "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_io.py"
+      },
+      "dependencies": [
+        "bpy",
+        "bl_blendfile_utils.py",
+        "writable output directory",
+        "factory startup datablocks"
+      ],
+      "external_fixtures": [],
+      "command": [
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy,json; print('BLENDED_COHORT_IDENTITY:'+json.dumps({'version':list(bpy.app.version),'build_hash':bpy.app.build_hash.decode(),'version_string':bpy.app.version_string,'binary_path':bpy.app.binary_path}),flush=True)",
+        "--python",
+        "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/sources/bl_blendfile_io.py",
+        "--",
+        "--output-dir",
+        "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/generated-blendfiles"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.678405753998959,
+      "identity": {
+        "version": [
+          5,
+          2,
+          0
+        ],
+        "build_hash": "fbe6228777e7",
+        "version_string": "5.2.0 LTS",
+        "binary_path": "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender"
+      },
+      "identity_verified": true,
+      "log": {
+        "path": "bl_blendfile_io.log",
+        "bytes": 6730,
+        "sha256": "9add529588b5c89466def36f2418bf212556705dc28c2fc4055911b1b76c8e09"
+      },
+      "declared_case_ids": [
+        "TestBlendFileSaveLoadBasic.test_save_load",
+        "TestBlendFileSavePartial.test_save_load",
+        "TestIdRuntimeTag.test_basics",
+        "TestIdRuntimeTag.test_linking"
+      ],
+      "reporting_scope": "unchanged custom upstream main completed; no per-case outcome instrumentation",
+      "case_results": null,
+      "status": "module_completed"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "generated-blendfiles/blendfileTestIdRuntimeTag.blend",
+      "bytes": 494858,
+      "sha256": "ab09d1dfe46f9a3789c9df3a00f928f027f285e80b279e429d54576dcfb0e5f0"
+    },
+    {
+      "path": "generated-blendfiles/blendfileTestIdRuntimeTag.blend1",
+      "bytes": 485279,
+      "sha256": "601ea1e52128bacb61c48aa1e1c5ffc98749aac8394f1950ae6009feaf5cedab"
+    },
+    {
+      "path": "generated-blendfiles/blendfile_io.blend",
+      "bytes": 422069,
+      "sha256": "0bf8e89355e563c91a2e7dc2359a0c26454fc95dcc9c7c707e5dc021696c12d8"
+    },
+    {
+      "path": "generated-blendfiles/blendfile_io.blend1",
+      "bytes": 422069,
+      "sha256": "4d40444e8d807c70ac277810ff05099fdcee09812e7486dbe2fd9a9f4ae263e5"
+    },
+    {
+      "path": "generated-blendfiles/blendfile_io_partial.blend",
+      "bytes": 163875,
+      "sha256": "c48186248f4fbddfcd7fbd060d76ac507bb477e0e0ebefd04f363e7d72f0f4c4"
+    },
+    {
+      "path": "generated-blendfiles/blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+      "bytes": 525857,
+      "sha256": "b4e27518b5bb38c52a4f073ce2a8fad94f81df3a476658080e4ee71bdfcf4470"
+    }
+  ],
+  "status": "completed",
+  "reporting_reanalysis": {
+    "reason": "native warnings interleaved with verbose unittest headers; standalone ok outcomes now associated with their original headers",
+    "new_engine_execution": false,
+    "processor_sha256": "3aec872a76a414b88d41a0309169a54d42f6aa13f8e89fc37cbf3c69fd4106cb",
+    "initial_parser_receipt_sha256": "04f1955c8ee0d68eb9c8a8fc3eaf4949431d7d0f36079c3d923069c05b6495f7"
+  }
+}
