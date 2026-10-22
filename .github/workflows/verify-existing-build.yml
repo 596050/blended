@@ -1,0 +1,103 @@
+name: Verify and publish existing browser build
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/verify-existing-build.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: compiled
+      - name: Install test library and pinned diagnostic observer
+        run: |
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          curl -fsSL https://raw.githubusercontent.com/596050/blended/15054f12babb91e58b73a6afad3d8c2666a603cc/tools/browser_check.py -o tools/browser_check.py
+      - name: Test imported geometry rather than an empty viewport
+        timeout-minutes: 7
+        run: |
+          python3 -m http.server 8765 --directory compiled >/tmp/http.log 2>&1 &
+          python3 tools/check_release.py --url http://127.0.0.1:8765/index.html --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --output evidence/fresh-context
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fresh-context-evidence
+          path: evidence/fresh-context/
+          retention-days: 3
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      actions: read
+    outputs:
+      url: ${{ steps.publish.outputs.url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: site
+      - uses: actions/download-artifact@v4
+        with:
+          name: fresh-context-evidence
+          path: site/verification/predeploy
+      - name: Publish verified artifact to a dedicated branch
+        id: publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for p in Path('site').rglob('*'):
+              if p.is_file() and p.stat().st_size>=95000000:raise SystemExit(f'Oversized file: {p}')
+          PY
+          git init --initial-branch=web-build published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin web-build >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin web-build
+            git -C published reset --mixed FETCH_HEAD
+          fi
+          cp -a site/. published/
+          git -C published add -A
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Publish verified source build 15054f12babb91e58b73a6afad3d8c2666a603cc'
+          git -C published push origin HEAD:refs/heads/web-build
+          SHA=$(git -C published rev-parse HEAD)
+          URL="https://rawcdn.githack.com/${REPO}/${SHA}/index.html"
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+          echo "${URL}" >> "$GITHUB_STEP_SUMMARY"
+  deployed-check:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: |
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          curl -fsSL https://raw.githubusercontent.com/596050/blended/15054f12babb91e58b73a6afad3d8c2666a603cc/tools/browser_check.py -o tools/browser_check.py
+      - name: Test the real public deployment URL
+        timeout-minutes: 7
+        run: python3 tools/check_release.py --url "${{ needs.publish.outputs.url }}" --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --output evidence/public-deployment
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-deployment-evidence
+          path: evidence/public-deployment/
+          retention-days: 3
