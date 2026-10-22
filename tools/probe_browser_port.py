@@ -42,6 +42,8 @@ SUITES = {
 SUITE_BYTES = {"bl_pyapi_mathutils.py": 41853, "bl_pyapi_bmesh.py": 32918}
 DATA_SUITE_MANIFEST = Path(__file__).resolve().parents[1] / "compatibility/candidate-suites/data-5.2.json"
 DATA_SUITE_MANIFEST_SHA256 = "3a1d1a942978461f655ab127faad4bc0c2c3b32210029af9117f5ded03e55085"
+IO_SUITE_MANIFEST = Path(__file__).resolve().parents[1] / "compatibility/candidate-suites/blendio-5.2.json"
+IO_SUITE_MANIFEST_SHA256 = "2cccdb42ff82628b34abb6838ce4a77758bfd442d17328f301b1ef1b80fbf497"
 
 
 class Blocked(RuntimeError):
@@ -64,50 +66,64 @@ def load_suite_catalog(cohort="numeric"):
     """Select an independently frozen native denominator, never browser discovery."""
     if cohort == "numeric":
         counts = {"bl_pyapi_mathutils.py": 180, "bl_pyapi_bmesh.py": 12}
-        return {"id": "numeric-5.2", "manifest_sha256": None, "expected_cases": 192,
+        return {"id": "numeric-5.2", "manifest_sha256": None, "expected_cases": 192, "suite_kind": "unittest",
                 "suites": [{"upstream_path": "tests/python/" + name, "sha256": value,
                             "bytes": SUITE_BYTES[name], "expected_cases": counts[name]}
                            for name, value in SUITES.items()]}
-    if cohort != "data52":
+    specifications = {
+        "data52": (DATA_SUITE_MANIFEST, DATA_SUITE_MANIFEST_SHA256, "data-5.2", "unittest", 3, 48),
+        "blendio52": (IO_SUITE_MANIFEST, IO_SUITE_MANIFEST_SHA256, "blendio-5.2", "original-script", 1, 4),
+    }
+    if cohort not in specifications:
         raise Blocked("unknown candidate suite cohort: " + str(cohort))
-    if not DATA_SUITE_MANIFEST.is_file() or digest(DATA_SUITE_MANIFEST) != DATA_SUITE_MANIFEST_SHA256:
-        raise Blocked("candidate data suite manifest is missing or changed")
-    manifest = json.loads(DATA_SUITE_MANIFEST.read_text(encoding="utf-8"))
-    if (manifest.get("schema") != 1 or manifest.get("cohort_id") != "data-5.2" or
-            manifest.get("suite_kind") != "unittest" or
+    path, manifest_digest, cohort_id, suite_kind, module_count, case_count = specifications[cohort]
+    if not path.is_file() or digest(path) != manifest_digest:
+        raise Blocked("candidate suite manifest is missing or changed: " + cohort_id)
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    if (manifest.get("schema") != 1 or manifest.get("cohort_id") != cohort_id or
+            manifest.get("suite_kind") != suite_kind or
             manifest.get("upstream", {}).get("commit") != UPSTREAM_SHA):
-        raise Blocked("candidate data suite manifest differs from the selected reference")
+        raise Blocked("candidate suite manifest differs from the selected reference")
     suites = manifest.get("suites", [])
-    if len(suites) != 3:
-        raise Blocked("candidate data cohort must retain all three original modules")
+    if len(suites) != module_count:
+        raise Blocked("candidate cohort must retain every original module")
     for row in suites:
         ids = row.get("case_ids", [])
         if (not ids or len(ids) != len(set(ids)) or row.get("expected_cases") != len(ids) or
                 set(row.get("mandatory_case_ids", [])) != set(ids)):
-            raise Blocked("candidate data cohort lost its fixed mandatory cases")
+            raise Blocked("candidate cohort lost its fixed mandatory cases")
     count = sum(len(row["case_ids"]) for row in suites)
-    if count != 48 or manifest.get("expected_total_cases") != count:
-        raise Blocked("candidate data cohort denominator changed")
-    return {"id": manifest["cohort_id"], "manifest_sha256": DATA_SUITE_MANIFEST_SHA256,
-            "expected_cases": count,
-            "suites": [{key: row[key] for key in
-                        ("upstream_path", "sha256", "bytes", "expected_cases", "case_ids")}
-                       for row in suites]}
+    if count != case_count or manifest.get("expected_total_cases") != count:
+        raise Blocked("candidate cohort denominator changed")
+    selected = []
+    for row in suites:
+        entry = {key: row[key] for key in ("upstream_path", "sha256", "bytes", "expected_cases", "case_ids")}
+        if suite_kind == "original-script":
+            support = row.get("support_files", [])
+            if len(support) != 1 or support[0].get("upstream_path") != "tests/python/bl_blendfile_utils.py":
+                raise Blocked("original blend-file driver requires its pinned upstream helper")
+            entry["support_files"] = [{key: source[key] for key in ("upstream_path", "sha256", "bytes")}
+                                      for source in support]
+            entry["driver"] = suite_kind
+        selected.append(entry)
+    return {"id": cohort_id, "manifest_sha256": manifest_digest,
+            "expected_cases": count, "suite_kind": suite_kind, "suites": selected}
 
 
 def prepare_suites(local_paths, work, catalog, require_complete=False):
-    by_name = {PurePosixPath(row["upstream_path"]).name: row for row in catalog["suites"]}
+    all_sources = [source for row in catalog["suites"] for source in (row, *row.get("support_files", []))]
+    by_name = {PurePosixPath(row["upstream_path"]).name: row for row in all_sources}
+    if len(by_name) != len(all_sources):
+        raise Blocked("candidate suite and helper names must be unambiguous")
     supplied = {}
     for path in local_paths or []:
         if path.name not in by_name or path.name in supplied:
             raise Blocked("unknown or duplicate pinned suite: " + path.name)
         supplied[path.name] = path.resolve()
-    if local_paths and (require_complete or catalog["id"] == "data-5.2") and set(supplied) != set(by_name):
-        raise Blocked("every original module in the selected cohort is required")
-    suites = []
-    for name, source in by_name.items():
-        if local_paths and name not in supplied:
-            continue
+    if local_paths and (require_complete or catalog["id"] != "numeric-5.2") and set(supplied) != set(by_name):
+        raise Blocked("every original module and helper in the selected cohort is required")
+    def load_source(source):
+        name = PurePosixPath(source["upstream_path"]).name
         row = dict(source)
         row["url"] = "https://raw.githubusercontent.com/blender/blender/" + UPSTREAM_SHA + "/" + row["upstream_path"]
         path = supplied.get(name, work / name)
@@ -118,8 +134,26 @@ def prepare_suites(local_paths, work, catalog, require_complete=False):
         data = path.read_bytes()
         if hashlib.sha256(data).hexdigest() != row["sha256"]:
             raise Blocked("suite bytes differ from the immutable upstream source: " + name)
+        return row, data
+    suites = []
+    for source in catalog["suites"]:
+        if local_paths and PurePosixPath(source["upstream_path"]).name not in supplied:
+            continue
+        row, data = load_source(source)
+        if source.get("support_files"):
+            row["_support_payloads"] = []
+            row["support_files"] = []
+            for support_source in source["support_files"]:
+                helper_row, helper_data = load_source(support_source)
+                row["support_files"].append(helper_row)
+                row["_support_payloads"].append({**helper_row, "source_b64": base64.b64encode(helper_data).decode("ascii")})
         suites.append((row, data))
     return suites
+
+
+def suite_metadata(row):
+    """Keep transported helper bytes out of the public source identity rows."""
+    return {key: value for key, value in row.items() if key != "_support_payloads"}
 
 
 def canonical_case_id(value):
@@ -256,6 +290,34 @@ def validate_build_identity(identity):
         raise Blocked("engine build hash unavailable; executed suites do not establish reference provenance")
     if observed not in (UPSTREAM_SHA, UPSTREAM_SHA[:12]):
         raise Blocked("engine build hash differs from the candidate's pinned upstream reference: " + observed)
+
+
+def decode_qualification_event(text, marker):
+    """Retain one complete result prefix, with trailing runtime text kept separate."""
+    if not text.startswith(marker):
+        raise RuntimeError("qualification event has no matching marker")
+    payload = text[len(marker):].lstrip()
+    if marker in payload:
+        raise RuntimeError("duplicate qualification result marker in one event")
+    decoder = json.JSONDecoder()
+    try:
+        result, end = decoder.raw_decode(payload)
+        json.dumps(result, allow_nan=False)
+    except (ValueError, TypeError) as error:
+        raise RuntimeError("qualification marker contains invalid or incomplete JSON") from error
+    if not isinstance(result, dict):
+        raise RuntimeError("qualification result is not an object")
+    suffix = payload[end:]
+    if suffix.strip():
+        try:
+            decoder.raw_decode(suffix.lstrip())
+        except ValueError:
+            pass
+        else:
+            raise RuntimeError("extra JSON value after qualification result")
+    else:
+        suffix = ""
+    return result, suffix
 
 
 def validate_suite_execution(result, expected_sources):
@@ -404,8 +466,16 @@ def extract_asset(archive, directory):
         package.extractall(directory, members=members, filter="data")
 
 
-def python_payload(suites, marker):
+def python_payload(suites, marker, output_root=None):
     """Transport and execute whole source files without changing assertions."""
+    if any(row.get("driver") == "original-script" for row, _ in suites):
+        if len(suites) != 1 or output_root is None:
+            raise Blocked("the original blend-file script requires an isolated output directory and complete cohort")
+        try:
+            from .blender_io_cohort import python_payload as original_script_payload
+        except ImportError:
+            from blender_io_cohort import python_payload as original_script_payload
+        return original_script_payload(suites, marker, str(output_root))
     encoded = [{**row, "source_b64": base64.b64encode(data).decode("ascii")}
                for row, data in suites]
     # The adapter loads the upstream module and uses its unittest loader. Only
@@ -549,7 +619,7 @@ def probe(args, report):
         report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
         suites = prepare_suites(args.suite, work, catalog)
         report["cohort"]["complete_cohort_requested"] = len(suites) == len(catalog["suites"])
-        report["suite_sources"] = [row for row, _ in suites]
+        report["suite_sources"] = [suite_metadata(row) for row, _ in suites]
 
         unpacked = work / "unpacked"
         unpacked.mkdir()
@@ -569,7 +639,11 @@ def probe(args, report):
         server = serve(shell, binary, entry, output)
         report["url"] = "http://127.0.0.1:" + str(server.server_port) + "/"
         marker = "BLENDED_QUALIFICATION_" + secrets.token_hex(12) + ":"
+        io_root = "/tmp/blended-original-io-" + secrets.token_hex(12) if catalog.get("suite_kind") == "original-script" else None
+        if io_root:
+            report["io_execution_root"] = io_root
         received = []
+        transport_suffixes = []
         browser_errors = []
         try:
             from playwright.sync_api import sync_playwright
@@ -598,14 +672,19 @@ def probe(args, report):
                         log.write(message.type + " " + text + "\n")
                     if text.startswith(marker):
                         try:
-                            received.append(json.loads(text[len(marker):]))
-                        except ValueError:
-                            browser_errors.append("invalid qualification marker JSON")
+                            result, suffix = decode_qualification_event(text, marker)
+                            received.append(result)
+                            transport_suffixes.append(suffix)
+                            if suffix:
+                                browser_errors.append("runtime text followed complete qualification JSON: " + suffix)
+                        except RuntimeError as error:
+                            browser_errors.append(str(error))
 
                 page.on("console", console)
                 page.on("pageerror", lambda error: browser_errors.append(str(error)))
                 page.on("crash", lambda: browser_errors.append("browser page crashed"))
-                code = python_payload(suites, marker)
+                code = python_payload(suites, marker, io_root)
+                report["runner_sha256"] = hashlib.sha256(code.encode("utf-8")).hexdigest()
                 page.add_init_script("window.__BW_PYEXPR = " + json.dumps(code) + ";")
                 response = page.goto(report["url"], wait_until="domcontentloaded", timeout=60000)
                 if response is None or response.status != 200:
@@ -646,13 +725,36 @@ def probe(args, report):
                     raise Blocked("timed out waiting for executed upstream tests; no pass inferred from boot")
                 if len(received) != 1:
                     raise RuntimeError("duplicate qualification result markers")
+                report["transport"] = {"protocol": "marker-prefixed-json-v1", "result_markers": len(received),
+                    "recovered_json_prefix": bool(transport_suffixes[0]),
+                    "trailing_runtime_text": transport_suffixes[0] or None}
                 result = received[0]
                 report["execution"] = result
+                transfer_error = None
+                if io_root:
+                    try:
+                        try:
+                            from .probe_io_files import browser_reader, retrieve_files
+                        except ImportError:
+                            from probe_io_files import browser_reader, retrieve_files
+                        page.wait_for_function("() => typeof window.__bwModule?.FS?.open === 'function'", timeout=30000)
+                        report["generated_file_transfer"] = retrieve_files(
+                            result.get("generated_files"), io_root + "/files", output / "blendfiles",
+                            browser_reader(page), "browser-wasm-filesystem")
+                    except Exception as error:
+                        transfer_error = str(error)
+                        report["generated_file_transfer"] = {"status": "failed", "reason": transfer_error}
+                if len(received) != 1:
+                    browser_errors.append("duplicate qualification result markers after output retrieval")
+                    report["transport"]["result_markers"] = len(received)
                 report.update(summarize_execution(result, report["suite_sources"], browser_errors))
+                if transfer_error:
+                    report["status"] = "failed"
+                    report["blockers"].append({"scope": "file_transport", "status": "failed", "reason": transfer_error})
                 report["identity_limit"] = next((b["reason"] for b in report["blockers"]
                                                  if b["scope"] == "provenance"), None)
                 report["reason"] = (
-                    "Whole selected upstream unittest files passed on the pinned artifact in a local browser; "
+                    "Whole selected unchanged upstream test files passed on the pinned artifact in a local browser; "
                     "reported upstream build identity matched. Observed probe profile: " + report["profile"] + "."
                     if report["status"] == "passed" else
                     "; ".join(b["scope"] + ": " + b["reason"] for b in report["blockers"]))
@@ -671,7 +773,7 @@ def main(argv=None):
                         help="Exact development build receipt; requires --asset and preserves all runtime/test gates")
     parser.add_argument("--suite", action="append", type=Path,
                         help="Exact pinned source file from the selected cohort; repeatable")
-    parser.add_argument("--cohort", choices=("numeric", "data52"), default="numeric",
+    parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52"), default="numeric",
                         help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--browser-executable")

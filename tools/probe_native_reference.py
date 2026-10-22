@@ -21,12 +21,12 @@ import traceback
 try:
     from .probe_browser_port import (
         Blocked, SUITES, SUITE_BYTES, UPSTREAM_SHA, digest, download, now,
-        python_payload, summarize_execution, load_suite_catalog, prepare_suites,
+        python_payload, summarize_execution, load_suite_catalog, prepare_suites, suite_metadata, decode_qualification_event,
     )
 except ImportError:
     from probe_browser_port import (
         Blocked, SUITES, SUITE_BYTES, UPSTREAM_SHA, digest, download, now,
-        python_payload, summarize_execution, load_suite_catalog, prepare_suites,
+        python_payload, summarize_execution, load_suite_catalog, prepare_suites, suite_metadata, decode_qualification_event,
     )
 
 
@@ -84,7 +84,7 @@ def probe(args, report):
         report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
         report["cohort"]["complete_cohort_requested"] = True
         suites = load_suites(args.suite, work, cohort)
-        report["suite_sources"] = [row for row, _ in suites]
+        report["suite_sources"] = [suite_metadata(row) for row, _ in suites]
         unpacked = work / "unpacked"
         unpacked.mkdir()
         report["extraction"] = extract_reference(archive, unpacked)
@@ -94,8 +94,11 @@ def probe(args, report):
         report["executable"] = {"path": str(binary.relative_to(unpacked)),
                                 "sha256": digest(binary), "bytes": binary.stat().st_size}
         marker = "BLENDED_NATIVE_REFERENCE_" + secrets.token_hex(12) + ":"
+        io_root = str(work / "original-io") if catalog.get("suite_kind") == "original-script" else None
+        if io_root:
+            report["io_execution_root"] = io_root
         runner = work / "native-runner.py"
-        runner.write_text(python_payload(suites, marker), encoding="utf-8")
+        runner.write_text(python_payload(suites, marker, io_root), encoding="utf-8")
         report["runner_sha256"] = digest(runner)
         flags = ["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"]
         report["process"] = {"flags": flags, "timeout_seconds": args.timeout, "returncode": None}
@@ -108,21 +111,44 @@ def probe(args, report):
                 raise Blocked("native reference exceeded the execution timeout; no pass inferred") from error
         report["process"]["returncode"] = process.returncode
         received = []
+        transport_suffixes = []
         with log_path.open(encoding="utf-8", errors="replace") as log:
             for line in log:
                 if line.startswith(marker):
-                    received.append(json.loads(line[len(marker):]))
+                    result, suffix = decode_qualification_event(line, marker)
+                    received.append(result)
+                    transport_suffixes.append(suffix)
         if len(received) != 1:
             raise RuntimeError("native execution did not emit exactly one complete result marker")
         result = received[0]
         report["execution"] = result
+        report["transport"] = {"protocol": "marker-prefixed-json-v1", "result_markers": 1,
+            "recovered_json_prefix": bool(transport_suffixes[0]),
+            "trailing_runtime_text": transport_suffixes[0] or None}
         report.update(summarize_execution(result, report["suite_sources"]))
+        if transport_suffixes[0]:
+            report["status"] = "failed"
+            report["blockers"].append({"scope": "transport", "status": "failed",
+                "reason": "runtime text followed complete qualification JSON", "trailing_runtime_text": transport_suffixes[0]})
+        if io_root:
+            try:
+                try:
+                    from .probe_io_files import native_reader, retrieve_files
+                except ImportError:
+                    from probe_io_files import native_reader, retrieve_files
+                report["generated_file_transfer"] = retrieve_files(
+                    result.get("generated_files"), io_root + "/files", output / "blendfiles",
+                    native_reader(io_root + "/files"), "native-filesystem")
+            except Exception as error:
+                report["status"] = "failed"
+                report["generated_file_transfer"] = {"status": "failed", "reason": str(error)}
+                report["blockers"].append({"scope": "file_transport", "status": "failed", "reason": str(error)})
         if process.returncode != 0:
             report["status"] = "failed"
             report["blockers"].append({"scope": "native_runtime", "status": "failed",
                                        "reason": "native Blender exited with code " + str(process.returncode)})
         report["reason"] = (
-            "All selected unchanged upstream unittest files passed on the checksum-verified official "
+            "All selected unchanged upstream test files passed on the checksum-verified official "
             "Blender 5.2.0 native release, with matching reported upstream build identity."
             if report["status"] == "passed" else
             "; ".join(row["scope"] + ": " + row["reason"] for row in report["blockers"]))
@@ -133,7 +159,7 @@ def main(argv=None):
     parser.add_argument("--asset", type=Path, help="Local exact official Blender 5.2.0 Linux x64 tar.xz")
     parser.add_argument("--suite", action="append", type=Path,
                         help="Local exact pinned suite file; supply all files in the selected cohort")
-    parser.add_argument("--cohort", choices=("numeric", "data52"), default="numeric",
+    parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52"), default="numeric",
                         help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
     parser.add_argument("--output", type=Path, required=True, help="Directory for native report and native log")
     parser.add_argument("--timeout", type=int, default=240, help="Native execution bound in seconds (1 to 600)")

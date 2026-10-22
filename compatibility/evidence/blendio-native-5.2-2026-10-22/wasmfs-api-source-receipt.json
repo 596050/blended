@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "scope": "source verification of pinned SDK WasmFS JS APIs and Gessa build profiles",
+  "emscripten_version": "6.0.5",
+  "emscripten_commit": "1db513782be24469589d7cb8a1f1834e9a33f271",
+  "emsdk_repo_commit": "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de",
+  "emsdk_release_commit": "dbd755b5da399329c2576f6e3dfa7f419f5d8409",
+  "sdk_sources": [
+    {
+      "component": "emscripten",
+      "commit": "1db513782be24469589d7cb8a1f1834e9a33f271",
+      "source_path": "src/lib/libwasmfs.js",
+      "local_copy": "libwasmfs.js",
+      "bytes": 22355,
+      "sha256": "0d5d2f6d397083b8a8eee6bbd8a69ce7e3a25797c4c1e52e9539995f15b14c59",
+      "source_url": "https://github.com/emscripten-core/emscripten/blob/1db513782be24469589d7cb8a1f1834e9a33f271/src/lib/libwasmfs.js"
+    },
+    {
+      "component": "emscripten",
+      "commit": "1db513782be24469589d7cb8a1f1834e9a33f271",
+      "source_path": "system/lib/wasmfs/js_api.cpp",
+      "local_copy": "js_api.cpp",
+      "bytes": 9274,
+      "sha256": "9482ed2ceab8d267a0c5539fb55d26566a8eacfda5279e1798e250ca9f262ddc",
+      "source_url": "https://github.com/emscripten-core/emscripten/blob/1db513782be24469589d7cb8a1f1834e9a33f271/system/lib/wasmfs/js_api.cpp"
+    }
+  ],
+  "port_build_profiles": [
+    {
+      "commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+      "label": "development",
+      "available_in_local_git": true,
+      "source_path": "patches/platform_wasm.cmake",
+      "local_copy": "platform_wasm-development.cmake",
+      "bytes": 64619,
+      "sha256": "6649659df4412a16d472fc09eeae19a05c6541babb2acd465e22f0cc1d79f368",
+      "required_flags": [
+        "-sWASMFS",
+        "-sFORCE_FILESYSTEM=1",
+        "-sEXPORTED_RUNTIME_METHODS=ENV,FS,callMain"
+      ],
+      "all_required_flags_present": true,
+      "source_url": "https://github.com/gessa-ai/blender-web/blob/0e02e84b2bc5d9b27a6dc6e275443292f781fbad/patches/platform_wasm.cmake"
+    },
+    {
+      "commit": "cc22090b88da63cc617d48b218f4945175928844",
+      "label": "release",
+      "available_in_local_git": true,
+      "source_path": "patches/platform_wasm.cmake",
+      "local_copy": "platform_wasm-release.cmake",
+      "bytes": 64619,
+      "sha256": "6649659df4412a16d472fc09eeae19a05c6541babb2acd465e22f0cc1d79f368",
+      "required_flags": [
+        "-sWASMFS",
+        "-sFORCE_FILESYSTEM=1",
+        "-sEXPORTED_RUNTIME_METHODS=ENV,FS,callMain"
+      ],
+      "all_required_flags_present": true,
+      "source_url": "https://github.com/gessa-ai/blender-web/blob/cc22090b88da63cc617d48b218f4945175928844/patches/platform_wasm.cmake"
+    }
+  ],
+  "api": {
+    "compile_guard": "FORCE_FILESYSTEM || INCLUDE_FULL_LIBRARY",
+    "FS.open": "open(path, flags, mode=0o666) returns {fd}; use flags=\"r\".",
+    "FS.read": "read(stream, Uint8Array, offset, length, optional_position) allocates exactly length bytes, calls _wasmfs_read or _wasmfs_pread, copies bytesRead to buffer at offset, frees the temporary allocation and returns the byte count or throws on errno.",
+    "FS.close": "close(stream) closes stream.fd and throws on errno.",
+    "FS.stat": "stat(path) returns an object including mode and size.",
+    "FS.lstat": "lstat(path) exposes the same fields without following the final symlink.",
+    "FS.readFile": "Copies the whole file. Native _wasmfs_read_file stats the file, reallocates a thread-local buffer to the full size, reads the full size, and JS then copies via HEAPU8.slice."
+  },
+  "bounded_read_contract": [
+    "Check lstat mode and exact expected size before allocation/open.",
+    "Open read-only, read fixed bounded chunks into a pre-sized Uint8Array using explicit offsets or sequential fd position.",
+    "Require each read to return 1..requested until the expected size is reached.",
+    "Attempt one further byte to require EOF and detect growth after stat.",
+    "Always close the stream in finally.",
+    "Validate copied bytes against the in-engine SHA256 on the receiving host."
+  ],
+  "runtime_api_invocation_tested_here": false,
+  "released_artifact_runtime_exports_verified_here": false,
+  "limitation": "This receipt inspects exact source and build flags. The browser probe must still require the functions on the actual Module.FS object at runtime."
+}

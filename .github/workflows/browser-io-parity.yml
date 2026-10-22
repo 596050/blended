@@ -1,0 +1,201 @@
+name: Qualify original Blender blend-file IO and native exchange
+
+on:
+  push:
+    branches: [main, 'parity/**']
+    paths:
+      - compatibility/candidate-suites/blendio-5.2.json
+      - tools/probe_browser_port.py
+      - tools/probe_native_reference.py
+      - tools/blender_io_cohort.py
+      - tools/probe_io_files.py
+      - tools/probe_blendfile_exchange.py
+      - tests/test_blendfile_io_cohort.py
+      - tests/test_io_file_exchange.py
+      - tests/test_blendfile_exchange_probe.py
+      - .github/workflows/browser-io-parity.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Preserve original driver failures and verify transferred files
+        run: |
+          python3 -m unittest discover -s tests -p test_blendfile_io_cohort.py -v
+          python3 -m unittest discover -s tests -p test_io_file_exchange.py -v
+          python3 -m unittest discover -s tests -p test_blendfile_exchange_probe.py -v
+
+  qualification:
+    name: Execute original blend-file driver in ${{ matrix.engine }}
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - engine: native
+            script: probe_native_reference.py
+          - engine: browser
+            script: probe_browser_port.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser automation
+        if: matrix.engine == 'browser'
+        run: python3 -m pip install playwright==1.57.0
+      - name: Run all four original methods and retrieve their actual output bytes
+        run: >-
+          python3 tools/${{ matrix.script }}
+          --cohort blendio52
+          --output evidence/${{ matrix.engine }}
+          --timeout 240
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate-io-${{ matrix.engine }}
+          path: evidence/${{ matrix.engine }}/
+          retention-days: 14
+
+  exchange:
+    name: Reopen browser-produced blend files in verified native Blender
+    needs: qualification
+    if: always() && needs.qualification.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: candidate-io-*
+          path: inputs
+      - name: Verify each producer's bytes and compare four fixed current files in the same native reader
+        run: >-
+          python3 tools/probe_blendfile_exchange.py
+          --native-evidence inputs/candidate-io-native
+          --browser-evidence inputs/candidate-io-browser
+          --output evidence/exchange
+          --timeout 120
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate-io-exchange
+          path: evidence/exchange/
+          retention-days: 14
+
+  preserve-evidence:
+    name: Retain IO execution and exchange receipts without promoting facet parity
+    needs: [qualification, exchange]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: candidate-io-evidence
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: candidate-io-*
+          path: receipts
+      - name: Preserve available evidence and identify missing engine reports
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          QUALIFICATION_JOB_RESULT: ${{ needs.qualification.result }}
+          EXCHANGE_JOB_RESULT: ${{ needs.exchange.result }}
+        run: |
+          if ! gh api "repos/${REPO}/actions/runs/${RUN_ID}/jobs?per_page=100" > jobs.json; then
+            printf '%s\n' '{"jobs": [], "unavailable": true}' > jobs.json
+          fi
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          selected = Path('selected')
+          selected.mkdir()
+          job_lookup = json.loads(Path('jobs.json').read_text())
+          jobs = job_lookup['jobs']
+          engines, files = [], []
+          for engine, report in (('native', 'native_reference.json'), ('browser', 'qualification.json'), ('exchange', 'exchange.json')):
+              source = Path('receipts') / ('candidate-io-' + engine)
+              job_name = 'Reopen browser-produced blend files in verified native Blender' if engine == 'exchange' else 'Execute original blend-file driver in ' + engine
+              matching = [job for job in jobs if job['name'] == job_name]
+              engines.append({
+                  'engine': engine, 'receipt_present': (source / report).is_file(),
+                  'jobs': [{'id': job['id'], 'status': job['status'], 'conclusion': job['conclusion']}
+                           for job in matching],
+                  'missing_report_is_pass': False,
+              })
+              for path in sorted(source.rglob('*')):
+                  if not path.is_file() or path.is_symlink() or path.suffix not in ('.json', '.log'):
+                      continue
+                  data = path.read_bytes()
+                  original = {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+                  truncated = len(data) > 2 * 1024 * 1024
+                  if truncated:
+                      if path.suffix == '.json':
+                          raise RuntimeError('JSON receipt exceeds publication bound: ' + str(path))
+                      data = data[:256 * 1024] + b'\n[LOG MIDDLE OMITTED; ORIGINAL REMAINS IN RUN ARTIFACT]\n' + data[-1536 * 1024:]
+                  relative = 'candidate-io-' + engine + '/' + str(path.relative_to(source))
+                  destination = selected / relative
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  destination.write_bytes(data)
+                  files.append({'path': relative, 'original': original, 'truncated': truncated,
+                                'preserved_bytes': len(data), 'preserved_sha256': hashlib.sha256(data).hexdigest()})
+          if not files:
+              raise RuntimeError('No engine evidence was produced; no success can be inferred.')
+          (selected / 'publication.json').write_text(json.dumps({
+              'schema': 1, 'source_sha': os.environ['SOURCE_SHA'], 'run_id': os.environ['RUN_ID'],
+              'qualification_job_result': os.environ['QUALIFICATION_JOB_RESULT'],
+              'exchange_job_result': os.environ['EXCHANGE_JOB_RESULT'],
+              'engine_job_lookup_unavailable': job_lookup.get('unavailable', False),
+              'engines': engines, 'files': files,
+              'deployed': False, 'full_feature_parity': False,
+              'scope': 'Available selected-cohort receipts; a missing engine report remains missing.'
+          }, indent=2) + '\n')
+          PY
+      - name: Append execution evidence to the separate evidence branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          git init --initial-branch=candidate-io-evidence published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin candidate-io-evidence >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin candidate-io-evidence
+            git -C published reset --hard FETCH_HEAD
+          fi
+          DESTINATION="published/${SOURCE_SHA}/${RUN_ID}"
+          mkdir -p "$DESTINATION"
+          cp -a selected/. "$DESTINATION/"
+          git -C published add -A
+          if ! git -C published diff --cached --quiet; then
+            git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Preserve original IO and native exchange ${RUN_ID} at ${SOURCE_SHA}"
+            git -C published push origin HEAD:refs/heads/candidate-io-evidence
+          fi

@@ -189,6 +189,8 @@ python3 tools/probe_browser_port.py \
 The [data-cohort workflow](../.github/workflows/browser-data-parity.yml) runs
 both artifacts independently and preserves their receipts on
 `candidate-data-evidence`. Original source bytes and assertions are retained.
+The first complete run passed all 48 cases in both engines; the browser's
+unknown build hash remains a provenance blocker.
 Only the module prefix is normalized when matching test IDs. The adapter calls
 unittest's base ID method because Blender's custom-property tests use an `id`
 property for the datablock under test. This reporting correction does not
@@ -198,6 +200,56 @@ The default remains the original 192 numerical cases. The additional cohort
 provides selected `scene_data` and `python_api` evidence; it does not complete
 either facet. The separate `.blend` I/O script uses a custom driver and is not
 counted among these 48 cases.
+
+### Original blend-file driver and file exchange
+
+The opt-in `blendio52` cohort has its own [four-case native inventory](../compatibility/candidate-suites/blendio-5.2.json).
+It transports the complete unchanged `bl_blendfile_io.py` and
+`bl_blendfile_utils.py` files and invokes the original `__main__` block. The
+adapter observes CPython setup/body/teardown start, return and unwind events.
+It does not replace the helper with a unittest loader or infer four passes
+from a module exit code.
+
+```sh
+python3 tools/probe_native_reference.py \
+  --cohort blendio52 --output evidence/io-native
+python3 tools/probe_browser_port.py \
+  --cohort blendio52 --output evidence/io-browser
+python3 tools/probe_blendfile_exchange.py \
+  --native-evidence evidence/io-native \
+  --browser-evidence evidence/io-browser \
+  --output evidence/io-exchange
+```
+
+The probes copy generated files into each evidence directory's `blendfiles/`
+folder. The browser copy checks file size and uses the engine's exported
+`FS.open/read/close` with a bounded read and an extra-byte EOF check. Every copied
+file must match the byte count and SHA256 reported inside Blender. The native
+adapter has passed all four methods and verified all six transferred outputs.
+The selected original assertions, file transfer and native exchange have
+separate results.
+
+The [IO workflow](../.github/workflows/browser-io-parity.yml) then opens the four
+current `.blend` files from both producers in fresh, checksum-verified native
+Blender processes. It compares the full ID/user/dependency tuple from the
+unchanged upstream helper, retaining differences instead of normalizing them
+away. Individual file hashes identify the tested bytes; native and browser
+files are not required to be byte-identical. Missing or altered files cannot
+reduce the fixed four-file exchange inventory.
+
+This first exchange gate requires the independently pinned v0.1.1 browser
+archive and its declared source revision. A development artifact needs an
+explicitly supplied, separately validated build receipt before it can enter
+this exchange gate; matching self-declared hashes alone is insufficient.
+
+This exchange covers the final current files only. Two original methods
+overwrite the same filename, so it does not preserve both method-end versions.
+The current native files contain no live libraries; persistent external-library
+resolution requires another explicit workflow. Backups remain output artifacts
+and are excluded from the four-file exchange denominator. Unknown browser
+provenance continues to block qualification even when execution and semantic
+comparisons pass. Small receipts and logs are retained on `candidate-io-evidence`;
+generated binary files remain run artifacts.
 
 ## Current acceptance boundary
 

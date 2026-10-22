@@ -3,7 +3,9 @@ import contextlib
 import hashlib
 import io
 import json
+from pathlib import Path
 import sys
+import tempfile
 import types
 import unittest
 from unittest.mock import patch
@@ -88,8 +90,33 @@ class Feature(unittest.TestCase):
         self.assertEqual([row["upstream_path"] for row in numeric["suites"]],
                          ["tests/python/bl_pyapi_mathutils.py", "tests/python/bl_pyapi_bmesh.py"])
         self.assertEqual(numeric["expected_cases"], 192)
+        blend_io = probe.load_suite_catalog("blendio52")
+        self.assertEqual(blend_io["expected_cases"], 4)
+        self.assertEqual(blend_io["suite_kind"], "original-script")
+        self.assertEqual(blend_io["suites"][0]["support_files"][0]["upstream_path"],
+                         "tests/python/bl_blendfile_utils.py")
         with self.assertRaises(probe.Blocked):
             probe.load_suite_catalog("unknown")
+
+    def test_original_driver_requires_its_unchanged_helper_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            main, helper = root / "main.py", root / "helper.py"
+            main.write_bytes(b"original main")
+            helper.write_bytes(b"original helper")
+            def metadata(path):
+                return {"upstream_path": "tests/python/" + path.name,
+                        "bytes": path.stat().st_size, "sha256": probe.digest(path)}
+            catalog = {"id": "synthetic-original-script", "suites": [
+                {**metadata(main), "support_files": [metadata(helper)]}]}
+            with self.assertRaisesRegex(probe.Blocked, "every original module and helper"):
+                probe.prepare_suites([main], root, catalog)
+            prepared = probe.prepare_suites([main, helper], root, catalog)
+            self.assertEqual(len(prepared[0][0]["_support_payloads"]), 1)
+            self.assertNotIn("_support_payloads", probe.suite_metadata(prepared[0][0]))
+            helper.write_bytes(b"modified helper")
+            with self.assertRaisesRegex(probe.Blocked, "immutable upstream source"):
+                probe.prepare_suites([main, helper], root, catalog)
 
 
 if __name__ == "__main__":

@@ -67,6 +67,27 @@ class Example(unittest.TestCase):
         with self.assertRaises(probe.Blocked):
             probe.validate_build_identity({"version": [5, 3, 0], "build_hash": probe.UPSTREAM_SHA})
 
+    def test_complete_result_with_runtime_suffix_is_retained_and_still_fails(self):
+        result, expected = self.run_payload('''
+import unittest
+class Example(unittest.TestCase):
+    def test_original(self):
+        self.assertEqual(1, 1)
+''')
+        suffix = "WGPUWeb: present pipeline creation rejected (status 1, type 5): Instance dropped in popErrorScope"
+        recovered, trailing = probe.decode_qualification_event("RESULT:" + json.dumps(result) + suffix, "RESULT:")
+        self.assertEqual(recovered, result)
+        self.assertEqual(trailing, suffix)
+        assessment = probe.summarize_execution(recovered, expected, [trailing])
+        self.assertTrue(assessment["selected_suites_passed"])
+        self.assertEqual(assessment["status"], "failed")
+        self.assertEqual(assessment["blockers"][-1]["scope"], "browser_runtime")
+
+    def test_truncated_duplicate_or_extra_json_results_are_never_recovered(self):
+        for event in ('RESULT:{"suites":', 'RESULT:{}{}', 'RESULT:{}RESULT:{}', 'RESULT:[]'):
+            with self.subTest(event=event), self.assertRaises(RuntimeError):
+                probe.decode_qualification_event(event, "RESULT:")
+
     def test_changed_source_or_asset_is_refused(self):
         result, _ = self.run_payload("raise AssertionError('must never execute')", expected_hash="0" * 64)
         self.assertIn("suite changed in transport", result["exception"])

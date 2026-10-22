@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "status": "verified",
+  "scope": "integrated native original-script cohort and generated-file transfer only",
+  "native_report": {
+    "path": "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/native-cli-integration/native_reference.json",
+    "bytes": 21169,
+    "sha256": "ea608273d72795042622c11702b0e4983cabd6851ad85b3e069d3cb72b2b7117"
+  },
+  "manifest": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/candidate-suites/blendio-5.2.json",
+    "bytes": 10064,
+    "sha256": "2cccdb42ff82628b34abb6838ce4a77758bfd442d17328f301b1ef1b80fbf497"
+  },
+  "adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/blender_io_cohort.py",
+    "bytes": 14855,
+    "sha256": "131e37bbd56fb9a44046c3bff3e5849a2391b767f89c2eed2f6404bb0503be2f"
+  },
+  "native_probe": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/probe_native_reference.py",
+    "bytes": 10594,
+    "sha256": "4773d65a0cd73d967c185eaf4506ca052ba862d127c97ddedc4d010d50a760d2"
+  },
+  "shared_probe": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/probe_browser_port.py",
+    "bytes": 44683,
+    "sha256": "735863799c58c442ef7360f03fafdecb299c2b7d2ce5284f74806e65ade31a4b"
+  },
+  "file_transfer_tool": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/probe_io_files.py",
+    "bytes": 4439,
+    "sha256": "9563b55d7d0ef2be2fe148637b8fe9aca8292573b965dcd6d0550f58a3b124c3"
+  },
+  "fixed_case_ids": [
+    "TestBlendFileSaveLoadBasic.test_save_load",
+    "TestBlendFileSavePartial.test_save_load",
+    "TestIdRuntimeTag.test_basics",
+    "TestIdRuntimeTag.test_linking"
+  ],
+  "observed_case_ids": [
+    "blended_original.TestBlendFileSaveLoadBasic.test_save_load",
+    "blended_original.TestBlendFileSavePartial.test_save_load",
+    "blended_original.TestIdRuntimeTag.test_basics",
+    "blended_original.TestIdRuntimeTag.test_linking"
+  ],
+  "expected_cases": 4,
+  "observed_passed_cases": 4,
+  "original_phase_sequence_verified": true,
+  "identity": {
+    "binary_path": "/tmp/blended-native-reference-r941qfzw/unpacked/blender-5.2.0-linux-x64/blender",
+    "build_branch": "blender-v5.2-release",
+    "build_hash": "fbe6228777e7",
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "version_string": "5.2.0 LTS"
+  },
+  "source_files": [
+    {
+      "upstream_path": "tests/python/bl_blendfile_io.py",
+      "sha256": "8bdb127eef664597061e455cad061959d59a66ce5ed54e4f35a73d3753802700",
+      "bytes": 8602,
+      "unchanged": true
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_utils.py",
+      "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+      "bytes": 8640,
+      "unchanged": true
+    }
+  ],
+  "generated_file_count": 6,
+  "generated_file_bytes": 2514007,
+  "generated_files": [
+    {
+      "path": "blendfileTestIdRuntimeTag.blend",
+      "bytes": 494858,
+      "sha256": "2dcbb9fc89cf6050e98c89279db9b19d8690e43ae6cf3a14cceae07011076fa8"
+    },
+    {
+      "path": "blendfileTestIdRuntimeTag.blend1",
+      "bytes": 485279,
+      "sha256": "82a7c8e576925ff560d21d6346e4564a0770159c37231841ab545067e092ee06"
+    },
+    {
+      "path": "blendfile_io.blend",
+      "bytes": 422069,
+      "sha256": "2c75fb14813275ff6c5732bdf9047c08f77eaa972bad8ce3ca4f2f9e31d68f33"
+    },
+    {
+      "path": "blendfile_io.blend1",
+      "bytes": 422069,
+      "sha256": "d8e8f354bece78daf3664c662a13d4092e484df1a3230af76323a0e260cd904b"
+    },
+    {
+      "path": "blendfile_io_partial.blend",
+      "bytes": 163875,
+      "sha256": "0e223c50f38ee32d4e638844a30cf49259a5134ca9e6a8241cb82ae0353d7ed7"
+    },
+    {
+      "path": "blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+      "bytes": 525857,
+      "sha256": "18f54789a04ee8917d937c6bce901dd73103844de3e440da161d22c8e471ce65"
+    }
+  ],
+  "all_transfer_hashes_match": true,
+  "browser_executed": false,
+  "semantic_exchange_verified": false,
+  "full_facet_parity": false
+}
