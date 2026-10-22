@@ -23,12 +23,31 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 tools/fetch_upstreams.py blender
-      - name: Retain exact original source and tracked-file identities, not generated substitutes
+      - name: Verify and retain every tracked blob, without archive path omissions
         run: |
           mkdir -p evidence/full-suite
           git -C .upstream/blender rev-parse HEAD > evidence/full-suite/upstream-commit.txt
           git -C .upstream/blender ls-files --stage -z > evidence/full-suite/tracked-files.zlist
-          git -C .upstream/blender archive --format=tar HEAD | gzip -n > evidence/full-suite/blender-pinned-source.tar.gz
+          python3 - <<'PY'
+          import hashlib,io,json,os,subprocess,tarfile
+          from pathlib import Path
+          root=Path('.upstream/blender');count=0;links=[]
+          entries=subprocess.check_output(['git','-C',str(root),'ls-files','--stage','-z']).split(b'\0')
+          with tarfile.open('evidence/full-suite/blender-pinned-source.tar.gz','w:gz') as archive:
+              for entry in entries:
+                  if not entry:continue
+                  header,name=entry.split(b'\t',1);mode,oid,stage=header.decode().split();name=os.fsdecode(name)
+                  if mode=='160000':links.append({'path':name,'commit':oid});continue
+                  path=root/name
+                  raw=os.readlink(path).encode() if mode=='120000' else path.read_bytes()
+                  actual=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+                  if actual!=oid:raise RuntimeError('Source blob mismatch: '+name)
+                  info=tarfile.TarInfo(name);info.size=len(raw);info.mode=0o755 if mode=='100755' else 0o644
+                  if mode=='120000':info.type=tarfile.SYMTYPE;info.linkname=raw.decode();info.size=0
+                  archive.addfile(info,io.BytesIO(raw) if mode!='120000' else None);count+=1
+          Path('evidence/full-suite/source-capture.json').write_text(json.dumps({'verified_git_blobs':count,'gitlinks':links,'lfs_payloads_materialised':False},indent=2))
+          print('Verified and captured',count,'tracked blobs; external gitlinks',len(links))
+          PY
           cp upstream.lock.json evidence/full-suite/
           git archive --format=tar HEAD | gzip -n > evidence/full-suite/blended-tooling-source.tar.gz
       - uses: actions/upload-artifact@v4
