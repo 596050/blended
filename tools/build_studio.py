@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Solarxy from pinned source as an attributed foundation, not Blender parity."""
+"""Build an attributed Solarxy studio. Browser functionality is tested separately."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -7,16 +7,17 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import tarfile
+import urllib.request
 ROOT=Path(__file__).resolve().parents[1]
 def run(args,cwd=ROOT):
     print('+',' '.join(map(str,args)),flush=True)
     subprocess.run(args,cwd=cwd,check=True)
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--base',default='/blended/studio/')
-    p.add_argument('--commit',required=True)
+    p.add_argument('--base',default='./');p.add_argument('--commit',required=True)
     args=p.parse_args()
-    if not args.base.startswith('/') or not args.base.endswith('/') or '..' in args.base:p.error('Invalid base URL path')
+    if args.base!='./' and (not args.base.startswith('/') or not args.base.endswith('/') or '..' in args.base):p.error('Invalid base URL path')
     solar=ROOT/'.upstream/solarxy';web=solar/'web'
     lock=json.loads((ROOT/'upstream.lock.json').read_text())['upstreams']
     actual=subprocess.check_output(['git','rev-parse','HEAD'],cwd=solar,text=True).strip()
@@ -36,8 +37,7 @@ def main():
     run(['npm','ci'],web)
     run(['npm','test'],web)
     run(['npm','run','build','--','--base',args.base],web)
-    destination=ROOT/'site/studio'
-    shutil.copytree(web/'dist',destination)
+    destination=ROOT/'site/studio';shutil.copytree(web/'dist',destination)
     source_stage=ROOT/'build/solarxy-source';source_stage.mkdir(parents=True,exist_ok=False)
     tracked=subprocess.check_output(['git','ls-files','-z'],cwd=solar).decode().split('\0')
     for path in filter(None,tracked):
@@ -47,12 +47,23 @@ def main():
     (source_stage/'BLENDED-PATCHES.json').write_text(json.dumps({'base':args.base,'changed_files':changes},indent=2))
     (ROOT/'site/source').mkdir(exist_ok=True)
     shutil.make_archive(str(ROOT/'site/source/solarxy-modified-source'),'gztar',root_dir=source_stage)
-    shutil.copy2(solar/'LICENSE',destination/'LICENSE.txt')
-    shutil.copy2(solar/'LICENSE',ROOT/'site/LICENSE.txt')
+    shutil.copy2(solar/'LICENSE',destination/'LICENSE.txt');shutil.copy2(solar/'LICENSE',ROOT/'site/LICENSE.txt')
     shutil.copy2(solar/'THIRD-PARTY-NOTICES.md',destination/'THIRD-PARTY-NOTICES.md')
+    # The corresponding Blended source archive includes complete licence texts,
+    # not just SPDX identifiers. No binary is published without this archive.
+    blended_stage=ROOT/'build/blended-source';blended_stage.mkdir(parents=True,exist_ok=False)
+    archive=ROOT/'build/blended-source.tar'
+    run(['git','archive','--format=tar','--output',str(archive),'HEAD'])
+    with tarfile.open(archive) as t:t.extractall(blended_stage,filter='data')
+    shutil.copy2(solar/'LICENSE',blended_stage/'LICENSE')
+    licences=blended_stage/'LICENSES';licences.mkdir(exist_ok=True)
+    with urllib.request.urlopen('https://www.apache.org/licenses/LICENSE-2.0.txt',timeout=30) as r:apache=r.read()
+    if b'Apache License' not in apache or b'Version 2.0' not in apache:raise RuntimeError('Unexpected Apache licence payload')
+    (licences/'Apache-2.0.txt').write_bytes(apache)
+    shutil.make_archive(str(ROOT/'site/source/blended-source'),'gztar',root_dir=blended_stage)
     (ROOT/'site/.nojekyll').touch()
     wasm=ROOT/'site/compat/blended_core.wasm'
     if not wasm.is_file():raise RuntimeError('Missing Blended compatibility WASM')
-    manifest={'schema':1,'status':'built_not_deployment_verified','studio_built':True,'source_commit':args.commit,'built_utc':datetime.now(timezone.utc).isoformat(),'deployed_test_status':'not_run','upstreams':lock,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest(),'blender_feature_parity':False}
+    manifest={'schema':1,'status':'built_not_deployment_verified','studio_built':True,'source_commit':args.commit,'built_utc':datetime.now(timezone.utc).isoformat(),'deployed_test_status':'see_ci','upstreams':lock,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest(),'blender_feature_parity':False}
     (ROOT/'site/build.json').write_text(json.dumps(manifest,indent=2)+'\n')
 if __name__=='__main__':main()

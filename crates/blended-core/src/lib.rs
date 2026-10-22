@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pub mod math;
 pub mod compat_cases;
+pub mod cycles_math;
 
 #[unsafe(no_mangle)]
 pub extern "C" fn blended_abi_version() -> u32 { 1 }

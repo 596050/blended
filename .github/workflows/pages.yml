@@ -1,4 +1,4 @@
-name: Build, deploy and test browser studio
+name: Build, publish and test browser studio
 on:
   push:
     branches: [main]
@@ -12,7 +12,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,6 +42,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: .upstream/solarxy
+          cache-on-failure: true
       - name: Install matching wasm-bindgen
         run: |
           VERSION=0.2.126
@@ -50,23 +51,22 @@ jobs:
       - name: Build and test studio foundation from source
         run: |
           set -o pipefail
-          python3 tools/build_studio.py --base "/${{ github.event.repository.name }}/studio/" --commit "${{ github.sha }}" 2>&1 | tee evidence/studio-build.txt
-      - name: Include Blended source for this build
+          python3 tools/build_studio.py --base ./ --commit "${{ github.sha }}" 2>&1 | tee evidence/studio-build.txt
+      - name: Install test library and use the runner's existing browser
+        timeout-minutes: 5
         run: |
-          mkdir -p site/source
-          git archive --format=tar.gz --output=site/source/blended-source.tar.gz HEAD
-      - name: Install browser test runner
-        run: |
-          python3 -m pip install playwright==1.57.0
-          python3 -m playwright install --with-deps chromium
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          command -v google-chrome
+          google-chrome --version
       - name: Test the built artifact before publication
+        timeout-minutes: 8
         run: |
           mkdir -p build/preview
           ln -s "$GITHUB_WORKSPACE/site" "build/preview/${{ github.event.repository.name }}"
           python3 -m http.server 8765 --directory build/preview >/tmp/blended-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
-          python3 tools/browser_check.py --url "http://127.0.0.1:8765/${{ github.event.repository.name }}/" --expected-commit "${{ github.sha }}" --output evidence/predeploy
+          python3 tools/browser_check.py --url "http://127.0.0.1:8765/${{ github.event.repository.name }}/index.html" --expected-commit "${{ github.sha }}" --output evidence/predeploy
       - name: Retain test evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,14 +74,90 @@ jobs:
           name: predeploy-evidence
           path: evidence/
           retention-days: 3
-      - name: Upload site artifact
+      - name: Retain complete built site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-site
+          path: site/
+          include-hidden-files: true
+          retention-days: 3
+      - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
-  deploy:
+  publish:
     if: github.event_name != 'pull_request'
     needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    outputs:
+      url: ${{ steps.publish.outputs.url }}
+      pages_enabled: ${{ steps.publish.outputs.pages_enabled }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: browser-site
+          path: site
+      - name: Publish immutable public preview from a dedicated build branch
+        id: publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for p in Path('site').rglob('*'):
+              if p.is_file() and p.stat().st_size >= 95000000:
+                  raise SystemExit(f'Refusing oversized GitHub file: {p}')
+          PY
+          git init --initial-branch=web-build published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin web-build >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin web-build
+            git -C published reset --mixed FETCH_HEAD
+          fi
+          cp -a site/. published/
+          git -C published add -A
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Publish browser build from ${SOURCE_SHA}"
+          git -C published push origin HEAD:refs/heads/web-build
+          DEPLOY_SHA=$(git -C published rev-parse HEAD)
+          URL="https://rawcdn.githack.com/${REPO}/${DEPLOY_SHA}/index.html"
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+          ENABLED=$(gh api "repos/${REPO}" --jq '.has_pages')
+          echo "pages_enabled=${ENABLED}" >> "$GITHUB_OUTPUT"
+          echo "## Public preview" >> "$GITHUB_STEP_SUMMARY"
+          echo "${URL}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source commit: ${SOURCE_SHA}. Public-URL browser verification runs next." >> "$GITHUB_STEP_SUMMARY"
+          echo "Free third-party preview CDN; no uptime guarantee. Code and build files are in GitHub." >> "$GITHUB_STEP_SUMMARY"
+  deployed-check:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install browser test library
+        timeout-minutes: 5
+        run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - name: Test the actual public deployed URL
+        run: python3 tools/browser_check.py --url "${{ needs.publish.outputs.url }}" --expected-commit "${{ github.sha }}" --output evidence/deployed
+      - name: Retain deployed-site evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployed-browser-evidence
+          path: evidence/deployed/
+          retention-days: 3
+  pages:
+    needs: [build, publish]
+    if: needs.publish.outputs.pages_enabled == 'true'
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -93,27 +169,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/configure-pages@v5
-      - name: Deploy
+      - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-  deployed-check:
-    needs: deploy
+  pages-check:
+    needs: pages
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Install browser test runner
-        run: |
-          python3 -m pip install playwright==1.57.0
-          python3 -m playwright install --with-deps chromium
-      - name: Test the actual deployed URL
-        run: python3 tools/browser_check.py --url "${{ needs.deploy.outputs.url }}" --expected-commit "${{ github.sha }}" --output evidence/deployed
-      - name: Retain deployed-site evidence
+      - run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - run: python3 tools/browser_check.py --url "${{ needs.pages.outputs.url }}" --expected-commit "${{ github.sha }}" --output evidence/pages
+      - uses: actions/upload-artifact@v4
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: deployed-browser-evidence
-          path: evidence/deployed/
+          name: pages-browser-evidence
+          path: evidence/pages/
           retention-days: 3
