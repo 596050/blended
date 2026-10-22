@@ -1,0 +1,84 @@
+name: Diagnose the compiled browser studio
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/studio-gpu-diagnostic.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 15054f12babb91e58b73a6afad3d8c2666a603cc
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: compiled
+      - name: Install test library
+        run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - name: Exercise real editor variants and capture GPU process diagnostics
+        env:
+          DEBUG: pw:browser
+        run: |
+          mkdir -p evidence/studio-gpu
+          python3 -m http.server 8765 --directory compiled >/tmp/blended-http.log 2>&1 &
+          xvfb-run -a python3 - <<'PY' 2>evidence/studio-gpu/browser-stderr.txt
+          import json, shutil, time
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          root=Path('evidence/studio-gpu')
+          configs=[
+            ('headless_no_hooks',True,['--use-angle=swiftshader'],False,'http://127.0.0.1:8765/studio/app.html'),
+            ('headless_explicit',True,['--use-angle=swiftshader','--use-vulkan=swiftshader','--use-webgpu-adapter=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface'],True,'http://127.0.0.1:8765/studio/app.html'),
+            ('headful',False,['--use-angle=swiftshader'],True,'http://127.0.0.1:8765/studio/app.html'),
+            ('upstream_live',True,['--use-angle=swiftshader'],True,'https://solarxy.koljam.com/app'),
+          ]
+          from tools.browser_check import GPU_DIAGNOSTICS
+          results=[]
+          with sync_playwright() as pw:
+            for name,headless,flags,hooks,url in configs:
+              print('START',name,flush=True)
+              r={'name':name,'url':url,'console':[],'errors':[]};b=None
+              try:
+                b=pw.chromium.launch(executable_path=shutil.which('google-chrome'),headless=headless,args=['--no-sandbox','--disable-dev-shm-usage','--disable-gpu-watchdog','--enable-unsafe-webgpu','--enable-logging=stderr']+flags)
+                c=b.new_context(viewport={'width':1200,'height':850})
+                if hooks:c.add_init_script(GPU_DIAGNOSTICS)
+                p=c.new_page()
+                p.on('console',lambda m,r=r:r['console'].append({'type':m.type,'text':m.text}) if m.type in ['error','warning'] else None)
+                p.on('pageerror',lambda e,r=r:r['errors'].append(str(e)))
+                p.goto(url,wait_until='domcontentloaded',timeout=60000)
+                p.wait_for_selector('.app-header',timeout=60000)
+                p.locator('.boot-overlay').wait_for(state='hidden',timeout=60000)
+                skip=p.get_by_role('button',name='Skip',exact=True)
+                try:skip.wait_for(state='visible',timeout=3000);skip.click()
+                except Exception:pass
+                p.wait_for_timeout(20000)
+                r['gpu']=p.evaluate('window.__blendedGpuDiagnostics ?? null')
+                r['text']=p.locator('body').inner_text()[:4000]
+                p.screenshot(path=str(root/(name+'.png')))
+                from PIL import Image,ImageStat
+                from io import BytesIO
+                cv=p.locator('canvas.viewport-canvas')
+                if cv.count():
+                  im=Image.open(BytesIO(cv.screenshot())).convert('RGB');w,h=im.size
+                  r['variance']=ImageStat.Stat(im.crop((w//4,h//4,w*3//4,h*3//4))).var
+              except Exception as e:r['failure']=str(e)
+              finally:
+                results.append(r);(root/'result.json').write_text(json.dumps(results,indent=2))
+                print(name,json.dumps(r),flush=True)
+                if b:b.close()
+          PY
+          grep -Ei 'gpu|fatal|crash|dawn|vulkan|signal|shader|error' evidence/studio-gpu/browser-stderr.txt | tail -120 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-gpu-diagnostics
+          path: evidence/studio-gpu/
+          retention-days: 3
