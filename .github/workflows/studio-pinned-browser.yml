@@ -1,0 +1,85 @@
+name: Verify compiled studio on pinned browser
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/studio-pinned-browser.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 15054f12babb91e58b73a6afad3d8c2666a603cc
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: compiled
+      - name: Install pinned browser without package-manager dependency installation
+        timeout-minutes: 4
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: '45000'
+        run: |
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          python3 -m playwright install chromium --only-shell
+      - name: Verify actual compiled app with pinned Chromium
+        timeout-minutes: 6
+        env:
+          DEBUG: pw:browser
+        run: |
+          mkdir -p evidence/pinned
+          python3 -m http.server 8765 --directory compiled >/tmp/http.log 2>&1 &
+          BROWSER=$(find "$HOME/.cache/ms-playwright" -type f -name chrome-headless-shell | head -1)
+          test -n "$BROWSER"
+          python3 tools/browser_check.py --url http://127.0.0.1:8765/index.html --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --executable "$BROWSER" --output evidence/pinned 2>evidence/pinned/stderr.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pinned-browser-evidence
+          path: evidence/pinned/
+          retention-days: 3
+  lavapipe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 15054f12babb91e58b73a6afad3d8c2666a603cc
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: compiled
+      - run: |
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          ls -l /usr/share/vulkan/icd.d/
+      - name: Test unchanged site with Mesa Vulkan rather than SwiftShader
+        timeout-minutes: 6
+        env:
+          DEBUG: pw:browser
+        run: |
+          mkdir -p evidence/lavapipe
+          python3 -m http.server 8765 --directory compiled >/tmp/http.log 2>&1 &
+          export VK_ICD_FILENAMES=$(find /usr/share/vulkan/icd.d -name '*lvp*' | head -1)
+          test -n "$VK_ICD_FILENAMES"
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('tools/browser_check.py')
+          s=p.read_text().replace("'--use-angle=swiftshader'", "'--use-angle=vulkan','--use-vulkan=native','--enable-features=Vulkan','--disable-vulkan-surface'")
+          p.write_text(s)
+          PY
+          python3 tools/browser_check.py --url http://127.0.0.1:8765/index.html --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --output evidence/lavapipe 2>evidence/lavapipe/stderr.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lavapipe-browser-evidence
+          path: evidence/lavapipe/
+          retention-days: 3
