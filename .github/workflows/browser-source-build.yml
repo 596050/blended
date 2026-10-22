@@ -6,7 +6,8 @@ on:
     paths:
       - tools/rebuild_browser_port.py
       - .github/workflows/browser-source-build.yml
-      - patches/browser-numerics/**
+      - patches/browser-numerics/manifest.json
+      - patches/browser-numerics/*.patch
   workflow_dispatch:
 
 permissions:
