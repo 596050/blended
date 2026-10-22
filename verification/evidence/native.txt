@@ -8,7 +8,7 @@
   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 [1m[33mwarning[0m: `blended-core` (test "upstream_cycles_math") generated 1 warning (run `cargo fix --test "upstream_cycles_math" -p blended-core` to apply 1 suggestion)
-[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 0.79s
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 0.68s
 [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/blended_core-7c19c97da15a31fb)
 
 running 0 tests
@@ -19,10 +19,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 6 tests
 test box_faces_point_outwards ... ok
-test box_has_exact_dimensions ... ok
 test box_has_independent_face_vertices_and_twelve_triangles ... ok
-test invalid_box_dimensions_rejected ... ok
 test invalid_plane_dimensions_rejected ... ok
+test invalid_box_dimensions_rejected ... ok
+test box_has_exact_dimensions ... ok
 test plane_is_xz_with_two_triangles ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -31,8 +31,8 @@ test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 4 tests
 test empty_extrema_are_explicit ... ok
-test invalid_case_is_not_a_pass ... ok
 test invalid_divisors_are_rejected ... ok
+test invalid_case_is_not_a_pass ... ok
 test overflow_is_rejected ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -41,28 +41,28 @@ test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 28 tests
 test math_base__CeilPowerOf10 ... ok
-test math_base__ClampInt ... ok
 test math_base__CompareFFRelativeNormal ... ok
 test math_base__CompareFFRelativeValid ... ok
-test math_base__FlooredFMod ... ok
+test math_base__ClampInt ... ok
 test math_base__CompareFFRelativeZero ... ok
+test math_base__FlooredFMod ... ok
 test math_base__FloorPowerOf10 ... ok
-test math_base__InterpolateInt ... ok
 test math_base__Log2CeilU ... ok
-test math_base__Log2FloorU ... ok
 test math_base__Midpoint ... ok
+test math_base__InterpolateInt ... ok
+test math_base__Log2FloorU ... ok
 test math_base__MinVectorAndFloat ... ok
-test math_base__SafePowf ... ok
 test math_base__ModPeriodic ... ok
 test math_base__SafeLogf ... ok
 test math_base__SafeModf ... ok
+test math_base__SafePowf ... ok
 test math_base__StepExact ... ok
 test math_base__StepGreaterThan ... ok
-test math_bits__BitscanReverseClearUint ... ok
-test math_base__StepLessThan ... ok
 test math_base__UlpDiffFF ... ok
-test math_bits__PopCount ... ok
 test math_solvers__CyclicTridiagonal1 ... ok
+test math_base__StepLessThan ... ok
+test math_bits__BitscanReverseClearUint ... ok
+test math_bits__PopCount ... ok
 test math_solvers__Tridiagonal1 ... ok
 test math_solvers__CyclicTridiagonal2 ... ok
 test math_solvers__CyclicTridiagonal3 ... ok
@@ -83,18 +83,18 @@ test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 [1m[92m     Running[0m tests/upstream_math_vector.rs (target/debug/deps/upstream_math_vector-a8a5e43fc25adc5a)
 
 running 17 tests
-test CeilToMultiple ... ok
 test Clamp ... ok
+test InterpolateFloat ... ok
+test CeilToMultiple ... ok
+test DivideCeil ... ok
 test ClampVecWithFloats ... ok
 test InterpolateInt ... ok
-test DivideCeil ... ok
-test InterpolateFloat ... ok
 test MaxList ... ok
-test log ... ok
-test exp ... ok
-test Sign ... ok
-test rcp ... ok
 test MinList ... ok
+test Sign ... ok
+test exp ... ok
+test log ... ok
+test rcp ... ok
 test safe_rcp ... ok
 test safe_sqrt ... ok
 test sqrt ... ok
