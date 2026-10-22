@@ -1,0 +1,510 @@
+{
+  "schema": 1,
+  "target": {
+    "repository": "blender/blender",
+    "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d"
+  },
+  "gate": "blocked",
+  "full_feature_parity": false,
+  "claim_scope": "Declared target, profiles, and reviewed facet contract only; evidence semantics are the test producer's responsibility.",
+  "enumeration_complete": false,
+  "coverage_complete": false,
+  "known_case_count": 0,
+  "known_obligation_count": 0,
+  "passed_obligation_count": 0,
+  "counts": {},
+  "facets": [
+    {
+      "id": "foundation",
+      "title": "Build, memory, containers, mathematics",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet"
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Browser host, GHOST, files, threads and events",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:foundation"
+      ]
+    },
+    {
+      "id": "python_api",
+      "title": "Embedded Python, bpy, RNA and extensions",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:foundation",
+        "dependency:platform"
+      ]
+    },
+    {
+      "id": "scene_data",
+      "title": "Scene graph, IDs, collections, data relationships",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:foundation",
+        "dependency:python_api"
+      ]
+    },
+    {
+      "id": "blend_io",
+      "title": "Native blend files, versioning, linking, overrides, recovery",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data",
+        "dependency:platform"
+      ]
+    },
+    {
+      "id": "depsgraph",
+      "title": "Dependency graph, evaluation and invalidation",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data"
+      ]
+    },
+    {
+      "id": "object_transforms",
+      "title": "Objects, transforms, selection, snapping and history",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:platform",
+        "dependency:scene_data",
+        "dependency:depsgraph"
+      ]
+    },
+    {
+      "id": "mesh_edit",
+      "title": "BMesh and mesh editing operators",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:object_transforms",
+        "dependency:python_api"
+      ]
+    },
+    {
+      "id": "modifiers",
+      "title": "Modifier evaluation and stacks",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:mesh_edit",
+        "dependency:depsgraph"
+      ]
+    },
+    {
+      "id": "curves_text_hair",
+      "title": "Curves, text, lattices, hair and point geometry",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data",
+        "dependency:modifiers"
+      ]
+    },
+    {
+      "id": "geometry_nodes",
+      "title": "Geometry Nodes, fields, sockets, zones and caches",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:python_api",
+        "dependency:depsgraph",
+        "dependency:modifiers"
+      ]
+    },
+    {
+      "id": "sculpt",
+      "title": "Sculpting, dyntopo, remesh, masks and multires",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:mesh_edit",
+        "dependency:modifiers",
+        "dependency:gpu_backend"
+      ]
+    },
+    {
+      "id": "uv",
+      "title": "UV editing, unwrap, packing and seams",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:mesh_edit",
+        "dependency:gpu_backend"
+      ]
+    },
+    {
+      "id": "painting",
+      "title": "Texture, vertex and weight painting",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:uv",
+        "dependency:sculpt",
+        "dependency:materials_color"
+      ]
+    },
+    {
+      "id": "gpu_backend",
+      "title": "WebGPU backend, buffers, shaders and synchronization",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:platform",
+        "dependency:foundation"
+      ]
+    },
+    {
+      "id": "workbench",
+      "title": "Workbench viewport, overlays and selection",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:gpu_backend",
+        "dependency:scene_data",
+        "dependency:materials_color"
+      ]
+    },
+    {
+      "id": "materials_color",
+      "title": "Materials, shading graphs, textures and color management",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:python_api",
+        "dependency:scene_data"
+      ]
+    },
+    {
+      "id": "eevee",
+      "title": "EEVEE rendering",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:gpu_backend",
+        "dependency:materials_color",
+        "dependency:depsgraph"
+      ]
+    },
+    {
+      "id": "cycles_cpu",
+      "title": "Cycles CPU rendering, baking and denoising",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:materials_color",
+        "dependency:depsgraph",
+        "dependency:platform"
+      ]
+    },
+    {
+      "id": "cycles_gpu",
+      "title": "Cycles GPU rendering",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:cycles_cpu",
+        "dependency:gpu_backend"
+      ]
+    },
+    {
+      "id": "animation_rigging",
+      "title": "Animation, rigging, constraints, drivers and NLA",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data",
+        "dependency:depsgraph",
+        "dependency:python_api"
+      ]
+    },
+    {
+      "id": "simulation",
+      "title": "Physics, fluid, cloth, particles, caches and volumes",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:depsgraph",
+        "dependency:animation_rigging",
+        "dependency:geometry_nodes",
+        "dependency:platform"
+      ]
+    },
+    {
+      "id": "grease_pencil",
+      "title": "Grease Pencil, 2D drawing and animation",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:gpu_backend",
+        "dependency:animation_rigging",
+        "dependency:materials_color"
+      ]
+    },
+    {
+      "id": "format_io",
+      "title": "Interchange import/export and images",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data",
+        "dependency:blend_io",
+        "dependency:materials_color"
+      ]
+    },
+    {
+      "id": "compositing",
+      "title": "Compositor nodes, passes, masks and file outputs",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:materials_color",
+        "dependency:gpu_backend"
+      ]
+    },
+    {
+      "id": "video_audio",
+      "title": "Video sequencer, codecs and audio",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data",
+        "dependency:materials_color",
+        "dependency:platform"
+      ]
+    },
+    {
+      "id": "tracking",
+      "title": "Motion tracking, camera solving and masks",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:scene_data",
+        "dependency:video_audio",
+        "dependency:compositing"
+      ]
+    },
+    {
+      "id": "assets",
+      "title": "Asset browser, catalogs, local/remote libraries and linking",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:blend_io",
+        "dependency:python_api",
+        "dependency:platform"
+      ]
+    },
+    {
+      "id": "ui_workflows",
+      "title": "Editors, workspaces, keymaps, menus, preferences and interaction",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:platform",
+        "dependency:gpu_backend",
+        "dependency:python_api"
+      ]
+    },
+    {
+      "id": "performance_reliability",
+      "title": "Startup, memory, responsiveness, sustained use and release quality",
+      "status": "blocked",
+      "case_count": 0,
+      "obligation_count": 0,
+      "counts": {},
+      "blockers": [
+        "facet_inventory_incomplete",
+        "missing_obligation_kind:upstream",
+        "missing_obligation_kind:workflow",
+        "empty_facet",
+        "dependency:platform"
+      ]
+    }
+  ],
+  "non_passing": []
+}
