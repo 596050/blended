@@ -1,7 +1,8 @@
 {
-  "schema": 1,
+  "schema": 2,
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
   "complete_test_port": false,
+  "test_conformance_complete": false,
   "feature_parity": false,
   "source_candidates": 5637,
   "mapped_source_candidates": 45,
@@ -73314,7 +73315,7 @@
       "target_test": null
     }
   ],
-  "note": "Counts are source candidates, including conditional and third-party declarations, NOT a full runtime denominator. Mapping and execution are separate. Assertion equivalence requires review; hashes detect subsequent drift.",
+  "note": "Counts are source candidates, including conditional and third-party declarations, NOT a full runtime denominator. Mapping and execution are separate. Assertion equivalence requires review; hashes detect subsequent drift. Test conformance does not establish whole-application feature parity.",
   "test_asset_lfs_pointers": [
     {
       "path": "alembic/T52022-inheritance.abc",
@@ -113464,5 +113465,5 @@
     }
   ],
   "test_asset_missing_bytes": 870496042,
-  "execution_scope": "This audit does not execute the candidate tests."
+  "execution_scope": "This audit does not execute the candidate tests. Pointer status describes this checkout, not the separate fixture-download verification run."
 }
