@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "diagnostic_only": true,
+  "acceptance_status": "not_evaluated",
+  "full_parity": false,
+  "actual_wasm_executed": true,
+  "patchset_id": "blender-5.2.0-web-numerics-v1",
+  "manifest_sha256": "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147",
+  "native_oracle": {
+    "official_archive_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "official_archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "full_upstream_pin": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "runtime_hash": "fbe6228777e7",
+    "scope": "Official Linux x64 x86-64-v2 release; not every native-platform implementation."
+  },
+  "compiler_identity": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.5 (1db513782be24469589d7cb8a1f1834e9a33f271)\nCopyright (C) 2026 the Emscripten authors (see AUTHORS.txt)\nThis is free and open source software under the MIT license.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "node_version": "v22.16.0",
+  "observed_browser": {
+    "workflow_run": "https://github.com/596050/blended/actions/runs/39838716956",
+    "confirmed_again_by": "https://github.com/596050/blended/actions/runs/39839670631",
+    "build_hash": "Unknown",
+    "provenance_status": "blocked",
+    "runtime_error": "A WebGPU device-loss message follows the complete diagnostic JSON in the console event. It remains an independent blocker.",
+    "source_evidence": {
+      "browser_raw_log": {
+        "path": "ci-39838716956/browser-numeric-diagnostics.log",
+        "sha256": "6a9c4ef2bb3b836907fa78b2a45c5bc11df62e6a6f590d32cf57784a0fcb0052",
+        "bytes": 598348
+      },
+      "forensic_extraction_receipt": {
+        "path": "ci-39838716956/forensic-extraction.json",
+        "sha256": "02de2cd747a7ddf0405b894ea5420dfc718e55ee2fa446fcae5283715193d98e",
+        "bytes": 814
+      },
+      "browser_json": {
+        "path": "ci-39838716956/browser-execution-forensic.json",
+        "sha256": "f57ffa6bd6675fe64a6025962aae92f7d3089364ee85352f2a48606df6a1fa67",
+        "bytes": 960577
+      },
+      "native_official_receipt": {
+        "path": "native_payload_summary.json",
+        "sha256": "f3550b0a3519a941fe03894a582f0a4db75be7851a4cb0ad96fe7fc986fa1dfa",
+        "bytes": 2565
+      },
+      "isolated_probes_receipt": {
+        "path": "isolated-probes-receipt.json",
+        "sha256": "fb3f7a7a225da342b1a07e5f43ee64ad9a3b3fd727dc5bdbfcff20eb4e235538",
+        "bytes": 9571
+      }
+    }
+  },
+  "original_vs_candidate": {
+    "orthogonal": {
+      "upstream_parent_tests_affected": 1,
+      "numerical_nonzero_inputs": 144,
+      "input_and_orthogonal_bits_identical_native_browser": 144,
+      "original_wasm_matches_browser_angle_bits": 144,
+      "original_low_angle_observations": 136,
+      "corrected_actual_libc_matches_native_angle_bits": 144,
+      "corrected_low_angle_observations": 0,
+      "zero_input": {
+        "upstream_index": 144,
+        "not_called_by_original_angle_test": true
+      }
+    },
+    "screw": {
+      "upstream_parent_tests_affected": 1,
+      "branches_observed": 2,
+      "vertices_per_branch": 49,
+      "original_scalar_wasm_coordinate_bits_match_browser": 49,
+      "candidate_sse_wasm_coordinate_bits_match_native": 49,
+      "space_and_rotation_bits_match_native_browser": true,
+      "original_nonduplicate_total_length": 651.346363723278,
+      "native_and_candidate_derived_nonduplicate_total_length": 651.3464477658272,
+      "candidate_derived_native_edge_length_bits_match": [
+        77,
+        35
+      ],
+      "both_browser_branch_coordinate_sets_equal": true,
+      "nonduplicate_iteration_order_differs": true,
+      "semantic_edge_connectivity_and_oriented_face_cycles_match": true,
+      "source_change": "Compile only intern/eigen/intern/matrix.cc with -msimd128 -msse2; use the existing Eigen block-adjugate inverse."
+    }
+  },
+  "actual_sdk_cache_proof": {
+    "manifest_digest_in_namespace": true,
+    "rebuild_command": [
+      "embuilder",
+      "--force",
+      "build",
+      "libc",
+      "libc-mt"
+    ],
+    "source_after_sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da",
+    "libc_archives": [
+      {
+        "file": "libc.a",
+        "bytes": 3305800,
+        "sha256": "b2fcc676ea0162cccce1f8571ff0b684bd8f09872218e01e9d22d734fd1186a9"
+      },
+      {
+        "file": "libc-mt.a",
+        "bytes": 3627304,
+        "sha256": "d82467c4f8b734f38dc5b7cda7d1b7bc9918eab7a6ccb971e32fc11157d96f48"
+      }
+    ],
+    "results": {
+      "original-pthread": {
+        "rows": 144,
+        "actual_libc_low_pi_over_two": 136,
+        "actual_libc_high_pi_over_two": 8,
+        "actual_libc_matches_candidate": 8,
+        "reference_source_remains_low": 136
+      },
+      "patched-normal": {
+        "rows": 144,
+        "actual_libc_low_pi_over_two": 0,
+        "actual_libc_high_pi_over_two": 144,
+        "actual_libc_matches_candidate": 144,
+        "reference_source_remains_low": 136
+      },
+      "patched-pthread": {
+        "rows": 144,
+        "actual_libc_low_pi_over_two": 0,
+        "actual_libc_high_pi_over_two": 144,
+        "actual_libc_matches_candidate": 144,
+        "reference_source_remains_low": 136
+      }
+    },
+    "direct_link_symbol": "acosf resolves to the rebuilt libc.a(acosf.o) or libc-mt.a(acosf.o), without a replacement export in the probe."
+  },
+  "reproduction": {
+    "command": "python patches/browser-numerics/probes/run.py --emsdk-root SDK --eigen-include EIGEN_INCLUDE --cache CACHE_WITH_MANIFEST_SHA256 --output OUTPUT --expect-libc patched",
+    "status": "kernel_regressions_passed",
+    "source_sha256": {
+      "patches/browser-numerics/probes/acos_inputs.txt": "52306351ba5400f67b5cb5f22887d74169ca00de60e29cc864689d96faedcc78",
+      "patches/browser-numerics/probes/acos_probe.c": "2301e1a8c326b403704082a1a5788c31ee1be0a0be0d12eb62f8303a5afb3252",
+      "patches/browser-numerics/probes/acosf_candidate.c": "57a65b2cd0396705626f3d962aecfe84cbc5b10f98f9f38c34333512be2e0253",
+      "patches/browser-numerics/probes/acosf_reference.c": "a503aebe10302a12a07f3089b252a19944d4b573d1cc7729bb73c81a5e746dfa",
+      "patches/browser-numerics/probes/expectations.json": "ff04cbe9a235e7f60c4a1298058583f239eaccf95282408ccdbf7b6df8e730ff",
+      "patches/browser-numerics/probes/inverse.cc": "eca017b6f5b0f1a28b895694126ba0a394bb199a8c76060a479ac6bfe0e4e68e",
+      "patches/browser-numerics/probes/libm_probe.h": "a70b4582bdc523dbe3739ffb72a2b6fc903ca292d6b32ca678943bcaeeb72ef4",
+      "patches/browser-numerics/probes/run.py": "79fb9e0c07e244fe9d10ba8a24ecd48d23fc05ea40809a8330082c4e951481ec",
+      "patches/browser-numerics/probes/space_inputs.txt": "80df8802522f277655e4742d61f2e15c7516372fe86bae940a193ff3624a86ec",
+      "patches/browser-numerics/probes/spin_transform_probe.cc": "a03dbf5d5fd59d29ca17b4767edcc46968e54362739ff2d6cbaa409840e1d5a5"
+    },
+    "wasm_artifacts": {
+      "acos-normal.wasm": {
+        "sha256": "59b7b8cb2e51918326dd6154187b8c102a201438385eddfdd5e61744ef7620ee",
+        "bytes": 42223
+      },
+      "acos-pthread.wasm": {
+        "sha256": "469c0ed1c0fe2caa8bf0896cb23e9b9e8d2d810dc19d4127fe6db8025395c674",
+        "bytes": 53719
+      },
+      "spin.wasm": {
+        "sha256": "67fecc11b04022c768e22a78254d68a220fd8358c23799b9f2561e3ba9238ace",
+        "bytes": 50056
+      }
+    }
+  },
+  "local_detailed_receipts": [
+    {
+      "name": "browser-forensic-comparison.json",
+      "sha256": "ed38f58ca0ad2f216daf4715287291bff437fe11da05189a72a8f8b9abcb265d"
+    },
+    {
+      "name": "wasm_probes/results.json",
+      "sha256": "e4281314132786192b4e9b26382204dd8633dcbf42ba9acd4bfe30ae8fb2ea53"
+    },
+    {
+      "name": "sdk-libc-proof/receipt.json",
+      "sha256": "9ad20ca37740e11d11840255d09ca4e980bddaf9f29094776c1c6c0bc9cd4370"
+    },
+    {
+      "name": "sdk-libc-proof/commands.json",
+      "sha256": "44b652cb7fd0f97203dcbb7baab772443b634f8ddc745901efe1f8bcae12732e"
+    },
+    {
+      "name": "repo-reproduction/receipt.json",
+      "sha256": "ace073d9e5a8bfaca52ec2f76f2c91d64b0b150740c7971ea62bfb17c68dadc2"
+    },
+    {
+      "name": "repo-reproduction/commands.json",
+      "sha256": "1003ed2a437b651f6f6d6bd779680205f57eba32f52ca10cb9d521be54221ad3"
+    }
+  ],
+  "limits": [
+    "No rebuilt Blender engine has passed the unchanged acceptance suites with this patchset yet.",
+    "Wasm kernels were executed under the pinned Node runtime, not a full browser UI.",
+    "The released browser artifact still lacks a verified build hash.",
+    "These 5.2 numerical observations do not transfer passes to the 5.4 product target.",
+    "Only the declared normal optimized wasm32 libc and pthread variants are qualified by the cache experiment."
+  ]
+}

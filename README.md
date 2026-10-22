@@ -6,6 +6,14 @@
 
 The linked immutable build uses source commit `76044caffe2b69ae5cdceeff1addb56ee61411d9`. New successful builds are published on `modeller-build`; their exact source commit is recorded in `build.json` and the acceptance report.
 
+## Source-derived Blender parity programme
+
+The full application direction is to reuse existing source-derived Blender browser ports and close compatibility facet by facet. See the [implementation and acceptance programme](docs/BROWSER_PARITY_PROGRAM.md), [30-facet source/test map](compatibility/facets.json), and [pinned browser-port candidates](compatibility/browser-ports.lock.json).
+
+The current product reference is Blender 5.4.0 alpha at the existing immutable pin. Candidate ports based on Blender 5.2 or 5.3 are first qualified against their own exact native reference; their results do not transfer to the product target. `tools/probe_browser_port.py` independently attempts the complete original mathutils and BMesh Python suites on a hash-pinned browser release. `tools/parity_gate.py` rejects incomplete coverage, skipped requirements, stale evidence and native/browser substitutions. The initial inventory is explicitly incomplete and does not report full feature parity.
+
+The browser-port workflow records qualification results separately from the working limited modeller. Its receipts are preserved on `browser-port-evidence`; a failed or blocked qualification remains visible. Infrastructure tests validate reporting and test transport and are not Blender feature passes.
+
 ## What works in the initial modeller
 
 - Actual Three.js WebGL 2 rendering, orbit/pan/zoom and transform controls.

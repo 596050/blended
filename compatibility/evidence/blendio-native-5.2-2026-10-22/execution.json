@@ -1,0 +1,439 @@
+{
+  "schema": 1,
+  "scope": "unchanged Blender 5.2.0 custom-driver blend-file I/O suite only",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "assertions_modified": false,
+  "test_callables_replaced": false,
+  "helper_driver_replaced": false,
+  "entrypoint": "runpy.run_path(original_source, run_name='__main__')",
+  "observation": "CPython sys.monitoring PY_START, PY_RETURN and PY_UNWIND",
+  "expected_cases": [
+    "TestBlendFileSaveLoadBasic.test_save_load",
+    "TestBlendFileSavePartial.test_save_load",
+    "TestIdRuntimeTag.test_basics",
+    "TestIdRuntimeTag.test_linking"
+  ],
+  "expected_count": 4,
+  "identity": {
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "version_string": "5.2.0 LTS",
+    "build_hash": "fbe6228777e7",
+    "build_branch": "blender-v5.2-release",
+    "binary_path": "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+    "python_version": "3.13.13 (main, Apr 25 2025, 12:39:20) [GCC 14.2.1 20250110 (Red Hat 14.2.1-11)]"
+  },
+  "source_files": [
+    {
+      "path": "bl_blendfile_io.py",
+      "bytes": 8602,
+      "sha256": "8bdb127eef664597061e455cad061959d59a66ce5ed54e4f35a73d3753802700"
+    },
+    {
+      "path": "bl_blendfile_utils.py",
+      "bytes": 8640,
+      "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02"
+    }
+  ],
+  "cases": [
+    {
+      "id": "TestBlendFileSaveLoadBasic.test_save_load",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "files_before": [],
+      "files_after": [
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        }
+      ],
+      "status": "passed",
+      "new_or_changed_outputs": [
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        }
+      ]
+    },
+    {
+      "id": "TestBlendFileSavePartial.test_save_load",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "files_before": [
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        }
+      ],
+      "files_after": [
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        },
+        {
+          "path": "blendfile_io_partial.blend",
+          "bytes": 163875,
+          "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+        }
+      ],
+      "status": "passed",
+      "new_or_changed_outputs": [
+        {
+          "path": "blendfile_io_partial.blend",
+          "bytes": 163875,
+          "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+        }
+      ]
+    },
+    {
+      "id": "TestIdRuntimeTag.test_basics",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "files_before": [
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        },
+        {
+          "path": "blendfile_io_partial.blend",
+          "bytes": 163875,
+          "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+        }
+      ],
+      "files_after": [
+        {
+          "path": "blendfileTestIdRuntimeTag.blend",
+          "bytes": 485279,
+          "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+        },
+        {
+          "path": "blendfileTestIdRuntimeTag.blend1",
+          "bytes": 501360,
+          "sha256": "fa6ec599b0b73902fc675423538393cdaff0c857ca10fd309a3664628dd3e52b"
+        },
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        },
+        {
+          "path": "blendfile_io_partial.blend",
+          "bytes": 163875,
+          "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+        }
+      ],
+      "status": "passed",
+      "new_or_changed_outputs": [
+        {
+          "path": "blendfileTestIdRuntimeTag.blend",
+          "bytes": 485279,
+          "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+        },
+        {
+          "path": "blendfileTestIdRuntimeTag.blend1",
+          "bytes": 501360,
+          "sha256": "fa6ec599b0b73902fc675423538393cdaff0c857ca10fd309a3664628dd3e52b"
+        }
+      ]
+    },
+    {
+      "id": "TestIdRuntimeTag.test_linking",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "files_before": [
+        {
+          "path": "blendfileTestIdRuntimeTag.blend",
+          "bytes": 485279,
+          "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+        },
+        {
+          "path": "blendfileTestIdRuntimeTag.blend1",
+          "bytes": 501360,
+          "sha256": "fa6ec599b0b73902fc675423538393cdaff0c857ca10fd309a3664628dd3e52b"
+        },
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        },
+        {
+          "path": "blendfile_io_partial.blend",
+          "bytes": 163875,
+          "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+        }
+      ],
+      "files_after": [
+        {
+          "path": "blendfileTestIdRuntimeTag.blend",
+          "bytes": 494858,
+          "sha256": "a98e9d343c439f0d15e75705af7f64eccb4213c577e807cc6ef905c89b31879c"
+        },
+        {
+          "path": "blendfileTestIdRuntimeTag.blend1",
+          "bytes": 485279,
+          "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+        },
+        {
+          "path": "blendfile_io.blend",
+          "bytes": 422069,
+          "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+        },
+        {
+          "path": "blendfile_io.blend1",
+          "bytes": 422069,
+          "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+        },
+        {
+          "path": "blendfile_io_partial.blend",
+          "bytes": 163875,
+          "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+        },
+        {
+          "path": "blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+          "bytes": 525857,
+          "sha256": "6fa44a0dcbfb566561597c5d0587c8e95f7f95a645669fe5b5bf9359df3cc191"
+        }
+      ],
+      "status": "passed",
+      "new_or_changed_outputs": [
+        {
+          "path": "blendfileTestIdRuntimeTag.blend",
+          "bytes": 494858,
+          "sha256": "a98e9d343c439f0d15e75705af7f64eccb4213c577e807cc6ef905c89b31879c"
+        },
+        {
+          "path": "blendfileTestIdRuntimeTag.blend1",
+          "bytes": 485279,
+          "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+        },
+        {
+          "path": "blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+          "bytes": 525857,
+          "sha256": "6fa44a0dcbfb566561597c5d0587c8e95f7f95a645669fe5b5bf9359df3cc191"
+        }
+      ]
+    }
+  ],
+  "driver_events": [
+    {
+      "class": "TestBlendFileSaveLoadBasic",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendFileSaveLoadBasic",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendFileSavePartial",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendFileSavePartial",
+      "event": "return"
+    },
+    {
+      "class": "TestIdRuntimeTag",
+      "event": "start"
+    },
+    {
+      "class": "TestIdRuntimeTag",
+      "event": "return"
+    }
+  ],
+  "observer_errors": [],
+  "module_exception": null,
+  "module_returned_normally": true,
+  "browser_executed": false,
+  "full_facet_parity": false,
+  "full_feature_parity": false,
+  "missing_case_ids": [],
+  "unexpected_case_ids": [],
+  "generated_files": [
+    {
+      "path": "blendfileTestIdRuntimeTag.blend",
+      "bytes": 494858,
+      "sha256": "a98e9d343c439f0d15e75705af7f64eccb4213c577e807cc6ef905c89b31879c"
+    },
+    {
+      "path": "blendfileTestIdRuntimeTag.blend1",
+      "bytes": 485279,
+      "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+    },
+    {
+      "path": "blendfile_io.blend",
+      "bytes": 422069,
+      "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+    },
+    {
+      "path": "blendfile_io.blend1",
+      "bytes": 422069,
+      "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+    },
+    {
+      "path": "blendfile_io_partial.blend",
+      "bytes": 163875,
+      "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+    },
+    {
+      "path": "blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+      "bytes": 525857,
+      "sha256": "6fa44a0dcbfb566561597c5d0587c8e95f7f95a645669fe5b5bf9359df3cc191"
+    }
+  ],
+  "source_files_after": [
+    {
+      "path": "bl_blendfile_io.py",
+      "bytes": 8602,
+      "sha256": "8bdb127eef664597061e455cad061959d59a66ce5ed54e4f35a73d3753802700"
+    },
+    {
+      "path": "bl_blendfile_utils.py",
+      "bytes": 8640,
+      "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02"
+    }
+  ],
+  "source_bytes_preserved": true,
+  "helper_import_path": "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/native-proof-final/sources/bl_blendfile_utils.py",
+  "expected_helper_imported": true,
+  "runtime_identity_verified": true,
+  "status": "passed"
+}

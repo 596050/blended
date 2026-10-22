@@ -1,6 +1,6 @@
 # Compatibility acceptance contract
 
-Blender and Cycles are pinned executable-reference targets. Solarxy is the initial browser engine, not proof of Blender parity. Reusing upstream source is intentional; its provenance and licences are retained.
+Blender and Cycles are pinned executable-reference targets. The full application direction is now an existing source-derived Blender browser port, with candidate qualification and facet-by-facet acceptance defined in [BROWSER_PARITY_PROGRAM.md](BROWSER_PARITY_PROGRAM.md). The existing Solarxy and Three.js experiments retain separate results. Reusing upstream source is intentional; its provenance and licences are retained.
 
 ## Separate measurements
 
@@ -16,7 +16,7 @@ There is no meaningful full-parity percentage until the denominator and feature 
 
 The 17 runtime tests in Blender BLI_math_vector_test.cc are translated with exact expected values, four-ULP float equality and 1e-6 absolute tolerances as applicable. Its signed-zero hash static assertion is unported. Three Cycles util_math_test.cpp cases preserve 23 expected integer outputs. Browser and native integration statuses are separate.
 
-The current browser application is the pinned Solarxy engine with static-hosting adaptations. It is not a new implementation of Blender's modelling tools, sculpt mode, modifiers, Geometry Nodes, animation/rigging, simulation, compositing, video editor, Python API or .blend reader. No Cycles-to-Rust renderer has been implemented.
+The working limited browser modeller uses Rust geometry and Three.js. The pinned Solarxy experiment separately failed browser rendering acceptance. Neither establishes Blender's modelling, sculpting, modifiers, Geometry Nodes, animation/rigging, simulation, compositing, video, Python API or .blend compatibility. No Cycles-to-Rust renderer has been implemented. The new source-port candidate probe and its exact older Blender reference are recorded separately; no candidate or infrastructure result implies product-target parity.
 
 ## Release gates
 

@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "created_at": "2026-10-22T18:50:32.823938+00:00",
+  "scope": "Read-only failure triage of the independently executed published artifact and the independently replayed canonical source. No test assertions or engine source changed.",
+  "evidence_file": "/workspace/scratch/d63596d831b2/research_ports/qualification-initial.json",
+  "evidence_sha256": "8daad909958f018014c875a04b79d1a6dd5e1552d01583a2cca65448a1453bad",
+  "artifact_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0",
+  "artifact_engine_identity": {
+    "binary_path": "/this.program",
+    "build_branch": "Unknown",
+    "build_hash": "Unknown",
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "version_string": "5.2.0 LTS"
+  },
+  "canonical_source_port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "reference_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "source_correspondence_limit": "Runtime build_hash is Unknown. Inspected canonical source is from port HEAD, while the artifact is associated with release-source cc22090b88da63cc617d48b218f4945175928844. Its binary-to-source correspondence is not verified.",
+  "build_identity_observation": {
+    "path": "patches/blender_web.cmake",
+    "line": 240,
+    "setting": "set(WITH_BUILDINFO OFF CACHE BOOL \"\" FORCE)",
+    "interpretation": "The inspected source deliberately disables build metadata. Unknown identity is therefore expected for this profile, but cannot serve as proof of the upstream commit."
+  },
+  "summary": {
+    "top_level_tests_run": 192,
+    "top_level_passed": 190,
+    "distinct_top_level_failed": 2,
+    "failure_records": 3,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mathutils": {
+    "suite": "tests/python/bl_pyapi_mathutils.py",
+    "tests_run": 180,
+    "top_level_passed": 179,
+    "failed_test": "VectorTesting.test_orthogonal",
+    "line": 666,
+    "observed": 1.570796251296997,
+    "expected": 1.5707963267948966,
+    "absolute_difference": 7.549789948768648e-08,
+    "places": 7,
+    "observed_binary32_hex": "0x3fc90fda",
+    "nearest_binary32_to_pi_over_two": 1.5707963705062866,
+    "nearest_binary32_hex": "0x3fc90fdb",
+    "spacing_between_these_float_values": 1.1920928955078125e-07,
+    "verified_pipeline": "Vector stores float32 coordinates; ortho_v3_v3 computes a float32 orthogonal vector; Vector_angle accumulates dot products in double then converts its normalized cosine into safe_acosf(float); safe_acosf calls acosf and returns float to Python.",
+    "interpretation": "The observed angle is one float32 step below the nearest float32 representation of pi/2. The lower value fails the unchanged seven-decimal-place assertion; the nearest float32 representation would satisfy that particular comparison. The report does not identify the failing input vector.",
+    "unproven_hypotheses": [
+      "Target acosf implementation or rounding differences near pi/2",
+      "Differences in the small residual dot product produced by float32 orthogonal construction",
+      "Compiler options or exact binary source differing from inspected source"
+    ],
+    "not_established": "No identified root cause or evidence of a graphics-driver failure."
+  },
+  "bmesh": {
+    "suite": "tests/python/bl_pyapi_bmesh.py",
+    "tests_run": 12,
+    "top_level_passed": 11,
+    "failed_test": "TestBMeshOperators.test_spin_screw_complex",
+    "primary_failure": {
+      "subtest": "do_dupli=False",
+      "line": 804,
+      "observed_edge_length_sum": 651.346363723278,
+      "expected_edge_length_sum": 651.346448,
+      "absolute_difference": 8.427672196376079e-05,
+      "relative_difference": 1.293884724827129e-07,
+      "places": 4
+    },
+    "earlier_assertions_passed": [
+      "False branch topology equals 49 vertices, 77 edges, 32 faces",
+      "False branch total area equals 297.830433 to four decimal places"
+    ],
+    "secondary_failure": {
+      "line": 814,
+      "classification": "Confirmed test control-flow cascade",
+      "reason": "The line 804 failure exits the False subTest before assigning unique_coords_pair[False] at line 806 and before bm.free at line 811. unittest records the subTest failure and continues the True branch. The final parent assertion compares the still-empty False set with the populated True set. The trace lists items only in the second set, consistent with this flow.",
+      "independent_geometry_mismatch_proven": false,
+      "cleanup_reached_for_false_branch": false
+    },
+    "verified_pipeline": "bmo_spin_exec uses float coordinates, float angles and independently computed step rotation matrices. axis_angle_normalized_to_mat3 calls sinf/cosf. bmo_transform_exec performs float 4x4 inverse and matrix multiplication for the nonidentity space. Edge calc_length returns float sqrtf of float dot products, widened into Python floats before sum.",
+    "unproven_hypotheses": [
+      "Float32 transform, inversion, trig or sqrt rounding differences between native and Emscripten targets",
+      "Actual released binary source or compile configuration differing from independently inspected source"
+    ],
+    "interpretation": "The roughly 1.29e-7 relative aggregate difference is numerically small but genuinely outside the upstream absolute criterion. It remains a failing test. The secondary set assertion supplies no separate geometry result."
+  },
+  "unchanged_relevant_source_files": [
+    {
+      "path": "source/blender/python/mathutils/mathutils_Vector.cc",
+      "upstream_git_blob": "5e302ece16724a9ea59e466b60fd204a236413e4",
+      "applied_tree_git_blob": "5e302ece16724a9ea59e466b60fd204a236413e4",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/python/mathutils/mathutils_Matrix.cc",
+      "upstream_git_blob": "eb1fe20ff78f25a59c2ed063c92f7ef9d93880c8",
+      "applied_tree_git_blob": "eb1fe20ff78f25a59c2ed063c92f7ef9d93880c8",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/blenlib/intern/math_vector.cc",
+      "upstream_git_blob": "8f3f4128ff873b37124b881d038d569c6b68de49",
+      "applied_tree_git_blob": "8f3f4128ff873b37124b881d038d569c6b68de49",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/blenlib/intern/math_vector_inline.cc",
+      "upstream_git_blob": "d9a940aeed73e6bf69bfb7e38a3f4c71e72289ac",
+      "applied_tree_git_blob": "d9a940aeed73e6bf69bfb7e38a3f4c71e72289ac",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/blenlib/intern/math_base_safe_inline.cc",
+      "upstream_git_blob": "1584faf1e18d2926f81e34ce683de93789eb20b7",
+      "applied_tree_git_blob": "1584faf1e18d2926f81e34ce683de93789eb20b7",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/blenlib/intern/math_matrix.cc",
+      "upstream_git_blob": "c6bc934779d4c546300f1a3f2c1f9266b761c07b",
+      "applied_tree_git_blob": "c6bc934779d4c546300f1a3f2c1f9266b761c07b",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/blenlib/intern/math_rotation_c.cc",
+      "upstream_git_blob": "508eb880c2721ce9110329eb7bd09c9a593c745b",
+      "applied_tree_git_blob": "508eb880c2721ce9110329eb7bd09c9a593c745b",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/bmesh/operators/bmo_dupe.cc",
+      "upstream_git_blob": "30741b48938a6a2b9b0a55d8834beeb754f8c437",
+      "applied_tree_git_blob": "30741b48938a6a2b9b0a55d8834beeb754f8c437",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/bmesh/operators/bmo_utils.cc",
+      "upstream_git_blob": "6acd2b0b1ee1a64b15c3e3fded8a542147cb2f76",
+      "applied_tree_git_blob": "6acd2b0b1ee1a64b15c3e3fded8a542147cb2f76",
+      "unchanged_by_canonical_patch": true
+    },
+    {
+      "path": "source/blender/python/bmesh/bmesh_py_types.cc",
+      "upstream_git_blob": "7089bb3f87e3337d2ddf978a2a0361338f7658c8",
+      "applied_tree_git_blob": "7089bb3f87e3337d2ddf978a2a0361338f7658c8",
+      "unchanged_by_canonical_patch": true
+    }
+  ],
+  "fp_flags": {
+    "source": "patches/platform_wasm.cmake:1083",
+    "declared_flags": "-pthread -fexceptions -funsigned-char -fno-strict-aliasing -ffp-contract=off",
+    "native_source": "build_files/cmake/platform/platform_unix.cmake also sets -ffp-contract=off",
+    "limit": "Declared source flags are not a recovered compile command for the released artifact. Do not assume missing FP contraction control or fast-math without inspecting a reproduced compile_commands.json."
+  },
+  "next_decisive_comparison": [
+    "Verify the official native 5.2.0 archive checksum and bpy.app.build_hash fbe6228777e7, then run the same complete unchanged two upstream suite files using --background --factory-startup --python-exit-code 1 --python FILE -- --verbose.",
+    "If native passes, preserve the artifact-versus-native failures, reproduce a source qualification build with verifiable build metadata and full compiler/linker receipts, and rerun the unchanged tests.",
+    "If native fails identically, record native baseline failures separately; this does not turn either test into a pass or permit claiming the test criterion is fulfilled.",
+    "Run separate diagnostics, without editing acceptance tests: enumerate the failing vector index, input/orthogonal coordinate bits, normalized dot and angle; record both spin branches coordinates and per-edge lengths before any assertion. Compare these with the exact native engine.",
+    "Use those diagnostics to distinguish transformed-coordinate differences from length/trig library differences; only then select an implementation fix."
+  ],
+  "free_source_build_feasibility": {
+    "status": "Source replay demonstrated; a complete source build has not been attempted.",
+    "runbook": "notes/migration-to-ornith-lab.md",
+    "toolchain": "Emsdk repository 1ab2e627b1a84567f5284d1baaa5f6be7ccf07de; Emscripten 6.0.5 / compiler 1db513782be24469589d7cb8a1f1834e9a33f271; Node 22.16.0; CMake 4.0.3; Ninja 1.13.1; Linux clang/lld 17 for native code generators.",
+    "dependencies": "Rebuild the explicit 28-entry dependency sequence in scripts/deps into lib/wasm, then native shader_tool/datatoc/msgfmt and locale catalogs. Reuse only input-keyed caches.",
+    "development_path": "The port documents OFF-mode monolithic output as a developer artifact. Such a clearly labeled source qualification build can be attempted on free CPU CI with software WebGPU tests; build duration/memory are unmeasured.",
+    "shipping_boundary": "The documented CAPTURE/APPLY shipping profile requires two fresh browser capture scenarios tied to the exact wasm.orig. Its producer rejects SwiftShader, llvmpipe and other fallback adapters and requires a headed hardware WebGPU adapter. Software CI cannot satisfy that existing shipping profile contract.",
+    "stale_documentation": "The migration runbook contains an old canonical patch digest and path count. Use patches/canonical, PREVIEW_SNAPSHOT.sha256 and the new independent replay-evidence.json instead.",
+    "no_paid_resource_requested": true
+  },
+  "sources": [
+    "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_mathutils.py",
+    "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_bmesh.py",
+    "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/source/blender/python/mathutils/mathutils_Vector.cc",
+    "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/source/blender/bmesh/operators/bmo_dupe.cc",
+    "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/source/blender/bmesh/operators/bmo_utils.cc",
+    "https://github.com/gessa-ai/blender-web/blob/0e02e84b2bc5d9b27a6dc6e275443292f781fbad/patches/platform_wasm.cmake",
+    "https://github.com/gessa-ai/blender-web/blob/0e02e84b2bc5d9b27a6dc6e275443292f781fbad/patches/blender_web.cmake",
+    "https://github.com/gessa-ai/blender-web/blob/0e02e84b2bc5d9b27a6dc6e275443292f781fbad/notes/migration-to-ornith-lab.md"
+  ]
+}

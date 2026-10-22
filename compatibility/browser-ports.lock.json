@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "product_target": {
+    "repository": "blender/blender",
+    "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "version": "5.4.0 alpha"
+  },
+  "selection": {
+    "preferred_evaluation_candidate": "gessa",
+    "status": "provisional_pending_independent_build_and_runtime_evidence",
+    "rule": "Qualify each candidate at its own native reference pin; version migration to the product target is a separate required workstream. No candidate passes transfer across revisions."
+  },
+  "candidates": [
+    {
+      "id": "gessa",
+      "repository": "gessa-ai/blender-web",
+      "commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+      "reference": {
+        "repository": "blender/blender",
+        "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+        "version": "5.2.0 release",
+        "official_linux_artifact": {
+          "url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+          "sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+          "bytes": 384441228,
+          "checksum_manifest": "https://download.blender.org/release/Blender5.2/blender-5.2.0.sha256",
+          "expected_runtime_build_hash": "fbe6228777e7",
+          "scope": "Candidate 5.2 reference only; not the 5.4 product target."
+        },
+        "independent_selected_suite_result": {
+          "status": "passed",
+          "top_level_cases": 192,
+          "top_level_passed": 192,
+          "receipt": "compatibility/evidence/native-5.2.0-2026-10-22/native-reference-results.json",
+          "binary_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+          "runtime_build_hash": "fbe6228777e7",
+          "scope": "Exact official native release, unchanged mathutils and BMesh source files, selected candidate-reference suites only."
+        }
+      },
+      "source_reconstruction": {
+        "manifest": "patches/canonical",
+        "warning": "Numbered patches/series is development history and is not the canonical replay path. Follow the digest-bound canonical snapshot and verify application to the exact native reference.",
+        "independent_replay": {
+          "status": "passed",
+          "evidence": "compatibility/evidence/gessa-canonical-replay-2026-10-22.json",
+          "patch_sha256": "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c",
+          "scope": "Exact official source checkout, patch byte verification, git apply --check and scratch application. No build or released artifact source correspondence established."
+        }
+      },
+      "toolchain": {
+        "emscripten": "6.0.5"
+      },
+      "qualification_release": {
+        "tag": "v0.1.1",
+        "source_commit": "cc22090b88da63cc617d48b218f4945175928844",
+        "asset_url": "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz",
+        "asset_sha256": "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0",
+        "asset_bytes": 108802132,
+        "scope": "Independent runtime probe of the released binary. Does not validate candidate HEAD, reproducible source build, native differential parity, hardware performance or the 5.4 product target.",
+        "observed_probe": {
+          "status": "failed",
+          "workflow_run": "https://github.com/596050/blended/actions/runs/39833848371",
+          "receipt": "https://github.com/596050/blended/blob/browser-port-evidence/4ebc34ca4c436b287d1e704cf94df7ad710a0c6e/39833848371/qualification.json",
+          "receipt_git_blob": "3ccab4eb52359d2d1125bd7663b57cdc547dd879",
+          "top_level_cases": 192,
+          "top_level_passed": 190,
+          "top_level_failed": 2,
+          "profile": "chromium-software-webgpu",
+          "observed_build_hash": "Unknown",
+          "source_correspondence_verified": false,
+          "native_reference_compared": false,
+          "product_target_passes": 0,
+          "scope": "Two unchanged upstream Python suites at the 5.2 candidate reference. Not the product-target feature denominator.",
+          "subsequent_native_comparison": {
+            "reference_receipt": "compatibility/evidence/native-5.2.0-2026-10-22/native-reference-results.json",
+            "native_top_level_passed": 192,
+            "browser_divergent_top_level_cases": [
+              "VectorTesting.test_orthogonal",
+              "TestBMeshOperators.test_spin_screw_complex"
+            ],
+            "browser_source_correspondence_verified": false
+          }
+        }
+      },
+      "upstream_suites": [
+        {
+          "path": "tests/python/bl_pyapi_mathutils.py",
+          "git_blob": "3f152413bd28842706d83957d0ff3690788c3ae7",
+          "source_url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_mathutils.py",
+          "sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+          "scope": "Entire self-contained upstream unittest module, unchanged assertions; suite execution is required and skipped tests do not count as passing."
+        },
+        {
+          "path": "tests/python/bl_pyapi_bmesh.py",
+          "git_blob": "663e8cd1b07bff9dbd8468edd346048e3179f11f",
+          "source_url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_bmesh.py",
+          "sha256": "7dd9b28372ca371420c98e11bed49aff07f4fbe008c0fc1685cb9b5bc6721329",
+          "scope": "Entire self-contained upstream unittest module, unchanged assertions; suite execution is required and skipped tests do not count as passing."
+        }
+      ],
+      "known_gaps": [
+        "Published README claims and strict milestone receipts differ; independent evidence is required.",
+        "EEVEE and several physics, media and interchange dependencies are unfinished or disabled in the published port.",
+        "Complete native test inventory, browser source build correspondence, two observed numeric test divergences and hardware validation remain qualification gates."
+      ]
+    },
+    {
+      "id": "puter",
+      "repository": "HeyPuter/blender-wasm",
+      "commit": "e73ddff77079dc96b2a7af6e7b843a7ecfbbb11a",
+      "engine": {
+        "repository": "HeyPuter/blender",
+        "commit": "fe16888d9e1e5eee3070535a221dd9ae2d671a77",
+        "version": "5.3.0 alpha"
+      },
+      "reference": {
+        "repository": "blender/blender",
+        "commit": "594182577fb6209179847d3f36b2b196cd7f9c8c",
+        "status": "merge_base_identified_port_diff_review_required"
+      },
+      "toolchain": {
+        "emscripten": "6.0.1"
+      },
+      "build_entrypoints": [
+        "Makefile",
+        "cmake/blender-wasm-cache.cmake",
+        "cmake/blender-wasm-gl-cache.cmake"
+      ],
+      "known_gaps": [
+        "Published build configurations disable WITH_TESTS and WITH_GTESTS; separate test-enabled configurations are required.",
+        "Feature availability differs between the WebGPU and OpenGL-on-WebGPU configurations.",
+        "Existing smoke/compatibility scripts must be audited for fail-on-error behavior before their outputs can be acceptance evidence.",
+        "Recent upstream CI builds failed; reproduce the toolchain issue before importing build claims."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "binary_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+  "binary_build_hash": "fbe6228777e7",
+  "official_tag_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "version": "5.2.0 LTS",
+  "archive_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+  "checksum_manifest_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0.sha256",
+  "archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+  "execution_environment": "official Linux x64 binary outside restricted process sandbox; --threads 1",
+  "results": [
+    {
+      "suite": "bl_pyapi_mathutils.py",
+      "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+      "test_git_blob_sha": "3f152413bd28842706d83957d0ff3690788c3ae7",
+      "test_sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+      "command": [
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/tests/bl_pyapi_mathutils.py",
+        "--",
+        "-v"
+      ],
+      "exit_code": 0,
+      "executed_top_level_tests": 180,
+      "status": "passed",
+      "duration_seconds": 0.743,
+      "log": "/workspace/scratch/d63596d831b2/research_tests/native_ref/evidence/bl_pyapi_mathutils.py.log"
+    },
+    {
+      "suite": "bl_pyapi_bmesh.py",
+      "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+      "test_git_blob_sha": "663e8cd1b07bff9dbd8468edd346048e3179f11f",
+      "test_sha256": "7dd9b28372ca371420c98e11bed49aff07f4fbe008c0fc1685cb9b5bc6721329",
+      "command": [
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/d63596d831b2/research_tests/native_ref/tests/bl_pyapi_bmesh.py",
+        "--",
+        "-v"
+      ],
+      "exit_code": 0,
+      "executed_top_level_tests": 12,
+      "status": "passed",
+      "duration_seconds": 0.847,
+      "log": "/workspace/scratch/d63596d831b2/research_tests/native_ref/evidence/bl_pyapi_bmesh.py.log"
+    }
+  ]
+}

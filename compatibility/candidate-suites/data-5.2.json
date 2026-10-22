@@ -1,0 +1,419 @@
+{
+  "schema": 1,
+  "cohort_id": "data-5.2",
+  "scope": "pinned Blender 5.2.0 candidate qualification only",
+  "recorded_on": "2026-10-22",
+  "suite_kind": "unittest",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": [
+      5,
+      2,
+      0
+    ]
+  },
+  "facet_ids": [
+    "scene_data",
+    "python_api"
+  ],
+  "expected_total_cases": 48,
+  "case_id_format": "ClassName.test_method; only the runtime module prefix may be normalized",
+  "denominator_policy": "Every listed suite and canonical case ID is mandatory. Missing, skipped, unsupported, conditional omission, duplicate, extra, or non-passing cases block cohort qualification. No native result substitutes for a browser result.",
+  "browser_executed": false,
+  "product_target_parity": false,
+  "full_facet_parity": false,
+  "suites": [
+    {
+      "upstream_path": "tests/python/bl_id_management.py",
+      "sha256": "20ecc8140064b231952f884223df200f40c6929aa696ac78d1096fce249d83f6",
+      "bytes": 9543,
+      "git_blob_sha1": "f7030951d6924fa3b3e6e3ed6164f925cc59d88d",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_id_management.py",
+      "expected_cases": 8,
+      "case_ids": [
+        "TestIdAddNameManagement.test_add_head_tail",
+        "TestIdAddNameManagement.test_add_invalid_number_suffixes",
+        "TestIdAddNameManagement.test_add_long_names",
+        "TestIdAddNameManagement.test_add_remove_single",
+        "TestIdAddNameManagement.test_add_use_smallest_free_number",
+        "TestIdRename.test_rename",
+        "TestIdRename.test_rename_api",
+        "TestRNAIDTypes.test_rna_idtypes"
+      ],
+      "native_discovered_ids": [
+        "__main__.TestIdAddNameManagement.test_add_head_tail",
+        "__main__.TestIdAddNameManagement.test_add_invalid_number_suffixes",
+        "__main__.TestIdAddNameManagement.test_add_long_names",
+        "__main__.TestIdAddNameManagement.test_add_remove_single",
+        "__main__.TestIdAddNameManagement.test_add_use_smallest_free_number",
+        "__main__.TestIdRename.test_rename",
+        "__main__.TestIdRename.test_rename_api",
+        "__main__.TestRNAIDTypes.test_rna_idtypes"
+      ],
+      "mandatory_case_ids": [
+        "TestIdAddNameManagement.test_add_head_tail",
+        "TestIdAddNameManagement.test_add_invalid_number_suffixes",
+        "TestIdAddNameManagement.test_add_long_names",
+        "TestIdAddNameManagement.test_add_remove_single",
+        "TestIdAddNameManagement.test_add_use_smallest_free_number",
+        "TestIdRename.test_rename",
+        "TestIdRename.test_rename_api",
+        "TestRNAIDTypes.test_rna_idtypes"
+      ],
+      "required_imports": [
+        "bpy",
+        "unittest",
+        "random"
+      ],
+      "external_fixtures": [],
+      "native_status": "passed",
+      "native_log": {
+        "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_id_management.log",
+        "sha256": "5154fe58706a1d93525331a9e695bfd5909daf4b7dfe1d60f61c1d0b944ba50f",
+        "bytes": 1031
+      },
+      "coverage_limits": [
+        "Includes original randomized name generation; no seed or assertion was changed."
+      ]
+    },
+    {
+      "upstream_path": "tests/python/bl_rna_accessors.py",
+      "sha256": "e12ad22b63a3812bf297b87e3f9d5f733343febe25743384ff7fd184bfd9e613",
+      "bytes": 3313,
+      "git_blob_sha1": "536e753aa307a5293f0dfb30f31a0d241baf362e",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_rna_accessors.py",
+      "expected_cases": 1,
+      "case_ids": [
+        "TestRnaProperties.test_paths_generation"
+      ],
+      "native_discovered_ids": [
+        "__main__.TestRnaProperties.test_paths_generation"
+      ],
+      "mandatory_case_ids": [
+        "TestRnaProperties.test_paths_generation"
+      ],
+      "required_imports": [
+        "bpy",
+        "unittest"
+      ],
+      "external_fixtures": [],
+      "native_status": "passed",
+      "native_log": {
+        "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_rna_accessors.log",
+        "sha256": "9b8be9f4346efb1ca28652cca122930ec77a84821585968e92d240902293d26e",
+        "bytes": 3854
+      },
+      "coverage_limits": [
+        "Uses the original factory-startup bpy.data traversal, not every possible RNA instance.",
+        "The upstream source explicitly excludes Depsgraph.object_instances; the omission is retained and does not establish full RNA coverage."
+      ]
+    },
+    {
+      "upstream_path": "tests/python/bl_pyapi_idprop.py",
+      "sha256": "b8da476e91431c871759eff6b7e9ea9041f7445d482d3469ba487095a9068d1e",
+      "bytes": 28502,
+      "git_blob_sha1": "62cfc1c8c3290dc0892b25fdacbd5ec3dd6c84d3",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_idprop.py",
+      "expected_cases": 39,
+      "case_ids": [
+        "TestBufferProtocol.test_copy",
+        "TestBufferProtocol.test_memview_attributes",
+        "TestBufferProtocol_Numpy.test_double",
+        "TestBufferProtocol_Numpy.test_float",
+        "TestBufferProtocol_Numpy.test_full_update",
+        "TestBufferProtocol_Numpy.test_int",
+        "TestBufferProtocol_Numpy.test_partial_update",
+        "TestIdPropertyCreation.test_bytes",
+        "TestIdPropertyCreation.test_double",
+        "TestIdPropertyCreation.test_enum",
+        "TestIdPropertyCreation.test_int",
+        "TestIdPropertyCreation.test_invalid_type",
+        "TestIdPropertyCreation.test_mapping_complex",
+        "TestIdPropertyCreation.test_mapping_simple",
+        "TestIdPropertyCreation.test_name_empty",
+        "TestIdPropertyCreation.test_name_too_long",
+        "TestIdPropertyCreation.test_rename",
+        "TestIdPropertyCreation.test_sequence_double_array",
+        "TestIdPropertyCreation.test_sequence_double_list",
+        "TestIdPropertyCreation.test_sequence_float_array",
+        "TestIdPropertyCreation.test_sequence_int_array",
+        "TestIdPropertyCreation.test_sequence_int_list",
+        "TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+        "TestIdPropertyCreation.test_sequence_mixed_type",
+        "TestIdPropertyCreation.test_sequence_other_array",
+        "TestIdPropertyCreation.test_sequence_str_list",
+        "TestIdPropertyCreation.test_unicode",
+        "TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+        "TestIdPropertyDynamicRNA.test_get_set_transform",
+        "TestIdPropertyDynamicRNA.test_static_type",
+        "TestIdPropertyGroupView.test_basic",
+        "TestIdPropertyGroupView.test_contains",
+        "TestIdPropertyGroupView.test_type",
+        "TestIdPropertyUIData.test_double",
+        "TestIdPropertyUIData.test_enum",
+        "TestIdPropertyUIData.test_int",
+        "TestIdPropertyUIData.test_unicode",
+        "TestRNAData.test_custom_properties_access",
+        "TestRNAData.test_custom_properties_none"
+      ],
+      "native_discovered_ids": [
+        "__main__.TestBufferProtocol.test_copy",
+        "__main__.TestBufferProtocol.test_memview_attributes",
+        "__main__.TestBufferProtocol_Numpy.test_double",
+        "__main__.TestBufferProtocol_Numpy.test_float",
+        "__main__.TestBufferProtocol_Numpy.test_full_update",
+        "__main__.TestBufferProtocol_Numpy.test_int",
+        "__main__.TestBufferProtocol_Numpy.test_partial_update",
+        "__main__.TestIdPropertyCreation.test_bytes",
+        "__main__.TestIdPropertyCreation.test_double",
+        "__main__.TestIdPropertyCreation.test_enum",
+        "__main__.TestIdPropertyCreation.test_int",
+        "__main__.TestIdPropertyCreation.test_invalid_type",
+        "__main__.TestIdPropertyCreation.test_mapping_complex",
+        "__main__.TestIdPropertyCreation.test_mapping_simple",
+        "__main__.TestIdPropertyCreation.test_name_empty",
+        "__main__.TestIdPropertyCreation.test_name_too_long",
+        "__main__.TestIdPropertyCreation.test_rename",
+        "__main__.TestIdPropertyCreation.test_sequence_double_array",
+        "__main__.TestIdPropertyCreation.test_sequence_double_list",
+        "__main__.TestIdPropertyCreation.test_sequence_float_array",
+        "__main__.TestIdPropertyCreation.test_sequence_int_array",
+        "__main__.TestIdPropertyCreation.test_sequence_int_list",
+        "__main__.TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+        "__main__.TestIdPropertyCreation.test_sequence_mixed_type",
+        "__main__.TestIdPropertyCreation.test_sequence_other_array",
+        "__main__.TestIdPropertyCreation.test_sequence_str_list",
+        "__main__.TestIdPropertyCreation.test_unicode",
+        "__main__.TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+        "__main__.TestIdPropertyDynamicRNA.test_get_set_transform",
+        "__main__.TestIdPropertyDynamicRNA.test_static_type",
+        "__main__.TestIdPropertyGroupView.test_basic",
+        "__main__.TestIdPropertyGroupView.test_contains",
+        "__main__.TestIdPropertyGroupView.test_type",
+        "__main__.TestIdPropertyUIData.test_double",
+        "__main__.TestIdPropertyUIData.test_enum",
+        "__main__.TestIdPropertyUIData.test_int",
+        "__main__.TestIdPropertyUIData.test_unicode",
+        "__main__.TestRNAData.test_custom_properties_access",
+        "__main__.TestRNAData.test_custom_properties_none"
+      ],
+      "mandatory_case_ids": [
+        "TestBufferProtocol.test_copy",
+        "TestBufferProtocol.test_memview_attributes",
+        "TestBufferProtocol_Numpy.test_double",
+        "TestBufferProtocol_Numpy.test_float",
+        "TestBufferProtocol_Numpy.test_full_update",
+        "TestBufferProtocol_Numpy.test_int",
+        "TestBufferProtocol_Numpy.test_partial_update",
+        "TestIdPropertyCreation.test_bytes",
+        "TestIdPropertyCreation.test_double",
+        "TestIdPropertyCreation.test_enum",
+        "TestIdPropertyCreation.test_int",
+        "TestIdPropertyCreation.test_invalid_type",
+        "TestIdPropertyCreation.test_mapping_complex",
+        "TestIdPropertyCreation.test_mapping_simple",
+        "TestIdPropertyCreation.test_name_empty",
+        "TestIdPropertyCreation.test_name_too_long",
+        "TestIdPropertyCreation.test_rename",
+        "TestIdPropertyCreation.test_sequence_double_array",
+        "TestIdPropertyCreation.test_sequence_double_list",
+        "TestIdPropertyCreation.test_sequence_float_array",
+        "TestIdPropertyCreation.test_sequence_int_array",
+        "TestIdPropertyCreation.test_sequence_int_list",
+        "TestIdPropertyCreation.test_sequence_mixed_numerical_type",
+        "TestIdPropertyCreation.test_sequence_mixed_type",
+        "TestIdPropertyCreation.test_sequence_other_array",
+        "TestIdPropertyCreation.test_sequence_str_list",
+        "TestIdPropertyCreation.test_unicode",
+        "TestIdPropertyDynamicRNA.test_dynamic_rna_basics",
+        "TestIdPropertyDynamicRNA.test_get_set_transform",
+        "TestIdPropertyDynamicRNA.test_static_type",
+        "TestIdPropertyGroupView.test_basic",
+        "TestIdPropertyGroupView.test_contains",
+        "TestIdPropertyGroupView.test_type",
+        "TestIdPropertyUIData.test_double",
+        "TestIdPropertyUIData.test_enum",
+        "TestIdPropertyUIData.test_int",
+        "TestIdPropertyUIData.test_unicode",
+        "TestRNAData.test_custom_properties_access",
+        "TestRNAData.test_custom_properties_none"
+      ],
+      "required_imports": [
+        "bpy",
+        "rna_prop_ui",
+        "idprop",
+        "io",
+        "sys",
+        "unittest",
+        "array",
+        "numpy"
+      ],
+      "external_fixtures": [],
+      "native_status": "passed",
+      "native_log": {
+        "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_pyapi_idprop.log",
+        "sha256": "bbc37402bcb984df66a88d1eaa23e80c90f79dc3e179100a93a250e3a401fc3e",
+        "bytes": 3603
+      },
+      "conditional_dependencies": [
+        {
+          "import": "numpy",
+          "native_discovery_condition": "the original module defines TestBufferProtocol_Numpy only when numpy imports successfully",
+          "mandatory_case_ids": [
+            "TestBufferProtocol_Numpy.test_double",
+            "TestBufferProtocol_Numpy.test_float",
+            "TestBufferProtocol_Numpy.test_full_update",
+            "TestBufferProtocol_Numpy.test_int",
+            "TestBufferProtocol_Numpy.test_partial_update"
+          ],
+          "policy": "All five cases remain required even if the browser module omits the class."
+        }
+      ]
+    }
+  ],
+  "native_reference": {
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "reported_build_hash": "fbe6228777e7",
+    "expected_upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "official_release_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "archive_bytes": 384441228,
+    "executable_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "official_release_checksum_verified": true,
+    "runtime_build_identity_verified": true,
+    "source_correspondence_verified": false,
+    "fresh_process_per_module": true,
+    "entrypoint": "unchanged upstream __main__, invoked by --background --factory-startup --threads 1 --python-exit-code 1 --python SOURCE -- --verbose",
+    "receipt": {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/native-cohort-receipt.json",
+      "sha256": "9a8a0547207025736dc65bf0c7933c4cc643b7b07b967f49ba1ca91e36e8f381",
+      "bytes": 22977
+    }
+  },
+  "evidence": [
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/native-cohort-receipt.json",
+      "sha256": "9a8a0547207025736dc65bf0c7933c4cc643b7b07b967f49ba1ca91e36e8f381",
+      "bytes": 22977
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/native-cohort-receipt-initial-parser.json",
+      "sha256": "04f1955c8ee0d68eb9c8a8fc3eaf4949431d7d0f36079c3d923069c05b6495f7",
+      "bytes": 16955
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/source-manifest.json",
+      "sha256": "fea2533bba1a3402a686b754675fe0f886adaf29a178d7d7f417f118aa845212",
+      "bytes": 2459
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/run_native_cohort.py",
+      "sha256": "3aec872a76a414b88d41a0309169a54d42f6aa13f8e89fc37cbf3c69fd4106cb",
+      "bytes": 8491
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_id_management.log",
+      "sha256": "5154fe58706a1d93525331a9e695bfd5909daf4b7dfe1d60f61c1d0b944ba50f",
+      "bytes": 1031
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_rna_accessors.log",
+      "sha256": "9b8be9f4346efb1ca28652cca122930ec77a84821585968e92d240902293d26e",
+      "bytes": 3854
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_pyapi_idprop.log",
+      "sha256": "bbc37402bcb984df66a88d1eaa23e80c90f79dc3e179100a93a250e3a401fc3e",
+      "bytes": 3603
+    },
+    {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_blendfile_io.log",
+      "sha256": "9add529588b5c89466def36f2418bf212556705dc28c2fc4055911b1b76c8e09",
+      "bytes": 6730
+    }
+  ],
+  "exploratory_native_only": {
+    "cohort_member": false,
+    "included_in_expected_total_cases": false,
+    "facet_id": "blend_io",
+    "upstream_path": "tests/python/bl_blendfile_io.py",
+    "source": {
+      "path": "tests/python/bl_blendfile_io.py",
+      "bytes": 8602,
+      "sha256": "8bdb127eef664597061e455cad061959d59a66ce5ed54e4f35a73d3753802700",
+      "git_blob_sha1": "e854b8785eb46e8684ff13e59746b0406e20b076",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_io.py"
+    },
+    "helper_source": {
+      "path": "tests/python/bl_blendfile_utils.py",
+      "bytes": 8640,
+      "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+      "git_blob_sha1": "b2fb5d9744cad50bccc1657e1d18699ebf6fae77",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_utils.py"
+    },
+    "declared_methods": [
+      "TestBlendFileSaveLoadBasic.test_save_load",
+      "TestBlendFileSavePartial.test_save_load",
+      "TestIdRuntimeTag.test_basics",
+      "TestIdRuntimeTag.test_linking"
+    ],
+    "declared_method_count": 4,
+    "native_status": "module_completed",
+    "native_returncode": 0,
+    "per_case_outcomes": null,
+    "external_fixtures": [],
+    "entrypoint": "unchanged upstream main with --output-dir WRITABLE_DIRECTORY",
+    "adapter_needed": [
+      "Place the unchanged helper on the module import path and preserve a meaningful __file__.",
+      "Provide a writable virtual filesystem directory and pass the original --output-dir argument.",
+      "Observe the custom TestHelper.run_all_tests method outcomes; the standard unittest loader does not preserve its args constructor contract."
+    ],
+    "native_log": {
+      "path": "compatibility/evidence/data-native-5.2-2026-10-22/bl_blendfile_io.log",
+      "sha256": "9add529588b5c89466def36f2418bf212556705dc28c2fc4055911b1b76c8e09",
+      "bytes": 6730
+    },
+    "generated_outputs": [
+      {
+        "path": "generated-blendfiles/blendfileTestIdRuntimeTag.blend",
+        "bytes": 494858,
+        "sha256": "ab09d1dfe46f9a3789c9df3a00f928f027f285e80b279e429d54576dcfb0e5f0"
+      },
+      {
+        "path": "generated-blendfiles/blendfileTestIdRuntimeTag.blend1",
+        "bytes": 485279,
+        "sha256": "601ea1e52128bacb61c48aa1e1c5ffc98749aac8394f1950ae6009feaf5cedab"
+      },
+      {
+        "path": "generated-blendfiles/blendfile_io.blend",
+        "bytes": 422069,
+        "sha256": "0bf8e89355e563c91a2e7dc2359a0c26454fc95dcc9c7c707e5dc021696c12d8"
+      },
+      {
+        "path": "generated-blendfiles/blendfile_io.blend1",
+        "bytes": 422069,
+        "sha256": "4d40444e8d807c70ac277810ff05099fdcee09812e7486dbe2fd9a9f4ae263e5"
+      },
+      {
+        "path": "generated-blendfiles/blendfile_io_partial.blend",
+        "bytes": 163875,
+        "sha256": "c48186248f4fbddfcd7fbd060d76ac507bb477e0e0ebefd04f363e7d72f0f4c4"
+      },
+      {
+        "path": "generated-blendfiles/blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+        "bytes": 525857,
+        "sha256": "b4e27518b5bb38c52a4f073ce2a8fad94f81df3a476658080e4ee71bdfcf4470"
+      }
+    ],
+    "generated_output_storage": "Original generated .blend/.blend1 files remain in research_tests/next_facet_cohort; this repository receipt records exact hashes and sizes without adding them to the qualifying denominator.",
+    "coverage_limits": [
+      "No browser run has occurred.",
+      "This does not cover OPFS persistence, browser reload recovery, user file pickers, downloads, versioning, or full library-linking coverage."
+    ]
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "schema": 1,
+  "cohort_id": "blendio-5.2",
+  "suite_kind": "original-script",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": [
+      5,
+      2,
+      0
+    ]
+  },
+  "facet_ids": [
+    "blend_io"
+  ],
+  "expected_total_cases": 4,
+  "case_id_format": "ClassName.test_method; the fixed original custom-driver method IDs",
+  "denominator_policy": "All four listed method IDs are mandatory. Each requires observed setup, body, and teardown normal returns under the original driver. Missing, duplicate, unexpected, unobserved, or exceptional cases prevent qualification; module exit alone cannot establish a case outcome.",
+  "browser_executed": false,
+  "product_target_parity": false,
+  "full_facet_parity": false,
+  "suites": [
+    {
+      "upstream_path": "tests/python/bl_blendfile_io.py",
+      "sha256": "8bdb127eef664597061e455cad061959d59a66ce5ed54e4f35a73d3753802700",
+      "bytes": 8602,
+      "git_blob_sha1": "e854b8785eb46e8684ff13e59746b0406e20b076",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_io.py",
+      "expected_cases": 4,
+      "case_ids": [
+        "TestBlendFileSaveLoadBasic.test_save_load",
+        "TestBlendFileSavePartial.test_save_load",
+        "TestIdRuntimeTag.test_basics",
+        "TestIdRuntimeTag.test_linking"
+      ],
+      "mandatory_case_ids": [
+        "TestBlendFileSaveLoadBasic.test_save_load",
+        "TestBlendFileSavePartial.test_save_load",
+        "TestIdRuntimeTag.test_basics",
+        "TestIdRuntimeTag.test_linking"
+      ],
+      "support_files": [
+        {
+          "upstream_path": "tests/python/bl_blendfile_utils.py",
+          "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+          "bytes": 8640,
+          "git_blob_sha1": "b2fb5d9744cad50bccc1657e1d18699ebf6fae77",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_utils.py"
+        }
+      ],
+      "required_imports": [
+        "bpy",
+        "os",
+        "sys",
+        "argparse",
+        "bl_blendfile_utils",
+        "unittest",
+        "pprint"
+      ],
+      "external_fixtures": [],
+      "runtime_dependencies": [
+        "factory startup resources",
+        "fresh writable filesystem directory",
+        "CPython sys.monitoring for per-method observation"
+      ],
+      "driver": {
+        "classes": [
+          "TestBlendFileSaveLoadBasic",
+          "TestBlendFileSavePartial",
+          "TestIdRuntimeTag"
+        ],
+        "helper": "bl_blendfile_utils.TestHelper.run_all_tests",
+        "dispatch": "Original TESTS order; original dir(self) selection of callable test_* members.",
+        "lifecycle": "Original setUp, method call, and tearDown in finally; an exception aborts the remaining original driver.",
+        "unittest_loader_compatible": false,
+        "upstream_assertions_modified": false
+      },
+      "native_status": "passed",
+      "native_cases": [
+        {
+          "id": "TestBlendFileSaveLoadBasic.test_save_load",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendFileSavePartial.test_save_load",
+          "status": "passed"
+        },
+        {
+          "id": "TestIdRuntimeTag.test_basics",
+          "status": "passed"
+        },
+        {
+          "id": "TestIdRuntimeTag.test_linking",
+          "status": "passed"
+        }
+      ],
+      "native_proof": {
+        "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/native-io-proof.json",
+        "bytes": 13826,
+        "sha256": "c921d8c32256d3999021b772af8e1e241b8eaee20605c5e173933bea659cea15"
+      },
+      "coverage_limits": [
+        "Four custom-driver methods only; unrelated helper methods requiring external fixture images are not invoked.",
+        "Final filenames include deliberate overwrites by the two TestIdRuntimeTag methods.",
+        "Generated hashes are run-specific integrity evidence, not cross-platform byte-equality references."
+      ]
+    }
+  ],
+  "original_invocation": {
+    "argv": [
+      "blender",
+      "--background",
+      "--factory-startup",
+      "--threads",
+      "1",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "tests/python/bl_blendfile_io.py",
+      "--",
+      "--output-dir",
+      "WRITABLE_OUTPUT_DIRECTORY"
+    ],
+    "entrypoint": "Unchanged original __main__ -> main -> TESTS constructors -> TestHelper.run_all_tests.",
+    "observed_invocation": [
+      "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+      "--background",
+      "--factory-startup",
+      "--threads",
+      "1",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/observe_blendfile_io.py",
+      "--",
+      "--source-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/native-proof-final/sources",
+      "--output-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/native-proof-final/generated",
+      "--report",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/native-proof-final/execution.json"
+    ],
+    "observer": "CPython sys.monitoring PY_START, PY_RETURN, PY_UNWIND around runpy.run_path(original_source, run_name=\"__main__\"); no monkeypatching."
+  },
+  "native_reference": {
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "reported_build_hash": "fbe6228777e7",
+    "expected_upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "official_release_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "official_checksum_manifest_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0.sha256",
+    "archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "archive_bytes": 384441228,
+    "executable_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "official_release_checksum_verified": true,
+    "runtime_build_identity_verified": true,
+    "source_correspondence_verified": false,
+    "python_version": "3.13.13 (main, Apr 25 2025, 12:39:20) [GCC 14.2.1 20250110 (Red Hat 14.2.1-11)]",
+    "process_returncode": 0,
+    "expected_methods": 4,
+    "observed_passed_methods": 4,
+    "receipt": {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/native-io-proof.json",
+      "bytes": 13826,
+      "sha256": "c921d8c32256d3999021b772af8e1e241b8eaee20605c5e173933bea659cea15"
+    }
+  },
+  "generated_outputs": [
+    {
+      "path": "blendfileTestIdRuntimeTag.blend",
+      "bytes": 494858,
+      "sha256": "a98e9d343c439f0d15e75705af7f64eccb4213c577e807cc6ef905c89b31879c"
+    },
+    {
+      "path": "blendfileTestIdRuntimeTag.blend1",
+      "bytes": 485279,
+      "sha256": "250213536544163a7c0c127d431997365e59013545cef685fb4bdf78a0b045be"
+    },
+    {
+      "path": "blendfile_io.blend",
+      "bytes": 422069,
+      "sha256": "44f246a8b5fd5eba6ee9564cff14074c20048be066fe2ab3f3be6876412dc89d"
+    },
+    {
+      "path": "blendfile_io.blend1",
+      "bytes": 422069,
+      "sha256": "e86180b4a0b043d38d678ea0d87be1652411b2616e989f7af77d0650d25875a5"
+    },
+    {
+      "path": "blendfile_io_partial.blend",
+      "bytes": 163875,
+      "sha256": "f69bf721a95974e51551ba8bd09ffdbd29051e1981265e2e3d2eab3b1c949862"
+    },
+    {
+      "path": "blendlib_runtimetag_basicTestIdRuntimeTag.blend",
+      "bytes": 525857,
+      "sha256": "6fa44a0dcbfb566561597c5d0587c8e95f7f95a645669fe5b5bf9359df3cc191"
+    }
+  ],
+  "generated_output_storage": "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/io_custom_driver/native-proof-final/generated",
+  "generated_output_policy": "Inventory records observed native files only. Native hashes do not become expected browser hashes. Preserve per-method overwrites and transfer browser outputs against their own in-engine byte/hash inventory.",
+  "browser_adapter_requirements": [
+    "Place both hash-verified sources together under a unique virtual directory and preserve __file__.",
+    "Use a fresh writable output directory and pass the original --output-dir argument.",
+    "Run original __main__ and helper driver; do not substitute unittest discovery.",
+    "Record all four fixed case lifecycles and reject missing or exceptional events.",
+    "Retrieve each reported output after completion and verify bounded confined paths, bytes and SHA-256.",
+    "Keep library-relative layout; native reload/exchange is a separate audit.",
+    "Do not equate virtual-filesystem success with durable browser persistence or user file workflows."
+  ],
+  "evidence": [
+    {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/native-io-proof.json",
+      "bytes": 13826,
+      "sha256": "c921d8c32256d3999021b772af8e1e241b8eaee20605c5e173933bea659cea15"
+    },
+    {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/execution.json",
+      "bytes": 12676,
+      "sha256": "fa35f2481a3b99424565d1bd806f2f75c6a7c0ea9be2babf410c13ef82c194a1"
+    },
+    {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/native-io.log",
+      "bytes": 15952,
+      "sha256": "4f9e244b50711b4bf8582bc320349c21821a290f0ab8fc623d37c5d1b3f0a3fb"
+    },
+    {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/observe_blendfile_io.py",
+      "bytes": 10892,
+      "sha256": "f09784117e0c41dcea0d7fff4c49a8855840023e1a1de213143f2a56517d90f0"
+    },
+    {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/run_native_io_proof.py",
+      "bytes": 5728,
+      "sha256": "c370ba5a7deb2b27b340044cf9ced6c483895b04b9fcf17b84c3e0b929364a91"
+    },
+    {
+      "path": "compatibility/evidence/blendio-native-5.2-2026-10-22/README.md",
+      "bytes": 4050,
+      "sha256": "714c743618a1e90affd2068df6c9c705c8741c9dcdc55c4da9d84f07339ccb5c"
+    }
+  ]
+}
