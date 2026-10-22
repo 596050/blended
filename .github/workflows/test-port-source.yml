@@ -1,0 +1,31 @@
+name: Collect pinned test-port audit sources
+on:
+  push:
+    branches: [compat/complete-test-port]
+    paths: [.github/workflows/test-port-source.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch pinned references and retain exact source and test metadata
+        run: |
+          set -euo pipefail
+          mkdir -p audit-sources
+          git archive --format=tar.gz HEAD > audit-sources/blended.tar.gz
+          python3 tools/fetch_upstreams.py blender cycles
+          python3 tools/inventory.py --root .upstream/blender --name blender --commit 94363991e7dcf39e2d70614aa002ab6f67764a5d --output audit-sources/blender-inventory.json
+          python3 tools/inventory.py --root .upstream/cycles --name cycles --commit a456b761034dda42c32eef9f4aae0fa5a5c9f604 --output audit-sources/cycles-inventory.json
+          tar -czf audit-sources/blender-tests.tar.gz -C .upstream/blender source/blender/blenlib tests build_files/cmake CMakeLists.txt intern/cycles/test intern/guardedalloc
+          tar -czf audit-sources/cycles-tests.tar.gz -C .upstream/cycles test util
+      - uses: actions/upload-artifact@v4
+        with:
+          name: test-port-audit-sources
+          path: audit-sources/
+          retention-days: 3
