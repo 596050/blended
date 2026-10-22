@@ -10,6 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,6 +28,7 @@ jobs:
           mkdir -p evidence/structures
           set -o pipefail
           cargo test --locked --workspace --all-targets 2>&1 | tee evidence/structures/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -36,3 +39,15 @@ jobs:
             crates/blended-core/src/structure_cases.rs
             crates/blended-core/tests/upstream_structures.rs
           retention-days: 3
+      - name: Retain generated translations only after native execution succeeds
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          gh auth setup-git
+          git add crates/blended-core/src/structure_cases.rs crates/blended-core/tests/upstream_structures.rs compatibility/structure-ports.json tests/upstream/blender/BLI_index_range_test.cc tests/upstream/blender/BLI_binary_search_test.cc tests/upstream/blender/BLI_bounds_test.cc
+          if ! git diff --cached --quiet; then
+            git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Retain 54 native-tested Blender structure ports and source snapshots'
+            git push origin "HEAD:refs/heads/$BRANCH"
+          fi
