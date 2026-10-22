@@ -95,6 +95,12 @@ class Feature(unittest.TestCase):
         self.assertEqual(blend_io["suite_kind"], "original-script")
         self.assertEqual(blend_io["suites"][0]["support_files"][0]["upstream_path"],
                          "tests/python/bl_blendfile_utils.py")
+        library = probe.load_suite_catalog("liblink52")
+        self.assertEqual(library["expected_cases"], 17)
+        self.assertEqual(len(library["suites"][0]["case_ids"]), 17)
+        self.assertEqual(len(library["suites"][0]["fixture_files"]), 3)
+        self.assertEqual(sum(row["bytes"] for row in library["suites"][0]["fixture_files"]), 213000)
+        self.assertEqual(library["suites"][0]["fixture_directory_argument"], "--src-test-dir")
         with self.assertRaises(probe.Blocked):
             probe.load_suite_catalog("unknown")
 

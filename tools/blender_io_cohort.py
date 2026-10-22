@@ -33,6 +33,8 @@ def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_outpu
     event_numbers = []
     old_argv, old_path = sys.argv[:], sys.path[:]
     source_records = []
+    fixture_records = []
+    fixture_dir = None
     root = source_dir = output_dir = main_path = helper_path = None
     row = None
     active = {}
@@ -175,6 +177,44 @@ def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_outpu
                                    "path": str(path), "bytes": len(data), "sha256": metadata["sha256"]})
         observation["source_files"] = source_records
         main_path, helper_path = source_dir / main_name, source_dir / "bl_blendfile_utils.py"
+        expected_fixtures = row.get("fixture_files", [])
+        provided_fixtures = row.get("_fixture_payloads", [])
+        if ([{key: value for key, value in fixture.items() if key != "source_b64"}
+             for fixture in provided_fixtures] != expected_fixtures or len(expected_fixtures) > 32):
+            raise RuntimeError("original I/O fixture inventory changed in transport")
+        if expected_fixtures:
+            if row.get("fixture_directory_argument") != "--src-test-dir":
+                raise RuntimeError("original I/O fixture input argument is not the pinned source-directory argument")
+            fixture_dir = root / "fixtures"
+            fixture_dir.mkdir()
+            names, total = set(), 0
+            for fixture in provided_fixtures:
+                relative = fixture.get("relative_path")
+                if (not isinstance(relative, str) or not relative or "\\" in relative or
+                        PurePosixPath(relative).is_absolute() or
+                        any(part in ("", ".", "..") for part in relative.split("/")) or
+                        fixture.get("upstream_path") != "tests/files/" + relative or relative in names):
+                    raise RuntimeError("original I/O fixture path is not confined or unique")
+                names.add(relative)
+                size = fixture.get("bytes")
+                if type(size) is not int or not 0 < size <= 32 * 1024 * 1024:
+                    raise RuntimeError("original I/O fixture exceeds its file byte bound")
+                total += size
+                if total > 128 * 1024 * 1024:
+                    raise RuntimeError("original I/O fixtures exceed their total byte bound")
+                encoded = fixture.get("source_b64")
+                if not isinstance(encoded, str) or len(encoded) != 4 * ((size + 2) // 3):
+                    raise RuntimeError("original I/O fixture payload size changed in transport")
+                data = base64.b64decode(encoded, validate=True)
+                if len(data) != size or hashlib.sha256(data).hexdigest() != fixture.get("sha256"):
+                    raise RuntimeError("original I/O fixture bytes changed in transport")
+                path = fixture_dir / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                with path.open("xb") as stream:
+                    stream.write(data)
+                fixture_records.append({"relative_path": relative, "upstream_path": fixture["upstream_path"],
+                                        "path": str(path), "bytes": size, "sha256": fixture["sha256"]})
+        observation["fixture_files"] = fixture_records
         monitoring = getattr(sys, "monitoring", None)
         if monitoring is None:
             raise RuntimeError("original I/O per-case observation requires CPython sys.monitoring")
@@ -190,6 +230,8 @@ def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_outpu
             monitoring.register_callback(tool_id, event, callback)
         monitoring.set_events(tool_id, sum(event_numbers))
         sys.argv = [str(main_path), "--", "--output-dir", str(output_dir)]
+        if fixture_dir is not None:
+            sys.argv += [row["fixture_directory_argument"], str(fixture_dir)]
         runpy.run_path(str(main_path), run_name="__main__")
         observation["module_returned_normally"] = True
     except BaseException:
@@ -250,6 +292,14 @@ def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_outpu
         observation["helper_import_verified"] = helper_path is not None and imported_path == str(helper_path)
         if not observation["source_bytes_preserved"] or not observation["helper_import_verified"]:
             observation["observer_errors"].append("unchanged source bytes or exact helper import could not be verified")
+        observation["fixture_bytes_preserved"] = False
+        fixture_inventory_complete = (
+            len(fixture_records) == len(row.get("fixture_files", [])) if row is not None else not fixture_records)
+        observation["fixture_bytes_preserved"] = fixture_inventory_complete and all(
+            not Path(value["path"]).is_symlink() and Path(value["path"]).stat().st_size == value["bytes"] and
+            digest(Path(value["path"])) == value["sha256"] for value in fixture_records)
+        if not observation["fixture_bytes_preserved"]:
+            observation["observer_errors"].append("original I/O fixture bytes changed or are missing after execution")
         report["generated_files"]["files"] = inventory()
     except BaseException:
         observation["observer_errors"].append(traceback.format_exc())

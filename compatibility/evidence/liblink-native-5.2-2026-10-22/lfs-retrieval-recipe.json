@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "status": "tested_successfully",
+  "request": {
+    "method": "POST",
+    "url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch",
+    "headers": {
+      "Accept": "application/vnd.git-lfs+json",
+      "Content-Type": "application/vnd.git-lfs+json"
+    },
+    "body": {
+      "operation": "download",
+      "transfers": [
+        "basic"
+      ],
+      "objects": [
+        {
+          "oid": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+          "size": 5165
+        },
+        {
+          "oid": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+          "size": 103099
+        },
+        {
+          "oid": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+          "size": 104736
+        }
+      ]
+    }
+  },
+  "response_handling": [
+    "Match each returned object by its exact requested oid and size; reject errors, unknown objects, missing objects, or duplicates.",
+    "For each object, GET actions.download.href with actions.download.header if supplied. Do not assume that the GitHub mirror hosts the object.",
+    "Read no more than the pinned size plus one byte; require the exact pinned size and SHA-256 before writing the fixture.",
+    "Write the bytes under the fixed relative_path inside --src-test-dir; preserve directory names and require path confinement.",
+    "Verify the same object bytes inside the native/browser filesystem before the original suite begins."
+  ],
+  "object_count": 3,
+  "total_object_bytes": 213000,
+  "observed_input_manifest": {
+    "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/input-manifest.json",
+    "bytes": 7760,
+    "sha256": "8e4620e3049c8de411e289f8169a4685ed0b1997fc4cd551f9374002fee21d9e"
+  },
+  "observed_preparation_script": {
+    "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/prepare_inputs_observed.py",
+    "bytes": 5725,
+    "sha256": "4bad186eb3ade473e8f7783994b348a1c3138fedd972a1db721d5583ea2492a8"
+  },
+  "unsuccessful_alternative": "https://media.githubusercontent.com/media/blender/blender/<pin>/<path> returned HTTP 404; the official Blender LFS batch endpoint succeeded.",
+  "fixture_files": [
+    {
+      "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+      "relative_path": "imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+      "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+      "bytes": 5165,
+      "git_blob_sha1": "00cea6783d2699568ec60bf51f8588b1c9d15214",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+      "lfs_pointer": {
+        "bytes": 129,
+        "sha256": "a6ddaf06ccf65cb5be7000da80c592e9b42852266f9c2ef2864ead3d45c4fac6",
+        "text": "version https://git-lfs.github.com/spec/v1\noid sha256:bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279\nsize 5165\n",
+        "git_blob_sha1": "00cea6783d2699568ec60bf51f8588b1c9d15214"
+      },
+      "lfs_object": {
+        "oid": "sha256:bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+        "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+        "bytes": 5165
+      },
+      "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+    },
+    {
+      "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend",
+      "relative_path": "libraries_and_linking/libraries/collection_assets.blend",
+      "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+      "bytes": 103099,
+      "git_blob_sha1": "42dc8341f9934c7f0d511bc865147ccd185d12f4",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/libraries_and_linking/libraries/collection_assets.blend",
+      "lfs_pointer": {
+        "bytes": 131,
+        "sha256": "5e8a3071f2b1d5364392e24fa30de1e67c4f242553a3056127c4dff654b494c1",
+        "text": "version https://git-lfs.github.com/spec/v1\noid sha256:4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152\nsize 103099\n",
+        "git_blob_sha1": "42dc8341f9934c7f0d511bc865147ccd185d12f4"
+      },
+      "lfs_object": {
+        "oid": "sha256:4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+        "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+        "bytes": 103099
+      },
+      "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+    },
+    {
+      "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend",
+      "relative_path": "libraries_and_linking/libraries/animated_assets.blend",
+      "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+      "bytes": 104736,
+      "git_blob_sha1": "143f51a240c176b028f60e167a79aa92407f0f1c",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/libraries_and_linking/libraries/animated_assets.blend",
+      "lfs_pointer": {
+        "bytes": 131,
+        "sha256": "75e2018655d5ec439cf97ce952403efe610f95f818d83dc97b8e9cf43d790a92",
+        "text": "version https://git-lfs.github.com/spec/v1\noid sha256:d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e\nsize 104736\n",
+        "git_blob_sha1": "143f51a240c176b028f60e167a79aa92407f0f1c"
+      },
+      "lfs_object": {
+        "oid": "sha256:d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+        "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+        "bytes": 104736
+      },
+      "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+    }
+  ]
+}

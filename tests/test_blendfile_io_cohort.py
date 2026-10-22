@@ -51,6 +51,7 @@ TESTS = (OriginalCase,)
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--src-test-dir")
     args = parser.parse_args()
     Path(args.output_dir, "original-entrypoint.txt").write_text(__name__)
     for Test in TESTS:
@@ -65,7 +66,7 @@ if __name__ == "__main__":
 @unittest.skipUnless(hasattr(sys, "monitoring"), "requires CPython 3.12+ monitoring")
 class BlendFileIOAdapterTests(unittest.TestCase):
     def execute(self, methods, case_names=("test_a", "test_b"), build_hash=shared.UPSTREAM_SHA,
-                corrupt_helper=False, background=True, transfer_ack=None):
+                corrupt_helper=False, background=True, transfer_ack=None, fixtures=None, corrupt_fixture=False):
         source = original_script(methods)
         support = {"upstream_path": "tests/python/bl_blendfile_utils.py",
                    "sha256": hashlib.sha256(HELPER).hexdigest(), "bytes": len(HELPER)}
@@ -77,6 +78,16 @@ class BlendFileIOAdapterTests(unittest.TestCase):
                "case_ids": ["OriginalCase." + value for value in case_names],
                "expected_cases": len(case_names), "support_files": [support], "required_background": True,
                "_support_payloads": [payload_support]}
+        if fixtures:
+            row["fixture_files"] = []
+            row["_fixture_payloads"] = []
+            row["fixture_directory_argument"] = "--src-test-dir"
+            for name, data in fixtures.items():
+                metadata = {"relative_path": name, "upstream_path": "tests/files/" + name,
+                            "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+                row["fixture_files"].append(metadata)
+                row["_fixture_payloads"].append({**metadata,
+                    "source_b64": base64.b64encode(data + (b"changed" if corrupt_fixture else b"")).decode()})
         fake_bpy = types.SimpleNamespace(app=types.SimpleNamespace(
             version=(5, 2, 0), version_string="5.2.0", build_hash=build_hash.encode(),
             build_branch=b"synthetic", binary_path="/synthetic", background=background))
@@ -162,6 +173,65 @@ class BlendFileIOAdapterTests(unittest.TestCase):
         for bad in ("changed", "failed"):
             with self.subTest(bad=bad), self.assertRaisesRegex(RuntimeError, "output transfer"):
                 self.execute(methods, ("test_a",), transfer_ack=bad)
+
+    def test_nested_fixture_bytes_and_original_input_argument_are_preserved(self):
+        result, row, _ = self.execute('''
+            def test_a(self):
+                self.assertEqual(Path(self.args.src_test_dir, "assets/nested/image.jpg").read_bytes(), b"pinned bytes")
+        ''', ("test_a",), fixtures={"assets/nested/image.jpg": b"pinned bytes"})
+        self.assertIsNone(result["exception"])
+        self.assertTrue(result["io_observation"]["fixture_bytes_preserved"])
+        self.assertEqual(result["io_observation"]["fixture_files"][0]["relative_path"], "assets/nested/image.jpg")
+        self.assertEqual(shared.summarize_execution(result, [row])["status"], "passed")
+
+    def test_changed_fixture_transport_or_post_run_mutation_cannot_qualify(self):
+        result, _, files = self.execute("def test_a(self):\n    self.fail('changed fixture must not execute')\n",
+                                       ("test_a",), fixtures={"asset.blend": b"pinned"}, corrupt_fixture=True)
+        self.assertIn("fixture", result["exception"])
+        self.assertFalse(files)
+        result, row, _ = self.execute('''
+            def test_a(self):
+                Path(self.args.src_test_dir, "asset.blend").write_bytes(b"modified")
+        ''', ("test_a",), fixtures={"asset.blend": b"pinned"})
+        self.assertEqual(result["suites"][0]["outcomes"][0]["status"], "passed")
+        self.assertFalse(result["io_observation"]["fixture_bytes_preserved"])
+        self.assertEqual(shared.summarize_execution(result, [row])["status"], "failed")
+
+    def test_missing_or_changed_fixture_receipt_cannot_qualify_passing_methods(self):
+        result, row, _ = self.execute("def test_a(self):\n    self.assertTrue(True)\n", ("test_a",),
+                                      fixtures={"assets/image.jpg": b"pinned", "assets/library.blend": b"library"})
+        self.assertEqual(shared.summarize_execution(result, [row])["status"], "passed")
+        for change in ("missing_observation", "missing_preserved", "false_preserved", "missing_files",
+                       "omitted", "duplicate", "changed_path", "changed_upstream", "changed_bytes", "changed_hash"):
+            with self.subTest(change=change):
+                altered = json.loads(json.dumps(result))
+                observation = altered["io_observation"]
+                if change == "missing_observation":
+                    del altered["io_observation"]
+                elif change == "missing_preserved":
+                    del observation["fixture_bytes_preserved"]
+                elif change == "false_preserved":
+                    observation["fixture_bytes_preserved"] = False
+                elif change == "missing_files":
+                    del observation["fixture_files"]
+                elif change == "omitted":
+                    observation["fixture_files"].pop()
+                elif change == "duplicate":
+                    observation["fixture_files"][1] = observation["fixture_files"][0]
+                else:
+                    field, value = {
+                        "changed_path": ("relative_path", "assets/other.jpg"),
+                        "changed_upstream": ("upstream_path", "tests/files/other.jpg"),
+                        "changed_bytes": ("bytes", 99),
+                        "changed_hash": ("sha256", "0" * 64),
+                    }[change]
+                    observation["fixture_files"][0][field] = value
+                self.assertIsNone(altered["exception"])
+                assessment = shared.summarize_execution(altered, [row])
+                self.assertEqual(assessment["summary"]["totals"]["passed"], 1)
+                self.assertEqual(assessment["status"], "failed")
+                self.assertFalse(assessment["selected_suites_passed"])
+                self.assertIn("fixture_inputs", [value["scope"] for value in assessment["blockers"]])
 
     def test_original_body_assertion_aborts_later_methods_and_runs_teardown(self):
         result, row, files = self.execute('''

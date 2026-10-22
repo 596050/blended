@@ -21,12 +21,12 @@ import traceback
 try:
     from .probe_browser_port import (
         Blocked, SUITES, SUITE_BYTES, UPSTREAM_SHA, digest, download, now,
-        python_payload, summarize_execution, load_suite_catalog, prepare_suites, suite_metadata, decode_qualification_event,
+        python_payload, summarize_execution, load_suite_catalog, prepare_suites, suite_metadata, decode_qualification_event, preserve_suite_fixtures,
     )
 except ImportError:
     from probe_browser_port import (
         Blocked, SUITES, SUITE_BYTES, UPSTREAM_SHA, digest, download, now,
-        python_payload, summarize_execution, load_suite_catalog, prepare_suites, suite_metadata, decode_qualification_event,
+        python_payload, summarize_execution, load_suite_catalog, prepare_suites, suite_metadata, decode_qualification_event, preserve_suite_fixtures,
     )
 
 
@@ -57,8 +57,8 @@ def extract_reference(archive, directory):
     return {"members": len(members), "unpacked_bytes": total, "filter": "data"}
 
 
-def load_suites(local_paths, work, cohort="numeric"):
-    return prepare_suites(local_paths, work, load_suite_catalog(cohort), require_complete=True)
+def load_suites(local_paths, work, cohort="numeric", fixture_root=None):
+    return prepare_suites(local_paths, work, load_suite_catalog(cohort), require_complete=True, fixture_root=fixture_root)
 
 
 def probe(args, report):
@@ -83,8 +83,9 @@ def probe(args, report):
         catalog = load_suite_catalog(cohort)
         report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
         report["cohort"]["complete_cohort_requested"] = True
-        suites = load_suites(args.suite, work, cohort)
+        suites = load_suites(args.suite, work, cohort, fixture_root=getattr(args, "fixture_root", None))
         report["suite_sources"] = [suite_metadata(row) for row, _ in suites]
+        report["input_fixture_transfer"] = preserve_suite_fixtures(suites, output / "fixtures")
         unpacked = work / "unpacked"
         unpacked.mkdir()
         report["extraction"] = extract_reference(archive, unpacked)
@@ -100,7 +101,7 @@ def probe(args, report):
         runner = work / "native-runner.py"
         runner.write_text(python_payload(suites, marker, io_root), encoding="utf-8")
         report["runner_sha256"] = digest(runner)
-        flags = ["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"]
+        flags = ["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"] + catalog.get("extra_blender_args", [])
         report["process"] = {"flags": flags, "timeout_seconds": args.timeout, "returncode": None}
         with log_path.open("w", encoding="utf-8") as log:
             try:
@@ -159,7 +160,9 @@ def main(argv=None):
     parser.add_argument("--asset", type=Path, help="Local exact official Blender 5.2.0 Linux x64 tar.xz")
     parser.add_argument("--suite", action="append", type=Path,
                         help="Local exact pinned suite file; supply all files in the selected cohort")
-    parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52"), default="numeric",
+    parser.add_argument("--fixture-root", type=Path,
+                        help="Local exact cohort fixtures under their original tests/files relative paths")
+    parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52", "liblink52"), default="numeric",
                         help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
     parser.add_argument("--output", type=Path, required=True, help="Directory for native report and native log")
     parser.add_argument("--timeout", type=int, default=240, help="Native execution bound in seconds (1 to 600)")

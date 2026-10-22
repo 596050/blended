@@ -44,6 +44,8 @@ DATA_SUITE_MANIFEST = Path(__file__).resolve().parents[1] / "compatibility/candi
 DATA_SUITE_MANIFEST_SHA256 = "3a1d1a942978461f655ab127faad4bc0c2c3b32210029af9117f5ded03e55085"
 IO_SUITE_MANIFEST = Path(__file__).resolve().parents[1] / "compatibility/candidate-suites/blendio-5.2.json"
 IO_SUITE_MANIFEST_SHA256 = "2cccdb42ff82628b34abb6838ce4a77758bfd442d17328f301b1ef1b80fbf497"
+LIBLINK_SUITE_MANIFEST = Path(__file__).resolve().parents[1] / "compatibility/candidate-suites/liblink-5.2.json"
+LIBLINK_SUITE_MANIFEST_SHA256 = "027da2aee878fbd44f7cc66c21b084241646aae3da4eab5d9bad2ad466f11537"
 
 
 class Blocked(RuntimeError):
@@ -73,6 +75,7 @@ def load_suite_catalog(cohort="numeric"):
     specifications = {
         "data52": (DATA_SUITE_MANIFEST, DATA_SUITE_MANIFEST_SHA256, "data-5.2", "unittest", 3, 48),
         "blendio52": (IO_SUITE_MANIFEST, IO_SUITE_MANIFEST_SHA256, "blendio-5.2", "original-script", 1, 4),
+        "liblink52": (LIBLINK_SUITE_MANIFEST, LIBLINK_SUITE_MANIFEST_SHA256, "liblink-5.2", "original-script", 1, 17),
     }
     if cohort not in specifications:
         raise Blocked("unknown candidate suite cohort: " + str(cohort))
@@ -108,12 +111,19 @@ def load_suite_catalog(cohort="numeric"):
             # tests/CMakeLists.txt supplies --background to add_blender_test.
             # Windowed file loading deliberately clears CTX_wm_window.
             entry["required_background"] = True
+            if cohort == "liblink52":
+                fixtures = row.get("fixture_files", [])
+                if len(fixtures) != 3 or sum(value.get("bytes", 0) for value in fixtures) != 213000:
+                    raise Blocked("library cohort lost its fixed fixture inventory")
+                entry["fixture_files"] = fixtures
+                entry["fixture_directory_argument"] = "--src-test-dir"
         selected.append(entry)
     return {"id": cohort_id, "manifest_sha256": manifest_digest,
-            "expected_cases": count, "suite_kind": suite_kind, "suites": selected}
+            "expected_cases": count, "suite_kind": suite_kind, "suites": selected,
+            "extra_blender_args": ["--disable-autoexec"] if cohort == "liblink52" else []}
 
 
-def prepare_suites(local_paths, work, catalog, require_complete=False):
+def prepare_suites(local_paths, work, catalog, require_complete=False, fixture_root=None):
     all_sources = [source for row in catalog["suites"] for source in (row, *row.get("support_files", []))]
     by_name = {PurePosixPath(row["upstream_path"]).name: row for row in all_sources}
     if len(by_name) != len(all_sources):
@@ -150,13 +160,31 @@ def prepare_suites(local_paths, work, catalog, require_complete=False):
                 helper_row, helper_data = load_source(support_source)
                 row["support_files"].append(helper_row)
                 row["_support_payloads"].append({**helper_row, "source_b64": base64.b64encode(helper_data).decode("ascii")})
+        if source.get("fixture_files"):
+            try:
+                from .probe_blender_fixtures import prepare_fixture_payloads
+            except ImportError:
+                from probe_blender_fixtures import prepare_fixture_payloads
+            row["_fixture_payloads"] = prepare_fixture_payloads(
+                source["fixture_files"], UPSTREAM_SHA, work / "fixtures", local_root=fixture_root)
         suites.append((row, data))
     return suites
 
 
 def suite_metadata(row):
     """Keep transported helper bytes out of the public source identity rows."""
-    return {key: value for key, value in row.items() if key != "_support_payloads"}
+    return {key: value for key, value in row.items() if key not in ("_support_payloads", "_fixture_payloads")}
+
+
+def preserve_suite_fixtures(suites, destination):
+    payloads = [value for row, _ in suites for value in row.get("_fixture_payloads", [])]
+    if not payloads:
+        return None
+    try:
+        from .probe_blender_fixtures import preserve_fixture_payloads
+    except ImportError:
+        from probe_blender_fixtures import preserve_fixture_payloads
+    return preserve_fixture_payloads(payloads, destination)
 
 
 def canonical_case_id(value):
@@ -374,6 +402,19 @@ def summarize_execution(result, expected_sources, browser_errors=()):
             result.get("execution_context", {}).get("background") is not True):
         blockers.append({"scope": "execution_context", "status": "failed",
                          "reason": "original blend-file CTest driver requires observed bpy.app.background=True"})
+    expected_fixtures = [value for source in expected_sources for value in source.get("fixture_files", [])]
+    if expected_fixtures:
+        observation = result.get("io_observation")
+        observation = observation if isinstance(observation, dict) else {}
+        observed_fixtures = observation.get("fixture_files")
+        fields = ("relative_path", "upstream_path", "bytes", "sha256")
+        inventory_matches = (isinstance(observed_fixtures, list) and
+            all(isinstance(value, dict) and type(value.get("bytes")) is int for value in observed_fixtures) and
+            [{key: value.get(key) for key in fields} for value in observed_fixtures] ==
+            [{key: value[key] for key in fields} for value in expected_fixtures])
+        if observation.get("fixture_bytes_preserved") is not True or not inventory_matches:
+            blockers.append({"scope": "fixture_inputs", "status": "failed",
+                             "reason": "complete unchanged fixture bytes and pinned identities were not observed"})
     for row in rows:
         path = row.get("upstream_path")
         counts = {key: 0 for key in keys}
@@ -624,9 +665,10 @@ def probe(args, report):
 
         catalog = load_suite_catalog(getattr(args, "cohort", "numeric"))
         report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
-        suites = prepare_suites(args.suite, work, catalog)
+        suites = prepare_suites(args.suite, work, catalog, fixture_root=getattr(args, "fixture_root", None))
         report["cohort"]["complete_cohort_requested"] = len(suites) == len(catalog["suites"])
         report["suite_sources"] = [suite_metadata(row) for row, _ in suites]
+        report["input_fixture_transfer"] = preserve_suite_fixtures(suites, output / "fixtures")
 
         unpacked = work / "unpacked"
         unpacked.mkdir()
@@ -692,7 +734,8 @@ def probe(args, report):
                 page.on("crash", lambda: browser_errors.append("browser page crashed"))
                 code = python_payload(suites, marker, io_root, wait_for_output_transfer=bool(io_root))
                 report["runner_sha256"] = hashlib.sha256(code.encode("utf-8")).hexdigest()
-                extra_args = (["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"]
+                extra_args = (["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"] +
+                              catalog.get("extra_blender_args", [])
                               if io_root else [])
                 report["execution_mode"] = {"requested": "background" if io_root else "windowed",
                     "extra_argv": extra_args, "hook": "unchanged shell __BW_ARGS before __BW_PYEXPR"}
@@ -810,7 +853,9 @@ def main(argv=None):
                         help="Exact development build receipt; requires --asset and preserves all runtime/test gates")
     parser.add_argument("--suite", action="append", type=Path,
                         help="Exact pinned source file from the selected cohort; repeatable")
-    parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52"), default="numeric",
+    parser.add_argument("--fixture-root", type=Path,
+                        help="Local exact cohort fixtures under their original tests/files relative paths")
+    parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52", "liblink52"), default="numeric",
                         help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--browser-executable")

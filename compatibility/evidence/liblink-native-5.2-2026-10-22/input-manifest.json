@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+  },
+  "sources": [
+    {
+      "upstream_path": "tests/python/bl_blendfile_liblink.py",
+      "bytes": 49078,
+      "sha256": "c2bca5f31f13075b94b272bdb0ab16582d23f581a1bdfd1211c6896d0ea7e6ae",
+      "git_blob": "d940a01c3aded9b065ca3b5197cace0eac433daf",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_liblink.py",
+      "local_path": "sources/bl_blendfile_liblink.py",
+      "class_order": [
+        "TestBlendLibLinkSaveLoadBasic",
+        "TestBlendLibLinkAnimation",
+        "TestBlendLibLinkIndirect",
+        "TestBlendLibAppendBasic",
+        "TestBlendLibAppendReuseID",
+        "TestBlendLibAppendCollectionInstances",
+        "TestBlendLibPackedLinkedID",
+        "TestBlendLibPackedWithAnimation",
+        "TestBlendLibLibraryReload",
+        "TestBlendLibLibraryRelocate",
+        "TestBlendLibDataLibrariesLoadAppend",
+        "TestBlendLibDataLibrariesLoadLink",
+        "TestBlendLibDataLibrariesLoadPack",
+        "TestBlendLibDataLibrariesLoadLibOverride"
+      ],
+      "case_ids": [
+        "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+        "TestBlendLibLinkAnimation.test_link",
+        "TestBlendLibLinkIndirect.test_append",
+        "TestBlendLibAppendBasic.test_append",
+        "TestBlendLibAppendReuseID.test_append",
+        "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+        "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+        "TestBlendLibPackedLinkedID.test_link_pack_basic",
+        "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+        "TestBlendLibPackedWithAnimation.test_material_animation",
+        "TestBlendLibLibraryReload.test_link_reload",
+        "TestBlendLibLibraryRelocate.test_link_relocate",
+        "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+        "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+        "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime"
+      ],
+      "expected_cases": 17
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_library_overrides.py",
+      "bytes": 48497,
+      "sha256": "f1066380f619121f47f7e32ab1bf744112cfdc075cb2bdd229f09f6d8169f138",
+      "git_blob": "3200192e14618a27d3e3e72033fdf5b4e3d77e9b",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_library_overrides.py",
+      "local_path": "sources/bl_blendfile_library_overrides.py",
+      "class_order": [
+        "TestLibraryOverrides",
+        "TestLibraryOverridesComplex",
+        "TestLibraryOverridesFromProxies"
+      ],
+      "case_ids": [
+        "TestLibraryOverrides.test_link_and_override_property",
+        "TestLibraryOverrides.test_link_permissive",
+        "TestLibraryOverridesComplex.test_link_and_override_idnames_conflict",
+        "TestLibraryOverridesComplex.test_link_and_override_multiple",
+        "TestLibraryOverridesComplex.test_link_and_override_of_override",
+        "TestLibraryOverridesComplex.test_link_and_override_resync",
+        "TestLibraryOverridesFromProxies.test_open_linked_proxy_file"
+      ],
+      "expected_cases": 7
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_relationships.py",
+      "bytes": 17106,
+      "sha256": "265be7b65ed13b8ccd5cf034f0129f854b7dd6663ecc9a6651993b7bcda132b5",
+      "git_blob": "33bab6b54d64c945d66b8e75d7fcac4bd70f06fc",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_relationships.py",
+      "local_path": "sources/bl_blendfile_relationships.py",
+      "class_order": [
+        "TestBlendUserMap",
+        "TestBlendFilePathMap",
+        "TestBlendFilePathForeach"
+      ],
+      "case_ids": [
+        "TestBlendUserMap.test_user_map",
+        "TestBlendFilePathMap.test_file_path_map",
+        "TestBlendFilePathForeach.test_exception_passing",
+        "TestBlendFilePathForeach.test_expand_and_texture_caches",
+        "TestBlendFilePathForeach.test_filepath_rewriting",
+        "TestBlendFilePathForeach.test_meta_parameter",
+        "TestBlendFilePathForeach.test_with_nondefault_flag",
+        "TestBlendFilePathForeach.test_without_args"
+      ],
+      "expected_cases": 8
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_utils.py",
+      "bytes": 8640,
+      "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+      "git_blob": "b2fb5d9744cad50bccc1657e1d18699ebf6fae77",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_utils.py",
+      "local_path": "sources/bl_blendfile_utils.py",
+      "class_order": [],
+      "case_ids": [],
+      "expected_cases": 0
+    },
+    {
+      "upstream_path": "tests/python/CMakeLists.txt",
+      "bytes": 50161,
+      "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c",
+      "git_blob": "5fb1f63c0dc55102e65813bbb923319404fe9166",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/CMakeLists.txt",
+      "local_path": "sources/CMakeLists.txt"
+    }
+  ],
+  "assets": [
+    {
+      "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+      "bytes": 5165,
+      "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+      "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch",
+      "download_url_without_query": "https://projects.blender.org/blender/blender.git/info/lfs/objects/bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+      "lfs_pointer_sha256": "a6ddaf06ccf65cb5be7000da80c592e9b42852266f9c2ef2864ead3d45c4fac6",
+      "git_blob": "00cea6783d2699568ec60bf51f8588b1c9d15214",
+      "local_path": "fixtures/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg"
+    },
+    {
+      "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend",
+      "bytes": 103099,
+      "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+      "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch",
+      "download_url_without_query": "https://projects.blender.org/blender/blender.git/info/lfs/objects/4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+      "lfs_pointer_sha256": "5e8a3071f2b1d5364392e24fa30de1e67c4f242553a3056127c4dff654b494c1",
+      "git_blob": "42dc8341f9934c7f0d511bc865147ccd185d12f4",
+      "local_path": "fixtures/libraries_and_linking/libraries/collection_assets.blend"
+    },
+    {
+      "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend",
+      "bytes": 104736,
+      "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+      "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch",
+      "download_url_without_query": "https://projects.blender.org/blender/blender.git/info/lfs/objects/d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+      "lfs_pointer_sha256": "75e2018655d5ec439cf97ce952403efe610f95f818d83dc97b8e9cf43d790a92",
+      "git_blob": "143f51a240c176b028f60e167a79aa92407f0f1c",
+      "local_path": "fixtures/libraries_and_linking/libraries/animated_assets.blend"
+    }
+  ],
+  "selected_suite": "tests/python/bl_blendfile_liblink.py",
+  "fixture_bytes": 213000
+}

@@ -14,6 +14,8 @@ The current product reference is Blender 5.4.0 alpha at the existing immutable p
 
 The browser-port workflow records qualification results separately from the working limited modeller. Its receipts are preserved on `browser-port-evidence`; a failed or blocked qualification remains visible. Infrastructure tests validate reporting and test transport and are not Blender feature passes.
 
+Selected original Blender 5.2 cohorts now include 192 numerical cases, 48 data/API cases, four blend-file IO methods and 17 library-linking methods. Native and browser pass all 48 data cases and all four IO methods. The IO workflow also transfers the actual browser-generated files and matches all four current file pairs in the same verified native reader. The released browser artifact still reports an unknown build identity, and two numerical parent tests still fail in that release. Narrow source fixes have passed actual WebAssembly kernel probes; the complete source rebuild and unchanged 192-case qualification remain separate gates. The library cohort has a passing native baseline with exact external fixtures; its browser and persistent-library results are recorded independently. See the programme for immutable receipts, remaining blockers and the distinction from full Blender 5.4 parity.
+
 ## What works in the initial modeller
 
 - Actual Three.js WebGL 2 rendering, orbit/pan/zoom and transform controls.

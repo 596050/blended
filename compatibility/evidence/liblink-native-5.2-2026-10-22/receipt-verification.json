@@ -1,0 +1,840 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "execution": {
+    "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/execution.json",
+    "bytes": 235537,
+    "sha256": "5243f917810734d18d8a558d5c5e01c8ade35fa534313c3cf313baff14626fec"
+  },
+  "proof": {
+    "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/native-library-proof.json",
+    "bytes": 6369,
+    "sha256": "196e3c5dd7b571ea26d50ec736b018e6fbd129a329cd64a8959f22b5193852c0"
+  },
+  "identity": {
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "version_string": "5.2.0 LTS",
+    "build_hash": "fbe6228777e7",
+    "build_branch": "blender-v5.2-release",
+    "binary_path": "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+    "python_version": "3.13.13 (main, Apr 25 2025, 12:39:20) [GCC 14.2.1 20250110 (Red Hat 14.2.1-11)]",
+    "background": true
+  },
+  "input_verification_after_run": [
+    {
+      "upstream_path": "tests/python/bl_blendfile_liblink.py",
+      "bytes": 49078,
+      "sha256": "c2bca5f31f13075b94b272bdb0ab16582d23f581a1bdfd1211c6896d0ea7e6ae",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_library_overrides.py",
+      "bytes": 48497,
+      "sha256": "f1066380f619121f47f7e32ab1bf744112cfdc075cb2bdd229f09f6d8169f138",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_relationships.py",
+      "bytes": 17106,
+      "sha256": "265be7b65ed13b8ccd5cf034f0129f854b7dd6663ecc9a6651993b7bcda132b5",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/python/bl_blendfile_utils.py",
+      "bytes": 8640,
+      "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/python/CMakeLists.txt",
+      "bytes": 50161,
+      "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+      "bytes": 5165,
+      "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend",
+      "bytes": 103099,
+      "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+      "matches_pinned_input": true
+    },
+    {
+      "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend",
+      "bytes": 104736,
+      "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+      "matches_pinned_input": true
+    }
+  ],
+  "expected_cases": 17,
+  "observed_cases": 17,
+  "observed_passed_cases": 17,
+  "cases": [
+    {
+      "id": "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibLinkAnimation.test_link",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibLinkIndirect.test_append",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibAppendBasic.test_append",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibAppendReuseID.test_append",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibPackedLinkedID.test_link_pack_basic",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibPackedWithAnimation.test_material_animation",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibLibraryReload.test_link_reload",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibLibraryRelocate.test_link_relocate",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    },
+    {
+      "id": "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime",
+      "status": "passed",
+      "events": [
+        {
+          "phase": "setup",
+          "event": "start"
+        },
+        {
+          "phase": "setup",
+          "event": "return"
+        },
+        {
+          "phase": "body",
+          "event": "start"
+        },
+        {
+          "phase": "body",
+          "event": "return"
+        },
+        {
+          "phase": "teardown",
+          "event": "start"
+        },
+        {
+          "phase": "teardown",
+          "event": "return"
+        }
+      ],
+      "context_after": {
+        "background": true,
+        "window_present": true,
+        "edit_object_present": false,
+        "link_poll": true,
+        "append_poll": true
+      }
+    }
+  ],
+  "expected_driver_count": 14,
+  "driver_events": [
+    {
+      "class": "TestBlendLibLinkSaveLoadBasic",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibLinkSaveLoadBasic",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibLinkAnimation",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibLinkAnimation",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibLinkIndirect",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibLinkIndirect",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibAppendBasic",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibAppendBasic",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibAppendReuseID",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibAppendReuseID",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibAppendCollectionInstances",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibAppendCollectionInstances",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibPackedLinkedID",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibPackedLinkedID",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibPackedWithAnimation",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibPackedWithAnimation",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibLibraryReload",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibLibraryReload",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibLibraryRelocate",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibLibraryRelocate",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadAppend",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadAppend",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadLink",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadLink",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadPack",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadPack",
+      "event": "return"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadLibOverride",
+      "event": "start"
+    },
+    {
+      "class": "TestBlendLibDataLibrariesLoadLibOverride",
+      "event": "return"
+    }
+  ],
+  "observer_errors": [],
+  "module_returned_normally": true,
+  "module_exception": null,
+  "source_bytes_preserved": true,
+  "fixture_bytes_preserved": true,
+  "generated_inventory_matches_files": true,
+  "generated_file_count": 22,
+  "generated_current_blend_files": 19,
+  "generated_total_bytes": 9677442,
+  "generated_max_file_bytes": 480936,
+  "browser_executed": false,
+  "exchange_audited": false,
+  "full_fixture_dependency_closure_verified": false
+}

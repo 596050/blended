@@ -1,0 +1,557 @@
+{
+  "schema": 1,
+  "cohort_id": "liblink-5.2",
+  "suite_kind": "original-script",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": [
+      5,
+      2,
+      0
+    ]
+  },
+  "facet_ids": [
+    "blend_io",
+    "assets"
+  ],
+  "expected_total_cases": 17,
+  "case_id_format": "ClassName.test_method; fixed original custom-driver method IDs, preserving upstream spellings.",
+  "denominator_policy": "All 17 listed IDs are mandatory. Each requires observed setup, body, and teardown normal returns under the original driver. Missing, duplicate, unexpected, unobserved, or exceptional cases prevent qualification; module exit alone cannot establish an individual outcome.",
+  "browser_executed": false,
+  "product_target_parity": false,
+  "full_facet_parity": false,
+  "full_feature_parity": false,
+  "exchange_audited": false,
+  "full_fixture_dependency_closure_verified": false,
+  "suites": [
+    {
+      "upstream_path": "tests/python/bl_blendfile_liblink.py",
+      "sha256": "c2bca5f31f13075b94b272bdb0ab16582d23f581a1bdfd1211c6896d0ea7e6ae",
+      "bytes": 49078,
+      "git_blob_sha1": "d940a01c3aded9b065ca3b5197cace0eac433daf",
+      "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_liblink.py",
+      "expected_cases": 17,
+      "case_ids": [
+        "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+        "TestBlendLibLinkAnimation.test_link",
+        "TestBlendLibLinkIndirect.test_append",
+        "TestBlendLibAppendBasic.test_append",
+        "TestBlendLibAppendReuseID.test_append",
+        "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+        "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+        "TestBlendLibPackedLinkedID.test_link_pack_basic",
+        "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+        "TestBlendLibPackedWithAnimation.test_material_animation",
+        "TestBlendLibLibraryReload.test_link_reload",
+        "TestBlendLibLibraryRelocate.test_link_relocate",
+        "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+        "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+        "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime"
+      ],
+      "mandatory_case_ids": [
+        "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+        "TestBlendLibLinkAnimation.test_link",
+        "TestBlendLibLinkIndirect.test_append",
+        "TestBlendLibAppendBasic.test_append",
+        "TestBlendLibAppendReuseID.test_append",
+        "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+        "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+        "TestBlendLibPackedLinkedID.test_link_pack_basic",
+        "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+        "TestBlendLibPackedWithAnimation.test_material_animation",
+        "TestBlendLibLibraryReload.test_link_reload",
+        "TestBlendLibLibraryRelocate.test_link_relocate",
+        "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+        "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+        "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime"
+      ],
+      "support_files": [
+        {
+          "upstream_path": "tests/python/bl_blendfile_utils.py",
+          "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+          "bytes": 8640,
+          "git_blob_sha1": "b2fb5d9744cad50bccc1657e1d18699ebf6fae77",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_utils.py"
+        }
+      ],
+      "fixture_files": [
+        {
+          "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "relative_path": "imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+          "bytes": 5165,
+          "git_blob_sha1": "00cea6783d2699568ec60bf51f8588b1c9d15214",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "lfs_pointer": {
+            "bytes": 129,
+            "sha256": "a6ddaf06ccf65cb5be7000da80c592e9b42852266f9c2ef2864ead3d45c4fac6",
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279\nsize 5165\n",
+            "git_blob_sha1": "00cea6783d2699568ec60bf51f8588b1c9d15214"
+          },
+          "lfs_object": {
+            "oid": "sha256:bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+            "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+            "bytes": 5165
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        },
+        {
+          "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend",
+          "relative_path": "libraries_and_linking/libraries/collection_assets.blend",
+          "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+          "bytes": 103099,
+          "git_blob_sha1": "42dc8341f9934c7f0d511bc865147ccd185d12f4",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/libraries_and_linking/libraries/collection_assets.blend",
+          "lfs_pointer": {
+            "bytes": 131,
+            "sha256": "5e8a3071f2b1d5364392e24fa30de1e67c4f242553a3056127c4dff654b494c1",
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152\nsize 103099\n",
+            "git_blob_sha1": "42dc8341f9934c7f0d511bc865147ccd185d12f4"
+          },
+          "lfs_object": {
+            "oid": "sha256:4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+            "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+            "bytes": 103099
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        },
+        {
+          "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend",
+          "relative_path": "libraries_and_linking/libraries/animated_assets.blend",
+          "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+          "bytes": 104736,
+          "git_blob_sha1": "143f51a240c176b028f60e167a79aa92407f0f1c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/libraries_and_linking/libraries/animated_assets.blend",
+          "lfs_pointer": {
+            "bytes": 131,
+            "sha256": "75e2018655d5ec439cf97ce952403efe610f95f818d83dc97b8e9cf43d790a92",
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e\nsize 104736\n",
+            "git_blob_sha1": "143f51a240c176b028f60e167a79aa92407f0f1c"
+          },
+          "lfs_object": {
+            "oid": "sha256:d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+            "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+            "bytes": 104736
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        }
+      ],
+      "required_imports": [
+        "bpy",
+        "os",
+        "sys",
+        "pathlib",
+        "argparse",
+        "bl_blendfile_utils",
+        "unittest",
+        "pprint"
+      ],
+      "runtime_dependencies": [
+        "background execution with factory startup resources",
+        "fresh writable filesystem directory",
+        "three exact readable fixture objects with original relative paths",
+        "JPEG image decoding",
+        "Blender dependency graph, driver/animation evaluation, and library-linking APIs",
+        "CPython sys.monitoring for per-method observation"
+      ],
+      "driver": {
+        "classes": [
+          "TestBlendLibLinkSaveLoadBasic",
+          "TestBlendLibLinkAnimation",
+          "TestBlendLibLinkIndirect",
+          "TestBlendLibAppendBasic",
+          "TestBlendLibAppendReuseID",
+          "TestBlendLibAppendCollectionInstances",
+          "TestBlendLibPackedLinkedID",
+          "TestBlendLibPackedWithAnimation",
+          "TestBlendLibLibraryReload",
+          "TestBlendLibLibraryRelocate",
+          "TestBlendLibDataLibrariesLoadAppend",
+          "TestBlendLibDataLibrariesLoadLink",
+          "TestBlendLibDataLibrariesLoadPack",
+          "TestBlendLibDataLibrariesLoadLibOverride"
+        ],
+        "helper": "bl_blendfile_utils.TestHelper.run_all_tests",
+        "dispatch": "Original TESTS order and original dir(self) callable test_* selection.",
+        "lifecycle": "Original setUp, method call, tearDown in finally; an exception aborts the remaining original driver.",
+        "unittest_loader_compatible": false,
+        "upstream_assertions_modified": false
+      },
+      "native_status": "passed",
+      "native_cases": [
+        {
+          "id": "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibLinkAnimation.test_link",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibLinkIndirect.test_append",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibAppendBasic.test_append",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibAppendReuseID.test_append",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibPackedLinkedID.test_link_pack_basic",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibPackedWithAnimation.test_material_animation",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibLibraryReload.test_link_reload",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibLibraryRelocate.test_link_relocate",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+          "status": "passed"
+        },
+        {
+          "id": "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime",
+          "status": "passed"
+        }
+      ],
+      "native_proof": {
+        "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/native-library-proof.json",
+        "bytes": 6369,
+        "sha256": "196e3c5dd7b571ea26d50ec736b018e6fbd129a329cd64a8959f22b5193852c0"
+      },
+      "coverage_limits": [
+        "Selected complete upstream liblink suite only, with a fixed denominator of 17 original methods; substeps are not separate passing cases.",
+        "No browser run or source-built browser engine qualification is established by this native manifest.",
+        "The separately registered 7-method library-overrides suite and asset-browser/catalog suites were not executed.",
+        "Case-end library/image observations do not establish an independently reopened or relocated bundle, full external dependency closure, or browser persistence.",
+        "Some methods leave in-memory states unsaved, and later methods or substeps deliberately overwrite generated filenames.",
+        "Native output hashes are run-specific integrity evidence and must not be used as expected browser hashes.",
+        "Assertions remain exactly upstream, including their existing scope and limitations; passing a named method does not establish every behavior suggested by its name."
+      ]
+    }
+  ],
+  "original_invocation": {
+    "argv": [
+      "blender",
+      "--background",
+      "--factory-startup",
+      "--threads",
+      "1",
+      "--disable-autoexec",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "tests/python/bl_blendfile_liblink.py",
+      "--",
+      "--src-test-dir",
+      "VERIFIED_FIXTURE_ROOT",
+      "--output-dir",
+      "FRESH_OUTPUT_DIRECTORY"
+    ],
+    "entrypoint": "Unchanged original __main__ -> main -> TESTS constructors -> TestHelper.run_all_tests.",
+    "original_python_argv_observed": [
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/sources/bl_blendfile_liblink.py",
+      "--",
+      "--src-test-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/fixtures",
+      "--output-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/native-proof/files"
+    ],
+    "observed_invocation": [
+      "/workspace/scratch/d63596d831b2/research_tests/native_ref/blender-5.2.0-linux-x64/blender",
+      "--background",
+      "--factory-startup",
+      "--threads",
+      "1",
+      "--disable-autoexec",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/observe_blendfile_liblink.py",
+      "--",
+      "--source-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/sources",
+      "--fixture-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/fixtures",
+      "--output-dir",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/native-proof/files",
+      "--report",
+      "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/native-proof/execution.json"
+    ],
+    "observer": "CPython sys.monitoring PY_START, PY_RETURN, PY_UNWIND around runpy.run_path(original_source, run_name='__main__'); no monkeypatching.",
+    "upstream_ctest": {
+      "name": "blendfile_liblink",
+      "source_path": "tests/python/CMakeLists.txt",
+      "registration_guard": "TEST_SRC_DIR_EXISTS",
+      "source_tree_fixture_root": "tests/files",
+      "arguments": [
+        "--src-test-dir",
+        "${TEST_SRC_DIR}/",
+        "--output-dir",
+        "${TEST_OUT_DIR}/blendfile_io/"
+      ]
+    }
+  },
+  "native_reference": {
+    "version": [
+      5,
+      2,
+      0
+    ],
+    "reported_build_hash": "fbe6228777e7",
+    "expected_upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "official_release_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "official_checksum_manifest_url": "https://download.blender.org/release/Blender5.2/blender-5.2.0.sha256",
+    "archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "archive_bytes": 384441228,
+    "executable_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "runtime_build_identity_verified": true,
+    "source_correspondence_verified": false,
+    "background": true,
+    "python_version": "3.13.13 (main, Apr 25 2025, 12:39:20) [GCC 14.2.1 20250110 (Red Hat 14.2.1-11)]",
+    "process_returncode": 0,
+    "observed_elapsed_seconds": 1.468774916997063,
+    "expected_methods": 17,
+    "observed_passed_methods": 17,
+    "expected_class_drivers": 14,
+    "observed_normal_class_driver_returns": 14,
+    "receipt": {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/native-library-proof.json",
+      "bytes": 6369,
+      "sha256": "196e3c5dd7b571ea26d50ec736b018e6fbd129a329cd64a8959f22b5193852c0"
+    }
+  },
+  "fixture_retrieval": {
+    "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/lfs-retrieval-recipe.json",
+    "bytes": 5919,
+    "sha256": "8a165191865b512632e668817d8cfdc1a9321e72d8b366148ca995930c0fa765"
+  },
+  "fixture_count": 3,
+  "fixture_total_bytes": 213000,
+  "generated_outputs": [
+    {
+      "path": "blendfileTestBlendLibLinkIndirect.blend",
+      "bytes": 426278,
+      "sha256": "94911d7cbc47e19576adfc37f750677001db65bcbfe2b8b04f2f11be4fe5f35d"
+    },
+    {
+      "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+      "bytes": 424693,
+      "sha256": "55b5e35e65b12b36daee8de2b6cdf10fdd68babddf1a371accd05421bde75e05"
+    },
+    {
+      "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+      "bytes": 425485,
+      "sha256": "6aec3451131fe01979ee35483962e076fa0a0b8bd946b5e0290cde9d9eed7786"
+    },
+    {
+      "path": "blendfileTestBlendLibPackedLinkedID.blend",
+      "bytes": 480936,
+      "sha256": "12a6c56fd2aba35de83e3dd893603c3ce3fd74f7657ec67438c48c513d198344"
+    },
+    {
+      "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+      "bytes": 475855,
+      "sha256": "a8f1dbaa90d943362d0a92521ae363fcdc0c9c9437ba1110c2b714e1eefcf849"
+    },
+    {
+      "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+      "bytes": 434704,
+      "sha256": "a7d6669e0b27624e1f2c222aecfeb1c91a9f0f3e5dcde401c13e8216729e402c"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+      "bytes": 426253,
+      "sha256": "72afc71e2b2278a2b401b0e3b136eddb61593c9fedee39ef6caae8040d789972"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+      "bytes": 426253,
+      "sha256": "cff59a3bc81b97dcca658f853feac6658317bd0f856d004f511d61bf1fda76c8"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+      "bytes": 426253,
+      "sha256": "234bc1ed1bf1150b7ece77b0538480e44fcdc5b84936812b8d48f2955a72180e"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend1",
+      "bytes": 426253,
+      "sha256": "29e4332b528865b08a04403e5f662a0d1ad71af4080bb3ae35ba0cc8563ae1f1"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+      "bytes": 426253,
+      "sha256": "bd16698aa3cc5c39a09304f36cdfa6d62dd71cd8a6d287bf5cc5a30cc8a99054"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+      "bytes": 426253,
+      "sha256": "a7c493c1af650b540f26d39b5e7925b8c4e9a03bcb2857f6cb1be807bff57430"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+      "bytes": 426253,
+      "sha256": "91766b94f5ccfadea9d9b3eeb25fa50741ac4ce2bec3318f8c663b895748dd4f"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+      "bytes": 426253,
+      "sha256": "94d7dcfa3485d8d919afc86543d9375102d23956f63c1a93f605c8fb2eff7238"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+      "bytes": 426253,
+      "sha256": "2a267feab9d7f880cd1a9d7cfab986465ff6584ce217c3e3b333a34f999770a8"
+    },
+    {
+      "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+      "bytes": 426253,
+      "sha256": "606be045b6863d6d897ab3c3e2364ff19361e5489852348cfdc42976e8973028"
+    },
+    {
+      "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+      "bytes": 428310,
+      "sha256": "a78eaaa5a251f16f631233c5840b794ce3469128c2b69232e269681f22bc17d9"
+    },
+    {
+      "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+      "bytes": 428310,
+      "sha256": "8732c42c75a848d6648cf509e7c3378a901b08d43ed8ff7cf4ed8effa252a5f4"
+    },
+    {
+      "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+      "bytes": 478064,
+      "sha256": "f788b500c3c0735dcb8fb622ff35a82c10fc13bf4323adc976269df1d1b3513e"
+    },
+    {
+      "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+      "bytes": 470759,
+      "sha256": "7137bd71436e3653fb61ac47b32e00350054057d8db75eb35f8059d00f0a3aa7"
+    },
+    {
+      "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+      "bytes": 470759,
+      "sha256": "7cb4ed19815c305e83c7725b19e0b6519c9f233066eb272d5b28384b9b1ae4de"
+    },
+    {
+      "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+      "bytes": 470759,
+      "sha256": "bc29965ce61a32d4b9357d73b8c7b738e49a604d71f352819f234514d935d9a1"
+    }
+  ],
+  "generated_output_storage": "/workspace/scratch/d63596d831b2/research_tests/next_facet_cohort/library_assessment/native-proof/files",
+  "generated_output_count": 22,
+  "generated_current_blend_files": 19,
+  "generated_output_total_bytes": 9677442,
+  "generated_output_policy": "Inventory records the 22 observed native final files only. Native hashes do not become expected browser hashes. Per-case observations retain overwritten filenames. File exchange and external dependency closure require separate evidence.",
+  "browser_adapter_requirements": [
+    "Place the exact main and helper bytes together under a unique virtual source directory and preserve __file__.",
+    "Materialize every exact fixture object under its pinned relative_path inside a dedicated fixture root before execution; reject pointer text, missing objects, changed bytes, and path traversal.",
+    "Use background mode with factory startup and pass the original --src-test-dir and --output-dir arguments to original __main__.",
+    "Require all 17 original case lifecycles and 14 class-driver normal returns; never substitute unittest discovery, bypass link/append polling, or alter assertions.",
+    "Record actual background/window context and retain runtime, provenance, observer, fixture, and suite failures independently.",
+    "Retrieve each observed output using confined bounded reads and match its own in-engine byte/hash inventory.",
+    "Keep future library/texture exchange closure and durable browser persistence as separately evidenced claims."
+  ],
+  "coverage_limits": [
+    "Selected complete upstream liblink suite only, with a fixed denominator of 17 original methods; substeps are not separate passing cases.",
+    "No browser run or source-built browser engine qualification is established by this native manifest.",
+    "The separately registered 7-method library-overrides suite and asset-browser/catalog suites were not executed.",
+    "Case-end library/image observations do not establish an independently reopened or relocated bundle, full external dependency closure, or browser persistence.",
+    "Some methods leave in-memory states unsaved, and later methods or substeps deliberately overwrite generated filenames.",
+    "Native output hashes are run-specific integrity evidence and must not be used as expected browser hashes.",
+    "Assertions remain exactly upstream, including their existing scope and limitations; passing a named method does not establish every behavior suggested by its name."
+  ],
+  "evidence": [
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/README.md",
+      "bytes": 6906,
+      "sha256": "33870638e22fa36fb62ee44f37a81ce8ecdc41adf259ccefcb1ca45c156f154f"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/execution.json",
+      "bytes": 235537,
+      "sha256": "5243f917810734d18d8a558d5c5e01c8ade35fa534313c3cf313baff14626fec"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/input-manifest.json",
+      "bytes": 7760,
+      "sha256": "8e4620e3049c8de411e289f8169a4685ed0b1997fc4cd551f9374002fee21d9e"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/lfs-retrieval-recipe.json",
+      "bytes": 5919,
+      "sha256": "8a165191865b512632e668817d8cfdc1a9321e72d8b366148ca995930c0fa765"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/native-library-proof.json",
+      "bytes": 6369,
+      "sha256": "196e3c5dd7b571ea26d50ec736b018e6fbd129a329cd64a8959f22b5193852c0"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/native-library.log",
+      "bytes": 166658,
+      "sha256": "19f29541fcbe7c47276a385401ec5019b885003e321fd51ca6a2c6ac905b650d"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/observe_blendfile_liblink.py",
+      "bytes": 13696,
+      "sha256": "412ebde4a1f68e24f81b21a4e26b7e5b4e7961a4ae0e78674ad4114d100dcb11"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/prepare_inputs_observed.py",
+      "bytes": 5725,
+      "sha256": "4bad186eb3ade473e8f7783994b348a1c3138fedd972a1db721d5583ea2492a8"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/receipt-verification.json",
+      "bytes": 19070,
+      "sha256": "14fb2961fd04835c2f83b02bb097dad54af715a801ebc59a7a5688a0493aa3bb"
+    },
+    {
+      "path": "compatibility/evidence/liblink-native-5.2-2026-10-22/run_native_library_proof_observed.py",
+      "bytes": 4158,
+      "sha256": "86b4e1d43480095c61327cdcd9523bd1b0e644caa4dbcbe654399254a49cc18a"
+    }
+  ]
+}
