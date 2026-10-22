@@ -28,6 +28,8 @@ import urllib.request
 
 UPSTREAM_SHA = "fbe6228777e7d9afefcd61a413844e790ae75db7"
 PORT_SOURCE_SHA = "cc22090b88da63cc617d48b218f4945175928844"
+DEVELOPMENT_PORT_SHA = "0e02e84b2bc5d9b27a6dc6e275443292f781fbad"
+DEVELOPMENT_PATCH_SHA256 = "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c"
 ASSET_URL = "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz"
 ASSET_SHA256 = "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0"
 ASSET_BYTES = 108802132
@@ -52,6 +54,60 @@ def digest(path):
         for data in iter(lambda: stream.read(1024 * 1024), b""):
             h.update(data)
     return h.hexdigest()
+
+
+def select_artifact_contract(args, report):
+    """Select the immutable release or an explicitly identified new source build.
+
+    A build receipt supplies the expected digest for its new artifact. Checking
+    that declaration does not independently reproduce the compilation or prove
+    the published release was built from the same source.
+    """
+    receipt_path = getattr(args, "source_build_receipt", None)
+    if receipt_path is None:
+        return {"url": ASSET_URL, "sha256": ASSET_SHA256, "bytes": ASSET_BYTES,
+                "label": "pinned release asset"}
+    if args.asset is None:
+        raise Blocked("source-build qualification requires an explicit --asset archive")
+    if not receipt_path.is_file() or receipt_path.stat().st_size > 5_000_000:
+        raise Blocked("source-build receipt is missing or exceeds its byte bound")
+    try:
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    except (ValueError, UnicodeError) as error:
+        raise Blocked("source-build receipt is not valid UTF-8 JSON") from error
+    if not isinstance(receipt, dict) or type(receipt.get("schema")) is not int:
+        raise Blocked("source-build receipt has no supported schema")
+    expected = {
+        "schema": 1, "artifact_kind": "blender-source-development", "status": "built",
+        "upstream_commit": UPSTREAM_SHA, "port_commit": DEVELOPMENT_PORT_SHA,
+        "canonical_patch_sha256": DEVELOPMENT_PATCH_SHA256, "build_mode": "OFF",
+        "with_buildinfo": True,
+    }
+    for key, value in expected.items():
+        if receipt.get(key) != value or type(receipt.get(key)) is not type(value):
+            raise Blocked("source-build receipt differs from the required contract: " + key)
+    artifact = receipt.get("artifact")
+    if not isinstance(artifact, dict):
+        raise Blocked("source-build receipt has no artifact digest and byte count")
+    value, size = artifact.get("sha256"), artifact.get("bytes")
+    if (not isinstance(value, str) or len(value) != 64 or
+            any(c not in "0123456789abcdef" for c in value) or
+            type(size) is not int or not 0 < size <= 2_000_000_000):
+        raise Blocked("source-build artifact identity is malformed or exceeds its byte bound")
+    report["candidate"] = {"repository": "gessa-ai/blender-web",
+                           "source_commit": DEVELOPMENT_PORT_SHA,
+                           "kind": "blender-source-development"}
+    report["artifact"] = {"url": None, "expected_sha256": value, "expected_bytes": size}
+    report["scope"] = "selected upstream Python suite qualification of a new development source build"
+    report["source_correspondence_verified"] = False
+    report["source_build_receipt_verified"] = True
+    report["source_build"] = {
+        **expected,
+        "receipt_sha256": digest(receipt_path),
+        "validation_scope": "Declared source pins and artifact digest only; no independent recompile or release correspondence claimed.",
+    }
+    return {"url": None, "sha256": value, "bytes": size,
+            "label": "selected source-build receipt"}
 
 
 def adapter_profile(adapter):
@@ -321,18 +377,19 @@ def serve(shell, binary, entry, output):
 
 def probe(args, report):
     output = args.output.resolve()
+    artifact_contract = select_artifact_contract(args, report)
     with tempfile.TemporaryDirectory(prefix="blended-port-probe-") as temporary:
         work = Path(temporary)
         archive = args.asset.resolve() if args.asset else work / "candidate.tar.gz"
         if args.asset is None:
-            download(ASSET_URL, archive, ASSET_BYTES)
+            download(artifact_contract["url"], archive, artifact_contract["bytes"])
         if not archive.is_file():
             raise Blocked("candidate archive is missing")
         measured_digest = digest(archive)
         report["artifact"]["observed_sha256"] = measured_digest
         report["artifact"]["observed_bytes"] = archive.stat().st_size
-        if measured_digest != ASSET_SHA256 or archive.stat().st_size != ASSET_BYTES:
-            raise Blocked("candidate artifact does not match the pinned release asset")
+        if measured_digest != artifact_contract["sha256"] or archive.stat().st_size != artifact_contract["bytes"]:
+            raise Blocked("candidate artifact does not match the " + artifact_contract["label"])
 
         suites = []
         paths = args.suite or [work / name for name in SUITES]
@@ -469,7 +526,10 @@ def probe(args, report):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--asset", type=Path, help="Already-downloaded pinned v0.1.1 archive")
+    parser.add_argument("--asset", type=Path,
+                        help="Local pinned release archive, or new archive identified by --source-build-receipt")
+    parser.add_argument("--source-build-receipt", type=Path,
+                        help="Exact development build receipt; requires --asset and preserves all runtime/test gates")
     parser.add_argument("--suite", action="append", type=Path, help="Exact pinned mathutils/bmesh test file; repeatable")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--browser-executable")
