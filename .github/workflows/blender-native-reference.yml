@@ -20,12 +20,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Install the compiler and display-development packages on the standard public runner
+      - name: Install compiler and display-development packages on the standard public runner
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends gcc-14 g++-14 ninja-build cmake git-lfs libx11-dev libxxf86vm-dev libxfixes-dev libxi-dev libxrandr-dev libxrender-dev libxinerama-dev libxcursor-dev libegl1-mesa-dev libwayland-dev libxkbcommon-dev libdecor-0-dev libdbus-1-dev libjack-jackd2-dev xvfb xauth weston libgl1-mesa-dri mesa-vulkan-drivers
           df -h .
-      - name: Fetch the exact Blender source and its pinned Linux library submodule
+      - name: Fetch exact Blender source and pinned Linux library submodule
         run: |
           mkdir -p evidence/native
           python3 tools/fetch_upstreams.py blender
@@ -44,9 +44,8 @@ jobs:
           git -C .upstream/blender lfs pull
           git -C .upstream/blender lfs fsck --objects > evidence/native/blender-lfs-fsck.txt
           git -C .upstream/blender/lib/linux_x64 lfs fsck --objects > evidence/native/libraries-lfs-fsck.txt
-          printf '{"upstream_commit":"%s","linux_libraries_commit":"%s","profile":"linux-x64-native-reference","complete_cross_platform_registry":false}\n' "$PIN" "$EXPECTED" > evidence/native/provenance.json
-          df -h .
-      - name: Configure original tests without batching and retain all enabled build options
+          printf '{"upstream_commit":"%s","linux_libraries_commit":"%s","profile":"linux-x64-native-cpu-reference","complete_cross_platform_registry":false,"offline_gpu_kernels_built":false,"hardware_gpu_execution_verified":false}\n' "$PIN" "$EXPECTED" > evidence/native/provenance.json
+      - name: Configure original tests with explicit CPU-reference limitations
         env:
           CC: gcc-14
           CXX: g++-14
@@ -62,17 +61,18 @@ jobs:
             -DWITH_GPU_BACKEND_TESTS=ON -DWITH_GPU_DRAW_TESTS=ON -DWITH_GPU_COMPOSITOR_TESTS=ON \
             -DWITH_GPU_MESH_PAINT_TESTS=ON -DWITH_UI_TESTS=ON -DWITH_UI_TESTS_HEADLESS=ON \
             -DWITH_OPENGL_BACKEND=ON -DWITH_VULKAN_BACKEND=ON \
-            -DWITH_CYCLES_CUDA_BINARIES=OFF -DWITH_CYCLES_DEVICE_OPTIX=OFF -DWITH_DLSS=OFF \
-            -DWITH_CYCLES_NATIVE_ONLY=ON -DWITH_DOC_MANPAGE=OFF \
+            -DWITH_CYCLES_CUDA_BINARIES=OFF -DWITH_CYCLES_HIP_BINARIES=OFF -DWITH_CYCLES_ONEAPI_BINARIES=OFF \
+            -DWITH_CYCLES_DEVICE_OPTIX=OFF -DWITH_DLSS=OFF -DWITH_CYCLES_NATIVE_ONLY=ON \
+            -DWITH_CYCLES_TEST_OSL=ON -DWITH_DOC_MANPAGE=OFF \
             2>&1 | tee evidence/native/configure.log
           cp build/native-reference/CMakeCache.txt evidence/native/
           python3 tools/blender_suite.py enumerate-ctest --build build/native-reference --output evidence/native/ctest-registered-before-build.json
-      - name: Build the actual native reference and original GoogleTest executable
+      - name: Build actual native reference and original GoogleTest executable
         run: |
           set -o pipefail
           cmake --build build/native-reference --target install --parallel 3 2>&1 | tee evidence/native/build.log
           build/native-install/blender --version > evidence/native/blender-version.txt
-      - name: Expand actual native runtime test identities, without declaring the browser port complete
+      - name: Expand actual native runtime identities, not browser results
         run: |
           python3 tools/blender_suite.py enumerate-ctest --build build/native-reference --output evidence/native/ctest-registered.json
           TEST_BIN=$(find build/native-install -type f -name blender_test -print -quit)
@@ -82,14 +82,12 @@ jobs:
           import hashlib,json
           from pathlib import Path
           from tools.blender_suite import parse_gtest_list
-          root=Path('evidence/native')
-          cases=parse_gtest_list((root/'gtest-list.txt').read_text())
-          config=hashlib.sha256((root/'CMakeCache.txt').read_bytes()).hexdigest()
-          result={'schema':1,'upstream_commit':json.loads((root/'provenance.json').read_text())['upstream_commit'],'build_config_sha256':config,'google_test_runtime_cases':len(cases),'cases':cases,'complete':False,'test_port_complete':False,'note':'Actual native GoogleTest identities. Python/fixture/UI expansion, other profiles and browser execution remain separate obligations.'}
+          root=Path('evidence/native');cases=parse_gtest_list((root/'gtest-list.txt').read_text())
+          result={'schema':1,'upstream_commit':json.loads((root/'provenance.json').read_text())['upstream_commit'],'build_config_sha256':hashlib.sha256((root/'CMakeCache.txt').read_bytes()).hexdigest(),'google_test_runtime_cases':len(cases),'cases':cases,'complete':False,'test_port_complete':False,'note':'Actual native identities only. Python/fixture/UI expansion, other build profiles and browser execution remain separate obligations.'}
           (root/'runtime-gtest-registry.json').write_text(json.dumps(result,indent=2)+'\n')
-          print('Expanded real native GoogleTest cases:',len(cases))
+          print('Actual native GoogleTest cases:',len(cases))
           PY
-      - name: Run original native GoogleTests and preserve failures, not merely discovery
+      - name: Execute original native GoogleTests, retaining failures
         run: |
           TEST_BIN=$(find build/native-install -type f -name blender_test -print -quit)
           set +e
@@ -99,7 +97,13 @@ jobs:
           printf '{"exit_code":%s,"realm":"native","is_browser_evidence":false}\n' "$RESULT" > evidence/native/gtest-exit.json
           tail -n 50 evidence/native/gtest-execution.log
           exit "$RESULT"
-      - name: Retain native evidence even when configuration, compilation or tests fail
+      - name: Preserve configuration even after a failed configure or build
+        if: always()
+        run: |
+          mkdir -p evidence/native
+          if test -f build/native-reference/CMakeCache.txt; then cp build/native-reference/CMakeCache.txt evidence/native/; fi
+          df -h . > evidence/native/disk.txt
+      - name: Retain native evidence, including failures
         if: always()
         uses: actions/upload-artifact@v4
         with:
