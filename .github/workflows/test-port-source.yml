@@ -23,8 +23,9 @@ jobs:
           python3 tools/inventory.py --root .upstream/blender --name blender --commit 94363991e7dcf39e2d70614aa002ab6f67764a5d --output audit-sources/blender-inventory.json
           python3 tools/inventory.py --root .upstream/cycles --name cycles --commit a456b761034dda42c32eef9f4aae0fa5a5c9f604 --output audit-sources/cycles-inventory.json
           tar -czf audit-sources/blender-tests.tar.gz -C .upstream/blender source/blender/blenlib tests build_files/cmake CMakeLists.txt intern/cycles/test intern/guardedalloc
-          tar -czf audit-sources/cycles-tests.tar.gz -C .upstream/cycles test util
+          tar -czf audit-sources/cycles-tests.tar.gz -C .upstream/cycles .
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: test-port-audit-sources
           path: audit-sources/
