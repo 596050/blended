@@ -18,7 +18,7 @@ if(new Set(all.map(c=>c.id)).size!==all.length)throw Error('Duplicate case ident
 for(const c of all){const tr=document.createElement('tr');for(const text of [c.id,c.expected_runtime_assertions??c.assertion_count??'Original case','Not run']){const td=document.createElement('td');td.textContent=text;tr.append(td);}tbody.append(tr);}
 document.querySelector('#status').textContent=`${all.length} translated cases ready. Full-suite completeness remains unverified.`;
 document.querySelector('#run').addEventListener('click',async()=>{
- const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,additional_assertions:0,structure_assertions:0,cases:[],errors:[]};
+ const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,vector_assertions:0,additional_assertions:0,structure_assertions:0,cases:[],errors:[]};
  const button=document.querySelector('#run');button.disabled=true;
  try{
   const response=await fetch('./blended_core.wasm');if(!response.ok)throw Error('WASM fetch failed');
@@ -27,14 +27,15 @@ document.querySelector('#run').addEventListener('click',async()=>{
   if(digest!==manifest.wasm_sha256)throw Error('WASM hash/manifest mismatch');
   result.wasm_sha256=digest;
   const {instance}=await WebAssembly.instantiate(bytes,{});const w=instance.exports;
-  const registries={legacy:[w.blended_case_count,w.blended_run_case,null],additional:[w.blended_additional_case_count,w.blended_additional_run_case,w.blended_additional_assertion_count],structures:[w.blended_structures_case_count,w.blended_structures_run_case,w.blended_structures_assertion_count]};
+  const registries={legacy:[w.blended_case_count,w.blended_run_case,w.blended_case_assertion_count],additional:[w.blended_additional_case_count,w.blended_additional_run_case,w.blended_additional_assertion_count],structures:[w.blended_structures_case_count,w.blended_structures_run_case,w.blended_structures_assertion_count]};
   for(const group of groups){if(registries[group][0]()!==manifest[group].length)throw Error(`Registry/manifest count mismatch: ${group}`);}
   for(const [i,c] of all.entries()){
    const [,run,count]=registries[c.group];const code=run(c.index);const assertions=count?count(c.index):null;
+   if(c.group==='legacy')result.vector_assertions+=assertions;
    if(c.group==='additional')result.additional_assertions+=assertions;
    if(c.group==='structures')result.structure_assertions+=assertions;
    const expected=c.expected_runtime_assertions??c.assertion_count;
-   const passed=code===1&&(c.group==='legacy'||assertions===expected);
+   const passed=code===1&&assertions===expected;
    result.cases.push({id:c.id,group:c.group,passed,code,assertions});if(passed)result.passed++;
    const td=tbody.children[i].lastElementChild;td.textContent=passed?'Passed':'Failed';td.className=passed?'pass':'fail';
   }
@@ -49,7 +50,10 @@ def expected_cases(root=ROOT):
     """Trusted universe from the checked-out test sources, not the served page's totals."""
     lock=json.loads((root/'upstream.lock.json').read_text())['upstreams']['blender']['commit']
     ids=re.findall(r'\("(math_vector\.[^"]+)"',(root/'crates/blended-core/src/compat_cases.rs').read_text())
-    result=[{'id':i,'group':'legacy','expected_runtime_assertions':None} for i in ids]
+    vector=json.loads((root/'compatibility/vector-assertions.json').read_text())
+    if vector['reference_commit']!=lock or vector['target_sha256']!=hashlib.sha256((root/'crates/blended-core/src/compat_cases.rs').read_bytes()).hexdigest():raise ValueError('Vector assertion contract changed')
+    if [c['id'] for c in vector['cases']]!=ids:raise ValueError('Vector registry mismatch')
+    result=[{'id':c['id'],'group':'legacy','expected_runtime_assertions':c['assertion_count']} for c in vector['cases']]
     for filename,group in [('additional-ports.json','additional'),('structure-ports.json','structures')]:
         data=json.loads((root/'compatibility'/filename).read_text())
         if data['upstream_commit']!=lock:raise ValueError('Reference revision mismatch: '+filename)
@@ -68,7 +72,7 @@ def validate_result(data,expected,commit,reference):
     for actual,contract in zip(cases,expected):
         if actual.get('passed') is not True or actual.get('code')!=1:raise ValueError('WASM assertion failure: '+contract['id'])
         if actual.get('assertions')!=contract['expected_runtime_assertions']:raise ValueError('Assertion execution changed: '+contract['id'])
-    for group,key in [('additional','additional_assertions'),('structures','structure_assertions')]:
+    for group,key in [('legacy','vector_assertions'),('additional','additional_assertions'),('structures','structure_assertions')]:
         total=sum(c['expected_runtime_assertions'] or 0 for c in expected if c['group']==group)
         if data.get(key)!=total:raise ValueError('Missing assertion execution: '+group)
     if not re.fullmatch('[0-9a-f]{64}',data.get('wasm_sha256','')):raise ValueError('Missing verified WASM hash')

@@ -5,8 +5,8 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
 from port_workbench import expected_cases,validate_result
 class WorkbenchContractTests(unittest.TestCase):
     def setUp(self):
-        self.expected=[{'id':'old.case','group':'legacy','expected_runtime_assertions':None},{'id':'new.case','group':'additional','expected_runtime_assertions':3},{'id':'bounds.case','group':'structures','expected_runtime_assertions':8}]
-        self.data={'source_commit':'a'*40,'reference_commit':'b'*40,'complete_test_port':False,'wasm_sha256':'c'*64,'status':'passed','passed':3,'additional_assertions':3,'structure_assertions':8,'invalid_index_rejected':True,'errors':[], 'cases':[dict(id=c['id'],group=c['group'],assertions=c['expected_runtime_assertions'],passed=True,code=1) for c in self.expected]}
+        self.expected=[{'id':'old.case','group':'legacy','expected_runtime_assertions':6},{'id':'new.case','group':'additional','expected_runtime_assertions':3},{'id':'bounds.case','group':'structures','expected_runtime_assertions':8}]
+        self.data={'source_commit':'a'*40,'reference_commit':'b'*40,'complete_test_port':False,'wasm_sha256':'c'*64,'status':'passed','passed':3,'vector_assertions':6,'additional_assertions':3,'structure_assertions':8,'invalid_index_rejected':True,'errors':[], 'cases':[dict(id=c['id'],group=c['group'],assertions=c['expected_runtime_assertions'],passed=True,code=1) for c in self.expected]}
     def check(self):validate_result(self.data,self.expected,'a'*40,'b'*40)
     def test_exact_valid_result(self):self.check()
     def test_missing_test_cannot_reduce_denominator(self):

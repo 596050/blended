@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: 2023 Blender Authors
 // SPDX-License-Identifier: Apache-2.0
 #![allow(non_snake_case)]
-use blended_core::compat_cases::CASES;
+use blended_core::compat_cases::{CASES,REPORTS,ASSERTION_COUNTS};
 macro_rules! case { ($name:ident, $index:expr) => {
-    #[test] fn $name() { let (upstream, run) = CASES[$index]; assert!(run(), "{upstream}"); }
+    #[test] fn $name() { let (upstream, run) = CASES[$index]; let report=REPORTS[$index](); assert_eq!(report.assertions,ASSERTION_COUNTS[$index],"{upstream}: assertion count"); assert!(report.passed(),"{upstream}: {report:?}"); assert!(run(), "{upstream}: ABI adapter"); }
 }; }
 case!(ClampVecWithFloats, 0);
 case!(test_invert_v3_safe, 1);

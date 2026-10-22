@@ -33,5 +33,11 @@ class StructureTranslationTests(unittest.TestCase):
         body=next(b for i,_,b,_ in extract((ROOT/'tests/upstream/blender/BLI_bounds_test.cc').read_text()) if i=='bounds.IntersectSegment3D')
         code=transform(body,'bounds.IntersectSegment3D')
         self.assertIn('no!(r, int_bounds.intersects_segment(m::VecN([(-10) as i32, (-10) as i32, (-10) as i32]), m::VecN([(-10) as i32, (-10) as i32, (-10) as i32])))',code)
+    def test_legacy_vector_assertion_sites_and_hash(self):
+        d=json.loads((ROOT/'compatibility/vector-assertions.json').read_text())
+        source=(ROOT/'tests/upstream/blender/BLI_math_vector_test.cc').read_bytes()
+        self.assertEqual(hashlib.sha256(source).hexdigest(),d['source_sha256'])
+        self.assertEqual([(i,len(re.findall(r'\bEXPECT_',b))) for i,_,b,_ in extract(source.decode())],[(c['id'],c['assertion_count']) for c in d['cases']])
+        self.assertEqual(sum(c['assertion_count'] for c in d['cases']),68)
     def test_manifest_never_claims_whole_suite_complete(self):self.assertFalse(self.manifest['complete_blender_test_port'])
 if __name__=='__main__':unittest.main()
