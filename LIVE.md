@@ -19,3 +19,9 @@ Both immutable builds above were verified from source commit `25e641c0d311f61c47
 | Complete-suite requirements and outstanding work | [Complete test-port requirement](docs/COMPLETE-TEST-PORT.md) |
 
 The full-completeness job remains failed while tests are missing. The successful subset deployment must not be interpreted as full-suite completion. Evidence branches can advance; the immutable application URLs above do not change.
+
+## Test-port accuracy
+
+[Read the assertion-level fidelity audit](docs/ASSERTION-FIDELITY.md). The existing 99 Blender runtime cases were independently compared with the pinned original C++ tests, covering 528 assertion events per implementation in native Rust and Chromium WebAssembly. Both comparisons passed. The diagnostic audit does not replace the separate public-URL tests or establish a complete Blender test port.
+
+[Original C++ versus native Rust](https://github.com/596050/blended/blob/assertion-fidelity-evidence/native-comparison.json) · [Original C++ versus browser WebAssembly](https://github.com/596050/blended/blob/assertion-fidelity-evidence/browser-comparison.json)
