@@ -3,12 +3,43 @@ from __future__ import annotations
 
 import base64
 import hashlib
+import json
 from pathlib import Path, PurePosixPath
 import re
 
 MAX_FILE_BYTES = 32 * 1024 * 1024
 MAX_TOTAL_BYTES = 128 * 1024 * 1024
 MAX_FILES = 32
+# Emscripten 6.0.5 musl bits/fcntl.h: O_WRONLY=1, O_CREAT=64, O_EXCL=128.
+# Its WasmFS mode-string helper has no 'wx'; numeric flags pass through.
+ACK_OPEN_FLAGS = 193
+
+BROWSER_ACK_SCRIPT = r"""({path, text, flags}) => {
+    const fs = window.__bwModule?.FS;
+    if (!fs || ['open', 'write', 'close', 'rename'].some(name => typeof fs[name] !== 'function')) {
+        throw new Error('atomic output transfer acknowledgement API unavailable');
+    }
+    const bytes = new TextEncoder().encode(text);
+    if (bytes.length > 16384) throw new Error('output transfer acknowledgement exceeds its bound');
+    if (flags !== 193) throw new Error('output transfer acknowledgement requires exclusive create');
+    const temporary = path + '.tmp';
+    const stream = fs.open(temporary, flags);
+    try {
+        let offset = 0;
+        while (offset < bytes.length) {
+            const remaining = bytes.length - offset;
+            const count = fs.write(stream, bytes, offset, remaining, offset);
+            if (!Number.isInteger(count) || count <= 0 || count > remaining) {
+                throw new Error('output transfer acknowledgement write was incomplete');
+            }
+            offset += count;
+        }
+    } finally {
+        fs.close(stream);
+    }
+    fs.rename(temporary, path);
+    return bytes.length;
+}"""
 
 BROWSER_READ_SCRIPT = r"""({path, expectedBytes}) => {
     const fs = window.__bwModule?.FS;
@@ -115,3 +146,28 @@ def browser_reader(page):
             raise ValueError("browser generated file transport exceeded its byte bound")
         return base64.b64decode(encoded, validate=True)
     return read
+
+
+def acknowledge_browser_transfer(page, handshake, execution_root, token, transfer):
+    """Release the background worker only after bounded output retrieval ends."""
+    expected_path = str(PurePosixPath(execution_root) / "transfer-ack.json")
+    if (not isinstance(handshake, dict) or handshake.get("required") is not True or
+            handshake.get("protocol") != "blended-output-transfer-v1" or
+            handshake.get("ack_path") != expected_path or handshake.get("token") != token or
+            handshake.get("timeout_seconds") != 60 or
+            type(handshake.get("exclusive_create_flags")) is not int or
+            handshake.get("exclusive_create_flags") != ACK_OPEN_FLAGS):
+        raise ValueError("output transfer acknowledgement is not bound to this execution")
+    verified = isinstance(transfer, dict) and transfer.get("status") == "verified"
+    files = validate_inventory(transfer, execution_root + "/files") if verified else []
+    payload = {"protocol": handshake["protocol"], "token": token,
+               "status": "verified" if verified else "failed", "files": files}
+    text = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+    encoded = text.encode("utf-8")
+    if len(encoded) > 16384:
+        raise ValueError("output transfer acknowledgement exceeds its byte bound")
+    written = page.evaluate(BROWSER_ACK_SCRIPT, {"path": expected_path, "text": text, "flags": ACK_OPEN_FLAGS})
+    if written != len(encoded):
+        raise ValueError("output transfer acknowledgement byte count changed")
+    return {"status": "sent", "transfer_status": payload["status"],
+            "bytes": len(encoded), "sha256": hashlib.sha256(encoded).hexdigest()}

@@ -65,7 +65,7 @@ if __name__ == "__main__":
 @unittest.skipUnless(hasattr(sys, "monitoring"), "requires CPython 3.12+ monitoring")
 class BlendFileIOAdapterTests(unittest.TestCase):
     def execute(self, methods, case_names=("test_a", "test_b"), build_hash=shared.UPSTREAM_SHA,
-                corrupt_helper=False, background=True):
+                corrupt_helper=False, background=True, transfer_ack=None):
         source = original_script(methods)
         support = {"upstream_path": "tests/python/bl_blendfile_utils.py",
                    "sha256": hashlib.sha256(HELPER).hexdigest(), "bytes": len(HELPER)}
@@ -80,12 +80,30 @@ class BlendFileIOAdapterTests(unittest.TestCase):
         fake_bpy = types.SimpleNamespace(app=types.SimpleNamespace(
             version=(5, 2, 0), version_string="5.2.0", build_hash=build_hash.encode(),
             build_branch=b"synthetic", binary_path="/synthetic", background=background))
-        stdout = io.StringIO()
+        class CapturedOutput(io.StringIO):
+            def flush(self):
+                if transfer_ack is None:
+                    return
+                lines = [line[len("IO_RESULT:"):] for line in self.getvalue().splitlines()
+                         if line.startswith("IO_RESULT:")]
+                if not lines:
+                    return
+                emitted = json.loads(lines[-1])
+                handshake = emitted["output_transfer_handshake"]
+                payload = {"protocol": handshake["protocol"], "token": handshake["token"],
+                           "status": "verified", "files": emitted["generated_files"]["files"]}
+                if transfer_ack == "changed":
+                    payload["files"] = []
+                elif transfer_ack == "failed":
+                    payload["status"] = "failed"
+                Path(handshake["ack_path"]).write_text(json.dumps(payload))
+        stdout = CapturedOutput()
         with tempfile.TemporaryDirectory() as directory:
             output_root = Path(directory) / "isolated-io"
             original_argv, original_path = sys.argv[:], sys.path[:]
             with patch.dict(sys.modules, {"bpy": fake_bpy}), contextlib.redirect_stdout(stdout):
-                exec(adapter.python_payload([(row, source)], "IO_RESULT:", output_root), {})
+                exec(adapter.python_payload([(row, source)], "IO_RESULT:", output_root,
+                                            wait_for_output_transfer=transfer_ack is not None), {})
             self.assertEqual(sys.argv, original_argv)
             self.assertEqual(sys.path, original_path)
             found = [line[len("IO_RESULT:"):] for line in stdout.getvalue().splitlines()
@@ -130,6 +148,17 @@ class BlendFileIOAdapterTests(unittest.TestCase):
         self.assertEqual(assessment["status"], "failed")
         self.assertFalse(assessment["selected_suites_passed"])
         self.assertEqual(assessment["blockers"][0]["scope"], "execution_context")
+
+    def test_post_test_transfer_ack_must_match_the_actual_file_inventory(self):
+        methods = "def test_a(self):\n    self.assertTrue(True)\n"
+        result, row, _ = self.execute(methods, ("test_a",), transfer_ack="verified")
+        self.assertIsNone(result["exception"])
+        self.assertTrue(result["output_transfer_handshake"]["required"])
+        self.assertEqual(result["output_transfer_handshake"]["timeout_seconds"], 60)
+        self.assertEqual(shared.summarize_execution(result, [row])["status"], "passed")
+        for bad in ("changed", "failed"):
+            with self.subTest(bad=bad), self.assertRaisesRegex(RuntimeError, "output transfer"):
+                self.execute(methods, ("test_a",), transfer_ack=bad)
 
     def test_original_body_assertion_aborts_later_methods_and_runs_teardown(self):
         result, row, files = self.execute('''

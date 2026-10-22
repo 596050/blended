@@ -11,7 +11,7 @@ import json
 
 
 RUNTIME_SOURCE = r'''
-def _blended_run_original_io(encoded_suites, marker, output_root):
+def _blended_run_original_io(encoded_suites, marker, output_root, wait_for_output_transfer):
     import base64
     import hashlib
     import json
@@ -33,7 +33,7 @@ def _blended_run_original_io(encoded_suites, marker, output_root):
     event_numbers = []
     old_argv, old_path = sys.argv[:], sys.path[:]
     source_records = []
-    source_dir = output_dir = main_path = helper_path = None
+    root = source_dir = output_dir = main_path = helper_path = None
     row = None
     active = {}
 
@@ -255,17 +255,45 @@ def _blended_run_original_io(encoded_suites, marker, output_root):
         observation["observer_errors"].append(traceback.format_exc())
     if observation["observer_errors"] and report["exception"] is None:
         report["exception"] = "Original I/O observation failed: " + "\n".join(observation["observer_errors"])
+    handshake = None
+    if wait_for_output_transfer and root is not None and root.is_dir():
+        import os
+        handshake = {"required": True, "protocol": "blended-output-transfer-v1", "token": marker,
+                     "ack_path": str(root / "transfer-ack.json"), "timeout_seconds": 60,
+                     "exclusive_create_flags": os.O_WRONLY | os.O_CREAT | os.O_EXCL}
+    report["output_transfer_handshake"] = handshake
     print(marker + json.dumps(report, sort_keys=True), flush=True)
+    if handshake is not None:
+        # This is after the complete original driver and after monitoring is
+        # disabled. Keep WasmFS alive only until the host verifies output bytes.
+        import time
+        ack_path = Path(handshake["ack_path"])
+        deadline = time.monotonic() + handshake["timeout_seconds"]
+        while not ack_path.exists() and time.monotonic() < deadline:
+            time.sleep(0.02)
+        if not ack_path.is_file() or ack_path.is_symlink():
+            raise RuntimeError("output transfer acknowledgement timed out or is not a regular file")
+        with ack_path.open("rb") as stream:
+            raw_ack = stream.read(16385)
+        if len(raw_ack) > 16384:
+            raise RuntimeError("output transfer acknowledgement exceeds its bound")
+        ack = json.loads(raw_ack)
+        if (not isinstance(ack, dict) or ack.get("protocol") != handshake["protocol"] or
+                ack.get("token") != marker or ack.get("status") != "verified" or
+                ack.get("files") != report["generated_files"]["files"]):
+            raise RuntimeError("output transfer acknowledgement did not verify the original file inventory")
 '''
 
 
-def python_payload(suites, marker, output_root):
+def python_payload(suites, marker, output_root, wait_for_output_transfer=False):
     """Embed exact main/helper bytes and the observer in one Blender program."""
     if len(suites) != 1:
         raise ValueError("the original I/O cohort requires one main script")
     if not isinstance(marker, str) or not marker:
         raise ValueError("a nonempty I/O result marker is required")
+    if type(wait_for_output_transfer) is not bool:
+        raise ValueError("output transfer wait must be boolean")
     encoded = [{**row, "source_b64": base64.b64encode(data).decode("ascii")}
                for row, data in suites]
     return RUNTIME_SOURCE + "\n_blended_run_original_io(" + ", ".join(
-        repr(value) for value in (json.dumps(encoded), marker, str(output_root))) + ")\n"
+        repr(value) for value in (json.dumps(encoded), marker, str(output_root), wait_for_output_transfer)) + ")\n"

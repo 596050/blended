@@ -473,7 +473,7 @@ def extract_asset(archive, directory):
         package.extractall(directory, members=members, filter="data")
 
 
-def python_payload(suites, marker, output_root=None):
+def python_payload(suites, marker, output_root=None, wait_for_output_transfer=False):
     """Transport and execute whole source files without changing assertions."""
     if any(row.get("driver") == "original-script" for row, _ in suites):
         if len(suites) != 1 or output_root is None:
@@ -482,7 +482,7 @@ def python_payload(suites, marker, output_root=None):
             from .blender_io_cohort import python_payload as original_script_payload
         except ImportError:
             from blender_io_cohort import python_payload as original_script_payload
-        return original_script_payload(suites, marker, str(output_root))
+        return original_script_payload(suites, marker, str(output_root), wait_for_output_transfer)
     encoded = [{**row, "source_b64": base64.b64encode(data).decode("ascii")}
                for row, data in suites]
     # The adapter loads the upstream module and uses its unittest loader. Only
@@ -690,7 +690,7 @@ def probe(args, report):
                 page.on("console", console)
                 page.on("pageerror", lambda error: browser_errors.append(str(error)))
                 page.on("crash", lambda: browser_errors.append("browser page crashed"))
-                code = python_payload(suites, marker, io_root)
+                code = python_payload(suites, marker, io_root, wait_for_output_transfer=bool(io_root))
                 report["runner_sha256"] = hashlib.sha256(code.encode("utf-8")).hexdigest()
                 extra_args = (["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"]
                               if io_root else [])
@@ -757,6 +757,17 @@ def probe(args, report):
                     except Exception as error:
                         transfer_error = str(error)
                         report["generated_file_transfer"] = {"status": "failed", "reason": transfer_error}
+                    try:
+                        try:
+                            from .probe_io_files import acknowledge_browser_transfer
+                        except ImportError:
+                            from probe_io_files import acknowledge_browser_transfer
+                        report["output_transfer_acknowledgement"] = acknowledge_browser_transfer(
+                            page, result.get("output_transfer_handshake"), io_root, marker,
+                            report.get("generated_file_transfer"))
+                    except Exception as error:
+                        report["output_transfer_acknowledgement"] = {"status": "failed", "reason": str(error)}
+                        browser_errors.append("output transfer acknowledgement failed: " + str(error))
                     try:
                         # The unmodified shell's onExit writes the real Emscripten
                         # exit code. A Python result alone does not prove shutdown.

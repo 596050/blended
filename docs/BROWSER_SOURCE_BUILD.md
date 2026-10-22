@@ -224,8 +224,20 @@ Both engines transferred six files successfully, but the exchange gate refused
 all four comparisons because the browser's original driver had failed.
 Upstream `wm_files.cc` deliberately clears the active window after file loading
 when `G.background` is false. The native invocation already used background
-mode. A fresh browser run is required to validate the corrected invocation;
-the existing failure is not reclassified as a pass.
+mode. The existing failure is not reclassified as a pass.
+
+The [background follow-up](https://github.com/596050/blended/actions/runs/39849706149)
+observed `bpy.app.background=true`, all four original methods passing and
+runtime exit code 0. It then failed file transfer at the first `FS.lstat`:
+normal runtime teardown had already removed the temporary WasmFS files.
+The adapter now publishes the original test report and waits at most 60 seconds
+after the original driver and monitoring have ended. The host copies and hashes
+the outputs, atomically writes an acknowledgement bound to the run token and
+complete file inventory, then observes normal runtime exit. The acknowledgement
+uses the pinned SDK's numeric exclusive-create flags 193 with bounded
+`FS.open/write/close/rename`; its WasmFS API does not accept a `wx` mode string
+or a flags option on `FS.writeFile`. A failed, altered or missing acknowledgement
+cannot qualify. Fresh CI must verify this transport correction.
 
 ```sh
 python3 tools/probe_native_reference.py \
