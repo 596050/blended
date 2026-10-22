@@ -50,13 +50,13 @@ class CompletenessTests(unittest.TestCase):
     def test_synthetic_complete_contract(self):
         r=self.report(fixture());self.assertTrue(r['test_port_complete']);self.assertTrue(r['conformance_passed']);self.assertFalse(r['feature_parity_proven'])
     def test_assertion_failure_is_executed_port_but_not_conformance(self):
-        d=fixture();d[3][1]['status']='failed';r=self.report(d)
+        d=fixture();d[3][1]['status']='failed';d[3][1]['failure_kind']='assertion';r=self.report(d)
         self.assertTrue(r['test_port_complete']);self.assertFalse(r['conformance_passed'])
     def test_skipped_not_run_unsupported_blocked_never_pass(self):
         for state in ('skipped','not_run','unsupported','blocked'):
             with self.subTest(state=state):
                 d=fixture();d[3][1]['status']=state;self.assertFalse(self.report(d)['test_port_complete'])
-# Each generated method is an independently named regression, not an aggregate feature count.
+# Independently named regression cases. These are infrastructure, not feature counts.
 def rejecting(name,mutate):
     def test(self):
         d=fixture();mutate(d);self.assertFalse(self.report(d)['test_port_complete'])
@@ -88,4 +88,49 @@ rejecting('fake_pass_without_execution_blocks',lambda d:d[3][1].update(executed=
 rejecting('unregistered_port_case_blocks',lambda d:d[2][0]['cases'].append({'profile':'cpu','id':'invented'}))
 rejecting('missing_build_configuration_blocks',lambda d:d[1][0].update(build_config_sha256=''))
 rejecting('utility_tests_cannot_cover_other_sources',lambda d:d[0]['source_obligations'].append({'path':'tests/modifiers.py','sha256':HASH}))
-if __name__=='__main__': unittest.main()
+class SourcePreservationTests(unittest.TestCase):
+    def test_missing_original_never_becomes_complete(self):
+        from tools.blender_suite import build_catalogue
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);tracked=root/'tracked';tracked.write_bytes(b'100644 '+b'a'*40+b' 0\ttests/missing.py\0')
+            summary=build_catalogue(root,PIN,{'required_profiles':['cpu'],'require_external_benchmarks':False},root/'out',tracked)
+            self.assertEqual(summary['audit_errors'],1)
+    def test_non_utf8_and_template_sources_preserved_without_losing_files(self):
+        from tools.blender_suite import build_catalogue
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);(root/'tests').mkdir();entries=[]
+            for path,raw in [('tests/a_test.cc',b'// \xff\nTEST(Suite, Case) {}'),('tests/template.py',b'def @PLACEHOLDER@(): pass')]:
+                (root/path).write_bytes(raw);oid=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest();entries.append(f'100644 {oid} 0\t{path}\0'.encode())
+            tracked=root/'tracked';tracked.write_bytes(b''.join(entries));out=root/'out'
+            summary=build_catalogue(root,PIN,{'required_profiles':['cpu'],'require_external_benchmarks':False},out,tracked)
+            self.assertEqual(summary['audit_errors'],0);self.assertEqual(summary['tracked_entries'],2);self.assertEqual(summary['discovery_diagnostics'],2)
+            self.assertEqual((out/'original/tests/a_test.cc').read_bytes(),(root/'tests/a_test.cc').read_bytes());self.assertEqual(summary['source_obligations'],2)
+    def test_tracked_path_escape_rejected(self):
+        from tools.blender_suite import git_entries
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);p=root/'tracked';p.write_bytes(b'100644 '+b'a'*40+b' 0\t../escape\0')
+            with self.assertRaises(ValueError):list(git_entries(root,p))
+    def test_cached_fixture_hash_is_checked(self):
+        from tools.blender_suite import audit_fixture_cache
+        import tempfile,json
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);oid=hashlib.sha256(b'abc').hexdigest();contract={'upstream_commit':PIN,'fixtures':[{'path':'a.exr','oid':oid,'size':3}]}
+            (root/'contract.json').write_text(json.dumps(contract));cache=root/'cache';f=cache/oid[:2]/oid[2:4]/oid;f.parent.mkdir(parents=True)
+            f.write_bytes(b'abd');self.assertFalse(audit_fixture_cache(root,cache)['complete']);f.write_bytes(b'abc');self.assertTrue(audit_fixture_cache(root,cache)['complete'])
+    def test_crash_is_not_an_executed_assertion_port(self):
+        d=fixture();d[3][1]['status']='failed';d[3][1]['failure_kind']='crash'
+        self.assertFalse(assess(*d,expected_application_commit=APP,expected_url=URL)['test_port_complete'])
+    def test_static_asserts_need_compile_evidence_not_runtime_count(self):
+        d=fixture();d[0]['source_obligations'].append({'path':'types.h','sha256':HASH,'kind':'compile_time'})
+        d[2].append({'source_path':'types.h','source_sha256':HASH,'assertions':'upstream_verbatim','adapter':'compiler','adapter_sha256':HASH,'review':'reviewed','cases':[]})
+        self.assertFalse(assess(*d,expected_application_commit=APP,expected_url=URL)['test_port_complete'])
+        d[2][-1]['compilation']={realm:{'status':'passed','upstream_commit':PIN,'application_commit':APP,'log_sha256':HASH} for realm in ('native','browser')}
+        self.assertTrue(assess(*d,expected_application_commit=APP,expected_url=URL)['test_port_complete'])
+if __name__=='__main__':unittest.main()

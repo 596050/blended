@@ -2,10 +2,15 @@ name: Complete Blender test-port requirement
 on:
   push:
     branches: [main, 'compat/full-blender-tests']
-    paths: ['tools/blender_suite.py', 'tests/test_blender_suite.py', 'compatibility/blender-suite-policy.json', '.github/workflows/blender-suite.yml']
+    paths: ['tools/blender_suite.py', 'tests/test_blender_suite.py', 'compatibility/**', '.github/workflows/blender-suite.yml', upstream.lock.json, .gitmodules, 'crates/**', 'modeller/**']
+  pull_request:
+    paths: ['tools/blender_suite.py', 'tests/test_blender_suite.py', 'compatibility/**', '.github/workflows/blender-suite.yml', upstream.lock.json, .gitmodules, 'crates/**', 'modeller/**']
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: blender-suite-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   gate-regressions:
     runs-on: ubuntu-latest
@@ -14,44 +19,141 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - run: python3 -m unittest discover -s tests -p test_blender_suite.py -v
-  capture-pinned-source:
+      - name: Test completeness accounting, not Blender feature functionality
+        run: |
+          mkdir -p evidence
+          set -o pipefail
+          python3 -m unittest discover -s tests -p test_blender_suite.py -v 2>&1 | tee evidence/gate-regressions.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blender-suite-gate-regressions
+          path: evidence/
+          retention-days: 3
+  original-corpus:
+    needs: gate-regressions
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - run: python3 tools/fetch_upstreams.py blender
-      - name: Verify and retain every tracked blob, without archive path omissions
+      - name: Fetch and check the entire immutable reference source
         run: |
-          mkdir -p evidence/full-suite
-          git -C .upstream/blender rev-parse HEAD > evidence/full-suite/upstream-commit.txt
-          git -C .upstream/blender ls-files --stage -z > evidence/full-suite/tracked-files.zlist
-          python3 - <<'PY'
-          import hashlib,io,json,os,subprocess,tarfile
-          from pathlib import Path
-          root=Path('.upstream/blender');count=0;links=[]
-          entries=subprocess.check_output(['git','-C',str(root),'ls-files','--stage','-z']).split(b'\0')
-          with tarfile.open('evidence/full-suite/blender-pinned-source.tar.gz','w:gz') as archive:
-              for entry in entries:
-                  if not entry:continue
-                  header,name=entry.split(b'\t',1);mode,oid,stage=header.decode().split();name=os.fsdecode(name)
-                  if mode=='160000':links.append({'path':name,'commit':oid});continue
-                  path=root/name
-                  raw=os.readlink(path).encode() if mode=='120000' else path.read_bytes()
-                  actual=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
-                  if actual!=oid:raise RuntimeError('Source blob mismatch: '+name)
-                  info=tarfile.TarInfo(name);info.size=len(raw);info.mode=0o755 if mode=='100755' else 0o644
-                  if mode=='120000':info.type=tarfile.SYMTYPE;info.linkname=raw.decode();info.size=0
-                  archive.addfile(info,io.BytesIO(raw) if mode!='120000' else None);count+=1
-          Path('evidence/full-suite/source-capture.json').write_text(json.dumps({'verified_git_blobs':count,'gitlinks':links,'lfs_payloads_materialised':False},indent=2))
-          print('Verified and captured',count,'tracked blobs; external gitlinks',len(links))
-          PY
-          cp upstream.lock.json evidence/full-suite/
-          git archive --format=tar HEAD | gzip -n > evidence/full-suite/blended-tooling-source.tar.gz
+          python3 tools/fetch_upstreams.py blender
+          PIN=$(python3 -c "import json;print(json.load(open('upstream.lock.json'))['upstreams']['blender']['commit'])")
+          test "$(git ls-tree HEAD vendor/blender | awk '{print $3}')" = "$PIN"
+          python3 tools/blender_suite.py catalogue --root .upstream/blender --pin "$PIN" --policy compatibility/blender-suite-policy.json --output evidence/full-suite
+          python3 tools/prepare_site.py
+          cp compatibility/ports.json evidence/full-suite/existing-partial-ports.json
+          cp compatibility/blender-suite-policy.json evidence/full-suite/policy.json
+      - name: Attempt every pinned LFS payload from Blender's public upstream, not GitHub's incomplete mirror
+        env:
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          PIN=$(python3 -c "import json;print(json.load(open('upstream.lock.json'))['upstreams']['blender']['commit'])")
+          LFS_URL=https://projects.blender.org/blender/blender.git/info/lfs
+          git -C .upstream/blender lfs install --local
+          git -C .upstream/blender config lfs.url "$LFS_URL"
+          git -C .upstream/blender config "lfs.$LFS_URL.access" none
+          set +e
+          timeout 600 git -C .upstream/blender lfs fetch origin "$PIN" > evidence/full-suite/lfs-fetch.log 2>&1
+          FETCH_STATUS=$?
+          python3 tools/blender_suite.py fixtures --directory evidence/full-suite --cache .upstream/blender/.git/lfs/objects > evidence/full-suite/fixture-audit.log 2>&1
+          AUDIT_STATUS=$?
+          set -e
+          printf '{"fetch_exit_code":%s,"audit_exit_code":%s}\n' "$FETCH_STATUS" "$AUDIT_STATUS" > evidence/full-suite/fixture-fetch-status.json
+          cat evidence/full-suite/fixture-audit.log
+          test -f evidence/full-suite/fixture-audit.json
+      - name: Prepare the explicit completion report; this is not the acceptance gate
+        run: |
+          COMMIT=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['source_commit'])")
+          URL=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['url'])")
+          set +e
+          python3 tools/blender_suite.py gate --directory evidence/full-suite --application-commit "$COMMIT" --url "$URL" > evidence/full-suite/gate.log 2>&1
+          STATUS=$?
+          set -e
+          cat evidence/full-suite/gate.log
+          test "$STATUS" -eq 0 -o "$STATUS" -eq 1
+          test -f evidence/full-suite/full-port-report.json
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: full-blender-test-source
+          name: original-blender-test-corpus
           path: evidence/full-suite/
-          retention-days: 1
+          include-hidden-files: true
+          retention-days: 3
+  deployed-alpha-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - name: Re-test the real deployed alpha; do not confuse this subset with the complete suite
+        run: |
+          mkdir -p evidence/alpha
+          COMMIT=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['source_commit'])")
+          URL=$(python3 -c "import json;print(json.load(open('evidence/MODELLER-VERIFIED.json'))['url'])")
+          python3 tools/test_modeller.py --url "$URL" --commit "$COMMIT" --output evidence/alpha
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-suite-existing-alpha-check
+          path: evidence/alpha/
+          retention-days: 3
+  full-browser-test-port:
+    needs: original-corpus
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: original-blender-test-corpus
+          path: corpus
+      - name: A partial import or a passing alpha cannot satisfy the full test-port requirement
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          r=json.load(open('corpus/full-port-report.json'))
+          print(json.dumps({k:v for k,v in r.items() if k!='blockers'},indent=2))
+          sys.exit(0 if r['test_port_complete'] else 1)
+          PY
+  preserve-corpus:
+    needs: [original-corpus, deployed-alpha-regression]
+    if: always() && needs.original-corpus.result == 'success' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: original-blender-test-corpus
+          path: corpus
+      - uses: actions/download-artifact@v4
+        with:
+          name: full-suite-existing-alpha-check
+          path: corpus/current-alpha-smoke
+      - uses: actions/download-artifact@v4
+        with:
+          name: blender-suite-gate-regressions
+          path: corpus/tooling-tests
+      - name: Keep original assertions and failed completion evidence in Git history
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init --initial-branch=blender-test-corpus published
+          git -C published remote add origin "https://github.com/${REPO}.git"
+          gh auth setup-git
+          if git -C published ls-remote --exit-code --heads origin blender-test-corpus >/dev/null 2>&1; then
+            git -C published fetch --depth=1 origin blender-test-corpus
+            git -C published reset --mixed FETCH_HEAD
+          fi
+          cp -a corpus/. published/
+          git -C published add -A
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Preserve original Blender suite and explicit completeness gaps from ${SOURCE_SHA}"
+          git -C published push origin HEAD:refs/heads/blender-test-corpus
