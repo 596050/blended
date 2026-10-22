@@ -18,10 +18,11 @@ jobs:
         with:
           toolchain: '1.92.0'
           targets: wasm32-unknown-unknown
-      - name: Generate every assertion in the selected pinned source files
+      - name: Verify committed ports reproduce from pinned upstream files
         run: |
           python3 tools/fetch_upstreams.py blender
           python3 tools/port_scalar_tests.py
+          git diff --exit-code -- crates/blended-core/src/additional_cases.rs crates/blended-core/tests/upstream_additional.rs compatibility/additional-ports.json tests/upstream
       - name: Run native tests without ignoring missing implementations
         run: |
           mkdir -p evidence
@@ -85,7 +86,6 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
-      actions: read
     outputs:
       url: ${{ steps.publish.outputs.url }}
     steps:
@@ -97,12 +97,14 @@ jobs:
         with:
           name: blender-test-port-evidence
           path: site/verification
-      - uses: actions/download-artifact@v4
+      - name: Read immutable verified fixture metadata, not an expiring Actions artifact
+        uses: actions/checkout@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: 39847680248
-          name: blender-fixture-hash-evidence
-          path: site/fixture-evidence
+          ref: 950ea85b0f4438bc5e082a0f9a402973f01d4de3
+          path: fixture-store
+          sparse-checkout: fixture-evidence
+          persist-credentials: false
+      - run: cp -a fixture-store/fixture-evidence site/
       - name: Publish only the verified subset, explicitly not full completion
         id: publish
         env:
@@ -162,42 +164,3 @@ jobs:
           git -C published add -A
           git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve deployed Blender test-port subset results'
           git -C published push origin HEAD:refs/heads/test-port-evidence
-  retain-generated-sources:
-    needs: deployed-subset-test
-    if: github.ref == 'refs/heads/compat/complete-test-port'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/download-artifact@v4
-        with:
-          name: blender-test-port-evidence
-          path: generated
-      - uses: actions/download-artifact@v4
-        with:
-          name: conformance-site
-          path: conformance
-      - name: Commit generated Rust tests and pinned test snapshots only after public verification
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SOURCE_SHA: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          gh auth setup-git
-          REMOTE=$(git ls-remote origin refs/heads/compat/complete-test-port | cut -f1)
-          test "$REMOTE" = "$SOURCE_SHA"
-          cp generated/crates/blended-core/src/additional_cases.rs crates/blended-core/src/
-          cp generated/crates/blended-core/tests/upstream_additional.rs crates/blended-core/tests/
-          cp generated/compatibility/additional-ports.json compatibility/
-          mkdir -p tests/upstream evidence/test-port
-          cp -a generated/tests/upstream/. tests/upstream/
-          cp conformance/audit.json evidence/test-port/source-audit.json
-          cp generated/evidence/native.txt evidence/test-port/native.txt
-          cp generated/evidence/browser.json evidence/test-port/local-browser.json
-          git add crates/blended-core/src/additional_cases.rs crates/blended-core/tests/upstream_additional.rs compatibility/additional-ports.json tests/upstream evidence/test-port
-          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Retain publicly verified Rust ports, frozen upstream tests and explicit incomplete ledger'
-          git push origin HEAD:refs/heads/compat/complete-test-port
