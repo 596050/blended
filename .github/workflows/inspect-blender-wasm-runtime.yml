@@ -1,0 +1,39 @@
+name: Inspect actual Blender WASM runtime
+on:
+  push:
+    branches: ['compat/full-blender-tests']
+    paths: ['.github/workflows/inspect-blender-wasm-runtime.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Fetch the immutable-checksummed upstream browser release and inspect executable entry points
+        run: |
+          mkdir -p evidence/runtime-text
+          curl -fL --retry 3 https://github.com/HeyPuter/blender-wasm/releases/download/1.0.0/blender8-1.tar.gz -o runtime.tar.gz
+          echo 'a2ea27d43657450d2fb3309f5e453bf103e35442e0281ccb362b5689555b4d91  runtime.tar.gz' | sha256sum --check
+          python3 - <<'PY'
+          import hashlib,json,tarfile
+          from pathlib import Path,PurePosixPath
+          records=[]
+          with tarfile.open('runtime.tar.gz','r:gz') as archive:
+              for member in archive:
+                  p=PurePosixPath(member.name)
+                  if p.is_absolute() or '..' in p.parts:raise ValueError(member.name)
+                  if not member.isfile():continue
+                  raw=archive.extractfile(member).read()
+                  records.append({'path':member.name,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})
+                  if p.suffix in {'.js','.mjs','.html','.json','.css','.txt','.md'}:
+                      dest=Path('evidence/runtime-text')/p;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+          Path('evidence/runtime-files.json').write_text(json.dumps(records,indent=2)+'\n')
+          print(json.dumps(records,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: blender-wasm-runtime-inspection
+          path: evidence/
+          retention-days: 1
