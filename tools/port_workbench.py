@@ -7,30 +7,73 @@ from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1]
 HTML='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blended | Test-port evidence</title><style>body{font:16px/1.55 system-ui;max-width:1100px;margin:48px auto;padding:0 24px;background:#101722;color:#edf2f8}h1{font-size:36px}a{color:#8ed8ff}button{padding:12px 24px;font:inherit;cursor:pointer}table{width:100%;border-collapse:collapse;margin-top:24px}td,th{text-align:left;padding:8px;border-bottom:1px solid #3b4654}.notice{padding:20px;background:#3b2d16;border-left:4px solid #e5ae46}.pass{color:#88e8ad}.fail{color:#ff9f9f}code{overflow-wrap:anywhere}</style><h1>Blended test-port workbench</h1><p class="notice"><strong>The complete Blender test port is unfinished.</strong> This page executes a verified subset. Passing these cases does not establish application or rendering parity.</p><p id="provenance"></p><p><a href="source.tar.gz">Corresponding source</a> · <a href="manifest.json">Case manifest</a> · <a href="audit.json">Full source-candidate audit</a></p><button id="run">Run all ported Blender cases</button><p id="status" role="status">Loading the manifest…</p><table><thead><tr><th>Upstream test</th><th>Assertions</th><th>Result</th></tr></thead><tbody id="cases"></tbody></table><script type="module" src="run.mjs"></script></html>'''
-JS='''const manifest=await (await fetch('./manifest.json')).json();
+JS='''const response=await fetch('./manifest.json');
+if(!response.ok)throw Error('Manifest fetch failed');
+const manifest=await response.json();
 const tbody=document.querySelector('#cases');
 document.querySelector('#provenance').textContent=`Source ${manifest.source_commit}; Blender reference ${manifest.reference_commit}.`;
-const all=[...manifest.legacy.map((c,i)=>({...c,index:i,group:'legacy'})),...manifest.additional.map((c,i)=>({...c,index:i,group:'additional'}))];
-for(const c of all){const tr=document.createElement('tr');for(const text of [c.id,c.assertion_count??'Original case','Not run']){const td=document.createElement('td');td.textContent=text;tr.append(td);}tbody.append(tr);}
+const groups=['legacy','additional','structures'];
+const all=groups.flatMap(group=>manifest[group].map((c,index)=>({...c,index,group})));
+if(new Set(all.map(c=>c.id)).size!==all.length)throw Error('Duplicate case identity');
+for(const c of all){const tr=document.createElement('tr');for(const text of [c.id,c.expected_runtime_assertions??c.assertion_count??'Original case','Not run']){const td=document.createElement('td');td.textContent=text;tr.append(td);}tbody.append(tr);}
 document.querySelector('#status').textContent=`${all.length} translated cases ready. Full-suite completeness remains unverified.`;
 document.querySelector('#run').addEventListener('click',async()=>{
- const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,additional_assertions:0,cases:[],errors:[]};
+ const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,additional_assertions:0,structure_assertions:0,cases:[],errors:[]};
  const button=document.querySelector('#run');button.disabled=true;
  try{
   const response=await fetch('./blended_core.wasm');if(!response.ok)throw Error('WASM fetch failed');
-  const {instance}=await WebAssembly.instantiate(await response.arrayBuffer(),{});const w=instance.exports;
-  if(w.blended_case_count()!==manifest.legacy.length||w.blended_additional_case_count()!==manifest.additional.length)throw Error('Registry/manifest count mismatch');
+  const bytes=await response.arrayBuffer();
+  const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');
+  if(digest!==manifest.wasm_sha256)throw Error('WASM hash/manifest mismatch');
+  result.wasm_sha256=digest;
+  const {instance}=await WebAssembly.instantiate(bytes,{});const w=instance.exports;
+  const registries={legacy:[w.blended_case_count,w.blended_run_case,null],additional:[w.blended_additional_case_count,w.blended_additional_run_case,w.blended_additional_assertion_count],structures:[w.blended_structures_case_count,w.blended_structures_run_case,w.blended_structures_assertion_count]};
+  for(const group of groups){if(registries[group][0]()!==manifest[group].length)throw Error(`Registry/manifest count mismatch: ${group}`);}
   for(const [i,c] of all.entries()){
-   let code,assertions=null;if(c.group==='legacy'){code=w.blended_run_case(c.index);}else{code=w.blended_additional_run_case(c.index);assertions=w.blended_additional_assertion_count(c.index);result.additional_assertions+=assertions;}
-   const passed=code===1&&(c.group==='legacy'||assertions===c.assertion_count);result.cases.push({id:c.id,passed,code,assertions});if(passed)result.passed++;
+   const [,run,count]=registries[c.group];const code=run(c.index);const assertions=count?count(c.index):null;
+   if(c.group==='additional')result.additional_assertions+=assertions;
+   if(c.group==='structures')result.structure_assertions+=assertions;
+   const expected=c.expected_runtime_assertions??c.assertion_count;
+   const passed=code===1&&(c.group==='legacy'||assertions===expected);
+   result.cases.push({id:c.id,group:c.group,passed,code,assertions});if(passed)result.passed++;
    const td=tbody.children[i].lastElementChild;td.textContent=passed?'Passed':'Failed';td.className=passed?'pass':'fail';
   }
-  result.invalid_index_rejected=w.blended_run_case(0xffffffff)===-1&&w.blended_additional_run_case(0xffffffff)===-1;
+  result.invalid_index_rejected=groups.every(g=>registries[g][1](0xffffffff)===-1);
   if(result.passed===all.length&&result.invalid_index_rejected)result.status='passed';
  }catch(e){result.errors.push(String(e));}
  document.querySelector('#status').textContent=`${result.passed}/${all.length} passed. Full Blender test-port completeness: not established.`;
  window.__portResults=result;button.disabled=false;
 });'''
+
+def expected_cases(root=ROOT):
+    """Trusted universe from the checked-out test sources, not the served page's totals."""
+    lock=json.loads((root/'upstream.lock.json').read_text())['upstreams']['blender']['commit']
+    ids=re.findall(r'\("(math_vector\.[^"]+)"',(root/'crates/blended-core/src/compat_cases.rs').read_text())
+    result=[{'id':i,'group':'legacy','expected_runtime_assertions':None} for i in ids]
+    for filename,group in [('additional-ports.json','additional'),('structure-ports.json','structures')]:
+        data=json.loads((root/'compatibility'/filename).read_text())
+        if data['upstream_commit']!=lock:raise ValueError('Reference revision mismatch: '+filename)
+        for case in data['cases']:
+            count=case.get('expected_runtime_assertions',case['assertion_count'])
+            if not isinstance(count,int) or count<=0:raise ValueError('Invalid assertion execution count')
+            result.append({'id':case['id'],'group':group,'expected_runtime_assertions':count})
+    if not ids or len({c['id'] for c in result})!=len(result):raise ValueError('Empty or duplicate trusted case universe')
+    return result,lock
+
+def validate_result(data,expected,commit,reference):
+    if data.get('source_commit')!=commit or data.get('reference_commit')!=reference:raise ValueError('Wrong source/reference revision')
+    if data.get('complete_test_port') is not False:raise ValueError('False completion claim')
+    cases=data.get('cases',[])
+    if [(c.get('id'),c.get('group')) for c in cases]!=[(c['id'],c['group']) for c in expected]:raise ValueError('Missing, reordered, duplicate or substituted test identity')
+    for actual,contract in zip(cases,expected):
+        if actual.get('passed') is not True or actual.get('code')!=1:raise ValueError('WASM assertion failure: '+contract['id'])
+        if actual.get('assertions')!=contract['expected_runtime_assertions']:raise ValueError('Assertion execution changed: '+contract['id'])
+    for group,key in [('additional','additional_assertions'),('structures','structure_assertions')]:
+        total=sum(c['expected_runtime_assertions'] or 0 for c in expected if c['group']==group)
+        if data.get(key)!=total:raise ValueError('Missing assertion execution: '+group)
+    if not re.fullmatch('[0-9a-f]{64}',data.get('wasm_sha256','')):raise ValueError('Missing verified WASM hash')
+    if data.get('status')!='passed' or data.get('passed')!=len(expected) or data.get('invalid_index_rejected') is not True or data.get('errors'):raise ValueError('Incomplete or failed execution')
+
 def build(commit):
     if not re.fullmatch('[0-9a-f]{40}',commit):raise ValueError('Full source commit required')
     subprocess.run([sys.executable,str(ROOT/'tools/prepare_site.py')],check=True,cwd=ROOT)
@@ -39,12 +82,14 @@ def build(commit):
     shutil.copyfile(wasm,out/'blended_core.wasm')
     legacy=json.loads((ROOT/'compatibility/ports.json').read_text())
     added=json.loads((ROOT/'compatibility/additional-ports.json').read_text())
-    manifest={'schema':1,'source_commit':commit,'reference_commit':added['upstream_commit'],'legacy':legacy['cases'],'additional':added['cases'],'complete_test_port':False,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest()}
+    structures=json.loads((ROOT/'compatibility/structure-ports.json').read_text())
+    expected,reference=expected_cases()
+    if reference!=added['upstream_commit']:raise ValueError('Reference mismatch')
+    manifest={'schema':2,'source_commit':commit,'reference_commit':added['upstream_commit'],'legacy':legacy['cases'],'additional':added['cases'],'structures':structures['cases'],'complete_test_port':False,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest()}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (out/'index.html').write_text(HTML);(out/'run.mjs').write_text(JS)
     subprocess.run([sys.executable,str(ROOT/'tools/inventory.py'),'--root',str(ROOT/'.upstream/blender'),'--name','blender','--commit',added['upstream_commit'],'--output',str(ROOT/'build/blender-inventory.json')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tools/test_port_audit.py'),'--inventory',str(ROOT/'build/blender-inventory.json'),'--output',str(out/'audit.json')],check=True)
-    # Include the precise sources used for the binary, including generated cases.
     with tarfile.open(out/'source.tar.gz','w:gz') as tar:
         for name in ('crates','tools','tests','compatibility','docs','Cargo.toml','Cargo.lock','rust-toolchain.toml','NOTICE.md','upstream.lock.json'):
             p=ROOT/name
@@ -55,7 +100,8 @@ def build(commit):
 def test(url,commit,output):
     from playwright.sync_api import sync_playwright
     output.parent.mkdir(parents=True,exist_ok=True)
-    report={'url':url,'expected_source_commit':commit,'started_utc':datetime.now(timezone.utc).isoformat(),'status':'failed','errors':[],'complete_test_port':False}
+    expected,reference=expected_cases()
+    report={'url':url,'expected_case_count':len(expected),'expected_source_commit':commit,'started_utc':datetime.now(timezone.utc).isoformat(),'status':'failed','errors':[],'complete_test_port':False}
     with sync_playwright() as pw:
         b=pw.chromium.launch(executable_path=shutil.which('google-chrome') or shutil.which('chromium'),headless=True,args=['--no-sandbox'])
         context=b.new_context(viewport={'width':1200,'height':1000})
@@ -66,14 +112,10 @@ def test(url,commit,output):
             response=page.goto(url,wait_until='networkidle',timeout=90000)
             assert response and response.status==200,'HTTP failure'
             page.wait_for_selector('#cases tr',timeout=30000)
-            assert page.locator('#cases tr').count()==45,'Incomplete or unexpected test registry'
+            assert page.locator('#cases tr').count()==len(expected),'Incomplete or unexpected test registry'
             page.locator('#run').click();page.wait_for_function('window.__portResults !== undefined',timeout=60000)
             data=page.evaluate('window.__portResults');report['wasm']=data
-            assert data['source_commit']==commit,'Wrong deployed source revision'
-            assert data['status']=='passed' and data['passed']==45,'WASM assertion failure'
-            assert data['additional_assertions']==225,'Missing assertion execution'
-            assert data['invalid_index_rejected'],'Invalid case silently passed'
-            assert data['complete_test_port'] is False,'False completion claim'
+            validate_result(data,expected,commit,reference)
             assert not report['errors'],'Uncaught browser errors'
             report['browser_version']=b.version;report['status']='passed'
         except Exception as e:report['failure']=str(e)

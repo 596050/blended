@@ -48,7 +48,6 @@ def evaluate(inventory,ports,runtime=None,execution=None):
     ledger=[dict(c,port_status='mapped_reviewed' if key(c) in mapped else 'not_ported',target_test=mapped.get(key(c),{}).get('target_test')) for c in cases]
     executed=execution.get('case_results',{}) if execution.get('source_commit')==inventory.get('commit') else {}
     conformance=not blockers and bool(mapped) and all(all(executed.get(k,{}).get(t)=='passed' for t in ('native','wasm','deployed')) for k in mapped)
-    # Tests establish their exercised contracts, never every feature of an application.
     return dict(schema=2,reference_commit=inventory.get('commit'),complete_test_port=not blockers,test_conformance_complete=conformance,feature_parity=False,
                 source_candidates=len(cases),mapped_source_candidates=len(mapped),unported_source_candidates=len(missing),
                 unported_runtime_cases=len(runtime_missing),unavailable_fixture_count=len(unavailable),
@@ -57,12 +56,17 @@ def evaluate(inventory,ports,runtime=None,execution=None):
 
 def load_ports(inventory):
     hashes={f['path']:f['sha256'] for f in inventory['files']};ports=[]
-    generated=ROOT/'compatibility/additional-ports.json'
-    if generated.exists():
+    for manifest,target_path,module in (
+        ('additional-ports.json','crates/blended-core/src/additional_cases.rs','upstream_additional'),
+        ('structure-ports.json','crates/blended-core/src/structure_cases.rs','upstream_structures'),
+    ):
+        generated=ROOT/'compatibility'/manifest
+        if not generated.exists():continue
         data=json.loads(generated.read_text())
         if data['upstream_commit']!=inventory['commit']:raise ValueError('Port reference commit mismatch')
-        target=ROOT/'crates/blended-core/src/additional_cases.rs';target_hash=hashlib.sha256(target.read_bytes()).hexdigest()
-        for p in data['cases']:ports.append(dict(p,semantics_reviewed=False,target_test='upstream_additional::'+p['rust_function'],target_sha256=target_hash))
+        target_hash=hashlib.sha256((ROOT/target_path).read_bytes()).hexdigest()
+        for p in data['cases']:
+            ports.append(dict(p,semantics_reviewed=False,target_test=module+'::'+p['rust_function'],target_path=target_path,target_sha256=target_hash))
     original=ROOT/'crates/blended-core/src/compat_cases.rs'
     ids=set(re.findall(r'\("(math_vector\.[^"]+)"',original.read_text()))
     path='source/blender/blenlib/tests/BLI_math_vector_test.cc'
@@ -71,13 +75,13 @@ def load_ports(inventory):
         if c['path']==path and c['identity'] in ids:
             start=text.find('TEST(math_vector, '+c['identity'].split('.',1)[1]+')');end=text.find('\nTEST(',start+1)
             body=text[start:end if end>=0 else len(text)]
-            ports.append(dict(path=path,id=c['identity'],line=c['line'],source_sha256=hashes[path],assertion_count=len(re.findall(r'\bEXPECT_[A-Z_]+\(',body)),semantics_reviewed=False,target_test='upstream_math_vector::'+c['identity'].split('.',1)[1],target_sha256=hashlib.sha256(original.read_bytes()).hexdigest()))
+            ports.append(dict(path=path,id=c['identity'],line=c['line'],source_sha256=hashes[path],assertion_count=len(re.findall(r'\bEXPECT_[A-Z_]+\(',body)),semantics_reviewed=False,target_path='crates/blended-core/src/compat_cases.rs',target_test='upstream_math_vector::'+c['identity'].split('.',1)[1],target_sha256=hashlib.sha256(original.read_bytes()).hexdigest()))
     contract_file=ROOT/'compatibility/assertion-contracts.lock.json'
     contract=json.loads(contract_file.read_text()) if contract_file.exists() else {}
     for p in ports:
         p['semantics_reviewed']=contract.get('reference_commit')==inventory['commit'] and any(
             c.get('source_path')==p['path'] and c.get('source_sha256')==p['source_sha256']
-            and c.get('target_sha256')==p['target_sha256'] and p['id'] in c.get('case_ids',[])
+            and c.get('target_path')==p['target_path'] and c.get('target_sha256')==p['target_sha256'] and p['id'] in c.get('case_ids',[])
             for c in contract.get('contracts',[]))
     return ports
 

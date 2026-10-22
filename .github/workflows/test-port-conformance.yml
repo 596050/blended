@@ -1,8 +1,8 @@
 name: Blender test-port conformance
 on:
   push:
-    branches: [compat/complete-test-port, main]
-    paths: ['crates/**', 'compatibility/**', 'tools/port_scalar_tests.py', 'tools/test_port_audit.py', 'tools/port_workbench.py', 'tests/test_test_port_audit.py', '.github/workflows/test-port-conformance.yml']
+    branches: [compat/complete-test-port, compat/ranges-bounds, main]
+    paths: ['crates/**', 'compatibility/**', 'tools/port_scalar_tests.py', 'tools/port_structure_tests.py', 'tools/test_port_audit.py', 'tools/port_workbench.py', 'tests/test_test_port_audit.py', 'tests/test_structure_port.py', 'tests/test_port_workbench.py', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,7 +22,8 @@ jobs:
         run: |
           python3 tools/fetch_upstreams.py blender
           python3 tools/port_scalar_tests.py
-          git diff --exit-code -- crates/blended-core/src/additional_cases.rs crates/blended-core/tests/upstream_additional.rs compatibility/additional-ports.json tests/upstream
+          python3 tools/port_structure_tests.py
+          git diff --exit-code -- crates/blended-core/src/additional_cases.rs crates/blended-core/tests/upstream_additional.rs compatibility/additional-ports.json crates/blended-core/src/structure_cases.rs crates/blended-core/tests/upstream_structures.rs compatibility/structure-ports.json tests/upstream
       - name: Run native tests without ignoring missing implementations
         run: |
           mkdir -p evidence
@@ -36,8 +37,11 @@ jobs:
           import json,sys
           sys.path.insert(0,'tools')
           from test_port_audit import load_ports
+          from port_workbench import expected_cases
           ports=load_ports(json.load(open('build/blender-inventory.json')))
-          assert len(ports)==45 and all(p['semantics_reviewed'] for p in ports), 'Reviewed assertion contract changed; do not publish'
+          expected,_=expected_cases()
+          assert len(ports)==len(expected)==99 and all(p['semantics_reviewed'] for p in ports), 'Reviewed assertion contract changed; do not publish'
+          assert {p['id'] for p in ports}=={p['id'] for p in expected}, 'Audit and executable registries diverged'
           PY
           python3 -m unittest discover -s tests -v
           python3 -m pip install playwright==1.57.0
@@ -50,8 +54,11 @@ jobs:
           path: |
             evidence/
             compatibility/additional-ports.json
+            compatibility/structure-ports.json
             crates/blended-core/src/additional_cases.rs
+            crates/blended-core/src/structure_cases.rs
             crates/blended-core/tests/upstream_additional.rs
+            crates/blended-core/tests/upstream_structures.rs
             tests/upstream/
           retention-days: 3
       - uses: actions/upload-artifact@v4
@@ -70,6 +77,7 @@ jobs:
         run: |
           python3 tools/fetch_upstreams.py blender
           python3 tools/port_scalar_tests.py
+          python3 tools/port_structure_tests.py
           python3 tools/inventory.py --root .upstream/blender --name blender --commit 94363991e7dcf39e2d70614aa002ab6f67764a5d --output build/blender-inventory.json
           python3 tools/test_port_audit.py --inventory build/blender-inventory.json --output evidence/complete-test-port.json --require-complete
       - uses: actions/upload-artifact@v4
@@ -121,7 +129,7 @@ jobs:
           fi
           cp -a site/. published/
           git -C published add -A
-          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Publish 45-case Blender conformance subset ${SOURCE_SHA}; full test port incomplete"
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Publish 99-case Blender conformance subset ${SOURCE_SHA}; full test port incomplete"
           git -C published push origin HEAD:refs/heads/test-port-build
           SHA=$(git -C published rev-parse HEAD)
           echo "url=https://rawcdn.githack.com/${REPO}/${SHA}/index.html" >> "$GITHUB_OUTPUT"
@@ -136,7 +144,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 -m pip install playwright==1.57.0
-      - name: Execute 45 cases at the actual immutable public URL
+      - name: Execute every mapped case at the actual immutable public URL
         run: python3 tools/port_workbench.py test --url "${{ needs.publish-subset-workbench.outputs.url }}" --commit "${{ github.sha }}" --output evidence/deployed-port/result.json
       - uses: actions/upload-artifact@v4
         if: always()
