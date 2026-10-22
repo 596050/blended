@@ -1,0 +1,119 @@
+name: Build, deploy and test browser studio
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare and test compatibility metadata
+        run: |
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Run native Rust compatibility and safety tests
+        run: |
+          mkdir -p evidence
+          set -o pipefail
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/native-rust.txt
+      - name: Build browser compatibility module
+        run: |
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core
+          cp target/wasm32-unknown-unknown/release/blended_core.wasm site/compat/
+      - name: Fetch pinned Solarxy
+        run: python3 tools/fetch_upstreams.py solarxy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .upstream/solarxy
+      - name: Install matching wasm-bindgen
+        run: |
+          VERSION=0.2.126
+          curl -fsSL "https://github.com/rustwasm/wasm-bindgen/releases/download/${VERSION}/wasm-bindgen-${VERSION}-x86_64-unknown-linux-musl.tar.gz" | tar -xz --strip-components=1 -C /usr/local/bin "wasm-bindgen-${VERSION}-x86_64-unknown-linux-musl/wasm-bindgen"
+          wasm-bindgen --version
+      - name: Build and test studio foundation from source
+        run: |
+          set -o pipefail
+          python3 tools/build_studio.py --base "/${{ github.event.repository.name }}/studio/" --commit "${{ github.sha }}" 2>&1 | tee evidence/studio-build.txt
+      - name: Include Blended source for this build
+        run: |
+          mkdir -p site/source
+          git archive --format=tar.gz --output=site/source/blended-source.tar.gz HEAD
+      - name: Install browser test runner
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Test the built artifact before publication
+        run: |
+          mkdir -p build/preview
+          ln -s "$GITHUB_WORKSPACE/site" "build/preview/${{ github.event.repository.name }}"
+          python3 -m http.server 8765 --directory build/preview >/tmp/blended-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          python3 tools/browser_check.py --url "http://127.0.0.1:8765/${{ github.event.repository.name }}/" --expected-commit "${{ github.sha }}" --output evidence/predeploy
+      - name: Retain test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: predeploy-evidence
+          path: evidence/
+          retention-days: 3
+      - name: Upload site artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+  deployed-check:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install browser test runner
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Test the actual deployed URL
+        run: python3 tools/browser_check.py --url "${{ needs.deploy.outputs.url }}" --expected-commit "${{ github.sha }}" --output evidence/deployed
+      - name: Retain deployed-site evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployed-browser-evidence
+          path: evidence/deployed/
+          retention-days: 3
