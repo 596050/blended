@@ -4,7 +4,8 @@
 This is an OFF-mode source qualification build, not a reproduction of the
 published v0.1.1 binary or the upstream hardware-gated shipping split profile.
 The pinned port's feature configuration and dependency recipes are retained.
-Only build metadata, bounded parallelism and build-tool pinning are adjusted.
+Build metadata, bounded parallelism and build-tool pinning are adjusted. An
+explicit, hash-bound candidate numerical patchset can also be applied.
 Every command writes a receipt before execution, including failures/timeouts.
 """
 from __future__ import annotations
@@ -35,6 +36,7 @@ EMSCRIPTEN_RELEASE = "dbd755b5da399329c2576f6e3dfa7f419f5d8409"
 EMSCRIPTEN_COMPILER = "1db513782be24469589d7cb8a1f1834e9a33f271"
 DAWN_COMMIT = "36cf1fae0cd8a81a4fb4580751648b80b2e6255c"
 BLENDER_LFS_URL = "https://projects.blender.org/blender/blender.git/info/lfs"
+NUMERIC_PATCHSET_SHA256 = "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147"
 DEPENDENCIES = (
     "zlib zstd fmt eigen robinmap imath libdeflate openjph openexr libjpeg "
     "libpng libtiff expat yamlcpp pystring minizipng opencolorio brotli "
@@ -134,6 +136,7 @@ class Build:
             ],
         }
         self.process = None
+        self.numeric_manifest = None
         self.save()
 
     def save(self):
@@ -219,6 +222,11 @@ class Build:
         self.save()
 
     def reconstruct(self):
+        driver = self.run("build-driver-identity", ["git", "rev-parse", "HEAD"],
+                          Path(__file__).resolve().parents[1]).strip()
+        if not re.fullmatch(r"[0-9a-f]{40}", driver):
+            raise Blocked("build driver checkout identity is unavailable")
+        self.data["blended_checkout_commit"] = driver
         self.git("port", self.port, "https://github.com/gessa-ai/blender-web.git", PORT_COMMIT)
         patch = self.port / "patches/PREVIEW_SNAPSHOT.patch"
         patch_id = digest(patch)
@@ -301,6 +309,7 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
             raise Blocked("this source-build profile targets Linux x86_64 hosts")
         if sys.version_info[:2] != (3, 13):
             raise Blocked("run with native Python 3.13; NumPy's cross build requires the target minor")
+        self.load_numeric_patchset()
         requirements = self.work / "host-requirements.txt"
         requirements.write_text(HOST_REQUIREMENTS)
         self.env["BLENDED_HOST_REQUIREMENTS"] = str(requirements)
@@ -330,11 +339,82 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
                                  "version": EMSCRIPTEN_VERSION, "commit": EMSCRIPTEN_COMPILER,
                                  "node_version": node_version, "emcc": digest(em / "emcc"),
                                  "clang": digest(self.sdk / "upstream/bin/clang")}
+        self.apply_numeric_patchset()
         for command in (["cmake", "--version"], ["ninja", "--version"], ["clang++-17", "--version"], [sys.executable, "-VV"]):
             self.run("host-tool-" + Path(command[0]).name, command, self.work)
         archives = [digest(p) for p in self.sdk.rglob("*") if p.is_file() and (p.name.endswith((".tar.xz", ".tar.gz", ".zip"))) and "node_modules" not in p.parts]
         write_json(self.out / "toolchain-downloads.json", {"digest_role": "observed_after_sdk_install", "archives": archives})
         self.data["toolchain_download_receipt"] = digest(self.out / "toolchain-downloads.json")
+        self.save()
+
+    def load_numeric_patchset(self):
+        if self.args.numeric_patchset is None:
+            return
+        path = self.args.numeric_patchset.resolve()
+        identity = digest(path)
+        if identity["sha256"] != NUMERIC_PATCHSET_SHA256:
+            raise Blocked("unrecognized numerical patchset manifest digest")
+        manifest = json.loads(path.read_text())
+        toolchain = manifest.get("toolchain", {})
+        expected = {"emsdk_repo_commit": EMSDK_COMMIT, "emsdk_release_commit": EMSCRIPTEN_RELEASE,
+                    "emscripten_version": EMSCRIPTEN_VERSION, "emscripten_commit": EMSCRIPTEN_COMPILER}
+        if (manifest.get("schema") != 1 or manifest.get("id") != "blender-5.2.0-web-numerics-v1"
+                or manifest.get("port_commit") != PORT_COMMIT or manifest.get("upstream_commit") != UPSTREAM_COMMIT
+                or toolchain != expected):
+            raise Blocked("numerical patchset source/toolchain contract mismatch")
+        for entry in manifest["patches"]:
+            patch = path.parent / entry["patch_file"]
+            if patch.is_symlink() or digest(patch)["sha256"] != entry["patch_sha256"]:
+                raise Blocked("numerical patch file identity mismatch: " + entry["id"])
+        self.numeric_manifest = manifest
+        # Never let an existing unpatched SDK system-library cache satisfy the
+        # modified source build. Dependency output remains separately inventoried.
+        self.env["EM_CACHE"] = str(self.work / "emscripten-cache" / NUMERIC_PATCHSET_SHA256)
+        self.data["numeric_patchset"] = {"id": manifest["id"], "manifest": identity,
+            "manifest_sha256": NUMERIC_PATCHSET_SHA256, "status": "verified_inputs", "applied": False,
+            "scope": manifest["scope"], "cache_namespace": self.env["EM_CACHE"],
+            "unqualified_variants": manifest["cache"]["unqualified_variants"], "patches": []}
+        self.save()
+
+    def apply_numeric_patchset(self):
+        if self.numeric_manifest is None:
+            return
+        manifest_path = self.args.numeric_patchset.resolve()
+        roots = {"blender": self.upstream, "emscripten": self.sdk / "upstream/emscripten"}
+        for entry in self.numeric_manifest["patches"]:
+            root = roots[entry["component"]]
+            source = root / entry["path"]
+            patch = manifest_path.parent / entry["patch_file"]
+            before = digest(source)
+            if before["sha256"] == entry["after_sha256"]:
+                state = "already_applied_verified"
+            elif before["sha256"] == entry["before_sha256"]:
+                # GNU patch operates relative to the specified source root, even
+                # when the downloaded SDK resides inside the emsdk Git checkout.
+                command = ["patch", "--batch", "--forward", "--fuzz=0", "--strip=1", "--input=" + str(patch)]
+                self.run("numerics-check-" + entry["id"], command + ["--dry-run"], root)
+                self.run("numerics-apply-" + entry["id"], command, root)
+                state = "applied_verified"
+            else:
+                raise Blocked("numerical patch input does not match the pinned source: " + entry["id"])
+            after = digest(source)
+            if after["sha256"] != entry["after_sha256"]:
+                raise Blocked("numerical patch output does not match the reviewed bytes: " + entry["id"])
+            self.data["numeric_patchset"]["patches"].append({**entry, "status": state,
+                "input_observation": before, "output_observation": after, "patch": digest(patch)})
+            self.save()
+        em = self.sdk / "upstream/emscripten"
+        self.run("numerics-rebuild-system-libraries", [str(em / "embuilder"), "--force", "build", "libc", "libc-mt"],
+                 self.port, timeout=1800)
+        libraries = []
+        for name in ("libc.a", "libc-mt.a"):
+            matches = list(Path(self.env["EM_CACHE"]).rglob(name))
+            if len(matches) != 1 or matches[0].is_symlink() or not matches[0].is_file():
+                raise Blocked("expected rebuilt SDK library is absent or ambiguous: " + name)
+            libraries.append(digest(matches[0]))
+        self.data["numeric_patchset"]["system_libraries"] = libraries
+        self.data["numeric_patchset"]["status"] = "applied_and_system_libraries_rebuilt"
+        self.data["numeric_patchset"]["applied"] = True
         self.save()
 
     def dawn(self):
@@ -496,6 +576,26 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
             if p.is_file():
                 shutil.copy2(p, bundle / name)
         shutil.copytree(self.port / "LICENSES", bundle / "LICENSES")
+        source_inputs = {"schema": 1, "artifact_kind": "blender-source-development",
+            "upstream_commit": UPSTREAM_COMMIT, "port_commit": PORT_COMMIT,
+            "canonical_patch_sha256": PATCH_SHA256,
+            "blended_checkout_commit": self.data["blended_checkout_commit"],
+            "build_entry_point_sha256": self.data["entry_point"]["sha256"],
+            "compiler": self.data["compiler"], "build_mode": "OFF", "with_buildinfo": True,
+            "disabled_features": self.data["disabled_features"],
+            "deployed": False, "full_feature_parity": False,
+            "scope": "Source and build-input provenance; runtime acceptance remains separate."}
+        if self.numeric_manifest is not None:
+            provenance = bundle / "provenance/browser-numerics"
+            provenance.mkdir(parents=True)
+            manifest = self.args.numeric_patchset.resolve()
+            shutil.copy2(manifest, provenance / "manifest.json")
+            for entry in self.numeric_manifest["patches"]:
+                shutil.copy2(manifest.parent / entry["patch_file"], provenance / entry["patch_file"])
+            source_inputs["numeric_patchset"] = {
+                "id": self.numeric_manifest["id"], "manifest_sha256": NUMERIC_PATCHSET_SHA256,
+                "patches": self.numeric_manifest["patches"]}
+        write_json(bundle / "source-inputs.json", source_inputs)
         artifact = self.out / "blender-source-development.tar.gz"
         # Fixed metadata makes packaging deterministic for the same file bytes.
         import gzip
@@ -514,7 +614,7 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
         self.data["artifact"] = digest(artifact)
         self.data["engine_files"] = [digest(p) for p in sorted((bundle / "bin").iterdir())]
         self.data["status"] = "built"
-        self.data["reason"] = "Pinned canonical source built with the original feature profile, build metadata enabled, and OFF development packaging. Runtime tests remain required."
+        self.data["reason"] = "Pinned port source and any declared numerical patches built with the original feature profile, build metadata enabled, and OFF development packaging. Runtime tests remain required."
         self.save()
 
 
@@ -526,6 +626,8 @@ def main():
     parser.add_argument("--stage-timeout", type=int, default=5400)
     parser.add_argument("--build-timeout", type=int, default=10800)
     parser.add_argument("--stop-after", choices=("source", "toolchain", "dependencies", "configure", "build"), default="build")
+    parser.add_argument("--numeric-patchset", type=Path,
+                        help="Explicit reviewed candidate patchset manifest; omitted for the canonical port baseline")
     args = parser.parse_args()
     if not 1 <= args.jobs <= 4:
         parser.error("--jobs must be between 1 and 4 for this free-runner profile")

@@ -40,6 +40,7 @@ class SourceBuildProbeTests(unittest.TestCase):
             self.assertEqual(report["candidate"]["kind"], "blender-source-development")
             self.assertFalse(report["source_correspondence_verified"])
             self.assertTrue(report["source_build_receipt_verified"])
+            self.assertFalse(report["source_build"]["numeric_fixes_declared"])
 
     def test_incomplete_or_foreign_build_receipts_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -72,6 +73,59 @@ class SourceBuildProbeTests(unittest.TestCase):
         with self.assertRaises(probe.Blocked):
             probe.select_artifact_contract(
                 types.SimpleNamespace(asset=None, source_build_receipt=Path("build.json")), {})
+
+    def test_unreviewed_numeric_patches_cannot_inherit_the_baseline_identity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            asset = root / "development.tar.gz"
+            asset.write_bytes(b"synthetic modified engine")
+            receipt = root / "build.json"
+            for patchset in ({}, {"id": "unreviewed", "manifest_sha256": "a" * 64,
+                                   "applied": True}, "unstructured"):
+                with self.subTest(patchset=patchset):
+                    data = self.receipt(asset)
+                    data["numeric_patchset"] = patchset
+                    receipt.write_text(json.dumps(data))
+                    with self.assertRaises(probe.Blocked):
+                        probe.select_artifact_contract(
+                            types.SimpleNamespace(asset=asset, source_build_receipt=receipt), {})
+
+    def test_numeric_fixes_require_each_reviewed_patch_and_the_matching_compiler(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            asset = root / "development.tar.gz"
+            asset.write_bytes(b"synthetic patched engine")
+            manifest = json.loads(probe.NUMERIC_PATCH_MANIFEST.read_text())
+            keys = ("id", "component", "path", "before_sha256", "after_sha256", "patch_sha256")
+            data = self.receipt(asset)
+            data["numeric_patchset"] = {
+                "id": manifest["id"], "manifest_sha256": probe.digest(probe.NUMERIC_PATCH_MANIFEST),
+                "applied": True, "patches": [{k: p[k] for k in keys} for p in manifest["patches"]]}
+            data["compiler"] = {key: manifest["toolchain"][value] for key, value in {
+                "version": "emscripten_version", "commit": "emscripten_commit",
+                "emsdk_commit": "emsdk_repo_commit", "release": "emsdk_release_commit"}.items()}
+            receipt = root / "build.json"
+            receipt.write_text(json.dumps(data))
+            report = {}
+            probe.select_artifact_contract(types.SimpleNamespace(asset=asset, source_build_receipt=receipt), report)
+            self.assertTrue(report["source_build"]["numeric_fixes_declared"])
+            self.assertEqual(report["candidate"]["numeric_patchset_id"], manifest["id"])
+            self.assertFalse(report["source_correspondence_verified"])
+            for defect in ("changed_source", "missing_patch", "foreign_compiler", "changed_manifest"):
+                with self.subTest(defect=defect):
+                    changed = json.loads(json.dumps(data))
+                    if defect == "changed_source":
+                        changed["numeric_patchset"]["patches"][0]["after_sha256"] = "0" * 64
+                    elif defect == "missing_patch":
+                        changed["numeric_patchset"]["patches"].pop()
+                    elif defect == "foreign_compiler":
+                        changed["compiler"]["commit"] = "0" * 40
+                    else:
+                        changed["numeric_patchset"]["manifest_sha256"] = "0" * 64
+                    receipt.write_text(json.dumps(changed))
+                    with self.assertRaises(probe.Blocked):
+                        probe.select_artifact_contract(
+                            types.SimpleNamespace(asset=asset, source_build_receipt=receipt), {})
 
     def test_changed_source_artifact_is_refused_before_unpacking(self):
         with tempfile.TemporaryDirectory() as directory:

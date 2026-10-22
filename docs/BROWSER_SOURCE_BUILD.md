@@ -14,6 +14,7 @@ previously downloaded gessa v0.1.1 release.
 | Canonical source patch SHA-256 | `04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c` |
 | Emscripten | 6.0.5, compiler `1db513782be24469589d7cb8a1f1834e9a33f271` |
 | Browser build profile | `BLENDER_WEB_WASM_SPLIT_MODE=OFF`, `WITH_BUILDINFO=ON` |
+| Explicit numerical patchset | `blender-5.2.0-web-numerics-v1`, recorded separately from the canonical port patch |
 
 The published v0.1.1 artifact uses port source
 `cc22090b88da63cc617d48b218f4945175928844`. Its canonical patch has a different
@@ -38,7 +39,8 @@ After installing the host prerequisites specified in the workflow, run:
 python3 tools/rebuild_browser_port.py \
   --work-dir .cache/browser-source \
   --output evidence/browser-source-build \
-  --jobs 2
+  --jobs 2 \
+  --numeric-patchset patches/browser-numerics/manifest.json
 ```
 
 The stages are:
@@ -46,6 +48,8 @@ The stages are:
 1. Fetch the exact port and official Blender commits and verify the canonical
    patch's digest and byte count before applying it.
 2. Install the exact Emscripten SDK and hash-verified host Python build tools.
+   Verify and apply the explicitly selected numerical patches, then rebuild
+   both required libc variants in a cache isolated by the manifest digest.
 3. Fetch the pinned Dawn dependency closure and run the port's dependency
    recipes, including Python, NumPy, OpenSubdiv and OpenUSD.
 4. Build native code generators and locale files, then configure the browser
@@ -62,6 +66,11 @@ The runner checks the configured feature cache and refuses to continue if a
 required enabled feature disappears. The source port already disables some
 desktop features; those remain explicit in the receipt. The runner does not
 resolve portability failures by silently disabling additional features.
+
+Omit `--numeric-patchset` to rebuild the original canonical port baseline.
+Patched and unpatched build receipts remain distinguishable. CI selects the
+reviewed numerical patchset explicitly, and a newer source commit supersedes
+an older source build to avoid compiling both full engines unnecessarily.
 
 The OFF development profile avoids the port's hardware-dependent shipping
 capture process. CAPTURE/APPLY shipping qualification and real hardware testing
@@ -86,6 +95,20 @@ SHA-256 lock. Ubuntu package revisions are inventoried instead of frozen into
 a hermetic operating-system image. Bitwise reproducibility is not established
 by a single build.
 
+The [numerical patch manifest](../patches/browser-numerics/manifest.json) binds
+each extra patch to its component, exact source path, original file hash,
+resulting file hash and patch-file hash. It corrects the tiny-input `acosf`
+rounding branch and selects Eigen's existing SSE2 inverse implementation only
+for its matrix translation unit. It preserves the float API and original
+Blender test criteria. These changes target the named official Linux x64
+reference; they are not a claim about every native architecture.
+
+The independent WebAssembly kernel experiments reproduced the old browser
+results and matched the native results after these changes. Fresh `libc` and
+`libc-mt` builds were also linked and executed in normal and proxied-thread
+WebAssembly. These regressions justify testing the patches in the full engine;
+they do not establish that the application has passed its suites.
+
 Caches preserve dependency/compiler progress and are keyed to the entry-point
 bytes. A cache hit is an optimization, not acceptance evidence. Each run still
 produces a fresh receipt and verifies the inputs it uses.
@@ -109,6 +132,10 @@ the running engine to report the expected Blender version and upstream build
 hash. A matching receipt alone is not a runtime identity check or an independent
 recompile.
 
+For a patched artifact it additionally checks the manifest digest, every patch
+identity, the applied flag and the exact compiler identity. Unknown or partial
+patch declarations cannot inherit the unpatched baseline's identity.
+
 Both complete upstream files, `bl_pyapi_mathutils.py` and `bl_pyapi_bmesh.py`,
 are fetched from the exact reference and verified by digest before execution.
 Their assertions and tolerances remain unchanged. The probe preserves missing
@@ -119,6 +146,12 @@ The current CI browser requests a software GPU. Its observed adapter is recorded
 separately, and the probe does not claim real hardware or deployed-URL coverage.
 Even a passing selected-suite result does not complete any facet's entire
 feature inventory.
+
+Small build and qualification receipts are appended to the
+`browser-source-evidence` branch under the source commit and run ID. Failed
+stage logs remain identifiable even when a later run succeeds. Binary output
+and complete build logs stay in the run artifacts; they are not committed to
+the evidence branch.
 
 ## Diagnose failures without changing the acceptance tests
 

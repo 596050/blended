@@ -30,6 +30,8 @@ UPSTREAM_SHA = "fbe6228777e7d9afefcd61a413844e790ae75db7"
 PORT_SOURCE_SHA = "cc22090b88da63cc617d48b218f4945175928844"
 DEVELOPMENT_PORT_SHA = "0e02e84b2bc5d9b27a6dc6e275443292f781fbad"
 DEVELOPMENT_PATCH_SHA256 = "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c"
+NUMERIC_PATCHSET_ID = "blender-5.2.0-web-numerics-v1"
+NUMERIC_PATCH_MANIFEST = Path(__file__).resolve().parents[1] / "patches/browser-numerics/manifest.json"
 ASSET_URL = "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz"
 ASSET_SHA256 = "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0"
 ASSET_BYTES = 108802132
@@ -54,6 +56,54 @@ def digest(path):
         for data in iter(lambda: stream.read(1024 * 1024), b""):
             h.update(data)
     return h.hexdigest()
+
+
+def validate_numeric_patchset(receipt):
+    """Bind additional engine/toolchain changes to this checkout's manifest.
+
+    Historical unpatched development receipts remain distinguishable. A new
+    patch declaration must never silently inherit that baseline's identity.
+    """
+    if "numeric_patchset" not in receipt:
+        return None
+    observed = receipt["numeric_patchset"]
+    if not isinstance(observed, dict) or observed.get("applied") is not True:
+        raise Blocked("numeric patchset receipt is incomplete or was not applied")
+    if not NUMERIC_PATCH_MANIFEST.is_file() or NUMERIC_PATCH_MANIFEST.stat().st_size > 1_000_000:
+        raise Blocked("independent numeric patchset manifest is unavailable")
+    try:
+        manifest = json.loads(NUMERIC_PATCH_MANIFEST.read_text(encoding="utf-8"))
+    except (ValueError, UnicodeError) as error:
+        raise Blocked("independent numeric patchset manifest is invalid") from error
+    if (not isinstance(manifest, dict) or type(manifest.get("schema")) is not int or
+            manifest["schema"] != 1 or manifest.get("id") != NUMERIC_PATCHSET_ID or
+            manifest.get("upstream_commit") != UPSTREAM_SHA or
+            manifest.get("port_commit") != DEVELOPMENT_PORT_SHA):
+        raise Blocked("numeric patchset manifest identity differs from this probe")
+    patches = manifest.get("patches")
+    keys = ("id", "component", "path", "before_sha256", "after_sha256", "patch_sha256")
+    if not isinstance(patches, list) or len(patches) != 2 or any(
+            not isinstance(p, dict) or any(not isinstance(p.get(k), str) or not p[k] for k in keys)
+            for p in patches):
+        raise Blocked("numeric patchset manifest does not identify both reviewed source changes")
+    expected = {"id": manifest["id"], "manifest_sha256": digest(NUMERIC_PATCH_MANIFEST),
+                "applied": True, "patches": [{k: patch[k] for k in keys} for patch in patches]}
+    if any(observed.get(key) != expected[key] for key in ("id", "manifest_sha256", "applied")):
+        raise Blocked("numeric patchset receipt differs from the reviewed manifest")
+    declared = observed.get("patches")
+    if (not isinstance(declared, list) or len(declared) != len(patches) or
+            any(not isinstance(patch, dict) for patch in declared) or
+            [{key: patch.get(key) for key in keys} for patch in declared] != expected["patches"]):
+        raise Blocked("numeric source patch identities are missing or changed")
+    compiler = receipt.get("compiler", {})
+    toolchain = manifest.get("toolchain", {})
+    compiler_keys = {"version": "emscripten_version", "commit": "emscripten_commit",
+                     "emsdk_commit": "emsdk_repo_commit", "release": "emsdk_release_commit"}
+    if (not isinstance(compiler, dict) or not isinstance(toolchain, dict) or any(
+            not toolchain.get(expected_key) or compiler.get(key) != toolchain[expected_key]
+            for key, expected_key in compiler_keys.items())):
+        raise Blocked("numeric fixes were declared for a different or unknown compiler")
+    return expected
 
 
 def select_artifact_contract(args, report):
@@ -86,6 +136,7 @@ def select_artifact_contract(args, report):
     for key, value in expected.items():
         if receipt.get(key) != value or type(receipt.get(key)) is not type(value):
             raise Blocked("source-build receipt differs from the required contract: " + key)
+    numeric_patchset = validate_numeric_patchset(receipt)
     artifact = receipt.get("artifact")
     if not isinstance(artifact, dict):
         raise Blocked("source-build receipt has no artifact digest and byte count")
@@ -96,13 +147,16 @@ def select_artifact_contract(args, report):
         raise Blocked("source-build artifact identity is malformed or exceeds its byte bound")
     report["candidate"] = {"repository": "gessa-ai/blender-web",
                            "source_commit": DEVELOPMENT_PORT_SHA,
-                           "kind": "blender-source-development"}
+                           "kind": "blender-source-development",
+                           "numeric_patchset_id": numeric_patchset["id"] if numeric_patchset else None}
     report["artifact"] = {"url": None, "expected_sha256": value, "expected_bytes": size}
     report["scope"] = "selected upstream Python suite qualification of a new development source build"
     report["source_correspondence_verified"] = False
     report["source_build_receipt_verified"] = True
     report["source_build"] = {
         **expected,
+        "numeric_patchset": numeric_patchset,
+        "numeric_fixes_declared": numeric_patchset is not None,
         "receipt_sha256": digest(receipt_path),
         "validation_scope": "Declared source pins and artifact digest only; no independent recompile or release correspondence claimed.",
     }
