@@ -1,0 +1,85 @@
+name: Execute actual Blender WASM reference probe
+on:
+  push:
+    branches: ['compat/full-blender-tests']
+    paths: ['.github/workflows/blender-wasm-reference-probe.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download checksum-pinned actual Blender WebAssembly release
+        run: |
+          curl -fL --retry 3 https://github.com/HeyPuter/blender-wasm/releases/download/1.0.0/blender8-1.tar.gz -o runtime.tar.gz
+          echo 'a2ea27d43657450d2fb3309f5e453bf103e35442e0281ccb362b5689555b4d91  runtime.tar.gz' | sha256sum --check
+          python3 - <<'PY'
+          import tarfile
+          with tarfile.open('runtime.tar.gz','r:gz') as a:a.extractall('runtime',filter='data')
+          PY
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+      - name: Run actual embedded bpy and capture its precise runtime identity
+        run: |
+          mkdir -p evidence
+          python3 - <<'PY'
+          import functools,json,shutil,threading,time
+          from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          class Handler(SimpleHTTPRequestHandler):
+              def end_headers(self):
+                  self.send_header('Cross-Origin-Opener-Policy','same-origin')
+                  self.send_header('Cross-Origin-Embedder-Policy','require-corp')
+                  self.send_header('Cross-Origin-Resource-Policy','same-origin')
+                  super().end_headers()
+              def log_message(self,*args):pass
+          server=ThreadingHTTPServer(('127.0.0.1',8765),functools.partial(Handler,directory='runtime/dist'))
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          report={'schema':1,'runtime_archive_sha256':'a2ea27d43657450d2fb3309f5e453bf103e35442e0281ccb362b5689555b4d91','status':'failed','is_blended_app_conformance':False,'test_port_complete':False,'console':[],'errors':[]}
+          code="import bpy,json,sys; print('BLENDED_RUNTIME:'+json.dumps({'version':bpy.app.version_string,'build_hash':bpy.app.build_hash.decode(),'python':sys.version,'background':bpy.app.background,'objects':len(bpy.data.objects),'cycles':bpy.app.build_options.cycles})); sys.stdout.flush()"
+          args=['--background','--factory-startup','--python-exit-code','1','--python-expr',code]
+          with sync_playwright() as pw:
+              browser=pw.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--disable-gpu-watchdog','--enable-unsafe-webgpu','--use-angle=swiftshader'])
+              report['browser_version']=browser.version
+              context=browser.new_context(viewport={'width':1280,'height':900})
+              context.add_init_script('window.__BARGS='+json.dumps(args)+';')
+              page=context.new_page()
+              def console(msg):
+                  text=msg.text;report['console'].append({'type':msg.type,'text':text})
+                  if 'BLENDED_RUNTIME:' in text:
+                      try:report['runtime']=json.loads(text.split('BLENDED_RUNTIME:',1)[1])
+                      except ValueError:pass
+              page.on('console',console);page.on('pageerror',lambda e:report['errors'].append(str(e)))
+              try:
+                  response=page.goto('http://127.0.0.1:8765/',wait_until='domcontentloaded',timeout=60000)
+                  report['http_status']=response.status;report['cross_origin_isolated']=page.evaluate('crossOriginIsolated')
+                  ack=page.locator('#gpu-ack')
+                  if ack.is_visible():ack.check()
+                  page.wait_for_function('!document.querySelector("#start-btn").disabled',timeout=180000)
+                  if ack.is_visible() and not ack.is_checked():ack.check()
+                  page.locator('#start-btn').click()
+                  deadline=time.monotonic()+240
+                  while 'runtime' not in report and time.monotonic()<deadline:page.wait_for_timeout(1000)
+                  if 'runtime' not in report:raise RuntimeError('Embedded Blender Python did not produce runtime identity')
+                  assert report['runtime']['background'] is True
+                  assert report['cross_origin_isolated'] is True
+                  report['status']='passed'
+              except Exception as exc:report['failure']=str(exc)
+              finally:
+                  try:
+                      page.screenshot(path='evidence/runtime.png',full_page=True)
+                      Path('evidence/page.txt').write_text(page.locator('body').inner_text())
+                  except Exception:pass
+                  Path('evidence/result.json').write_text(json.dumps(report,indent=2)+'\n')
+                  print(json.dumps({k:v for k,v in report.items() if k!='console'},indent=2))
+                  browser.close();server.shutdown()
+          if report['status']!='passed':raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-blender-wasm-reference-probe
+          path: evidence/
+          retention-days: 1
