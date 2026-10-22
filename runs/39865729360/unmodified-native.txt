@@ -8,7 +8,7 @@
   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 [1m[33mwarning[0m: `blended-core` (test "upstream_cycles_math") generated 1 warning (run `cargo fix --test "upstream_cycles_math" -p blended-core` to apply 1 suggestion)
-[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 1.04s
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 1.08s
 [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/blended_core-7c19c97da15a31fb)
 
 running 0 tests
@@ -21,9 +21,9 @@ running 6 tests
 test box_faces_point_outwards ... ok
 test box_has_exact_dimensions ... ok
 test box_has_independent_face_vertices_and_twelve_triangles ... ok
+test invalid_box_dimensions_rejected ... ok
 test invalid_plane_dimensions_rejected ... ok
 test plane_is_xz_with_two_triangles ... ok
-test invalid_box_dimensions_rejected ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -31,8 +31,8 @@ test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 4 tests
 test empty_extrema_are_explicit ... ok
-test invalid_divisors_are_rejected ... ok
 test invalid_case_is_not_a_pass ... ok
+test invalid_divisors_are_rejected ... ok
 test overflow_is_rejected ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -41,15 +41,15 @@ test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 28 tests
 test math_base__CeilPowerOf10 ... ok
-test math_base__ClampInt ... ok
 test math_base__CompareFFRelativeNormal ... ok
-test math_base__FloorPowerOf10 ... ok
-test math_base__CompareFFRelativeZero ... ok
+test math_base__ClampInt ... ok
 test math_base__CompareFFRelativeValid ... ok
-test math_base__InterpolateInt ... ok
+test math_base__FloorPowerOf10 ... ok
 test math_base__FlooredFMod ... ok
+test math_base__InterpolateInt ... ok
 test math_base__Log2CeilU ... ok
 test math_base__Log2FloorU ... ok
+test math_base__CompareFFRelativeZero ... ok
 test math_base__Midpoint ... ok
 test math_base__MinVectorAndFloat ... ok
 test math_base__ModPeriodic ... ok
@@ -86,6 +86,7 @@ running 17 tests
 test CeilToMultiple ... ok
 test Clamp ... ok
 test ClampVecWithFloats ... ok
+test DivideCeil ... ok
 test InterpolateFloat ... ok
 test InterpolateInt ... ok
 test MaxList ... ok
@@ -93,7 +94,6 @@ test MinList ... ok
 test Sign ... ok
 test exp ... ok
 test log ... ok
-test DivideCeil ... ok
 test rcp ... ok
 test safe_rcp ... ok
 test safe_sqrt ... ok
@@ -108,8 +108,8 @@ test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 54 tests
 test binary_search__Empty ... ok
 test binary_search__Multiple ... ok
-test bounds__Center ... ok
 test binary_search__One ... ok
+test bounds__Center ... ok
 test bounds__Contains ... ok
 test bounds__Empty ... ok
 test bounds__EmptyInt ... ok
@@ -121,9 +121,9 @@ test bounds__MinMax ... ok
 test bounds__MinMaxEmpty ... ok
 test bounds__MinMaxFloat ... ok
 test bounds__MinMaxRadii ... ok
+test bounds__Resize ... ok
 test bounds__Recenter ... ok
 test bounds__Pad ... ok
-test bounds__Resize ... ok
 test bounds__ScaleFromCenter ... ok
 test bounds__Size ... ok
 test bounds__Translate ... ok
@@ -131,31 +131,31 @@ test index_range__After ... ok
 test index_range__Before ... ok
 test index_range__Contains ... ok
 test index_range__DefaultConstructor ... ok
-test index_range__DropBack ... ok
 test index_range__DropBackAll ... ok
 test index_range__DropFront ... ok
+test index_range__DropBack ... ok
 test index_range__DropFrontAll ... ok
 test index_range__DropFrontLargeN ... ok
 test index_range__First ... ok
-test index_range__FromBeginEnd ... ok
 test index_range__FromBeginEndInclusive ... ok
 test index_range__FromBeginSize ... ok
+test index_range__FromBeginEnd ... ok
 test index_range__FromEndSize ... ok
 test index_range__FromSingle ... ok
 test index_range__GenericAlgorithms ... ok
 test index_range__Intersect ... ok
 test index_range__Last ... ok
 test index_range__MultipleElementRange ... ok
-test index_range__OneAfterEnd ... ok
 test index_range__OneBeforeStart ... ok
 test index_range__SingleElementRange ... ok
-test index_range__Slice ... ok
+test index_range__OneAfterEnd ... ok
 test index_range__SliceRange ... ok
+test index_range__Slice ... ok
 test index_range__SplitByAlignment ... ok
 test index_range__Start ... ok
 test index_range__SubscriptOperator ... ok
-test index_range__TakeBack ... ok
 test index_range__TakeBackLargeN ... ok
+test index_range__TakeBack ... ok
 test index_range__TakeFront ... ok
 test index_range__TakeFrontLargeN ... ok
 test index_range__constexpr_ ... ok
