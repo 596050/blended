@@ -1,0 +1,86 @@
+name: Diagnose software WebGPU backends
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/gpu-probe.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Install test driver
+        run: python3 -m pip install playwright==1.57.0
+      - name: Probe explicit GPU configurations without mocking the GPU
+        env:
+          DEBUG: pw:browser
+        run: |
+          mkdir -p evidence www
+          echo '<!doctype html><canvas id="c" width="64" height="64"></canvas>' > www/index.html
+          python3 -m http.server 8765 --directory www >/tmp/http.log 2>&1 &
+          python3 - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          configs={
+            'simple':['--enable-unsafe-webgpu','--use-angle=swiftshader'],
+            'original':['--enable-unsafe-webgpu','--use-angle=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface'],
+            'explicit':['--enable-unsafe-webgpu','--use-angle=swiftshader','--use-vulkan=swiftshader','--use-webgpu-adapter=swiftshader','--enable-features=Vulkan','--disable-vulkan-surface'],
+            'only_adapter':['--enable-unsafe-webgpu','--use-webgpu-adapter=swiftshader'],
+          }
+          js='''async()=>{
+            const out={secure:isSecureContext,gpu:!!navigator.gpu,errors:[],lost:[]};
+            if(!navigator.gpu)return out;
+            const adapter=await navigator.gpu.requestAdapter();
+            if(!adapter){out.adapter=null;return out;}
+            out.adapter={vendor:adapter.info.vendor,device:adapter.info.device,description:adapter.info.description,architecture:adapter.info.architecture};
+            const device=await adapter.requestDevice();
+            device.lost.then(x=>out.lost.push({reason:x.reason,message:x.message}));
+            device.addEventListener('uncapturederror',e=>out.errors.push(e.error.message));
+            const shader=device.createShaderModule({code:`
+              @vertex fn v(@builtin(vertex_index) i:u32)->@builtin(position) vec4f {
+                var p=array<vec2f,3>(vec2f(-1,-1),vec2f(3,-1),vec2f(-1,3));
+                return vec4f(p[i],0,1);
+              }
+              @fragment fn f()->@location(0) vec4f {return vec4f(1,0,0,1);}
+            `});
+            const texture=device.createTexture({size:[4,4],format:'rgba8unorm',usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.COPY_SRC});
+            const pipeline=device.createRenderPipeline({layout:'auto',vertex:{module:shader,entryPoint:'v'},fragment:{module:shader,entryPoint:'f',targets:[{format:'rgba8unorm'}]}});
+            const buffer=device.createBuffer({size:1024,usage:GPUBufferUsage.COPY_DST|GPUBufferUsage.MAP_READ});
+            const encoder=device.createCommandEncoder();
+            const pass=encoder.beginRenderPass({colorAttachments:[{view:texture.createView(),loadOp:'clear',storeOp:'store',clearValue:{r:0,g:0,b:1,a:1}}]});
+            pass.setPipeline(pipeline);pass.draw(3);pass.end();
+            encoder.copyTextureToBuffer({texture},{buffer,bytesPerRow:256},[4,4]);
+            device.queue.submit([encoder.finish()]);
+            await buffer.mapAsync(GPUMapMode.READ);
+            out.pixel=Array.from(new Uint8Array(buffer.getMappedRange()).slice(0,4));
+            buffer.unmap();buffer.destroy();
+            for(let i=0;i<1000;i++) {
+              const b=device.createBuffer({size:160,mappedAtCreation:true,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});
+              new Float32Array(b.getMappedRange()).fill(i);b.unmap();b.destroy();
+            }
+            await device.queue.onSubmittedWorkDone();
+            out.passed=out.pixel.join(',')==='255,0,0,255'&&!out.errors.length&&!out.lost.length;
+            return out;
+          }'''
+          results={}
+          with sync_playwright() as pw:
+            for name,flags in configs.items():
+              b=None
+              try:
+                b=pw.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--disable-gpu-watchdog']+flags)
+                p=b.new_page();p.goto('http://127.0.0.1:8765/',wait_until='load')
+                r=p.evaluate(js);r['browser']=b.version;results[name]=r
+              except Exception as e:results[name]={'error':str(e)}
+              finally:
+                if b:b.close()
+              print(name,json.dumps(results[name]),flush=True)
+          Path('evidence/gpu-probe.json').write_text(json.dumps(results,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gpu-probe
+          path: evidence/
+          retention-days: 3
