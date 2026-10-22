@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 from tools import probe_blendfile_exchange as exchange
 from tools import probe_browser_port as shared
@@ -33,6 +34,7 @@ class BlendFileExchangeTests(unittest.TestCase):
         source_files = [{key: row[key] for key in ("upstream_path", "sha256", "bytes")}
                         for row in [source, *source["support_files"]]]
         execution = {"identity": {"version": [5, 2, 0], "build_hash": build_hash}, "exception": None,
+                     "execution_context": {"background": True},
                      "suites": [{"upstream_path": source["upstream_path"], "sha256": source["sha256"],
                                  "discovered_ids": ids, "discovered": 4, "testsRun": 4,
                                  "failures": 0, "errors": 0, "skipped": 0, "expected_failures": 0,
@@ -84,6 +86,60 @@ class BlendFileExchangeTests(unittest.TestCase):
         self.assertEqual(set(result["current_files"]), set(exchange.CURRENT_FILES))
         self.assertEqual(result["excluded_backups"], ["blendfile_io.blend1"])
         self.assertEqual(result["blockers"][0]["scope"], "browser_provenance")
+
+    def test_failed_original_method_preserves_source_blockers_without_opening_files(self):
+        native_dir, _ = self.producer("native", shared.UPSTREAM_SHA[:12])
+        browser_dir, receipt = self.producer()
+        reason = "Operator bpy.ops.wm.link.poll() failed, context is incorrect"
+        receipt.update(status="failed", selected_suites_passed=False)
+        execution = receipt["execution"]
+        execution["execution_context"]["background"] = False
+        execution["exception"] = "RuntimeError: " + reason
+        suite = execution["suites"][0]
+        suite["errors"] = 1
+        suite["outcomes"][-1]["status"] = "error"
+        observation = execution["io_observation"]
+        observation.update(module_returned_normally=False, driver_completed_as_expected=False,
+                           observer_errors=["fixed original method inventory or driver lifecycle is incomplete"])
+        case = observation["cases"][-1]
+        case["status"] = "error"
+        case["events"][3] = {"phase": "body", "event": "unwind", "exception": {
+            "type": "RuntimeError", "message": reason, "assertion_failure": False}}
+        receipt["blockers"] = [
+            {"scope": "runner", "status": "failed", "reason": execution["exception"]},
+            {"scope": "suite", "status": "failed", "reason": "upstream suite is not completely passing"},
+            {"scope": "provenance", "status": "blocked", "reason": "engine build hash unavailable"}]
+        receipt["browser_errors"] = ["synthetic runtime error after the failed method"]
+        self.save(browser_dir, "browser", receipt)
+        output = self.root / "failed-method-report"
+        with mock.patch.object(exchange, "obtain_native") as obtain:
+            code = exchange.main(["--native-evidence", str(native_dir), "--browser-evidence", str(browser_dir),
+                                  "--output", str(output)])
+        obtain.assert_not_called()
+        result = json.loads((output / "exchange.json").read_text())
+        self.assertEqual(code, 1)
+        self.assertEqual(result["status"], "failed")
+        self.assertEqual(result["summary"], {"expected_files": 4, "compared": 0, "matched": 0,
+                                            "different_or_failed": 0, "missing_or_blocked": 4})
+        self.assertEqual({row["file"] for row in result["comparisons"]}, set(exchange.CURRENT_FILES))
+        self.assertEqual(result["loads"], [])
+        blockers = {row["scope"]: row for row in result["blockers"]}
+        self.assertEqual(blockers["browser_runner"]["reason"], "RuntimeError: " + reason)
+        self.assertEqual(blockers["browser_provenance"]["status"], "blocked")
+        self.assertEqual(blockers["browser_runtime"]["status"], "failed")
+        self.assertEqual(result["inputs"]["browser"]["receipt"]["execution"]["suites"][0]["outcomes"],
+                         suite["outcomes"])
+        self.assertFalse(result["inputs"]["browser"]["file_integrity_verified"])
+
+    def test_each_producer_requires_observed_background_mode(self):
+        for role in ("native", "browser"):
+            directory, receipt = self.producer(role, shared.UPSTREAM_SHA[:12] if role == "native" else "Unknown")
+            for context in ({}, {"background": False}, {"background": "True"}):
+                with self.subTest(role=role, context=context):
+                    receipt["execution"]["execution_context"] = context
+                    self.save(directory, role, receipt)
+                    with self.assertRaisesRegex(exchange.InvalidEvidence, "background"):
+                        exchange.inspect_producer(directory, role, self.catalog)
 
     def test_changed_file_bytes_and_symlink_are_rejected(self):
         directory, report = self.producer()

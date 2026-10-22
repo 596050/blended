@@ -131,6 +131,8 @@ def _blended_run_original_io(encoded_suites, marker, output_root):
         report["identity"] = {"version": list(bpy.app.version),
             "version_string": bpy.app.version_string, "build_hash": text(bpy.app.build_hash),
             "build_branch": text(bpy.app.build_branch), "binary_path": bpy.app.binary_path}
+        report["execution_context"] = {"background": bpy.app.background,
+            "window_present_at_entry": bpy.context.window is not None if hasattr(bpy, "context") else None}
         suites = json.loads(encoded_suites)
         if len(suites) != 1:
             raise RuntimeError("the original I/O cohort requires exactly one main script")

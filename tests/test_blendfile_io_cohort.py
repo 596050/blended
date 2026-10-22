@@ -65,7 +65,7 @@ if __name__ == "__main__":
 @unittest.skipUnless(hasattr(sys, "monitoring"), "requires CPython 3.12+ monitoring")
 class BlendFileIOAdapterTests(unittest.TestCase):
     def execute(self, methods, case_names=("test_a", "test_b"), build_hash=shared.UPSTREAM_SHA,
-                corrupt_helper=False):
+                corrupt_helper=False, background=True):
         source = original_script(methods)
         support = {"upstream_path": "tests/python/bl_blendfile_utils.py",
                    "sha256": hashlib.sha256(HELPER).hexdigest(), "bytes": len(HELPER)}
@@ -75,11 +75,11 @@ class BlendFileIOAdapterTests(unittest.TestCase):
         row = {"upstream_path": "tests/python/bl_blendfile_io.py",
                "sha256": hashlib.sha256(source).hexdigest(), "bytes": len(source),
                "case_ids": ["OriginalCase." + value for value in case_names],
-               "expected_cases": len(case_names), "support_files": [support],
+               "expected_cases": len(case_names), "support_files": [support], "required_background": True,
                "_support_payloads": [payload_support]}
         fake_bpy = types.SimpleNamespace(app=types.SimpleNamespace(
             version=(5, 2, 0), version_string="5.2.0", build_hash=build_hash.encode(),
-            build_branch=b"synthetic", binary_path="/synthetic"))
+            build_branch=b"synthetic", binary_path="/synthetic", background=background))
         stdout = io.StringIO()
         with tempfile.TemporaryDirectory() as directory:
             output_root = Path(directory) / "isolated-io"
@@ -113,6 +113,8 @@ class BlendFileIOAdapterTests(unittest.TestCase):
         self.assertEqual(set(files), {"original-entrypoint.txt", "a.txt", "b.txt", "c.txt", "d.txt"})
         self.assertEqual(result["suites"][0]["testsRun"], 4)
         self.assertTrue(result["io_observation"]["driver_completed_as_expected"])
+        self.assertIs(result["execution_context"]["background"], True)
+
         self.assertTrue(result["io_observation"]["helper_import_verified"])
         for case in result["io_observation"]["cases"]:
             self.assertEqual(case["status"], "passed")
@@ -120,6 +122,14 @@ class BlendFileIOAdapterTests(unittest.TestCase):
                              [(phase, event) for phase in ("setup", "body", "teardown")
                               for event in ("start", "return")])
         shared.validate_suite_execution(result, [row])
+
+    def test_wrong_execution_mode_retains_outcomes_but_fails_qualification(self):
+        result, row, _ = self.execute("def test_a(self):\n    self.assertTrue(True)\n", ("test_a",), background=False)
+        self.assertEqual(result["suites"][0]["outcomes"][0]["status"], "passed")
+        assessment = shared.summarize_execution(result, [row])
+        self.assertEqual(assessment["status"], "failed")
+        self.assertFalse(assessment["selected_suites_passed"])
+        self.assertEqual(assessment["blockers"][0]["scope"], "execution_context")
 
     def test_original_body_assertion_aborts_later_methods_and_runs_teardown(self):
         result, row, files = self.execute('''

@@ -70,7 +70,7 @@ def check(condition, reason):
 def source_identity(row):
     value = {key: row.get(key) for key in SOURCE_KEYS}
     if "support_files" in row:
-        value.update({key: row.get(key) for key in ("expected_cases", "case_ids", "driver")})
+        value.update({key: row.get(key) for key in ("expected_cases", "case_ids", "driver", "required_background")})
         value["support_files"] = [source_identity(source) for source in row["support_files"]]
     return value
 
@@ -89,8 +89,8 @@ def verify_file(root, row):
     return path
 
 
-def inspect_producer(directory, producer, catalog):
-    """Require the fixed original suite and verified transfer before native reads."""
+def read_producer_receipt(directory, producer):
+    """Preserve bounded source evidence before qualification prerequisites run."""
     directory = Path(directory)
     check(producer in ("native", "browser"), "unknown producer")
     if not directory.is_dir():
@@ -102,6 +102,40 @@ def inspect_producer(directory, producer, catalog):
         raise shared.Blocked(producer + " qualification receipt is missing")
     check(0 < path.stat().st_size <= MAX_RECEIPT_BYTES, "producer receipt exceeds its byte bound")
     receipt = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    check(isinstance(receipt, dict), "producer receipt is not an object")
+    return {"directory": str(directory.resolve()), "receipt_path": path.name, "receipt_file": fingerprint(path),
+            "receipt": receipt, "file_integrity_verified": False}
+
+
+def reported_producer_blockers(receipt, producer):
+    """Carry source failures even when methods or transfer prerequisites fail."""
+    blockers = []
+    for blocker in receipt.get("blockers", []):
+        check(blocker.get("status") in ("blocked", "failed"), "unknown producer blocker status")
+        source_scope = str(blocker.get("scope", "producer"))
+        value = {"scope": source_scope if source_scope.startswith(producer + "_") else producer + "_" + source_scope,
+                 "status": blocker["status"], "reason": str(blocker.get("reason", "unspecified producer blocker"))}
+        if value not in blockers:
+            blockers.append(value)
+    for error in receipt.get("browser_errors", []):
+        blockers.append({"scope": "browser_runtime", "status": "failed", "reason": str(error)})
+    if receipt.get("status") not in ("passed", "blocked", "failed"):
+        raise InvalidEvidence("unknown producer qualification status")
+    source_status_missing = (receipt["status"] == "failed" and not any(row["status"] == "failed" for row in blockers)) or (
+        receipt["status"] == "blocked" and not blockers)
+    if source_status_missing:
+        blockers.append({"scope": producer + "_qualification", "status": receipt["status"],
+                         "reason": str(receipt.get("reason", "producer did not qualify"))})
+    return blockers
+
+
+def inspect_producer(directory, producer, catalog):
+    """Require the fixed original suite and verified transfer before native reads."""
+    return inspect_loaded_producer(read_producer_receipt(directory, producer), producer, catalog)
+
+
+def inspect_loaded_producer(info, producer, catalog):
+    directory, receipt = Path(info["directory"]), info["receipt"]
     check(receipt.get("schema") == 1, "unknown producer receipt schema")
     check(receipt.get("upstream", {}).get("commit") == shared.UPSTREAM_SHA and
           receipt.get("upstream", {}).get("repository") == "blender/blender", "producer upstream source pin changed")
@@ -113,6 +147,8 @@ def inspect_producer(directory, producer, catalog):
           "producer source or helper identity differs from the fixed manifest")
     check(receipt.get("selected_suites_passed") is True, "all four original cases must pass before exchange")
     execution = receipt.get("execution", {})
+    check(execution.get("execution_context", {}).get("background") is True,
+          "original blend-file CTest driver requires observed bpy.app.background=True for both producers")
     try:
         shared.validate_suite_execution(execution, catalog["suites"])
     except (RuntimeError, KeyError, TypeError, ValueError) as error:
@@ -188,24 +224,10 @@ def inspect_producer(directory, producer, catalog):
             shared.validate_build_identity(execution.get("identity", {}))
         except shared.Blocked as error:
             blockers.append({"scope": "browser_provenance", "status": "blocked", "reason": str(error)})
-    for blocker in receipt.get("blockers", []):
-        check(blocker.get("status") in ("blocked", "failed"), "unknown producer blocker status")
-        source_scope = str(blocker.get("scope", "producer"))
-        value = {"scope": source_scope if source_scope.startswith(producer + "_") else producer + "_" + source_scope,
-                 "status": blocker["status"], "reason": str(blocker.get("reason", "unspecified producer blocker"))}
+    for value in reported_producer_blockers(receipt, producer):
         if value not in blockers:
             blockers.append(value)
-    for error in receipt.get("browser_errors", []):
-        blockers.append({"scope": "browser_runtime", "status": "failed", "reason": str(error)})
-    if receipt.get("status") not in ("passed", "blocked", "failed"):
-        raise InvalidEvidence("unknown producer qualification status")
-    source_status_missing = (receipt["status"] == "failed" and not any(row["status"] == "failed" for row in blockers)) or (
-        receipt["status"] == "blocked" and not blockers)
-    if source_status_missing:
-        blockers.append({"scope": producer + "_qualification", "status": receipt["status"],
-                         "reason": str(receipt.get("reason", "producer did not qualify"))})
-    return {"directory": str(directory.resolve()), "receipt_path": path.name, "receipt_file": fingerprint(path),
-            "receipt": receipt, "current_files": current,
+    return {**info, "current_files": current,
             "excluded_backups": sorted(row["path"] for row in files if row["path"] not in current),
             "blockers": blockers, "file_integrity_verified": True}
 
@@ -440,14 +462,21 @@ def probe(args, report):
     report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
     valid = {}
     for producer, directory in (("native", args.native_evidence), ("browser", args.browser_evidence)):
+        loaded = {"directory": str(directory), "file_integrity_verified": False}
         try:
-            info = inspect_producer(directory, producer, catalog)
+            loaded = read_producer_receipt(directory, producer)
+            report["inputs"][producer] = loaded
+            loaded["blockers"] = reported_producer_blockers(loaded["receipt"], producer)
+            report["blockers"].extend(loaded["blockers"])
+            info = inspect_loaded_producer(loaded, producer, catalog)
             report["inputs"][producer] = info
-            report["blockers"].extend(info["blockers"])
+            for blocker in info["blockers"]:
+                if blocker not in report["blockers"]:
+                    report["blockers"].append(blocker)
             valid[producer] = info
         except Exception as error:
             status = "blocked" if isinstance(error, shared.Blocked) else "failed"
-            report["inputs"][producer] = {"directory": str(directory), "status": status, "reason": str(error)}
+            report["inputs"][producer] = {**loaded, "status": status, "reason": str(error)}
             report["blockers"].append({"scope": producer + "_input", "status": status, "reason": str(error)})
     checkpoint(args.output, report)
     if len(valid) != 2:

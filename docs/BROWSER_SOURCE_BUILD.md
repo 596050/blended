@@ -210,6 +210,23 @@ adapter observes CPython setup/body/teardown start, return and unwind events.
 It does not replace the helper with a unittest loader or infer four passes
 from a module exit code.
 
+The original CTest registration supplies `--background` through
+[`tests/CMakeLists.txt`](https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/CMakeLists.txt).
+The browser adapter now passes the same execution mode through the unchanged
+shell's `__BW_ARGS` hook and records `bpy.app.background` from inside Blender.
+Qualification fails if this required mode is missing or false. This runs
+Blender's actual background path; no operator poll or context is overridden.
+
+The [first windowed browser run](https://github.com/596050/blended/actions/runs/39848817344)
+is preserved as a failed baseline: 3/4 original methods passed, then
+`TestIdRuntimeTag.test_linking` failed at `bpy.ops.wm.link.poll()`.
+Both engines transferred six files successfully, but the exchange gate refused
+all four comparisons because the browser's original driver had failed.
+Upstream `wm_files.cc` deliberately clears the active window after file loading
+when `G.background` is false. The native invocation already used background
+mode. A fresh browser run is required to validate the corrected invocation;
+the existing failure is not reclassified as a pass.
+
 ```sh
 python3 tools/probe_native_reference.py \
   --cohort blendio52 --output evidence/io-native

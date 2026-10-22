@@ -105,6 +105,9 @@ def load_suite_catalog(cohort="numeric"):
             entry["support_files"] = [{key: source[key] for key in ("upstream_path", "sha256", "bytes")}
                                       for source in support]
             entry["driver"] = suite_kind
+            # tests/CMakeLists.txt supplies --background to add_blender_test.
+            # Windowed file loading deliberately clears CTX_wm_window.
+            entry["required_background"] = True
         selected.append(entry)
     return {"id": cohort_id, "manifest_sha256": manifest_digest,
             "expected_cases": count, "suite_kind": suite_kind, "suites": selected}
@@ -367,6 +370,10 @@ def summarize_execution(result, expected_sources, browser_errors=()):
                          "reason": "not every requested suite executed exactly once"})
     if result.get("exception"):
         blockers.append({"scope": "runner", "status": "failed", "reason": result["exception"]})
+    if (any(source.get("required_background") is True for source in expected_sources) and
+            result.get("execution_context", {}).get("background") is not True):
+        blockers.append({"scope": "execution_context", "status": "failed",
+                         "reason": "original blend-file CTest driver requires observed bpy.app.background=True"})
     for row in rows:
         path = row.get("upstream_path")
         counts = {key: 0 for key in keys}
@@ -685,6 +692,12 @@ def probe(args, report):
                 page.on("crash", lambda: browser_errors.append("browser page crashed"))
                 code = python_payload(suites, marker, io_root)
                 report["runner_sha256"] = hashlib.sha256(code.encode("utf-8")).hexdigest()
+                extra_args = (["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"]
+                              if io_root else [])
+                report["execution_mode"] = {"requested": "background" if io_root else "windowed",
+                    "extra_argv": extra_args, "hook": "unchanged shell __BW_ARGS before __BW_PYEXPR"}
+                if extra_args:
+                    page.add_init_script("window.__BW_ARGS = " + json.dumps(extra_args) + ";")
                 page.add_init_script("window.__BW_PYEXPR = " + json.dumps(code) + ";")
                 response = page.goto(report["url"], wait_until="domcontentloaded", timeout=60000)
                 if response is None or response.status != 200:
@@ -744,6 +757,18 @@ def probe(args, report):
                     except Exception as error:
                         transfer_error = str(error)
                         report["generated_file_transfer"] = {"status": "failed", "reason": transfer_error}
+                    try:
+                        # The unmodified shell's onExit writes the real Emscripten
+                        # exit code. A Python result alone does not prove shutdown.
+                        page.wait_for_function("() => /^-?\\d+$/.test(document.getElementById('exit')?.textContent?.trim() ?? '')",
+                                               timeout=30000)
+                        exit_code = int(page.locator("#exit").text_content().strip())
+                        report["execution_mode"]["runtime_exit_code"] = exit_code
+                        if exit_code != 0:
+                            browser_errors.append("browser background runtime exited with code " + str(exit_code))
+                    except Exception as error:
+                        report["execution_mode"]["runtime_exit_code"] = None
+                        browser_errors.append("browser background runtime exit was not verified: " + str(error))
                 if len(received) != 1:
                     browser_errors.append("duplicate qualification result markers after output retrieval")
                     report["transport"]["result_markers"] = len(received)
