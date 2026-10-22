@@ -1,0 +1,21 @@
+{
+  "source_commit": "76044caffe2b69ae5cdceeff1addb56ee61411d9",
+  "stage": "limited-modeller-alpha",
+  "blender_parity": false,
+  "render_backend": "Three.js 0.180.0 WebGL 2",
+  "geometry_backend": "Rust WASM box/plane, Three.js sphere and OBJ/STL parsing",
+  "upstream_ports": {
+    "blender": 17,
+    "cycles_native_only": 3
+  },
+  "acceptance_status": "see matching CI run",
+  "three_package_integrity": "sha512-o+qycAMZrh+TsE01GqWUxUIKR1AL0S8pq7zDkYOQw8GqfX8b8VoCKYUoHbhiX5j+7hr8XsuHDVU6+gkQJQKg9w==",
+  "limits": [
+    "No mesh edit or sculpt mode",
+    "No animation/rigging/simulation",
+    "No native .blend import",
+    "No Cycles parity",
+    "OBJ export does not include materials",
+    "20 MB import limit; bounded snapshot history"
+  ]
+}
