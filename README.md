@@ -1,78 +1,54 @@
 # Blended
 
-**A deployed, tested browser modeller alpha. Not a complete Blender clone. The complete Blender test port is still unfinished.**
+A deployed browser modeller alpha and a test-driven Blender compatibility project. **Not a complete Blender clone.**
 
-[Open the verified modeller](https://rawcdn.githack.com/596050/blended/a81530a62fcc8222ea57db4c5d8b35869d277963/index.html) · [Modeller public-URL results](https://github.com/596050/blended/blob/modeller-evidence/result.json) · [Complete-test-port requirement](docs/COMPLETE-TEST-PORT.md)
+[Open the modeller](https://rawcdn.githack.com/596050/blended/a81530a62fcc8222ea57db4c5d8b35869d277963/index.html) · [Run the verified 99-case Rust/WASM test workbench](https://rawcdn.githack.com/596050/blended/16980ee91529017553efca51e7223354137f09be/index.html) · [Completion requirements](docs/COMPLETE-TEST-PORT.md)
 
-[Open the 45-case Rust/WASM test workbench](https://rawcdn.githack.com/596050/blended/950ea85b0f4438bc5e082a0f9a402973f01d4de3/index.html) · [Latest public test-port evidence](https://github.com/596050/blended/blob/test-port-evidence/result.json) · [Full-port completion blocker #3](https://github.com/596050/blended/issues/3)
+## Verified test-port status
 
-The modeller and conformance workbench are different deployments. The linked modeller uses source `76044caffe2b69ae5cdceeff1addb56ee61411d9`. The linked workbench uses source `006fdfb8fc48e5fa22fadbd8e822337a0c83274c`; newer workbenches record their own exact source revision and test evidence. Neither deployment establishes whole-application Blender parity.
+99 Blender runtime cases pass natively and in the actual deployed browser, representing 528 runtime assertion checks. The native Rust total is 112 after adding three Cycles cases and ten product/safety tests. This is a small subset of Blender, not full parity. The `full-test-port-completeness` CI job remains failed.
 
-## Working initial modeller
+The newest batch ports 54 cases from the complete upstream index-range, binary-search and bounds test files. It preserves 226 assertion sites, 235 runtime checks and a compile-time condition. The older vector port was corrected to collect all 68 nonfatal assertions and match upstream comparison semantics; its signed-zero hash compile-time assertion is still unported.
 
-- Actual Three.js WebGL 2 rendering, orbit/pan/zoom and transform controls.
-- Rust/WebAssembly-generated boxes and planes; Three.js spheres.
-- Object selection, numeric transforms, duplication/deletion and bounded undo/redo.
-- Basic colour, roughness, metalness, wireframe and grid controls.
-- Save/reopen `.blended.json` scenes; static OBJ/STL geometry import/export and PNG viewport output.
-- The original modeller's compatibility button executes its 17 original mathematical cases. The separate workbench executes all 45 currently ported Blender cases.
+Blender's original pinned `BLI_test` executable was also built and its 54 corresponding tests passed. Its raw listing contains 1,644 registrations and one ambiguous duplicate label. That is discovery for one configured executable, not a complete Blender runtime inventory and not 1,644 ported or passing tests.
 
-Its public-URL acceptance run `39830750442` passed 28 checks, including rendered pixels, geometry edits, undo/redo, file round trips and outputs. This is not a count of 28 Blender features. Hardware-GPU performance has not been benchmarked.
+[Native/WASM/deployed conformance run](https://github.com/596050/blended/actions/runs/39859518789) · [Durable public test results](https://github.com/596050/blended/tree/test-port-evidence) · [Original native Blender evidence](https://github.com/596050/blended/tree/07b2fd18d4fb15f83ddadbfb19acbd3a8a977bcb) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
 
-## Test-port status
+All expected results and tolerances retain upstream provenance. Reviewed source/target hashes and case identities prevent silent drift. Passed, failed, blocked, skipped, unmapped and unexecuted work remain distinct. Source candidates are not a runtime denominator. Full test conformance would still not prove every application feature.
 
-| Scope | Verified or recorded result |
-| --- | --- |
-| Blender runtime cases | 45 ported cases pass natively and in actual browser WebAssembly |
-| New complete source-file ports | 28 cases, preserving 225 assertions from five files |
-| Original vector-maths file | 17 runtime cases ported; separate signed-zero hash static assertion unported |
-| Cycles native cases | 3 integer-maths tests; no renderer parity established |
-| Additional Rust product/safety tests | 6 geometry and 4 safety tests |
-| Total native Rust tests | 58, not 58 Blender ports |
-| JavaScript modeller tests | 10 scene/history cases |
-| Source accounting | 5,637 Blender candidates, 45 reviewed mappings, 5,592 unmapped candidates |
-| Fixture payload verification | 6,691 of 6,691 LFS objects in `tests/files/**` verified by SHA-256 and size |
-| Complete Blender test port | **Not complete; dedicated CI job fails** |
+## What the limited modeller does
 
-The five additional files cover base/safe maths, bit operations, tridiagonal solvers and time decomposition. These are executable Rust tests, not success placeholders. Inputs, expected values, comparison policies and original tolerances are preserved; source/target hash locks detect subsequent assertion-code drift. Generated tests and frozen upstream originals are committed, and CI checks reproducibility.
+Three.js WebGL 2 renders a local browser viewport with orbit/pan/zoom and object transforms. Rust/WebAssembly generates boxes and planes; Three.js generates spheres. The application provides selection, numeric transforms, duplicate/delete, bounded undo/redo, basic material controls, scene JSON save/reopen, static OBJ/STL import/export and PNG viewport output.
 
-Source candidates include compile-time assertions, third-party and conditional declarations, and unexpanded parameterised tests. They are NOT a complete runtime denominator. Do not derive a parity percentage from them. CTest/GoogleTest/Python/render/UI/runtime enumeration and most test ports remain outstanding.
+The original public modeller release passed 28 checks including rendered pixels and editing/interchange workflows. These include infrastructure checks, not 28 Blender features. Its existing test button still uses the compatible 17-case ABI; use the separate workbench for all 99 cases.
 
-The fixture verification run `39847680248` downloaded 870,496,042 bytes, including 2,145 `.blend` files. Its object-by-object evidence is permanently retained [here](https://github.com/596050/blended/blob/950ea85b0f4438bc5e082a0f9a402973f01d4de3/fixture-evidence/fixture-verification.json). The older scan's 2,169 `.blend` pointers included 24 outside this verified directory. Other dependencies still need verification; downloading fixtures does not execute tests, and fresh checkouts still require LFS materialisation.
+There is no full mesh edit/sculpt system, Blender modifier or Geometry Nodes suite, rigging/animation/physics suite, compositor, Python add-on API, native .blend support or Cycles/EEVEE compatibility. The new test ports are core-library work, not new editor features. OBJ export does not include materials; file/geometry/history limits remain.
 
-Test-first evidence: additional Blender tests failed before their implementation in run `39846695564`; native and browser execution passed in `39848464324`; actual public-URL execution passed in `39849051906`. The full-completeness gate in that last run remained failed. See [acceptance criteria and remaining work](docs/COMPLETE-TEST-PORT.md), `compatibility/assertion-contracts.lock.json` and `evidence/TEST-PORT-STATUS.json`.
+## Rendering experiments remain separate
 
-## Important application limits
+The Solarxy-derived Rust/WebGPU studio compiles, but real rendering acceptance failed. Imported geometry produced a blank viewport and some runs lost the GPU device. Existing Solarxy unit tests passing did not prove rendering or Blender parity. [Issue #1](https://github.com/596050/blended/issues/1) remains open; [failure evidence](https://github.com/596050/blended/tree/deployment-evidence) is retained. The working Three.js modeller is not a fix for that failure and does not inherit Solarxy's procedural editor.
 
-**Full Blender and Cycles functionality are NOT implemented.** The modeller has no Blender-compatible mesh edit mode, sculpting, animation/rigging, physics, compositor, Python add-on API, `.blend` support or Cycles/EEVEE renderer. OBJ export does not include materials. Import and history are bounded and are not designed for Blender-scale scenes.
+## Reproduce and verify
 
-The free preview is a third-party shared-origin CDN serving GitHub files. Use public sample models only and save work locally. No paid service or server-side GPU was provisioned. A GitHub Pages workflow is available for a dedicated site once Pages is enabled.
-
-The separately built Solarxy/WebGPU experiment compiled and passed selected native/frontend tests but failed real browser rendering acceptance. It remains a [diagnostic preview](https://rawcdn.githack.com/596050/blended/5782100e39cff4325983f4be9949b651d488417c/index.html), with [blocker #1](https://github.com/596050/blended/issues/1). The Three.js modeller does not fix that failure or inherit Solarxy's procedural node system.
-
-## Reproduce checks
-
-With the pinned Rust toolchain, Node.js 22+, Python 3.12+ and Git:
+Use the pinned Rust toolchain, Node.js 22+, Python 3.12+ and Git:
 
 ```sh
 cargo test --locked --workspace --all-targets
 node --test modeller/model.test.mjs
+python3 tools/prepare_site.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_modeller.py --commit "$(git rev-parse HEAD)"
 python3 -m http.server 8765 --directory build/modeller
 ```
 
-The full port audit is a separate command documented in `docs/COMPLETE-TEST-PORT.md`. It must currently exit nonzero. Do not remove unported cases or use `continue-on-error` to label it complete. Passing the full test suite would still be separate from whole-application feature/workflow compatibility.
+Conformance CI fetches pinned Blender sources, reproduces the committed translations, runs native and real WASM cases, publishes an immutable subset workbench, and tests that public URL. Native reference workflows preserve build configuration, raw discovery and original XML output. Details and commands are in [COMPLETE-TEST-PORT.md](docs/COMPLETE-TEST-PORT.md).
 
-## Layout and evidence
+The 6,691 LFS assets under pinned `tests/files/**` were downloaded and hash/size-verified. A fresh execution checkout must still materialise required inputs, and other dependencies remain outside that verified scope. Neither an LFS pointer nor a previous download counts as a passed test.
 
-- `crates/blended-core`: Rust maths, conformance cases, product geometry and WASM ABI.
-- `modeller`: limited Three.js application and scene/history tests.
-- `tests/upstream/blender`: pinned originals for the new ports.
-- `compatibility`: source identities and reviewed assertion contracts.
-- `tools`: fetch/build, source inventory, completeness audit and real browser execution.
-- `modeller-build` / `modeller-evidence`: application deployment and test evidence branches.
-- `test-port-build` / `test-port-evidence`: conformance deployment, full candidate audit, fixture metadata and public execution evidence.
-- `compatibility-index`: original cross-project source inventory; not runtime completeness.
+## Hosting, source and licences
 
-Original project code is GPL-3.0-or-later; adapted components and translated tests retain their upstream notices. Built workbenches include corresponding source. This project is independent of the Blender Foundation and Solarxy's author.
+Code, built files and durable evidence are stored in this public GitHub repository. Builds use standard free public-repository Actions runners. No paid service or server-side GPU is provisioned. The current application preview uses a free third-party shared-origin CDN: use public sample models only and save work locally. GitHub Pages workflows are also supplied.
+
+Original project code is GPL-3.0-or-later. Translated tests preserve their Apache-2.0 notices; Three.js is MIT-licensed; Solarxy attribution is retained. Deployments contain corresponding sources and licence notices. This is independent of the Blender Foundation and Solarxy's author.
+
+See [implementation status](docs/IMPLEMENTATION-STATUS.md) and [machine-readable test-port status](evidence/TEST-PORT-STATUS.json).
