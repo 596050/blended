@@ -47,12 +47,13 @@ def evaluate(inventory,ports,runtime=None,execution=None):
     if inventory.get('fixture_completeness')!='verified' or unavailable:blockers.append('fixture_completeness_not_verified')
     ledger=[dict(c,port_status='mapped_reviewed' if key(c) in mapped else 'not_ported',target_test=mapped.get(key(c),{}).get('target_test')) for c in cases]
     executed=execution.get('case_results',{}) if execution.get('source_commit')==inventory.get('commit') else {}
-    parity=not blockers and bool(mapped) and all(all(executed.get(k,{}).get(t)=='passed' for t in ('native','wasm','deployed')) for k in mapped)
-    return dict(schema=1,reference_commit=inventory.get('commit'),complete_test_port=not blockers,feature_parity=parity,
+    conformance=not blockers and bool(mapped) and all(all(executed.get(k,{}).get(t)=='passed' for t in ('native','wasm','deployed')) for k in mapped)
+    # Tests establish their exercised contracts, never every feature of an application.
+    return dict(schema=2,reference_commit=inventory.get('commit'),complete_test_port=not blockers,test_conformance_complete=conformance,feature_parity=False,
                 source_candidates=len(cases),mapped_source_candidates=len(mapped),unported_source_candidates=len(missing),
                 unported_runtime_cases=len(runtime_missing),unavailable_fixture_count=len(unavailable),
                 declaration_kinds=dict(Counter(c['kind'] for c in cases)),blockers=sorted(set(blockers)),cases=ledger,
-                note='Counts are source candidates, including conditional and third-party declarations, NOT a full runtime denominator. Mapping and execution are separate. Assertion equivalence requires review; hashes detect subsequent drift.')
+                note='Counts are source candidates, including conditional and third-party declarations, NOT a full runtime denominator. Mapping and execution are separate. Assertion equivalence requires review; hashes detect subsequent drift. Test conformance does not establish whole-application feature parity.')
 
 def load_ports(inventory):
     hashes={f['path']:f['sha256'] for f in inventory['files']};ports=[]
@@ -103,7 +104,7 @@ def main():
     result=evaluate(inv,load_ports(inv),runtime,execution)
     assets=fixture_metadata(ROOT/'.upstream/blender/tests/files');result['test_asset_lfs_pointers']=assets
     result['test_asset_missing_bytes']=sum(a.get('expected_bytes') or 0 for a in assets)
-    result['execution_scope']='This audit does not execute the candidate tests.'
+    result['execution_scope']='This audit does not execute the candidate tests. Pointer status describes this checkout, not the separate fixture-download verification run.'
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps({k:v for k,v in result.items() if k not in ('cases','test_asset_lfs_pointers')},indent=2))
     return 1 if args.require_complete and not result['complete_test_port'] else 0

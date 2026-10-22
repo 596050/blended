@@ -29,7 +29,7 @@ class TestPortAuditTests(unittest.TestCase):
     def test_new_source_test_cannot_disappear(self):
         self.inventory['cases'].append({'path':'a.cc','identity':'A.C','kind':'TEST','line':2});self.assertEqual(self.result()['unported_source_candidates'],1)
     def test_ignored_is_not_execution_pass(self):
-        self.inventory['fixture_completeness']='verified';self.execution['case_results']['a.cc::A.B::1']['wasm']='ignored';self.assertFalse(self.result()['feature_parity'])
+        self.inventory['fixture_completeness']='verified';self.execution['case_results']['a.cc::A.B::1']['wasm']='ignored';self.assertFalse(self.result()['test_conformance_complete'])
     def test_stale_commit_never_complete(self):
         self.runtime['commit']='f'*40;self.assertFalse(self.result()['complete_test_port'])
     def test_missing_runtime_family_is_blocked(self):
@@ -40,9 +40,11 @@ class TestPortAuditTests(unittest.TestCase):
         self.inventory['unreadable_files']=[{'path':'broken.py'}];self.assertFalse(self.result()['complete_test_port'])
     def test_empty_universe_never_complete(self):
         self.inventory['cases']=[];self.runtime['case_keys']=[];self.assertFalse(self.result(ports=[])['complete_test_port'])
-    def test_verified_port_is_distinct_from_feature_parity(self):
+    def test_verified_port_is_distinct_from_test_conformance(self):
         self.inventory['fixture_completeness']='verified';self.execution['case_results']['a.cc::A.B::1']['wasm']='failed'
-        r=self.result();self.assertTrue(r['complete_test_port']);self.assertFalse(r['feature_parity'])
+        r=self.result();self.assertTrue(r['complete_test_port']);self.assertFalse(r['test_conformance_complete'])
     def test_fully_accounted_synthetic_fixture_passes(self):
-        self.inventory['fixture_completeness']='verified';self.assertTrue(self.result()['feature_parity'])
+        self.inventory['fixture_completeness']='verified';self.assertTrue(self.result()['test_conformance_complete'])
+    def test_test_conformance_never_proves_all_features(self):
+        self.inventory['fixture_completeness']='verified';self.assertFalse(self.result()['feature_parity'])
 if __name__=='__main__':unittest.main()
