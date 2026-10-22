@@ -2,10 +2,718 @@
   "url": "https://rawcdn.githack.com/596050/blended/16980ee91529017553efca51e7223354137f09be/index.html",
   "expected_case_count": 99,
   "expected_source_commit": "5c348145f0739a3a7999ef2f69314b7a43c24785",
-  "started_utc": "2026-10-22T21:44:35.864691+00:00",
-  "status": "failed",
+  "started_utc": "2026-10-22T21:48:21.007808+00:00",
+  "status": "passed",
   "errors": [],
   "complete_test_port": false,
-  "failure": "Page.goto: net::ERR_CONNECTION_RESET at https://rawcdn.githack.com/596050/blended/16980ee91529017553efca51e7223354137f09be/index.html\nCall log:\n  - navigating to \"https://rawcdn.githack.com/596050/blended/16980ee91529017553efca51e7223354137f09be/index.html\", waiting until \"networkidle\"\n",
-  "finished_utc": "2026-10-22T21:44:49.859496+00:00"
+  "wasm": {
+    "source_commit": "5c348145f0739a3a7999ef2f69314b7a43c24785",
+    "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "status": "passed",
+    "complete_test_port": false,
+    "passed": 99,
+    "vector_assertions": 68,
+    "additional_assertions": 225,
+    "structure_assertions": 235,
+    "cases": [
+      {
+        "id": "math_vector.ClampVecWithFloats",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vector.test_invert_v3_safe",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vector.Clamp",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vector.MinList",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "math_vector.MaxList",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "math_vector.InterpolateInt",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.InterpolateFloat",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.CeilToMultiple",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.DivideCeil",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.Sign",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.sqrt",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.safe_sqrt",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.rcp",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.safe_rcp",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.exp",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.log",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vector.square",
+        "group": "legacy",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_base.CompareFFRelativeValid",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.CompareFFRelativeNormal",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "math_base.CompareFFRelativeZero",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 26
+      },
+      {
+        "id": "math_base.UlpDiffFF",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 19
+      },
+      {
+        "id": "math_base.Log2FloorU",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "math_base.Log2CeilU",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "math_base.CeilPowerOf10",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "math_base.FloorPowerOf10",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "math_base.MinVectorAndFloat",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.ClampInt",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.StepLessThan",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.StepGreaterThan",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.StepExact",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.Midpoint",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.InterpolateInt",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "math_base.FlooredFMod",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "math_base.ModPeriodic",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 25
+      },
+      {
+        "id": "math_base.SafePowf",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_base.SafeModf",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_base.SafeLogf",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_bits.BitscanReverseClearUint",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 38
+      },
+      {
+        "id": "math_bits.PopCount",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "math_solvers.Tridiagonal1",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_solvers.Tridiagonal3",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_solvers.CyclicTridiagonal1",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_solvers.CyclicTridiagonal2",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_solvers.CyclicTridiagonal3",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_time.SecondsExplode",
+        "group": "additional",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "index_range.DefaultConstructor",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "index_range.FromBeginSize",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "index_range.FromBeginEnd",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "index_range.FromBeginEndInclusive",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "index_range.FromEndSize",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.FromSingle",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "index_range.SingleElementRange",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "index_range.MultipleElementRange",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "index_range.SubscriptOperator",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.Before",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "index_range.After",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "index_range.Contains",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "index_range.First",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.Last",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.OneAfterEnd",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.OneBeforeStart",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.Start",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.Slice",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.Intersect",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "index_range.SliceRange",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.DropBack",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.DropBackAll",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.DropFront",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "index_range.DropFrontLargeN",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.DropFrontAll",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.TakeFront",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.TakeFrontLargeN",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.TakeBack",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.TakeBackLargeN",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "index_range.constexpr_",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "index_range.GenericAlgorithms",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "index_range.SplitByAlignment",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 30
+      },
+      {
+        "id": "binary_search.Empty",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "binary_search.One",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "binary_search.Multiple",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "bounds.Empty",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "bounds.EmptyInt",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "bounds.Center",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "bounds.Size",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "bounds.Translate",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "bounds.ScaleFromCenter",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "bounds.Resize",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "bounds.Recenter",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bounds.Pad",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "bounds.MinMaxEmpty",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bounds.MinMax",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bounds.MinMaxFloat",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bounds.MinGreaterThanZero",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "bounds.MinMaxRadii",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bounds.Large",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bounds.Contains",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "bounds.IntersectSegment1D",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 10
+      },
+      {
+        "id": "bounds.IntersectSegment2D",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "bounds.IntersectSegment3D",
+        "group": "structures",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      }
+    ],
+    "errors": [],
+    "wasm_sha256": "cc62d5ae90476ee25d9df5d91adef0476803eafa03df80e208b305bae0470dd7",
+    "invalid_index_rejected": true
+  },
+  "browser_version": "155.0.8059.39",
+  "finished_utc": "2026-10-22T21:48:34.571906+00:00"
 }
