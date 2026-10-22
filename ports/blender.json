@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "upstream_repository": "blender/blender",
+  "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_path": "source/blender/blenlib/tests/BLI_math_vector_test.cc",
+  "cases": [
+    {
+      "id": "math_vector.ClampVecWithFloats",
+      "rust_test": "upstream_math_vector::ClampVecWithFloats",
+      "wasm_index": 0,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.test_invert_v3_safe",
+      "rust_test": "upstream_math_vector::test_invert_v3_safe",
+      "wasm_index": 1,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.Clamp",
+      "rust_test": "upstream_math_vector::Clamp",
+      "wasm_index": 2,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.MinList",
+      "rust_test": "upstream_math_vector::MinList",
+      "wasm_index": 3,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.MaxList",
+      "rust_test": "upstream_math_vector::MaxList",
+      "wasm_index": 4,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.InterpolateInt",
+      "rust_test": "upstream_math_vector::InterpolateInt",
+      "wasm_index": 5,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.InterpolateFloat",
+      "rust_test": "upstream_math_vector::InterpolateFloat",
+      "wasm_index": 6,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.CeilToMultiple",
+      "rust_test": "upstream_math_vector::CeilToMultiple",
+      "wasm_index": 7,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.DivideCeil",
+      "rust_test": "upstream_math_vector::DivideCeil",
+      "wasm_index": 8,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.Sign",
+      "rust_test": "upstream_math_vector::Sign",
+      "wasm_index": 9,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.sqrt",
+      "rust_test": "upstream_math_vector::sqrt",
+      "wasm_index": 10,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.safe_sqrt",
+      "rust_test": "upstream_math_vector::safe_sqrt",
+      "wasm_index": 11,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.rcp",
+      "rust_test": "upstream_math_vector::rcp",
+      "wasm_index": 12,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.safe_rcp",
+      "rust_test": "upstream_math_vector::safe_rcp",
+      "wasm_index": 13,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.exp",
+      "rust_test": "upstream_math_vector::exp",
+      "wasm_index": 14,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.log",
+      "rust_test": "upstream_math_vector::log",
+      "wasm_index": 15,
+      "port_status": "written",
+      "execution": "not_run"
+    },
+    {
+      "id": "math_vector.square",
+      "rust_test": "upstream_math_vector::square",
+      "wasm_index": 16,
+      "port_status": "written",
+      "execution": "not_run"
+    }
+  ],
+  "full_feature_parity": false,
+  "outstanding": [
+    "signed-zero hash static assertion",
+    "all remaining Blender subsystems",
+    "complete runtime enumeration"
+  ],
+  "assertion_policy": "Original exact comparisons, four-ULP EXPECT_FLOAT_EQ and 1e-6 EXPECT_NEAR retained as applicable."
+}
