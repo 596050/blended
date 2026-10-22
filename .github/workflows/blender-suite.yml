@@ -1,0 +1,38 @@
+name: Complete Blender test-port requirement
+on:
+  push:
+    branches: [main, 'compat/full-blender-tests']
+    paths: ['tools/blender_suite.py', 'tests/test_blender_suite.py', 'compatibility/blender-suite-policy.json', '.github/workflows/blender-suite.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gate-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s tests -p test_blender_suite.py -v
+  capture-pinned-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 tools/fetch_upstreams.py blender
+      - name: Retain exact original source and tracked-file identities, not generated substitutes
+        run: |
+          mkdir -p evidence/full-suite
+          git -C .upstream/blender rev-parse HEAD > evidence/full-suite/upstream-commit.txt
+          git -C .upstream/blender ls-files --stage -z > evidence/full-suite/tracked-files.zlist
+          git -C .upstream/blender archive --format=tar HEAD | gzip -n > evidence/full-suite/blender-pinned-source.tar.gz
+          cp upstream.lock.json evidence/full-suite/
+          git archive --format=tar HEAD | gzip -n > evidence/full-suite/blended-tooling-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-blender-test-source
+          path: evidence/full-suite/
+          retention-days: 1
