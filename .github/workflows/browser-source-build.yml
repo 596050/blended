@@ -1,0 +1,119 @@
+name: Build pinned Blender browser source development artifact
+
+on:
+  push:
+    branches: ['parity/**']
+    paths:
+      - tools/rebuild_browser_port.py
+      - .github/workflows/browser-source-build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: browser-source-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  source-development:
+    name: Preserve features and build OFF-mode from pinned source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.13'
+      - name: Install host build prerequisites
+        run: |
+          mkdir -p evidence/browser-source-build
+          python3 - <<'PY'
+          import datetime, json, platform
+          from pathlib import Path
+          Path('evidence/browser-source-build/host-bootstrap.json').write_text(json.dumps({
+              'status': 'started', 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'runner': platform.platform(), 'python': platform.python_version(),
+              'scope': 'Host prerequisites only; no engine build claimed.'
+          }, indent=2) + '\n')
+          PY
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            build-essential git git-lfs curl ca-certificates xz-utils unzip zip \
+            ccache pkg-config perl autoconf automake libtool nasm yasm rsync \
+            clang-17 lld-17 libegl-dev zlib1g-dev libzstd-dev libffi-dev libssl-dev
+      - name: Restore only input-keyed generated dependency and compiler caches
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .cache/browser-source/gessa/lib/wasm
+            .cache/browser-source/gessa/build-deps/_cache
+            .cache/browser-source/gessa/tools/emsdk
+            .cache/browser-source/gessa/build-dawn/dawn
+            .cache/browser-source/ccache
+            .cache/browser-source/emscripten-cache
+          key: blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py') }}-${{ github.run_id }}
+          restore-keys: |
+            blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py') }}-
+      - name: Reconstruct, build dependencies, compile, and package development engine
+        run: >-
+          python3 tools/rebuild_browser_port.py
+          --work-dir .cache/browser-source
+          --output evidence/browser-source-build
+          --jobs 2
+      - name: Preserve dependency progress even when a later stage fails
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .cache/browser-source/gessa/lib/wasm
+            .cache/browser-source/gessa/build-deps/_cache
+            .cache/browser-source/gessa/tools/emsdk
+            .cache/browser-source/gessa/build-dawn/dawn
+            .cache/browser-source/ccache
+            .cache/browser-source/emscripten-cache
+          key: blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py') }}-${{ github.run_id }}
+      - name: Preserve source, toolchain, configuration, dependency and failure receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-source-development-${{ github.run_id }}
+          path: evidence/browser-source-build/
+          compression-level: 1
+          retention-days: 7
+          if-no-files-found: warn
+
+  qualify-development:
+    name: Run unchanged upstream suites on the newly built engine
+    needs: source-development
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: browser-source-development-${{ github.run_id }}
+          path: source-build
+      - name: Install browser automation
+        run: python3 -m pip install playwright==1.57.0
+      - name: Require artifact digest, runtime identity and all original assertions
+        run: >-
+          python3 tools/probe_browser_port.py
+          --source-build-receipt source-build/source-build.json
+          --asset source-build/blender-source-development.tar.gz
+          --output evidence/source-development-qualification
+          --timeout 240
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-development-qualification-${{ github.run_id }}
+          path: evidence/source-development-qualification/
+          retention-days: 14
