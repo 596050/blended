@@ -1,0 +1,108 @@
+name: Exact Blender native reference and runtime tests
+on:
+  push:
+    branches: [main, 'compat/full-blender-tests']
+    paths: ['.github/workflows/blender-native-reference.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: blender-native-reference
+  cancel-in-progress: false
+jobs:
+  native-reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    env:
+      GIT_TERMINAL_PROMPT: '0'
+      CMAKE_BUILD_PARALLEL_LEVEL: '3'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install the compiler and display-development packages on the standard public runner
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gcc-14 g++-14 ninja-build cmake git-lfs libx11-dev libxxf86vm-dev libxfixes-dev libxi-dev libxrandr-dev libxrender-dev libxinerama-dev libxcursor-dev libegl1-mesa-dev libwayland-dev libxkbcommon-dev libdecor-0-dev libdbus-1-dev libjack-jackd2-dev xvfb xauth weston libgl1-mesa-dri mesa-vulkan-drivers
+          df -h .
+      - name: Fetch the exact Blender source and its pinned Linux library submodule
+        run: |
+          mkdir -p evidence/native
+          python3 tools/fetch_upstreams.py blender
+          PIN=$(python3 -c "import json;print(json.load(open('upstream.lock.json'))['upstreams']['blender']['commit'])")
+          test "$(git -C .upstream/blender rev-parse HEAD)" = "$PIN"
+          git -C .upstream/blender lfs install --local
+          git -C .upstream/blender config lfs.url https://projects.blender.org/blender/blender.git/info/lfs
+          git -C .upstream/blender config lfs.https://projects.blender.org/blender/blender.git/info/lfs.access none
+          GIT_LFS_SKIP_SMUDGE=1 git -C .upstream/blender submodule update --init --checkout --depth 1 lib/linux_x64
+          EXPECTED=$(git -C .upstream/blender ls-tree HEAD lib/linux_x64 | awk '{print $3}')
+          test "$(git -C .upstream/blender/lib/linux_x64 rev-parse HEAD)" = "$EXPECTED"
+          git -C .upstream/blender/lib/linux_x64 lfs install --local
+          git -C .upstream/blender/lib/linux_x64 config lfs.url https://projects.blender.org/blender/lib-linux_x64.git/info/lfs
+          git -C .upstream/blender/lib/linux_x64 config lfs.https://projects.blender.org/blender/lib-linux_x64.git/info/lfs.access none
+          git -C .upstream/blender/lib/linux_x64 lfs pull
+          git -C .upstream/blender lfs pull
+          git -C .upstream/blender lfs fsck --objects > evidence/native/blender-lfs-fsck.txt
+          git -C .upstream/blender/lib/linux_x64 lfs fsck --objects > evidence/native/libraries-lfs-fsck.txt
+          printf '{"upstream_commit":"%s","linux_libraries_commit":"%s","profile":"linux-x64-native-reference","complete_cross_platform_registry":false}\n' "$PIN" "$EXPECTED" > evidence/native/provenance.json
+          df -h .
+      - name: Configure original tests without batching and retain all enabled build options
+        env:
+          CC: gcc-14
+          CXX: g++-14
+        run: |
+          set -o pipefail
+          cmake -S .upstream/blender -B build/native-reference -G Ninja \
+            -C .upstream/blender/build_files/cmake/config/blender_release.cmake \
+            -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$GITHUB_WORKSPACE/build/native-install" \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DWITH_STRICT_BUILD_OPTIONS=ON \
+            -DWITH_GTESTS=ON -DWITH_TESTS_BATCHED=OFF -DWITH_TESTS_SINGLE_BINARY=ON \
+            -DWITH_TESTS_EXPERIMENTAL=ON -DWITH_SYSTEM_PYTHON_TESTS=ON -DTEST_SYSTEM_PYTHON_EXE=/usr/bin/python3 \
+            -DWITH_GPU_RENDER_TESTS=ON -DWITH_GPU_RENDER_TESTS_VULKAN=ON -DWITH_GPU_RENDER_TESTS_HEADED=ON \
+            -DWITH_GPU_BACKEND_TESTS=ON -DWITH_GPU_DRAW_TESTS=ON -DWITH_GPU_COMPOSITOR_TESTS=ON \
+            -DWITH_GPU_MESH_PAINT_TESTS=ON -DWITH_UI_TESTS=ON -DWITH_UI_TESTS_HEADLESS=ON \
+            -DWITH_OPENGL_BACKEND=ON -DWITH_VULKAN_BACKEND=ON \
+            -DWITH_CYCLES_CUDA_BINARIES=OFF -DWITH_CYCLES_DEVICE_OPTIX=OFF -DWITH_DLSS=OFF \
+            -DWITH_CYCLES_NATIVE_ONLY=ON -DWITH_DOC_MANPAGE=OFF \
+            2>&1 | tee evidence/native/configure.log
+          cp build/native-reference/CMakeCache.txt evidence/native/
+          python3 tools/blender_suite.py enumerate-ctest --build build/native-reference --output evidence/native/ctest-registered-before-build.json
+      - name: Build the actual native reference and original GoogleTest executable
+        run: |
+          set -o pipefail
+          cmake --build build/native-reference --target install --parallel 3 2>&1 | tee evidence/native/build.log
+          build/native-install/blender --version > evidence/native/blender-version.txt
+      - name: Expand actual native runtime test identities, without declaring the browser port complete
+        run: |
+          python3 tools/blender_suite.py enumerate-ctest --build build/native-reference --output evidence/native/ctest-registered.json
+          TEST_BIN=$(find build/native-install -type f -name blender_test -print -quit)
+          test -n "$TEST_BIN"
+          xvfb-run -a "$TEST_BIN" --gtest_list_tests --gtest_output=json:"$GITHUB_WORKSPACE/evidence/native/gtest-list.json" > evidence/native/gtest-list.txt 2>&1
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from tools.blender_suite import parse_gtest_list
+          root=Path('evidence/native')
+          cases=parse_gtest_list((root/'gtest-list.txt').read_text())
+          config=hashlib.sha256((root/'CMakeCache.txt').read_bytes()).hexdigest()
+          result={'schema':1,'upstream_commit':json.loads((root/'provenance.json').read_text())['upstream_commit'],'build_config_sha256':config,'google_test_runtime_cases':len(cases),'cases':cases,'complete':False,'test_port_complete':False,'note':'Actual native GoogleTest identities. Python/fixture/UI expansion, other profiles and browser execution remain separate obligations.'}
+          (root/'runtime-gtest-registry.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('Expanded real native GoogleTest cases:',len(cases))
+          PY
+      - name: Run original native GoogleTests and preserve failures, not merely discovery
+        run: |
+          TEST_BIN=$(find build/native-install -type f -name blender_test -print -quit)
+          set +e
+          timeout 900 xvfb-run -a "$TEST_BIN" --gtest_output=json:"$GITHUB_WORKSPACE/evidence/native/gtest-results.json" > evidence/native/gtest-execution.log 2>&1
+          RESULT=$?
+          set -e
+          printf '{"exit_code":%s,"realm":"native","is_browser_evidence":false}\n' "$RESULT" > evidence/native/gtest-exit.json
+          tail -n 50 evidence/native/gtest-execution.log
+          exit "$RESULT"
+      - name: Retain native evidence even when configuration, compilation or tests fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-native-blender-reference-evidence
+          path: evidence/native/
+          retention-days: 1
