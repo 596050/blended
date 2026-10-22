@@ -8,7 +8,7 @@
   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 [1m[33mwarning[0m: `blended-core` (test "upstream_cycles_math") generated 1 warning (run `cargo fix --test "upstream_cycles_math" -p blended-core` to apply 1 suggestion)
-[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 0.44s
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 0.67s
 [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/blended_core-7c19c97da15a31fb)
 
 running 0 tests
@@ -18,8 +18,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 [1m[92m     Running[0m tests/browser_geometry.rs (target/debug/deps/browser_geometry-a2dc115555b426ab)
 
 running 6 tests
-test box_faces_point_outwards ... ok
 test box_has_exact_dimensions ... ok
+test box_faces_point_outwards ... ok
 test box_has_independent_face_vertices_and_twelve_triangles ... ok
 test invalid_box_dimensions_rejected ... ok
 test invalid_plane_dimensions_rejected ... ok
@@ -31,11 +31,45 @@ test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 4 tests
 test empty_extrema_are_explicit ... ok
-test invalid_divisors_are_rejected ... ok
 test overflow_is_rejected ... ok
 test invalid_case_is_not_a_pass ... ok
+test invalid_divisors_are_rejected ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1m[92m     Running[0m tests/upstream_additional.rs (target/debug/deps/upstream_additional-77ae453e43b3f451)
+
+running 28 tests
+test math_base__CeilPowerOf10 ... ok
+test math_base__CompareFFRelativeNormal ... ok
+test math_base__CompareFFRelativeZero ... ok
+test math_base__ClampInt ... ok
+test math_base__CompareFFRelativeValid ... ok
+test math_base__FloorPowerOf10 ... ok
+test math_base__FlooredFMod ... ok
+test math_base__Log2FloorU ... ok
+test math_base__InterpolateInt ... ok
+test math_base__Log2CeilU ... ok
+test math_base__Midpoint ... ok
+test math_base__MinVectorAndFloat ... ok
+test math_base__ModPeriodic ... ok
+test math_base__SafeLogf ... ok
+test math_base__SafeModf ... ok
+test math_base__SafePowf ... ok
+test math_base__StepExact ... ok
+test math_base__StepGreaterThan ... ok
+test math_base__UlpDiffFF ... ok
+test math_bits__BitscanReverseClearUint ... ok
+test math_solvers__CyclicTridiagonal1 ... ok
+test math_base__StepLessThan ... ok
+test math_bits__PopCount ... ok
+test math_solvers__CyclicTridiagonal2 ... ok
+test math_solvers__CyclicTridiagonal3 ... ok
+test math_solvers__Tridiagonal1 ... ok
+test math_solvers__Tridiagonal3 ... ok
+test math_time__SecondsExplode ... ok
+
+test result: ok. 28 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 [1m[92m     Running[0m tests/upstream_cycles_math.rs (target/debug/deps/upstream_cycles_math-983312a3179c0879)
 
@@ -50,12 +84,12 @@ test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 17 tests
 test CeilToMultiple ... ok
+test Clamp ... ok
 test ClampVecWithFloats ... ok
+test InterpolateInt ... ok
 test DivideCeil ... ok
 test InterpolateFloat ... ok
-test InterpolateInt ... ok
 test MaxList ... ok
-test Clamp ... ok
 test MinList ... ok
 test Sign ... ok
 test exp ... ok
@@ -73,61 +107,61 @@ TAP version 13
 # Subtest: valid document is accepted
 ok 1 - valid document is accepted
   ---
-  duration_ms: 1.237656
+  duration_ms: 1.272974
   type: 'test'
   ...
 # Subtest: unknown schema is rejected
 ok 2 - unknown schema is rejected
   ---
-  duration_ms: 0.308255
+  duration_ms: 0.308462
   type: 'test'
   ...
 # Subtest: invalid index is rejected
 ok 3 - invalid index is rejected
   ---
-  duration_ms: 1.016022
+  duration_ms: 0.964874
   type: 'test'
   ...
 # Subtest: nonfinite coordinates rejected
 ok 4 - nonfinite coordinates rejected
   ---
-  duration_ms: 0.176526
+  duration_ms: 0.179428
   type: 'test'
   ...
 # Subtest: duplicate identities rejected
 ok 5 - duplicate identities rejected
   ---
-  duration_ms: 0.276677
+  duration_ms: 0.308361
   type: 'test'
   ...
 # Subtest: history undo and redo restore exact geometry
 ok 6 - history undo and redo restore exact geometry
   ---
-  duration_ms: 1.533041
+  duration_ms: 1.527234
   type: 'test'
   ...
 # Subtest: history snapshots do not alias callers
 ok 7 - history snapshots do not alias callers
   ---
-  duration_ms: 0.291359
+  duration_ms: 0.310324
   type: 'test'
   ...
 # Subtest: new command invalidates redo
 ok 8 - new command invalidates redo
   ---
-  duration_ms: 0.29176
+  duration_ms: 0.250154
   type: 'test'
   ...
 # Subtest: undo at boundary is not success
 ok 9 - undo at boundary is not success
   ---
-  duration_ms: 0.322406
+  duration_ms: 0.321982
   type: 'test'
   ...
 # Subtest: invalid command never changes history
 ok 10 - invalid command never changes history
   ---
-  duration_ms: 0.486573
+  duration_ms: 0.478826
   type: 'test'
   ...
 1..10
@@ -138,6 +172,6 @@ ok 10 - invalid command never changes history
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 89.738951
+# duration_ms 75.707191
 [1m[92m   Compiling[0m blended-core v0.1.0 (/home/runner/work/blended/blended/crates/blended-core)
-[1m[92m    Finished[0m `release` profile [optimized] target(s) in 0.22s
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 0.38s
