@@ -1,0 +1,53 @@
+name: Verify studio with Mesa Vulkan
+on:
+  push:
+    branches: [diagnostics/source-bundle]
+    paths: [.github/workflows/mesa-render-check.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 39824844322
+          name: browser-site
+          path: compiled
+      - name: Install a real independent Vulkan implementation
+        timeout-minutes: 5
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y mesa-vulkan-drivers vulkan-tools
+          python3 -m pip install playwright==1.57.0 pillow==11.3.0
+          curl -fsSL https://raw.githubusercontent.com/596050/blended/15054f12babb91e58b73a6afad3d8c2666a603cc/tools/browser_check.py -o tools/browser_check.py
+      - name: Run geometry rendering checks on Mesa, preserving all error gates
+        timeout-minutes: 6
+        run: |
+          mkdir -p evidence/mesa
+          export VK_ICD_FILENAMES=$(find /usr/share/vulkan/icd.d -name '*lvp*' | head -1)
+          export VK_DRIVER_FILES="$VK_ICD_FILENAMES"
+          test -n "$VK_ICD_FILENAMES"
+          vulkaninfo --summary >evidence/mesa/vulkan.txt 2>&1
+          cat evidence/mesa/vulkan.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('tools/check_release.py');s=p.read_text()
+          s=s.replace("'--use-angle=swiftshader'", "'--use-angle=vulkan','--use-vulkan=native','--enable-features=Vulkan','--disable-vulkan-surface','--ignore-gpu-blocklist'")
+          s=s.replace('headless=True','headless=False')
+          p.write_text(s)
+          PY
+          python3 -m http.server 8765 --directory compiled >/tmp/http.log 2>&1 &
+          xvfb-run -a python3 tools/check_release.py --url http://127.0.0.1:8765/index.html --expected-commit 15054f12babb91e58b73a6afad3d8c2666a603cc --output evidence/mesa
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mesa-browser-evidence
+          path: evidence/mesa/
+          retention-days: 3
