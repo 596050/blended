@@ -20,7 +20,7 @@ jobs:
           with tarfile.open('runtime.tar.gz','r:gz') as a:a.extractall('runtime',filter='data')
           PY
           python3 -m pip install playwright==1.57.0 pillow==11.3.0
-      - name: Run actual embedded bpy and capture its precise runtime identity
+      - name: Execute embedded Blender Python and report the actual build identity
         run: |
           mkdir -p evidence
           python3 - <<'PY'
@@ -55,11 +55,14 @@ jobs:
               try:
                   response=page.goto('http://127.0.0.1:8765/',wait_until='domcontentloaded',timeout=60000)
                   report['http_status']=response.status;report['cross_origin_isolated']=page.evaluate('crossOriginIsolated')
-                  ack=page.locator('#gpu-ack')
-                  if ack.is_visible():ack.check()
-                  page.wait_for_function('!document.querySelector("#start-btn").disabled',timeout=180000)
-                  if ack.is_visible() and not ack.is_checked():ack.check()
-                  page.locator('#start-btn').click()
+                  ack=page.locator('#gpu-ack');start=page.locator('#start-btn')
+                  deadline=time.monotonic()+180
+                  while time.monotonic()<deadline:
+                      if ack.is_visible() and not ack.is_checked():ack.check()
+                      if start.is_enabled():break
+                      page.wait_for_timeout(250)
+                  if not start.is_enabled():raise RuntimeError('Blender launch preparation did not complete')
+                  start.click()
                   deadline=time.monotonic()+240
                   while 'runtime' not in report and time.monotonic()<deadline:page.wait_for_timeout(1000)
                   if 'runtime' not in report:raise RuntimeError('Embedded Blender Python did not produce runtime identity')
