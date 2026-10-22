@@ -1,0 +1,71 @@
+name: Pinned Blender native reference
+on:
+  push:
+    branches: [compat/ranges-bounds]
+    paths: ['.github/workflows/native-reference.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: git archive --format=tar.gz HEAD > blended-current.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: current-test-port-source
+          path: blended-current.tar.gz
+          retention-days: 1
+  bli-reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch exact reference and pinned library submodule
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/native-reference
+          python3 tools/fetch_upstreams.py blender
+          git -C .upstream/blender rev-parse HEAD > evidence/native-reference/blender-commit.txt
+          GIT_LFS_SKIP_SMUDGE=1 git -C .upstream/blender submodule update --init --depth=1 --checkout lib/linux_x64
+          git -C .upstream/blender/lib/linux_x64 rev-parse HEAD > evidence/native-reference/libraries-commit.txt
+          git -C .upstream/blender/lib/linux_x64 lfs install --local
+          git -C .upstream/blender/lib/linux_x64 config lfs.https://projects.blender.org/blender/lib-linux_x64.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender/lib/linux_x64 lfs pull --include='' --exclude='llvm/**,usd/**,materialx/**,openvdb/**,openimagedenoise/**,embree/**,ffmpeg/**,osl/**,python/**,numpy/**,opencollada/**,alembic/**,openpgl/**'
+      - name: Configure explicitly limited BLI reference, not full application coverage
+        run: |
+          set -o pipefail
+          cmake -S .upstream/blender -B build/blender-reference -G Ninja \
+            -C .upstream/blender/build_files/cmake/config/blender_lite.cmake \
+            -C .upstream/blender/build_files/cmake/config/blender_headless.cmake \
+            -DCMAKE_BUILD_TYPE=Release -DWITH_GTESTS=ON -DWITH_TESTS_BATCHED=OFF \
+            -DWITH_PYTHON=OFF -DWITH_VULKAN_BACKEND=OFF -DWITH_GHOST_WAYLAND=OFF \
+            -DWITH_COMPILER_ASAN=OFF 2>&1 | tee evidence/native-reference/configure.log
+      - name: Build real upstream BLI tests without replacing test code
+        run: |
+          set -o pipefail
+          cmake --build build/blender-reference --target BLI_test -j 3 2>&1 | tee evidence/native-reference/build.log
+      - name: Enumerate real runtime cases and execute newly ported reference families
+        run: |
+          set -euo pipefail
+          cp build/blender-reference/CMakeCache.txt evidence/native-reference/
+          ctest --test-dir build/blender-reference --show-only=json-v1 > evidence/native-reference/ctest.json
+          EXE=$(find build/blender-reference -type f -name BLI_test | head -1)
+          test -n "$EXE"
+          "$EXE" --gtest_list_tests > evidence/native-reference/gtest-list.txt
+          "$EXE" --gtest_filter='index_range.*:binary_search.*:bounds.*' \
+            --gtest_output="xml:$PWD/evidence/native-reference/reference-results.xml" \
+            --test-assets-dir "$PWD/.upstream/blender/tests/files" \
+            --test-release-dir "$PWD/build/blender-reference/bin" > evidence/native-reference/run.log 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-blender-reference-evidence
+          path: evidence/native-reference/
+          retention-days: 3
