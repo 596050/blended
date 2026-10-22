@@ -1,0 +1,74 @@
+name: Blender test-port conformance
+on:
+  push:
+    branches: [compat/complete-test-port, main]
+    paths: ['crates/**', 'tools/port_scalar_tests.py', 'tools/test_port_audit.py', 'tools/port_workbench.py', 'tests/test_test_port_audit.py', '.github/workflows/test-port-conformance.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-and-wasm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Generate every assertion in the selected pinned source files
+        run: |
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_scalar_tests.py
+      - name: Run native tests without ignoring missing implementations
+        run: |
+          mkdir -p evidence
+          set -o pipefail
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/native.txt
+      - name: Build the same tests for actual browser execution
+        run: |
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core
+          python3 tools/port_workbench.py build --commit "${{ github.sha }}"
+          python3 -m unittest discover -s tests -v
+          python3 -m pip install playwright==1.57.0
+          python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
+          python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blender-test-port-evidence
+          path: |
+            evidence/
+            compatibility/additional-ports.json
+            crates/blended-core/src/additional_cases.rs
+            crates/blended-core/tests/upstream_additional.rs
+            tests/upstream/
+          retention-days: 3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: conformance-site
+          path: build/conformance/
+          retention-days: 3
+  full-test-port-completeness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Inventory all pinned Blender source tests and retain unported cases
+        run: |
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_scalar_tests.py
+          python3 tools/inventory.py --root .upstream/blender --name blender --commit 94363991e7dcf39e2d70614aa002ab6f67764a5d --output build/blender-inventory.json
+          python3 tools/test_port_audit.py --inventory build/blender-inventory.json --output evidence/complete-test-port.json --require-complete
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: complete-test-port-status
+          path: |
+            evidence/complete-test-port.json
+            build/blender-inventory.json
+          retention-days: 3
