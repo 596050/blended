@@ -1,0 +1,5127 @@
+{
+  "schema": 1,
+  "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "expected_application_commit": "76044caffe2b69ae5cdceeff1addb56ee61411d9",
+  "url": "https://rawcdn.githack.com/596050/blended/a81530a62fcc8222ea57db4c5d8b35869d277963/index.html",
+  "test_port_complete": false,
+  "conformance_passed": false,
+  "feature_parity_proven": false,
+  "source_obligations": 1010,
+  "verified_source_ports": 0,
+  "registered_runtime_cases": 0,
+  "native_passed": 0,
+  "browser_passed": 0,
+  "observed_statuses": {},
+  "blocker_counts": {
+    "dependency_unavailable": 6,
+    "missing_runtime_registry": 5,
+    "source_not_ported": 1010
+  },
+  "blockers": [
+    {
+      "code": "dependency_unavailable",
+      "id": "blender-benchmarks",
+      "detail": "unpinned"
+    },
+    {
+      "code": "dependency_unavailable",
+      "id": "lib/linux_arm64",
+      "detail": "not_materialised"
+    },
+    {
+      "code": "dependency_unavailable",
+      "id": "lib/linux_x64",
+      "detail": "not_materialised"
+    },
+    {
+      "code": "dependency_unavailable",
+      "id": "lib/macos_arm64",
+      "detail": "not_materialised"
+    },
+    {
+      "code": "dependency_unavailable",
+      "id": "lib/windows_arm64",
+      "detail": "not_materialised"
+    },
+    {
+      "code": "dependency_unavailable",
+      "id": "lib/windows_x64",
+      "detail": "not_materialised"
+    },
+    {
+      "code": "missing_runtime_registry",
+      "id": "cpu",
+      "detail": ""
+    },
+    {
+      "code": "missing_runtime_registry",
+      "id": "gpu",
+      "detail": ""
+    },
+    {
+      "code": "missing_runtime_registry",
+      "id": "interactive",
+      "detail": ""
+    },
+    {
+      "code": "missing_runtime_registry",
+      "id": "performance",
+      "detail": ""
+    },
+    {
+      "code": "missing_runtime_registry",
+      "id": "platform-conditional",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "build_files/utils/make_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/fast_float/fast_float.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gflags/src/util.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gmock/include/gmock/gmock-actions.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gmock/include/gmock/gmock-function-mocker.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gmock/include/gmock/gmock-matchers.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gmock/include/gmock/gmock-nice-strict.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gmock/include/gmock/internal/gmock-internal-utils.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gmock/include/gmock/internal/gmock-port.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gtest/include/gtest/gtest-param-test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gtest/include/gtest/gtest-typed-test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gtest/include/gtest/gtest.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gtest/include/gtest/internal/gtest-internal.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gtest/include/gtest/internal/gtest-param-util.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/gtest/include/gtest/internal/gtest-port.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/json/include/json.hpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/mantaflow/preprocessed/test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/adaptors_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/arc_look_up_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/bellman_ford_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/bfs_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/bpgraph_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/circulation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/connectivity_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/counter_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/dfs_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/digraph_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/dijkstra_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/dim_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/edge_set_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/error_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/euler_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/fractional_matching_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/gomory_hu_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/graph_copy_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/graph_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/graph_test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/graph_utils_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/hao_orlin_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/heap_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/kruskal_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/lgf_reader_writer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/lgf_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/lp_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/maps_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/matching_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/max_cardinality_search_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/max_clique_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/max_flow_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/min_cost_arborescence_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/min_cost_flow_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/min_mean_cycle_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/mip_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/nagamochi_ibaraki_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/path_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/planarity_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/radix_sort_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/random_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/suurballe_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/test_tools.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/test_tools_fail.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/test_tools_pass.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/time_measure_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/tsp_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/quadriflow/3rd/lemon-1.3.1/test/unionfind_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/toml11/toml.hpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/ufbx/ufbx.c",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/ufbx/ufbx.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "extern/xxhash/xxhash.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/atomic/tests/atomic_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/blender/curves.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/bvh/embree.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/device/cuda/device_impl.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/device/hip/device_impl.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/device/memory.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/device/oneapi/device_impl.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/graph/node.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/graph/node_type.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/graph/node_type.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/hydra/curves.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/hydra/node_util.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/hydra/pointcloud.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/hydra/util.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_ashikhmin_velvet.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_burley.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_diffuse.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_diffuse_ramp.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_hair.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_microfacet.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_oren_nayar.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_phong_ramp.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_principled_hair_chiang.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_principled_hair_huang.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_ray_portal.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_sheen.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bsdf_toon.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/bssrdf.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/volume_draine.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/volume_fournier_forand.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/volume_henyey_greenstein.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/closure/volume_rayleigh.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/device/cpu/bvh.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/device/oneapi/compat.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/integrator/shade_shadow.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/integrator/state_util.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/osl/closures.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/osl/strings.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/osl/types.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/svm/node_types.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/svm/types.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/svm/util.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/kernel/types.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/scene/image_cache.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/scene/image_cache.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/integrator_adaptive_sampling_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/integrator_render_scheduler_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/integrator_tile_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/kernel_camera_projection_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/render_graph_finalize_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_aligned_malloc_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_boundbox_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_cache_limiter_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_colorspace_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_float8_avx2_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_float8_avx_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_float8_sse2_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_float8_test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_half_avx2_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_half_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_half_test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_ies_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_math_fast_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_math_float3_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_math_float3x3_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_math_float4_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_math_quaternion_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_math_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_md5_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_path_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_rgbe_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_simd_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_string_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_task_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_time_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_transform_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_types_base_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/test/util_types_spherical_harmonics_test.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/half.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/nanovdb.cpp",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/param.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/static_assert.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/transform.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/types_float3.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/types_float3x3.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/types_float4.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/types_int3.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/types_rgbe.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/types_uint3.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/cycles/util/unique_ptr_vector.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/ghost/intern/GHOST_SystemWayland.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/ghost/test/multitest/MultiTest.c",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/ghost/test/multitest/ScrollBar.c",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/ghost/test/multitest/Util.c",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/ghost/test/multitest/WindowData.c",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/MEM_guardedalloc.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/intern/mallocn_guarded_impl.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/intern/mallocn_lockfree_impl.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/test/simpletest/memtest.c",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/tests/guardedalloc_alignment_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/tests/guardedalloc_overflow_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/tests/guardedalloc_safe_multiply_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/guardedalloc/tests/guardedalloc_test_base.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/autotrack/predict_tracks_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/autotrack/tracks_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/base/scoped_ptr_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/base/vector_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/image/array_nd_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/image/convolve_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/image/image_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/image/sample_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/image/tuple_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/euclidean_resection_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/fundamental_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/homography_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/nviewtriangulation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/panography_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/projection_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/resection_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/test_data_sets.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/test_data_sets.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/multiview/triangulation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/numeric/dogleg_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/numeric/function_derivative_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/numeric/levenberg_marquardt_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/numeric/numeric_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/numeric/poly_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/simple_pipeline/detect_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/simple_pipeline/intersect_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/simple_pipeline/modal_solver_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/simple_pipeline/resect_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/threading/parallel_for_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/tracking/brute_region_tracker_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/tracking/klt_region_tracker_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/libmv/libmv/tracking/pyramid_region_tracker_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/mikktspace/mikk_atomic_hash_set.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/mikktspace/mikk_util.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "intern/opensubdiv/internal/evaluator/evaluator_impl.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/cli/blender_ext.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/modules/http_server_context.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/modules/python_wheel_generate.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/test_blender.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/test_blender_asset_auth.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/test_cli.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/test_cli_blender.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/bl_pkg/tests/test_path_pattern_match.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/io_curve_svg/svg_util_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "scripts/addons_core/node_wrangler/utils/paths_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/ANIM_action.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/action_iterators_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/action_legacy_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/action_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/anim_rna_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/bone_collections_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/evaluation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/keyframing.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/keyframing_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/nla_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/pose_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/versioning.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/animrig/intern/versioning_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_catalog_path_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_catalog_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_catalog_tree_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_library_service_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_library_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_library_test_common.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/asset_representation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/essentials_library_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/asset_system/tests/remote_library_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenfont/tests/BLF_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_attribute_filters.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_attribute_math.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_attribute_storage.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_curves.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_curves_utils.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_grease_pencil.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_list.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_mask.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_node_socket_value.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/BKE_volume_grid.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/anim_data_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/armature_deform_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/armature_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/asset_metadata_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/attribute_storage.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/attribute_storage_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/bake_items_serialize.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/bake_items_serialize_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/blender_project_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/bpath_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/brush_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/constraint.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/cryptomatte_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/curves_geometry_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/customdata.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/deform_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/fcurve_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/file_handler_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/grease_pencil_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/id_hash.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/idprop_create.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/idprop_serialize_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/idprop_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/image_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/key_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/lattice_deform_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/layer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/lib_id.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/lib_id_remapper_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/lib_id_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/lib_query_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/lib_remap_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/main_namemap_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/main_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/mesh_legacy_convert.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/nla_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/node_socket_value_iter_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/node_socket_value_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/object.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/path_templates_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/pbvh.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/recents_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/scene_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/sound_reader_cache_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/subdiv_ccg_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/tracking_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenkernel/intern/volume_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_any.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_any_derived.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_assert.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_bit_span.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_bit_span_ops.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_bytes_type.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_compute_context.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_concurrent_map.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_cpp_type.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_fixed_width_int.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_fixed_width_int_str.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_generic_virtual_array.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_hash.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_implicit_sharing.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_index_ranges_builder.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_kdtree_new.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_linear_allocator_chunked_list.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_math_base.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_math_matrix_types.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_memarena.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_mempool.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_mutex.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_offset_indices.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_parameter_pack_utils.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_resource_scope.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_span.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_unique_hash.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_vector_list.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_vector_set_slots.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_virtual_array.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/BLI_virtual_array_exec.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/intern/array_store.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/intern/compute_context.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/intern/memory_cache.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/intern/resource_scope.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/intern/threads.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/intern/uuid.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_any_derived_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_any_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_array_state_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_array_store_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_array_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_array_utils_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_binary_search_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_bit_group_vector_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_bit_ref_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_bit_span_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_bit_vector_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_bitmap_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_bounds_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_build_config_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_compression_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_convexhull_2d_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_cpp_type_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_csv_parse_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_delaunay_2d_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_disjoint_set_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_exception_safety_test_utils.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_expr_pylike_eval_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_fileops_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_fixed_width_int_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_generic_array_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_generic_vector_array_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_ghash_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_hash_mm2a_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_implicit_sharing_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_index_mask_expression_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_index_mask_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_index_range_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_index_ranges_builder_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_kdopbvh_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_kdtree_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_linear_allocator_chunked_list_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_linear_allocator_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_linklist_lockfree_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_listbase_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_map_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_base_safe_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_base_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_bits_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_color_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_geom_hh_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_geom_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_interp_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_matrix_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_rotation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_rotation_types_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_solvers_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_time_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_vector_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_memory_cache_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_memory_counter_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_memory_utils_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_mesh_boolean_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_mesh_intersect_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_normalized_int_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_offset_indices_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_path_utils_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_pool_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_random_access_iterator_mixin_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_resource_strings.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_serialize_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_session_uid_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_set_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_span_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_stack_cxx_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_stack_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_string_search_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_string_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_string_utf8_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_string_utils_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_task_graph_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_task_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_tempfile_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_unique_sorted_indices_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_ustring_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_utildefines_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_uuid_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_vector_list_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_vector_set_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_vector_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_virtual_array_exec_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/BLI_virtual_array_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/performance/BLI_group_indices.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/performance/BLI_kdtree_performance_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenlib/tests/performance/BLI_map_performance_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenloader/intern/versioning_501.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenloader/intern/writefile.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenloader/tests/blendfile_load_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenloader/tests/blendfile_loading_base_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenloader/tests/blendfile_loading_base_test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/blenloader/tests/sdna_encode_subset_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/bmesh/tests/bmesh_core_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/depsgraph/DEG_depsgraph_query.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/depsgraph/intern/builder/deg_builder_rna_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/depsgraph/intern/depsgraph.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/depsgraph/intern/depsgraph_query_iter_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_lookdev_copy_world.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_shadow_tilemap_lib.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_test_fast_gi.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_test_gbuffer_closure.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_test_gbuffer_normal.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_test_occupancy.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/eevee/shaders/eevee_test_shadow.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/engines/workbench/workbench_shader_cache.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/intern/draw_cache_impl_gsplat.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/intern/mesh_extractors/extract_mesh_ibo_lines.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/intern/mesh_extractors/extract_mesh_ibo_points.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/intern/shaders/draw_curves_test.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/intern/shaders/subdiv_attrib_interp.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/tests/draw_curves_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/tests/draw_pass_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/tests/draw_testing.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/tests/draw_testing.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/draw/tests/eevee_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/animation/anim_draw_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/animation/anim_filter.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/animation/anim_filter_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/animation/keyframes_general_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/animation/keyframes_keylist_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/animation/transformable_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/asset/intern/asset_index.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/asset/intern/asset_shelf_regiondata.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/curves/tests/curves_edit_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/geometry/node_group_operator.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/grease_pencil/tests/grease_pencil_boolean_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/grease_pencil/tests/grease_pencil_merge_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/grease_pencil/tests/grease_pencil_trim_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/include/UI_abstract_view.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/include/UI_grid_view.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/include/UI_interface_c.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/include/UI_tree_view.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/interface/interface_draw.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/interface/interface_handlers.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/interface/interface_ops_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/sculpt_paint/mesh/mesh_brush_common_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/sculpt_paint/mesh/paint_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/sculpt_paint/mesh/sculpt_boundary_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/sculpt_paint/mesh/sculpt_detail_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/sculpt_paint/mesh/sculpt_undo_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/space_graph/graph_view.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/space_outliner/outliner_intern.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/space_sequencer/sequencer_quads_batch.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/space_userpref/userpref_ops.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/editors/space_view3d/view3d_gizmo_geometry_nodes.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/FN_field.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/FN_multi_function_builder.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/FN_multi_function_procedure.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/intern/field.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/intern/lazy_function_graph_executor_generic.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/intern/multi_function_procedure_executor.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/tests/FN_field_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/tests/FN_lazy_function_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/tests/FN_multi_function_procedure_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/tests/FN_multi_function_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/functions/tests/FN_multi_function_test_common.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/geometry/intern/mesh_boolean.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/geometry/tests/GEO_interpolate_curves_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/geometry/tests/GEO_merge_curves_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/geometry/tests/GEO_realize_instances_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/intern/gpu_material.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/intern/gpu_texture_mipmap.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/opengl/gl_compilation_subprocess.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/bsl/symbol_scope.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/expression_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/function_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/metadata_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/shader_preprocess_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/shader_tool_testing.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shaders/common/gpu_shader_test_lib.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/shaders/compat/gpu_shader_compat_cxx.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/buffer_texture_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/compute_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/framebuffer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/gpu_testing.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/gpu_testing.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/immediate_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/index_buffer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/mipmap_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/push_constants_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/ray_tracing_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shader_create_info_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shader_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/bsl_shader_linting.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_buffer_texture_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_compute_1d_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_compute_2d_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_compute_dummy_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_compute_ibo_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_compute_ssbo_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_compute_vbo_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_framebuffer_layer_viewport_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_framebuffer_subpass_input_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_math_test.bsl.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_push_constants_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_ray_query_custom_index_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_ray_query_raster_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_ray_query_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_specialization_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_texture_atomic_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/shaders/gpu_texture_test.glsl",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/specialization_constants_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/state_blend_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/storage_buffer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/texture_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/texture_view_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/tests/vertex_buffer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/render_graph/tests/vk_render_graph_test_compute.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/render_graph/tests/vk_render_graph_test_present.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/render_graph/tests/vk_render_graph_test_render.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/render_graph/tests/vk_render_graph_test_scheduler.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/render_graph/tests/vk_render_graph_test_transfer.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/render_graph/tests/vk_render_graph_test_types.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/tests/vk_data_conversion_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/tests/vk_memory_layout_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/gpu/vulkan/vk_data_conversion.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/intern/util_gpu.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/movie/tests/ffmpeg_codecs.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/movie/tests/ffmpeg_cpu_flags.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/opencolorio/intern/description_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/opencolorio/intern/libocio/libocio_fallback_config_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/opencolorio/intern/libocio/libocio_gpu_shader_binder.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/opencolorio/intern/source_processor_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/opencolorio/intern/view_specific_look_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/tests/IMB_colormanagement_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/tests/IMB_partial_update_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/tests/IMB_scaling_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/imbuf/tests/IMB_transform_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/alembic/exporter/abc_custom_props.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/alembic/intern/abc_reader_points.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/alembic/tests/abc_export_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/alembic/tests/abc_matrix_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/common/intern/abstract_hierarchy_iterator_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/common/intern/object_identifier_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/common/intern/string_utils_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/otio/tests/otio_round_trip_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/ply/importer/ply_import_data.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/ply/tests/io_ply_exporter_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/ply/tests/io_ply_import_gsplat_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/ply/tests/io_ply_importer_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/spz/intern/spz_header.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/spz/intern/spz_read_ngsp.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/spz/tests/spz_header_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/stl/intern/stl_data.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/stl/tests/stl_exporter_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/usd/hydra/util.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/usd/intern/usd_attribute_utils.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/usd/intern/usd_reader_curve.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/usd/intern/usd_reader_points.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/usd/tests/usd_export_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/usd/tests/usd_stage_creation_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/wavefront_obj/tests/obj_exporter_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/wavefront_obj/tests/obj_mtl_parser_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/io/wavefront_obj/tests/obj_nurbs_io_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/DNA_ID.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/DNA_action_types.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/DNA_anim_types.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/DNA_array_utils.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/DNA_listBase.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/intern/dna_parse.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/tests/dna/dna_test.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesdna/tests/makesdna_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesrna/intern/makesrna_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesrna/intern/rna_path_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesrna/intern/rna_rna.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/makesrna/intern/rna_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/NOD_bundle_type.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/NOD_node_declaration.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/function/nodes/node_fn_bit_math.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/intern/geometry_nodes_bundle_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/intern/node_iterator_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/intern/node_structure_type_inferencing_tests.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/nodes/intern/socket_value_inference.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/python/generic/py_capi_utils.hh",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "source/blender/windowmanager/intern/wm_dragdrop_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/blender_as_python_module/cleanup_bpy.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/blender_as_python_module/import_bpy.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/coverage/coverage.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/coverage/coverage_report/__init__.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/coverage/coverage_report/build_report.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/coverage/coverage_report/parse.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/coverage/coverage_report/util.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/files/io_tests/svg/util/import_svg.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/files/modeling/mesh_ops_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/files/render/util/render_bake.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/files/render/util/render_denoise.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/files/render/util/render_opengl.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/files/render/util/render_updates.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/gtests/runner/blender_test.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/gtests/testing/mock_log.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/gtests/testing/testing.h",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/gtests/testing/testing_main.cc",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/__init__.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/bisect.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/common.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/config.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/device.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/environment.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/graph.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/table.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/api/test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/benchmark.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/__init__.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/animation.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/blend_load.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/bpy_rna.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/compositor.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/cycles.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/eevee.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/geometry_nodes.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/geometry_nodes_simulation.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/grease_pencil.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/sculpt.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/texture_paint.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/performance/tests/undo.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/alembic_export_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/assets/remote_library/listing_asset_catalogs_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/assets/remote_library/listing_downloader_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/assets/remote_library/listing_generator_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/batch_import.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bevel_operator.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_alembic_io_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_action.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_armature.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_bake.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_context_markers.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_convert.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_copy_paste.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_drivers.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_fcurves.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_keyframing.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_motion_path.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_nla_strip.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_pose_slide.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_rename.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_animation_shapekey.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blend_autoexec_cli.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_autosave.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_header.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_io.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_liblink.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_library_overrides.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_relationships.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_utils.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_blendfile_versioning.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_bundled_modules.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_constraints.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_disk_file_hash_service_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_geo_node_file_reporting.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_geometry_attributes.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_global_undo.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_http_downloader.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_id_management.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_imbuf_load.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_imbuf_py_api.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_imbuf_save.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_io_curve_svg_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_keymap_completeness.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_keymap_validate.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_load_addons.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_load_py_modules.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_mesh_modifiers.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_mesh_validate.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_copy_operators.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_group_compat.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_group_interface.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_link_drag.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_socket_usage_inference.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_structure_type_inference.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_node_tool.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_object.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_ocio_config_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_operator_function_py_api.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_operator_wrap_py_api.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pose_assets.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_annotations.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_blf.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_bmesh.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_bpy_app.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_bpy_app_tempdir.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_bpy_driver_secure_eval.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_bpy_path.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_bpy_utils_units.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_doc_gen.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_gpu.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_grease_pencil.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_idprop.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_idprop_datablock.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_mathutils.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_prop.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_prop_array.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_pyapi_text.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_reorder.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_rigging_symmetrize.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_rna_accessors.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_rna_defaults.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_rna_manual_reference.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_rna_paths.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_rst_completeness.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_usd_export_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/bl_usd_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/boolean_operator.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/compositing_node_group.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/compositor_file_output_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/compositor_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/curve_to_mesh.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/curves_extrude.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/cycles_osl_compile_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/cycles_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/deform_modifiers.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/eevee_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ffmpeg_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/geo_node_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_collections_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_fbx_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_gltf_export_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_gltf_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_gltf_roundtrip_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_gltf_utils.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_grease_pencil_svg_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_obj_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_ply_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/io_stl_import_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/mesh_join.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/mesh_validate.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modeling/modifiers/armature_modifier.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modeling/modifiers/modifiers.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modeling/modifiers/multires_modifier.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/colored_print.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/global_report.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/gpu_info.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/imbuf_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/io_report.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/mesh_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/render_report.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/modules/test_utils.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/object_conversion.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/object_edit.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/operators.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/overlay/modes-gen.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/overlay/overlay_common.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/overlay_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/pep8.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_cloth.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_dynamic_paint.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_fluid_cache.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_ocean.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_particle_instance.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_particle_legacy_texture_uv.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_particle_system.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/physics_softbody.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/rna_array.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/rna_info_dump.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/rst_to_doctree_mini.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_brush_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/automask_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/brush_asset_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/brush_strength_curves_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/dyntopo_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/face_set_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/grease_pencil_paint_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/mask_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/mesh_filter_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/modules/__init__.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/modules/test_helpers.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/multires_operators_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/sculpt_brushes_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/texture_paint_brushes_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/texture_paint_undo_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/vertex_paint_brushes_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/voxel_remesh_compare_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/voxel_remesh_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sculpt_paint/weight_paint_brushes_test.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sequencer_input_colorspace.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sequencer_load_meta_stack.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sequencer_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sequencer_strip_naming.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/sequencer_video_output_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/storm_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/system_python/load_tool_scripts.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_screenshot_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/modules/__init__.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/modules/easy_keys.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/modules/ui_test_utils.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/run.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/run_blender_setup.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_blend_autoexec.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_bpy_types.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_button_input.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_drag_interactions.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_drop_interactions.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_editor_types.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_fullscreen.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_info_reports.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_menu_search_and_exec.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_modifiers_constraints_draw.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_object_type_visibility.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_operator_poll.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_pie_menus.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_preferences_draw_all.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_quick_effects.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_render.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_sculpt.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_search_in_editors.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_sequencer.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_tool_activation.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_tools.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_transform.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_undo.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/ui_simulate/test_workspace.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/vertex_group_painting.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_active_collection.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_background_set.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_collection_new_sync.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_collection_rename_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_collection_rename_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_render_settings_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_selectability_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_selectability_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_selectability_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_selectability_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_selectability_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_selectability_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_evaluation_visibility_j.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_group_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_group_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_group_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_group_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_group_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_layer_linking.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_layer_syncing.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_make_single_user.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_j.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_k.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_layer_collection_l.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_above_below_scene_collection_sync_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_layer_collection_j.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_j.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_k.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_l.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_g.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_h.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_i.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_j.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_k.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_move_into_scene_collection_sync_l.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_add_cylinder.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_add_empty.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_add_no_collection_cylinder.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_add_no_collection_empty.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_add_no_collection_torus.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_add_torus.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_copy.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_delete_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_delete_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_link_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_link_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_object_link_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_operator_context.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_collection_delete.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_copy_a.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_copy_b.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_copy_c.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_copy_d.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_copy_e.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_copy_f.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_delete.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_objects.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_scene_write_read.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/test_view_layer_rename.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/view_layer/view_layer_common.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/python/workbench_render_tests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/utils/batch_load_blendfiles.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/utils/bl_run_operators.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/utils/bl_run_operators_event_simulate.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/utils/bl_run_operators_isolate.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tests/utils/blender_headless.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tools/check_blender_release/check_module_enabled.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tools/check_blender_release/check_module_numpy.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tools/check_blender_release/check_module_requests.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tools/check_blender_release/check_static_binaries.py",
+      "detail": ""
+    },
+    {
+      "code": "source_not_ported",
+      "id": "tools/utils_maintenance/code_clean.py",
+      "detail": ""
+    }
+  ]
+}
