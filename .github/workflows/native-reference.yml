@@ -23,6 +23,9 @@ jobs:
   bli-reference:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
+    env:
+      CC: clang
+      CXX: clang++
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,6 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p evidence/native-reference
+          clang --version > evidence/native-reference/compiler.txt
           python3 tools/fetch_upstreams.py blender
           git -C .upstream/blender rev-parse HEAD > evidence/native-reference/blender-commit.txt
           git -C .upstream/blender lfs install --local
