@@ -32,6 +32,11 @@ All candidate references are pinned in the lock file. Select one canonical appli
 
 The initial CI probe executes the entire unmodified `bl_pyapi_mathutils.py` and `bl_pyapi_bmesh.py` modules from the candidate's exact upstream pin. It adapts the unittest invocation boundary and preserves test assertions. This is selected candidate qualification only: a complete test-enabled native build, hardware matrix, production deployment and 5.4 migration are still separate gates.
 
+The [source-build entry point and diagnostic workflow](BROWSER_SOURCE_BUILD.md)
+now make the next steps executable: reconstruct and compile the pinned port,
+qualify that exact new artifact, and compare separate numerical observations
+without changing the acceptance tests.
+
 ### Observed baseline, 22 October 2026
 
 Independent qualification has now produced the following results:

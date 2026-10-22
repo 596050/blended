@@ -34,17 +34,55 @@ def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)
 
 
-def parse_marker_lines(lines):
+def decode_marker_lines(lines):
+    """Decode one complete object while retaining non-JSON runtime suffixes.
+
+    The browser shell can concatenate a GPU log message after Python's final
+    closing brace. Its complete observations remain useful, but that suffix
+    must remain a blocker. Truncation and multiple results are never recovered.
+    """
     records = [line[len(MARKER):] for line in lines if line.startswith(MARKER)]
     if len(records) != 1:
         raise Blocked("expected exactly one complete numerical diagnostic result marker")
+    if MARKER in records[0]:
+        raise Blocked("duplicate numerical diagnostic result marker in one console event")
     try:
-        result = json.loads(records[0])
+        decoder = json.JSONDecoder()
+        result, end = decoder.raw_decode(records[0].lstrip())
         canonical(result)
     except (ValueError, TypeError) as error:
         raise Blocked("numeric diagnostic result marker contains invalid or incomplete JSON") from error
     if not isinstance(result, dict) or result.get("schema") != 1 or result.get("diagnostic_only") is not True:
         raise Blocked("result is not a schema-1 non-acceptance diagnostic object")
+    suffix = records[0].lstrip()[end:]
+    if suffix.strip():
+        try:
+            decoder.raw_decode(suffix.lstrip())
+        except ValueError:
+            pass
+        else:
+            raise Blocked("extra JSON value after numerical diagnostic result")
+    else:
+        suffix = ""
+    return result, suffix
+
+
+def parse_marker_lines(lines):
+    """Strict parser for consumers that cannot retain transport blockers."""
+    result, suffix = decode_marker_lines(lines)
+    if suffix:
+        raise Blocked("runtime text followed the complete numerical diagnostic JSON")
+    return result
+
+
+def capture_execution(lines, report):
+    result, suffix = decode_marker_lines(lines)
+    report["execution"] = result
+    report["transport"] = {"protocol": "marker-prefixed-json-v1", "result_markers": 1,
+                           "recovered_json_prefix": bool(suffix), "trailing_runtime_text": suffix or None}
+    if suffix:
+        report["blockers"].append({"scope": "transport", "reason": "runtime text followed complete diagnostic JSON",
+                                   "trailing_runtime_text": suffix})
     return result
 
 
@@ -130,7 +168,10 @@ def compare_reports(native, browser):
             if artifact.get("observed_sha256") != module.ASSET_SHA256 or artifact.get("observed_bytes") != module.ASSET_BYTES:
                 raise Blocked("diagnostic artifact differs from the pinned release: " + name)
             assessments[name] = assess_execution(source["execution"])
-            report["blockers"].extend({"engine": name, **blocker} for blocker in assessments[name]["blockers"])
+            for blocker in source.get("blockers", []) + assessments[name]["blockers"]:
+                tagged = {"engine": name, **blocker}
+                if tagged not in report["blockers"]:
+                    report["blockers"].append(tagged)
         if assessments["native"]["input_manifest_sha256"] != assessments["browser"]["input_manifest_sha256"]:
             raise Blocked("native and browser case IDs or input parameters differ")
         report["input_manifest_sha256"] = assessments["native"]["input_manifest_sha256"]
@@ -200,10 +241,10 @@ def run_native(args, work, unpacked, payload, log_path, report):
             raise Blocked("native diagnostics exceeded execution timeout") from error
     report["process"]["returncode"] = result.returncode
     with log_path.open(encoding="utf-8", errors="replace") as log:
-        execution = parse_marker_lines(log)
-    report["execution"] = execution
+        execution = capture_execution(log, report)
     if result.returncode:
-        raise Blocked("native diagnostic process exited with code " + str(result.returncode))
+        report["blockers"].append({"scope": "native_runtime",
+                                   "reason": "native diagnostic process exited with code " + str(result.returncode)})
     return execution
 
 
@@ -270,10 +311,9 @@ def run_browser(args, work, unpacked, payload, log_path, report):
                 if page.evaluate("window.__bwDevHooksAllowed === false"):
                     raise Blocked("release disables Python diagnostic hook; unchanged artifact preserved")
                 page.wait_for_timeout(250)
-            execution = parse_marker_lines(messages)
-            report["execution"] = execution
-            if runtime_errors:
-                raise Blocked("browser runtime errors occurred: " + "; ".join(runtime_errors))
+            execution = capture_execution(messages, report)
+            for error in runtime_errors:
+                report["blockers"].append({"scope": "browser_runtime", "reason": error})
             browser.close()
             return execution
     finally:
@@ -314,7 +354,11 @@ def run(args):
             work = Path(temporary)
             unpacked = verify_archive(args, work, report)
             execution = (run_native if args.engine == "native" else run_browser)(args, work, unpacked, payload, log_path, report)
+            runtime_blockers = report["blockers"][:]
             report.update(assess_execution(execution))
+            report["blockers"].extend(runtime_blockers)
+            if report["blockers"]:
+                report["status"] = "blocked"
     except Exception as error:
         report["status"] = "blocked"
         report["blockers"].append({"scope": "infrastructure", "reason": str(error)})

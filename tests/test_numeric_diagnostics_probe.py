@@ -109,6 +109,32 @@ class NumericDiagnosticProbeTests(unittest.TestCase):
         self.assertFalse(result["diagnostics_complete"])
         self.assertEqual(result["counters"]["paired_cases"], 0)
 
+    def test_complete_json_with_runtime_suffix_is_recovered_and_blocked(self):
+        suffix = "WGPUWeb: present pipeline creation rejected (status 1, type 5): Instance dropped in popErrorScope"
+        line = probe.MARKER + json.dumps(execution()) + suffix
+        captured = {"blockers": []}
+        result = probe.capture_execution([line], captured)
+        self.assertEqual(result, execution())
+        self.assertEqual(captured["transport"]["trailing_runtime_text"], suffix)
+        self.assertTrue(captured["transport"]["recovered_json_prefix"])
+        self.assertEqual(captured["blockers"][0]["scope"], "transport")
+        with self.assertRaises(probe.Blocked):
+            probe.parse_marker_lines([line])
+        for extra in ("{}", probe.MARKER + json.dumps(execution())):
+            with self.subTest(extra=extra):
+                with self.assertRaises(probe.Blocked):
+                    probe.capture_execution([probe.MARKER + json.dumps(execution()) + extra], {"blockers": []})
+
+    def test_comparison_retains_runtime_and_transport_blockers(self):
+        native, browser = report("native"), report("browser")
+        browser["status"] = "blocked"
+        browser["blockers"].append({"scope": "transport", "reason": "runtime suffix after complete JSON"})
+        result = probe.compare_reports(native, browser)
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(result["pairing_complete"])
+        self.assertTrue(any(row["scope"] == "transport" and row["engine"] == "browser"
+                            for row in result["blockers"]))
+
 
 if __name__ == "__main__":
     unittest.main()

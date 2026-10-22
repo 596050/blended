@@ -34,6 +34,7 @@ EMSCRIPTEN_VERSION = "6.0.5"
 EMSCRIPTEN_RELEASE = "dbd755b5da399329c2576f6e3dfa7f419f5d8409"
 EMSCRIPTEN_COMPILER = "1db513782be24469589d7cb8a1f1834e9a33f271"
 DAWN_COMMIT = "36cf1fae0cd8a81a4fb4580751648b80b2e6255c"
+BLENDER_LFS_URL = "https://projects.blender.org/blender/blender.git/info/lfs"
 DEPENDENCIES = (
     "zlib zstd fmt eigen robinmap imath libdeflate openjph openexr libjpeg "
     "libpng libtiff expat yamlcpp pystring minizipng opencolorio brotli "
@@ -349,7 +350,47 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
 
     def dependencies(self):
         self.dawn()
-        self.run("blender-preload-lfs", ["git", "lfs", "pull", "--include=release/datafiles/*"], self.upstream, timeout=900)
+        # Blender's GitHub mirror carries pointers, not the LFS objects. The
+        # exact upstream make_update.py:lfs_fallback_setup uses this official
+        # projects.blender.org repository for that case. Keep the source remote
+        # pinned to GitHub and select the canonical LFS endpoint for this read.
+        preload = json.loads(self.run("blender-preload-lfs-index", ["git", "lfs", "ls-files", "--json",
+            "--include=release/datafiles/*"], self.upstream))["files"]
+        if not preload:
+            raise Blocked("the pinned source has no preload LFS pointers")
+        self.run("blender-preload-lfs", ["git", "-c", "lfs.url=" + BLENDER_LFS_URL, "lfs", "pull",
+            "--include=release/datafiles/*"], self.upstream, timeout=900)
+        preload_receipt = {"endpoint": BLENDER_LFS_URL, "status": "running",
+            "expected_identity_source": "LFS pointer OIDs in the exact upstream Git index",
+            "source_commit": UPSTREAM_COMMIT, "files": []}
+        preload_manifest = self.out / "blender-preload-lfs.json"
+        try:
+            for pointer in preload:
+                relative = Path(pointer["name"])
+                if (relative.is_absolute() or ".." in relative.parts
+                        or not relative.as_posix().startswith("release/datafiles/")
+                        or pointer["oid_type"] != "sha256"):
+                    raise Blocked("unexpected preload LFS pointer metadata")
+                path = self.upstream / relative
+                if not path.is_file() or path.is_symlink():
+                    raise Blocked(f"preload data missing or not a regular file: {relative}")
+                observed = digest(path)
+                observed["path"] = relative.as_posix()
+                row = {"path": relative.as_posix(), "expected_sha256": pointer["oid"],
+                       "expected_bytes": pointer["size"], "observed": observed}
+                row["verified"] = observed["sha256"] == pointer["oid"] and observed["bytes"] == pointer["size"]
+                preload_receipt["files"].append(row)
+                if not row["verified"]:
+                    raise Blocked(f"preload bytes do not match the pinned LFS pointer: {relative}")
+            preload_receipt["status"] = "verified"
+            preload_receipt["verified_files"] = len(preload)
+            preload_receipt["verified_bytes"] = sum(p["size"] for p in preload)
+        finally:
+            if preload_receipt["status"] == "running":
+                preload_receipt["status"] = "blocked"
+            write_json(preload_manifest, preload_receipt)
+            self.data["preload_data_receipt"] = digest(preload_manifest)
+            self.save()
         self.run("blender-lfs-check", ["git", "lfs", "fsck", "--pointers"], self.upstream, timeout=300)
         # Record and narrowly replace only NumPy's unpinned build-tool installs.
         recipe = self.port / "scripts/deps/numpy.sh"

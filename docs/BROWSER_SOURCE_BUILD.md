@@ -1,0 +1,152 @@
+# Rebuilding and testing the browser engine
+
+The source programme uses one pinned Blender engine and keeps build success,
+runtime test success and full application parity as separate gates. The current
+entry point builds a new development artifact. It does not reproduce the
+previously downloaded gessa v0.1.1 release.
+
+## Exact inputs
+
+| Input | Identity |
+|---|---|
+| Blender reference | `fbe6228777e7d9afefcd61a413844e790ae75db7` |
+| Port source | `0e02e84b2bc5d9b27a6dc6e275443292f781fbad` |
+| Canonical source patch SHA-256 | `04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c` |
+| Emscripten | 6.0.5, compiler `1db513782be24469589d7cb8a1f1834e9a33f271` |
+| Browser build profile | `BLENDER_WEB_WASM_SPLIT_MODE=OFF`, `WITH_BUILDINFO=ON` |
+
+The published v0.1.1 artifact uses port source
+`cc22090b88da63cc617d48b218f4945175928844`. Its canonical patch has a different
+digest. The two artifacts and their results must remain distinguishable.
+
+The final product target remains Blender
+`94363991e7dcf39e2d70614aa002ab6f67764a5d`, which identifies as 5.4.0 alpha.
+Qualifying this 5.2 development build is a baseline milestone, not the version
+migration or application-wide acceptance.
+
+## Build entry point
+
+The [source workflow](../.github/workflows/browser-source-build.yml) uses the
+standard Ubuntu 24.04 GitHub Actions runner, Python 3.13.13 and two compilation
+jobs. It starts on changes to the build entry point or workflow in a `parity/**`
+branch. It has a bounded 350-minute job timeout and retains stage receipts on
+failure. No paid runner or external build service is configured.
+
+After installing the host prerequisites specified in the workflow, run:
+
+```sh
+python3 tools/rebuild_browser_port.py \
+  --work-dir .cache/browser-source \
+  --output evidence/browser-source-build \
+  --jobs 2
+```
+
+The stages are:
+
+1. Fetch the exact port and official Blender commits and verify the canonical
+   patch's digest and byte count before applying it.
+2. Install the exact Emscripten SDK and hash-verified host Python build tools.
+3. Fetch the pinned Dawn dependency closure and run the port's dependency
+   recipes, including Python, NumPy, OpenSubdiv and OpenUSD.
+4. Build native code generators and locale files, then configure the browser
+   engine with the port's existing feature profile.
+5. Generate Blender's build-info header, compile the actual `blender_browser`
+   target and package its shell and engine files.
+
+Use `--stop-after source`, `toolchain`, `dependencies` or `configure` to
+investigate a stage. These exits produce a `partial` receipt and never a
+`built` result. A zero exit from a source-only reconstruction does not mean
+the engine compiled.
+
+The runner checks the configured feature cache and refuses to continue if a
+required enabled feature disappears. The source port already disables some
+desktop features; those remain explicit in the receipt. The runner does not
+resolve portability failures by silently disabling additional features.
+
+The OFF development profile avoids the port's hardware-dependent shipping
+capture process. CAPTURE/APPLY shipping qualification and real hardware testing
+remain separate requirements.
+
+## Build inputs and reproducibility limits
+
+`source-build.json` records the source pins, patch digest, compiler identity,
+configuration, dependency recipe identities, stage commands and results, output
+artifact digest and current limitations. Supporting files retain package
+versions, download hashes, dependency harvest hashes, compile commands and logs.
+
+The source and toolchain commits are pinned. Host Python tools use explicit
+versions and wheel hashes. The NumPy recipe's floating host-tool installation
+is replaced with that same requirements file, without replacing its embedded
+Python or NumPy version. Ninja 1.13.0 is used from a verified wheel; the port's
+runbook names 1.13.1. This difference is recorded rather than hidden.
+
+Some dependency recipes provide MD5 checksums. Newly observed SHA-256 values
+document the downloaded bytes, but do not constitute an independently approved
+SHA-256 lock. Ubuntu package revisions are inventoried instead of frozen into
+a hermetic operating-system image. Bitwise reproducibility is not established
+by a single build.
+
+Caches preserve dependency/compiler progress and are keyed to the entry-point
+bytes. A cache hit is an optimization, not acceptance evidence. Each run still
+produces a fresh receipt and verifies the inputs it uses.
+
+## Qualify the exact output
+
+On a successful build, a separate CI job downloads that run's artifact and
+executes:
+
+```sh
+python3 tools/probe_browser_port.py \
+  --source-build-receipt source-build/source-build.json \
+  --asset source-build/blender-source-development.tar.gz \
+  --output evidence/source-development-qualification \
+  --timeout 240
+```
+
+The probe requires the declared source pins, canonical patch, development
+profile, build metadata flag and exact artifact digest/size. It then requires
+the running engine to report the expected Blender version and upstream build
+hash. A matching receipt alone is not a runtime identity check or an independent
+recompile.
+
+Both complete upstream files, `bl_pyapi_mathutils.py` and `bl_pyapi_bmesh.py`,
+are fetched from the exact reference and verified by digest before execution.
+Their assertions and tolerances remain unchanged. The probe preserves missing
+tests, failures, errors, skips and subtests. It cannot obtain a pass merely
+because a page boots or native Blender passes the same tests.
+
+The current CI browser requests a software GPU. Its observed adapter is recorded
+separately, and the probe does not claim real hardware or deployed-URL coverage.
+Even a passing selected-suite result does not complete any facet's entire
+feature inventory.
+
+## Diagnose failures without changing the acceptance tests
+
+The [numeric diagnostic workflow](../.github/workflows/browser-numeric-diagnostics.yml)
+runs an identical separate payload on the checksum-verified official native
+artifact and the pinned published browser release. It covers all 145 vector
+inputs and both complex screw branches, including operations that the original
+test does not reach after an earlier assertion fails.
+
+The payload preserves float bit patterns, input parameters, coordinate and
+topology observations, and original comparison outcomes as diagnostic data.
+The comparison requires matching payload and input identities. Mesh element
+comparisons additionally require matching topology signatures.
+
+Every report states `diagnostic_only: true`,
+`acceptance_status: "not_evaluated"` and `full_parity: false`. Unknown build
+identity and runtime transport errors remain blockers even when useful numeric
+observations were recovered. Diagnostics help select an engine fix; only
+rerunning the unchanged suites on the rebuilt artifact can qualify that fix.
+
+## Current acceptance boundary
+
+The source reconstruction and native reference have been exercised. The
+published browser release still fails two of the 192 selected top-level tests
+and reports an unknown source build hash. Source compilation, a verified
+development runtime and fixes to those divergences must be established through
+their own fresh receipts.
+
+The [parity programme](BROWSER_PARITY_PROGRAM.md) defines the remaining facet,
+fixture, workflow, hardware, deployment and version-migration requirements.
+The strict application gate remains blocked while its inventory is incomplete.
