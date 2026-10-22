@@ -1,8 +1,14 @@
 # Blended
 
-A deployed browser modeller alpha and a test-driven Blender compatibility project. **Not a complete Blender clone.**
+## [Launch Blended: open the deployed browser modeller](https://rawcdn.githack.com/596050/blended/15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38/index.html)
 
-[Open the modeller](https://rawcdn.githack.com/596050/blended/a81530a62fcc8222ea57db4c5d8b35869d277963/index.html) · [Run the verified 99-case Rust/WASM test workbench](https://rawcdn.githack.com/596050/blended/16980ee91529017553efca51e7223354137f09be/index.html) · [Completion requirements](docs/COMPLETE-TEST-PORT.md)
+### [Run the deployed Blender test-port workbench](https://rawcdn.githack.com/596050/blended/7e739cb44988dbbae353272b1ac1bfe809a5cf8a/index.html)
+
+[Deployment links and verification evidence](LIVE.md) · [Complete test-port requirements](docs/COMPLETE-TEST-PORT.md)
+
+The first link opens the modelling application; the second opens its separate compatibility-test dashboard. Both links above identify builds verified from source commit `25e641c0d311f61c473755d1c7ee821289a27d15`.
+
+A deployed browser modeller alpha and a test-driven Blender compatibility project. **Not a complete Blender clone.**
 
 ## Verified test-port status
 
@@ -12,7 +18,7 @@ The newest batch ports 54 cases from the complete upstream index-range, binary-s
 
 Blender's original pinned `BLI_test` executable was also built and its 54 corresponding tests passed. Its raw listing contains 1,644 registrations and one ambiguous duplicate label. That is discovery for one configured executable, not a complete Blender runtime inventory and not 1,644 ported or passing tests.
 
-[Native/WASM/deployed conformance run](https://github.com/596050/blended/actions/runs/39859518789) · [Durable public test results](https://github.com/596050/blended/tree/test-port-evidence) · [Original native Blender evidence](https://github.com/596050/blended/tree/07b2fd18d4fb15f83ddadbfb19acbd3a8a977bcb) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
+[Native/WASM/deployed conformance run](https://github.com/596050/blended/actions/runs/39860686893) · [Durable public test results](https://github.com/596050/blended/tree/test-port-evidence) · [Original native Blender evidence](https://github.com/596050/blended/tree/07b2fd18d4fb15f83ddadbfb19acbd3a8a977bcb) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
 
 All expected results and tolerances retain upstream provenance. Reviewed source/target hashes and case identities prevent silent drift. Passed, failed, blocked, skipped, unmapped and unexecuted work remain distinct. Source candidates are not a runtime denominator. Full test conformance would still not prove every application feature.
 
