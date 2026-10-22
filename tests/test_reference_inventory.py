@@ -11,8 +11,11 @@ class ReferenceInventoryTests(unittest.TestCase):
     def test_disabled_case_is_not_lost(self):
         data=parse_gtest_listing('DISABLED_Feature.\n  Case\nOther.\n  DISABLED_Case\n')
         self.assertEqual(len(data['disabled']),2)
-    def test_duplicate_listing_is_error(self):
-        with self.assertRaises(ValueError):parse_gtest_listing('A.\n  B\n  B\n')
+    def test_duplicate_runtime_registrations_are_retained_and_flagged(self):
+        r=parse_gtest_listing('A.\n  B\n  B\n')
+        self.assertEqual(r['case_ids'],['A.B','A.B'])
+        self.assertEqual(r['ambiguous_identities'],{'A.B':2})
+        self.assertEqual([c['occurrence'] for c in r['registrations']],[1,2])
     def test_case_without_suite_is_error(self):
         with self.assertRaises(ValueError):parse_gtest_listing('  B\n')
     def test_empty_listing_is_error(self):
@@ -30,6 +33,10 @@ class ReferenceInventoryTests(unittest.TestCase):
     def test_runtime_case_not_in_source_map_is_retained(self):
         r=reconcile(['A.B','A.C'],['A.B'],{'A.B':'passed'},['A.'])
         self.assertFalse(r['selected_families_complete']);self.assertEqual(r['unmapped_selected_cases'],['A.C'])
+    def test_duplicate_in_selected_family_blocks_reconciliation(self):
+        r=reconcile(['A.B','A.B'],['A.B'],{'A.B':'passed'},['A.'])
+        self.assertFalse(r['selected_families_complete'])
+        self.assertFalse(r['selected_reference_tests_passed'])
     def test_failed_reference_is_not_conformance(self):
         r=reconcile(['A.B'],['A.B'],{'A.B':'failed'},['A.']);self.assertFalse(r['selected_reference_tests_passed'])
     def test_partial_scope_never_complete_application(self):
