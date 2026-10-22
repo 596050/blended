@@ -1,0 +1,123 @@
+Note: Google Test filter = index_range.*:binary_search.*:bounds.*
+[==========] Running 54 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 3 tests from binary_search
+[ RUN      ] binary_search.Empty
+[       OK ] binary_search.Empty (0 ms)
+[ RUN      ] binary_search.One
+[       OK ] binary_search.One (0 ms)
+[ RUN      ] binary_search.Multiple
+[       OK ] binary_search.Multiple (0 ms)
+[----------] 3 tests from binary_search (0 ms total)
+
+[----------] 19 tests from bounds
+[ RUN      ] bounds.Empty
+[       OK ] bounds.Empty (0 ms)
+[ RUN      ] bounds.EmptyInt
+[       OK ] bounds.EmptyInt (0 ms)
+[ RUN      ] bounds.Center
+[       OK ] bounds.Center (0 ms)
+[ RUN      ] bounds.Size
+[       OK ] bounds.Size (0 ms)
+[ RUN      ] bounds.Translate
+[       OK ] bounds.Translate (0 ms)
+[ RUN      ] bounds.ScaleFromCenter
+[       OK ] bounds.ScaleFromCenter (0 ms)
+[ RUN      ] bounds.Resize
+[       OK ] bounds.Resize (0 ms)
+[ RUN      ] bounds.Recenter
+[       OK ] bounds.Recenter (0 ms)
+[ RUN      ] bounds.Pad
+[       OK ] bounds.Pad (0 ms)
+[ RUN      ] bounds.MinMaxEmpty
+[       OK ] bounds.MinMaxEmpty (0 ms)
+[ RUN      ] bounds.MinMax
+[       OK ] bounds.MinMax (0 ms)
+[ RUN      ] bounds.MinMaxFloat
+[       OK ] bounds.MinMaxFloat (0 ms)
+[ RUN      ] bounds.MinGreaterThanZero
+[       OK ] bounds.MinGreaterThanZero (0 ms)
+[ RUN      ] bounds.MinMaxRadii
+[       OK ] bounds.MinMaxRadii (0 ms)
+[ RUN      ] bounds.Large
+[       OK ] bounds.Large (1 ms)
+[ RUN      ] bounds.Contains
+[       OK ] bounds.Contains (0 ms)
+[ RUN      ] bounds.IntersectSegment1D
+[       OK ] bounds.IntersectSegment1D (0 ms)
+[ RUN      ] bounds.IntersectSegment2D
+[       OK ] bounds.IntersectSegment2D (0 ms)
+[ RUN      ] bounds.IntersectSegment3D
+[       OK ] bounds.IntersectSegment3D (0 ms)
+[----------] 19 tests from bounds (1 ms total)
+
+[----------] 32 tests from index_range
+[ RUN      ] index_range.DefaultConstructor
+[       OK ] index_range.DefaultConstructor (0 ms)
+[ RUN      ] index_range.FromBeginSize
+[       OK ] index_range.FromBeginSize (0 ms)
+[ RUN      ] index_range.FromBeginEnd
+[       OK ] index_range.FromBeginEnd (0 ms)
+[ RUN      ] index_range.FromBeginEndInclusive
+[       OK ] index_range.FromBeginEndInclusive (0 ms)
+[ RUN      ] index_range.FromEndSize
+[       OK ] index_range.FromEndSize (0 ms)
+[ RUN      ] index_range.FromSingle
+[       OK ] index_range.FromSingle (0 ms)
+[ RUN      ] index_range.SingleElementRange
+[       OK ] index_range.SingleElementRange (0 ms)
+[ RUN      ] index_range.MultipleElementRange
+[       OK ] index_range.MultipleElementRange (0 ms)
+[ RUN      ] index_range.SubscriptOperator
+[       OK ] index_range.SubscriptOperator (0 ms)
+[ RUN      ] index_range.Before
+[       OK ] index_range.Before (0 ms)
+[ RUN      ] index_range.After
+[       OK ] index_range.After (0 ms)
+[ RUN      ] index_range.Contains
+[       OK ] index_range.Contains (0 ms)
+[ RUN      ] index_range.First
+[       OK ] index_range.First (0 ms)
+[ RUN      ] index_range.Last
+[       OK ] index_range.Last (0 ms)
+[ RUN      ] index_range.OneAfterEnd
+[       OK ] index_range.OneAfterEnd (0 ms)
+[ RUN      ] index_range.OneBeforeStart
+[       OK ] index_range.OneBeforeStart (0 ms)
+[ RUN      ] index_range.Start
+[       OK ] index_range.Start (0 ms)
+[ RUN      ] index_range.Slice
+[       OK ] index_range.Slice (0 ms)
+[ RUN      ] index_range.Intersect
+[       OK ] index_range.Intersect (0 ms)
+[ RUN      ] index_range.SliceRange
+[       OK ] index_range.SliceRange (0 ms)
+[ RUN      ] index_range.DropBack
+[       OK ] index_range.DropBack (0 ms)
+[ RUN      ] index_range.DropBackAll
+[       OK ] index_range.DropBackAll (0 ms)
+[ RUN      ] index_range.DropFront
+[       OK ] index_range.DropFront (0 ms)
+[ RUN      ] index_range.DropFrontLargeN
+[       OK ] index_range.DropFrontLargeN (0 ms)
+[ RUN      ] index_range.DropFrontAll
+[       OK ] index_range.DropFrontAll (0 ms)
+[ RUN      ] index_range.TakeFront
+[       OK ] index_range.TakeFront (0 ms)
+[ RUN      ] index_range.TakeFrontLargeN
+[       OK ] index_range.TakeFrontLargeN (0 ms)
+[ RUN      ] index_range.TakeBack
+[       OK ] index_range.TakeBack (0 ms)
+[ RUN      ] index_range.TakeBackLargeN
+[       OK ] index_range.TakeBackLargeN (0 ms)
+[ RUN      ] index_range.constexpr_
+[       OK ] index_range.constexpr_ (0 ms)
+[ RUN      ] index_range.GenericAlgorithms
+[       OK ] index_range.GenericAlgorithms (0 ms)
+[ RUN      ] index_range.SplitByAlignment
+[       OK ] index_range.SplitByAlignment (0 ms)
+[----------] 32 tests from index_range (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 54 tests from 3 test suites ran. (1 ms total)
+[  PASSED  ] 54 tests.
