@@ -1,8 +1,6 @@
 name: Audit original Blender assertion fidelity
 on:
-  push:
-    branches: [main, quality/assertion-fidelity]
-    paths: ['crates/**', 'compatibility/**', 'tools/fidelity/**', 'tools/assertion_fidelity.py', 'tools/port_*.py', 'tests/test_assertion_fidelity.py', '.github/workflows/assertion-fidelity.yml']
+  workflow_call:
   workflow_dispatch:
 permissions:
   contents: read

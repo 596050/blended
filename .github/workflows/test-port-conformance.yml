@@ -1,12 +1,16 @@
 name: Blender test-port conformance
 on:
   push:
-    branches: [compat/complete-test-port, compat/ranges-bounds, main]
-    paths: ['crates/**', 'compatibility/**', 'tools/port_scalar_tests.py', 'tools/port_structure_tests.py', 'tools/test_port_audit.py', 'tools/port_workbench.py', 'tests/test_test_port_audit.py', 'tests/test_structure_port.py', 'tests/test_port_workbench.py', '.github/workflows/test-port-conformance.yml']
+    branches: [compat/complete-test-port, compat/ranges-bounds, quality/assertion-fidelity, main]
+    paths: ['crates/**', 'compatibility/**', 'tools/port_scalar_tests.py', 'tools/port_structure_tests.py', 'tools/test_port_audit.py', 'tools/port_workbench.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/test_assertion_fidelity.py', 'tests/test_test_port_audit.py', 'tests/test_structure_port.py', 'tests/test_port_workbench.py', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
+  assertion-fidelity:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/assertion-fidelity.yml
   native-and-wasm:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -89,7 +93,7 @@ jobs:
             build/blender-inventory.json
           retention-days: 3
   publish-subset-workbench:
-    needs: native-and-wasm
+    needs: [native-and-wasm, assertion-fidelity]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -105,6 +109,10 @@ jobs:
         with:
           name: blender-test-port-evidence
           path: site/verification
+      - uses: actions/download-artifact@v4
+        with:
+          name: assertion-fidelity-comparisons
+          path: site/assertion-fidelity
       - name: Read immutable verified fixture metadata, not an expiring Actions artifact
         uses: actions/checkout@v4
         with:
