@@ -1,0 +1,49 @@
+name: Register reviewed collection-test batch
+on:
+  push:
+    branches: [compat/collections-fidelity]
+    paths: ['tools/install_collection_batch.py', '.github/workflows/collection-bootstrap.yml']
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Generate and install the precisely reviewed batch
+        run: |
+          set -euo pipefail
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_collection_tests.py
+          python3 tools/install_collection_batch.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+          mkdir -p evidence/collection-integration
+          cargo test --locked --workspace --all-targets > evidence/collection-integration/native.txt 2>&1
+          python3 tools/verify_static_port.py --output evidence/collection-integration/static-port.json
+      - name: Commit generated source and integration, without claiming fidelity execution yet
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git rm tools/install_collection_batch.py .github/workflows/collection-bootstrap.yml
+          git add crates tools tests compatibility .github/workflows/test-port-conformance.yml evidence/collection-integration
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register 32 complete collection ports and native/WASM signed-zero compile-time check; fidelity verification pending'
+          git push origin HEAD:refs/heads/compat/collections-fidelity
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: collection-integration-evidence
+          path: |
+            evidence/collection-integration/
+            compatibility/collection-ports.json
+            compatibility/compile-time-ports.json
+          retention-days: 1
