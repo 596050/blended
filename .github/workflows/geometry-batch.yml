@@ -1,0 +1,44 @@
+name: Integrate and compile the original geometric-maths tests
+on:
+  push:
+    branches: [compat/integrated-accurate-tests]
+    paths: ['tools/complete_geometry_batch.py', '.github/workflows/geometry-batch.yml']
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Integrate the reviewed source contracts
+        run: python3 tools/complete_geometry_batch.py
+      - name: Run real Rust assertions, without suppressing failures
+        run: |
+          mkdir -p evidence/geometry-implementation
+          set -o pipefail
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/geometry-implementation/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core 2>&1 | tee evidence/geometry-implementation/wasm-build.txt
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v 2>&1 | tee evidence/geometry-implementation/infrastructure.txt
+      - name: Preserve compiled integration on the development branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools tests compatibility evidence/geometry-implementation
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register geometric-maths original-test ports after native assertions pass; independent fidelity and deployed execution pending'
+          git push origin HEAD:refs/heads/compat/integrated-accurate-tests
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-implementation-evidence
+          path: evidence/geometry-implementation/
+          retention-days: 1
