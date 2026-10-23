@@ -21,7 +21,8 @@ def run(output):
  manifest=json.loads((ROOT/'compatibility/geometry-math-ports.json').read_text())['cases']
  index=next(i for i,c in enumerate(manifest) if c['id']=='math_geom_hh.IsectLinePlane')
  control=next(i for i,c in enumerate(manifest) if c['id']=='math_geom_hh.AreaTri')
- assert manifest[index]['expected_runtime_assertions']==4
+ # ASSERT_TRUE, three coordinate EXPECT_NEARs, and the parallel-line EXPECT_FALSE.
+ assert manifest[index]['expected_runtime_assertions']==5
  with tempfile.TemporaryDirectory(prefix='blended-fatal-probe-') as directory:
   root=Path(directory)
   for name in ['crates','Cargo.toml','Cargo.lock','rust-toolchain.toml']:
@@ -30,7 +31,7 @@ def run(output):
    else:shutil.copyfile(src,root/name)
   examples=root/'crates/blended-core/examples';examples.mkdir(exist_ok=True)
   probe=examples/'fatal_assertion_probe.rs'
-  probe.write_text('fn main(){let r=blended_core::geometry_math_cases::math_geom_hh__IsectLinePlane();assert!(r.passed());assert_eq!(r.assertions,4);println!("POSITIVE_ORIGINAL_CASE_EXECUTED");}\n')
+  probe.write_text('fn main(){let r=blended_core::geometry_math_cases::math_geom_hh__IsectLinePlane();assert!(r.passed());assert_eq!(r.assertions,5);println!("POSITIVE_ORIGINAL_CASE_EXECUTED");}\n')
   positive=run_command(['cargo','run','--locked','--quiet','-p','blended-core','--example','fatal_assertion_probe'],root,output.with_suffix('.positive.log'))
   assert 'POSITIVE_ORIGINAL_CASE_EXECUTED' in positive
   source=root/'crates/blended-core/src/geometry_math.rs';before=source.read_text()
