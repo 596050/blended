@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "target": "sqlite",
+  "manifest_sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d",
+  "inputs": [
+    {
+      "path": "scripts/deps/sqlite-patchset.json",
+      "bytes": 3104,
+      "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+    },
+    {
+      "path": "scripts/deps/sqlite.sh",
+      "bytes": 3284,
+      "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+    },
+    {
+      "path": "scripts/deps/sqlite-cache.py",
+      "bytes": 5843,
+      "sha256": "cc64c3575f8ab328c4e920b2c77a48f97efb7d4931315cb626cc8c2ce277be1a"
+    },
+    {
+      "path": "tools/emsdk/upstream/emscripten/emcc",
+      "bytes": 1045,
+      "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+    },
+    {
+      "path": "tools/emsdk/upstream/bin/clang",
+      "bytes": 146590784,
+      "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d",
+      "symlink_target": "clang-24",
+      "resolved_path": "tools/emsdk/upstream/bin/clang-24"
+    },
+    {
+      "path": "build-deps/_cache/sqlite-autoconf-3510300.tar.gz",
+      "bytes": 3208867,
+      "sha256": "81f5be397049b0cae1b167f2225af7646fc0f82e4a9b3c48c9ea3a533e21d77a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "lib/wasm/lib/libsqlite3.a",
+      "bytes": 2209218,
+      "sha256": "378e64a8e79e067fa415fe1ec83553e8c4452a4d6c707f4da7b5b830ea7a826b"
+    },
+    {
+      "path": "lib/wasm/include/sqlite3.h",
+      "bytes": 671786,
+      "sha256": "19585c8b5230e9d4f223bf31b709ece7b6a0bb3faf00d8310625d8e58cda1b1d"
+    },
+    {
+      "path": "lib/wasm/include/sqlite3ext.h",
+      "bytes": 38632,
+      "sha256": "ea81fb7bd05882e0e0b92c4d60f677b205f7f1fbf085f218b12f0b5b3f0b9e48"
+    }
+  ],
+  "environment": {
+    "EM_CACHE": "/home/runner/work/blended/blended/.cache/browser-source/emscripten-cache/de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147",
+    "EMCC_CFLAGS": null
+  },
+  "browser_tests_executed": false,
+  "full_feature_parity": false
+}
