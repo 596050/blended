@@ -1,0 +1,42 @@
+name: Geometric maths original-test-first evidence
+on:
+  push:
+    branches: [compat/integrated-accurate-tests]
+    paths: ['tools/register_geometry_tests.py', '.github/workflows/geometry-test-first.yml']
+permissions:
+  contents: write
+jobs:
+  test-first:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+      - name: Register source-locked tests, without an implementation
+        run: |
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_geometry_tests.py
+      - name: Commit reviewed tests before implementation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add tools/port_geometry_math_tests.py crates/blended-core/src/geometry_math_cases.rs crates/blended-core/tests/upstream_geometry_math.rs compatibility/geometry-math-ports.json tests/upstream/blender/BLI_math_geom_test.cc tests/upstream/blender/BLI_math_geom_hh_test.cc
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'test: register 30 original geometric-maths cases with 154 assertions before implementation'
+          git push origin HEAD:refs/heads/compat/integrated-accurate-tests
+      - name: Execute the missing implementation without suppressing the failure
+        run: |
+          mkdir -p evidence/geometry-test-first
+          set -o pipefail
+          cargo test --locked -p blended-core --test upstream_geometry_math 2>&1 | tee evidence/geometry-test-first/red.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-test-first-evidence
+          path: evidence/geometry-test-first/
+          retention-days: 1
