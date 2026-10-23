@@ -1,31 +1,23 @@
-# Implementation status, 22 October 2026
+# Implementation status, 23 October 2026
 
-## Current test-port continuation
+## Latest verified compatibility batch
 
-The Rust compatibility suite contains 99 executed Blender runtime cases, three Cycles cases and ten additional product/safety cases: 112 native Rust tests. Run `39859518789` also verified all 99 Blender cases in browser WebAssembly at the actual public workbench URL. The represented runtime assertion count is 528: vector 68, scalar 225, new structures 235. Repeated test executions do not increase coverage counts.
+131 Blender runtime cases / 1,049 assertion events pass in native Rust and the actual deployed browser. Original C++ assertion transcripts independently match native Rust and Chromium WASM without floating differences requiring tolerance allowance. Reference: `94363991e7dcf39e2d70614aa002ab6f67764a5d`; verified runtime source: `2c7abe637e8eca6ea8937c871f406fa6ac123006`; run: `39918173966`.
 
-The new 54 Blender cases cover entire index-range, binary-search and bounds test files, with 226 assertion sites, 235 runtime checks and a preserved compile-time condition. The original vector port now collects all nonfatal assertions and retains the upstream comparison semantics. Its separate signed-zero hash compile-time assertion remains unported.
+The new 32 cases cover four complete collection test files and preserve 170 assertion sites / 521 runtime events. The signed-zero vector hash compile-time assertion is now ported, positively compiled and mutation-tested on native and WASM targets. It is not counted among runtime cases. Total native Rust runtime tests: 144, consisting of 131 Blender, three Cycles, six product geometry and four safety tests.
 
-Actual pinned Blender `BLI_test` was compiled. Its listing has 1,644 registrations, including an unresolved duplicate `stack.Peek` label. The original 54 newly ported cases all passed in that executable and reconcile exactly with the Rust case identities. Raw evidence and the scoped report are preserved at `07b2fd18d4fb15f83ddadbfb19acbd3a8a977bcb`. The limited native build is not the whole Blender test universe.
+Corrected inventory source `986ac6ffc6892e5e3738d7e281da9413cf453914`, run `39918761201`, verifies 132 mapped source identities against the exact checkout. The heuristic candidate count increased to 5,673 after C++ numeric separators stopped hiding declarations. There are 5,541 unmapped source candidates. None of these counts establishes a complete runtime denominator.
 
-See `docs/COMPLETE-TEST-PORT.md`, `evidence/TEST-PORT-STATUS.json` and open completion issue #3. Full-completeness CI remains failed: 99 reviewed mappings are only a subset of 5,637 heuristic source candidates. No feature-parity percentage is claimed.
+## Working modeller and failed renderer remain separate
 
-## Previously verified limited modeller
+The repository's prominent launch link opens the previously verified Rust/Three.js modeller at source `25e641c0d311f61c473755d1c7ee821289a27d15`, static commit `15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38`. Its public-URL workflow `39860686907` passed the limited editing/rendering/interchange acceptance checks. The modeller's existing button retains the 17-case ABI; the separate conformance workbench executes all 131 runtime ports. New test-library additions are not new modelling features.
 
-The working modeller is separate from the test workbench. Its initial source was `76044caffe2b69ae5cdceeff1addb56ee61411d9`, deployed at `a81530a62fcc8222ea57db4c5d8b35869d277963`. Run `39830750442` passed 28 public-URL acceptance checks. These cover actual visible Rust-generated cube geometry, deletion/render changes, creation, numeric translation, undo/redo, duplicate/delete, sphere/plane creation, scene save/reopen, OBJ/STL interchange, PNG output, the original 17-case test button and absence of browser errors.
+The Solarxy-derived application compiled, and selected existing suites previously passed, but actual browser rendering failed with blank imported geometry and some GPU-device-loss/panic runs. That failure remains unresolved in issue #1 and `deployment-evidence`. The working Three.js modeller does not inherit Solarxy's procedural editor or turn the failed experiment into a pass.
 
-Those checks include infrastructure/provenance checks, so 28 is not a Blender feature count. The modeller's original test button still exercises the compatible 17-case ABI. The separate conformance workbench exercises all 99 cases. Adding core tests does not add a mesh editor, animation system or other missing UI features.
+## Full-parity work remains incomplete
 
-## Failed Solarxy experiment retained
+The full-completeness CI job remains failed. Broad native runtime enumeration, the remaining test ports, executing fixture-based application workflows and Blender-compatible rendering are unfinished. This includes mesh/BMesh editing, modifiers, sculpting, Geometry Nodes, animation, rigging, physics, compositor, video editor, Python/add-on API and .blend serialisation. There is no claimed full Blender/Cycles/EEVEE parity.
 
-The pinned Solarxy app compiles. Its selected native suites passed 1,002 existing tests and its frontend passed 382 existing tests. Real browser rendering acceptance nevertheless failed: imported geometry was blank, and some runs lost the GPU device and panicked on later buffer allocation. Root cause remains unresolved. The attempted Mesa setup still selected SwiftShader and is not independent-driver verification.
+Original native BLI discovery retained 1,644 registrations and the duplicate stack.Peek identity; it is not all Blender tests and not a count of ported/passing tests. The prior tests/files LFS hash verification covered 6,691 objects, not every possible dependency or execution job.
 
-Issue #1 and `deployment-evidence` preserve that failure. The working Three.js modeller is a separate subset, not a fix for Solarxy and not a way to turn failed WebGPU tests green.
-
-## Assets and remaining implementation
-
-The pinned `tests/files/**` LFS assets were downloaded and verified: 6,691 objects, 870,496,042 bytes, including 2,145 .blend files. This scope is not every possible test dependency, and fresh execution jobs still need to materialise their own inputs. Required startup assets were resolved for the limited native BLI build.
-
-Most Blender features remain unimplemented: direct mesh/BMesh editing, modifiers, sculpting, Geometry Nodes, animation/rigging, physics, compositing/video, Python/add-ons, native .blend serialization and Cycles/EEVEE compatibility. Runtime discovery and faithful test ports for these families remain outstanding.
-
-The next compatibility steps are broader native reference discovery and source reconciliation, followed by actual mesh/topology operations and their attribute/normal/undo contracts. Rendering semantics, colour management, scene evaluation, browser/device coverage and memory/performance budgets need separate acceptance evidence.
+See `COMPLETE-TEST-PORT.md`, `ASSERTION-FIDELITY.md`, `COLLECTION-PORT-VERIFICATION.md` and the machine-readable status/evidence files. Do not remove failing, missing, blocked or unsupported work from the completion criteria.

@@ -1,42 +1,41 @@
 # Assertion-level fidelity audit
 
-## Verified scope, not full-suite completion
+## Current verified scope
 
-Run [39863583391](https://github.com/596050/blended/actions/runs/39863583391) independently executed all 99 currently mapped Blender runtime cases against the pinned original C++ implementation, the Rust implementation and Chromium WebAssembly. It compared 528 assertion events per implementation. Both comparisons passed, with no floating-value differences requiring a tolerance allowance after the documented representation normalisations.
+Run [39918173966](https://github.com/596050/blended/actions/runs/39918173966) verified **131 Blender runtime cases and 1,049 ordered assertion events per implementation** against the pinned original C++ code, native Rust and Chromium WebAssembly. The original reference is `94363991e7dcf39e2d70614aa002ab6f67764a5d`; the audited project source is `2c7abe637e8eca6ea8937c871f406fa6ac123006`. No floating-value differences required a tolerance allowance after documented representation normalisations. The production workbench also passed separate actual public-URL tests.
 
-[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/browser-comparison.json) · [Raw transcripts and build evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence)
+[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/browser-comparison.json) · [Raw build and assertion evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence).
 
-Reference: Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Initial audited project revision: `ea27fbae46cb12abfaceed5ff4185f90df46b71b`.
+**This is not the entire Blender suite.** Remaining runtime families and parameter expansions are not certified. Cycles/product tests are not counted in these 131 Blender cases. The previously missing vector signed-zero hash assertion has now been ported and checked separately at compile time, with deliberate failing mutations on native and WASM targets. See [collection-port verification](COLLECTION-PORT-VERIFICATION.md).
 
-**This does not certify the entire Blender test suite.** The remaining source/runtime families, parameter expansions and the vector file's signed-zero hash compile-time assertion are still outside this verified runtime subset. Existing Cycles and product tests are also not counted in the 99-case Blender transcript comparison. The separate full-completeness gate must remain failed until its outstanding requirements are genuinely fulfilled.
+## Comparison contract
 
-## What is compared
+The audit checks each case's ordered assertion kinds, operand values, outcome, execution count and comparison tolerance. Dropped, duplicated, reordered and substituted assertions fail. Literal floating expectations remain fixed; computed floating outputs may differ only within the original assertion rule, and every such difference is reported. The verified run had none.
 
-The audit reconciles each case's ordered assertion events, not just a successful exit code or a total count. It verifies the assertion kind, operand values, outcome, expected execution count and near-comparison tolerance. Dropped, duplicated, reordered or substituted assertions are errors. Literal floating-point expectations are fixed exactly; computed floating outputs may only differ under the original comparison rule, and every such difference is reported. None occurred in the verified run.
+Equivalent integer/float values are normalised; symmetric comparisons permit operand reversal; empty IndexRange equality ignores its irrelevant start just as upstream does. Pointer addresses are encoded as offsets in words within each test, while original C++ and Rust equality assertions still compare actual pointers. No tolerance is widened and no bitwise equality of all internal structures is claimed.
 
-The representations normalise equivalent integer/float values, allow operand reversal for symmetric comparisons, and ignore the start of an empty IndexRange because the upstream equality operator does. They do not relax exact equality, change tolerances or claim bitwise equality of all internal structures.
+## Independent recording
 
-## Independent reference and diagnostic overlays
+Original BLI tests are built from the exact pinned Blender source and its pinned library submodule. Thirteen unique source files receive an added recording-header include after their hashes are verified. The original test bodies are unchanged. Arguments are evaluated once, recorded, and passed through Blender's bundled GoogleTest assertions. Raw XML, compiler information, binary hashes and overlay metadata are preserved.
 
-The original BLI test executable is built from pinned Blender sources and pinned library submodules. Nine source files receive only an extra recording-header include after source hashes are verified. Their original test bodies remain unchanged. The wrapper evaluates arguments once, records their values and invokes Blender's bundled GoogleTest assertions. Raw original GoogleTest XML, compiler information, binary hashes and overlay metadata are preserved.
+Rust recording happens in a separate build-only shadow checkout. The checked-in production tests and implementation are not changed by that diagnostic overlay. Its patch and input hashes are retained. The same shadow core runs natively and in Chromium WebAssembly. This browser run is local CI instrumentation, not a deployment. Unmodified production tests and real public-URL execution are separate acceptance layers.
 
-Rust assertions are recorded in a separate build-only shadow checkout. The checked-in production tests and implementation are not edited by the audit. The instrumentation patch and input hashes are saved. The same shadow module runs natively and in Chromium WebAssembly. This diagnostic browser run is local CI execution, not a new public deployment. The production workbench is separately built, deployed and exercised at its actual public URL.
+The pinned GoogleTest version is authoritative. Newer documentation must not silently change a test's comparison semantics, including nonfinite-value behaviour.
 
-The pinned GoogleTest version is the authority. Do not silently change assertions to match newer documentation; even infinity handling in EXPECT_NEAR can differ by version.
+## Failure detection and publication
 
-## Failure-detection tests and publication
+Negative infrastructure tests cover changed actual or expected values, changed tolerances, missing/duplicate/reordered cases and assertions, changed kinds, false success values, count-only stubs and wrong pointer offsets. Additional checks retain original loops, shared-reference aliasing, moved-from state, source hashes and exact runtime identities. The signed-zero compile-time guard is mutation-tested rather than represented by a runtime success stub.
 
-Negative tests exercise missing cases, wrong identities, removed/duplicated/reordered assertions, changed comparison kinds, changed actual or expected values, changed tolerances, false success flags and count-only stubs. These are tests of the audit, not additional Blender features or upstream ports.
+The compatibility-workbench publishing job depends on ordinary native/WASM conformance and this original-reference fidelity audit. The separate whole-suite completeness job remains failed while coverage is missing. Publishing a clearly labelled alpha subset does not certify whole-suite completion.
 
-The compatibility-workbench publishing job requires both ordinary native/WASM conformance and the independent assertion-fidelity workflow. The full-suite completion job remains a separate, genuinely failing requirement. Publishing a clearly labelled alpha subset is not a full-parity release.
-
-## Reproduction
+## Reproduce
 
 ```sh
 python3 -m unittest discover -s tests -p test_assertion_fidelity.py -v
 python3 tools/assertion_fidelity.py shadow --output build/fidelity-shadow
 (cd build/fidelity-shadow && cargo run --locked --quiet -p blended-core --example assertion_trace) > native.jsonl
 python3 tools/assertion_fidelity.py compare --reference reference.jsonl --port native.jsonl --output comparison.json
+python3 tools/verify_static_port.py --output build/static-port.json
 ```
 
-The CI workflow records the full original-reference build and browser commands. Case counts, source hashes and expected assertion counts are taken from the checked-out contracts, not trusted from a served dashboard. Hashes and transcripts provide concrete evidence for the exercised cases; they are not a mathematical proof of every possible behaviour or a substitute for porting the rest of Blender.
+CI records the full C++ build and Chromium commands. Trusted case identities and counts come from checked-out manifests/contracts, not a served success banner. Hashes and transcripts establish concrete evidence for exercised cases; they are not a proof of every possible behaviour or a substitute for porting the remaining suite.
