@@ -1,21 +1,22 @@
 {
-  "url": "https://rawcdn.githack.com/596050/blended/54d5e584f425c733aae0bcbb644ee04a1ac4a366/index.html",
-  "expected_case_count": 131,
-  "expected_source_commit": "a6a93159ca088ab373c8085696be300bb173375d",
-  "started_utc": "2026-10-23T07:48:26.940730+00:00",
+  "url": "https://rawcdn.githack.com/596050/blended/d6a8d60cccf0dc403d4bd2c8c0853ad0893935a1/index.html",
+  "expected_case_count": 224,
+  "expected_source_commit": "f7a68890a62502de5a8a770e9a8c5823e15d78dd",
+  "started_utc": "2026-10-23T09:12:36.738912+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "a6a93159ca088ab373c8085696be300bb173375d",
+    "source_commit": "f7a68890a62502de5a8a770e9a8c5823e15d78dd",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 131,
+    "passed": 224,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
     "collection_assertions": 521,
+    "numerics_text_assertions": 450,
     "cases": [
       {
         "id": "math_vector.ClampVecWithFloats",
@@ -933,12 +934,663 @@
         "passed": true,
         "code": 1,
         "assertions": 8
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorUnsigned",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorInt",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorFloat",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorDouble",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.MultiScalarConstructorVec2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.MultiScalarConstructorVec3",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vec_types.MultiScalarConstructorVec4",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_vec_types.MixedScalarVectorConstructorVec3",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.MixedScalarVectorConstructorVec4",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 24
+      },
+      {
+        "id": "math_vec_types.ComponentMasking",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.PointerConversion",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vec_types.PointerArrayConversion",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vec_types.VectorTypeConversion",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.Add",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_vec_types.AddFloatByVector",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.Sub",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.SubFloatByVector",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.Mul",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_vec_types.MulFloatByVector",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.Divide",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.DivideFloatByVector",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.DivideFloatByVectorSmall",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.SwizzleReinterpret",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_vec_types.SwizzleFloat2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 10
+      },
+      {
+        "id": "math_vec_types.SwizzleFloat3",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 30
+      },
+      {
+        "id": "math_vec_types.SwizzleFloat4",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "math_vec_types.SwizzleAssignment",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_vec_types.SwizzleOperators",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 44
+      },
+      {
+        "id": "math_vec_types.SwizzleComparison",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "string_ref_null.DefaultConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref_null.CStringConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref_null.CStringLengthConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref_null.CompareEqual",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.CompareEqualCharPtr1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.CompareEqualCharPtr2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.CompareEqualString1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.CompareEqualString2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.CompareEqualStringRef1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.CompareEqualStringRef2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref_null.Constexpr",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.DefaultConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.StartEndConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "string_ref.StartEndConstructorNullptr",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.StartEndConstructorSame",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.CStringConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.PointerWithLengthConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.StdStringConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.SpanConstructor",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.SubscriptOperator",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string_ref.ToStdString",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.Print",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.Add",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.AddCharPtr1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.AddCharPtr2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.AddString1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.AddString2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.CompareEqual",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.CompareEqualCharPtr1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.CompareEqualCharPtr2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.CompareEqualString1",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.CompareEqualString2",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.Iterate",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "string_ref.StartsWith",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "string_ref.EndsWith",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "string_ref.DropPrefixN",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.DropPrefixLargeN",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.DropKnownPrefix",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.DropSuffix",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.DropSuffixLargeN",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string_ref.TrimArbitrary",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "string_ref.TrimWhitespace",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.TrimCharacter",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.TrimLeftArbitrary",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "string_ref.TrimLeftWhitespace",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.TrimRightArbitrary",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "string_ref.TrimRightWhitespace",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string_ref.Substr",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string_ref.CopyUtf8Truncated",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "string_ref.CopyBytesTruncated",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "string_ref.FromStringView",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.ToStringView",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string_ref.Constexpr",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "color.ThemeByteToFloat",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SrgbStraightFloatToByte",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SrgbStraightToSceneLinearPremultiplied",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearStraightToPremultiplied",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearPremultipliedToStraight",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearStraightSrgbFloat",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearPremultipliedToSrgbFloat",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearStraightSrgbByte",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearPremultipliedToSrgbByte",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearByteEncoding",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearByteDecoding",
+        "group": "numerics_text",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
       }
     ],
     "errors": [],
-    "wasm_sha256": "73f85c7f9ca0268802f2d864ff4e218028563e3a9f8a2f4648dcfceecbdde424",
+    "wasm_sha256": "1cb972b32fabc7237eca819b54c480211126a714845fef99c65426f55f602e69",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-23T07:48:30.976141+00:00"
+  "finished_utc": "2026-10-23T09:12:43.949835+00:00"
 }
