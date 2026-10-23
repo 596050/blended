@@ -1,0 +1,85 @@
+name: Discover pinned Blender Linux runtime tests
+on:
+  push:
+    branches: [compat/numerics-and-text]
+    paths: ['.github/workflows/reference-linux-runtime.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    env:
+      CC: clang
+      CXX: clang++
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record environment and free unused hosted-runner SDK space
+        run: |
+          mkdir -p evidence/linux-runtime
+          df -h > evidence/linux-runtime/disk-before.txt
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h > evidence/linux-runtime/disk-after.txt
+          clang --version > evidence/linux-runtime/compiler.txt
+      - name: Fetch exact Blender source and library dependencies
+        run: |
+          set -euo pipefail
+          python3 tools/fetch_upstreams.py blender
+          git -C .upstream/blender rev-parse HEAD > evidence/linux-runtime/blender-commit.txt
+          git -C .upstream/blender lfs install --local
+          git -C .upstream/blender config lfs.url https://projects.blender.org/blender/blender.git/info/lfs
+          git -C .upstream/blender config lfs.https://projects.blender.org/blender/blender.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender lfs pull --include='release/datafiles/**,tests/files/**' --exclude=''
+          GIT_LFS_SKIP_SMUDGE=1 git -C .upstream/blender submodule update --init --depth=1 --checkout lib/linux_x64
+          git -C .upstream/blender/lib/linux_x64 rev-parse HEAD > evidence/linux-runtime/libraries-commit.txt
+          git -C .upstream/blender/lib/linux_x64 lfs install --local
+          git -C .upstream/blender/lib/linux_x64 config lfs.https://projects.blender.org/blender/lib-linux_x64.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender/lib/linux_x64 lfs pull
+          git -C .upstream/blender lfs ls-files --long > evidence/linux-runtime/fixture-state.txt
+          df -h > evidence/linux-runtime/disk-dependencies.txt
+      - name: Configure broad headless Linux reference with runtime tests
+        run: |
+          set -o pipefail
+          cmake -S .upstream/blender -B build/linux-reference -G Ninja \
+            -C .upstream/blender/build_files/cmake/config/blender_headless.cmake \
+            -DCMAKE_BUILD_TYPE=Release -DWITH_GTESTS=ON -DWITH_TESTS_BATCHED=OFF \
+            -DWITH_CYCLES_DEVICE_CUDA=OFF -DWITH_CYCLES_DEVICE_OPTIX=OFF \
+            -DWITH_CYCLES_DEVICE_HIP=OFF -DWITH_CYCLES_DEVICE_ONEAPI=OFF \
+            -DWITH_CYCLES_CUDA_BINARIES=OFF -DWITH_GHOST_WAYLAND=OFF \
+            -DWITH_GPU_RENDER_TESTS=ON -DWITH_GPU_BACKEND_TESTS=ON \
+            -DWITH_GPU_COMPOSITOR_TESTS=ON -DWITH_UI_TESTS=ON \
+            -DWITH_UI_TESTS_HEADLESS=ON 2>&1 | tee evidence/linux-runtime/configure.log
+          cp build/linux-reference/CMakeCache.txt evidence/linux-runtime/
+          ctest --test-dir build/linux-reference --show-only=json-v1 > evidence/linux-runtime/ctest-configured.json
+      - name: Build original application and configured test executables
+        run: |
+          set -o pipefail
+          cmake --build build/linux-reference -j 3 2>&1 | tee evidence/linux-runtime/build.log
+      - name: Preserve actual runtime discovery without claiming unexecuted cases passed
+        run: |
+          set -euo pipefail
+          LIBPATH=$(find "$PWD/.upstream/blender/lib/linux_x64" -type d \( -name lib -o -name lib64 \) -printf '%p:')
+          export LD_LIBRARY_PATH="${LIBPATH}${LD_LIBRARY_PATH:-}"
+          ctest --test-dir build/linux-reference --show-only=json-v1 > evidence/linux-runtime/ctest-runtime.json
+          mkdir -p evidence/linux-runtime/gtest
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          out=pathlib.Path('evidence/linux-runtime/gtest');reports=[]
+          for exe in sorted(pathlib.Path('build/linux-reference/bin/tests').glob('*')):
+              if not exe.is_file() or not exe.stat().st_mode & 0o111: continue
+              r=subprocess.run([str(exe.resolve()),'--gtest_list_tests'],capture_output=True,text=True,timeout=120)
+              (out/(exe.name+'.stdout.txt')).write_text(r.stdout)
+              (out/(exe.name+'.stderr.txt')).write_text(r.stderr)
+              reports.append({'executable':exe.name,'sha256':hashlib.sha256(exe.read_bytes()).hexdigest(),'returncode':r.returncode,'execution_status':'discovery_only_not_test_pass'})
+          pathlib.Path('evidence/linux-runtime/discovery.json').write_text(json.dumps({'configuration':'Linux x86_64 headless CPU; native GPU device backends disabled','complete_all_configuration_inventory':False,'python_fixture_expansion_complete':False,'tests':reports},indent=2)+'\n')
+          if not reports or any(r['returncode'] for r in reports):raise SystemExit('Runtime discovery failures are retained; not complete')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-runtime-discovery
+          path: evidence/linux-runtime/
+          retention-days: 3
