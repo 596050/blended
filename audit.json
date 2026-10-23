@@ -4,13 +4,13 @@
   "complete_test_port": false,
   "test_conformance_complete": false,
   "feature_parity": false,
-  "source_candidates": 5849,
-  "mapped_source_candidates": 225,
-  "unported_source_candidates": 5623,
+  "source_candidates": 5859,
+  "mapped_source_candidates": 251,
+  "unported_source_candidates": 5607,
   "unported_runtime_cases": 0,
   "unavailable_fixture_count": 2169,
   "declaration_kinds": {
-    "static_assert": 977,
+    "static_assert": 987,
     "TEST": 2186,
     "TEST_P": 25,
     "TEST_F": 1068,
@@ -21928,6 +21928,19 @@
     },
     {
       "path": "source/blender/blenlib/BLI_assert.hh",
+      "line": 70,
+      "identity": "static_assert@70",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/BLI_assert.hh:static_assert@70:70",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/blenlib/BLI_assert.hh",
       "line": 71,
       "identity": "static_assert@71",
       "kind": "static_assert",
@@ -31215,11 +31228,11 @@
       "kind": "static_assert",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_index_range_test.cc:static_assert@310:310",
-      "target_test": null
+      "target_test": "structure_cases::index_range__constexpr_"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_index_range_test.cc",
@@ -34673,11 +34686,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.DefaultConstructor:14",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__DefaultConstructor"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34686,11 +34699,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.StaticConstructor:23",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__StaticConstructor"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34699,11 +34712,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.VectorConstructor:50",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__VectorConstructor"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34712,11 +34725,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.SmallerMatrixConstructor:61",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__SmallerMatrixConstructor"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34725,11 +34738,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ComponentMasking:76",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ComponentMasking"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34738,11 +34751,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.PointerConversion:86",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__PointerConversion"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34751,11 +34764,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.TypeConversion:96",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__TypeConversion"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34764,11 +34777,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.PointerArrayConversion:115",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__PointerArrayConversion"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34777,11 +34790,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ComponentAccess:126",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ComponentAccess"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34790,11 +34803,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.AddOperator:135",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__AddOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34803,11 +34816,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.SubtractOperator:170",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__SubtractOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34816,11 +34829,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.MultiplyOperator:205",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__MultiplyOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34829,11 +34842,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.MatrixMultiplyOperator:222",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__MatrixMultiplyOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34842,11 +34855,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.VectorMultiplyOperator:275",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__VectorMultiplyOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34855,11 +34868,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewConstructor:289",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewConstructor"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34868,11 +34881,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewFromCstyleMatrix:307",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewFromCstyleMatrix"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34881,11 +34894,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewAssignment:323",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewAssignment"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34894,11 +34907,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewScalarOperators:350",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewScalarOperators"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34907,11 +34920,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewMatrixMultiplyOperator:389",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewMatrixMultiplyOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34920,11 +34933,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewVectorMultiplyOperator:408",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewVectorMultiplyOperator"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
@@ -34933,11 +34946,11 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:math_matrix_types.ViewMatrixNormalize:423",
-      "target_test": null
+      "target_test": "upstream_matrix_types::math_matrix_types__ViewMatrixNormalize"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_math_rotation_test.cc",
@@ -41459,11 +41472,11 @@
       "kind": "static_assert",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_string_ref_test.cc:static_assert@106:106",
-      "target_test": null
+      "target_test": "numerics_text_cases::string_ref_null__Constexpr"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
@@ -41472,11 +41485,11 @@
       "kind": "static_assert",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_string_ref_test.cc:static_assert@107:107",
-      "target_test": null
+      "target_test": "numerics_text_cases::string_ref_null__Constexpr"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
@@ -42031,11 +42044,11 @@
       "kind": "static_assert",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_string_ref_test.cc:static_assert@594:594",
-      "target_test": null
+      "target_test": "numerics_text_cases::string_ref__Constexpr"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
@@ -42044,11 +42057,11 @@
       "kind": "static_assert",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_string_ref_test.cc:static_assert@595:595",
-      "target_test": null
+      "target_test": "numerics_text_cases::string_ref__Constexpr"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_string_search_test.cc",
@@ -47758,6 +47771,32 @@
       "target_test": null
     },
     {
+      "path": "source/blender/draw/intern/draw_command_shared.hh",
+      "line": 89,
+      "identity": "static_assert@89",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/draw/intern/draw_command_shared.hh:static_assert@89:89",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/draw/intern/draw_shader_shared.hh",
+      "line": 641,
+      "identity": "static_assert@641",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/draw/intern/draw_shader_shared.hh:static_assert@641:641",
+      "target_test": null
+    },
+    {
       "path": "source/blender/draw/intern/mesh_extractors/extract_mesh_ibo_lines.cc",
       "line": 34,
       "identity": "static_assert@34",
@@ -47781,6 +47820,19 @@
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/draw/intern/mesh_extractors/extract_mesh_ibo_points.cc:static_assert@29:29",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/draw/intern/mesh_extractors/extract_mesh_vbo_edituv_stretch_angle.cc",
+      "line": 24,
+      "identity": "static_assert@24",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/draw/intern/mesh_extractors/extract_mesh_vbo_edituv_stretch_angle.cc:static_assert@24:24",
       "target_test": null
     },
     {
@@ -49930,6 +49982,19 @@
     },
     {
       "path": "source/blender/gpu/GPU_shader_shared_utils.hh",
+      "line": 38,
+      "identity": "static_assert@38",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/gpu/GPU_shader_shared_utils.hh:static_assert@38:38",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/gpu/GPU_shader_shared_utils.hh",
       "line": 58,
       "identity": "static_assert@58",
       "kind": "static_assert",
@@ -49939,6 +50004,19 @@
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/gpu/GPU_shader_shared_utils.hh:static_assert@58:58",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/gpu/GPU_shader_shared_utils.hh",
+      "line": 59,
+      "identity": "static_assert@59",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/gpu/GPU_shader_shared_utils.hh:static_assert@59:59",
       "target_test": null
     },
     {
@@ -49991,6 +50069,19 @@
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/gpu/GPU_vertex_format.hh:static_assert@306:306",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/gpu/GPU_vertex_format.hh",
+      "line": 308,
+      "identity": "static_assert@308",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/gpu/GPU_vertex_format.hh:static_assert@308:308",
       "target_test": null
     },
     {
@@ -55623,6 +55714,32 @@
       "target_test": null
     },
     {
+      "path": "source/blender/makesdna/DNA_lightprobe_types.h",
+      "line": 217,
+      "identity": "static_assert@217",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/makesdna/DNA_lightprobe_types.h:static_assert@217:217",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/makesdna/DNA_lightprobe_types.h",
+      "line": 218,
+      "identity": "static_assert@218",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/makesdna/DNA_lightprobe_types.h:static_assert@218:218",
+      "target_test": null
+    },
+    {
       "path": "source/blender/makesdna/DNA_listBase.h",
       "line": 80,
       "identity": "static_assert@80",
@@ -55659,6 +55776,19 @@
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/makesdna/intern/dna_genfile.cc:static_assert@309:309",
+      "target_test": null
+    },
+    {
+      "path": "source/blender/makesdna/intern/dna_genfile.cc",
+      "line": 542,
+      "identity": "static_assert@542",
+      "kind": "static_assert",
+      "requires_runtime_expansion": false,
+      "execution": "not_run",
+      "port_status": "not_ported",
+      "upstream": "blender",
+      "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/makesdna/intern/dna_genfile.cc:static_assert@542:542",
       "target_test": null
     },
     {

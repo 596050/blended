@@ -1,0 +1,9 @@
+    Checking blended-core v0.1.0 (/tmp/blended-embedded-static-gjx6f674/crates/blended-core)
+error[E0080]: evaluation panicked: assertion failed: SREF.size() == 5
+   --> crates/blended-core/src/numerics_text_cases.rs:678:14
+    |
+678 |   const _:()=assert!(SREF.size()==5);
+    |              ^^^^^^^^^^^^^^^^^^^^^^^ evaluation of `numerics_text_cases::string_ref_null__Constexpr::_` failed here
+
+For more information about this error, try `rustc --explain E0080`.
+error: could not compile `blended-core` (lib) due to 1 previous error
