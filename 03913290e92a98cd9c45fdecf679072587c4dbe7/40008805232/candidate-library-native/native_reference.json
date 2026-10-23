@@ -1,0 +1,3742 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "started_utc": "2026-10-23T19:07:05.122416+00:00",
+  "finished_utc": "2026-10-23T19:07:38.418299+00:00",
+  "scope": "selected Blender 5.2.0 candidate native reference qualification only",
+  "profile": "native-reference",
+  "full_parity": false,
+  "browser_parity": false,
+  "product_target_parity": false,
+  "selected_suites_passed": true,
+  "official_release_checksum_verified": true,
+  "upstream_build_hash_verified": true,
+  "source_correspondence_verified": false,
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": "5.2.0"
+  },
+  "artifact": {
+    "url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "expected_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "expected_bytes": 384441228,
+    "observed_bytes": 384441228,
+    "observed_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48"
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_blendfile_liblink.py",
+      "sha256": "c2bca5f31f13075b94b272bdb0ab16582d23f581a1bdfd1211c6896d0ea7e6ae",
+      "bytes": 49078,
+      "expected_cases": 17,
+      "case_ids": [
+        "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+        "TestBlendLibLinkAnimation.test_link",
+        "TestBlendLibLinkIndirect.test_append",
+        "TestBlendLibAppendBasic.test_append",
+        "TestBlendLibAppendReuseID.test_append",
+        "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+        "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+        "TestBlendLibPackedLinkedID.test_link_pack_basic",
+        "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+        "TestBlendLibPackedWithAnimation.test_material_animation",
+        "TestBlendLibLibraryReload.test_link_reload",
+        "TestBlendLibLibraryRelocate.test_link_relocate",
+        "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+        "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+        "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime"
+      ],
+      "support_files": [
+        {
+          "upstream_path": "tests/python/bl_blendfile_utils.py",
+          "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+          "bytes": 8640,
+          "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_utils.py"
+        }
+      ],
+      "driver": "original-script",
+      "required_background": true,
+      "fixture_files": [
+        {
+          "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "relative_path": "imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+          "bytes": 5165,
+          "git_blob_sha1": "00cea6783d2699568ec60bf51f8588b1c9d15214",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "lfs_pointer": {
+            "bytes": 129,
+            "sha256": "a6ddaf06ccf65cb5be7000da80c592e9b42852266f9c2ef2864ead3d45c4fac6",
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279\nsize 5165\n",
+            "git_blob_sha1": "00cea6783d2699568ec60bf51f8588b1c9d15214"
+          },
+          "lfs_object": {
+            "oid": "sha256:bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+            "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+            "bytes": 5165
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        },
+        {
+          "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend",
+          "relative_path": "libraries_and_linking/libraries/collection_assets.blend",
+          "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+          "bytes": 103099,
+          "git_blob_sha1": "42dc8341f9934c7f0d511bc865147ccd185d12f4",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/libraries_and_linking/libraries/collection_assets.blend",
+          "lfs_pointer": {
+            "bytes": 131,
+            "sha256": "5e8a3071f2b1d5364392e24fa30de1e67c4f242553a3056127c4dff654b494c1",
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152\nsize 103099\n",
+            "git_blob_sha1": "42dc8341f9934c7f0d511bc865147ccd185d12f4"
+          },
+          "lfs_object": {
+            "oid": "sha256:4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+            "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+            "bytes": 103099
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        },
+        {
+          "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend",
+          "relative_path": "libraries_and_linking/libraries/animated_assets.blend",
+          "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+          "bytes": 104736,
+          "git_blob_sha1": "143f51a240c176b028f60e167a79aa92407f0f1c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/files/libraries_and_linking/libraries/animated_assets.blend",
+          "lfs_pointer": {
+            "bytes": 131,
+            "sha256": "75e2018655d5ec439cf97ce952403efe610f95f818d83dc97b8e9cf43d790a92",
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e\nsize 104736\n",
+            "git_blob_sha1": "143f51a240c176b028f60e167a79aa92407f0f1c"
+          },
+          "lfs_object": {
+            "oid": "sha256:d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+            "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+            "bytes": 104736
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        }
+      ],
+      "fixture_directory_argument": "--src-test-dir",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_blendfile_liblink.py"
+    }
+  ],
+  "summary": {
+    "expected_suites": 1,
+    "observed_suites": 1,
+    "totals": {
+      "discovered": 17,
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 0
+    },
+    "suites": [
+      {
+        "upstream_path": "tests/python/bl_blendfile_liblink.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 17,
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      }
+    ],
+    "required_case_inventory": {
+      "fixed_for_all_requested_suites": true,
+      "expected_cases": 17,
+      "missing_cases": 0,
+      "suites": [
+        {
+          "upstream_path": "tests/python/bl_blendfile_liblink.py",
+          "expected_cases": 17,
+          "missing_cases": 0,
+          "missing_case_ids": [],
+          "unexpected_case_ids": []
+        }
+      ]
+    }
+  },
+  "execution": {
+    "exception": null,
+    "execution_context": {
+      "background": true,
+      "window_present_at_entry": true
+    },
+    "generated_files": {
+      "files": [
+        {
+          "bytes": 426278,
+          "path": "blendfileTestBlendLibLinkIndirect.blend",
+          "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+        },
+        {
+          "bytes": 424693,
+          "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+          "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+        },
+        {
+          "bytes": 425485,
+          "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+          "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+        },
+        {
+          "bytes": 480936,
+          "path": "blendfileTestBlendLibPackedLinkedID.blend",
+          "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+        },
+        {
+          "bytes": 475855,
+          "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+          "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+        },
+        {
+          "bytes": 434704,
+          "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+          "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+          "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+          "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+          "sha256": "69bd63500a300c9a7d3dd1b966b6db61ff2560381cb92a6a8578abb6f3cd1953"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend1",
+          "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+          "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+          "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+          "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+          "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+          "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+        },
+        {
+          "bytes": 426253,
+          "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+          "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+        },
+        {
+          "bytes": 428310,
+          "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+          "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+        },
+        {
+          "bytes": 428310,
+          "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+          "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+        },
+        {
+          "bytes": 478064,
+          "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+          "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+        },
+        {
+          "bytes": 470759,
+          "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+          "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+        },
+        {
+          "bytes": 470759,
+          "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+          "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+        },
+        {
+          "bytes": 470759,
+          "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+          "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+        }
+      ],
+      "root": "/tmp/blended-native-reference-3gnarff3/original-io/files"
+    },
+    "identity": {
+      "binary_path": "/tmp/blended-native-reference-3gnarff3/unpacked/blender-5.2.0-linux-x64/blender",
+      "build_branch": "blender-v5.2-release",
+      "build_hash": "fbe6228777e7",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "io_observation": {
+      "assertions_modified": false,
+      "cases": [
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            }
+          ],
+          "files_before": [],
+          "id": "blended_original.TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            }
+          ],
+          "id": "blended_original.TestBlendLibLinkAnimation.test_link",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            }
+          ],
+          "id": "blended_original.TestBlendLibLinkIndirect.test_append",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "id": "blended_original.TestBlendLibAppendBasic.test_append",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "id": "blended_original.TestBlendLibAppendReuseID.test_append",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "id": "blended_original.TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+          "new_or_changed_outputs": [],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "id": "blended_original.TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+          "new_or_changed_outputs": [],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 429125,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "f85b2f5de739b0e1e789f8b29e28950e5b183344054ce73aff22d4f644c9c2d8"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "id": "blended_original.TestBlendLibPackedLinkedID.test_link_pack_basic",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 429125,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "f85b2f5de739b0e1e789f8b29e28950e5b183344054ce73aff22d4f644c9c2d8"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 429125,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "f85b2f5de739b0e1e789f8b29e28950e5b183344054ce73aff22d4f644c9c2d8"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            }
+          ],
+          "id": "blended_original.TestBlendLibPackedLinkedID.test_link_pack_indirect",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibPackedWithAnimation.test_material_animation",
+          "new_or_changed_outputs": [],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibLibraryReload.test_link_reload",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibLibraryRelocate.test_link_relocate",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibDataLibrariesLoadLink.test_libload_link",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+              "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+              "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+              "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+              "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+              "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+              "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+            }
+          ],
+          "status": "passed"
+        },
+        {
+          "events": [
+            {
+              "event": "start",
+              "phase": "setup"
+            },
+            {
+              "event": "return",
+              "phase": "setup"
+            },
+            {
+              "event": "start",
+              "phase": "body"
+            },
+            {
+              "event": "return",
+              "phase": "body"
+            },
+            {
+              "event": "start",
+              "phase": "teardown"
+            },
+            {
+              "event": "return",
+              "phase": "teardown"
+            }
+          ],
+          "files_after": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+              "sha256": "69bd63500a300c9a7d3dd1b966b6db61ff2560381cb92a6a8578abb6f3cd1953"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend1",
+              "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+              "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "files_before": [
+            {
+              "bytes": 426278,
+              "path": "blendfileTestBlendLibLinkIndirect.blend",
+              "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+            },
+            {
+              "bytes": 424693,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+            },
+            {
+              "bytes": 425485,
+              "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+              "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+            },
+            {
+              "bytes": 480936,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend",
+              "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+            },
+            {
+              "bytes": 475855,
+              "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+              "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+            },
+            {
+              "bytes": 434704,
+              "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+              "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+              "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+              "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+              "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+              "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+              "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+              "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+              "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+              "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+              "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+              "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+            },
+            {
+              "bytes": 428310,
+              "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+              "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+            },
+            {
+              "bytes": 478064,
+              "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+              "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+              "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+              "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+            },
+            {
+              "bytes": 470759,
+              "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+              "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+            }
+          ],
+          "id": "blended_original.TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime",
+          "new_or_changed_outputs": [
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+              "sha256": "69bd63500a300c9a7d3dd1b966b6db61ff2560381cb92a6a8578abb6f3cd1953"
+            },
+            {
+              "bytes": 426253,
+              "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend1",
+              "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+            }
+          ],
+          "status": "passed"
+        }
+      ],
+      "driver_completed_as_expected": true,
+      "driver_events": [
+        {
+          "class": "TestBlendLibLinkSaveLoadBasic",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibLinkSaveLoadBasic",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibLinkAnimation",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibLinkAnimation",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibLinkIndirect",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibLinkIndirect",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibAppendBasic",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibAppendBasic",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibAppendReuseID",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibAppendReuseID",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibAppendCollectionInstances",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibAppendCollectionInstances",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibPackedLinkedID",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibPackedLinkedID",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibPackedWithAnimation",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibPackedWithAnimation",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibLibraryReload",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibLibraryReload",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibLibraryRelocate",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibLibraryRelocate",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadAppend",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadAppend",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadLink",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadLink",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadPack",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadPack",
+          "event": "return"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadLibOverride",
+          "event": "start"
+        },
+        {
+          "class": "TestBlendLibDataLibrariesLoadLibOverride",
+          "event": "return"
+        }
+      ],
+      "entrypoint": "original __main__ via runpy.run_path",
+      "events": "CPython sys.monitoring PY_START/PY_RETURN/PY_UNWIND",
+      "expected_case_ids": [
+        "TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+        "TestBlendLibLinkAnimation.test_link",
+        "TestBlendLibLinkIndirect.test_append",
+        "TestBlendLibAppendBasic.test_append",
+        "TestBlendLibAppendReuseID.test_append",
+        "TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+        "TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+        "TestBlendLibPackedLinkedID.test_link_pack_basic",
+        "TestBlendLibPackedLinkedID.test_link_pack_indirect",
+        "TestBlendLibPackedWithAnimation.test_material_animation",
+        "TestBlendLibLibraryReload.test_link_reload",
+        "TestBlendLibLibraryRelocate.test_link_relocate",
+        "TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+        "TestBlendLibDataLibrariesLoadLink.test_libload_link",
+        "TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+        "TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime"
+      ],
+      "fixture_bytes_preserved": true,
+      "fixture_files": [
+        {
+          "bytes": 5165,
+          "path": "/tmp/blended-native-reference-3gnarff3/original-io/fixtures/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "relative_path": "imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+          "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+          "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg"
+        },
+        {
+          "bytes": 103099,
+          "path": "/tmp/blended-native-reference-3gnarff3/original-io/fixtures/libraries_and_linking/libraries/collection_assets.blend",
+          "relative_path": "libraries_and_linking/libraries/collection_assets.blend",
+          "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+          "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend"
+        },
+        {
+          "bytes": 104736,
+          "path": "/tmp/blended-native-reference-3gnarff3/original-io/fixtures/libraries_and_linking/libraries/animated_assets.blend",
+          "relative_path": "libraries_and_linking/libraries/animated_assets.blend",
+          "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+          "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend"
+        }
+      ],
+      "helper_driver_replaced": false,
+      "helper_import_path": "/tmp/blended-native-reference-3gnarff3/original-io/sources/bl_blendfile_utils.py",
+      "helper_import_verified": true,
+      "missing_case_ids": [],
+      "module_returned_normally": true,
+      "observer_errors": [],
+      "source_bytes_preserved": true,
+      "source_files": [
+        {
+          "bytes": 49078,
+          "path": "/tmp/blended-native-reference-3gnarff3/original-io/sources/bl_blendfile_liblink.py",
+          "sha256": "c2bca5f31f13075b94b272bdb0ab16582d23f581a1bdfd1211c6896d0ea7e6ae",
+          "upstream_path": "tests/python/bl_blendfile_liblink.py"
+        },
+        {
+          "bytes": 8640,
+          "path": "/tmp/blended-native-reference-3gnarff3/original-io/sources/bl_blendfile_utils.py",
+          "sha256": "f36545a691afe5a06229b394ee6c8a3537675dbaa85a987819899eea0cc61f02",
+          "upstream_path": "tests/python/bl_blendfile_utils.py"
+        }
+      ],
+      "test_callables_replaced": false,
+      "unexpected_case_ids": []
+    },
+    "output_transfer_handshake": null,
+    "suites": [
+      {
+        "discovered": 17,
+        "discovered_ids": [
+          "blended_original.TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+          "blended_original.TestBlendLibLinkAnimation.test_link",
+          "blended_original.TestBlendLibLinkIndirect.test_append",
+          "blended_original.TestBlendLibAppendBasic.test_append",
+          "blended_original.TestBlendLibAppendReuseID.test_append",
+          "blended_original.TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+          "blended_original.TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+          "blended_original.TestBlendLibPackedLinkedID.test_link_pack_basic",
+          "blended_original.TestBlendLibPackedLinkedID.test_link_pack_indirect",
+          "blended_original.TestBlendLibPackedWithAnimation.test_material_animation",
+          "blended_original.TestBlendLibLibraryReload.test_link_reload",
+          "blended_original.TestBlendLibLibraryRelocate.test_link_relocate",
+          "blended_original.TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+          "blended_original.TestBlendLibDataLibrariesLoadLink.test_libload_link",
+          "blended_original.TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+          "blended_original.TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+          "blended_original.TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibLinkSaveLoadBasic.test_link_save_load",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibLinkAnimation.test_link",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibLinkIndirect.test_append",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibAppendBasic.test_append",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibAppendReuseID.test_append",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibAppendCollectionInstances.test_dependency_instatiation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibAppendCollectionInstances.test_recusive_instantiation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibPackedLinkedID.test_link_pack_basic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibPackedLinkedID.test_link_pack_indirect",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibPackedWithAnimation.test_material_animation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibLibraryReload.test_link_reload",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibLibraryRelocate.test_link_relocate",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibDataLibrariesLoadAppend.test_libload_append",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibDataLibrariesLoadLink.test_libload_link",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibDataLibrariesLoadPack.test_libload_pack",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "blended_original.TestBlendLibDataLibrariesLoadLibOverride.test_libload_liboverride_runtime",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "c2bca5f31f13075b94b272bdb0ab16582d23f581a1bdfd1211c6896d0ea7e6ae",
+        "skipped": 0,
+        "testsRun": 17,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_blendfile_liblink.py"
+      }
+    ]
+  },
+  "blockers": [],
+  "cohort": {
+    "id": "liblink-5.2",
+    "manifest_sha256": "027da2aee878fbd44f7cc66c21b084241646aae3da4eab5d9bad2ad466f11537",
+    "expected_cases": 17,
+    "suite_kind": "original-script",
+    "extra_blender_args": [
+      "--disable-autoexec"
+    ],
+    "complete_cohort_requested": true
+  },
+  "input_fixture_transfer": {
+    "status": "verified",
+    "origin": "pinned-upstream-fixtures",
+    "root": "/home/runner/work/blended/blended/evidence/native/fixtures",
+    "files": [
+      {
+        "path": "imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg",
+        "bytes": 5165,
+        "sha256": "bc9a3996453b92ca42c299ec8b63313d6c3199bd18657554ff61dd99ad2bc279",
+        "upstream_path": "tests/files/imbuf_io/reference/jpeg-rgb-90__from__rgba08.jpg"
+      },
+      {
+        "path": "libraries_and_linking/libraries/collection_assets.blend",
+        "bytes": 103099,
+        "sha256": "4e7769c4ae5e61ee0cadb4c7f2ae653075798a6d868de848a9efb34d536b9152",
+        "upstream_path": "tests/files/libraries_and_linking/libraries/collection_assets.blend"
+      },
+      {
+        "path": "libraries_and_linking/libraries/animated_assets.blend",
+        "bytes": 104736,
+        "sha256": "d8916491576bad41220764d8ebd5617d514160cf93d6d9842920025c68de8d2e",
+        "upstream_path": "tests/files/libraries_and_linking/libraries/animated_assets.blend"
+      }
+    ],
+    "bytes": 213000
+  },
+  "input_resource_transfer": null,
+  "extraction": {
+    "members": 6546,
+    "unpacked_bytes": 1238222253,
+    "filter": "data"
+  },
+  "executable": {
+    "path": "blender-5.2.0-linux-x64/blender",
+    "sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "bytes": 174666336
+  },
+  "io_execution_root": "/tmp/blended-native-reference-3gnarff3/original-io",
+  "runner_sha256": "48aad10f06f60efe7aa6ca4c9b14a6e2372b242b53a8bc41d5a713392930e805",
+  "process": {
+    "flags": [
+      "--background",
+      "--factory-startup",
+      "--threads",
+      "1",
+      "--python-exit-code",
+      "1",
+      "--disable-autoexec"
+    ],
+    "timeout_seconds": 240,
+    "returncode": 0
+  },
+  "transport": {
+    "protocol": "marker-prefixed-json-v1",
+    "result_markers": 1,
+    "recovered_json_prefix": false,
+    "trailing_runtime_text": null
+  },
+  "generated_file_transfer": {
+    "status": "verified",
+    "origin": "native-filesystem",
+    "root": "/tmp/blended-native-reference-3gnarff3/original-io/files",
+    "files": [
+      {
+        "path": "blendfileTestBlendLibLinkIndirect.blend",
+        "bytes": 426278,
+        "sha256": "4ba60f67e4419202ff5c581c812e2a9cb377901b916e1e358bb95db61f61dd25"
+      },
+      {
+        "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend",
+        "bytes": 424693,
+        "sha256": "305ae0738ef5f0eaaf7e9c2fbb2b02cfd0594991d9dbbcf1a9ed2309fb8490bd"
+      },
+      {
+        "path": "blendfileTestBlendLibLinkSaveLoadBasic.blend1",
+        "bytes": 425485,
+        "sha256": "bc2127dc1386b98fe345b94b77fe47cf9c8360e368a306c4061d4c12bb38e72c"
+      },
+      {
+        "path": "blendfileTestBlendLibPackedLinkedID.blend",
+        "bytes": 480936,
+        "sha256": "24446bb23b462510d2eed86aa98e30b1c764d7f2323e45dc24c3898d20580623"
+      },
+      {
+        "path": "blendfileTestBlendLibPackedLinkedID.blend1",
+        "bytes": 475855,
+        "sha256": "7e10180f4e0745abaf9a335854c7a780a7b62d0824abef2d6bba9d0db42b769c"
+      },
+      {
+        "path": "blendlib_animatedTestBlendLibLinkAnimation.blend",
+        "bytes": 434704,
+        "sha256": "14f45fd85669a4d1447d3fd4699f618e4b92e447da0e649bdd870f180fc401ed"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibAppendReuseID.blend",
+        "bytes": 426253,
+        "sha256": "3322a84086dade912be85e87204295664fe6d9f6f16b2783a47a3aa79dc6cf44"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibDataLibrariesLoadAppend.blend",
+        "bytes": 426253,
+        "sha256": "54c493282ff342ef81a652294822b85a4af7592a6f4adf214b9c3c2d6e59430c"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend",
+        "bytes": 426253,
+        "sha256": "69bd63500a300c9a7d3dd1b966b6db61ff2560381cb92a6a8578abb6f3cd1953"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibDataLibrariesLoadLibOverride.blend1",
+        "bytes": 426253,
+        "sha256": "64a104a3b9a9cff990946ee3621c93f9e5a787d6fa40f7811f766bce48de628c"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibDataLibrariesLoadLink.blend",
+        "bytes": 426253,
+        "sha256": "7194b43db24794fc4e053fec8c50d44eadd330acfffba54da3a2406ccdbb0d53"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibDataLibrariesLoadPack.blend",
+        "bytes": 426253,
+        "sha256": "cc569d9cafab1cd168ecaa6239311a2fd15dd91af6d3af1d471bc0ad43593a63"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibLibraryReload.blend",
+        "bytes": 426253,
+        "sha256": "2cb96e110da23f1d246111bb030a3e6abbb160e01f36d71ccc10613042f07812"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibLibraryRelocate_relocate.blend",
+        "bytes": 426253,
+        "sha256": "3dfbd4c2114c6fdc293664c018ea3d5b7c7bc3be339dbb6797c754765c0f4e33"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibLinkSaveLoadBasic.blend",
+        "bytes": 426253,
+        "sha256": "baa8ee524f83cac592708ea53cc5133039455ab4df6254978db818b4822b792e"
+      },
+      {
+        "path": "blendlib_basicTestBlendLibPackedLinkedID.blend",
+        "bytes": 426253,
+        "sha256": "2dfe95345192f4e944fa17247a407d4a6043200279c818e71174c0945aa78de6"
+      },
+      {
+        "path": "blendlib_indirect_mainTestBlendLibAppendBasic.blend",
+        "bytes": 428310,
+        "sha256": "89ddd026bfd27df6bd71217b15afa995ab38288229ce922720b5a249fcc12983"
+      },
+      {
+        "path": "blendlib_indirect_mainTestBlendLibLinkIndirect.blend",
+        "bytes": 428310,
+        "sha256": "4d4c761423d0f5d89f9101b2803c15e5f33c174b170b16c40864c0421c883090"
+      },
+      {
+        "path": "blendlib_indirect_mainTestBlendLibPackedLinkedID.blend",
+        "bytes": 478064,
+        "sha256": "af8688f67dd1e8253fb9739d4306c67f5b43284f94c1ac638d547c4c3a4c7b9a"
+      },
+      {
+        "path": "blendlib_indirect_materialTestBlendLibAppendBasic.blend",
+        "bytes": 470759,
+        "sha256": "a9d9a4fc69677825984797e3687fa6293a480273579f6c287f7a94f9b23f8b75"
+      },
+      {
+        "path": "blendlib_indirect_materialTestBlendLibLinkIndirect.blend",
+        "bytes": 470759,
+        "sha256": "6ad5843ec01c1bda615a37ad66414723c979d522aeff635c193093cd40791826"
+      },
+      {
+        "path": "blendlib_indirect_materialTestBlendLibPackedLinkedID.blend",
+        "bytes": 470759,
+        "sha256": "684b8b5089f46ba9cd3e69a07c8c85765097f5714fec154712b04e839ec3d1a2"
+      }
+    ],
+    "bytes": 9677442,
+    "semantic_equivalence_verified": false
+  },
+  "reason": "All selected unchanged upstream test files passed on the checksum-verified official Blender 5.2.0 native release, with matching reported upstream build identity.",
+  "log": {
+    "path": "native-reference.log",
+    "sha256": "da4519355fac377f2cf5677c071920e1c018585e3562107224267e6fc1b22426",
+    "bytes": 122896
+  }
+}
