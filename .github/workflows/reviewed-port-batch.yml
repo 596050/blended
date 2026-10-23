@@ -1,0 +1,65 @@
+name: Apply reviewed numeric and text test batch
+on:
+  push:
+    branches: [compat/numerics-and-text]
+    paths: ['.porting/next.json.gz']
+permissions:
+  contents: write
+concurrency:
+  group: reviewed-numerics-text-batch
+  cancel-in-progress: false
+jobs:
+  test-first:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Apply exact reviewed files, refusing stale preimages or workflow changes
+        run: |
+          python3 - <<'PY'
+          import gzip,hashlib,json,pathlib
+          bundle=json.loads(gzip.decompress(pathlib.Path('.porting/next.json.gz').read_bytes()))
+          seen=set()
+          for entry in bundle['files']:
+              p=pathlib.Path(entry['path'])
+              assert not p.is_absolute() and '..' not in p.parts and p.parts[0] in ('tools','crates','tests','compatibility','docs','evidence'),p
+              assert p.as_posix() not in seen,p
+              seen.add(p.as_posix())
+              before=hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+              assert before==entry['before_sha256'],(p,before,entry['before_sha256'])
+              data=entry['content'].encode()
+              assert hashlib.sha256(data).hexdigest()==entry['after_sha256']
+          for entry in bundle['files']:
+              p=pathlib.Path(entry['path']);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(entry['content'])
+          PY
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_numerics_text_tests.py
+      - name: Commit the exact test sources before running their implementations
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools tests compatibility docs evidence
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Land reviewed numeric/text batch; execution result follows in this run'
+          git push origin HEAD:refs/heads/compat/numerics-and-text
+      - name: Execute tests without masking test-first failures
+        run: |
+          set -o pipefail
+          mkdir -p evidence/numerics-text-tdd
+          git rev-parse HEAD > evidence/numerics-text-tdd/commit.txt
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/numerics-text-tdd/native.log
+      - name: Build real WebAssembly
+        run: cargo build --locked --release --target wasm32-unknown-unknown -p blended-core
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: numerics-text-tdd
+          path: evidence/numerics-text-tdd/
+          retention-days: 3
