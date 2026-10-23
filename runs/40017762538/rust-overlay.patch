@@ -162,6 +162,23 @@
  
  // source/blender/blenlib/tests/BLI_math_geom_test.cc:12
  pub fn math_geom__DistToLine2DSimple()->Report{let mut report=Report::default();
+--- heap_cases.rs
++++ shadow/heap_cases.rs
+@@ -10,10 +10,10 @@
+  pub fn check(&mut self,p:bool,expression:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {expression}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)==($b),stringify!($a == $b),line!());}};}
+-macro_rules! le {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)<=($b),stringify!($a <= $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! le {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::le($a,$b),stringify!($a <= $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ // range_fl preserves the reverse write order of the original helper. The safe
+ // slice replaces a pointer that was decremented past the beginning after its last use.
+ fn range_fl(values:&mut [f32],size:i32){let mut i=size;while i>0{i-=1;values[i as usize]=i as f32;}}
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
