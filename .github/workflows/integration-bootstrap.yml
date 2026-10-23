@@ -1,0 +1,43 @@
+name: Compile the prepared integrated Blender test ports
+on:
+  push:
+    branches: [compat/integrated-accurate-tests]
+    paths: ['integration/**', 'tools/bootstrap_integration.py', '.github/workflows/integration-bootstrap.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Apply exact source-locked integration
+        run: python3 tools/bootstrap_integration.py
+      - name: Compile and execute the combined native tests
+        run: |
+          mkdir -p evidence/integrated-build
+          set -o pipefail
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/integrated-build/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core 2>&1 | tee evidence/integrated-build/wasm-build.txt
+      - name: Commit only validated source changes on the development branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools tests compatibility NOTICE.md evidence/integrated-build
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Integrate unique test families; combined native compilation passed; full conformance still required'
+          git push origin HEAD:refs/heads/compat/integrated-accurate-tests
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integrated-build-evidence
+          path: evidence/integrated-build/
+          retention-days: 1
