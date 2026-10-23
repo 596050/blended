@@ -1,0 +1,30 @@
+name: Register enlarged subset accounting without changing original assertions
+on:
+  push:
+    branches: [compat/heaps-and-priority-queues]
+    paths: ['tools/finalise_heap_guards.py', '.github/workflows/heap-accounting-registration.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Reconcile the new independent source contracts before changing totals
+        run: |
+          set -euo pipefail
+          python3 tools/finalise_heap_guards.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit only reviewed infrastructure accounting updates
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add tests/test_collection_port.py tests/test_extended_port.py tests/test_numeric_types.py tests/test_geometry_math_port.py tests/test_port_workbench.py tests/test_sampling_integration.py tests/test_sampling_port.py
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Reconcile subset guards with 367 unique source-locked cases and 33104 assertion events; full suite remains incomplete'
+          git push origin HEAD:refs/heads/compat/heaps-and-priority-queues
