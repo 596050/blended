@@ -1,0 +1,46 @@
+name: Import hash-verified complete-file test ports
+on:
+  push:
+    branches: [compat/complete-families]
+    paths: ['.port-transfer/**', 'tools/import_reviewed_extended_patch.py', '.github/workflows/extended-port-bootstrap.yml']
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Materialise reviewed source and reproduce generated ports exactly
+        run: |
+          set -euo pipefail
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/import_reviewed_extended_patch.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+          cargo test --locked --workspace --all-targets > evidence/extended-tdd/ci-native.txt 2>&1
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core
+          python3 -m pip install playwright==1.57.0
+          python3 tools/verify_zero_assertion_case.py --output evidence/extended-tdd/ci-zero-assertion.json
+      - name: Commit plain source with content-only permissions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git rm -r .port-transfer tools/import_reviewed_extended_patch.py
+          git add crates tools tests compatibility evidence/extended-tdd
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Add 80 complete string/bit test ports with 211 passing Rust cases; independent C++ fidelity pending'
+          git push origin HEAD:refs/heads/compat/complete-families
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: extended-port-import-evidence
+          path: evidence/extended-tdd/
+          retention-days: 1
