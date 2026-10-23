@@ -63,6 +63,13 @@ inline void pointer_value(std::ostream &out,const uint64_t *v) {
 }
 template<> struct Encoder<uint64_t*> {static void write(std::ostream &out,uint64_t *v){pointer_value(out,v);}};
 template<> struct Encoder<const uint64_t*> {static void write(std::ostream &out,const uint64_t *v){pointer_value(out,v);}};
+// In pointer comparisons C arrays decay to their first element; do not encode their contents.
+template<size_t N> struct Encoder<uint64_t[N]> {
+ static void write(std::ostream &out,const uint64_t(&v)[N]){pointer_value(out,v);}
+};
+template<> struct Encoder<blender::bits::MutableBitRef> {
+ static void write(std::ostream &out,const blender::bits::MutableBitRef &v){value(out,bool(v));}
+};
 template<> struct Encoder<blender::bits::BitRef> {
  static void write(std::ostream &out,const blender::bits::BitRef &v){value(out,bool(v));}
 };
