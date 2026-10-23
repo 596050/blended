@@ -19,7 +19,10 @@ def summary(cases):
     return {s:counts[s] for s in STATUSES}
 def _mask(text):
     pattern=r'R"([^ ()\\\t\r\n]{0,16})\([\s\S]*?\)\1"|//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\''
-    return re.sub(pattern,lambda m:''.join('\n' if c=='\n' else ' ' for c in m[0]),text)
+    # C++ digit separators are not character-literal delimiters. Earlier-starting
+    # comments and strings still consume their bodies before numeric tokens.
+    numeric=r"\b(?:0[xX][0-9a-fA-F](?:[0-9a-fA-F]|'[0-9a-fA-F])*|0[bB][01](?:[01]|'[01])*|[0-9](?:[0-9]|'[0-9])*)(?:[uUlLzZ]*)\b"
+    return re.sub(numeric+'|'+pattern,lambda m:''.join('\n' if c=='\n' else ' ' for c in m[0]),text)
 def _case(path,line,identity,kind,expanded=False):
     return dict(path=path,line=line,identity=identity,kind=kind,requires_runtime_expansion=expanded,execution='not_run',port_status='not_ported')
 def scan_cpp(text,path):
