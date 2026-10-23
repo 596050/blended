@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "source_sha": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+  "run_id": "39986612291",
+  "qualification_job_result": "failure",
+  "engine_job_lookup_unavailable": false,
+  "engines": [
+    {
+      "engine": "native",
+      "receipt_present": true,
+      "jobs": [
+        {
+          "id": 120527390216,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "missing_report_is_pass": false
+    },
+    {
+      "engine": "browser",
+      "receipt_present": true,
+      "jobs": [
+        {
+          "id": 120527390419,
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ],
+      "missing_report_is_pass": false
+    }
+  ],
+  "files": [
+    {
+      "path": "candidate-data-native/native-reference.log",
+      "original": {
+        "bytes": 17793,
+        "sha256": "e1126a2185d71c16e1b5fc39bc22a5536a3be6bb8f5bc64f618860881ac3a595"
+      },
+      "truncated": false,
+      "preserved_bytes": 17793,
+      "preserved_sha256": "e1126a2185d71c16e1b5fc39bc22a5536a3be6bb8f5bc64f618860881ac3a595"
+    },
+    {
+      "path": "candidate-data-native/native_reference.json",
+      "original": {
+        "bytes": 24325,
+        "sha256": "e764be0cdcc26f404cf3d9c54acd392ceb139bd12e2ff08d15a06f09282511d8"
+      },
+      "truncated": false,
+      "preserved_bytes": 24325,
+      "preserved_sha256": "e764be0cdcc26f404cf3d9c54acd392ceb139bd12e2ff08d15a06f09282511d8"
+    },
+    {
+      "path": "candidate-data-browser/browser.log",
+      "original": {
+        "bytes": 23687,
+        "sha256": "5924330e72a62202d18915c7b585514b2e8d344df03e7767273d3822f0f8a329"
+      },
+      "truncated": false,
+      "preserved_bytes": 23687,
+      "preserved_sha256": "5924330e72a62202d18915c7b585514b2e8d344df03e7767273d3822f0f8a329"
+    },
+    {
+      "path": "candidate-data-browser/http.log",
+      "original": {
+        "bytes": 764,
+        "sha256": "9303e25c5a5dba977cfcb05702613f8842f2c0370a4f27e54b6d85d7576f2675"
+      },
+      "truncated": false,
+      "preserved_bytes": 764,
+      "preserved_sha256": "9303e25c5a5dba977cfcb05702613f8842f2c0370a4f27e54b6d85d7576f2675"
+    },
+    {
+      "path": "candidate-data-browser/qualification.json",
+      "original": {
+        "bytes": 26305,
+        "sha256": "d2ee5dca43c16a3b3e2e042e5fad54fefc67f5ea0530c46405913dc318b8942f"
+      },
+      "truncated": false,
+      "preserved_bytes": 26305,
+      "preserved_sha256": "d2ee5dca43c16a3b3e2e042e5fad54fefc67f5ea0530c46405913dc318b8942f"
+    }
+  ],
+  "deployed": false,
+  "full_feature_parity": false,
+  "scope": "Available selected-cohort receipts; a missing engine report remains missing."
+}
