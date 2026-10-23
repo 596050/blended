@@ -1,23 +1,21 @@
 {
-  "url": "https://rawcdn.githack.com/596050/blended/daca28141e0778e0cfa7ee12cde12081e9eb7470/index.html",
-  "expected_case_count": 245,
-  "expected_source_commit": "cf2cb3fa4f8814151d7f4ab7efdfb70d2931f920",
-  "started_utc": "2026-10-23T09:47:21.681919+00:00",
+  "url": "https://rawcdn.githack.com/596050/blended/1593c12cba6e3ec0434251fd0e897b9d0afffba3/index.html",
+  "expected_case_count": 211,
+  "expected_source_commit": "7e6411a031203a4976517575b23ca8e889e9a408",
+  "started_utc": "2026-10-23T13:09:47.653753+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "cf2cb3fa4f8814151d7f4ab7efdfb70d2931f920",
+    "source_commit": "7e6411a031203a4976517575b23ca8e889e9a408",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 245,
+    "passed": 211,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
     "collection_assertions": 521,
-    "numerics_text_assertions": 450,
-    "matrix_type_assertions": 289,
     "cases": [
       {
         "id": "math_vector.ClampVecWithFloats",
@@ -937,808 +935,572 @@
         "assertions": 8
       },
       {
-        "id": "math_vec_types.ScalarConstructorUnsigned",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.ScalarConstructorInt",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.ScalarConstructorFloat",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.ScalarConstructorDouble",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.MultiScalarConstructorVec2",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.MultiScalarConstructorVec3",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 3
-      },
-      {
-        "id": "math_vec_types.MultiScalarConstructorVec4",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 4
-      },
-      {
-        "id": "math_vec_types.MixedScalarVectorConstructorVec3",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_vec_types.MixedScalarVectorConstructorVec4",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 24
-      },
-      {
-        "id": "math_vec_types.ComponentMasking",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.PointerConversion",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 3
-      },
-      {
-        "id": "math_vec_types.PointerArrayConversion",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 3
-      },
-      {
-        "id": "math_vec_types.VectorTypeConversion",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.Add",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 4
-      },
-      {
-        "id": "math_vec_types.AddFloatByVector",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_vec_types.Sub",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_vec_types.SubFloatByVector",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_vec_types.Mul",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 4
-      },
-      {
-        "id": "math_vec_types.MulFloatByVector",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_vec_types.Divide",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.DivideFloatByVector",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.DivideFloatByVectorSmall",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 2
-      },
-      {
-        "id": "math_vec_types.SwizzleReinterpret",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 8
-      },
-      {
-        "id": "math_vec_types.SwizzleFloat2",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 10
-      },
-      {
-        "id": "math_vec_types.SwizzleFloat3",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 30
-      },
-      {
-        "id": "math_vec_types.SwizzleFloat4",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 12
-      },
-      {
-        "id": "math_vec_types.SwizzleAssignment",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 8
-      },
-      {
-        "id": "math_vec_types.SwizzleOperators",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 44
-      },
-      {
-        "id": "math_vec_types.SwizzleComparison",
-        "group": "numerics_text",
-        "passed": true,
-        "code": 1,
-        "assertions": 8
-      },
-      {
         "id": "string_ref_null.DefaultConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref_null.CStringConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref_null.CStringLengthConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref_null.CompareEqual",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.CompareEqualCharPtr1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.CompareEqualCharPtr2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.CompareEqualString1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.CompareEqualString2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.CompareEqualStringRef1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.CompareEqualStringRef2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref_null.Constexpr",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.DefaultConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.StartEndConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 3
       },
       {
         "id": "string_ref.StartEndConstructorNullptr",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.StartEndConstructorSame",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.CStringConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.PointerWithLengthConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.StdStringConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.SpanConstructor",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.SubscriptOperator",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 6
       },
       {
         "id": "string_ref.ToStdString",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.Print",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.Add",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.AddCharPtr1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.AddCharPtr2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.AddString1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.AddString2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.CompareEqual",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.CompareEqualCharPtr1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.CompareEqualCharPtr2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.CompareEqualString1",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.CompareEqualString2",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.Iterate",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 5
       },
       {
         "id": "string_ref.StartsWith",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 7
       },
       {
         "id": "string_ref.EndsWith",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 7
       },
       {
         "id": "string_ref.DropPrefixN",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.DropPrefixLargeN",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.DropKnownPrefix",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.DropSuffix",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.DropSuffixLargeN",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 2
       },
       {
         "id": "string_ref.TrimArbitrary",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 7
       },
       {
         "id": "string_ref.TrimWhitespace",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.TrimCharacter",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.TrimLeftArbitrary",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 9
       },
       {
         "id": "string_ref.TrimLeftWhitespace",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.TrimRightArbitrary",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 9
       },
       {
         "id": "string_ref.TrimRightWhitespace",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
         "id": "string_ref.Substr",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 6
       },
       {
         "id": "string_ref.CopyUtf8Truncated",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 12
       },
       {
         "id": "string_ref.CopyBytesTruncated",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 12
       },
       {
         "id": "string_ref.FromStringView",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.ToStringView",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
         "id": "string_ref.Constexpr",
-        "group": "numerics_text",
+        "group": "strings",
         "passed": true,
         "code": 1,
         "assertions": 1
       },
       {
-        "id": "color.ThemeByteToFloat",
-        "group": "numerics_text",
+        "id": "bit_span.DefaultConstructor",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
-        "id": "color.SrgbStraightFloatToByte",
-        "group": "numerics_text",
+        "id": "bit_span.Iteration",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 108
+      },
+      {
+        "id": "bit_span.MutableIteration",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bit_span.SubscriptOperator",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "bit_span.RangeConstructor",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "bit_span.Set",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
-        "id": "color.SrgbStraightToSceneLinearPremultiplied",
-        "group": "numerics_text",
+        "id": "bit_span.SetEmpty",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 0
+      },
+      {
+        "id": "bit_span.SetSliced",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1280
+      },
+      {
+        "id": "bit_span.IsBounded",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 19
+      },
+      {
+        "id": "bit_span.CopyFrom",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 100
+      },
+      {
+        "id": "bit_span.InPlaceOr",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6400
+      },
+      {
+        "id": "bit_span.InPlaceAnd",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6400
+      },
+      {
+        "id": "bit_span.ForEach1",
+        "group": "bit_spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "bit_span.ForEach1Cancel",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
         "assertions": 4
       },
       {
-        "id": "color.SceneLinearStraightToPremultiplied",
-        "group": "numerics_text",
+        "id": "bit_span.FindFirst1Index",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 7
       },
       {
-        "id": "color.SceneLinearPremultipliedToStraight",
-        "group": "numerics_text",
+        "id": "bit_span.FindFirst0Index",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 5
       },
       {
-        "id": "color.SceneLinearStraightSrgbFloat",
-        "group": "numerics_text",
+        "id": "bit_span.or_bools_into_bits",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 10
       },
       {
-        "id": "color.SceneLinearPremultipliedToSrgbFloat",
-        "group": "numerics_text",
+        "id": "bit_span.to_index_ranges_small",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 3
       },
       {
-        "id": "color.SceneLinearStraightSrgbByte",
-        "group": "numerics_text",
+        "id": "bit_span.to_index_ranges_all_ones",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 2
       },
       {
-        "id": "color.SceneLinearPremultipliedToSrgbByte",
-        "group": "numerics_text",
+        "id": "bit_group_vector.DefaultConstruct",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 1
       },
       {
-        "id": "color.SceneLinearByteEncoding",
-        "group": "numerics_text",
+        "id": "bit_group_vector.Construct",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 3
       },
       {
-        "id": "color.SceneLinearByteDecoding",
-        "group": "numerics_text",
+        "id": "bit_group_vector.CopyConstruct",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 62
       },
       {
-        "id": "math_matrix_types.DefaultConstructor",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 4
-      },
-      {
-        "id": "math_matrix_types.StaticConstructor",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 16
-      },
-      {
-        "id": "math_matrix_types.VectorConstructor",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_matrix_types.SmallerMatrixConstructor",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 9
-      },
-      {
-        "id": "math_matrix_types.ComponentMasking",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 4
-      },
-      {
-        "id": "math_matrix_types.PointerConversion",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 4
-      },
-      {
-        "id": "math_matrix_types.TypeConversion",
-        "group": "matrix_types",
+        "id": "bit_group_vector.foreachAnd",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
         "assertions": 12
       },
       {
-        "id": "math_matrix_types.PointerArrayConversion",
-        "group": "matrix_types",
+        "id": "bitmap.empty_is_all_unset",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 10
       },
       {
-        "id": "math_matrix_types.ComponentAccess",
-        "group": "matrix_types",
+        "id": "bitmap.find_first_unset_empty",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 4
+        "assertions": 1
       },
       {
-        "id": "math_matrix_types.AddOperator",
-        "group": "matrix_types",
+        "id": "bitmap.find_first_unset_full",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 20
+        "assertions": 1
       },
       {
-        "id": "math_matrix_types.SubtractOperator",
-        "group": "matrix_types",
+        "id": "bitmap.find_first_unset_middle",
+        "group": "bit_spans",
         "passed": true,
         "code": 1,
-        "assertions": 20
-      },
-      {
-        "id": "math_matrix_types.MultiplyOperator",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 6
-      },
-      {
-        "id": "math_matrix_types.MatrixMultiplyOperator",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 22
-      },
-      {
-        "id": "math_matrix_types.VectorMultiplyOperator",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 5
-      },
-      {
-        "id": "math_matrix_types.ViewConstructor",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 8
-      },
-      {
-        "id": "math_matrix_types.ViewFromCstyleMatrix",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 32
-      },
-      {
-        "id": "math_matrix_types.ViewAssignment",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 48
-      },
-      {
-        "id": "math_matrix_types.ViewScalarOperators",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 36
-      },
-      {
-        "id": "math_matrix_types.ViewMatrixMultiplyOperator",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 8
-      },
-      {
-        "id": "math_matrix_types.ViewVectorMultiplyOperator",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 5
-      },
-      {
-        "id": "math_matrix_types.ViewMatrixNormalize",
-        "group": "matrix_types",
-        "passed": true,
-        "code": 1,
-        "assertions": 16
+        "assertions": 2
       }
     ],
     "errors": [],
-    "wasm_sha256": "455514d955e097f5910c90babb8b7d626a9c04dd091c146753236862498ae219",
+    "string_assertions": 191,
+    "bit_span_assertions": 14460,
+    "wasm_sha256": "dee47c30994754f4052f85fe73b5fcb7a471ddb51ef862ef5bfe2dc4b49f7ca5",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-23T09:47:26.484064+00:00"
+  "finished_utc": "2026-10-23T13:10:00.407745+00:00"
 }
