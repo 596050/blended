@@ -60,6 +60,7 @@ pub fn run_all()->String {
  for (id,run,count) in crate::bit_span_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
  for (id,run,count) in crate::numeric_type_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  for (id,run,count) in crate::matrix_type_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
+ for (id,run,count) in crate::geometry_math_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

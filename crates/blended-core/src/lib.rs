@@ -120,3 +120,18 @@ pub extern "C" fn blended_matrix_types_run_case(index:u32)->i32 {
 pub extern "C" fn blended_matrix_types_assertion_count(index:u32)->u32 {
     matrix_type_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
 }
+
+pub mod geometry_math;
+pub mod geometry_math_cases;
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_geometry_math_case_count()->u32 {geometry_math_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_geometry_math_run_case(index:u32)->i32 {
+    geometry_math_cases::CASES.get(index as usize).map(|(_,run,count)|{
+        let r=run();i32::from(r.passed() && r.assertions==*count)
+    }).unwrap_or(-1)
+}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_geometry_math_assertion_count(index:u32)->u32 {
+    geometry_math_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
+}

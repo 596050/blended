@@ -136,6 +136,7 @@ inline void feq(float a,float b,const char *ea,const char *eb) {record("FLOAT_EQ
 inline void near(double a,double b,double e,const char *ea,const char *eb) {record("NEAR",bool(::testing::internal::DoubleNearPredFormat("a","b","e",a,b,e)),ea,eb,a,b,e);EXPECT_NEAR(a,b,e);}
 inline void yes(bool v){record("TRUE",v,nullptr,nullptr,v);EXPECT_TRUE(v);}
 inline void no(bool v){record("FALSE",!v,nullptr,nullptr,v);EXPECT_FALSE(v);}
+inline bool fatal_true(bool v){record("ASSERT_TRUE",v,nullptr,nullptr,v);return v;}
 }
 #undef EXPECT_EQ
 #undef EXPECT_GT
@@ -151,3 +152,7 @@ inline void no(bool v){record("FALSE",!v,nullptr,nullptr,v);EXPECT_FALSE(v);}
 #define EXPECT_FALSE(v) ::blended_fidelity::no(bool(v))
 
 #define EXPECT_EQ_SPAN ::blended_fidelity::span_eq
+
+// Keep the fatal assertion at the test call site, not inside a returning wrapper.
+#undef ASSERT_TRUE
+#define ASSERT_TRUE(v) GTEST_ASSERT_TRUE(::blended_fidelity::fatal_true(bool(v)))
