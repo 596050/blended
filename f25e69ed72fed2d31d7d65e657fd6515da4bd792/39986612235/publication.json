@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "source_sha": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+  "run_id": "39986612235",
+  "qualification_job_result": "failure",
+  "engine_job_lookup_unavailable": false,
+  "engines": [
+    {
+      "engine": "native",
+      "receipt_present": true,
+      "jobs": [
+        {
+          "id": 120527391556,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "missing_report_is_pass": false
+    },
+    {
+      "engine": "browser",
+      "receipt_present": true,
+      "jobs": [
+        {
+          "id": 120527391667,
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ],
+      "missing_report_is_pass": false
+    }
+  ],
+  "files": [
+    {
+      "path": "candidate-library-native/native-reference.log",
+      "original": {
+        "bytes": 122896,
+        "sha256": "5319fa0a534eafdd388698228db9b8178c562f20a36972629785e7afb82c5475"
+      },
+      "truncated": false,
+      "preserved_bytes": 122896,
+      "preserved_sha256": "5319fa0a534eafdd388698228db9b8178c562f20a36972629785e7afb82c5475"
+    },
+    {
+      "path": "candidate-library-native/native_reference.json",
+      "original": {
+        "bytes": 150860,
+        "sha256": "658a2a6ee21e7c993269e2ea1fb6e5574cacf04f2dd1587285c1ff509b2705a6"
+      },
+      "truncated": false,
+      "preserved_bytes": 150860,
+      "preserved_sha256": "658a2a6ee21e7c993269e2ea1fb6e5574cacf04f2dd1587285c1ff509b2705a6"
+    },
+    {
+      "path": "candidate-library-browser/browser.log",
+      "original": {
+        "bytes": 126432,
+        "sha256": "ffd4af1b8eb27f78f40e75596e86de83b6b1ac57fe3a4a49ca4797928d00ee78"
+      },
+      "truncated": false,
+      "preserved_bytes": 126432,
+      "preserved_sha256": "ffd4af1b8eb27f78f40e75596e86de83b6b1ac57fe3a4a49ca4797928d00ee78"
+    },
+    {
+      "path": "candidate-library-browser/http.log",
+      "original": {
+        "bytes": 764,
+        "sha256": "7a56a8fa74726536920d3a382766ce093963f26f99dc9a232202b040c17884c5"
+      },
+      "truncated": false,
+      "preserved_bytes": 764,
+      "preserved_sha256": "7a56a8fa74726536920d3a382766ce093963f26f99dc9a232202b040c17884c5"
+    },
+    {
+      "path": "candidate-library-browser/qualification.json",
+      "original": {
+        "bytes": 153501,
+        "sha256": "16a25f209ae303c895fee9b799e78117240f5dedea81456e2b16b4b4655b85a9"
+      },
+      "truncated": false,
+      "preserved_bytes": 153501,
+      "preserved_sha256": "16a25f209ae303c895fee9b799e78117240f5dedea81456e2b16b4b4655b85a9"
+    }
+  ],
+  "deployed": false,
+  "full_feature_parity": false,
+  "scope": "Original 17-method library cohort and verified fixture/output transport only; cross-engine persistent-library exchange is not yet executed."
+}
