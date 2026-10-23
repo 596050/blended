@@ -1,0 +1,41 @@
+{
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_assertion": "source/blender/blenlib/tests/BLI_math_vector_test.cc:219",
+  "target_sha256": "5d67387a38444edb1e1fadce6f48abd84899c5c9eecfab07138920844471193e",
+  "complete_blender_test_port": false,
+  "checks": [
+    {
+      "target": "native",
+      "negative_mutation": false,
+      "returncode": 0,
+      "passed": true,
+      "log": "static-native-positive.log",
+      "log_sha256": "30a9055a381a7f8e45ddfe06544f2bb90b6da88403cea8c3b45de3bea5a3994a"
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "negative_mutation": false,
+      "returncode": 0,
+      "passed": true,
+      "log": "static-wasm32-unknown-unknown-positive.log",
+      "log_sha256": "79fb0cc2ac72cdd55a542553144435fbcdf5a633c3ba737b295f8edc0b671359"
+    },
+    {
+      "target": "native",
+      "negative_mutation": true,
+      "returncode": 101,
+      "passed": true,
+      "log": "static-native-negative.log",
+      "log_sha256": "75443e8726a194ca6f8a18198d7b1ac1a8ab136196aeebdf19cb47719e252d17"
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "negative_mutation": true,
+      "returncode": 101,
+      "passed": true,
+      "log": "static-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "75443e8726a194ca6f8a18198d7b1ac1a8ab136196aeebdf19cb47719e252d17"
+    }
+  ],
+  "status": "passed"
+}

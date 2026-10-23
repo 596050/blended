@@ -1,0 +1,14 @@
+[1m[92m    Checking[0m blended-core v0.1.0 (/tmp/blended-static-_ac1cuq7/crates/blended-core)
+[1m[91merror[E0080][0m[1m: evaluation panicked: Blender vector signed-zero hash invariant[0m
+  [1m[94m--> [0mcrates/blended-core/src/compile_time_cases.rs:6:41
+   [1m[94m|[0m
+ [1m[94m6[0m [1m[94m|[0m   pub const VECTOR_SIGNED_ZERO_HASH: () = assert!(
+   [1m[94m|[0m [1m[91m _________________________________________^[0m
+ [1m[94m7[0m [1m[94m|[0m [1m[91m|[0m     crate::hashing::hash_float3([0.0_f32,0.0_f32,0.0_f32]) ==
+ [1m[94m8[0m [1m[94m|[0m [1m[91m|[0m     crate::hashing::hash_float3([-0.0_f32,-0.0_f32,-0.0_f32]),
+ [1m[94m9[0m [1m[94m|[0m [1m[91m|[0m     "Blender vector signed-zero hash invariant"
+[1m[94m10[0m [1m[94m|[0m [1m[91m|[0m );
+   [1m[94m|[0m [1m[91m|_^[0m [1m[91mevaluation of `compile_time_cases::VECTOR_SIGNED_ZERO_HASH` failed here[0m
+
+[1mFor more information about this error, try `rustc --explain E0080`.[0m
+[1m[91merror[0m: could not compile `blended-core` (lib) due to 1 previous error

@@ -1,0 +1,9 @@
+{
+  "problem": "An integer-only separator fix was insufficient for C++ decimal/hex floating literals and user-defined numeric suffixes.",
+  "reference_grammar": "https://eel.is/c++draft/lex.ppnumber",
+  "observed_before_fix": {"local_cases": 7, "failed": 4, "passed": 3},
+  "observed_after_fix": {"same_local_cases": 7, "failed": 0, "passed": 7},
+  "implementation": "Mask complete preprocessing-number tokens before treating an interior apostrophe as a character-literal delimiter. Earlier comments and strings still win lexical masking.",
+  "scope": "Conservative source scan; not a complete C++ frontend or runtime enumeration.",
+  "complete_blender_test_port": false
+}
