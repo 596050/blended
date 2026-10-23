@@ -43,6 +43,12 @@ def evaluate(inventory,ports,runtime=None,execution=None):
     if len(set(runtime_keys))!=len(runtime_keys):blockers.append('duplicate_runtime_case')
     runtime_missing=set(runtime_keys)-set(mapped)
     if runtime_missing:blockers.append('unported_runtime_cases')
+    runtime_denominator_known=(runtime.get('commit')==inventory.get('commit') and
+        runtime.get('complete') is True and not runtime.get('unresolved') and
+        bool(runtime_keys) and len(set(runtime_keys))==len(runtime_keys) and
+        all(runtime.get('families',{}).get(f,{}).get('complete') is True and
+            re.fullmatch('[0-9a-f]{64}',runtime.get('families',{}).get(f,{}).get('raw_evidence_sha256',''))
+            for f in FAMILIES))
     fixtures=inventory.get('fixtures',[])
     unavailable=[f for f in fixtures if f.get('status')!='verified']
     if inventory.get('fixture_completeness')!='verified' or unavailable:blockers.append('fixture_completeness_not_verified')
@@ -51,7 +57,11 @@ def evaluate(inventory,ports,runtime=None,execution=None):
     conformance=not blockers and bool(mapped) and all(all(executed.get(k,{}).get(t)=='passed' for t in ('native','wasm','deployed')) for k in mapped)
     return dict(schema=2,reference_commit=inventory.get('commit'),complete_test_port=not blockers,test_conformance_complete=conformance,feature_parity=False,
                 source_candidates=len(cases),mapped_source_candidates=len(mapped),unported_source_candidates=len(missing),
-                unported_runtime_cases=len(runtime_missing),unavailable_fixture_count=len(unavailable),
+                unported_source_declarations=sum(key(c) not in mapped for c in cases),
+                runtime_denominator_known=bool(runtime_denominator_known),
+                runtime_reference_commit=runtime.get('commit'),
+                observed_unported_runtime_cases=len(runtime_missing),
+                unported_runtime_cases=len(runtime_missing) if runtime_denominator_known else None,unavailable_fixture_count=len(unavailable),
                 declaration_kinds=dict(Counter(c['kind'] for c in cases)),blockers=sorted(set(blockers)),cases=ledger,
                 note='Counts are source candidates, including conditional and third-party declarations, NOT a full runtime denominator. Mapping and execution are separate. Assertion equivalence requires review; hashes detect subsequent drift. Test conformance does not establish whole-application feature parity.')
 

@@ -30,11 +30,23 @@ def scan_cpp(text,path):
     clean=_mask(text);results=[]
     pattern=r'\b(TEST|TEST_F|TEST_P|TYPED_TEST|TYPED_TEST_P)\s*\(\s*([A-Za-z_]\w*)\s*,\s*([A-Za-z_]\w*)\s*\)'
     for m in re.finditer(pattern,clean):
-        results.append(_case(path,clean.count('\n',0,m.start())+1,f'{m[2]}.{m[3]}',m[1],m[1] in {'TEST_P','TYPED_TEST','TYPED_TEST_P'} or m[2].isupper()))
+        row=_case(path,clean.count('\n',0,m.start())+1,f'{m[2]}.{m[3]}',m[1],m[1] in {'TEST_P','TYPED_TEST','TYPED_TEST_P'} or m[2].isupper())
+        row['column']=m.start()-clean.rfind('\n',0,m.start());results.append(row)
     for m in re.finditer(r'\b(?:static_assert|BLI_STATIC_ASSERT(?:_ALIGN)?)\s*\(',clean):
         line=clean.count('\n',0,m.start())+1
-        results.append(_case(path,line,f'static_assert@{line}','static_assert'))
-    return sorted(results,key=lambda c:c['line'])
+        row=_case(path,line,f'static_assert@{line}','static_assert')
+        row['column']=m.start()-clean.rfind('\n',0,m.start());results.append(row)
+    # Keep every declaration. Only ambiguous same-line identities gain a column
+    # suffix; existing single-declaration mappings remain stable. This is source
+    # disambiguation, not resolution of duplicate runtime registrations.
+    repeated=Counter((c['line'],c['identity']) for c in results)
+    for c in results:
+        c['declared_identity']=c['identity']
+        if repeated[c['line'],c['identity']]>1:
+            c['identity']+=f":column{c['column']}"
+            c['source_identity_disambiguated']=True
+            c['requires_runtime_expansion']=True
+    return sorted(results,key=lambda c:(c['line'],c['column']))
 def scan_python(text,path):
     tree=ast.parse(text,filename=path);found=[]
     def walk(node,scope):
