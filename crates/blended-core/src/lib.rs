@@ -61,3 +61,5 @@ pub extern "C" fn blended_collections_assertion_count(index:u32)->u32 {
 
 pub mod hashing;
 pub mod compile_time_cases;
+
+pub mod numerics_text_cases;
