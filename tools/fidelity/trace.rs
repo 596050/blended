@@ -32,6 +32,8 @@ impl Value for crate::string_refs::StringRef<'_>{fn encode(&self)->String{bytes_
 impl Value for crate::string_refs::StringRefNull<'_>{fn encode(&self)->String{bytes_value(self.as_bytes())}}
 impl Value for crate::string_refs::Bytes{fn encode(&self)->String{bytes_value(self.as_ref())}}
 pub fn eq_refs<A:PartialEq<B>+Value+?Sized,B:Value+?Sized>(a:&A,b:&B)->bool{let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p}
+impl<T:Value,const N:usize> Value for crate::numeric_vectors::V<T,N>{fn encode(&self)->String{self.0.encode()}}
+impl<T:Value,const C:usize,const R:usize> Value for crate::matrix_types::M<T,C,R>{fn encode(&self)->String{self.0.encode()}}
 pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
@@ -56,6 +58,8 @@ pub fn run_all()->String {
  for (id,run,count) in crate::collection_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
  for (id,run,count) in crate::string_ref_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
  for (id,run,count) in crate::bit_span_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
+ for (id,run,count) in crate::numeric_type_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
+ for (id,run,count) in crate::matrix_type_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

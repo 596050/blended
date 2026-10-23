@@ -62,9 +62,13 @@ def load_ports(inventory):
         if not generated.exists():continue
         data=json.loads(generated.read_text())
         if data['upstream_commit']!=inventory['commit']:raise ValueError('Port reference commit mismatch')
-        target_hash=hashlib.sha256((ROOT/target_path).read_bytes()).hexdigest()
         for p in data['cases']:
-            ports.append(dict(p,semantics_reviewed=False,target_test=module+'::'+p['rust_function'],target_path=target_path,target_sha256=target_hash))
+            actual_path=p.get('target_path',target_path)
+            actual_module=p.get('target_module',module)
+            if actual_path.startswith('/') or '..' in Path(actual_path).parts:
+                raise ValueError('Invalid mapped test path')
+            target_hash=hashlib.sha256((ROOT/actual_path).read_bytes()).hexdigest()
+            ports.append(dict(p,semantics_reviewed=False,target_test=actual_module+'::'+p['rust_function'],target_path=actual_path,target_sha256=target_hash))
     original=ROOT/'crates/blended-core/src/compat_cases.rs'
     ids=set(re.findall(r'\("(math_vector\.[^"]+)"',original.read_text()))
     path='source/blender/blenlib/tests/BLI_math_vector_test.cc'

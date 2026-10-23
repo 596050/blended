@@ -72,10 +72,11 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs']:
         p=src/name;before=p.read_text();after=before
         changes={
           'macro_rules! eq ': 'macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};} ',
+          'macro_rules! numeq ': 'macro_rules! numeq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a as f64,$b as f64),stringify!($a == $b),line!());}};} ',
           'macro_rules! gt ': 'macro_rules! gt {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::gt($a,$b),stringify!($a > $b),line!());}};} ',
           'macro_rules! feq ': 'macro_rules! feq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::float_eq($a as f32,$b as f32),stringify!($a ~= $b),line!());}};} ',
           'macro_rules! near ': 'macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};} ',

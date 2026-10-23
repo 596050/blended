@@ -84,3 +84,39 @@ macro_rules! exported_cases {
 }
 exported_cases!(blended_strings_case_count,blended_strings_run_case,blended_strings_assertion_count,string_ref_cases);
 exported_cases!(blended_bit_spans_case_count,blended_bit_spans_run_case,blended_bit_spans_assertion_count,bit_span_cases);
+
+pub mod numeric_vectors;
+
+pub mod color_types;
+
+pub mod matrix_types;
+
+pub mod numeric_type_cases;
+
+pub mod matrix_type_cases;
+
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_numeric_types_case_count()->u32 {numeric_type_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_numeric_types_run_case(index:u32)->i32 {
+    numeric_type_cases::CASES.get(index as usize).map(|(_,run,count)|{
+        let r=run();i32::from(r.passed() && r.assertions==*count)
+    }).unwrap_or(-1)
+}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_numeric_types_assertion_count(index:u32)->u32 {
+    numeric_type_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_matrix_types_case_count()->u32 {matrix_type_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_matrix_types_run_case(index:u32)->i32 {
+    matrix_type_cases::CASES.get(index as usize).map(|(_,run,count)|{
+        let r=run();i32::from(r.passed() && r.assertions==*count)
+    }).unwrap_or(-1)
+}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_matrix_types_assertion_count(index:u32)->u32 {
+    matrix_type_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
+}

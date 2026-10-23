@@ -135,7 +135,8 @@
         "index_range.TakeBackLargeN",
         "index_range.constexpr_",
         "index_range.GenericAlgorithms",
-        "index_range.SplitByAlignment"
+        "index_range.SplitByAlignment",
+        "static_assert@310"
       ],
       "assertion_sites": 120,
       "runtime_assertions": 123,
@@ -331,7 +332,11 @@
         "string_ref.CopyBytesTruncated",
         "string_ref.FromStringView",
         "string_ref.ToStringView",
-        "string_ref.Constexpr"
+        "string_ref.Constexpr",
+        "static_assert@106",
+        "static_assert@107",
+        "static_assert@594",
+        "static_assert@595"
       ]
     },
     {
@@ -384,6 +389,94 @@
         "bitmap.find_first_unset_full",
         "bitmap.find_first_unset_middle"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "target_path": "crates/blended-core/src/numeric_type_cases.rs",
+      "target_sha256": "97de960ad0409593d061dfd01cb30337c84acbdaea2901f34c06a1b1335b1732",
+      "case_ids": [
+        "math_vec_types.ScalarConstructorUnsigned",
+        "math_vec_types.ScalarConstructorInt",
+        "math_vec_types.ScalarConstructorFloat",
+        "math_vec_types.ScalarConstructorDouble",
+        "math_vec_types.MultiScalarConstructorVec2",
+        "math_vec_types.MultiScalarConstructorVec3",
+        "math_vec_types.MultiScalarConstructorVec4",
+        "math_vec_types.MixedScalarVectorConstructorVec3",
+        "math_vec_types.MixedScalarVectorConstructorVec4",
+        "math_vec_types.ComponentMasking",
+        "math_vec_types.PointerConversion",
+        "math_vec_types.PointerArrayConversion",
+        "math_vec_types.VectorTypeConversion",
+        "math_vec_types.Add",
+        "math_vec_types.AddFloatByVector",
+        "math_vec_types.Sub",
+        "math_vec_types.SubFloatByVector",
+        "math_vec_types.Mul",
+        "math_vec_types.MulFloatByVector",
+        "math_vec_types.Divide",
+        "math_vec_types.DivideFloatByVector",
+        "math_vec_types.DivideFloatByVectorSmall",
+        "math_vec_types.SwizzleReinterpret",
+        "math_vec_types.SwizzleFloat2",
+        "math_vec_types.SwizzleFloat3",
+        "math_vec_types.SwizzleFloat4",
+        "math_vec_types.SwizzleAssignment",
+        "math_vec_types.SwizzleOperators",
+        "math_vec_types.SwizzleComparison"
+      ],
+      "review": "Runtime assertions, literal inputs, typed constructors and explicit swizzle writeback reviewed. Standalone vector type traits/layout assertions remain unported; string constexpr assertions are retained in the executable cases."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "target_path": "crates/blended-core/src/numeric_type_cases.rs",
+      "target_sha256": "97de960ad0409593d061dfd01cb30337c84acbdaea2901f34c06a1b1335b1732",
+      "case_ids": [
+        "color.ThemeByteToFloat",
+        "color.SrgbStraightFloatToByte",
+        "color.SrgbStraightToSceneLinearPremultiplied",
+        "color.SceneLinearStraightToPremultiplied",
+        "color.SceneLinearPremultipliedToStraight",
+        "color.SceneLinearStraightSrgbFloat",
+        "color.SceneLinearPremultipliedToSrgbFloat",
+        "color.SceneLinearStraightSrgbByte",
+        "color.SceneLinearPremultipliedToSrgbByte",
+        "color.SceneLinearByteEncoding",
+        "color.SceneLinearByteDecoding"
+      ],
+      "review": "Runtime assertions, literal inputs, typed constructors and explicit swizzle writeback reviewed. Standalone vector type traits/layout assertions remain unported; string constexpr assertions are retained in the executable cases."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "target_path": "crates/blended-core/src/matrix_type_cases.rs",
+      "target_sha256": "3ae78026afdc5ba7cfd5cbb646cb5a504e5b7c0874f9391b39269177e8b15176",
+      "case_ids": [
+        "math_matrix_types.DefaultConstructor",
+        "math_matrix_types.StaticConstructor",
+        "math_matrix_types.VectorConstructor",
+        "math_matrix_types.SmallerMatrixConstructor",
+        "math_matrix_types.ComponentMasking",
+        "math_matrix_types.PointerConversion",
+        "math_matrix_types.TypeConversion",
+        "math_matrix_types.PointerArrayConversion",
+        "math_matrix_types.ComponentAccess",
+        "math_matrix_types.AddOperator",
+        "math_matrix_types.SubtractOperator",
+        "math_matrix_types.MultiplyOperator",
+        "math_matrix_types.MatrixMultiplyOperator",
+        "math_matrix_types.VectorMultiplyOperator",
+        "math_matrix_types.ViewConstructor",
+        "math_matrix_types.ViewFromCstyleMatrix",
+        "math_matrix_types.ViewAssignment",
+        "math_matrix_types.ViewScalarOperators",
+        "math_matrix_types.ViewMatrixMultiplyOperator",
+        "math_matrix_types.ViewVectorMultiplyOperator",
+        "math_matrix_types.ViewMatrixNormalize"
+      ],
+      "review": "All 21 runtime cases, original expected operands and matrix macro scalar checks preserved. Shared Cell storage retains mutable view aliasing and copy-on-conversion. Original non-running comments are not tests; no SIMD or ABI equivalence asserted."
     }
   ]
 }

@@ -31,7 +31,7 @@ def scan_cpp(text,path):
     pattern=r'\b(TEST|TEST_F|TEST_P|TYPED_TEST|TYPED_TEST_P)\s*\(\s*([A-Za-z_]\w*)\s*,\s*([A-Za-z_]\w*)\s*\)'
     for m in re.finditer(pattern,clean):
         results.append(_case(path,clean.count('\n',0,m.start())+1,f'{m[2]}.{m[3]}',m[1],m[1] in {'TEST_P','TYPED_TEST','TYPED_TEST_P'} or m[2].isupper()))
-    for m in re.finditer(r'\bstatic_assert\s*\(',clean):
+    for m in re.finditer(r'\b(?:static_assert|BLI_STATIC_ASSERT(?:_ALIGN)?)\s*\(',clean):
         line=clean.count('\n',0,m.start())+1
         results.append(_case(path,line,f'static_assert@{line}','static_assert'))
     return sorted(results,key=lambda c:c['line'])

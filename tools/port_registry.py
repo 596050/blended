@@ -23,6 +23,8 @@ GROUPS=(
     Group('collections','collection-ports.json','collection_cases','upstream_collections','port_collection_tests.py','collection_assertions',('blended_collections_case_count','blended_collections_run_case','blended_collections_assertion_count')),
     Group('strings','string-ref-ports.json','string_ref_cases','upstream_string_refs','port_string_ref_tests.py','string_assertions',('blended_strings_case_count','blended_strings_run_case','blended_strings_assertion_count')),
     Group('bit_spans','bit-span-ports.json','bit_span_cases','upstream_bit_spans','port_bit_span_tests.py','bit_span_assertions',('blended_bit_spans_case_count','blended_bit_spans_run_case','blended_bit_spans_assertion_count')),
+    Group('numeric_types','numeric-type-ports.json','numeric_type_cases','upstream_numeric_types','port_numeric_type_tests.py','numeric_type_assertions',('blended_numeric_types_case_count','blended_numeric_types_run_case','blended_numeric_types_assertion_count')),
+    Group('matrix_types','matrix-type-ports.json','matrix_type_cases','upstream_matrix_types','port_matrix_type_tests.py','matrix_type_assertions',('blended_matrix_types_case_count','blended_matrix_types_run_case','blended_matrix_types_assertion_count')),
 )
 TOTAL_KEYS={'legacy':'vector_assertions',**{g.name:g.total_key for g in GROUPS}}
 ABI={'legacy':('blended_case_count','blended_run_case','blended_case_assertion_count'),**{g.name:g.abi for g in GROUPS}}
@@ -34,6 +36,6 @@ def verify_runtime_contract_bijection(root:Path,cases:list):
         if c['target_path'].endswith('/compile_time_cases.rs'):continue
         if hashlib.sha256((root/c['target_path']).read_bytes()).hexdigest()!=c['target_sha256']:
             raise ValueError('Reviewed test source has changed: '+c['target_path'])
-        reviewed.extend(c['case_ids'])
+        reviewed.extend(identity for identity in c['case_ids'] if not identity.startswith('static_assert@'))
     if len(reviewed)!=len(set(reviewed)) or set(reviewed)!=registered or len(cases)!=len(registered):
         raise ValueError('Reviewed runtime contracts and executable registries do not match exactly')
