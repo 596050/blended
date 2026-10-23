@@ -1,8 +1,8 @@
 name: Port inventory integrity, not full-suite completion
 on:
   push:
-    branches: [main, compat/collections-fidelity]
-    paths: ['tools/inventory.py', 'tools/test_port_audit.py', 'tests/test_cpp_number_lexing.py', 'tests/test_collection_port.py', 'compatibility/**', '.github/workflows/port-inventory-integrity.yml']
+    branches: [main, 'compat/**', 'quality/**']
+    paths: ['tools/inventory.py', 'tools/test_port_audit.py', 'tools/port_registry.py', 'tools/port_workbench.py', 'tests/test_cpp_number_lexing.py', 'tests/test_collection_port.py', 'compatibility/**', '.github/workflows/port-inventory-integrity.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,19 +29,28 @@ jobs:
           from pathlib import Path
           sys.path.insert(0,'tools')
           from test_port_audit import key,load_ports
+          from port_workbench import expected_cases
           inv=json.load(open('build/blender-inventory.json'))
           ports=load_ports(inv)
           source_keys=[key(c) for c in inv['cases']]
           port_keys=[key(c) for c in ports]
           assert len(set(source_keys))==len(source_keys), 'Ambiguous source identities'
           assert len(set(port_keys))==len(port_keys), 'Duplicate port mappings'
-          assert len(port_keys)==132 and set(port_keys)<=set(source_keys), 'Missing mapped source test'
+          expected,_=expected_cases()
+          static=json.load(open('compatibility/compile-time-ports.json'))['cases']
+          runtime_ports=[p for p in ports if p.get('kind')!='static_assert']
+          static_ports=[p for p in ports if p.get('kind')=='static_assert']
+          assert expected and len(runtime_ports)==len(expected)
+          assert {p['id'] for p in runtime_ports}=={c['id'] for c in expected}
+          assert len(static_ports)==len(static)==6
+          assert {(p['path'],p['id']) for p in static_ports}=={(c['path'],c['id']) for c in static}
+          assert len(port_keys)==len(expected)+len(static) and set(port_keys)<=set(source_keys), 'Missing mapped source test'
           assert all(p['semantics_reviewed'] for p in ports), 'Source/target assertion contract changed'
           report=json.load(open('evidence/inventory-integrity/audit.json'))
-          assert report['mapped_source_candidates']==132
+          assert report['mapped_source_candidates']==len(port_keys)
           assert report['complete_test_port'] is False, 'Do not certify full-suite completion from this integrity check'
           summary={k:report[k] for k in ['reference_commit','source_candidates','mapped_source_candidates','unported_source_candidates','complete_test_port','blockers']}
-          summary.update(status='passed',scope='Identity integrity of 131 runtime ports plus one standalone compile-time mapping; not complete Blender port',source_commit='${{ github.sha }}',scanner_sha256=hashlib.sha256(Path('tools/inventory.py').read_bytes()).hexdigest())
+          summary.update(status='passed',scope='Identity integrity of the independently registered runtime and compile-time subsets; not complete Blender port',runtime_mappings=len(expected),compile_time_mappings=len(static),source_commit='${{ github.sha }}',scanner_sha256=hashlib.sha256(Path('tools/inventory.py').read_bytes()).hexdigest())
           Path('evidence/inventory-integrity/summary.json').write_text(json.dumps(summary,indent=2)+'\n')
           print(json.dumps(summary,indent=2))
           PY

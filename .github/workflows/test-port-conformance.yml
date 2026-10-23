@@ -2,7 +2,7 @@ name: Blender test-port conformance
 on:
   push:
     branches: [main, 'compat/**', 'quality/**']
-    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
+    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_embedded_static_ports.py', 'tools/inventory.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -56,12 +56,16 @@ jobs:
           verify_runtime_contract_bijection(Path.cwd(),expected)
           runtime_ports=[p for p in ports if p.get('kind')!='static_assert']
           static_ports=[p for p in ports if p.get('kind')=='static_assert']
-          assert expected and len(runtime_ports)==len(expected) and len(static_ports)==1
+          static_contract=json.load(open('compatibility/compile-time-ports.json'))['cases']
+          assert expected and len(runtime_ports)==len(expected)
+          assert len(static_contract)==6 and len(static_ports)==len(static_contract)
+          assert {(p['path'],p['id']) for p in static_ports}=={(c['path'],c['id']) for c in static_contract}, 'Compile-time mapping lost or substituted'
           assert all(p['semantics_reviewed'] for p in ports), 'Reviewed assertion contract changed'
           assert {p['id'] for p in runtime_ports}=={p['id'] for p in expected}, 'Audit and executable registries diverged'
           PY
           python3 -m unittest discover -s tests -v
           python3 tools/verify_static_port.py --output evidence/static-port.json
+          python3 tools/verify_embedded_static_ports.py --output evidence/embedded-static-ports.json
           python3 -m pip install playwright==1.57.0
           python3 tools/verify_zero_assertion_case.py --output evidence/zero-assertion-probe.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
