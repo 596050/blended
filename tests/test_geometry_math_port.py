@@ -34,9 +34,9 @@ class GeometryMathPortTests(unittest.TestCase):
   self.assertIn('let mut report=Report::default();',target)
   self.assertNotIn('let mut r=Report::default();',target)
  def test_all_current_cases_are_reviewed(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),338)
-  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),16804)
-  self.assertEqual(len(contracts(ROOT)['contracts']),25)
+  cases,_=expected_cases();self.assertEqual(len(cases),367)
+  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),33104)
+  self.assertEqual(len(contracts(ROOT)['contracts']),28)
  def test_empty_geometric_test_cannot_replace_original(self):
   for c in json.loads((ROOT/'compatibility/geometry-math-ports.json').read_text())['cases']:
    self.assertGreater(c['assertion_count'],0);self.assertFalse(c.get('assertion_free_smoke',False))
