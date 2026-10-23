@@ -1,0 +1,43 @@
+name: Collection test-port TDD
+on:
+  push:
+    branches: [compat/collections-fidelity]
+    paths: ['tools/port_collection_tests.py', 'crates/**', '.github/workflows/collection-port-tdd.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Reproduce all cases from the exact Blender test files
+        run: |
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_collection_tests.py
+      - name: Execute tests without masking missing implementations
+        run: |
+          mkdir -p evidence/collections
+          set -o pipefail
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/collections/native.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: collection-test-evidence
+          path: |
+            evidence/collections/
+            compatibility/collection-ports.json
+            crates/blended-core/src/collection_cases.rs
+            crates/blended-core/tests/upstream_collections.rs
+            tests/upstream/blender/BLI_bit_ref_test.cc
+            tests/upstream/blender/BLI_bit_vector_test.cc
+            tests/upstream/blender/BLI_index_ranges_builder_test.cc
+            tests/upstream/blender/BLI_unique_sorted_indices_test.cc
+          retention-days: 1
