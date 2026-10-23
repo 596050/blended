@@ -1,0 +1,4812 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "11ea54beed6f6fc365348bfe03118eece0f01fbf2d67310a6103f23529737c61"
+  },
+  "registration_id": "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+      "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T15:43:06.269457+00:00",
+    "name": "registered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T15:43:06.154410+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles-runtime-libraries/registered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 5649,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles-runtime-libraries/registered-listing.stdout.txt",
+      "sha256": "ee245596e557ca1d008cd7a9b0c00db4e454160c3b5a66677d712526455af514"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "ee245596e557ca1d008cd7a9b0c00db4e454160c3b5a66677d712526455af514",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_identities_unambiguous": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:66b078063e572229cf12adc692984ccc8fa4e4fd8404519427fff7e27a5dca1f",
+      "identity": "AdaptiveSampling.schedule_samples",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "AdaptiveSampling",
+      "name": "schedule_samples",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3e5768b7e4f8911f777ae3170f86c722cd1d9633316139467f935d97bf02eb16",
+      "identity": "AdaptiveSampling.align_samples",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "AdaptiveSampling",
+      "name": "align_samples",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 3,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1d73a56e0f5338e7d81549ee82d82629e7a8480d80abac11a8e2d623b44159f6",
+      "identity": "AdaptiveSampling.need_filter",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "AdaptiveSampling",
+      "name": "need_filter",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 4,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b28bb3fb28fa5810755dae82603a213faa9aac8a5f3d678b044fa04b120e3827",
+      "identity": "IntegratorRenderScheduler.calculate_resolution_divider_for_resolution",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "IntegratorRenderScheduler",
+      "name": "calculate_resolution_divider_for_resolution",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 6,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:18be2d17169a8d4f27d2ab33849f0e61e987eb6da09104db5005176469e63e0f",
+      "identity": "IntegratorRenderScheduler.calculate_resolution_for_divider",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "IntegratorRenderScheduler",
+      "name": "calculate_resolution_for_divider",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 7,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1007bc68fc7db26b9b56323ef0c62032f5d297901584a444c67cd3839cedf02b",
+      "identity": "tile_calculate_best_size.Basic",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "tile_calculate_best_size",
+      "name": "Basic",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 9,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:696c177e20dc837d8bfbe25d5d91e65e187e71fc587efa4dd4eb965ec3995779",
+      "identity": "tile_calculate_best_size.Extreme",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "tile_calculate_best_size",
+      "name": "Extreme",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 10,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3c2d984257735d4175371eae9c7d0607abe553bafd413edf6e5ce811eacccbf0",
+      "identity": "KernelCamera.FisheyeLensPolynomialRoundtrip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "KernelCamera",
+      "name": "FisheyeLensPolynomialRoundtrip",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 12,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:310186adffc3e47fafdeb066e1115d33f46dc78943e3ebb574ab4d92cd8208ee",
+      "identity": "KernelCamera.FisheyeLensPolynomialToDirectionSymmetry",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "KernelCamera",
+      "name": "FisheyeLensPolynomialToDirectionSymmetry",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 13,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f6bf29aaa6a316ec301e6f83a108cc3cc22a66a7681af718d39d0629e44e0064",
+      "identity": "KernelCamera.FisheyeLensPolynomialToDirection",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "KernelCamera",
+      "name": "FisheyeLensPolynomialToDirection",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 14,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f9978fd02fabb46778ac19a84d10893e2771ddf49541fd62152976b01936f807",
+      "identity": "PanoramaProjection/0.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PanoramaProjection/0",
+      "name": "round_trip",
+      "type_parameter": "ccl::Spherical",
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 16,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a584d3b72bde61c1ffe6c1a6258cd5459789c5fa86addf14fb14a3c30b126e94",
+      "identity": "PanoramaProjection/1.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PanoramaProjection/1",
+      "name": "round_trip",
+      "type_parameter": "ccl::Equirectangular",
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 18,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:21fa2a30f3f0f356d7ac664beb301546d549f61c561aa610ef3b5d225dabea71",
+      "identity": "PanoramaProjection/2.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PanoramaProjection/2",
+      "name": "round_trip",
+      "type_parameter": "ccl::FisheyeEquidistant",
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 20,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cab1e1fbb8b0ddd81ea1527163ae64fb9be514867e14b3a91455f82fedacf502",
+      "identity": "PanoramaProjection/3.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PanoramaProjection/3",
+      "name": "round_trip",
+      "type_parameter": "ccl::FisheyeEquisolid",
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 22,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f4f050162700fa0ab2ddb372be2d90d6b13e3eccee43f57cb51f978359c22ec1",
+      "identity": "PanoramaProjection/4.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PanoramaProjection/4",
+      "name": "round_trip",
+      "type_parameter": "ccl::MirrorBall",
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 24,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:eadac3e149d1d2ed901bba7bcc54da5722285f71cd7c631150c43f1d75ce26c7",
+      "identity": "PanoramaProjection/5.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PanoramaProjection/5",
+      "name": "round_trip",
+      "type_parameter": "ccl::EquiangularCubemapFace",
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 26,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:2845edded2331928630ada182acb5d67e4b105a0e98a815833637840693973c5",
+      "identity": "RenderGraph.deduplicate_deep",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "deduplicate_deep",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 28,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:70c2fc7b69c1eb104d36be73a25f8b55d9a7f81f4f01a26b2ea760e0ce127fcd",
+      "identity": "RenderGraph.constant_fold_rgb_to_bw",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_rgb_to_bw",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 29,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5f7ca170612f1dd8de884cb36dcce80c5a970fb769df722aa2f9f3919690fd3f",
+      "identity": "RenderGraph.constant_fold_emission1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_emission1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 30,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f7bf8749e1e284108164a56b2edced37eb62d6fe22752c6e0337824af7d3eec4",
+      "identity": "RenderGraph.constant_fold_emission2",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_emission2",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 31,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:91bfee8568a7fd6f161845b09eb9b1336d28e1155ca607c7e2c58a354c37ed47",
+      "identity": "RenderGraph.constant_fold_background1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_background1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 32,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:169282d5a2ebe71712d6701f9fc7c9ebef34ccdcb8699d3384aa1d397d83016f",
+      "identity": "RenderGraph.constant_fold_background2",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_background2",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 33,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7098be6ed50cd5cf6f35970daaa1461bce990b90a1eb4b8cf93d0f6072180fbf",
+      "identity": "RenderGraph.constant_fold_shader_add",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_shader_add",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 34,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:4edc0076666cc9bf95f6ccd65792d20ec0a26617eeecfaacf5e2d901deede391",
+      "identity": "RenderGraph.constant_fold_shader_mix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_shader_mix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 35,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b6fead70c66d38d7f1510aa88861d5f348ce844716bbb34df773e7386353714c",
+      "identity": "RenderGraph.constant_fold_invert",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_invert",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 36,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a9422226cbdcd1afa5b840f9499789120a8c175b9c5691dd1f0753d6d58d8fd0",
+      "identity": "RenderGraph.constant_fold_invert_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_invert_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 37,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:589f647a284bd3e9bc322f45308521226fd26cceef39dc064b2ad24a5db80c21",
+      "identity": "RenderGraph.constant_fold_invert_fac_0_const",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_invert_fac_0_const",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 38,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5cec110e75d02f87e0cae478c07bdfa97e72285d9aa965aa572d89f157e52e26",
+      "identity": "RenderGraph.constant_fold_mix_add",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_mix_add",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 39,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a3f3a28bacb43a7b099e8f9d28e685031571466829dd8abde5b57972a6431a18",
+      "identity": "RenderGraph.constant_fold_mix_add_clamp",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_mix_add_clamp",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 40,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:505c473a368ba9448d59bbf27ec4155816f8dcb531cbdfaadeec2214b311559e",
+      "identity": "RenderGraph.constant_fold_part_mix_dodge_no_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_dodge_no_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 41,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f219c78ccd3447f2b6bfb32648b86a43b02c038ee9020cd53f49e326ee0d5d5f",
+      "identity": "RenderGraph.constant_fold_part_mix_light_no_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_light_no_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 42,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:86912a3557e7adb962103a84a1b126b7eefc3d398767ac26f1e5d39744a39438",
+      "identity": "RenderGraph.constant_fold_part_mix_burn_no_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_burn_no_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 43,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:4928facb0d93c33cd532158b498d623447525c6c05595cd8c018bb59d2620877",
+      "identity": "RenderGraph.constant_fold_part_mix_blend_clamped_no_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_blend_clamped_no_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 44,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9b5bf5e5b790ea291b5a00cf17e2a823283996e3905a0d3de6502290c1a5fd25",
+      "identity": "RenderGraph.constant_fold_part_mix_blend",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_blend",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 45,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ca5c31715a1b7fad5004790f4d3945674e699bd647484ec1d18a921af529cd12",
+      "identity": "RenderGraph.constant_fold_part_mix_sub_same_fac_bad",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_sub_same_fac_bad",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 46,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:54a46f09e894020f229a38aac2eec806928571232ba3ef1295caf32344463247",
+      "identity": "RenderGraph.constant_fold_part_mix_sub_same_fac_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_sub_same_fac_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 47,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d71fa229c03480cb5f6f8662cd700e72748beafe12e8363e6ca2d6bd1ff2516b",
+      "identity": "RenderGraph.constant_fold_part_mix_add_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_add_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 48,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f2037c18b6a545d9af3e2818c944a05ea6feaf87ec2ff5f635913041c624dc0b",
+      "identity": "RenderGraph.constant_fold_part_mix_sub_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_sub_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 49,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5c8da2b43a3f80dd6beae7627588386f52b5f88e71fd9172ab3c27ef24e270e2",
+      "identity": "RenderGraph.constant_fold_part_mix_mul_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_mul_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 50,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:952214d8375ec0bfd004f0dde721f8eb9d0fea1af23e3cfa619f66d556e5abb7",
+      "identity": "RenderGraph.constant_fold_part_mix_div_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_div_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 51,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d7f9c357bf92219d8b87dbaae6d8a627e60364b6ad653a6aad3cc1b1f098d413",
+      "identity": "RenderGraph.constant_fold_part_mix_mul_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_mul_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 52,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8e8705283f95a4a9f0a2556aa919fabf688b799c73473cde73862c6a0e7b7466",
+      "identity": "RenderGraph.constant_fold_part_mix_div_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_mix_div_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 53,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a37de2574fce4f49c0c43da6a882bc554b520cc34abbcbd5f8a22e6b0a172a90",
+      "identity": "RenderGraph.constant_fold_separate_combine_rgb",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_separate_combine_rgb",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 54,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b312ff3dc822cde8394f8803d8b351f64d85463ae1601e2046b04ce59ebb48a2",
+      "identity": "RenderGraph.constant_fold_separate_combine_xyz",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_separate_combine_xyz",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 55,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a6bdfc85d56974c2db1ba5c9abf62ff1ef3aab67e5c18bb01acbdc5b29a7e8e3",
+      "identity": "RenderGraph.constant_fold_separate_combine_hsv",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_separate_combine_hsv",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 56,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:366c517d9f44765f10f4c2aab6c9eb2420468ae1e862904256ac3277199224e3",
+      "identity": "RenderGraph.constant_fold_gamma",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_gamma",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 57,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cfe342ba82a8f85229655bf1910613ac223688cd89e0b412dcafaa3f2a78d121",
+      "identity": "RenderGraph.constant_fold_gamma_part_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_gamma_part_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 58,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ba19af69af06bb0ccf5ced1449febdd80b691b53d6e10bf32f5bd5f6b5d0ef05",
+      "identity": "RenderGraph.constant_fold_gamma_part_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_gamma_part_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 59,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c8e34334f281352f86743c5f64f88758e06d6b9180cbe19e7a96b901fd783713",
+      "identity": "RenderGraph.constant_fold_bright_contrast",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_bright_contrast",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 60,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a472ca343ac1505b9135eee964a6ec98efd640e7cbf7d4a265ac39de87ff23ef",
+      "identity": "RenderGraph.constant_fold_blackbody",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_blackbody",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 61,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:14201c3fbea28b1a850f7652bee7dd31cadfc781fc914657aecffb259b99bde9",
+      "identity": "RenderGraph.constant_fold_math",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_math",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 62,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7211612eae66632fa11a8956818a264cfea287039e4c2ecde20c63ebd1ae5a19",
+      "identity": "RenderGraph.constant_fold_math_clamp",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_math_clamp",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 63,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:695cda802a7be6c651a320fbbeab3dc804b42663e2b0004d7710bb940840c7f5",
+      "identity": "RenderGraph.constant_fold_part_math_add_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_add_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 64,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ad7e937d7bd3a52f0a51b2667d554a2b5ff6109cf8f9a0a2689f31a6287ba83b",
+      "identity": "RenderGraph.constant_fold_part_math_sub_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_sub_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 65,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:85b8b5d95ff1049dd135f14fb609e25306be05c51bd377b40b037ffd38d08c11",
+      "identity": "RenderGraph.constant_fold_part_math_mul_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_mul_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 66,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e92152be0ca71b7feb9329935c89ab7b675f80dc17abb835d0badf0c3ddd784d",
+      "identity": "RenderGraph.constant_fold_part_math_div_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_div_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 67,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:db8b534bff032a70083dbda4b2971e19722116cc00c29a18ae026bb4e44e6a60",
+      "identity": "RenderGraph.constant_fold_part_math_mul_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_mul_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 68,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d11e57d58cc0b4a6932e9af96ddadec83046763c26e2d56e81c3e912cc8a9fcd",
+      "identity": "RenderGraph.constant_fold_part_math_div_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_div_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 69,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f741bc795af81d52ab11c94d66a045575587061cadfdd353d5dc441b3c2ba580",
+      "identity": "RenderGraph.constant_fold_part_math_pow_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_pow_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 70,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:07d961f9442cdc853a893d7e263d94424af1ec030af3c4548f2bc020c7ad35ae",
+      "identity": "RenderGraph.constant_fold_part_math_pow_1",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_math_pow_1",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 71,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f6f98cdac8bbfc02eae200e46313530a585440db99df85d8d75dd2b1b43c2c45",
+      "identity": "RenderGraph.constant_fold_vector_math",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_vector_math",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 72,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cdfc434adc85f4cdb64addcc77300656a5e47cd8ff6abbfdf6d1a17ecc47c9db",
+      "identity": "RenderGraph.constant_fold_part_vecmath_add_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_vecmath_add_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 73,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a25d9246232150febdf668d404e21b1685b8c19ff99922d7942cfdcc487ec45d",
+      "identity": "RenderGraph.constant_fold_part_vecmath_sub_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_vecmath_sub_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 74,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a1a494331692dd12e73e71f315cf9806dabd42aae598f14f018558b7552f5114",
+      "identity": "RenderGraph.constant_fold_part_vecmath_cross_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_part_vecmath_cross_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 75,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:0f2e2960b68b139e424cad13899b5d4403badf42ce41d743c290221363ee7872",
+      "identity": "RenderGraph.constant_fold_bump",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_bump",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 76,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d298955ccac0245a4eb9b77776f19f50be0433fd157c036bec9df10ed4f1aa09",
+      "identity": "RenderGraph.constant_fold_bump_no_input",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_bump_no_input",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 77,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:365b42928f45dc81739cfc0e122477e9d73b13ff047a587193eda876f97d3bec",
+      "identity": "RenderGraph.constant_fold_rgb_curves",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_rgb_curves",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 78,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8f6c87f5f732039bb36da8e4d1bac0db2aee6cf97350aa497d309fee6bc918bc",
+      "identity": "RenderGraph.constant_fold_rgb_curves_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_rgb_curves_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 79,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:34c7bc30541829368804c677ba10e6d0beb3aa97b4eca8c770a734000da3f2c2",
+      "identity": "RenderGraph.constant_fold_rgb_curves_fac_0_const",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_rgb_curves_fac_0_const",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 80,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:491a75e4a31ed875efe3c6792b86dc0f076e7ea959f5ccfa7ab0d7b3fc001fae",
+      "identity": "RenderGraph.constant_fold_vector_curves",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_vector_curves",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 81,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:40bab696a1424b863445ad32a0c4d41c087e33ac7ea242cbbecb2f0ce86056fa",
+      "identity": "RenderGraph.constant_fold_vector_curves_fac_0",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_vector_curves_fac_0",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 82,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c9de37198b05a73e7793b87d6606c07b4038f8a4ec4f95bf9ab51942453d8767",
+      "identity": "RenderGraph.constant_fold_rgb_ramp",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_rgb_ramp",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 83,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:21c6cb44385eb22c8889bfbc10129d05c2ec4d5ce96fd1a571088458a9eb3022",
+      "identity": "RenderGraph.constant_fold_rgb_ramp_flat",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_rgb_ramp_flat",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 84,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5ac141132d75a33e9fc30b3e227bab7d04e6c6daf8bd39cb89f65fd84003a04e",
+      "identity": "RenderGraph.constant_fold_convert_float_color_float",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_convert_float_color_float",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 85,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3f0c8ff999e32c22bd0d35f20f5d7aa938d56e5d4cfd8446bbcc89570fdcead7",
+      "identity": "RenderGraph.constant_fold_convert_color_vector_color",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_convert_color_vector_color",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 86,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:bc71e5de4bf6d34e30ffea4d9e538fefd8ae39322856fc06e4459bcbaa3a5dfc",
+      "identity": "RenderGraph.constant_fold_convert_color_float_color",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "constant_fold_convert_color_float_color",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 87,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a342c4e3cacdab6d5339110acad5251bb7c72ed72d5da19c6bbf31f2f1990655",
+      "identity": "RenderGraph.stochastic_sample_math_multiply",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "stochastic_sample_math_multiply",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 88,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:0e0c2a0f43a681eafd9874c2bb29f5c57bf392f9884d017139839153e161c192",
+      "identity": "RenderGraph.not_stochastic_sample_math_power",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "not_stochastic_sample_math_power",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 89,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1495afcfb9ee808bc16db0d19d0635a44da45b4f7632903bfbec91117a1e6b2a",
+      "identity": "RenderGraph.stochastic_sample_principled_volume_mix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RenderGraph",
+      "name": "stochastic_sample_principled_volume_mix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 90,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:6a0e7dc28d95ba8705b9c6ff9b02f86e85ae8dbfdc500b32b876cce330db7f2c",
+      "identity": "util_aligned_malloc.aligned_malloc_16",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_aligned_malloc",
+      "name": "aligned_malloc_16",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 92,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:93062c6b553fecb4aefa4d244c1307f0183c19ba96807c435574ef4069306e0d",
+      "identity": "util_aligned_malloc.aligned_malloc_32",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_aligned_malloc",
+      "name": "aligned_malloc_32",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 93,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d84b249194be10d4ef1573f6a64addf58b2472b1031fa9fe1701ba9babf646c6",
+      "identity": "BoundBox.transformed",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "BoundBox",
+      "name": "transformed",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 95,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c0d47f6ab994049b5b959ead83f3fc168e5448dfa15270b67254df489c930dc2",
+      "identity": "CacheLimiter.Basic",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "CacheLimiter",
+      "name": "Basic",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 97,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ef4079b41618ec849153e55f7c9d0ae35d6189fdf2bf5f4b0bbceaca3d8f6e87",
+      "identity": "CacheLimiter.Eviction",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "CacheLimiter",
+      "name": "Eviction",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 98,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f87fb159ac4e28c6e17c6ecd128ec85bc9a36dc6fc02da116b9d29527ed4b505",
+      "identity": "CacheLimiter.NoEvictionWhenUsed",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "CacheLimiter",
+      "name": "NoEvictionWhenUsed",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 99,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5d3498fe0bf825839b8b2e9dcce91d7c0082f18417233e7a03d9f3e59cafb5aa",
+      "identity": "util_colorspace.scene_linear_interop_id",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_colorspace",
+      "name": "scene_linear_interop_id",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 101,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f6e17a6e6c982aa0a3ee0a54ec8183df225dd54f5903eaead5b49908f9972171",
+      "identity": "util_ies.invalid",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_ies",
+      "name": "invalid",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 103,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ced837c85317143545a970f2d2f9210af9531a84d062f942fef0fc9a8bef0f53",
+      "identity": "math.next_power_of_two",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "math",
+      "name": "next_power_of_two",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 105,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b7cc3d176d401c52ab05f3653546684d120cff29eae9eeb2e7fc887f529aba91",
+      "identity": "math.prev_power_of_two",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "math",
+      "name": "prev_power_of_two",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 106,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9911a794557fcbfc5794c531e107c203f96bbb790e1d7820e06366551ad057ba",
+      "identity": "math.reverse_integer_bits",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "math",
+      "name": "reverse_integer_bits",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 107,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cf7218bf5bbed7077c5d08e5b5161bfec9a1a3d3cd303c398f6ebafd375fc1d5",
+      "identity": "math.fast_sinf",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "math",
+      "name": "fast_sinf",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 108,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d1d6c0c08eab7421a6ae4c10b7e155e1b98960e8a94f091607bd657020bb1d53",
+      "identity": "math.fast_cosf",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "math",
+      "name": "fast_cosf",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 109,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8843719e1ec6740b43f72a9e17a955d3dc3648494be7dab8895b8259bd634ae4",
+      "identity": "Float3Test.fmod",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3Test",
+      "name": "fmod",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 111,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b549f9fa61e891ff894cc12838cfb6d26824ed9f4ca74a525505f771a922f909",
+      "identity": "Float4Test.fmod",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float4Test",
+      "name": "fmod",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 113,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8022ee004b9ee926fe4c8164b555a8d52e14f83f049fa623ed41e9c390f317e6",
+      "identity": "Float3x3Test.IsNearFloat3x3",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "IsNearFloat3x3",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 115,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c5c89f78087aae288911fc954960e3a35b892248b9172c7f7559df9bfbf14539",
+      "identity": "Float3x3Test.multiply_scalar_by_matrix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "multiply_scalar_by_matrix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 116,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:50ab4599c805c935b71f19a903f6eca62a4171ea1b769ba058413549a366ad2a",
+      "identity": "Float3x3Test.multiply_matrix_by_scalar",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "multiply_matrix_by_scalar",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 117,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e50272e66a1fc557370fb2867a6849caa83b38ed9f9dbaade8ffb8bc0bdca77a",
+      "identity": "Float3x3Test.multiply_matrix_by_matrix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "multiply_matrix_by_matrix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 118,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f98375056b09656df77357f6b974c1a3ed2a45a85e9f8cb9c60396c5e5b12b14",
+      "identity": "Float3x3Test.multiply_matrix_by_vector",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "multiply_matrix_by_vector",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 119,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:365c4d639cc898d994cb96702c29b7c3d50957c1ca66b32458efa43ae7cc2f57",
+      "identity": "Float3x3Test.divide_matrix_by_scalar",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "divide_matrix_by_scalar",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 120,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c8dcf5c20c204de7181dbaff2c6f7a1583fdebc0eeacde7f3808532bfcea0bc6",
+      "identity": "Float3x3Test.float3x3_scale",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "float3x3_scale",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 121,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:90b12778f416cd786574494e0fd76edea9a806f431a918d2767745800a83539d",
+      "identity": "Float3x3Test.transposed",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "transposed",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 122,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:31de10aeb64e5214aa4b3e991a89cd6c804ff637af3f0aaff4649ebe628faf06",
+      "identity": "Float3x3Test.determinant",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "determinant",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 123,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:4ff4195a06cf62dd31c0c61fa9c7948c816ffcad90081bbcecd356e4bbc209d7",
+      "identity": "Float3x3Test.adjoint",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "adjoint",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 124,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:4d7907aadaa001bddc94e1d58c048babb91240403d499d358aa2d05bb4cb9d1c",
+      "identity": "Float3x3Test.inverted",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "inverted",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 125,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7f9d6579c7140373a75bd51ee7c3e5f6d0d0127180f961e6e2960c36a5b14385",
+      "identity": "Float3x3Test.quaternion_to_scaled_rotation",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "quaternion_to_scaled_rotation",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 126,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3f1f95c0599864c34f9e0390698902b8d1f445380322bd06b049a57fff974336",
+      "identity": "Float3x3Test.quaternion_to_rotation",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Float3x3Test",
+      "name": "quaternion_to_rotation",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 127,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:89afa3a3e79b1de253c50eccbaff758403cf4b689c1c4642b4e69a657f43aeb0",
+      "identity": "PackedFloat3x3Test.init_from_float3x3",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PackedFloat3x3Test",
+      "name": "init_from_float3x3",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 129,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:55fc140a081a8aba363c4de35707dfb388df97b9b2c82d0516bb30f62f0f1815",
+      "identity": "PackedFloat3x3Test.cast_to_float3x3",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PackedFloat3x3Test",
+      "name": "cast_to_float3x3",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 130,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:25d868fe54ea9964f9ba24538d640695567a9117ff4931f595e47860bddf873c",
+      "identity": "PackedFloat3x3Test.assign_from_float3x3",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PackedFloat3x3Test",
+      "name": "assign_from_float3x3",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 131,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a5619df520b321da12ba489c8659f857c593667d4b7c244d2a7b286f646fb7a5",
+      "identity": "QuaternionTest.IsNearQuaternion",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "IsNearQuaternion",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 133,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:0b892e4a74ca5fceeb2d555bd74ae976685ee5154770222897b5242a940020f2",
+      "identity": "QuaternionTest.Negate",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "Negate",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 134,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:2901d0a4b7d524beaa0dd38d0741242571eaa4d8f24359ea0807ffbb2d93884c",
+      "identity": "QuaternionTest.MultiplyScalar",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "MultiplyScalar",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 135,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ad872566b8157c335def0101d283aa8f7fe545069a2a5adafc3557295382e6dc",
+      "identity": "QuaternionTest.Add",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "Add",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 136,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:fcf8ca4abe72fd09b6ec154120105878cec21c34483f25eca6202222fd5ecebc",
+      "identity": "QuaternionTest.Subtract",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "Subtract",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 137,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e2a6be9a2c3c3ddb61cd56404b85e44ae4bcf7ef1d9cf45889493c6dfbc510f3",
+      "identity": "QuaternionTest.dot",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "dot",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 138,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:44e698b283aa9b4bdc4a6e2e56acda13eb4a48e6c7736d607a5a7d8239805191",
+      "identity": "QuaternionTest.normalized",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "normalized",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 139,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f36213b7fbd4242cc5d7899d6414184e359591200f1bd8369b8b49a97d851577",
+      "identity": "QuaternionTest.lerp",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "QuaternionTest",
+      "name": "lerp",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 140,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c005462c687c4a16a4d2ba335bac48d9909878a463c34e309c384de3b1d000e0",
+      "identity": "RGBE.round_trip",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "RGBE",
+      "name": "round_trip",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 142,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f3adc17719b26b148c5c90c93fbac7e19ec8c587bbb354f01cabad948ac16683",
+      "identity": "util.util_md5_string",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util",
+      "name": "util_md5_string",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 144,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7fd7ded1f7b08d5d17f82ae064918d978b6204a16b9ca75b6a203e65d4e6b293",
+      "identity": "util_path_filename.simple_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_filename",
+      "name": "simple_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 146,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:0aa93f43d20db4a8ae457b62f62d634dadd69bac453f2e3a5457b27934260fa5",
+      "identity": "util_path_filename.root_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_filename",
+      "name": "root_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 147,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a8da3dd33b364bf8744d89d6b5898e958b96c123adbb375c569e73117f5798fc",
+      "identity": "util_path_filename.last_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_filename",
+      "name": "last_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 148,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cf43c75d1e5aff34d44caa4d9f85f482fe793943b0d1750ee83bd20ec77ee99d",
+      "identity": "util_path_filename.alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_filename",
+      "name": "alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 149,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ef41dbd434e92eb1bb5fdd7424774cf41abe474e8df827adcd2698c36ec04a72",
+      "identity": "util_path_filename.file_only",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_filename",
+      "name": "file_only",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 150,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:897322eaae0f192879275eabd8cc7d3c80b58694fd04def025aee5603a27c087",
+      "identity": "util_path_filename.empty",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_filename",
+      "name": "empty",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 151,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cae482d7c1a3ebd9b4a685a0cd39d487c0d362d42cba9836ae3c85e02f60ce5b",
+      "identity": "util_path_dirname.simple_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_dirname",
+      "name": "simple_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 153,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3ddfc24712ea8fe3ff9a4cbf2b907e92ebef04317ba29af0aa599d1ee73952a5",
+      "identity": "util_path_dirname.root_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_dirname",
+      "name": "root_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 154,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ce21c7cc0bb5788c42fbcb8ae812fb5335e3e805f3de9231879bd1e4d7f0d188",
+      "identity": "util_path_dirname.last_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_dirname",
+      "name": "last_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 155,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8800da982d115f63ae7f5c40d286aaf2a01d047cc4d80881adca283cfaeec579",
+      "identity": "util_path_dirname.alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_dirname",
+      "name": "alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 156,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c1258956a5286eab3e52ef7ace7bda56f6bcb649bdd6ce5337100da921e44df0",
+      "identity": "util_path_dirname.file_only",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_dirname",
+      "name": "file_only",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 157,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8e9c8f8faba019052430e6c17021524e2658f370e4017ff4a8b0a3f99984f918",
+      "identity": "util_path_dirname.empty",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_dirname",
+      "name": "empty",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 158,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7e658f48ac0a2dc05810e96a43e0bb982c4e7e20445ffdcdca745f0b4c779c8c",
+      "identity": "util_path_join.empty_both",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_both",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 160,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d8253bc85bcbe421c1a69091650ac4332af10854e6261f52d40a5c0f47db1600",
+      "identity": "util_path_join.empty_directory",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_directory",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 161,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a71b7c0f6f6a64a0063cfe32a60e34fb3971016e8496ca7d26f564a15d247dcf",
+      "identity": "util_path_join.empty_filename",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_filename",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 162,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8fd41bd534faa915d620cf831725550402d1e468eb8bff89092264086bedd356",
+      "identity": "util_path_join.simple_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "simple_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 163,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c2ee4881aa5a1da072c52fbdbb4a09a08dd2c83088e7f4d3ebb9db05d0d1078d",
+      "identity": "util_path_join.directory_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "directory_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 164,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:56cd1ef91cf134f394dbe57b3c72628b31727775b19c14a6f56202024fa2f23d",
+      "identity": "util_path_join.filename_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "filename_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 165,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:36048e30e6427115b1065c102d1524217d0453c65c758e30689f8c067b308178",
+      "identity": "util_path_join.both_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "both_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 166,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9a92d3cb39b804dd180f9e95656297ee04ceba88cecb931fda1abfaf60f1d8a1",
+      "identity": "util_path_join.directory_alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "directory_alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 167,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:226ce666879c9fbe75f7915d04ae11f69e1f85ccc2216504385ca1a364475a25",
+      "identity": "util_path_join.filename_alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "filename_alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 168,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8490f5c10b74fba45e2f995069dca3cc440c07f6adaa777c025b4f9006e6a40f",
+      "identity": "util_path_join.both_alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "both_alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 169,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c6dc096b116d0221c8f6997c468c11ccf87c8f11c7574638a3330a35a89f586e",
+      "identity": "util_path_join.empty_dir_filename_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_dir_filename_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 170,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cdad13df569db3bf4566259db2a7dcdcebe0f986f7d6ee2bc500c77a241163f5",
+      "identity": "util_path_join.empty_dir_filename_alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_dir_filename_alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 171,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5e260fd753b5835c5d130bac4ea4897aa66d72ce90557e5a00ee83ddf4d3f07a",
+      "identity": "util_path_join.empty_filename_dir_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_filename_dir_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 172,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:261b2f8d4ec37d4bbb8303a95890938e873e4701c37158029115090376fe01f9",
+      "identity": "util_path_join.empty_filename_dir_alternate_slash_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_join",
+      "name": "empty_filename_dir_alternate_slash_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 173,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b922001c59cadec9147a0356ec7ca129657d72426d6a8927afdbe867171e8399",
+      "identity": "util_path_escape.no_escape_chars",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_escape",
+      "name": "no_escape_chars",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 175,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8475685ef7113b52e6b5856c9942e108eeadc750ae31168868e66b3ca692b0c2",
+      "identity": "util_path_escape.simple",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_escape",
+      "name": "simple",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 176,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:72d74e3bc959171b4890f31852efefa42e8f789f1180f6de2f8a83a23e3d97e8",
+      "identity": "util_path_escape.simple_end",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_escape",
+      "name": "simple_end",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 177,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1ae287699c56babfd38422af032b3ea5eecd43cf2eef16f320e1a0d20e99ffe5",
+      "identity": "util_path_escape.multiple",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_escape",
+      "name": "multiple",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 178,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:abf6e555cd8191cfb599032e3a4a65367eb4cdcac6d4a7c030fb876ebb6e2aae",
+      "identity": "util_path_escape.simple_multiple_end",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_escape",
+      "name": "simple_multiple_end",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 179,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5f0e63efc221bbe349da451cf6cbfec72a026d9f8510d20eaf4fcc21ce3ffb77",
+      "identity": "util_path_is_relative.filename",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_is_relative",
+      "name": "filename",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 181,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c86b4962e82d62ec5c6482c1574b589faa9369da6ece814966c2aa748f270c5f",
+      "identity": "util_path_is_relative.absolute_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_is_relative",
+      "name": "absolute_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 182,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9071ff1def66d40f7cb9cb7d9b41a1eb212fedfd5f2cff4a77ba4f10bfff55b2",
+      "identity": "util_path_is_relative.relative_dir_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_is_relative",
+      "name": "relative_dir_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 183,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:032c51ee0970ba8edd450c7539b74cfa116bada7c976634193111de7ab00352b",
+      "identity": "util_path_is_relative.absolute_windir_on_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_is_relative",
+      "name": "absolute_windir_on_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 184,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a9add63d97b367d7c9164e1af5417941add601db93e3ebe30f1c30e67ba19526",
+      "identity": "util_path_is_relative.relative_windir_on_unix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_path_is_relative",
+      "name": "relative_windir_on_unix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 185,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7242e0a92031cd9e51c6c9626efdf9350472d0777837788b866e965bced7743c",
+      "identity": "simd.bsf",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "simd",
+      "name": "bsf",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 187,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b6ed1427cb284f1e5392041f77f428e8ca5f818dae5e36030437a347be8270bd",
+      "identity": "simd.bsr",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "simd",
+      "name": "bsr",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 188,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:466d0f553e14feb9b5beedf96011dde3a4749f8fe60971a8fde3ac7b1e86023e",
+      "identity": "simd.btc",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "simd",
+      "name": "btc",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 189,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ba0c9b63b06d4bb6657760d4bac8d0482001503dae003fa710f37944639cd1b8",
+      "identity": "simd.bitscan",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "simd",
+      "name": "bitscan",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 190,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:48c1b85cabb0252bb5aa4c2ee89710b4a3b057a865b05e326218c902144fb830",
+      "identity": "util_string_printf.no_format",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_printf",
+      "name": "no_format",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 192,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cd9da481477cef7cc212741be0f2930872c59b4abd7da8a5aa6bb50e83bdbde1",
+      "identity": "util_string_printf.int_number",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_printf",
+      "name": "int_number",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 193,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3bb17e08e49b8fff94351ac3a2df28aafb9274d668ca9f0a9631d1fa9cfc9f30",
+      "identity": "util_string_printf.float_number_default_precision",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_printf",
+      "name": "float_number_default_precision",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 194,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b2b3b35e7a159e77e931d1da9cd09e473f3b7d9547825f5557b56da4292f81be",
+      "identity": "util_string_printf.float_number_custom_precision",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_printf",
+      "name": "float_number_custom_precision",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 195,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:6b8851449b7342af0db818cf25d808ff619632dc6837ba68267f63948ef421c2",
+      "identity": "util_string_iequals.empty_a",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_iequals",
+      "name": "empty_a",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 197,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c1693649f3222e3f1a398220283f41ef84946fbefb64ecccbf6b1b79dab119dd",
+      "identity": "util_string_iequals.empty_b",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_iequals",
+      "name": "empty_b",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 198,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9951be196daf9625ee7a490b1548a66a946d7e3bf5972dadf4f9339ecea9d9de",
+      "identity": "util_string_iequals.same_register",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_iequals",
+      "name": "same_register",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 199,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:33db6da429d09035cbef7b1627d9cdbf6b5381ba43c383621ff792f5da33f67a",
+      "identity": "util_string_iequals.different_register",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_iequals",
+      "name": "different_register",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 200,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:11e257161815ba09a560c7529260fbeba737ec12b12cba2c24874b23e605d290",
+      "identity": "util_string_split.empty",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_split",
+      "name": "empty",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 202,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b60809d93b25b1f2af37406254e8a090927f1f340db676333955d1bbd26d711c",
+      "identity": "util_string_split.only_spaces",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_split",
+      "name": "only_spaces",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 203,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:4dd1828c1e308c2b4fed973a0eda79b92d4abebf0bad5104c1305fb6bac81050",
+      "identity": "util_string_split.single",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_split",
+      "name": "single",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 204,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:94f8470a5666b0fc897af2720c1abcf1adb848f9a311513b12f7f76515999bbe",
+      "identity": "util_string_split.simple",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_split",
+      "name": "simple",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 205,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1f3acffc894c2ab731edd4cd2e8930badd43a6aca19e810e1c04d37caf9831ac",
+      "identity": "util_string_split.multiple_spaces",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_split",
+      "name": "multiple_spaces",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 206,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:2c5d03949dcf94a15cd39b70caa0ed91e0527a901a483aa5b14a427d809421d9",
+      "identity": "util_string_replace.empty_haystack_and_other",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_replace",
+      "name": "empty_haystack_and_other",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 208,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3f5f65bbc07ee66eaa421826ae80185d8d495f6e3c5ee4c7b9202bb6ed636f75",
+      "identity": "util_string_replace.empty_haystack",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_replace",
+      "name": "empty_haystack",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 209,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:35478b9082d1b093651654fa59c667922136617368659624a3668f015877b4da",
+      "identity": "util_string_replace.empty_other",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_replace",
+      "name": "empty_other",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 210,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:cd9bba7996ba87844ce2adbbd1cbfaf2e87fc94b3fdb95f4527747f32bdfc540",
+      "identity": "util_string_replace.long_haystack_empty_other",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_replace",
+      "name": "long_haystack_empty_other",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 211,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:91f38d81b82a8ce951d7997a1b7cbf74d255ccf8c38954a77aa24122c6d6f113",
+      "identity": "util_string_replace.long_haystack",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_replace",
+      "name": "long_haystack",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 212,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8c0bb3690df0532879dba1317153d3fe78fe870668869a2dd108ae9ae158d1e8",
+      "identity": "util_string_endswith.empty_both",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_endswith",
+      "name": "empty_both",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 214,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:7440c3664512cacb5dec8ba90e1bc392550a4c488404086772c92f72f8951342",
+      "identity": "util_string_endswith.empty_string",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_endswith",
+      "name": "empty_string",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 215,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1d15554931b0c8fee9d85d043dea154ef2afacbfc928debcbec0b835900a2a0c",
+      "identity": "util_string_endswith.empty_end",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_endswith",
+      "name": "empty_end",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 216,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:43da97555c3b8ddb2392a203d20ab92014cc75c8e691894fa1170ad770ddf048",
+      "identity": "util_string_endswith.simple_true",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_endswith",
+      "name": "simple_true",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 217,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a528d21e0538789c74faf21c185d959992d6e2b77321aadfd8727f43d7bc6cd9",
+      "identity": "util_string_endswith.simple_false",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_endswith",
+      "name": "simple_false",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 218,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8ff2ee5292ffe36a8d4f5c9653ec138df09f89fd800885c3bc0335154fa81ad4",
+      "identity": "util_string_strip.empty",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_strip",
+      "name": "empty",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 220,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b75e62a42a3ae63211838047be6cdb9aefc99e0251d9364d9063de398263f983",
+      "identity": "util_string_strip.only_spaces",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_strip",
+      "name": "only_spaces",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 221,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e3a3ad802e4bad8336d6151bd2effae51864d1e2ac80d1df1d6651ecc34d93f3",
+      "identity": "util_string_strip.no_spaces",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_strip",
+      "name": "no_spaces",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 222,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:fa1fb4f7a2ce5320cc9e555fc7bc94a5a9c6dc48dc0e6876d48f3dfc97b87f2d",
+      "identity": "util_string_strip.with_spaces",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_strip",
+      "name": "with_spaces",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 223,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8ec17096cd88f35f97e9e668c0b304dbfadf044cec88428d1c42284c719ceaa1",
+      "identity": "util_string_remove_trademark.empty",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "empty",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 225,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9660f1bf1d60a5b833b2902e2d56e873793642e7506142d88997300fed0009b1",
+      "identity": "util_string_remove_trademark.no_trademark",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "no_trademark",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 226,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8dd666e0b78a0c27d12f17746e98388e30f87903cba007bd3a3a3b96c6700a95",
+      "identity": "util_string_remove_trademark.only_tm",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "only_tm",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 227,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:4f041a6749462350ac2395ee007b79834108f9cce3c5a7bcbe60ba6f5cf774e2",
+      "identity": "util_string_remove_trademark.only_r",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "only_r",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 228,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:bb7fc0c9e29cb54e15d49f08b29cda7d9d2bb28cf50159039414c1ae3b71b92e",
+      "identity": "util_string_remove_trademark.both",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "both",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 229,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1cd888fb258e610e0e2844688da46c8ff87a2ee2c251660b6dfec25840cc276b",
+      "identity": "util_string_remove_trademark.both_space",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "both_space",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 230,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:2415706557b0f56faa0ac8b4c9e50ceee71446ae4a6e1bcc058694854eb41dfd",
+      "identity": "util_string_remove_trademark.both_space_around",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "both_space_around",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 231,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:f2860c7021da5e7c3dac053e80e6992900e8de7bd3a488d3caed0acdfcca872a",
+      "identity": "util_string_remove_trademark.trademark_space_suffix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "trademark_space_suffix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 232,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ad18117fe49a9c76b648983f506554ea6e4f875c8801368eaa77237f53134b28",
+      "identity": "util_string_remove_trademark.trademark_space_middle",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "trademark_space_middle",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 233,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:b2bf7498e48bf7a8f8fdd14ab8c3fc6ee3ac04717723978b9de540911150a57d",
+      "identity": "util_string_remove_trademark.r_space_suffix",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "r_space_suffix",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 234,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:5cd209ef49bd09bf207aea34a1183747b2b5f1c641c2eeb5c029d8eff18326c6",
+      "identity": "util_string_remove_trademark.r_space_middle",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_trademark",
+      "name": "r_space_middle",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 235,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e9d123283b9fbe0ad1af936f6dceef9ea17ac30cbb51df7799ffa9c72e660e26",
+      "identity": "util_string_remove_gpu_from_cpu_name.basic",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_string_remove_gpu_from_cpu_name",
+      "name": "basic",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 237,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:294cfd1882fba6771261b3e1183132975c2a1bbde38d3a7ceb2c4719f50a8211",
+      "identity": "string_startswith.basic",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "string_startswith",
+      "name": "basic",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 239,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3948d844cde7888dba6433f8a9f4eac4976cd7dbfc5f3f385837db126b2d3899",
+      "identity": "string_endswith.basic",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "string_endswith",
+      "name": "basic",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 241,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:dd78cc34a761dabb6daba9dcac0c6d09586ff3038e082300bd7328fa651df5c3",
+      "identity": "util_task.basic",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_task",
+      "name": "basic",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 243,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:73a49c11ae429da9b88a1428febc460487a2569df4535383c7410406baf46e9d",
+      "identity": "util_task.multiple_times",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "util_task",
+      "name": "multiple_times",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 244,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:47fd3afb253a61d372a6649da89c32238d1792560bc9c4e13fcb636f1aa8701b",
+      "identity": "time_human_readable_to_seconds.Empty",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "time_human_readable_to_seconds",
+      "name": "Empty",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 246,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ef7e4bb7117a4f9a83e36a3aaf2026a5589ba8f01912b42585747f9fda72807a",
+      "identity": "time_human_readable_to_seconds.Fraction",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "time_human_readable_to_seconds",
+      "name": "Fraction",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 247,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:2cb3869be4be93be57d2741a3ef86aa9034981dd2d3bcd6f24484f7e8c256039",
+      "identity": "time_human_readable_to_seconds.Seconds",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "time_human_readable_to_seconds",
+      "name": "Seconds",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 248,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:9e84d7eaa52e64ba669ce9d011d23b3403dc6ab36c37ec298bfd019af8ac8e40",
+      "identity": "time_human_readable_to_seconds.MinutesSeconds",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "time_human_readable_to_seconds",
+      "name": "MinutesSeconds",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 249,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:bc3dfc511b7f18d3e3a842255697246e54cb5b3c42c90b27b463605c959597e4",
+      "identity": "time_human_readable_to_seconds.HoursMinutesSeconds",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "time_human_readable_to_seconds",
+      "name": "HoursMinutesSeconds",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 250,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e459bf51d55163480765f0add36d41bb47f9f149cfd45ddbddba2e6c5b28bb61",
+      "identity": "transform_motion_decompose.Degenerated",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "transform_motion_decompose",
+      "name": "Degenerated",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 252,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ef29ac88a07f02c6eed9a0421f0de74d2ab5ea221529e9e606a457a00cbc4f70",
+      "identity": "types_base.divide_up",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "types_base",
+      "name": "divide_up",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 254,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:324f1709fb701aed7d84c706e041e439d010b5397c39c716d76dc44e18bac998",
+      "identity": "types_base.divide_up_by_shift",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "types_base",
+      "name": "divide_up_by_shift",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 255,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:a92dcfd4f6b6b41b10fe20253f1aae99303e3792684759d1d0ecca6ee4aeb3b3",
+      "identity": "types_base.align_up",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "types_base",
+      "name": "align_up",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 256,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:108b33ebc7855f020772626ec57b2285f5b0142c9b2f502cd01f946f9c7f40f8",
+      "identity": "types_base.round_up",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "types_base",
+      "name": "round_up",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 257,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:14ed75ee6312d2c5acaca1af9fdc5113ff207425411f4d6078804d5fa39628f3",
+      "identity": "types_base.round_down",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "types_base",
+      "name": "round_down",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 258,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:37a22d03ad22ca760f9cbc44d768e9ac86286345585607eab298816046c0ee43",
+      "identity": "types_base.is_power_of_two",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "types_base",
+      "name": "is_power_of_two",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 259,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:c454220950b59a2c5f199cc1b94704206d6eca192df08feebca8e30bed4c9f1e",
+      "identity": "PackedSphericalHarmonicsTest.PackUnpack",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PackedSphericalHarmonicsTest",
+      "name": "PackUnpack",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04"
+      ],
+      "listing_line": 261,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "duplicate_identities": [],
+  "counts": {
+    "cases": 216,
+    "disabled": 0,
+    "not_run": 216
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

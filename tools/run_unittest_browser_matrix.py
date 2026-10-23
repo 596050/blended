@@ -65,13 +65,37 @@ def overlay_inputs(receipt, base_asset):
     return {"receipt": Path(receipt).resolve(), "base_asset": Path(base_asset).resolve()}
 
 
+def harness_sources(root):
+    """Freeze reviewed optional patch inputs with the actual runner code."""
+    root = Path(root)
+    candidates = [*sorted((root / "tools").glob("*.py")),
+                  root / "tools/upstream_invocations_5_2.json",
+                  *sorted((root / "compatibility/package-overlays").glob("*.json"))]
+    for directory in ("browser-numerics", "browser-sqlite", "browser-codecs"):
+        candidates.extend(sorted((root / "patches" / directory).rglob("*")))
+    return [path for path in candidates if path.is_file() and not path.is_symlink()
+            and "__pycache__" not in path.relative_to(root).parts and path.suffix not in (".pyc", ".pyo")]
+
+
+def suite_source_arguments(catalog, source_root):
+    """Omit local paths to use the probe's exact pinned source downloads."""
+    if source_root is None:
+        return []
+    arguments = []
+    for suite in catalog["suites"]:
+        for source in [suite, *suite.get("support_files", [])]:
+            arguments.extend(["--suite", str((Path(source_root) / source["upstream_path"]).resolve())])
+    return arguments
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--native-inventory", required=True, type=Path)
     parser.add_argument("--native-inventory-sha256", required=True)
     parser.add_argument("--repo-root", type=Path, default=ROOT,
                         help="Root for repository-relative manifest paths in the immutable source plan")
-    parser.add_argument("--source-root", required=True, type=Path)
+    parser.add_argument("--source-root", type=Path,
+                        help="Optional local original source tree; otherwise fetch each script/helper by its pinned hash and size")
     parser.add_argument("--fixture-root", type=Path, help="Verified original tests/files payload tree")
     parser.add_argument("--resource-root", type=Path, help="Verified original non-test source resource tree")
     parser.add_argument("--asset", required=True, type=Path)
@@ -125,12 +149,7 @@ def main(argv=None):
         shutil.copyfile(overlay["receipt"], output / "package-overlay.json")
     snapshot = output / "harness"
     files = []
-    for source in [*sorted((ROOT / "tools").glob("*.py")),
-                   ROOT / "tools/upstream_invocations_5_2.json",
-                   *sorted((ROOT / "compatibility/package-overlays").glob("*.json")),
-                   *sorted((ROOT / "patches/browser-numerics").rglob("*"))]:
-        if not source.is_file() or source.is_symlink():
-            continue
+    for source in harness_sources(ROOT):
         relative = source.relative_to(ROOT)
         destination = snapshot / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
@@ -166,9 +185,7 @@ def main(argv=None):
                    "--suite-manifest", str(manifest_path), "--suite-manifest-sha256", row["manifest"]["sha256"],
                    "--browser-executable", str(args.browser_executable.resolve()), "--output", str(destination),
                    "--timeout", str(args.timeout)]
-        for suite in catalog["suites"]:
-            for source in [suite, *suite.get("support_files", [])]:
-                command.extend(["--suite", str((args.source_root / source["upstream_path"]).resolve())])
+        command.extend(suite_source_arguments(catalog, args.source_root))
         if args.fixture_root:
             command.extend(["--fixture-root", str(args.fixture_root.resolve())])
         if args.resource_root:

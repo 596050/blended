@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "kind": "browser-codec-recipe-build-validation",
+  "status": "failed",
+  "started_at": "2026-10-23T15:27:14.188513+00:00",
+  "work": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work",
+  "runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/run_recipe_builds.py",
+    "bytes": 6173,
+    "sha256": "f56f2c3a566af649423fab2c69b2526d79c7a49d6c1cffa74882cfd13fa70c81"
+  },
+  "jobs": 1,
+  "cache": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache",
+  "sdk": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+  "compiler": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/bin/clang",
+    "bytes": 146590784,
+    "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d"
+  },
+  "emcc": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+    "bytes": 1045,
+    "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+  },
+  "recipes": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/aom.sh",
+      "bytes": 1241,
+      "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/codec-common.sh",
+      "bytes": 2742,
+      "sha256": "6c6c1a5468730cda78545fdcb21d99ae4534e885f1798a188470b562f40e3c11"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/libheif.sh",
+      "bytes": 1475,
+      "sha256": "8f17cd9d8a2f7290978728b40a85cb44c696cdbe392478b08ec527fcc22bf79e"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/openjpeg.sh",
+      "bytes": 617,
+      "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/webp.sh",
+      "bytes": 1072,
+      "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+    }
+  ],
+  "upstream_aom_patch": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/upstream/build_files/build_environment/patches/aom_6d2b7f71b98bfa28e372b1f2d85f137280bdb3de.diff",
+    "bytes": 1460,
+    "sha256": "5cb6ce17857a5283521d507dd834e6a45f8749468eeea1d2a9fd5f2e3e7544ea"
+  },
+  "commands": [
+    {
+      "name": "webp",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/webp.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa",
+      "started_at": "2026-10-23T15:27:14.303795+00:00",
+      "returncode": 1,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:27:14.719841+00:00",
+      "duration_seconds": 0.41568,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-1/webp.log",
+        "bytes": 53,
+        "sha256": "b1d74507cc3e0e9acefe31bc2c9ea537497d54d064d0edb7e533092a6de94fff"
+      }
+    }
+  ],
+  "blender_cases_executed": 0,
+  "browser_feature_parity": false,
+  "limit": "Real codec dependency compilation for wasm32 with the pinned Emscripten toolchain. This is not a rebuilt Blender artifact or an original Blender test execution.",
+  "reason": "webp recipe failed; see /workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-1/webp.log",
+  "completed_at": "2026-10-23T15:27:14.720753+00:00"
+}

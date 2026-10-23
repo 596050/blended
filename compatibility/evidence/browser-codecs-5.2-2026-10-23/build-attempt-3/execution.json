@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "kind": "browser-codec-recipe-build-validation",
+  "status": "failed",
+  "started_at": "2026-10-23T15:30:47.526790+00:00",
+  "work": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work",
+  "runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/run_recipe_builds.py",
+    "bytes": 6538,
+    "sha256": "60bbbed0ef7e3fd8f44321b4ff8c07e1b30f32032b257d9e6aa1a0464d190b02"
+  },
+  "jobs": 1,
+  "cache": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache",
+  "sdk": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+  "compiler": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/bin/clang",
+    "bytes": 146590784,
+    "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d"
+  },
+  "host_cmake": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "bytes": 255,
+    "sha256": "575561204518e8e7f0f208480095ca504bc91c59c50e8a92c4763bec39b86ce4"
+  },
+  "emcc": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+    "bytes": 1045,
+    "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+  },
+  "recipes": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/aom.sh",
+      "bytes": 1241,
+      "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/codec-common.sh",
+      "bytes": 2878,
+      "sha256": "ed5fe723c0795716c70e0c9c0415542dbee935440bf623834baeef9ee4b3e7ce"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/libheif.sh",
+      "bytes": 1475,
+      "sha256": "8f17cd9d8a2f7290978728b40a85cb44c696cdbe392478b08ec527fcc22bf79e"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/openjpeg.sh",
+      "bytes": 617,
+      "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/webp.sh",
+      "bytes": 1072,
+      "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+    }
+  ],
+  "upstream_aom_patch": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/upstream/build_files/build_environment/patches/aom_6d2b7f71b98bfa28e372b1f2d85f137280bdb3de.diff",
+    "bytes": 1460,
+    "sha256": "5cb6ce17857a5283521d507dd834e6a45f8749468eeea1d2a9fd5f2e3e7544ea"
+  },
+  "commands": [
+    {
+      "name": "webp",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/webp.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa",
+      "started_at": "2026-10-23T15:30:47.641574+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:31:49.210684+00:00",
+      "duration_seconds": 61.568836,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-3/webp.log",
+        "bytes": 21065,
+        "sha256": "3d2415af9608fecbc0dfd5120926877759ae5aff98de62239d4ec2a967ab7dd1"
+      }
+    },
+    {
+      "name": "openjpeg",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/openjpeg.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa",
+      "started_at": "2026-10-23T15:31:49.211222+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:32:18.136951+00:00",
+      "duration_seconds": 28.925509,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-3/openjpeg.log",
+        "bytes": 6996,
+        "sha256": "07d3e9af55c56008fc2be0e141feae0eba796ebe8d774f20dc214af77e46a687"
+      }
+    },
+    {
+      "name": "aom",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/aom.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa",
+      "started_at": "2026-10-23T15:32:18.137505+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:34:37.552003+00:00",
+      "duration_seconds": 139.414011,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-3/aom.log",
+        "bytes": 35324,
+        "sha256": "0bb24da130c8ced1bb4dbe7d496813c67d87391a316a63a918afa3283e9f72db"
+      }
+    },
+    {
+      "name": "libheif",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/libheif.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa",
+      "started_at": "2026-10-23T15:34:37.552661+00:00",
+      "returncode": 2,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:35:27.465055+00:00",
+      "duration_seconds": 49.911711,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-3/libheif.log",
+        "bytes": 20241,
+        "sha256": "2589cfc65e50cee3986d4f31e807cf6c425a909c0db4848da4c8779d0d59e38b"
+      }
+    }
+  ],
+  "blender_cases_executed": 0,
+  "browser_feature_parity": false,
+  "limit": "Real codec dependency compilation for wasm32 with the pinned Emscripten toolchain. This is not a rebuilt Blender artifact or an original Blender test execution.",
+  "reason": "libheif recipe failed; see /workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-3/libheif.log",
+  "completed_at": "2026-10-23T15:35:27.465738+00:00"
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "original_source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/upstream-5.2.tar.gz",
+    "bytes": 78785728,
+    "sha256": "de0fdadf28015805370d1815facaf9139fbb1e161d8c540d1765484beabb3a99"
+  },
+  "files": [
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/__init__.py",
+      "bytes": 98,
+      "sha256": "93cafbd6712b0f6d792bac6563b39f4bec16ab8ab34fd21260eb8b889a9096c9"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/__init__.py",
+      "bytes": 5053,
+      "sha256": "f1a09a5768a161fc922692886a87c03f1f844775777c4850767064dc86a7eac3"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/backend_sqlite.py",
+      "bytes": 10519,
+      "sha256": "abed3157bac99abc7e59d25c9bfcbfa3ffd0e27b948816c5b1f7bfb3fcfee863"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/hash_service.py",
+      "bytes": 6685,
+      "sha256": "8c0b3a230f9d3600187b522f7157ac4072fffd821969efdec5ca73cdf778b07b"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/types.py",
+      "bytes": 1629,
+      "sha256": "903a54e391e244276b540714435e8abd7e3eba9c59fdafa43d76bc7958cfe236"
+    },
+    {
+      "upstream_path": "tests/python/bl_disk_file_hash_service_test.py",
+      "bytes": 14875,
+      "sha256": "a2517a7c960c01cedbc347ba24a1649bcae81485320cf59b6f052ceb5594a5b4"
+    }
+  ],
+  "expected_case_ids": [
+    "DiskFileHashServiceNotOpeningTest.test_closing_unopened_service",
+    "DiskFileHashServiceNotOpeningTest.test_doubly_closing",
+    "DiskFileHashServiceTest.test_cleanup_on_close",
+    "DiskFileHashServiceTest.test_file_matches",
+    "DiskFileHashServiceTest.test_get_file_hash",
+    "DiskFileHashServiceTest.test_rehash_after_modification",
+    "DiskFileHashServiceTest.test_store_hash_callback",
+    "SQLiteBackendTest.test_fetch_nonexistent_file",
+    "SQLiteBackendTest.test_mark_as_fresh",
+    "SQLiteBackendTest.test_remove_older_than",
+    "SQLiteBackendTest.test_store_fetch_update_hash",
+    "SQLiteBackendTest.test_store_multiple_hashes_and_sizes"
+  ],
+  "original_test_assertions_modified": false,
+  "source_payloads_extracted_exactly": true,
+  "scope": "Standalone CPython component preparation; full Blender invocation has not executed"
+}

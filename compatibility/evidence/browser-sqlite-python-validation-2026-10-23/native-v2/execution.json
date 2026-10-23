@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "kind": "native-cpython-sqlite-diagnostic-comparison-v2",
+  "started_utc": "2026-10-23T16:10:44.474213+00:00",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/native/blender-5.2.0-linux-x64/5.2/python/bin/python3.13",
+    "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-python-validation-2026-10-23/probe_python_sqlite_v2.py"
+  ],
+  "capture_driver": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-python-validation-2026-10-23/run-native-v2.py",
+    "bytes": 2280,
+    "sha256": "823a39daf35d129a4a7c1437cf7a6ce27ee3402de61c73babf98546ea75d21f8"
+  },
+  "inputs": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/native/blender-5.2.0-linux-x64/5.2/python/bin/python3.13",
+      "bytes": 40029432,
+      "sha256": "940551e8051d3daf320c30b9671e3fefe079b471f1a57a9d4b77466560b30043"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-python-validation-2026-10-23/probe_python_sqlite_v2.py",
+      "bytes": 5773,
+      "sha256": "ba63d055acb7c87455011aaad86522ae1e33036b7c57917eb4a27f321ac238b8"
+    }
+  ],
+  "original_blender_tests_executed": false,
+  "strict_blender_browser_test_passes": 0,
+  "full_feature_parity": false,
+  "observations": [
+    {
+      "kind": "cpython-sqlite-component-diagnostic",
+      "diagnostic_version": 2,
+      "wal_deserialization_expected_error": {
+        "type": "OperationalError",
+        "code": 14,
+        "name": "SQLITE_CANTOPEN",
+        "message": "unable to open database file"
+      },
+      "python_version": [
+        3,
+        13,
+        13
+      ],
+      "sqlite_version": "3.51.3",
+      "actual_builtin_extension": false,
+      "wal_dual_connection": true,
+      "parameter_binding_text_integer_float": true,
+      "utf8_file_hash": true,
+      "upsert_returning": true,
+      "rollback": true,
+      "python_function_and_trace_callbacks": true,
+      "row_factory": true,
+      "backup_and_serialization": true,
+      "foreign_key_cascade": true,
+      "close_reopen_same_filesystem": true,
+      "integrity_check": true,
+      "original_blender_tests_executed": false,
+      "full_feature_parity": false
+    }
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 0.115768,
+  "finished_utc": "2026-10-23T16:10:44.640613+00:00",
+  "logs": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-python-validation-2026-10-23/native-v2/stdout.log",
+      "bytes": 757,
+      "sha256": "fe9c614824cf2164672878667bdae84da6db9f6dd069e3f4fd71ac3f6c668d0d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-python-validation-2026-10-23/native-v2/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "completed_successfully": true
+}

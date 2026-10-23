@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "kind": "upstream-derived-dependency-cache-alias-contract",
+  "created_utc": "2026-10-23T16:15:14.058828+00:00",
+  "scope": "Expected aliases derived from the pinned original libpng installer and port build recipe. These are not historical cache symlink observations. Every listed alias is required, with exact relative link text, and every other alias is rejected.",
+  "cache_key": "blender-source-ubuntu24-x64-ebd6a49b6f17d26d0800c172eb40348041eb5fb37f5c7d4c67e5857f6dc8abd6-39841653080",
+  "regular_file_manifest": {
+    "path": "compatibility/build-caches/source-39841653080-harvest.jsonl",
+    "bytes": 610325,
+    "sha256": "cfad6076a3160b1ded9f742a7e046beb911a1f720c2700f6e9480d181974c812"
+  },
+  "source_archive": {
+    "urls": [
+      "https://download.sourceforge.net/libpng/libpng-1.6.58.tar.xz",
+      "https://github.com/pnggroup/libpng/releases/download/v1.6.58/libpng-1.6.58.tar.xz"
+    ],
+    "bytes": 1070096,
+    "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775",
+    "verification": "The retained complete archive was rehashed, and each preserved archive member was extracted directly from those verified bytes. The archive digest is selected by the original pinned port recipe."
+  },
+  "sources": [
+    {
+      "path": "sources/port/libpng.sh",
+      "bytes": 2952,
+      "sha256": "1b807dc8a6866ccafb0589854cd9d33b774692e02972228232be72b9ca0439ce",
+      "repository": "https://github.com/gessa-ai/blender-web",
+      "commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+      "upstream_path": "scripts/deps/libpng.sh",
+      "git_blob": "43d128f1eabb52738220cb2867cb01f98c248fe8"
+    },
+    {
+      "path": "sources/libpng-1.6.58/CMakeLists.txt",
+      "bytes": 49235,
+      "sha256": "0de785364c9157b2f1097efe617131ae5f3fadf25ceceea748f389a0d1e45cf5",
+      "archive_member": "libpng-1.6.58/CMakeLists.txt"
+    },
+    {
+      "path": "sources/libpng-1.6.58/LICENSE",
+      "bytes": 5345,
+      "sha256": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+      "archive_member": "libpng-1.6.58/LICENSE"
+    },
+    {
+      "path": "sources/libpng-1.6.58/scripts/cmake/AUTHORS.md",
+      "bytes": 862,
+      "sha256": "50633b976f0133862c921aa67d56de2c0b42eb344c8ca3853686efb092a447db",
+      "archive_member": "libpng-1.6.58/scripts/cmake/AUTHORS.md"
+    }
+  ],
+  "aliases": [
+    {
+      "path": "lib/libpng.a",
+      "link_text": "libpng16.a",
+      "target_path": "lib/libpng16.a",
+      "source_lines": {
+        "CMakeLists.txt": [
+          [
+            19,
+            25
+          ],
+          [
+            650,
+            658
+          ],
+          [
+            1051,
+            1067
+          ],
+          [
+            1125,
+            1129
+          ]
+        ],
+        "libpng.sh": [
+          [
+            51,
+            66
+          ],
+          [
+            71,
+            74
+          ]
+        ]
+      },
+      "target_identity": {
+        "bytes": 247222,
+        "sha256": "74b0b7016ed5db93a9c333ea29efdee640507b828e529e694a513e931f30a6c6"
+      }
+    },
+    {
+      "path": "bin/libpng-config",
+      "link_text": "libpng16-config",
+      "target_path": "bin/libpng16-config",
+      "source_lines": {
+        "CMakeLists.txt": [
+          [
+            19,
+            25
+          ],
+          [
+            1031,
+            1045
+          ],
+          [
+            1101,
+            1104
+          ],
+          [
+            1140,
+            1145
+          ],
+          [
+            1164,
+            1169
+          ]
+        ]
+      },
+      "target_identity": {
+        "bytes": 2560,
+        "sha256": "69144d3c5ed09e5bf41fbf2213878e9729a266d23457295feb7a2e88ecdf2c44"
+      }
+    },
+    {
+      "path": "lib/pkgconfig/libpng.pc",
+      "link_text": "libpng16.pc",
+      "target_path": "lib/pkgconfig/libpng16.pc",
+      "source_lines": {
+        "CMakeLists.txt": [
+          [
+            19,
+            25
+          ],
+          [
+            1031,
+            1045
+          ],
+          [
+            1091,
+            1100
+          ],
+          [
+            1160,
+            1167
+          ]
+        ]
+      },
+      "target_identity": {
+        "bytes": 506,
+        "sha256": "0105cdbc38f6f2e10fbc43b169b504f04ab59bf28780121c36d6ee904f300772"
+      }
+    }
+  ],
+  "derivation": [
+    "The port recipe selects libpng 1.6.58, a Release static build, PNG_SHARED=OFF, PNG_STATIC=ON, PNG_FRAMEWORK=OFF and CMAKE_INSTALL_LIBDIR=lib.",
+    "The original CMake source defines PNGLIB_ABI_VERSION as 16, creates the three relative aliases on this Linux/Emscripten profile and installs them under lib, bin and lib/pkgconfig.",
+    "The independent historical regular-file harvest identifies each target file. It does not contain the alias paths because its collector excluded symlinks.",
+    "The conditional minizip alias is not allowed: this selected harvest already identifies lib/libminizip.a as a regular file and has no alternative libminizip-ng.a payload."
+  ],
+  "blender_tests_executed": 0,
+  "full_feature_parity": false
+}

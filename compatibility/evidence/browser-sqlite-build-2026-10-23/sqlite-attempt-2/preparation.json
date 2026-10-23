@@ -1,0 +1,63 @@
+{
+  "browser_tests_executed": false,
+  "dependency_insertion": {
+    "before": "python",
+    "name": "sqlite"
+  },
+  "environment": {
+    "BLENDED_SQLITE_PATCHSET_SHA256": "2b10a01fee1e30657fdaf234b025679d3d68325dc664675301b9463e7b8ceafb"
+  },
+  "full_feature_parity": false,
+  "inputs": [
+    {
+      "bytes": 3284,
+      "file": "sqlite.sh",
+      "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+    },
+    {
+      "bytes": 5319,
+      "file": "sqlite-cache.py",
+      "sha256": "6a8f97e9f438566691546691f772e3685e64ef5d69a339a0182f9bd83d005195"
+    },
+    {
+      "bytes": 4693,
+      "file": "0001-enable-cpython-sqlite.patch",
+      "sha256": "dc16b9529656ffb7fadd90fd83829de16de8fa2c9860c95c6887001d592ea875"
+    }
+  ],
+  "manifest": {
+    "bytes": 3104,
+    "path": "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/manifest.json",
+    "sha256": "2b10a01fee1e30657fdaf234b025679d3d68325dc664675301b9463e7b8ceafb"
+  },
+  "original_python_recipe": {
+    "bytes": 15266,
+    "sha256": "61db51f778a95d9f8cdd6c5fd07128284a92c898785b1ce45d6e944ae3411622"
+  },
+  "outputs": [
+    {
+      "bytes": 16318,
+      "path": "scripts/deps/python.sh",
+      "sha256": "2c258d6162341518b0051d8e93c3dd10c3ece7dd57d1406a78339f3726767564"
+    },
+    {
+      "bytes": 3284,
+      "path": "scripts/deps/sqlite.sh",
+      "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+    },
+    {
+      "bytes": 5319,
+      "path": "scripts/deps/sqlite-cache.py",
+      "sha256": "6a8f97e9f438566691546691f772e3685e64ef5d69a339a0182f9bd83d005195"
+    },
+    {
+      "bytes": 3104,
+      "path": "scripts/deps/sqlite-patchset.json",
+      "sha256": "2b10a01fee1e30657fdaf234b025679d3d68325dc664675301b9463e7b8ceafb"
+    }
+  ],
+  "patchset_id": "blended-browser-sqlite-cpython-3.13.13-5.2-v1",
+  "requires_enclosing_driver_source_commit_verification": true,
+  "schema": 1,
+  "source_tests_modified": false
+}

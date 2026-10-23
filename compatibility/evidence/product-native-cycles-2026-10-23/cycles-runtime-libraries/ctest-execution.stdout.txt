@@ -1,0 +1,598 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 35
+    Start 35: cycles
+
+35: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*" "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+35: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+35: Environment variables: 
+35:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+35:  $$LD_LIBRARY_PATH
+35: Test timeout computed to be: 600
+35: Note: Google Test filter = AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*
+35: [==========] Running 216 tests from 45 test suites.
+35: [----------] Global test environment set-up.
+35: [----------] 3 tests from AdaptiveSampling
+35: [ RUN      ] AdaptiveSampling.schedule_samples
+35: [       OK ] AdaptiveSampling.schedule_samples (0 ms)
+35: [ RUN      ] AdaptiveSampling.align_samples
+35: [       OK ] AdaptiveSampling.align_samples (0 ms)
+35: [ RUN      ] AdaptiveSampling.need_filter
+35: [       OK ] AdaptiveSampling.need_filter (0 ms)
+35: [----------] 3 tests from AdaptiveSampling (0 ms total)
+35: 
+35: [----------] 2 tests from IntegratorRenderScheduler
+35: [ RUN      ] IntegratorRenderScheduler.calculate_resolution_divider_for_resolution
+35: [       OK ] IntegratorRenderScheduler.calculate_resolution_divider_for_resolution (0 ms)
+35: [ RUN      ] IntegratorRenderScheduler.calculate_resolution_for_divider
+35: [       OK ] IntegratorRenderScheduler.calculate_resolution_for_divider (0 ms)
+35: [----------] 2 tests from IntegratorRenderScheduler (0 ms total)
+35: 
+35: [----------] 2 tests from tile_calculate_best_size
+35: [ RUN      ] tile_calculate_best_size.Basic
+35: [       OK ] tile_calculate_best_size.Basic (0 ms)
+35: [ RUN      ] tile_calculate_best_size.Extreme
+35: [       OK ] tile_calculate_best_size.Extreme (0 ms)
+35: [----------] 2 tests from tile_calculate_best_size (0 ms total)
+35: 
+35: [----------] 3 tests from KernelCamera
+35: [ RUN      ] KernelCamera.FisheyeLensPolynomialRoundtrip
+35: [       OK ] KernelCamera.FisheyeLensPolynomialRoundtrip (0 ms)
+35: [ RUN      ] KernelCamera.FisheyeLensPolynomialToDirectionSymmetry
+35: [       OK ] KernelCamera.FisheyeLensPolynomialToDirectionSymmetry (0 ms)
+35: [ RUN      ] KernelCamera.FisheyeLensPolynomialToDirection
+35: [       OK ] KernelCamera.FisheyeLensPolynomialToDirection (0 ms)
+35: [----------] 3 tests from KernelCamera (0 ms total)
+35: 
+35: [----------] 1 test from PanoramaProjection/0, where TypeParam = ccl::Spherical
+35: [ RUN      ] PanoramaProjection/0.round_trip
+35: [       OK ] PanoramaProjection/0.round_trip (0 ms)
+35: [----------] 1 test from PanoramaProjection/0 (0 ms total)
+35: 
+35: [----------] 1 test from PanoramaProjection/1, where TypeParam = ccl::Equirectangular
+35: [ RUN      ] PanoramaProjection/1.round_trip
+35: [       OK ] PanoramaProjection/1.round_trip (0 ms)
+35: [----------] 1 test from PanoramaProjection/1 (0 ms total)
+35: 
+35: [----------] 1 test from PanoramaProjection/2, where TypeParam = ccl::FisheyeEquidistant
+35: [ RUN      ] PanoramaProjection/2.round_trip
+35: [       OK ] PanoramaProjection/2.round_trip (0 ms)
+35: [----------] 1 test from PanoramaProjection/2 (0 ms total)
+35: 
+35: [----------] 1 test from PanoramaProjection/3, where TypeParam = ccl::FisheyeEquisolid
+35: [ RUN      ] PanoramaProjection/3.round_trip
+35: [       OK ] PanoramaProjection/3.round_trip (0 ms)
+35: [----------] 1 test from PanoramaProjection/3 (0 ms total)
+35: 
+35: [----------] 1 test from PanoramaProjection/4, where TypeParam = ccl::MirrorBall
+35: [ RUN      ] PanoramaProjection/4.round_trip
+35: [       OK ] PanoramaProjection/4.round_trip (0 ms)
+35: [----------] 1 test from PanoramaProjection/4 (0 ms total)
+35: 
+35: [----------] 1 test from PanoramaProjection/5, where TypeParam = ccl::EquiangularCubemapFace
+35: [ RUN      ] PanoramaProjection/5.round_trip
+35: [       OK ] PanoramaProjection/5.round_trip (0 ms)
+35: [----------] 1 test from PanoramaProjection/5 (0 ms total)
+35: 
+35: [----------] 63 tests from RenderGraph
+35: [ RUN      ] RenderGraph.deduplicate_deep
+35: [       OK ] RenderGraph.deduplicate_deep (2 ms)
+35: [ RUN      ] RenderGraph.constant_fold_rgb_to_bw
+35: [       OK ] RenderGraph.constant_fold_rgb_to_bw (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_emission1
+35: [       OK ] RenderGraph.constant_fold_emission1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_emission2
+35: [       OK ] RenderGraph.constant_fold_emission2 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_background1
+35: [       OK ] RenderGraph.constant_fold_background1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_background2
+35: [       OK ] RenderGraph.constant_fold_background2 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_shader_add
+35: [       OK ] RenderGraph.constant_fold_shader_add (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_shader_mix
+35: [       OK ] RenderGraph.constant_fold_shader_mix (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_invert
+35: [       OK ] RenderGraph.constant_fold_invert (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_invert_fac_0
+35: [       OK ] RenderGraph.constant_fold_invert_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_invert_fac_0_const
+35: [       OK ] RenderGraph.constant_fold_invert_fac_0_const (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_mix_add
+35: [       OK ] RenderGraph.constant_fold_mix_add (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_mix_add_clamp
+35: [       OK ] RenderGraph.constant_fold_mix_add_clamp (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_dodge_no_fac_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_dodge_no_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_light_no_fac_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_light_no_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_burn_no_fac_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_burn_no_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_blend_clamped_no_fac_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_blend_clamped_no_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_blend
+35: [       OK ] RenderGraph.constant_fold_part_mix_blend (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_sub_same_fac_bad
+35: [       OK ] RenderGraph.constant_fold_part_mix_sub_same_fac_bad (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_sub_same_fac_1
+35: [       OK ] RenderGraph.constant_fold_part_mix_sub_same_fac_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_add_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_add_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_sub_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_sub_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_mul_1
+35: [       OK ] RenderGraph.constant_fold_part_mix_mul_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_div_1
+35: [       OK ] RenderGraph.constant_fold_part_mix_div_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_mul_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_mul_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_mix_div_0
+35: [       OK ] RenderGraph.constant_fold_part_mix_div_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_separate_combine_rgb
+35: [       OK ] RenderGraph.constant_fold_separate_combine_rgb (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_separate_combine_xyz
+35: [       OK ] RenderGraph.constant_fold_separate_combine_xyz (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_separate_combine_hsv
+35: [       OK ] RenderGraph.constant_fold_separate_combine_hsv (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_gamma
+35: [       OK ] RenderGraph.constant_fold_gamma (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_gamma_part_0
+35: [       OK ] RenderGraph.constant_fold_gamma_part_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_gamma_part_1
+35: [       OK ] RenderGraph.constant_fold_gamma_part_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_bright_contrast
+35: [       OK ] RenderGraph.constant_fold_bright_contrast (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_blackbody
+35: [       OK ] RenderGraph.constant_fold_blackbody (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_math
+35: [       OK ] RenderGraph.constant_fold_math (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_math_clamp
+35: [       OK ] RenderGraph.constant_fold_math_clamp (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_add_0
+35: [       OK ] RenderGraph.constant_fold_part_math_add_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_sub_0
+35: [       OK ] RenderGraph.constant_fold_part_math_sub_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_mul_1
+35: [       OK ] RenderGraph.constant_fold_part_math_mul_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_div_1
+35: [       OK ] RenderGraph.constant_fold_part_math_div_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_mul_0
+35: [       OK ] RenderGraph.constant_fold_part_math_mul_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_div_0
+35: [       OK ] RenderGraph.constant_fold_part_math_div_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_pow_0
+35: [       OK ] RenderGraph.constant_fold_part_math_pow_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_math_pow_1
+35: [       OK ] RenderGraph.constant_fold_part_math_pow_1 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_vector_math
+35: [       OK ] RenderGraph.constant_fold_vector_math (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_vecmath_add_0
+35: [       OK ] RenderGraph.constant_fold_part_vecmath_add_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_vecmath_sub_0
+35: [       OK ] RenderGraph.constant_fold_part_vecmath_sub_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_part_vecmath_cross_0
+35: [       OK ] RenderGraph.constant_fold_part_vecmath_cross_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_bump
+35: [       OK ] RenderGraph.constant_fold_bump (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_bump_no_input
+35: [       OK ] RenderGraph.constant_fold_bump_no_input (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_rgb_curves
+35: [       OK ] RenderGraph.constant_fold_rgb_curves (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_rgb_curves_fac_0
+35: [       OK ] RenderGraph.constant_fold_rgb_curves_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_rgb_curves_fac_0_const
+35: [       OK ] RenderGraph.constant_fold_rgb_curves_fac_0_const (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_vector_curves
+35: [       OK ] RenderGraph.constant_fold_vector_curves (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_vector_curves_fac_0
+35: [       OK ] RenderGraph.constant_fold_vector_curves_fac_0 (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_rgb_ramp
+35: [       OK ] RenderGraph.constant_fold_rgb_ramp (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_rgb_ramp_flat
+35: [       OK ] RenderGraph.constant_fold_rgb_ramp_flat (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_convert_float_color_float
+35: [       OK ] RenderGraph.constant_fold_convert_float_color_float (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_convert_color_vector_color
+35: [       OK ] RenderGraph.constant_fold_convert_color_vector_color (0 ms)
+35: [ RUN      ] RenderGraph.constant_fold_convert_color_float_color
+35: [       OK ] RenderGraph.constant_fold_convert_color_float_color (0 ms)
+35: [ RUN      ] RenderGraph.stochastic_sample_math_multiply
+35: [       OK ] RenderGraph.stochastic_sample_math_multiply (0 ms)
+35: [ RUN      ] RenderGraph.not_stochastic_sample_math_power
+35: [       OK ] RenderGraph.not_stochastic_sample_math_power (0 ms)
+35: [ RUN      ] RenderGraph.stochastic_sample_principled_volume_mix
+35: [       OK ] RenderGraph.stochastic_sample_principled_volume_mix (0 ms)
+35: [----------] 63 tests from RenderGraph (29 ms total)
+35: 
+35: [----------] 2 tests from util_aligned_malloc
+35: [ RUN      ] util_aligned_malloc.aligned_malloc_16
+35: [       OK ] util_aligned_malloc.aligned_malloc_16 (0 ms)
+35: [ RUN      ] util_aligned_malloc.aligned_malloc_32
+35: [       OK ] util_aligned_malloc.aligned_malloc_32 (0 ms)
+35: [----------] 2 tests from util_aligned_malloc (0 ms total)
+35: 
+35: [----------] 1 test from BoundBox
+35: [ RUN      ] BoundBox.transformed
+35: [       OK ] BoundBox.transformed (0 ms)
+35: [----------] 1 test from BoundBox (0 ms total)
+35: 
+35: [----------] 3 tests from CacheLimiter
+35: [ RUN      ] CacheLimiter.Basic
+35: [       OK ] CacheLimiter.Basic (0 ms)
+35: [ RUN      ] CacheLimiter.Eviction
+35: [       OK ] CacheLimiter.Eviction (0 ms)
+35: [ RUN      ] CacheLimiter.NoEvictionWhenUsed
+35: [       OK ] CacheLimiter.NoEvictionWhenUsed (0 ms)
+35: [----------] 3 tests from CacheLimiter (0 ms total)
+35: 
+35: [----------] 1 test from util_colorspace
+35: [ RUN      ] util_colorspace.scene_linear_interop_id
+35: [       OK ] util_colorspace.scene_linear_interop_id (63 ms)
+35: [----------] 1 test from util_colorspace (63 ms total)
+35: 
+35: [----------] 1 test from util_ies
+35: [ RUN      ] util_ies.invalid
+35: [       OK ] util_ies.invalid (0 ms)
+35: [----------] 1 test from util_ies (0 ms total)
+35: 
+35: [----------] 5 tests from math
+35: [ RUN      ] math.fast_sinf
+35: [       OK ] math.fast_sinf (0 ms)
+35: [ RUN      ] math.fast_cosf
+35: [       OK ] math.fast_cosf (0 ms)
+35: [ RUN      ] math.next_power_of_two
+35: [       OK ] math.next_power_of_two (0 ms)
+35: [ RUN      ] math.prev_power_of_two
+35: [       OK ] math.prev_power_of_two (0 ms)
+35: [ RUN      ] math.reverse_integer_bits
+35: [       OK ] math.reverse_integer_bits (0 ms)
+35: [----------] 5 tests from math (0 ms total)
+35: 
+35: [----------] 1 test from Float3Test
+35: [ RUN      ] Float3Test.fmod
+35: [       OK ] Float3Test.fmod (0 ms)
+35: [----------] 1 test from Float3Test (0 ms total)
+35: 
+35: [----------] 1 test from Float4Test
+35: [ RUN      ] Float4Test.fmod
+35: [       OK ] Float4Test.fmod (0 ms)
+35: [----------] 1 test from Float4Test (0 ms total)
+35: 
+35: [----------] 13 tests from Float3x3Test
+35: [ RUN      ] Float3x3Test.IsNearFloat3x3
+35: [       OK ] Float3x3Test.IsNearFloat3x3 (0 ms)
+35: [ RUN      ] Float3x3Test.multiply_scalar_by_matrix
+35: [       OK ] Float3x3Test.multiply_scalar_by_matrix (0 ms)
+35: [ RUN      ] Float3x3Test.multiply_matrix_by_scalar
+35: [       OK ] Float3x3Test.multiply_matrix_by_scalar (0 ms)
+35: [ RUN      ] Float3x3Test.multiply_matrix_by_matrix
+35: [       OK ] Float3x3Test.multiply_matrix_by_matrix (0 ms)
+35: [ RUN      ] Float3x3Test.multiply_matrix_by_vector
+35: [       OK ] Float3x3Test.multiply_matrix_by_vector (0 ms)
+35: [ RUN      ] Float3x3Test.divide_matrix_by_scalar
+35: [       OK ] Float3x3Test.divide_matrix_by_scalar (0 ms)
+35: [ RUN      ] Float3x3Test.float3x3_scale
+35: [       OK ] Float3x3Test.float3x3_scale (0 ms)
+35: [ RUN      ] Float3x3Test.transposed
+35: [       OK ] Float3x3Test.transposed (0 ms)
+35: [ RUN      ] Float3x3Test.determinant
+35: [       OK ] Float3x3Test.determinant (0 ms)
+35: [ RUN      ] Float3x3Test.adjoint
+35: [       OK ] Float3x3Test.adjoint (0 ms)
+35: [ RUN      ] Float3x3Test.inverted
+35: [       OK ] Float3x3Test.inverted (0 ms)
+35: [ RUN      ] Float3x3Test.quaternion_to_scaled_rotation
+35: [       OK ] Float3x3Test.quaternion_to_scaled_rotation (0 ms)
+35: [ RUN      ] Float3x3Test.quaternion_to_rotation
+35: [       OK ] Float3x3Test.quaternion_to_rotation (0 ms)
+35: [----------] 13 tests from Float3x3Test (0 ms total)
+35: 
+35: [----------] 3 tests from PackedFloat3x3Test
+35: [ RUN      ] PackedFloat3x3Test.init_from_float3x3
+35: [       OK ] PackedFloat3x3Test.init_from_float3x3 (0 ms)
+35: [ RUN      ] PackedFloat3x3Test.cast_to_float3x3
+35: [       OK ] PackedFloat3x3Test.cast_to_float3x3 (0 ms)
+35: [ RUN      ] PackedFloat3x3Test.assign_from_float3x3
+35: [       OK ] PackedFloat3x3Test.assign_from_float3x3 (0 ms)
+35: [----------] 3 tests from PackedFloat3x3Test (0 ms total)
+35: 
+35: [----------] 8 tests from QuaternionTest
+35: [ RUN      ] QuaternionTest.IsNearQuaternion
+35: [       OK ] QuaternionTest.IsNearQuaternion (0 ms)
+35: [ RUN      ] QuaternionTest.Negate
+35: [       OK ] QuaternionTest.Negate (0 ms)
+35: [ RUN      ] QuaternionTest.MultiplyScalar
+35: [       OK ] QuaternionTest.MultiplyScalar (0 ms)
+35: [ RUN      ] QuaternionTest.Add
+35: [       OK ] QuaternionTest.Add (0 ms)
+35: [ RUN      ] QuaternionTest.Subtract
+35: [       OK ] QuaternionTest.Subtract (0 ms)
+35: [ RUN      ] QuaternionTest.dot
+35: [       OK ] QuaternionTest.dot (0 ms)
+35: [ RUN      ] QuaternionTest.normalized
+35: [       OK ] QuaternionTest.normalized (0 ms)
+35: [ RUN      ] QuaternionTest.lerp
+35: [       OK ] QuaternionTest.lerp (0 ms)
+35: [----------] 8 tests from QuaternionTest (0 ms total)
+35: 
+35: [----------] 1 test from RGBE
+35: [ RUN      ] RGBE.round_trip
+35: [       OK ] RGBE.round_trip (0 ms)
+35: [----------] 1 test from RGBE (0 ms total)
+35: 
+35: [----------] 1 test from util
+35: [ RUN      ] util.util_md5_string
+35: [       OK ] util.util_md5_string (0 ms)
+35: [----------] 1 test from util (0 ms total)
+35: 
+35: [----------] 6 tests from util_path_filename
+35: [ RUN      ] util_path_filename.simple_unix
+35: [       OK ] util_path_filename.simple_unix (0 ms)
+35: [ RUN      ] util_path_filename.root_unix
+35: [       OK ] util_path_filename.root_unix (0 ms)
+35: [ RUN      ] util_path_filename.last_slash_unix
+35: [       OK ] util_path_filename.last_slash_unix (0 ms)
+35: [ RUN      ] util_path_filename.alternate_slash_unix
+35: [       OK ] util_path_filename.alternate_slash_unix (0 ms)
+35: [ RUN      ] util_path_filename.file_only
+35: [       OK ] util_path_filename.file_only (0 ms)
+35: [ RUN      ] util_path_filename.empty
+35: [       OK ] util_path_filename.empty (0 ms)
+35: [----------] 6 tests from util_path_filename (0 ms total)
+35: 
+35: [----------] 6 tests from util_path_dirname
+35: [ RUN      ] util_path_dirname.simple_unix
+35: [       OK ] util_path_dirname.simple_unix (0 ms)
+35: [ RUN      ] util_path_dirname.root_unix
+35: [       OK ] util_path_dirname.root_unix (0 ms)
+35: [ RUN      ] util_path_dirname.last_slash_unix
+35: [       OK ] util_path_dirname.last_slash_unix (0 ms)
+35: [ RUN      ] util_path_dirname.alternate_slash_unix
+35: [       OK ] util_path_dirname.alternate_slash_unix (0 ms)
+35: [ RUN      ] util_path_dirname.file_only
+35: [       OK ] util_path_dirname.file_only (0 ms)
+35: [ RUN      ] util_path_dirname.empty
+35: [       OK ] util_path_dirname.empty (0 ms)
+35: [----------] 6 tests from util_path_dirname (0 ms total)
+35: 
+35: [----------] 14 tests from util_path_join
+35: [ RUN      ] util_path_join.empty_both
+35: [       OK ] util_path_join.empty_both (0 ms)
+35: [ RUN      ] util_path_join.empty_directory
+35: [       OK ] util_path_join.empty_directory (0 ms)
+35: [ RUN      ] util_path_join.empty_filename
+35: [       OK ] util_path_join.empty_filename (0 ms)
+35: [ RUN      ] util_path_join.simple_unix
+35: [       OK ] util_path_join.simple_unix (0 ms)
+35: [ RUN      ] util_path_join.directory_slash_unix
+35: [       OK ] util_path_join.directory_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.filename_slash_unix
+35: [       OK ] util_path_join.filename_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.both_slash_unix
+35: [       OK ] util_path_join.both_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.directory_alternate_slash_unix
+35: [       OK ] util_path_join.directory_alternate_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.filename_alternate_slash_unix
+35: [       OK ] util_path_join.filename_alternate_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.both_alternate_slash_unix
+35: [       OK ] util_path_join.both_alternate_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.empty_dir_filename_slash_unix
+35: [       OK ] util_path_join.empty_dir_filename_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.empty_dir_filename_alternate_slash_unix
+35: [       OK ] util_path_join.empty_dir_filename_alternate_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.empty_filename_dir_slash_unix
+35: [       OK ] util_path_join.empty_filename_dir_slash_unix (0 ms)
+35: [ RUN      ] util_path_join.empty_filename_dir_alternate_slash_unix
+35: [       OK ] util_path_join.empty_filename_dir_alternate_slash_unix (0 ms)
+35: [----------] 14 tests from util_path_join (0 ms total)
+35: 
+35: [----------] 5 tests from util_path_escape
+35: [ RUN      ] util_path_escape.no_escape_chars
+35: [       OK ] util_path_escape.no_escape_chars (0 ms)
+35: [ RUN      ] util_path_escape.simple
+35: [       OK ] util_path_escape.simple (0 ms)
+35: [ RUN      ] util_path_escape.simple_end
+35: [       OK ] util_path_escape.simple_end (0 ms)
+35: [ RUN      ] util_path_escape.multiple
+35: [       OK ] util_path_escape.multiple (0 ms)
+35: [ RUN      ] util_path_escape.simple_multiple_end
+35: [       OK ] util_path_escape.simple_multiple_end (0 ms)
+35: [----------] 5 tests from util_path_escape (0 ms total)
+35: 
+35: [----------] 5 tests from util_path_is_relative
+35: [ RUN      ] util_path_is_relative.filename
+35: [       OK ] util_path_is_relative.filename (0 ms)
+35: [ RUN      ] util_path_is_relative.absolute_unix
+35: [       OK ] util_path_is_relative.absolute_unix (0 ms)
+35: [ RUN      ] util_path_is_relative.relative_dir_unix
+35: [       OK ] util_path_is_relative.relative_dir_unix (0 ms)
+35: [ RUN      ] util_path_is_relative.absolute_windir_on_unix
+35: [       OK ] util_path_is_relative.absolute_windir_on_unix (0 ms)
+35: [ RUN      ] util_path_is_relative.relative_windir_on_unix
+35: [       OK ] util_path_is_relative.relative_windir_on_unix (0 ms)
+35: [----------] 5 tests from util_path_is_relative (0 ms total)
+35: 
+35: [----------] 4 tests from simd
+35: [ RUN      ] simd.bsf
+35: [       OK ] simd.bsf (0 ms)
+35: [ RUN      ] simd.bsr
+35: [       OK ] simd.bsr (0 ms)
+35: [ RUN      ] simd.btc
+35: [       OK ] simd.btc (0 ms)
+35: [ RUN      ] simd.bitscan
+35: [       OK ] simd.bitscan (0 ms)
+35: [----------] 4 tests from simd (0 ms total)
+35: 
+35: [----------] 4 tests from util_string_printf
+35: [ RUN      ] util_string_printf.no_format
+35: [       OK ] util_string_printf.no_format (0 ms)
+35: [ RUN      ] util_string_printf.int_number
+35: [       OK ] util_string_printf.int_number (0 ms)
+35: [ RUN      ] util_string_printf.float_number_default_precision
+35: [       OK ] util_string_printf.float_number_default_precision (0 ms)
+35: [ RUN      ] util_string_printf.float_number_custom_precision
+35: [       OK ] util_string_printf.float_number_custom_precision (0 ms)
+35: [----------] 4 tests from util_string_printf (0 ms total)
+35: 
+35: [----------] 4 tests from util_string_iequals
+35: [ RUN      ] util_string_iequals.empty_a
+35: [       OK ] util_string_iequals.empty_a (0 ms)
+35: [ RUN      ] util_string_iequals.empty_b
+35: [       OK ] util_string_iequals.empty_b (0 ms)
+35: [ RUN      ] util_string_iequals.same_register
+35: [       OK ] util_string_iequals.same_register (0 ms)
+35: [ RUN      ] util_string_iequals.different_register
+35: [       OK ] util_string_iequals.different_register (0 ms)
+35: [----------] 4 tests from util_string_iequals (0 ms total)
+35: 
+35: [----------] 5 tests from util_string_split
+35: [ RUN      ] util_string_split.empty
+35: [       OK ] util_string_split.empty (0 ms)
+35: [ RUN      ] util_string_split.only_spaces
+35: [       OK ] util_string_split.only_spaces (0 ms)
+35: [ RUN      ] util_string_split.single
+35: [       OK ] util_string_split.single (0 ms)
+35: [ RUN      ] util_string_split.simple
+35: [       OK ] util_string_split.simple (0 ms)
+35: [ RUN      ] util_string_split.multiple_spaces
+35: [       OK ] util_string_split.multiple_spaces (0 ms)
+35: [----------] 5 tests from util_string_split (0 ms total)
+35: 
+35: [----------] 5 tests from util_string_replace
+35: [ RUN      ] util_string_replace.empty_haystack_and_other
+35: [       OK ] util_string_replace.empty_haystack_and_other (0 ms)
+35: [ RUN      ] util_string_replace.empty_haystack
+35: [       OK ] util_string_replace.empty_haystack (0 ms)
+35: [ RUN      ] util_string_replace.empty_other
+35: [       OK ] util_string_replace.empty_other (0 ms)
+35: [ RUN      ] util_string_replace.long_haystack_empty_other
+35: [       OK ] util_string_replace.long_haystack_empty_other (0 ms)
+35: [ RUN      ] util_string_replace.long_haystack
+35: [       OK ] util_string_replace.long_haystack (0 ms)
+35: [----------] 5 tests from util_string_replace (0 ms total)
+35: 
+35: [----------] 5 tests from util_string_endswith
+35: [ RUN      ] util_string_endswith.empty_both
+35: [       OK ] util_string_endswith.empty_both (0 ms)
+35: [ RUN      ] util_string_endswith.empty_string
+35: [       OK ] util_string_endswith.empty_string (0 ms)
+35: [ RUN      ] util_string_endswith.empty_end
+35: [       OK ] util_string_endswith.empty_end (0 ms)
+35: [ RUN      ] util_string_endswith.simple_true
+35: [       OK ] util_string_endswith.simple_true (0 ms)
+35: [ RUN      ] util_string_endswith.simple_false
+35: [       OK ] util_string_endswith.simple_false (0 ms)
+35: [----------] 5 tests from util_string_endswith (0 ms total)
+35: 
+35: [----------] 4 tests from util_string_strip
+35: [ RUN      ] util_string_strip.empty
+35: [       OK ] util_string_strip.empty (0 ms)
+35: [ RUN      ] util_string_strip.only_spaces
+35: [       OK ] util_string_strip.only_spaces (0 ms)
+35: [ RUN      ] util_string_strip.no_spaces
+35: [       OK ] util_string_strip.no_spaces (0 ms)
+35: [ RUN      ] util_string_strip.with_spaces
+35: [       OK ] util_string_strip.with_spaces (0 ms)
+35: [----------] 4 tests from util_string_strip (0 ms total)
+35: 
+35: [----------] 11 tests from util_string_remove_trademark
+35: [ RUN      ] util_string_remove_trademark.empty
+35: [       OK ] util_string_remove_trademark.empty (0 ms)
+35: [ RUN      ] util_string_remove_trademark.no_trademark
+35: [       OK ] util_string_remove_trademark.no_trademark (0 ms)
+35: [ RUN      ] util_string_remove_trademark.only_tm
+35: [       OK ] util_string_remove_trademark.only_tm (0 ms)
+35: [ RUN      ] util_string_remove_trademark.only_r
+35: [       OK ] util_string_remove_trademark.only_r (0 ms)
+35: [ RUN      ] util_string_remove_trademark.both
+35: [       OK ] util_string_remove_trademark.both (0 ms)
+35: [ RUN      ] util_string_remove_trademark.both_space
+35: [       OK ] util_string_remove_trademark.both_space (0 ms)
+35: [ RUN      ] util_string_remove_trademark.both_space_around
+35: [       OK ] util_string_remove_trademark.both_space_around (0 ms)
+35: [ RUN      ] util_string_remove_trademark.trademark_space_suffix
+35: [       OK ] util_string_remove_trademark.trademark_space_suffix (0 ms)
+35: [ RUN      ] util_string_remove_trademark.trademark_space_middle
+35: [       OK ] util_string_remove_trademark.trademark_space_middle (0 ms)
+35: [ RUN      ] util_string_remove_trademark.r_space_suffix
+35: [       OK ] util_string_remove_trademark.r_space_suffix (0 ms)
+35: [ RUN      ] util_string_remove_trademark.r_space_middle
+35: [       OK ] util_string_remove_trademark.r_space_middle (0 ms)
+35: [----------] 11 tests from util_string_remove_trademark (0 ms total)
+35: 
+35: [----------] 1 test from util_string_remove_gpu_from_cpu_name
+35: [ RUN      ] util_string_remove_gpu_from_cpu_name.basic
+35: [       OK ] util_string_remove_gpu_from_cpu_name.basic (0 ms)
+35: [----------] 1 test from util_string_remove_gpu_from_cpu_name (0 ms total)
+35: 
+35: [----------] 1 test from string_startswith
+35: [ RUN      ] string_startswith.basic
+35: [       OK ] string_startswith.basic (0 ms)
+35: [----------] 1 test from string_startswith (0 ms total)
+35: 
+35: [----------] 1 test from string_endswith
+35: [ RUN      ] string_endswith.basic
+35: [       OK ] string_endswith.basic (0 ms)
+35: [----------] 1 test from string_endswith (0 ms total)
+35: 
+35: [----------] 2 tests from util_task
+35: [ RUN      ] util_task.basic
+35: [       OK ] util_task.basic (0 ms)
+35: [ RUN      ] util_task.multiple_times
+35: [       OK ] util_task.multiple_times (8 ms)
+35: [----------] 2 tests from util_task (9 ms total)
+35: 
+35: [----------] 5 tests from time_human_readable_to_seconds
+35: [ RUN      ] time_human_readable_to_seconds.Empty
+35: [       OK ] time_human_readable_to_seconds.Empty (0 ms)
+35: [ RUN      ] time_human_readable_to_seconds.Fraction
+35: [       OK ] time_human_readable_to_seconds.Fraction (0 ms)
+35: [ RUN      ] time_human_readable_to_seconds.Seconds
+35: [       OK ] time_human_readable_to_seconds.Seconds (0 ms)
+35: [ RUN      ] time_human_readable_to_seconds.MinutesSeconds
+35: [       OK ] time_human_readable_to_seconds.MinutesSeconds (0 ms)
+35: [ RUN      ] time_human_readable_to_seconds.HoursMinutesSeconds
+35: [       OK ] time_human_readable_to_seconds.HoursMinutesSeconds (0 ms)
+35: [----------] 5 tests from time_human_readable_to_seconds (0 ms total)
+35: 
+35: [----------] 1 test from transform_motion_decompose
+35: [ RUN      ] transform_motion_decompose.Degenerated
+35: [       OK ] transform_motion_decompose.Degenerated (0 ms)
+35: [----------] 1 test from transform_motion_decompose (0 ms total)
+35: 
+35: [----------] 6 tests from types_base
+35: [ RUN      ] types_base.divide_up
+35: [       OK ] types_base.divide_up (0 ms)
+35: [ RUN      ] types_base.divide_up_by_shift
+35: [       OK ] types_base.divide_up_by_shift (0 ms)
+35: [ RUN      ] types_base.align_up
+35: [       OK ] types_base.align_up (0 ms)
+35: [ RUN      ] types_base.round_up
+35: [       OK ] types_base.round_up (0 ms)
+35: [ RUN      ] types_base.round_down
+35: [       OK ] types_base.round_down (0 ms)
+35: [ RUN      ] types_base.is_power_of_two
+35: [       OK ] types_base.is_power_of_two (0 ms)
+35: [----------] 6 tests from types_base (0 ms total)
+35: 
+35: [----------] 1 test from PackedSphericalHarmonicsTest
+35: [ RUN      ] PackedSphericalHarmonicsTest.PackUnpack
+35: [       OK ] PackedSphericalHarmonicsTest.PackUnpack (0 ms)
+35: [----------] 1 test from PackedSphericalHarmonicsTest (0 ms total)
+35: 
+35: [----------] Global test environment tear-down
+35: [==========] 216 tests from 45 test suites ran. (103 ms total)
+35: [  PASSED  ] 216 tests.
+1/1 Test #35: cycles ...........................   Passed    0.17 sec
+
+The following tests passed:
+	cycles
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.23 sec

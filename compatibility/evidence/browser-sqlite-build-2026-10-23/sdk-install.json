@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "started_utc": "2026-10-23T15:22:59.182283+00:00",
+  "status": "installed",
+  "emsdk_commit": "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de",
+  "emscripten_version": "6.0.5",
+  "release_commit": "dbd755b5da399329c2576f6e3dfa7f419f5d8409",
+  "url": "https://codeload.github.com/emscripten-core/emsdk/tar.gz/1ab2e627b1a84567f5284d1baaa5f6be7ccf07de",
+  "script": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-inputs/install-sdk.py",
+    "bytes": 3955,
+    "sha256": "e6f0bcfc58bb30713477fb68bb17badb43310083e50ad13d4ca85bc5090d00d7"
+  },
+  "global_packages_installed": false,
+  "stages": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/emsdk.py",
+        "install",
+        "6.0.5"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T15:22:59.344082+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-10-23T15:23:34.347097+00:00",
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-inputs/sdk-install.log",
+        "bytes": 1724,
+        "sha256": "10953ed0200d4726c26ceb5b89e18e1445590265c2b53b9afda9ecf13b93a9b8"
+      }
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/emsdk.py",
+        "activate",
+        "6.0.5"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T15:23:34.347531+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-10-23T15:23:39.349018+00:00",
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-inputs/sdk-activate.log",
+        "bytes": 881,
+        "sha256": "b9ab2eda20d22abed887d95a2f3d8eb43fb0b8e291ff8a5514a3faf93c478b79"
+      }
+    }
+  ],
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-inputs/emsdk-1ab2e627b1a84567f5284d1baaa5f6be7ccf07de.tar.gz",
+    "bytes": 174883,
+    "sha256": "91ed2d4ac47b664de78ad5048f6022e06c73e72a8eb03f1a2661a1e0200fbffc"
+  },
+  "release_manifest": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/emscripten-releases-tags.json",
+    "bytes": 19307,
+    "sha256": "58f9b2240d3c37296e40f4ccb98e7bcf3c7b57f7150fc727a46bc8dc7ee3fcba"
+  },
+  "sdk_root": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+  "finished_utc": "2026-10-23T15:23:39.349394+00:00",
+  "free_disk_bytes": 14194569216
+}

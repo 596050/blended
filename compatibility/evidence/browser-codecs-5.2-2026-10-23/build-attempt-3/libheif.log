@@ -1,0 +1,207 @@
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_PREFIX_PATH=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm -DBUILD_SHARED_LIBS=OFF '-DCMAKE_C_FLAGS=-pthread -fexceptions' '-DCMAKE_CXX_FLAGS=-pthread -fexceptions' -DENABLE_PLUGIN_LOADING=OFF -DWITH_AOM_ENCODER=ON -DWITH_AOM_DECODER=ON -DWITH_AOM_ENCODER_PLUGIN=OFF -DWITH_AOM_DECODER_PLUGIN=OFF -DWITH_DAV1D=OFF -DWITH_FFMPEG_DECODER=OFF -DWITH_JPEG_ENCODER=OFF -DWITH_JPEG_DECODER=OFF -DWITH_KVAZAAR=OFF -DWITH_LIBDE265=OFF -DWITH_LIBSHARPYUV=OFF -DWITH_OPENJPH_ENCODER=OFF -DWITH_OpenH264_DECODER=OFF -DWITH_OpenJPEG_DECODER=OFF -DWITH_OpenJPEG_ENCODER=OFF -DWITH_RAV1E=OFF -DWITH_SvtEnc=OFF -DWITH_UVG266=OFF -DWITH_VVDEC=OFF -DWITH_VVENC=OFF -DWITH_X265=OFF -DAOM_INCLUDE_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/include -DAOM_LIBRARY=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libaom.a -DENABLE_MULTITHREADING_SUPPORT=ON -DWITH_EXAMPLES=OFF -DWITH_EXAMPLE_HEIF_VIEW=OFF -DWITH_GDK_PIXBUF=OFF -DBUILD_TESTING=OFF -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Performing Test has_potentially_evaluated_expression
+-- Performing Test has_potentially_evaluated_expression - Success
+-- Looking for AOM_USAGE_GOOD_QUALITY
+-- Looking for AOM_USAGE_GOOD_QUALITY - found
+-- Found AOM 
+-- Found AOM: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/include
+
+=== Summary of compiled codecs ===
+libde265 HEVC decoder           : - disabled
+FFMPEG HEVC decoder (HW acc)    : - disabled
+x265 HEVC encoder               : - disabled
+Kvazaar HEVC encoder            : - disabled
+AOM AV1 decoder                 : + built-in
+AOM AV1 encoder                 : + built-in
+Dav1d AV1 decoder               : - disabled
+SVT AV1 encoder                 : - disabled
+Rav1e AV1 encoder               : - disabled
+JPEG decoder                    : - disabled
+JPEG encoder                    : - disabled
+OpenH264 decoder                : - disabled
+OpenJPEG J2K decoder            : - disabled
+OpenJPEG J2K encoder            : - disabled
+OpenJPH HT-J2K encoder          : - disabled
+uvg266 VVC enc. (experimental)  : - disabled
+vvenc VVC enc. (experimental)   : - disabled
+vvdec VVC dec. (experimental)   : - disabled
+
+=== Supported formats ===
+format        decoding   encoding
+AVC             NO         NO 
+AVIF            YES        YES
+HEIC            NO         NO 
+JPEG            NO         NO 
+JPEG2000        NO         NO 
+JPEG2000-HT     NO         NO 
+Uncompressed    NO         NO 
+VVC             NO         NO 
+
+libsharpyuv: disabled
+-- Looking for _LIBCPP_VERSION
+-- Looking for _LIBCPP_VERSION - found
+-- Could NOT find TIFF (missing: TIFF_LIBRARY TIFF_INCLUDE_DIR) 
+-- Could NOT find JPEG (missing: JPEG_LIBRARY JPEG_INCLUDE_DIR) 
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Could NOT find PNG (missing: PNG_LIBRARY PNG_PNG_INCLUDE_DIR) 
+
+=== Active input formats for heif-enc ===
+JPEG: ------ (libjpeg not found)
+PNG:  ------ (libpng not found)
+TIFF: ------ (libtiff not found)
+
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+Doxygen tool needs to be installed to generate the API documentation
+Not compiling 'x265' backend
+Not compiling 'libde265' backend
+Not compiling 'dav1d' backend
+Compiling 'aomdec' as built-in backend
+Compiling 'aomenc' as built-in backend
+Not compiling 'svtenc' backend
+Not compiling 'rav1e' backend
+Not compiling 'jpegdec' backend
+Not compiling 'jpegenc' backend
+Not compiling 'j2kdec' backend
+Not compiling 'j2kenc' backend
+Not compiling 'kvazaar' backend
+Not compiling 'ffmpegdec' backend
+Not compiling 'jphenc' backend
+Not compiling 'uvg266' backend
+Not compiling 'vvdec' backend
+Not compiling 'vvenc' backend
+Not compiling 'openh264dec' backend
+Not compiling 'libsharpyuv'
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (5.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/build --target install --parallel 1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa"
+[  1%] Building CXX object libheif/CMakeFiles/heif.dir/bitstream.cc.o
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/bitstream.cc:80:32: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to '__size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+   80 |     m_owned_data = new uint8_t[m_length];
+      |                    ~~~         ^~~~~~~~
+1 warning generated.
+[  2%] Building CXX object libheif/CMakeFiles/heif.dir/box.cc.o
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/box.cc:926:27: warning: implicit conversion loses integer precision: 'int64_t' (aka 'long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  925 |   BitstreamRange boxrange(range.get_istream(),
+      |                  ~~~~~~~~
+  926 |                           box_size_without_header,
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/box.cc:1986:76: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+ 1986 |       memcpy(extent.data.data() + output_offset, data.data() + data_start, write_n);
+      |       ~~~~~~                                                               ^~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/box.cc:2193:44: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_type' (aka 'unsigned long') [-Wshorten-64-to-32]
+ 2193 |           std::vector<uint8_t> data(extent.length);
+      |                                ~~~~ ~~~~~~~^~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/box.cc:2195:66: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+ 2195 |           ssize_t cnt = ::read(m_tmpfile_fd, data.data(), extent.length);
+      |                         ~~                                ~~~~~~~^~~~~~
+4 warnings generated.
+[  3%] Building CXX object libheif/CMakeFiles/heif.dir/error.cc.o
+[  4%] Building CXX object libheif/CMakeFiles/heif.dir/context.cc.o
+[  5%] Building CXX object libheif/CMakeFiles/heif.dir/file.cc.o
+[  6%] Building CXX object libheif/CMakeFiles/heif.dir/file_layout.cc.o
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:56:50: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+   56 |   BitstreamRange ftyp_hdr_range(m_stream_reader, m_max_length);
+      |                  ~~~~~~~~~~~~~~                  ^~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:88:49: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+   88 |   BitstreamRange ftyp_range(m_stream_reader, 0, ftyp_size);
+      |                  ~~~~~~~~~~                     ^~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:122:63: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  122 |     BitstreamRange box_range(m_stream_reader, next_box_start, m_max_length);
+      |                    ~~~~~~~~~                                  ^~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:122:47: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  122 |     BitstreamRange box_range(m_stream_reader, next_box_start, m_max_length);
+      |                    ~~~~~~~~~                  ^~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:150:70: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  150 |       BitstreamRange meta_box_range(m_stream_reader, meta_box_start, end_of_meta_box);
+      |                      ~~~~~~~~~~~~~~                                  ^~~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:150:54: warning: implicit conversion loses integer precision: 'const uint64_t' (aka 'const unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  150 |       BitstreamRange meta_box_range(m_stream_reader, meta_box_start, end_of_meta_box);
+      |                      ~~~~~~~~~~~~~~                  ^~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:221:70: warning: implicit conversion loses integer precision: 'uint64_t' (aka 'unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  221 |       BitstreamRange moov_box_range(m_stream_reader, moov_box_start, end_of_moov_box);
+      |                      ~~~~~~~~~~~~~~                                  ^~~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/file_layout.cc:221:54: warning: implicit conversion loses integer precision: 'const uint64_t' (aka 'const unsigned long long') to 'size_t' (aka 'unsigned long') [-Wshorten-64-to-32]
+  221 |       BitstreamRange moov_box_range(m_stream_reader, moov_box_start, end_of_moov_box);
+      |                      ~~~~~~~~~~~~~~                  ^~~~~~~~~~~~~~
+8 warnings generated.
+[  7%] Building CXX object libheif/CMakeFiles/heif.dir/pixelimage.cc.o
+[  8%] Building CXX object libheif/CMakeFiles/heif.dir/plugin_registry.cc.o
+[  9%] Building CXX object libheif/CMakeFiles/heif.dir/nclx.cc.o
+[ 10%] Building CXX object libheif/CMakeFiles/heif.dir/security_limits.cc.o
+[ 11%] Building CXX object libheif/CMakeFiles/heif.dir/init.cc.o
+[ 12%] Building CXX object libheif/CMakeFiles/heif.dir/logging.cc.o
+[ 13%] Building CXX object libheif/CMakeFiles/heif.dir/compression_brotli.cc.o
+[ 14%] Building CXX object libheif/CMakeFiles/heif.dir/compression_zlib.cc.o
+[ 15%] Building CXX object libheif/CMakeFiles/heif.dir/common_utils.cc.o
+[ 17%] Building CXX object libheif/CMakeFiles/heif.dir/region.cc.o
+[ 18%] Building CXX object libheif/CMakeFiles/heif.dir/brands.cc.o
+[ 19%] Building CXX object libheif/CMakeFiles/heif.dir/api/libheif/heif.cc.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/api/libheif/heif.cc:25:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/api/libheif/heif_emscripten.h:4:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/bind.h:15:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:10:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:124:19: error: static assertion failed due to requirement '!std::is_pointer<heif_image_handle *>::value': Implicitly binding raw pointers is illegal.  Specify allow_raw_pointer<arg<?>>
+  124 |     static_assert(!std::is_pointer<T*>::value, "Implicitly binding raw pointers is illegal.  Specify allow_raw_pointer<arg<?>>");
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:151:21: note: in instantiation of template class 'emscripten::internal::TypeID<heif_image_handle *>' requested here
+  151 | struct TypeID<T&> : TypeID<T> {
+      |                     ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:240:45: note: in instantiation of template class 'emscripten::internal::TypeID<heif_image_handle *&>' requested here
+  240 |         static constexpr TYPEID types[] = { TypeID<Args>::get()... };
+      |                                             ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:263:16: note: in instantiation of member function 'emscripten::internal::ArgArrayGetter<emscripten::internal::TypeList<emscripten::val, heif_image_handle *&>>::get' requested here
+  263 |             >::get();
+      |                ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:605:86: note: in instantiation of member function 'emscripten::internal::WithPolicies<>::ArgTypeList<emscripten::val, heif_image_handle *&>::getTypes' requested here
+  605 |     thread_local EM_INVOKER mc = _emval_create_invoker(argTypes.getCount(), argTypes.getTypes(), Kind);
+      |                                                                                      ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:355:20: note: in instantiation of function template specialization 'emscripten::val::internalCallWithPolicy<emscripten::internal::EM_INVOKER_KIND::CAST, emscripten::internal::WithPolicies<>, emscripten::val, heif_image_handle *&>' requested here
+  355 |     new (this) val(internalCallWithPolicy<EM_INVOKER_KIND::CAST, WithPolicies<Policies...>, val>(nullptr, nullptr, std::forward<T>(value)));
+      |                    ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/api/libheif/heif_emscripten.h:46:10: note: in instantiation of function template specialization 'emscripten::val::val<heif_image_handle *&>' requested here
+   46 |   return emscripten::val(handle);
+      |          ^
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/api/libheif/heif.cc:25:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/api/libheif/heif_emscripten.h:4:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/bind.h:15:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:10:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:124:19: error: static assertion failed due to requirement '!std::is_pointer<heif_image *>::value': Implicitly binding raw pointers is illegal.  Specify allow_raw_pointer<arg<?>>
+  124 |     static_assert(!std::is_pointer<T*>::value, "Implicitly binding raw pointers is illegal.  Specify allow_raw_pointer<arg<?>>");
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:147:26: note: in instantiation of template class 'emscripten::internal::TypeID<heif_image *>' requested here
+  147 | struct TypeID<const T> : TypeID<T> {
+      |                          ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:151:21: note: in instantiation of template class 'emscripten::internal::TypeID<heif_image *const>' requested here
+  151 | struct TypeID<T&> : TypeID<T> {
+      |                     ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:240:45: note: in instantiation of template class 'emscripten::internal::TypeID<heif_image *const &>' requested here
+  240 |         static constexpr TYPEID types[] = { TypeID<Args>::get()... };
+      |                                             ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/wire.h:263:16: note: in instantiation of member function 'emscripten::internal::ArgArrayGetter<emscripten::internal::TypeList<emscripten::val, heif_image *const &>>::get' requested here
+  263 |             >::get();
+      |                ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:605:86: note: in instantiation of member function 'emscripten::internal::WithPolicies<>::ArgTypeList<emscripten::val, heif_image *const &>::getTypes' requested here
+  605 |     thread_local EM_INVOKER mc = _emval_create_invoker(argTypes.getCount(), argTypes.getTypes(), Kind);
+      |                                                                                      ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:355:20: note: in instantiation of function template specialization 'emscripten::val::internalCallWithPolicy<emscripten::internal::EM_INVOKER_KIND::CAST, emscripten::internal::WithPolicies<>, emscripten::val, heif_image *const &>' requested here
+  355 |     new (this) val(internalCallWithPolicy<EM_INVOKER_KIND::CAST, WithPolicies<Policies...>, val>(nullptr, nullptr, std::forward<T>(value)));
+      |                    ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:633:12: note: in instantiation of function template specialization 'emscripten::val::val<heif_image *const &>' requested here
+  633 |     return val(v, policies...);
+      |            ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache/sysroot/include/emscripten/val.h:490:74: note: in instantiation of function template specialization 'emscripten::val::val_ref<heif_image *>' requested here
+  490 |     internal::_emval_set_property(as_handle(), val_ref(key).as_handle(), val_ref(value, policies...).as_handle());
+      |                                                                          ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/libheif/libheif-1.20.2/libheif/api/libheif/heif_emscripten.h:237:10: note: in instantiation of function template specialization 'emscripten::val::set<char[6], heif_image *>' requested here
+  237 |   result.set("image", image);
+      |          ^
+2 errors generated.
+gmake[2]: *** [libheif/CMakeFiles/heif.dir/build.make:335: libheif/CMakeFiles/heif.dir/api/libheif/heif.cc.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:206: libheif/CMakeFiles/heif.dir/all] Error 2
+gmake: *** [Makefile:156: all] Error 2

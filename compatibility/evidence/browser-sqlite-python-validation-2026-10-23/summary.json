@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "kind": "independent-cpython-sqlite-binding-diagnostic-v2-summary",
+  "created_utc": "2026-10-23T16:12:28.770155+00:00",
+  "summary_driver": {
+    "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/freeze-v2-evidence.py",
+    "bytes": 5595,
+    "sha256": "fb7e2991e37f67a8092fee9821d142cfba682fcc403bf3a7a785a27f54aaaf37"
+  },
+  "diagnostic_source": {
+    "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/probe_python_sqlite_v2.py",
+    "bytes": 5773,
+    "sha256": "ba63d055acb7c87455011aaad86522ae1e33036b7c57917eb4a27f321ac238b8"
+  },
+  "documented_precondition": {
+    "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/precondition-reference.json",
+    "bytes": 517,
+    "sha256": "c16cb25e3dca84112242ba7de8a8dcea4632f65903eb2af373de2f6201cdc707"
+  },
+  "native_execution": {
+    "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/native-v2/execution.json",
+    "bytes": 2918,
+    "sha256": "debe69239031405571941fea42d74d66f7d0a8ec025be46e32844deab2e2b719"
+  },
+  "browser_execution": {
+    "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/browser-v2/execution.json",
+    "bytes": 5389,
+    "sha256": "9c2be65fb85cc4eeb424e688771145b9d83f48107d512b0f5bd079b7a67b6dd7"
+  },
+  "native_sqlite_configuration": {
+    "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/native-sqlite-configuration.json",
+    "bytes": 3284,
+    "sha256": "d3c4b711375444695f1fc9effc8621990b7c0a8af7d193d02bde9992e47f4892"
+  },
+  "patchset": {
+    "path": "patches/browser-sqlite/manifest.json",
+    "bytes": 3104,
+    "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+  },
+  "native_returncode": 0,
+  "browser_runtime_exit": 0,
+  "native_and_browser_diagnostic_completed_successfully": true,
+  "native_and_browser_behavioral_observations_equal": true,
+  "observed_metadata_differences": {
+    "actual_builtin_extension": {
+      "native": false,
+      "browser": true
+    }
+  },
+  "native_observations": {
+    "kind": "cpython-sqlite-component-diagnostic",
+    "diagnostic_version": 2,
+    "wal_deserialization_expected_error": {
+      "type": "OperationalError",
+      "code": 14,
+      "name": "SQLITE_CANTOPEN",
+      "message": "unable to open database file"
+    },
+    "python_version": [
+      3,
+      13,
+      13
+    ],
+    "sqlite_version": "3.51.3",
+    "actual_builtin_extension": false,
+    "wal_dual_connection": true,
+    "parameter_binding_text_integer_float": true,
+    "utf8_file_hash": true,
+    "upsert_returning": true,
+    "rollback": true,
+    "python_function_and_trace_callbacks": true,
+    "row_factory": true,
+    "backup_and_serialization": true,
+    "foreign_key_cascade": true,
+    "close_reopen_same_filesystem": true,
+    "integrity_check": true,
+    "original_blender_tests_executed": false,
+    "full_feature_parity": false
+  },
+  "browser_observations": {
+    "kind": "cpython-sqlite-component-diagnostic",
+    "diagnostic_version": 2,
+    "wal_deserialization_expected_error": {
+      "type": "OperationalError",
+      "code": 14,
+      "name": "SQLITE_CANTOPEN",
+      "message": "unable to open database file"
+    },
+    "python_version": [
+      3,
+      13,
+      13
+    ],
+    "sqlite_version": "3.51.3",
+    "actual_builtin_extension": true,
+    "wal_dual_connection": true,
+    "parameter_binding_text_integer_float": true,
+    "utf8_file_hash": true,
+    "upsert_returning": true,
+    "rollback": true,
+    "python_function_and_trace_callbacks": true,
+    "row_factory": true,
+    "backup_and_serialization": true,
+    "foreign_key_cascade": true,
+    "close_reopen_same_filesystem": true,
+    "integrity_check": true,
+    "original_blender_tests_executed": false,
+    "full_feature_parity": false
+  },
+  "v1_failed_native_and_browser_diagnostic_receipts_preserved": [
+    {
+      "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/native-python-diagnostic-1/execution.json",
+      "bytes": 1447,
+      "sha256": "01487e9bf41a450d5fef023ef9c8bd2859621fa717d3452a872c1fbb73869fa5"
+    },
+    {
+      "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/python-sqlite-browser-diagnostic-1/execution.json",
+      "bytes": 4342,
+      "sha256": "d2f544668cb559fa814d474ace4ae78ba1b1cfa645c80908d5452abd89dd6cfc"
+    }
+  ],
+  "original_module_missing_bpy_receipts_preserved": [
+    {
+      "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-node-attempt-1/execution.json",
+      "bytes": 4913,
+      "sha256": "175a2b9fa886180323b8af27dd87adcd4fcc7fecfb2f3f24d69072a14e462ef3"
+    },
+    {
+      "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-browser-attempt-1/execution.json",
+      "bytes": 6488,
+      "sha256": "d5950013b019321ec6956cee3f1247a74be905d333d4bdc63d68637faad90f23"
+    }
+  ],
+  "preserved_build_files": [
+    {
+      "source": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-diagnostic-artifact-2/build.json",
+        "bytes": 6716,
+        "sha256": "131b1f2b774fdbe01dc52b509ea533f218ed96a84e3dbdec978532b96492e311"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/component-build-v2/build.json",
+        "bytes": 6716,
+        "sha256": "131b1f2b774fdbe01dc52b509ea533f218ed96a84e3dbdec978532b96492e311"
+      }
+    },
+    {
+      "source": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-diagnostic-artifact-2/build.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/component-build-v2/build.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "source": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-diagnostic-artifact-2/diagnostic-pre.js",
+        "bytes": 6291,
+        "sha256": "ff089b948908fc04216f74ab067fd145ad783e0d19c83d59032ea610e13dcb1e"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/component-build-v2/diagnostic-pre.js",
+        "bytes": 6291,
+        "sha256": "ff089b948908fc04216f74ab067fd145ad783e0d19c83d59032ea610e13dcb1e"
+      }
+    },
+    {
+      "source": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-diagnostic-artifact-2/python-sqlite.js",
+        "bytes": 214488,
+        "sha256": "c20e3d8788848506dd5bd5613b7b49c9f6aa519cf2d9778b61b521a77b3205aa"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/component-build-v2/python-sqlite.js",
+        "bytes": 214488,
+        "sha256": "c20e3d8788848506dd5bd5613b7b49c9f6aa519cf2d9778b61b521a77b3205aa"
+      }
+    }
+  ],
+  "shared_artifact_archive": {
+    "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/python-component-artifacts.tar.gz",
+    "bytes": 7231803,
+    "sha256": "9b8db00743eb2f6429ec58485495a477158e9ec02b36334b1932622bf4b2cb2e"
+  },
+  "byte_identical_shared_artifacts": [
+    {
+      "member": "common/python-sqlite.wasm",
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-diagnostic-artifact-2/python-sqlite.wasm",
+        "bytes": 6964854,
+        "sha256": "7fa3d45d308f022a2b9f4ad1571e99b3e4fe151c1c6f5338eec8bfdfa046dcd5"
+      }
+    },
+    {
+      "member": "common/python-sqlite.data",
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-diagnostic-artifact-2/python-sqlite.data",
+        "bytes": 13541084,
+        "sha256": "039b5f7271f717055622de81b362c63cb37d3b9d918b789c021a8af1f7bef787"
+      }
+    }
+  ],
+  "original_blender_tests_modified": false,
+  "original_blender_tests_executed": false,
+  "strict_blender_browser_test_passes": 0,
+  "original_disk_hash_cases_still_unobserved": 12,
+  "full_feature_parity": false,
+  "remaining_gate": "Execute all original disk hash cases with real bpy in the rebuilt Blender browser application."
+}

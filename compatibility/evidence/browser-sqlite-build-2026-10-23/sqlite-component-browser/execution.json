@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "kind": "sqlite-wasm-component-browser-diagnostic",
+  "started_utc": "2026-10-23T15:45:10.674917+00:00",
+  "url": "http://127.0.0.1:39603/sqlite-component-browser/index.html",
+  "capture_driver": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/run-sqlite-browser.py",
+    "bytes": 4620,
+    "sha256": "4901a8b012e60b96f1230e6524080c80009a265e4d074e69541ace701c9644e2"
+  },
+  "chrome": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64/chrome",
+    "bytes": 297680200,
+    "sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778"
+  },
+  "input_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-browser/index.html",
+      "bytes": 426,
+      "sha256": "381bbca99cbcaf710e54815c3d88febb9c52ea5b744494249166178c28ecb3c7"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/probe.js",
+      "bytes": 95834,
+      "sha256": "0e0fdb825415602df0f70d65fb238ac5c2ffe19e1bffa6fb1d6d84be7ecec4fb"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/probe.wasm",
+      "bytes": 1461288,
+      "sha256": "78e27bed3bf26c055026b4d77ab34e7e3e7c0dde58426b428e67c2f57e6728aa"
+    }
+  ],
+  "launch_arguments": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage"
+  ],
+  "console_events": [
+    {
+      "type": "log",
+      "text": "{\"kind\":\"sqlite-wasm-component-diagnostic\",\"sqlite_version\":\"3.51.3\",\"threadsafe_compile_mode\":1,\"wal_dual_connection\":true,\"upsert_returning\":true,\"rollback\":true,\"foreign_key_cascade\":true,\"close_reopen_same_filesystem\":true,\"integrity_check\":true,\"original_blender_tests_executed\":false,\"full_feature_parity\":false}"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    }
+  ],
+  "page_errors": [],
+  "original_blender_tests_executed": false,
+  "full_feature_parity": false,
+  "browser_version": "155.0.8059.39",
+  "runtime_exit": 0,
+  "runtime_abort": null,
+  "component_observations": [
+    {
+      "kind": "sqlite-wasm-component-diagnostic",
+      "sqlite_version": "3.51.3",
+      "threadsafe_compile_mode": 1,
+      "wal_dual_connection": true,
+      "upsert_returning": true,
+      "rollback": true,
+      "foreign_key_cascade": true,
+      "close_reopen_same_filesystem": true,
+      "integrity_check": true,
+      "original_blender_tests_executed": false,
+      "full_feature_parity": false
+    }
+  ],
+  "completed_successfully": true,
+  "request_events": [
+    {
+      "message": "\"GET /sqlite-component-browser/index.html HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "\"GET /sqlite-component-node/probe.js HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "\"GET /sqlite-component-node/probe.wasm HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "code 404, message File not found"
+    },
+    {
+      "message": "\"GET /favicon.ico HTTP/1.1\" 404 -"
+    }
+  ],
+  "elapsed_seconds": 1.168085,
+  "finished_utc": "2026-10-23T15:45:12.591327+00:00"
+}

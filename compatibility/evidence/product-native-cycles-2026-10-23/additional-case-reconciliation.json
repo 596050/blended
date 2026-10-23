@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+    "bytes": 21512408,
+    "sha256": "11ea54beed6f6fc365348bfe03118eece0f01fbf2d67310a6103f23529737c61"
+  },
+  "registered_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles-runtime-libraries/native-reference.json",
+    "bytes": 208458,
+    "sha256": "381785ba1afd7a6296f89fc11c3ae490f2d6a17f6753f51d66c6f4c1243b55e9"
+  },
+  "supplementary_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles-unfiltered-supplementary/native-reference.json",
+    "bytes": 230736,
+    "sha256": "115335612f547df4da69b41d5f08cd2ff113886fc50ea1b6e75f923565632f87"
+  },
+  "registered_case_count": 216,
+  "whole_binary_case_count": 242,
+  "overlap_count": 216,
+  "additional_count": 26,
+  "additional_counts_by_suite": {
+    "util_half": 7,
+    "util_avx2": 12,
+    "util_half_avx2": 7
+  },
+  "additional_cases": [
+    {
+      "case_id": "gtest-source:0e361aed84c5d76bf0249e70f5199a5e92d181ba236b1672f4cda6229d49a2ac",
+      "identity": "util_half.float_to_half",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 58,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:d2995aee75338085fba8c9b4941f1e238ec19b0b36c3792c3b2fa0fb40cfe000",
+      "identity": "util_half.float3_to_packed_half3",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 70,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:421c2b17bf06fc24968b2d8bab6808c18abd3c62019d9a713eef589f1ab4ec01",
+      "identity": "util_half.float4_to_half4",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 96,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:346ed735bb85ec21eb0f79ba6e3232c218a8265aac110072133f988cf854b5d2",
+      "identity": "util_half.fallback_float_to_half",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 126,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:0f8347d29a209d8d11ff63ace7b5e835eaaecfa69dea9976949a32b57b554def",
+      "identity": "util_half.half_to_float_flush_to_zero",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 138,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:7f48656fe950dbec4525f10249eb6913dc361b84d2a4396e776ff8512c257782",
+      "identity": "util_half.fallback_float3_to_packed_half3",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 177,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:4d994b52c0ac2feeecf326213300ca0e61e4581d1ea31234dc24ff97a2975f17",
+      "identity": "util_half.fallback_float4_to_half4",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 203,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:2edfa5b53629426adc018e8c4b31ba0a09cfef239d6939b0f6cdedb5a2baf981",
+      "identity": "util_avx2.float8_add_vv",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 74,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:859ffacb96d582e79dc74f89b2566b3def9db592e5c403a7ac9902cc521bce26",
+      "identity": "util_avx2.float8_sub_vv",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 75,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:3e352fb23c2effb53ab25ca15e53b2c3fdc20e04d60f7939d3437b9d7442026b",
+      "identity": "util_avx2.float8_mul_vv",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 76,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:d58cced19543cae20177c652672082f58c73bbaa3eaa7a3a41506779cfe7ee58",
+      "identity": "util_avx2.float8_div_vv",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 77,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:35d6915f6f27a55cd7e7ead830598fb3164f73b933e1caa301824374895fc2ad",
+      "identity": "util_avx2.float8_add_vf",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 78,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:b385038e35795a37b656176758caa620222381817bb7cee2242564ca87828c61",
+      "identity": "util_avx2.float8_sub_vf",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 79,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:4e46ab8bd7002649a50320a34fa502b282c220833741f0ba53f58708a059fa38",
+      "identity": "util_avx2.float8_mul_vf",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 80,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:6da6f2a5d5ffeeca2ec74aaca9778d2c9c0872431b959c0965459469a7e00f8e",
+      "identity": "util_avx2.float8_div_vf",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 81,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:17bc27997c2d3a2e567e8b36725030939ccdc60e1df1e2c3a7211c75f0e60665",
+      "identity": "util_avx2.float8_ctor",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 84,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:0ad2a853d86b4fb0c4963e464d096730ab3c89c8798d26c5ede673739fafbfab",
+      "identity": "util_avx2.float8_sqrt",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 92,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:34ed1158c06abaa32a4fdfcebdf6f8cda578d2c8b874aa038e69410734ec80c6",
+      "identity": "util_avx2.float8_min_max",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 99,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:7ea2217a9d75043823412fee8a05101bbaf681a1a181b95d20fb4c24bdbdd7f6",
+      "identity": "util_avx2.float8_shuffle",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_float8_test.h",
+        "line": 106,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      }
+    },
+    {
+      "case_id": "gtest-source:779052a83fa057056a9beed2ee3a6df8f48f2e23849b1b7f7dc7e3b8d3d0277d",
+      "identity": "util_half_avx2.float_to_half",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 58,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:07accfb9653b9b397e45bd9b16cde3b988be9e4d412013188ebc162bc5fb73b3",
+      "identity": "util_half_avx2.float3_to_packed_half3",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 70,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:d44778f0a71579a22379ad050317124fa4b772f6d37688f1fc220e6cb56af7b1",
+      "identity": "util_half_avx2.float4_to_half4",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 96,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:1048c7da7449ae8163ed46d747ba1dd9e355969c54cc854a515404fd63c91bdb",
+      "identity": "util_half_avx2.fallback_float_to_half",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 126,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:ea2dce22503c652effdbfb0e280f08d167f3ee5bcfdb8da825cabdb2e45212cd",
+      "identity": "util_half_avx2.half_to_float_flush_to_zero",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 138,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:dcffb464853c8e37b02c5b37b89c77617367b1d96f53999236248a9cd1ed0bdd",
+      "identity": "util_half_avx2.fallback_float3_to_packed_half3",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 177,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    },
+    {
+      "case_id": "gtest-source:830beadc30f6f8480822a3fb7372737f1995ac2387b002f32d91a890c40aa4de",
+      "identity": "util_half_avx2.fallback_float4_to_half4",
+      "outcome": "passed",
+      "source_location": {
+        "path": "intern/cycles/test/util_half_test.h",
+        "line": 203,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      }
+    }
+  ],
+  "all_overlapping_outcomes_agree": true,
+  "additional_cases_executed_by_original_ctest_filter": false,
+  "additional_cases_executed_by_supplementary_filter": true,
+  "not_additive": "The 216 registered cases are included among the 242 supplementary results; count their source identities once."
+}

@@ -1,0 +1,229 @@
+{
+  "schema": 1,
+  "kind": "browser-sqlite-component-implementation-summary",
+  "created_utc": "2026-10-23T16:08:57.032773+00:00",
+  "summary_driver": {
+    "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/freeze-completed-evidence.py",
+    "bytes": 9516,
+    "sha256": "a89311f4d955478ebb45160de3f9d3a09d6322801d77bf83c40a69c99ef329ee"
+  },
+  "patchset": {
+    "path": "patches/browser-sqlite/manifest.json",
+    "bytes": 3104,
+    "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+  },
+  "preparation_helper": {
+    "path": "tools/prepare_browser_sqlite.py",
+    "bytes": 12896,
+    "sha256": "42d465403a55f4dc21918f5839abda4b9a045a52cbffc6d760a1798aa048ea61"
+  },
+  "source_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "sqlite_version": "3.51.3",
+  "python_version": "3.13.13",
+  "emscripten_version": "6.0.5",
+  "sqlite_archive_build_completed": true,
+  "cpython_sqlite_extension_build_completed": true,
+  "separate_c_component_completed_in_node_and_chrome": true,
+  "separate_python_binding_diagnostic_v1_completed_successfully": false,
+  "original_blender_tests_modified": false,
+  "original_blender_assertions_modified": false,
+  "original_blender_driver_executed": false,
+  "strict_blender_browser_test_passes": 0,
+  "full_feature_parity": false,
+  "original_disk_hash_expected_cases": 12,
+  "original_disk_hash_observed_cases": 0,
+  "original_disk_hash_remaining_gate": "Rebuild the actual Blender browser artifact with this patchset and execute the original invocation with real bpy and the unchanged native case identities.",
+  "attempts": [
+    {
+      "attempt": "sqlite-attempt-1",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-attempt-1/execution.json",
+        "bytes": 3013,
+        "sha256": "1a8ed8493166f49b0cb1898fc30d3413752ebda6a7f0c467a11542f8f2525cea"
+      },
+      "interpretation": "Source extraction failed when restoring archive ownership in the sandbox; no successful build claimed.",
+      "returncode": 2,
+      "completed_successfully": false,
+      "elapsed_seconds": 2.001047
+    },
+    {
+      "attempt": "sqlite-attempt-2",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-attempt-2/execution.json",
+        "bytes": 3015,
+        "sha256": "7e0e06f0e28f3e2b0d2eec3812a500a3ad9a7fc0d12c622c70c0e66cf405c1bb"
+      },
+      "interpretation": "SQLite compiled, but the cache recorder rejected the SDK's legitimate confined clang symlink; no successful harvest claimed.",
+      "returncode": 1,
+      "completed_successfully": false,
+      "elapsed_seconds": 26.015879
+    },
+    {
+      "attempt": "sqlite-attempt-3",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-attempt-3/execution.json",
+        "bytes": 3286,
+        "sha256": "3aad63006c91476c35b10eb765e255da345e419e090e7532e23d78eee1850451"
+      },
+      "interpretation": "Real SQLite 3.51.3 archive compiled and its cache receipt was recorded successfully.",
+      "returncode": 0,
+      "completed_successfully": true,
+      "elapsed_seconds": 26.010186
+    },
+    {
+      "attempt": "python-attempt-1",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/python-attempt-1/execution.json",
+        "bytes": 3320,
+        "sha256": "46cfaa0b20fd818f4aebbc2e225c2ccf8f8b84299a16ad85604bb1a039982713"
+      },
+      "interpretation": "Real CPython 3.13.13 configured and compiled its original _sqlite3 extension against the pinned SQLite archive; symbol and cache verification passed.",
+      "returncode": 0,
+      "completed_successfully": true,
+      "elapsed_seconds": 552.195481
+    },
+    {
+      "attempt": "sqlite-component-node",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/execution.json",
+        "bytes": 4947,
+        "sha256": "2bd0afbbdd98ba70b5af64c7bc59831a639c69a91f4e20674d1604272928c5e8"
+      },
+      "interpretation": "Separate real SQLite C diagnostic completed in Node; it is not an original Blender test.",
+      "completed_successfully": true,
+      "command_results": [
+        {
+          "returncode": 0,
+          "elapsed_seconds": 92.008609
+        },
+        {
+          "returncode": 0,
+          "elapsed_seconds": 0.315206
+        }
+      ]
+    },
+    {
+      "attempt": "sqlite-component-browser",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-browser/execution.json",
+        "bytes": 3290,
+        "sha256": "2f0248a93e17cc2663e4f53efa15efd2c06e7c3dd8af12010e6b6efa6944f1cd"
+      },
+      "interpretation": "The same SQLite C diagnostic completed in Chrome; it is not an original Blender test.",
+      "runtime_exit": 0,
+      "completed_successfully": true,
+      "elapsed_seconds": 1.168085
+    },
+    {
+      "attempt": "original-disk-hash-node-attempt-1",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-node-attempt-1/execution.json",
+        "bytes": 4913,
+        "sha256": "175a2b9fa886180323b8af27dd87adcd4fcc7fecfb2f3f24d69072a14e462ef3"
+      },
+      "interpretation": "The exact original test and package bytes were loaded, but the package initializer requires bpy. The standalone interpreter exited before discovering any of the 12 expected cases.",
+      "returncode": 1,
+      "completed_successfully": false,
+      "elapsed_seconds": 0.711331,
+      "expected_cases": 12,
+      "observed_cases": 0,
+      "case_passes": 0,
+      "blocked_cases": 12,
+      "missing_case_ids": [
+        "DiskFileHashServiceNotOpeningTest.test_closing_unopened_service",
+        "DiskFileHashServiceNotOpeningTest.test_doubly_closing",
+        "DiskFileHashServiceTest.test_cleanup_on_close",
+        "DiskFileHashServiceTest.test_file_matches",
+        "DiskFileHashServiceTest.test_get_file_hash",
+        "DiskFileHashServiceTest.test_rehash_after_modification",
+        "DiskFileHashServiceTest.test_store_hash_callback",
+        "SQLiteBackendTest.test_fetch_nonexistent_file",
+        "SQLiteBackendTest.test_mark_as_fresh",
+        "SQLiteBackendTest.test_remove_older_than",
+        "SQLiteBackendTest.test_store_fetch_update_hash",
+        "SQLiteBackendTest.test_store_multiple_hashes_and_sizes"
+      ],
+      "blocker": "ModuleNotFoundError: No module named 'bpy'"
+    },
+    {
+      "attempt": "original-disk-hash-browser-attempt-1",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-browser-attempt-1/execution.json",
+        "bytes": 6488,
+        "sha256": "d5950013b019321ec6956cee3f1247a74be905d333d4bdc63d68637faad90f23"
+      },
+      "interpretation": "The exact original test and package bytes were loaded in Chrome, but the package initializer requires bpy. The standalone interpreter exited before discovering any of the 12 expected cases.",
+      "runtime_exit": 1,
+      "completed_successfully": false,
+      "elapsed_seconds": 2.176118,
+      "expected_cases": 12,
+      "observed_cases": 0,
+      "case_passes": 0,
+      "blocked_cases": 12,
+      "missing_case_ids": [
+        "DiskFileHashServiceNotOpeningTest.test_closing_unopened_service",
+        "DiskFileHashServiceNotOpeningTest.test_doubly_closing",
+        "DiskFileHashServiceTest.test_cleanup_on_close",
+        "DiskFileHashServiceTest.test_file_matches",
+        "DiskFileHashServiceTest.test_get_file_hash",
+        "DiskFileHashServiceTest.test_rehash_after_modification",
+        "DiskFileHashServiceTest.test_store_hash_callback",
+        "SQLiteBackendTest.test_fetch_nonexistent_file",
+        "SQLiteBackendTest.test_mark_as_fresh",
+        "SQLiteBackendTest.test_remove_older_than",
+        "SQLiteBackendTest.test_store_fetch_update_hash",
+        "SQLiteBackendTest.test_store_multiple_hashes_and_sizes"
+      ],
+      "blocker": "ModuleNotFoundError: No module named 'bpy'"
+    },
+    {
+      "attempt": "native-python-diagnostic-1",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/native-python-diagnostic-1/execution.json",
+        "bytes": 1447,
+        "sha256": "01487e9bf41a450d5fef023ef9c8bd2859621fa717d3452a872c1fbb73869fa5"
+      },
+      "interpretation": "The separately authored binding diagnostic failed at its WAL-derived serialization round-trip assumption with sqlite3.OperationalError: unable to open database file.",
+      "returncode": 1,
+      "elapsed_seconds": 0.19693950199871324
+    },
+    {
+      "attempt": "python-sqlite-browser-diagnostic-1",
+      "receipt": {
+        "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/python-sqlite-browser-diagnostic-1/execution.json",
+        "bytes": 4342,
+        "sha256": "d2f544668cb559fa814d474ace4ae78ba1b1cfa645c80908d5452abd89dd6cfc"
+      },
+      "interpretation": "The same separately authored binding diagnostic failed at the same line and exception as native Blender's bundled Python. This is not evidence of a browser-only defect or a completed binding diagnostic pass.",
+      "runtime_exit": 1,
+      "completed_successfully": false,
+      "elapsed_seconds": 2.189431
+    }
+  ],
+  "preservation": {
+    "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/preservation.json",
+    "bytes": 7740,
+    "sha256": "2242c57e3a4b48448e9ac34caa2c961c971659551e69ee666a8940b61368d845"
+  },
+  "copied_component_builds": [
+    {
+      "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/python-component-build/build.json",
+      "bytes": 8425,
+      "sha256": "3fa0a386820590038b5d59cdb70a3d4424f645d08b3d8c9aa7dc27f06dc58894"
+    },
+    {
+      "path": "compatibility/evidence/browser-sqlite-build-2026-10-23/python-diagnostic-build-1/build.json",
+      "bytes": 6654,
+      "sha256": "3688b56badb088ee1511378e377140df59ea62a054a70ec1a1817c2d1b30b1b1"
+    }
+  ],
+  "independent_out_of_scope_followup_directory": "compatibility/evidence/browser-sqlite-python-validation-2026-10-23/",
+  "not_established": [
+    "complete Blender feature parity",
+    "the 12 original disk hash case outcomes on a rebuilt Blender artifact",
+    "browser reload durability",
+    "cross-tab or cross-process locking",
+    "arbitrary dynamic native extensions"
+  ]
+}

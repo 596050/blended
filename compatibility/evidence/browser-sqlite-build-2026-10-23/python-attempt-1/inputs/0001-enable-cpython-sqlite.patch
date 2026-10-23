@@ -1,0 +1,94 @@
+--- a/scripts/deps/python.sh
++++ b/scripts/deps/python.sh
+@@ -66,14 +66,23 @@
+ # when the recipe changes (e.g. module set) WITHOUT first deleting the live .a —
+ # a concurrent gpu relink keeps reading the old artifact until the atomic swap
+ # at the very end replaces it in one rename(2).
++# The optional SQLite patchset binds both dependency inputs and harvested bytes.
++# An old archive built with _sqlite3=n/a cannot satisfy this cache receipt.
++BLENDED_CALLER_EM_CACHE="${EM_CACHE:-}"
++# shellcheck disable=SC1091
++source "$ROOT/tools/emsdk/emsdk_env.sh"
++if [ -n "$BLENDED_CALLER_EM_CACHE" ]; then
++  export EM_CACHE="$BLENDED_CALLER_EM_CACHE"
++fi
++if ! python3 "$ROOT/scripts/deps/sqlite-cache.py" verify python "$ROOT"; then
++  PYTHON_FORCE_REBUILD=1
++fi
+ if [ -z "${PYTHON_FORCE_REBUILD:-}" ] \
+    && [ -f "$LIB_MARKER" ] && [ -f "$HDR_MARKER" ] && [ -f "$STD_MARKER" ]; then
+   install_mp_shim
+   echo "python ${PY_VERSION}: already installed — skip (mp shim ensured; PYTHON_FORCE_REBUILD=1 to rebuild)"; exit 0
+ fi
+ 
+-# shellcheck disable=SC1091
+-source "$ROOT/tools/emsdk/emsdk_env.sh"
+ mkdir -p "$CACHE" "$SCRATCH"
+ 
+ # --- fetch + verify -------------------------------------------------------------
+@@ -83,7 +92,7 @@
+ 
+ SRC="$SCRATCH/Python-${PY_VERSION}"
+ rm -rf "$SRC"
+-tar -xf "$TARBALL" -C "$SCRATCH"
++tar --no-same-owner -xf "$TARBALL" -C "$SCRATCH"
+ BUILD_TRIPLE="$(CC=cc CC_FOR_BUILD=cc "$SRC/config.guess")"
+ 
+ # --- 1. native bootstrap interpreter (host tool, config-independent) ------------
+@@ -108,9 +117,9 @@
+ # py_cv_module_*=n/a: disable the optional stdlib C-extensions that would each drag
+ # a companion / external native library into the Blender mono-wasm link, none of
+ # which is needed to boot `import bpy`, and every one of which has a safe fallback:
+-#   _sqlite3, _bz2            -> only satisfiable by the emscripten sqlite3/bzip2
+-#                               PORTS (the standalone probe used them; the mono-wasm
+-#                               does not). No stdlib import fatals without them.
++#   _sqlite3                 -> enabled against the separately pinned real SQLite
++#                               amalgamation. Its archive is merged below.
++#   _bz2                     -> remains disabled in this SQLite-only patchset.
+ #   _decimal                 -> needs bundled libmpdec; the `decimal` module falls
+ #                               back to the pure-python `_pydecimal` automatically.
+ #   pyexpat _elementtree     -> need CPython's bundled expat, which would duplicate
+@@ -162,14 +171,16 @@
+ CONFIG_SITE="$SRC/Tools/wasm/config.site-wasm32-emscripten" \
+ CFLAGS="-fexceptions -matomics -mbulk-memory -DPY_CALL_TRAMPOLINE" \
+ CPPFLAGS="-matomics -mbulk-memory -DPY_CALL_TRAMPOLINE -I$PREFIX/include" \
+-LDFLAGS="-fexceptions" \
++LDFLAGS="-fexceptions -L$PREFIX/lib" \
++LIBSQLITE3_CFLAGS="-I$PREFIX/include" \
++LIBSQLITE3_LIBS="$PREFIX/lib/libsqlite3.a" \
+   emconfigure "$SRC/configure" -C \
+     --host=wasm32-unknown-emscripten \
+     --build="$BUILD_TRIPLE" \
+     --with-emscripten-target=browser \
+     --with-build-python="$BUILD_PY" \
+-    --disable-shared --disable-ipv6 \
+-    py_cv_module__sqlite3=n/a py_cv_module__bz2=n/a \
++    --disable-shared --disable-ipv6 --enable-loadable-sqlite-extensions \
++    py_cv_module__bz2=n/a \
+     py_cv_module__decimal=n/a py_cv_module__lzma=n/a \
+     py_cv_module_pyexpat=n/a py_cv_module__elementtree=n/a
+ 
+@@ -190,6 +201,9 @@
+ # (_decimal.o -> mpd_*, hashlib -> Hacl_* resolve within the one archive). Anything
+ # CPython leaves external (zlib) is satisfied by lib/wasm at the Blender link.
+ COMPANION_LIBS=$(find "$XBUILD" -name '*.a' ! -name "libpython${PY_SHORT}.a" 2>/dev/null | sort)
++[ -f "$PREFIX/lib/libsqlite3.a" ] || { echo "python: pinned SQLite library absent"; exit 1; }
++COMPANION_LIBS="${COMPANION_LIBS}
++$PREFIX/lib/libsqlite3.a"
+ COMBINED="$SCRATCH/libpython${PY_SHORT}.combined.a"
+ rm -f "$COMBINED"
+ if [ -n "$COMPANION_LIBS" ]; then
+@@ -253,5 +267,13 @@
+ echo "python: Hacl_Hash_SHA3 symbols in libpython = $SHA3SYMS (expect > 0)"
+ [ "$SHA3SYMS" -gt 0 ] || { echo "python: _sha3 not linked into libpython"; exit 1; }
+ 
++emnm --defined-only "$LIB_MARKER" > "$SCRATCH/sqlite-defined-symbols.txt"
++for name in PyInit__sqlite3 sqlite3_open_v2 sqlite3_exec sqlite3_wal_checkpoint_v2; do
++  grep -Eq "[[:space:]]T[[:space:]]${name}$" "$SCRATCH/sqlite-defined-symbols.txt" || {
++    echo "python: missing real SQLite definition $name"; exit 1;
++  }
++done
++python3 "$ROOT/scripts/deps/sqlite-cache.py" record python "$ROOT"
++
+ rm -rf "$SCRATCH"
+ echo "python ${PY_VERSION}: installed (JS-EH) -> $LIB_MARKER + include/python${PY_SHORT}/ + lib/python${PY_SHORT}/"

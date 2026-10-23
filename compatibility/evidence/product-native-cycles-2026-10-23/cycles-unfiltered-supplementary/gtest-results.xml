@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="242" failures="0" disabled="0" errors="0" time="0.1" timestamp="2026-10-23T20:45:13.935" name="AllTests">
+  <testsuite name="AdaptiveSampling" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="schedule_samples" file="intern/cycles/test/integrator_adaptive_sampling_test.cpp" line="12" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="AdaptiveSampling" />
+    <testcase name="align_samples" file="intern/cycles/test/integrator_adaptive_sampling_test.cpp" line="29" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="AdaptiveSampling" />
+    <testcase name="need_filter" file="intern/cycles/test/integrator_adaptive_sampling_test.cpp" line="84" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="AdaptiveSampling" />
+  </testsuite>
+  <testsuite name="IntegratorRenderScheduler" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="calculate_resolution_divider_for_resolution" file="intern/cycles/test/integrator_render_scheduler_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="IntegratorRenderScheduler" />
+    <testcase name="calculate_resolution_for_divider" file="intern/cycles/test/integrator_render_scheduler_test.cpp" line="18" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="IntegratorRenderScheduler" />
+  </testsuite>
+  <testsuite name="tile_calculate_best_size" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="Basic" file="intern/cycles/test/integrator_tile_test.cpp" line="12" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="tile_calculate_best_size" />
+    <testcase name="Extreme" file="intern/cycles/test/integrator_tile_test.cpp" line="26" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="tile_calculate_best_size" />
+  </testsuite>
+  <testsuite name="KernelCamera" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="FisheyeLensPolynomialRoundtrip" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="20" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="KernelCamera" />
+    <testcase name="FisheyeLensPolynomialToDirectionSymmetry" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="87" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="KernelCamera" />
+    <testcase name="FisheyeLensPolynomialToDirection" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="140" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="KernelCamera" />
+  </testsuite>
+  <testsuite name="PanoramaProjection/0" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="round_trip" type_param="ccl::Spherical" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="365" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="PanoramaProjection/0" />
+  </testsuite>
+  <testsuite name="PanoramaProjection/1" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="round_trip" type_param="ccl::Equirectangular" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="365" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="PanoramaProjection/1" />
+  </testsuite>
+  <testsuite name="PanoramaProjection/2" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="round_trip" type_param="ccl::FisheyeEquidistant" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="365" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="PanoramaProjection/2" />
+  </testsuite>
+  <testsuite name="PanoramaProjection/3" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="round_trip" type_param="ccl::FisheyeEquisolid" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="365" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="PanoramaProjection/3" />
+  </testsuite>
+  <testsuite name="PanoramaProjection/4" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="round_trip" type_param="ccl::MirrorBall" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="365" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="PanoramaProjection/4" />
+  </testsuite>
+  <testsuite name="PanoramaProjection/5" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.935">
+    <testcase name="round_trip" type_param="ccl::EquiangularCubemapFace" file="intern/cycles/test/kernel_camera_projection_test.cpp" line="365" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.935" classname="PanoramaProjection/5" />
+  </testsuite>
+  <testsuite name="RenderGraph" tests="63" failures="0" disabled="0" skipped="0" errors="0" time="0.026" timestamp="2026-10-23T20:45:13.935">
+    <testcase name="deduplicate_deep" file="intern/cycles/test/render_graph_finalize_test.cpp" line="247" status="run" result="completed" time="0.001" timestamp="2026-10-23T20:45:13.935" classname="RenderGraph" />
+    <testcase name="constant_fold_rgb_to_bw" file="intern/cycles/test/render_graph_finalize_test.cpp" line="278" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.937" classname="RenderGraph" />
+    <testcase name="constant_fold_emission1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="296" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.938" classname="RenderGraph" />
+    <testcase name="constant_fold_emission2" file="intern/cycles/test/render_graph_finalize_test.cpp" line="307" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.938" classname="RenderGraph" />
+    <testcase name="constant_fold_background1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="322" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.938" classname="RenderGraph" />
+    <testcase name="constant_fold_background2" file="intern/cycles/test/render_graph_finalize_test.cpp" line="333" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.939" classname="RenderGraph" />
+    <testcase name="constant_fold_shader_add" file="intern/cycles/test/render_graph_finalize_test.cpp" line="347" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.939" classname="RenderGraph" />
+    <testcase name="constant_fold_shader_mix" file="intern/cycles/test/render_graph_finalize_test.cpp" line="371" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.940" classname="RenderGraph" />
+    <testcase name="constant_fold_invert" file="intern/cycles/test/render_graph_finalize_test.cpp" line="399" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.940" classname="RenderGraph" />
+    <testcase name="constant_fold_invert_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="416" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.940" classname="RenderGraph" />
+    <testcase name="constant_fold_invert_fac_0_const" file="intern/cycles/test/render_graph_finalize_test.cpp" line="432" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.941" classname="RenderGraph" />
+    <testcase name="constant_fold_mix_add" file="intern/cycles/test/render_graph_finalize_test.cpp" line="449" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.941" classname="RenderGraph" />
+    <testcase name="constant_fold_mix_add_clamp" file="intern/cycles/test/render_graph_finalize_test.cpp" line="469" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.941" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_dodge_no_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="489" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.942" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_light_no_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="510" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.942" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_burn_no_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="531" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.943" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_blend_clamped_no_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="552" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.943" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_blend" file="intern/cycles/test/render_graph_finalize_test.cpp" line="574" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.943" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_sub_same_fac_bad" file="intern/cycles/test/render_graph_finalize_test.cpp" line="612" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.944" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_sub_same_fac_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="632" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.944" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_add_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="709" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.944" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_sub_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="726" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.945" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_mul_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="742" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.945" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_div_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="759" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.945" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_mul_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="775" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.946" classname="RenderGraph" />
+    <testcase name="constant_fold_part_mix_div_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="794" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.946" classname="RenderGraph" />
+    <testcase name="constant_fold_separate_combine_rgb" file="intern/cycles/test/render_graph_finalize_test.cpp" line="812" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.947" classname="RenderGraph" />
+    <testcase name="constant_fold_separate_combine_xyz" file="intern/cycles/test/render_graph_finalize_test.cpp" line="836" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.947" classname="RenderGraph" />
+    <testcase name="constant_fold_separate_combine_hsv" file="intern/cycles/test/render_graph_finalize_test.cpp" line="860" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.948" classname="RenderGraph" />
+    <testcase name="constant_fold_gamma" file="intern/cycles/test/render_graph_finalize_test.cpp" line="884" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.948" classname="RenderGraph" />
+    <testcase name="constant_fold_gamma_part_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="900" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.948" classname="RenderGraph" />
+    <testcase name="constant_fold_gamma_part_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="928" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.949" classname="RenderGraph" />
+    <testcase name="constant_fold_bright_contrast" file="intern/cycles/test/render_graph_finalize_test.cpp" line="956" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.949" classname="RenderGraph" />
+    <testcase name="constant_fold_blackbody" file="intern/cycles/test/render_graph_finalize_test.cpp" line="973" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.950" classname="RenderGraph" />
+    <testcase name="constant_fold_math" file="intern/cycles/test/render_graph_finalize_test.cpp" line="994" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.950" classname="RenderGraph" />
+    <testcase name="constant_fold_math_clamp" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1012" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.950" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_add_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1061" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.951" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_sub_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1075" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.951" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_mul_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1089" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.952" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_div_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1103" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.952" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_mul_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1117" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.952" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_div_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1132" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.953" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_pow_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1146" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.953" classname="RenderGraph" />
+    <testcase name="constant_fold_part_math_pow_1" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1160" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.954" classname="RenderGraph" />
+    <testcase name="constant_fold_vector_math" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1174" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.954" classname="RenderGraph" />
+    <testcase name="constant_fold_part_vecmath_add_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1219" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.955" classname="RenderGraph" />
+    <testcase name="constant_fold_part_vecmath_sub_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1233" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.955" classname="RenderGraph" />
+    <testcase name="constant_fold_part_vecmath_cross_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1247" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.955" classname="RenderGraph" />
+    <testcase name="constant_fold_bump" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1262" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.956" classname="RenderGraph" />
+    <testcase name="constant_fold_bump_no_input" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1277" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.956" classname="RenderGraph" />
+    <testcase name="constant_fold_rgb_curves" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1311" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.957" classname="RenderGraph" />
+    <testcase name="constant_fold_rgb_curves_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1334" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.957" classname="RenderGraph" />
+    <testcase name="constant_fold_rgb_curves_fac_0_const" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1357" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.957" classname="RenderGraph" />
+    <testcase name="constant_fold_vector_curves" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1380" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.958" classname="RenderGraph" />
+    <testcase name="constant_fold_vector_curves_fac_0" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1403" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.958" classname="RenderGraph" />
+    <testcase name="constant_fold_rgb_ramp" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1426" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.959" classname="RenderGraph" />
+    <testcase name="constant_fold_rgb_ramp_flat" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1454" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.959" classname="RenderGraph" />
+    <testcase name="constant_fold_convert_float_color_float" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1482" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.960" classname="RenderGraph" />
+    <testcase name="constant_fold_convert_color_vector_color" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1500" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.960" classname="RenderGraph" />
+    <testcase name="constant_fold_convert_color_float_color" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1521" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.960" classname="RenderGraph" />
+    <testcase name="stochastic_sample_math_multiply" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1541" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.961" classname="RenderGraph" />
+    <testcase name="not_stochastic_sample_math_power" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1560" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.961" classname="RenderGraph" />
+    <testcase name="stochastic_sample_principled_volume_mix" file="intern/cycles/test/render_graph_finalize_test.cpp" line="1579" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="RenderGraph" />
+  </testsuite>
+  <testsuite name="util_aligned_malloc" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.962">
+    <testcase name="aligned_malloc_16" file="intern/cycles/test/util_aligned_malloc_test.cpp" line="13" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="util_aligned_malloc" />
+    <testcase name="aligned_malloc_32" file="intern/cycles/test/util_aligned_malloc_test.cpp" line="22" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="util_aligned_malloc" />
+  </testsuite>
+  <testsuite name="BoundBox" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.962">
+    <testcase name="transformed" file="intern/cycles/test/util_boundbox_test.cpp" line="12" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="BoundBox" />
+  </testsuite>
+  <testsuite name="CacheLimiter" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:13.962">
+    <testcase name="Basic" file="intern/cycles/test/util_cache_limiter_test.cpp" line="16" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="CacheLimiter" />
+    <testcase name="Eviction" file="intern/cycles/test/util_cache_limiter_test.cpp" line="39" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="CacheLimiter" />
+    <testcase name="NoEvictionWhenUsed" file="intern/cycles/test/util_cache_limiter_test.cpp" line="73" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:13.962" classname="CacheLimiter" />
+  </testsuite>
+  <testsuite name="util_colorspace" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.064" timestamp="2026-10-23T20:45:13.962">
+    <testcase name="scene_linear_interop_id" file="intern/cycles/test/util_colorspace_test.cpp" line="31" status="run" result="completed" time="0.064" timestamp="2026-10-23T20:45:13.962" classname="util_colorspace" />
+  </testsuite>
+  <testsuite name="util_half" tests="7" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.026">
+    <testcase name="float_to_half" file="intern/cycles/test/util_half_test.h" line="58" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+    <testcase name="float3_to_packed_half3" file="intern/cycles/test/util_half_test.h" line="70" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+    <testcase name="float4_to_half4" file="intern/cycles/test/util_half_test.h" line="96" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+    <testcase name="fallback_float_to_half" file="intern/cycles/test/util_half_test.h" line="126" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+    <testcase name="half_to_float_flush_to_zero" file="intern/cycles/test/util_half_test.h" line="138" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+    <testcase name="fallback_float3_to_packed_half3" file="intern/cycles/test/util_half_test.h" line="177" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+    <testcase name="fallback_float4_to_half4" file="intern/cycles/test/util_half_test.h" line="203" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_half" />
+  </testsuite>
+  <testsuite name="util_ies" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.026">
+    <testcase name="invalid" file="intern/cycles/test/util_ies_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.026" classname="util_ies" />
+  </testsuite>
+  <testsuite name="math" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="fast_sinf" file="intern/cycles/test/util_math_fast_test.cpp" line="12" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="math" />
+    <testcase name="fast_cosf" file="intern/cycles/test/util_math_fast_test.cpp" line="34" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="math" />
+    <testcase name="next_power_of_two" file="intern/cycles/test/util_math_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="math" />
+    <testcase name="prev_power_of_two" file="intern/cycles/test/util_math_test.cpp" line="20" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="math" />
+    <testcase name="reverse_integer_bits" file="intern/cycles/test/util_math_test.cpp" line="36" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="math" />
+  </testsuite>
+  <testsuite name="Float3Test" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="fmod" file="intern/cycles/test/util_math_float3_test.cpp" line="23" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3Test" />
+  </testsuite>
+  <testsuite name="Float4Test" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="fmod" file="intern/cycles/test/util_math_float4_test.cpp" line="23" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float4Test" />
+  </testsuite>
+  <testsuite name="Float3x3Test" tests="13" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="IsNearFloat3x3" file="intern/cycles/test/util_math_float3x3_test.cpp" line="72" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="multiply_scalar_by_matrix" file="intern/cycles/test/util_math_float3x3_test.cpp" line="81" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="multiply_matrix_by_scalar" file="intern/cycles/test/util_math_float3x3_test.cpp" line="98" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="multiply_matrix_by_matrix" file="intern/cycles/test/util_math_float3x3_test.cpp" line="116" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="multiply_matrix_by_vector" file="intern/cycles/test/util_math_float3x3_test.cpp" line="137" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="divide_matrix_by_scalar" file="intern/cycles/test/util_math_float3x3_test.cpp" line="151" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="float3x3_scale" file="intern/cycles/test/util_math_float3x3_test.cpp" line="169" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="transposed" file="intern/cycles/test/util_math_float3x3_test.cpp" line="178" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="determinant" file="intern/cycles/test/util_math_float3x3_test.cpp" line="189" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="adjoint" file="intern/cycles/test/util_math_float3x3_test.cpp" line="202" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="inverted" file="intern/cycles/test/util_math_float3x3_test.cpp" line="213" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="quaternion_to_scaled_rotation" file="intern/cycles/test/util_math_float3x3_test.cpp" line="232" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+    <testcase name="quaternion_to_rotation" file="intern/cycles/test/util_math_float3x3_test.cpp" line="242" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="Float3x3Test" />
+  </testsuite>
+  <testsuite name="PackedFloat3x3Test" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="init_from_float3x3" file="intern/cycles/test/util_math_float3x3_test.cpp" line="276" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="PackedFloat3x3Test" />
+    <testcase name="cast_to_float3x3" file="intern/cycles/test/util_math_float3x3_test.cpp" line="294" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="PackedFloat3x3Test" />
+    <testcase name="assign_from_float3x3" file="intern/cycles/test/util_math_float3x3_test.cpp" line="307" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="PackedFloat3x3Test" />
+  </testsuite>
+  <testsuite name="QuaternionTest" tests="8" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="IsNearQuaternion" file="intern/cycles/test/util_math_quaternion_test.cpp" line="64" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="Negate" file="intern/cycles/test/util_math_quaternion_test.cpp" line="73" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="MultiplyScalar" file="intern/cycles/test/util_math_quaternion_test.cpp" line="79" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="Add" file="intern/cycles/test/util_math_quaternion_test.cpp" line="87" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="Subtract" file="intern/cycles/test/util_math_quaternion_test.cpp" line="100" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="dot" file="intern/cycles/test/util_math_quaternion_test.cpp" line="113" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="normalized" file="intern/cycles/test/util_math_quaternion_test.cpp" line="121" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+    <testcase name="lerp" file="intern/cycles/test/util_math_quaternion_test.cpp" line="131" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="QuaternionTest" />
+  </testsuite>
+  <testsuite name="RGBE" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="round_trip" file="intern/cycles/test/util_rgbe_test.cpp" line="12" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="RGBE" />
+  </testsuite>
+  <testsuite name="util" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="util_md5_string" file="intern/cycles/test/util_md5_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util" />
+  </testsuite>
+  <testsuite name="util_path_filename" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="simple_unix" file="intern/cycles/test/util_path_test.cpp" line="14" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_filename" />
+    <testcase name="root_unix" file="intern/cycles/test/util_path_test.cpp" line="20" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_filename" />
+    <testcase name="last_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="26" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_filename" />
+    <testcase name="alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="32" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_filename" />
+    <testcase name="file_only" file="intern/cycles/test/util_path_test.cpp" line="39" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_filename" />
+    <testcase name="empty" file="intern/cycles/test/util_path_test.cpp" line="45" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_filename" />
+  </testsuite>
+  <testsuite name="util_path_dirname" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="simple_unix" file="intern/cycles/test/util_path_test.cpp" line="80" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_dirname" />
+    <testcase name="root_unix" file="intern/cycles/test/util_path_test.cpp" line="86" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_dirname" />
+    <testcase name="last_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="92" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_dirname" />
+    <testcase name="alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="98" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_dirname" />
+    <testcase name="file_only" file="intern/cycles/test/util_path_test.cpp" line="105" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_dirname" />
+    <testcase name="empty" file="intern/cycles/test/util_path_test.cpp" line="111" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_dirname" />
+  </testsuite>
+  <testsuite name="util_path_join" tests="14" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty_both" file="intern/cycles/test/util_path_test.cpp" line="145" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="empty_directory" file="intern/cycles/test/util_path_test.cpp" line="151" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="empty_filename" file="intern/cycles/test/util_path_test.cpp" line="157" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="simple_unix" file="intern/cycles/test/util_path_test.cpp" line="164" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="directory_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="170" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="filename_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="176" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="both_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="182" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="directory_alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="188" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="filename_alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="194" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="both_alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="200" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="empty_dir_filename_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="206" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="empty_dir_filename_alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="212" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="empty_filename_dir_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="218" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+    <testcase name="empty_filename_dir_alternate_slash_unix" file="intern/cycles/test/util_path_test.cpp" line="224" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_join" />
+  </testsuite>
+  <testsuite name="util_path_escape" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="no_escape_chars" file="intern/cycles/test/util_path_test.cpp" line="299" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_escape" />
+    <testcase name="simple" file="intern/cycles/test/util_path_test.cpp" line="305" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_escape" />
+    <testcase name="simple_end" file="intern/cycles/test/util_path_test.cpp" line="311" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_escape" />
+    <testcase name="multiple" file="intern/cycles/test/util_path_test.cpp" line="317" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_escape" />
+    <testcase name="simple_multiple_end" file="intern/cycles/test/util_path_test.cpp" line="323" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_escape" />
+  </testsuite>
+  <testsuite name="util_path_is_relative" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="filename" file="intern/cycles/test/util_path_test.cpp" line="331" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_is_relative" />
+    <testcase name="absolute_unix" file="intern/cycles/test/util_path_test.cpp" line="338" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_is_relative" />
+    <testcase name="relative_dir_unix" file="intern/cycles/test/util_path_test.cpp" line="344" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_is_relative" />
+    <testcase name="absolute_windir_on_unix" file="intern/cycles/test/util_path_test.cpp" line="350" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_is_relative" />
+    <testcase name="relative_windir_on_unix" file="intern/cycles/test/util_path_test.cpp" line="356" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_path_is_relative" />
+  </testsuite>
+  <testsuite name="simd" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="bsf" file="intern/cycles/test/util_simd_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="simd" />
+    <testcase name="bsr" file="intern/cycles/test/util_simd_test.cpp" line="23" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="simd" />
+    <testcase name="btc" file="intern/cycles/test/util_simd_test.cpp" line="37" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="simd" />
+    <testcase name="bitscan" file="intern/cycles/test/util_simd_test.cpp" line="53" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="simd" />
+  </testsuite>
+  <testsuite name="util_string_printf" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="no_format" file="intern/cycles/test/util_string_test.cpp" line="13" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_printf" />
+    <testcase name="int_number" file="intern/cycles/test/util_string_test.cpp" line="19" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_printf" />
+    <testcase name="float_number_default_precision" file="intern/cycles/test/util_string_test.cpp" line="25" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_printf" />
+    <testcase name="float_number_custom_precision" file="intern/cycles/test/util_string_test.cpp" line="31" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_printf" />
+  </testsuite>
+  <testsuite name="util_string_iequals" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty_a" file="intern/cycles/test/util_string_test.cpp" line="39" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_iequals" />
+    <testcase name="empty_b" file="intern/cycles/test/util_string_test.cpp" line="45" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_iequals" />
+    <testcase name="same_register" file="intern/cycles/test/util_string_test.cpp" line="51" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_iequals" />
+    <testcase name="different_register" file="intern/cycles/test/util_string_test.cpp" line="57" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_iequals" />
+  </testsuite>
+  <testsuite name="util_string_split" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty" file="intern/cycles/test/util_string_test.cpp" line="65" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_split" />
+    <testcase name="only_spaces" file="intern/cycles/test/util_string_test.cpp" line="72" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_split" />
+    <testcase name="single" file="intern/cycles/test/util_string_test.cpp" line="79" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_split" />
+    <testcase name="simple" file="intern/cycles/test/util_string_test.cpp" line="87" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_split" />
+    <testcase name="multiple_spaces" file="intern/cycles/test/util_string_test.cpp" line="98" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_split" />
+  </testsuite>
+  <testsuite name="util_string_replace" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty_haystack_and_other" file="intern/cycles/test/util_string_test.cpp" line="111" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_replace" />
+    <testcase name="empty_haystack" file="intern/cycles/test/util_string_test.cpp" line="118" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_replace" />
+    <testcase name="empty_other" file="intern/cycles/test/util_string_test.cpp" line="125" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_replace" />
+    <testcase name="long_haystack_empty_other" file="intern/cycles/test/util_string_test.cpp" line="132" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_replace" />
+    <testcase name="long_haystack" file="intern/cycles/test/util_string_test.cpp" line="139" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_replace" />
+  </testsuite>
+  <testsuite name="util_string_endswith" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty_both" file="intern/cycles/test/util_string_test.cpp" line="148" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_endswith" />
+    <testcase name="empty_string" file="intern/cycles/test/util_string_test.cpp" line="154" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_endswith" />
+    <testcase name="empty_end" file="intern/cycles/test/util_string_test.cpp" line="160" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_endswith" />
+    <testcase name="simple_true" file="intern/cycles/test/util_string_test.cpp" line="166" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_endswith" />
+    <testcase name="simple_false" file="intern/cycles/test/util_string_test.cpp" line="172" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_endswith" />
+  </testsuite>
+  <testsuite name="util_string_strip" tests="4" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty" file="intern/cycles/test/util_string_test.cpp" line="180" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_strip" />
+    <testcase name="only_spaces" file="intern/cycles/test/util_string_test.cpp" line="186" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_strip" />
+    <testcase name="no_spaces" file="intern/cycles/test/util_string_test.cpp" line="192" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_strip" />
+    <testcase name="with_spaces" file="intern/cycles/test/util_string_test.cpp" line="198" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_strip" />
+  </testsuite>
+  <testsuite name="util_string_remove_trademark" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="empty" file="intern/cycles/test/util_string_test.cpp" line="206" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="no_trademark" file="intern/cycles/test/util_string_test.cpp" line="212" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="only_tm" file="intern/cycles/test/util_string_test.cpp" line="218" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="only_r" file="intern/cycles/test/util_string_test.cpp" line="224" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="both" file="intern/cycles/test/util_string_test.cpp" line="230" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="both_space" file="intern/cycles/test/util_string_test.cpp" line="236" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="both_space_around" file="intern/cycles/test/util_string_test.cpp" line="242" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="trademark_space_suffix" file="intern/cycles/test/util_string_test.cpp" line="248" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="trademark_space_middle" file="intern/cycles/test/util_string_test.cpp" line="254" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="r_space_suffix" file="intern/cycles/test/util_string_test.cpp" line="260" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+    <testcase name="r_space_middle" file="intern/cycles/test/util_string_test.cpp" line="266" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_trademark" />
+  </testsuite>
+  <testsuite name="util_string_remove_gpu_from_cpu_name" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="basic" file="intern/cycles/test/util_string_test.cpp" line="274" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_string_remove_gpu_from_cpu_name" />
+  </testsuite>
+  <testsuite name="string_startswith" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="basic" file="intern/cycles/test/util_string_test.cpp" line="289" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="string_startswith" />
+  </testsuite>
+  <testsuite name="string_endswith" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.027">
+    <testcase name="basic" file="intern/cycles/test/util_string_test.cpp" line="306" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="string_endswith" />
+  </testsuite>
+  <testsuite name="util_task" tests="2" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2026-10-23T20:45:14.027">
+    <testcase name="basic" file="intern/cycles/test/util_task_test.cpp" line="17" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.027" classname="util_task" />
+    <testcase name="multiple_times" file="intern/cycles/test/util_task_test.cpp" line="30" status="run" result="completed" time="0.007" timestamp="2026-10-23T20:45:14.028" classname="util_task" />
+  </testsuite>
+  <testsuite name="time_human_readable_to_seconds" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.036">
+    <testcase name="Empty" file="intern/cycles/test/util_time_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="time_human_readable_to_seconds" />
+    <testcase name="Fraction" file="intern/cycles/test/util_time_test.cpp" line="17" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="time_human_readable_to_seconds" />
+    <testcase name="Seconds" file="intern/cycles/test/util_time_test.cpp" line="24" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="time_human_readable_to_seconds" />
+    <testcase name="MinutesSeconds" file="intern/cycles/test/util_time_test.cpp" line="35" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="time_human_readable_to_seconds" />
+    <testcase name="HoursMinutesSeconds" file="intern/cycles/test/util_time_test.cpp" line="46" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="time_human_readable_to_seconds" />
+  </testsuite>
+  <testsuite name="transform_motion_decompose" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.036">
+    <testcase name="Degenerated" file="intern/cycles/test/util_transform_test.cpp" line="12" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="transform_motion_decompose" />
+  </testsuite>
+  <testsuite name="types_base" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.036">
+    <testcase name="divide_up" file="intern/cycles/test/util_types_base_test.cpp" line="11" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="types_base" />
+    <testcase name="divide_up_by_shift" file="intern/cycles/test/util_types_base_test.cpp" line="30" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="types_base" />
+    <testcase name="align_up" file="intern/cycles/test/util_types_base_test.cpp" line="52" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="types_base" />
+    <testcase name="round_up" file="intern/cycles/test/util_types_base_test.cpp" line="74" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="types_base" />
+    <testcase name="round_down" file="intern/cycles/test/util_types_base_test.cpp" line="93" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="types_base" />
+    <testcase name="is_power_of_two" file="intern/cycles/test/util_types_base_test.cpp" line="112" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="types_base" />
+  </testsuite>
+  <testsuite name="PackedSphericalHarmonicsTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.036">
+    <testcase name="PackUnpack" file="intern/cycles/test/util_types_spherical_harmonics_test.cpp" line="41" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="PackedSphericalHarmonicsTest" />
+  </testsuite>
+  <testsuite name="util_avx2" tests="12" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.036">
+    <testcase name="float8_add_vv" file="intern/cycles/test/util_float8_test.h" line="74" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_sub_vv" file="intern/cycles/test/util_float8_test.h" line="75" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_mul_vv" file="intern/cycles/test/util_float8_test.h" line="76" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_div_vv" file="intern/cycles/test/util_float8_test.h" line="77" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_add_vf" file="intern/cycles/test/util_float8_test.h" line="78" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_sub_vf" file="intern/cycles/test/util_float8_test.h" line="79" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_mul_vf" file="intern/cycles/test/util_float8_test.h" line="80" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_div_vf" file="intern/cycles/test/util_float8_test.h" line="81" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_ctor" file="intern/cycles/test/util_float8_test.h" line="84" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_sqrt" file="intern/cycles/test/util_float8_test.h" line="92" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_min_max" file="intern/cycles/test/util_float8_test.h" line="99" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+    <testcase name="float8_shuffle" file="intern/cycles/test/util_float8_test.h" line="106" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_avx2" />
+  </testsuite>
+  <testsuite name="util_half_avx2" tests="7" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-10-23T20:45:14.036">
+    <testcase name="float_to_half" file="intern/cycles/test/util_half_test.h" line="58" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+    <testcase name="float3_to_packed_half3" file="intern/cycles/test/util_half_test.h" line="70" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+    <testcase name="float4_to_half4" file="intern/cycles/test/util_half_test.h" line="96" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+    <testcase name="fallback_float_to_half" file="intern/cycles/test/util_half_test.h" line="126" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+    <testcase name="half_to_float_flush_to_zero" file="intern/cycles/test/util_half_test.h" line="138" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+    <testcase name="fallback_float3_to_packed_half3" file="intern/cycles/test/util_half_test.h" line="177" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+    <testcase name="fallback_float4_to_half4" file="intern/cycles/test/util_half_test.h" line="203" status="run" result="completed" time="0." timestamp="2026-10-23T20:45:14.036" classname="util_half_avx2" />
+  </testsuite>
+</testsuites>

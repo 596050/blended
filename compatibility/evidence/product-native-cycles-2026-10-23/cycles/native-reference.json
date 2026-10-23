@@ -1,0 +1,411 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/build.json",
+    "bytes": 6379,
+    "sha256": "abe4881c0ea5e673faf4289f15ce7774f799fb16fa41cb11bf8bebd48b00bc0c"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+    "bytes": 21512408,
+    "sha256": "11ea54beed6f6fc365348bfe03118eece0f01fbf2d67310a6103f23529737c61"
+  },
+  "original_registration": {
+    "id": "ctest:52f8866ae44b477fc7777cb9f53130ed10832dd62880b51cbac184eb7cf52c04",
+    "identity": "cycles",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+      "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+        "line": 394,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 154,
+        "command": "gtest_add_tests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 315,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/CMakeLists.txt",
+        "line": 74,
+        "command": "blender_add_test_suite_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 5,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+        "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "cycles",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+          "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T15:37:50.414520+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 127,
+        "finished_utc": "2026-10-23T15:37:50.420607+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/registered-listing.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/registered-listing.stderr.txt",
+          "bytes": 206,
+          "sha256": "1845c35146759f64dd0171ecd30249c1d22e6131d074a1905249c571ad8c7abb"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/registered-gtest-inventory.json",
+        "bytes": 3174,
+        "sha256": "a5ef0b96379865680bc4374eaa0726b7b5930fe308112d4e661af16d4b7c1e70"
+      },
+      "counts": {
+        "cases": 0,
+        "disabled": 0,
+        "not_run": 0
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T15:37:50.420703+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 127,
+        "finished_utc": "2026-10-23T15:37:50.424427+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/unfiltered-listing.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/unfiltered-listing.stderr.txt",
+          "bytes": 206,
+          "sha256": "1845c35146759f64dd0171ecd30249c1d22e6131d074a1905249c571ad8c7abb"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/unfiltered-gtest-inventory.json",
+        "bytes": 2411,
+        "sha256": "d82094f5233e3dd2c9c1268c33a5978add348083de6e2ffb072c72314df49b02"
+      },
+      "counts": {
+        "cases": 0,
+        "disabled": 0,
+        "not_run": 0
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^cycles$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T15:37:50.557576+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 8,
+    "finished_utc": "2026-10-23T15:37:50.772712+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-execution.stdout.txt",
+      "bytes": 2279,
+      "sha256": "ec0853bea73340f2d2ed54e4ff6d03c32f34c6282dd113a0378e2697b636948b"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-execution.stderr.txt",
+      "bytes": 240,
+      "sha256": "599a6d35c76ddbd53612ab8ac0c9b377885e02960c3ae68ecb8e5e1f0cee8532"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^cycles$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T15:37:50.157886+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T15:37:50.372763+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-registration.stdout.txt",
+        "bytes": 3108,
+        "sha256": "52b656291b4b33352ca0dcaf62171698a378ab83275f0abcaf5787165eb04be7"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+        "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T15:37:50.414520+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 127,
+      "finished_utc": "2026-10-23T15:37:50.420607+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/registered-listing.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/registered-listing.stderr.txt",
+        "bytes": 206,
+        "sha256": "1845c35146759f64dd0171ecd30249c1d22e6131d074a1905249c571ad8c7abb"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T15:37:50.420703+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 127,
+      "finished_utc": "2026-10-23T15:37:50.424427+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/unfiltered-listing.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/unfiltered-listing.stderr.txt",
+        "bytes": 206,
+        "sha256": "1845c35146759f64dd0171ecd30249c1d22e6131d074a1905249c571ad8c7abb"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^cycles$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T15:37:50.557576+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 8,
+      "finished_utc": "2026-10-23T15:37:50.772712+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-execution.stdout.txt",
+        "bytes": 2279,
+        "sha256": "ec0853bea73340f2d2ed54e4ff6d03c32f34c6282dd113a0378e2697b636948b"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-execution.stderr.txt",
+        "bytes": 240,
+        "sha256": "599a6d35c76ddbd53612ab8ac0c9b377885e02960c3ae68ecb8e5e1f0cee8532"
+      }
+    }
+  ],
+  "xml_counters": null,
+  "cases": [],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/capture-native-gtest.py",
+    "bytes": 14128,
+    "sha256": "5562b925e22cad31ca528b8c3fe9b3e8d2ee15d2ea87ce7977bb911e958c11bb"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {},
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {},
+  "gtest_xml": null,
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/ctest-results.xml",
+    "bytes": 559,
+    "sha256": "ef396bd1329af63158a5e0af8eb1c5bd7375805ed4430f4232e0a3411c3812de"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  },
+  "source_runtime_asset_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-runtime-asset-hydration-2026-10-23/report.json",
+    "bytes": 179140,
+    "sha256": "47047c9cfb30fa917da21c00f9440de88b99e7ea0c3335dce960d802e4369d3f"
+  }
+}

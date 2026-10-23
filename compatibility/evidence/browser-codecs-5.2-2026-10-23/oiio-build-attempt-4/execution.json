@@ -1,0 +1,202 @@
+{
+  "schema": 1,
+  "kind": "pinned-openimageio-wasm-build-validation",
+  "status": "failed",
+  "started_at": "2026-10-23T15:53:37.497197+00:00",
+  "runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/run_oiio_build.py",
+    "bytes": 10216,
+    "sha256": "b5bbf4240ccc5af0fbbaa9181846c4934fd12358664dede38ff5a8654405b268"
+  },
+  "manifest": {
+    "path": "/workspace/scratch/d63596d831b2/blended/patches/browser-codecs/manifest.json",
+    "bytes": 6447,
+    "sha256": "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
+  },
+  "compiler": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/bin/clang",
+    "bytes": 146590784,
+    "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d"
+  },
+  "sdk_source": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+  "sdk_view": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk",
+  "jobs": 1,
+  "source_materialization": "Selected immutable source files verified against the pinned Git blob inventory; not a complete Blender source checkout.",
+  "commands": [
+    {
+      "name": "apply-codecs",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/d63596d831b2/blended/patches/browser-codecs/apply.py",
+        "--port-root",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+        "--receipt",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-4/patch-application.json",
+        "--expected-manifest-sha256",
+        "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T15:53:37.762389+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:53:37.827263+00:00",
+      "duration_seconds": 0.06432,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-4/apply-codecs.log",
+        "bytes": 98,
+        "sha256": "073bf3b05471b5330560bc22b60bb1af1e704f97e49c118fe8f91c003c0edb24"
+      }
+    },
+    {
+      "name": "zlib",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zlib.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T15:53:37.835182+00:00",
+      "returncode": 1,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:53:43.384545+00:00",
+      "duration_seconds": 5.548883,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-4/zlib.log",
+        "bytes": 10040,
+        "sha256": "a33af025147f64d2c16bda1430750ffde6a5b2bbe7c8234c9215aa67ce9e491b"
+      }
+    }
+  ],
+  "blender_cases_executed": 0,
+  "full_feature_parity": false,
+  "limit": "Original port dependency recipes and selected codec/OIIO integration build only. No Blender executable or upstream Blender test execution.",
+  "prior_dependency_prefix": [],
+  "resume_start_at": "zlib",
+  "host_tools": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/bin/cmake",
+      "bytes": 18830880,
+      "sha256": "e866d33ff610e9eedf0b68b3ebc1236ec819c9b6498fa1a2e95205fa89c5f409"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja",
+      "bytes": 372384,
+      "sha256": "696f9628a79d9ce50314cf9556d7cd1a1d1ec52b8fd52828f6f9db1719565b67"
+    }
+  ],
+  "environment": {
+    "EM_CACHE": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache",
+    "EMCC_CORES": "1",
+    "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+    "MAKEFLAGS": "-j1",
+    "BLENDED_BUILD_JOBS": "1"
+  },
+  "recipes": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zlib.sh",
+      "bytes": 2416,
+      "sha256": "9bbe25301f8d63715025399763bddc11c2236e955279c4efd2559da44512c2e5"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zstd.sh",
+      "bytes": 1766,
+      "sha256": "86849119ae094e6e3a66ec3763726a9fcc243430d808dac64afc5bad6837ebfe"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/fmt.sh",
+      "bytes": 1566,
+      "sha256": "b80efce661fbc0f712c1983702dd43f9441ad3792b65ecf9d79c9cb1c522d5ea"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/robinmap.sh",
+      "bytes": 2052,
+      "sha256": "27e30cdfeac669a36f87649eeeae1a8cb7200125e9495f71b668862dc96b32b2"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/imath.sh",
+      "bytes": 2877,
+      "sha256": "f93efa3ac6e07c9dbb662966d7cfc3080b61a629913b09b2d1dcf671cd6623a3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libdeflate.sh",
+      "bytes": 2250,
+      "sha256": "bc05aa0b2a65029d4324aaec65ed5f39c436eff5303d63034cc6cf4f182ca6fe"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openjph.sh",
+      "bytes": 2799,
+      "sha256": "ce546ffeb81f1893b05181be5dd9ee1b32c6944ae8bd17f00f62ad0b34531ae1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openexr.sh",
+      "bytes": 4351,
+      "sha256": "6c254527809997b7ea1e47b7470c7f7f3dfd4d40a87c72e64622e8c2a23f6073"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libjpeg.sh",
+      "bytes": 3313,
+      "sha256": "4e239bde7321b19537f8bd7b934d9eb8a9274d217c266e0f5036d1ad7cd00e6f"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libpng.sh",
+      "bytes": 2952,
+      "sha256": "1b807dc8a6866ccafb0589854cd9d33b774692e02972228232be72b9ca0439ce"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libtiff.sh",
+      "bytes": 3391,
+      "sha256": "7c7d9421c77538643bbd5e002e19828f05b7efd266dc56937c95697ef8e20c34"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/expat.sh",
+      "bytes": 2022,
+      "sha256": "e2084ee7e9d51fbca4ffe3e113a2796dcc67a17e49da9a68bc5be06591cdd016"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/yamlcpp.sh",
+      "bytes": 1914,
+      "sha256": "fc8f0821fe80fe35b198036eb180320f6297d45351b0eb57e4c9c8c87816b3af"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/pystring.sh",
+      "bytes": 2113,
+      "sha256": "7071aaebd1102cbe379911f726c9ae5ad9787d71dde2137f83a26e8d72b4c740"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/minizipng.sh",
+      "bytes": 2673,
+      "sha256": "1a7e2a440b2c61ee61d37c9acd64208bda1ecc0d7448425c09088e9c08cf8358"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/opencolorio.sh",
+      "bytes": 4224,
+      "sha256": "27aee41615dda67090fa0ecc6908cc217379926062a8292f041b513c894b8994"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/webp.sh",
+      "bytes": 1072,
+      "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openjpeg.sh",
+      "bytes": 617,
+      "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/aom.sh",
+      "bytes": 1241,
+      "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libheif.sh",
+      "bytes": 2251,
+      "sha256": "3e6cfbda9059644e94cc0045d3c3056ef744f5105c97bea4b7660dcb2e0d5aa5"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openimageio.sh",
+      "bytes": 15256,
+      "sha256": "25094118fcc8f047d5f6dfd507c727e333717913e3a664776b8a4c3a0380a180"
+    }
+  ],
+  "reason": "zlib failed",
+  "completed_at": "2026-10-23T15:53:43.385189+00:00"
+}

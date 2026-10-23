@@ -1,0 +1,301 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      The target system is: Emscripten - 1 - x86
+      The host system is: Linux - 6.18.55 - x86_64
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/share/cmake-4.0/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "CMakeLists.txt:22 (check_include_file)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-g9uoQH"
+      binary: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-g9uoQH"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_C_FLAGS: "-pthread -O2"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-g9uoQH'
+        
+        Run Build Command(s): /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja -v cmTC_01c19
+        [1/2] /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc   -pthread -O2 -MD -MT CMakeFiles/cmTC_01c19.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_01c19.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_01c19.dir/CheckIncludeFile.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-g9uoQH/CheckIncludeFile.c
+        shared:INFO: old sanity: 6.0.5|/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/bin
+        shared:INFO: new sanity: 6.0.5|/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/bin
+        shared:INFO: (Emscripten: config changed, clearing cache)
+        shared:INFO: (Emscripten: Running sanity checks)
+        cache:INFO: generating system headers: sysroot_install.stamp... (this will be cached in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot_install.stamp" for subsequent builds)
+        cache:INFO:  - ok
+        [2/2] : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_01c19.dir/CheckIncludeFile.c.o -o cmTC_01c19.js   && :
+        FAILED: [code=1] cmTC_01c19.js 
+        : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_01c19.dir/CheckIncludeFile.c.o -o cmTC_01c19.js   && :
+        cache:INFO: generating system asset: sysroot/lib/wasm32-emscripten/crtbegin-mt.o... (this will be cached in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/crtbegin-mt.o" for subsequent builds)
+        clang: error: no such file or directory: '../../../system/lib/pthread/emscripten_tls_init.c'
+        clang: error: no input files
+        emcc: error: subprocess 1/1 failed (returned 1)! (cmdline: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -c -O2 -Wall -fno-unroll-loops -std=c99 -D_XOPEN_SOURCE=700 -Wno-unused-result -Wno-bitwise-op-parentheses -Wno-shift-op-parentheses -Wno-constant-conversion -pthread -g -sSTRICT -Werror -ffile-prefix-map=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten=/emsdk/emscripten -ffile-prefix-map=../../..=/emsdk/emscripten -fdebug-compilation-dir=/emsdk/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/arch/generic -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/internal -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/include -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/include -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/pthread ../../../system/lib/pthread/emscripten_tls_init.c)
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/share/cmake-4.0/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "CMakeLists.txt:23 (check_include_file)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-IO4I7R"
+      binary: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-IO4I7R"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_C_FLAGS: "-pthread -O2"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-IO4I7R'
+        
+        Run Build Command(s): /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja -v cmTC_0d67a
+        [1/2] /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc   -pthread -O2 -MD -MT CMakeFiles/cmTC_0d67a.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_0d67a.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_0d67a.dir/CheckIncludeFile.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-IO4I7R/CheckIncludeFile.c
+        [2/2] : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_0d67a.dir/CheckIncludeFile.c.o -o cmTC_0d67a.js   && :
+        FAILED: [code=1] cmTC_0d67a.js 
+        : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_0d67a.dir/CheckIncludeFile.c.o -o cmTC_0d67a.js   && :
+        cache:INFO: generating system asset: sysroot/lib/wasm32-emscripten/crtbegin-mt.o... (this will be cached in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/crtbegin-mt.o" for subsequent builds)
+        clang: error: no such file or directory: '../../../system/lib/pthread/emscripten_tls_init.c'
+        clang: error: no input files
+        emcc: error: subprocess 1/1 failed (returned 1)! (cmdline: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -c -O2 -Wall -fno-unroll-loops -std=c99 -D_XOPEN_SOURCE=700 -Wno-unused-result -Wno-bitwise-op-parentheses -Wno-shift-op-parentheses -Wno-constant-conversion -pthread -g -sSTRICT -Werror -ffile-prefix-map=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten=/emsdk/emscripten -ffile-prefix-map=../../..=/emsdk/emscripten -fdebug-compilation-dir=/emsdk/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/arch/generic -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/internal -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/include -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/include -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/pthread ../../../system/lib/pthread/emscripten_tls_init.c)
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/share/cmake-4.0/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "CMakeLists.txt:24 (check_include_file)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-gk9Dlm"
+      binary: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-gk9Dlm"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_C_FLAGS: "-pthread -O2"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-gk9Dlm'
+        
+        Run Build Command(s): /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja -v cmTC_29fc1
+        [1/2] /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc   -pthread -O2 -MD -MT CMakeFiles/cmTC_29fc1.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_29fc1.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_29fc1.dir/CheckIncludeFile.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-gk9Dlm/CheckIncludeFile.c
+        [2/2] : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_29fc1.dir/CheckIncludeFile.c.o -o cmTC_29fc1.js   && :
+        FAILED: [code=1] cmTC_29fc1.js 
+        : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_29fc1.dir/CheckIncludeFile.c.o -o cmTC_29fc1.js   && :
+        cache:INFO: generating system asset: sysroot/lib/wasm32-emscripten/crtbegin-mt.o... (this will be cached in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/crtbegin-mt.o" for subsequent builds)
+        clang: error: no such file or directory: '../../../system/lib/pthread/emscripten_tls_init.c'
+        clang: error: no input files
+        emcc: error: subprocess 1/1 failed (returned 1)! (cmdline: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -c -O2 -Wall -fno-unroll-loops -std=c99 -D_XOPEN_SOURCE=700 -Wno-unused-result -Wno-bitwise-op-parentheses -Wno-shift-op-parentheses -Wno-constant-conversion -pthread -g -sSTRICT -Werror -ffile-prefix-map=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten=/emsdk/emscripten -ffile-prefix-map=../../..=/emsdk/emscripten -fdebug-compilation-dir=/emsdk/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/arch/generic -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/internal -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/include -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc/musl/include -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libc -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/pthread ../../../system/lib/pthread/emscripten_tls_init.c)
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/CheckTypeSize.cmake:114 (try_compile)"
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/CheckTypeSize.cmake:239 (__check_type_size_impl)"
+      - "CMakeLists.txt:42 (check_type_size)"
+    directories:
+      source: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeTmp"
+      binary: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_C_FLAGS: "-pthread -O2"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "HAVE_OFF64_T"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja -v cmTC_c2110
+        [1/2] /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -D_LARGEFILE64_SOURCE=1  -pthread -O2 -MD -MT CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o -MF CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o.d -o CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c
+        FAILED: [code=1] CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o 
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -D_LARGEFILE64_SOURCE=1  -pthread -O2 -MD -MT CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o -MF CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o.d -o CMakeFiles/cmTC_c2110.dir/OFF64_T.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:22:12: error: use of undeclared identifier 'off64_t'
+           22 |   ('0' + ((SIZE / 10000)%10)),
+              |            ^~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:20:22: note: expanded from macro 'SIZE'
+           20 | #define SIZE (sizeof(off64_t))
+              |                      ^~~~~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:23:12: error: use of undeclared identifier 'off64_t'
+           23 |   ('0' + ((SIZE / 1000)%10)),
+              |            ^~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:20:22: note: expanded from macro 'SIZE'
+           20 | #define SIZE (sizeof(off64_t))
+              |                      ^~~~~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:24:12: error: use of undeclared identifier 'off64_t'
+           24 |   ('0' + ((SIZE / 100)%10)),
+              |            ^~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:20:22: note: expanded from macro 'SIZE'
+           20 | #define SIZE (sizeof(off64_t))
+              |                      ^~~~~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:25:12: error: use of undeclared identifier 'off64_t'
+           25 |   ('0' + ((SIZE / 10)%10)),
+              |            ^~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:20:22: note: expanded from macro 'SIZE'
+           20 | #define SIZE (sizeof(off64_t))
+              |                      ^~~~~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:26:12: error: use of undeclared identifier 'off64_t'
+           26 |   ('0' +  (SIZE    % 10)),
+              |            ^~~~
+        /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CheckTypeSize/OFF64_T.c:20:22: note: expanded from macro 'SIZE'
+           20 | #define SIZE (sizeof(off64_t))
+              |                      ^~~~~~~
+        5 errors generated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/share/cmake-4.0/Modules/CheckFunctionExists.cmake:93 (try_compile)"
+      - "CMakeLists.txt:51 (check_function_exists)"
+    checks:
+      - "Looking for fseeko"
+    directories:
+      source: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-sGaxSO"
+      binary: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-sGaxSO"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_C_FLAGS: "-pthread -O2"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "HAVE_FSEEKO"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-sGaxSO'
+        
+        Run Build Command(s): /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja -v cmTC_d0f94
+        [1/2] /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc   -pthread -O2 -DCHECK_FUNCTION_EXISTS=fseeko -MD -MT CMakeFiles/cmTC_d0f94.dir/CheckFunctionExists.c.o -MF CMakeFiles/cmTC_d0f94.dir/CheckFunctionExists.c.o.d -o CMakeFiles/cmTC_d0f94.dir/CheckFunctionExists.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-sGaxSO/CheckFunctionExists.c
+        [2/2] : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2 -DCHECK_FUNCTION_EXISTS=fseeko  CMakeFiles/cmTC_d0f94.dir/CheckFunctionExists.c.o -o cmTC_d0f94.js   && :
+        FAILED: [code=1] cmTC_d0f94.js 
+        : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2 -DCHECK_FUNCTION_EXISTS=fseeko  CMakeFiles/cmTC_d0f94.dir/CheckFunctionExists.c.o -o cmTC_d0f94.js   && :
+        cache:INFO: generating system library: sysroot/lib/wasm32-emscripten/libc++-mt-noexcept.a... (this will be cached in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libc++-mt-noexcept.a" for subsequent builds)
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/algorithm.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/any.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/atomic.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/barrier.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/bind.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/call_once.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/charconv.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/chrono.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/condition_variable.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/condition_variable_destructor.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/error_category.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/exception.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/expected.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/experimental/chrono_exception.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/experimental/keep.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/experimental/log_hardening_failure.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/directory_entry.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/directory_iterator.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/filesystem_clock.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/filesystem_error.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/operations.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/path.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/fstream.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/functional.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/future.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/hash.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/ios.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/ios.instantiations.cpp'
+        clang++: error: no input files
+        emcc: error: subprocess 1/3 failed (returned 1)! (cmdline: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/em++ -c -O2 -Wall -fno-unroll-loops -Oz -DLIBCXX_BUILDING_LIBCXXABI=1 -D_LIBCPP_BUILDING_LIBRARY -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS -Wno-unqualified-std-cast-call -Wno-unknown-warning-option -std=c++23 -DLIBC_NAMESPACE=__llvm_libc -g -sSTRICT -Werror -ffile-prefix-map=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten=/emsdk/emscripten -ffile-prefix-map=../../..=/emsdk/emscripten -fdebug-compilation-dir=/emsdk/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libcxx/src -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/llvm-libc -DNDEBUG -pthread -fno-exceptions ../../../system/lib/libcxx/src/algorithm.cpp ../../../system/lib/libcxx/src/any.cpp ../../../system/lib/libcxx/src/atomic.cpp ../../../system/lib/libcxx/src/barrier.cpp ../../../system/lib/libcxx/src/bind.cpp ../../../system/lib/libcxx/src/call_once.cpp ../../../system/lib/libcxx/src/charconv.cpp ../../../system/lib/libcxx/src/chrono.cpp ../../../system/lib/libcxx/src/condition_variable.cpp ../../../system/lib/libcxx/src/condition_variable_destructor.cpp ../../../system/lib/libcxx/src/error_category.cpp ../../../system/lib/libcxx/src/exception.cpp ../../../system/lib/libcxx/src/expected.cpp ../../../system/lib/libcxx/src/experimental/chrono_exception.cpp ../../../system/lib/libcxx/src/experimental/keep.cpp ../../../system/lib/libcxx/src/experimental/log_hardening_failure.cpp ../../../system/lib/libcxx/src/filesystem/directory_entry.cpp ../../../system/lib/libcxx/src/filesystem/directory_iterator.cpp ../../../system/lib/libcxx/src/filesystem/filesystem_clock.cpp ../../../system/lib/libcxx/src/filesystem/filesystem_error.cpp ../../../system/lib/libcxx/src/filesystem/operations.cpp ../../../system/lib/libcxx/src/filesystem/path.cpp ../../../system/lib/libcxx/src/fstream.cpp ../../../system/lib/libcxx/src/functional.cpp ../../../system/lib/libcxx/src/future.cpp ../../../system/lib/libcxx/src/hash.cpp ../../../system/lib/libcxx/src/ios.cpp ../../../system/lib/libcxx/src/ios.instantiations.cpp)
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/share/cmake-4.0/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "CMakeLists.txt:59 (check_include_file)"
+    checks:
+      - "Looking for unistd.h"
+    directories:
+      source: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-YROJ6f"
+      binary: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-YROJ6f"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_C_FLAGS: "-pthread -O2"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules;/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "Z_HAVE_UNISTD_H"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-YROJ6f'
+        
+        Run Build Command(s): /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja -v cmTC_3223b
+        [1/2] /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc   -pthread -O2 -MD -MT CMakeFiles/cmTC_3223b.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_3223b.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_3223b.dir/CheckIncludeFile.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build/CMakeFiles/CMakeScratch/TryCompile-YROJ6f/CheckIncludeFile.c
+        [2/2] : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_3223b.dir/CheckIncludeFile.c.o -o cmTC_3223b.js   && :
+        FAILED: [code=1] cmTC_3223b.js 
+        : && /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -pthread -O2  CMakeFiles/cmTC_3223b.dir/CheckIncludeFile.c.o -o cmTC_3223b.js   && :
+        cache:INFO: generating system library: sysroot/lib/wasm32-emscripten/libc++-mt-noexcept.a... (this will be cached in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libc++-mt-noexcept.a" for subsequent builds)
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/algorithm.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/any.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/atomic.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/barrier.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/bind.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/call_once.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/charconv.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/chrono.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/condition_variable.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/condition_variable_destructor.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/error_category.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/exception.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/expected.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/experimental/chrono_exception.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/experimental/keep.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/experimental/log_hardening_failure.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/directory_entry.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/directory_iterator.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/filesystem_clock.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/filesystem_error.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/operations.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/filesystem/path.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/fstream.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/functional.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/future.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/hash.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/ios.cpp'
+        clang++: error: no such file or directory: '../../../system/lib/libcxx/src/ios.instantiations.cpp'
+        clang++: error: no input files
+        emcc: error: subprocess 1/3 failed (returned 1)! (cmdline: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/em++ -c -O2 -Wall -fno-unroll-loops -Oz -DLIBCXX_BUILDING_LIBCXXABI=1 -D_LIBCPP_BUILDING_LIBRARY -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS -Wno-unqualified-std-cast-call -Wno-unknown-warning-option -std=c++23 -DLIBC_NAMESPACE=__llvm_libc -g -sSTRICT -Werror -ffile-prefix-map=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten=/emsdk/emscripten -ffile-prefix-map=../../..=/emsdk/emscripten -fdebug-compilation-dir=/emsdk/emscripten -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/libcxx/src -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/system/lib/llvm-libc -DNDEBUG -pthread -fno-exceptions ../../../system/lib/libcxx/src/algorithm.cpp ../../../system/lib/libcxx/src/any.cpp ../../../system/lib/libcxx/src/atomic.cpp ../../../system/lib/libcxx/src/barrier.cpp ../../../system/lib/libcxx/src/bind.cpp ../../../system/lib/libcxx/src/call_once.cpp ../../../system/lib/libcxx/src/charconv.cpp ../../../system/lib/libcxx/src/chrono.cpp ../../../system/lib/libcxx/src/condition_variable.cpp ../../../system/lib/libcxx/src/condition_variable_destructor.cpp ../../../system/lib/libcxx/src/error_category.cpp ../../../system/lib/libcxx/src/exception.cpp ../../../system/lib/libcxx/src/expected.cpp ../../../system/lib/libcxx/src/experimental/chrono_exception.cpp ../../../system/lib/libcxx/src/experimental/keep.cpp ../../../system/lib/libcxx/src/experimental/log_hardening_failure.cpp ../../../system/lib/libcxx/src/filesystem/directory_entry.cpp ../../../system/lib/libcxx/src/filesystem/directory_iterator.cpp ../../../system/lib/libcxx/src/filesystem/filesystem_clock.cpp ../../../system/lib/libcxx/src/filesystem/filesystem_error.cpp ../../../system/lib/libcxx/src/filesystem/operations.cpp ../../../system/lib/libcxx/src/filesystem/path.cpp ../../../system/lib/libcxx/src/fstream.cpp ../../../system/lib/libcxx/src/functional.cpp ../../../system/lib/libcxx/src/future.cpp ../../../system/lib/libcxx/src/hash.cpp ../../../system/lib/libcxx/src/ios.cpp ../../../system/lib/libcxx/src/ios.instantiations.cpp)
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...

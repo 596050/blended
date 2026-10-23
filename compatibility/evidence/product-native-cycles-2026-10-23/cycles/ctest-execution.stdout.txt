@@ -1,0 +1,26 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 35
+    Start 35: cycles
+
+35: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test "--gtest_filter=AdaptiveSampling.*:IntegratorRenderScheduler.*:tile_calculate_best_size.*:KernelCamera.*:PanoramaProjection/*.*:RenderGraph.*:util_aligned_malloc.*:BoundBox.*:CacheLimiter.*:util_colorspace.*:util_ies.*:math.*:Float3Test.*:Float4Test.*:Float3x3Test.*:PackedFloat3x3Test.*:QuaternionTest.*:RGBE.*:util.*:util_path_filename.*:util_path_dirname.*:util_path_join.*:util_path_escape.*:util_path_is_relative.*:simd.*:util_string_printf.*:util_string_iequals.*:util_string_split.*:util_string_replace.*:util_string_endswith.*:util_string_strip.*:util_string_remove_trademark.*:util_string_remove_gpu_from_cpu_name.*:string_startswith.*:string_endswith.*:util_task.*:time_human_readable_to_seconds.*:transform_motion_decompose.*:types_base.*:PackedSphericalHarmonicsTest.*" "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+35: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+35: Environment variables: 
+35:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+35:  $$LD_LIBRARY_PATH
+35: Test timeout computed to be: 600
+35: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test: error while loading shared libraries: libImath.so.30: cannot open shared object file: No such file or directory
+1/1 Test #35: cycles ...........................***Failed    0.00 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.05 sec
+
+The following tests FAILED:
+	 35 - cycles (Failed)

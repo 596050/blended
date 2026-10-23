@@ -5,9 +5,16 @@ on:
     branches: ['parity/**']
     paths:
       - tools/rebuild_browser_port.py
+      - tools/prepare_browser_sqlite.py
+      - tools/verify_browser_dependency_cache.py
+      - tools/browser_package_overlay.py
       - .github/workflows/browser-source-build.yml
       - patches/browser-numerics/manifest.json
       - patches/browser-numerics/*.patch
+      - patches/browser-sqlite/**
+      - patches/browser-codecs/**
+      - compatibility/package-overlays/**
+      - compatibility/build-caches/**
   workflow_dispatch:
 
 permissions:
@@ -46,7 +53,7 @@ jobs:
             build-essential git git-lfs curl ca-certificates xz-utils unzip zip patch \
             ccache pkg-config perl autoconf automake libtool nasm yasm rsync \
             clang-17 lld-17 libegl-dev zlib1g-dev libzstd-dev libffi-dev libssl-dev
-      - name: Restore only input-keyed generated dependency and compiler caches
+      - name: Restore the explicitly selected prior dependency and compiler cache
         id: cache
         uses: actions/cache/restore@v4
         with:
@@ -57,9 +64,32 @@ jobs:
             .cache/browser-source/gessa/build-dawn/dawn
             .cache/browser-source/ccache
             .cache/browser-source/emscripten-cache
-          key: blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py') }}-${{ github.run_id }}
-          restore-keys: |
-            blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py') }}-
+          # A matching input hash does not establish installed output identity.
+          # New candidates below are never selected automatically, even on reruns.
+          key: blender-source-ubuntu24-x64-ebd6a49b6f17d26d0800c172eb40348041eb5fb37f5c7d4c67e5857f6dc8abd6-39841653080
+      - name: Verify every restored dependency from the explicitly selected prior build
+        id: cache_verify
+        if: steps.cache.outputs.cache-matched-key != ''
+        continue-on-error: true
+        run: >-
+          python3 tools/verify_browser_dependency_cache.py
+          --cache-key '${{ steps.cache.outputs.cache-matched-key }}'
+          --prefix .cache/browser-source/gessa/lib/wasm
+          --manifest compatibility/build-caches/source-39841653080-harvest.jsonl
+          --receipt evidence/browser-source-build/dependency-cache-reuse.json
+      - name: Rebuild from source if prior dependency outputs cannot be verified
+        if: steps.cache_verify.outcome == 'failure'
+        run: |
+          python3 - <<'PY'
+          import shutil
+          from pathlib import Path
+          prefix = Path('.cache/browser-source/gessa/lib/wasm')
+          if prefix.is_symlink():
+              prefix.unlink()
+          elif prefix.exists():
+              shutil.rmtree(prefix)
+          print('The prior cache failed identity verification; dependency recipes will rebuild the removed generated prefix.')
+          PY
       - name: Reconstruct, build dependencies, compile, and package development engine
         run: >-
           python3 tools/rebuild_browser_port.py
@@ -67,7 +97,51 @@ jobs:
           --output evidence/browser-source-build
           --jobs 2
           --numeric-patchset patches/browser-numerics/manifest.json
-      - name: Preserve dependency progress even when a later stage fails
+          --sqlite-patchset patches/browser-sqlite/manifest.json
+          --codec-patchset patches/browser-codecs/manifest.json
+      - name: Restore the exact original Essentials brush resource
+        run: |
+          python3 - <<'PY'
+          import datetime, hashlib, json, subprocess, sys
+          from pathlib import Path
+          root = Path.cwd()
+          output = root / 'evidence/browser-source-build'
+          source = root / '.cache/browser-source/gessa/upstream'
+          record = {'schema': 1, 'kind': 'original-resource-package-preparation',
+                    'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                    'status': 'running', 'tests_executed': 0, 'full_feature_parity': False,
+                    'commands': []}
+          receipt = output / 'essentials-preparation.json'
+          commands = [
+              ['git', '-C', str(source), '-c',
+               'lfs.url=https://projects.blender.org/blender/blender.git/info/lfs',
+               'lfs', 'pull', '--include=assets/brushes/essentials_brushes-mesh_sculpt.blend'],
+              [sys.executable, 'tools/browser_package_overlay.py',
+               '--base-archive', str(output / 'blender-source-development.tar.gz'),
+               '--source-build-receipt', str(output / 'source-build.json'),
+               '--asset-root', str(source), '--output', str(output / 'essentials')],
+          ]
+          try:
+              for index, command in enumerate(commands):
+                  row = {'argv': command, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
+                  record['commands'].append(row)
+                  receipt.write_text(json.dumps(record, indent=2) + '\n')
+                  log = output / ('essentials-preparation-' + str(index) + '.log')
+                  with log.open('wb') as stream:
+                      result = subprocess.run(command, stdout=stream, stderr=subprocess.STDOUT, timeout=900)
+                  row.update(returncode=result.returncode, log={'path': log.name, 'bytes': log.stat().st_size,
+                             'sha256': hashlib.sha256(log.read_bytes()).hexdigest()})
+                  if result.returncode:
+                      raise RuntimeError('Original resource preparation failed: ' + str(command))
+              record['status'] = 'assembled_and_verified'
+          except BaseException as error:
+              record.update(status='failed', reason=str(error))
+              raise
+          finally:
+              record['finished_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+              receipt.write_text(json.dumps(record, indent=2) + '\n')
+          PY
+      - name: Preserve a cache candidate requiring independent verification before reuse
         if: always()
         uses: actions/cache/save@v4
         with:
@@ -78,7 +152,7 @@ jobs:
             .cache/browser-source/gessa/build-dawn/dawn
             .cache/browser-source/ccache
             .cache/browser-source/emscripten-cache
-          key: blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py') }}-${{ github.run_id }}
+          key: blender-source-ubuntu24-x64-${{ hashFiles('tools/rebuild_browser_port.py', 'tools/prepare_browser_sqlite.py', 'tools/verify_browser_dependency_cache.py', 'compatibility/build-caches/**', 'patches/browser-numerics/**', 'patches/browser-sqlite/**', 'patches/browser-codecs/**') }}-${{ github.run_id }}
       - name: Preserve source, toolchain, configuration, dependency and failure receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -90,10 +164,20 @@ jobs:
           if-no-files-found: warn
 
   qualify-development:
-    name: Run unchanged upstream suites on the newly built engine
+    name: Run frozen original invocations (${{ matrix.plan }})
     needs: source-development
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - plan: main
+            inventory: compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json
+            inventory_sha256: 25bc5c5e790461d0c56b64e039fe1e4b1663e2ea120c7bbe8f1ec3efb627a0ef
+          - plan: resources
+            inventory: compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json
+            inventory_sha256: 9bdd9f03d1910499eee59d7c010ebde7be076e98ba55626d427e2ac3b9462932
     steps:
       - uses: actions/checkout@v4
         with:
@@ -107,18 +191,37 @@ jobs:
           path: source-build
       - name: Install browser automation
         run: python3 -m pip install playwright==1.57.0
-      - name: Require artifact digest, runtime identity and all original assertions
+      - name: Identify the actual Chrome binary
+        id: browser
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          executable = Path('/opt/google/chrome/chrome')
+          if not executable.is_file() or executable.is_symlink():
+              raise RuntimeError('The expected actual Chrome executable is unavailable; no browser test result can be inferred.')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              stream.write('executable=' + str(executable) + '\n')
+          PY
+      - name: Require artifact identity and every selected original assertion
         run: >-
-          python3 tools/probe_browser_port.py
+          python3 tools/run_unittest_browser_matrix.py
+          --native-inventory ${{ matrix.inventory }}
+          --native-inventory-sha256 ${{ matrix.inventory_sha256 }}
+          --repo-root .
           --source-build-receipt source-build/source-build.json
-          --asset source-build/blender-source-development.tar.gz
-          --output evidence/source-development-qualification
+          --asset source-build/essentials/blender-source-development-essentials.tar.gz
+          --package-overlay-receipt source-build/essentials/package-overlay.json
+          --package-base-asset source-build/blender-source-development.tar.gz
+          --browser-executable ${{ steps.browser.outputs.executable }}
+          --output evidence/source-development-qualification-${{ matrix.plan }}
+          --jobs 1
           --timeout 240
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: source-development-qualification-${{ github.run_id }}
-          path: evidence/source-development-qualification/
+          name: source-development-qualification-${{ matrix.plan }}-${{ github.run_id }}
+          path: evidence/source-development-qualification-${{ matrix.plan }}/
           retention-days: 14
 
   preserve-evidence:
@@ -149,7 +252,6 @@ jobs:
           from pathlib import Path
           run = os.environ['RUN_ID']
           source = Path('receipts') / ('browser-source-development-' + run)
-          qualification = Path('receipts') / ('source-development-qualification-' + run)
           selected = Path('selected')
           selected.mkdir()
           files = []
@@ -168,8 +270,16 @@ jobs:
               destination.write_bytes(data)
               files.append({'path': relative, 'original': original, 'truncated': truncated,
                             'preserved_bytes': len(data), 'preserved_sha256': hashlib.sha256(data).hexdigest()})
-          for name in ('source-build.json', 'host-bootstrap.json', 'blender-preload-lfs.json'):
+          for name in ('source-build.json', 'host-bootstrap.json', 'blender-preload-lfs.json',
+                       'dependency-cache-reuse.json',
+                       'dependency-recipe-inputs.json', 'dependency-harvest.jsonl',
+                       'CMakeCache.txt', 'openimageio-CMakeCache.txt',
+                       'sqlite-patch-application.json', 'codec-patch-application.json',
+                       'sqlite-sqlite-cache.json', 'python-sqlite-cache.json',
+                       'essentials-preparation.json'):
               preserve(source / name, 'source/' + name)
+          for name in ('package-overlay.json', 'overlay-manifest.json'):
+              preserve(source / 'essentials' / name, 'source/essentials/' + name)
           build_receipt = source / 'source-build.json'
           if build_receipt.is_file():
               receipt = json.loads(build_receipt.read_text())
@@ -177,7 +287,14 @@ jobs:
                   if stage.get('status') in ('failed', 'blocked') and stage.get('log'):
                       name = Path(stage['log']).name
                       preserve(source / 'logs' / name, 'source/logs/' + name)
-          preserve(qualification / 'qualification.json', 'qualification/qualification.json')
+          for plan in ('main', 'resources'):
+              qualification = Path('receipts') / ('source-development-qualification-' + plan + '-' + run)
+              for name in ('matrix.json', 'harness-manifest.json', 'native-discovery-inventory.json'):
+                  preserve(qualification / name, 'qualification/' + plan + '/' + name)
+              for path in sorted(qualification.glob('*/qualification.json')):
+                  preserve(path, 'qualification/' + plan + '/' + path.parent.name + '/' + path.name)
+              for path in sorted(qualification.glob('*/host-process.json')):
+                  preserve(path, 'qualification/' + plan + '/' + path.parent.name + '/' + path.name)
           if not files:
               raise RuntimeError('No build or qualification receipts were produced; no success can be inferred.')
           (selected / 'publication.json').write_text(json.dumps({

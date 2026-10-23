@@ -32,6 +32,10 @@ DEVELOPMENT_PORT_SHA = "0e02e84b2bc5d9b27a6dc6e275443292f781fbad"
 DEVELOPMENT_PATCH_SHA256 = "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c"
 NUMERIC_PATCHSET_ID = "blender-5.2.0-web-numerics-v1"
 NUMERIC_PATCH_MANIFEST = Path(__file__).resolve().parents[1] / "patches/browser-numerics/manifest.json"
+SQLITE_PATCH_MANIFEST = Path(__file__).resolve().parents[1] / "patches/browser-sqlite/manifest.json"
+SQLITE_PATCH_MANIFEST_SHA256 = "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+CODEC_PATCH_MANIFEST = Path(__file__).resolve().parents[1] / "patches/browser-codecs/manifest.json"
+CODEC_PATCH_MANIFEST_SHA256 = "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
 ASSET_URL = "https://github.com/gessa-ai/blender-web/releases/download/v0.1.1/blender-web-local-v0.1.1.tar.gz"
 ASSET_SHA256 = "1af405cd00d3471e105a39dad24a628aeb988f77b372c4c21bbf85ccbdca2ee0"
 ASSET_BYTES = 108802132
@@ -272,6 +276,243 @@ def validate_numeric_patchset(receipt):
     return expected
 
 
+def _patch_file_identity(value, label):
+    if (not isinstance(value, dict) or not isinstance(value.get("path"), str) or
+            not value["path"] or "\x00" in value["path"] or
+            type(value.get("bytes")) is not int or not 0 < value["bytes"] <= 5_000_000 or
+            not isinstance(value.get("sha256"), str) or len(value["sha256"]) != 64 or
+            any(char not in "0123456789abcdef" for char in value["sha256"])):
+        raise Blocked(label + " has no bounded file identity")
+    return {key: value[key] for key in ("path", "bytes", "sha256")}
+
+
+def _matching_patch_file(value, expected, label, *, exact_path=False):
+    actual = _patch_file_identity(value, label)
+    keys = ("path", "bytes", "sha256") if exact_path else ("bytes", "sha256")
+    if any(actual[key] != expected[key] for key in keys):
+        raise Blocked(label + " differs from its independently pinned bytes")
+    return actual
+
+
+def _local_patch_file(path, expected, label):
+    if path.is_symlink() or not path.is_file() or path.stat().st_size > 5_000_000:
+        raise Blocked(label + " is unavailable or is not a bounded regular file")
+    actual = {"path": str(path), "bytes": path.stat().st_size, "sha256": digest(path)}
+    return _matching_patch_file(actual, expected, label)
+
+
+def _patch_file_inventory(values, expected, label, *, path_key="path"):
+    if not isinstance(values, list) or len(values) != len(expected):
+        raise Blocked(label + " lost its complete file inventory")
+    actual = {}
+    for value in values:
+        if not isinstance(value, dict):
+            raise Blocked(label + " has an invalid file entry")
+        normalized = {**value, "path": value.get(path_key)}
+        item = _patch_file_identity(normalized, label)
+        if item["path"] in actual:
+            raise Blocked(label + " repeats a file identity")
+        actual[item["path"]] = item
+    if actual != {item["path"]: item for item in expected}:
+        raise Blocked(label + " differs from its independently pinned file inventory")
+
+
+def _optional_patch_sidecar(value, label):
+    """A relocated receipt may retain only its embedded, validated declaration."""
+    pin = _patch_file_identity(value, label)
+    path = Path(pin["path"])
+    if path.is_symlink():
+        raise Blocked(label + " cannot be a symlink")
+    if not path.exists():
+        return None
+    _local_patch_file(path, pin, label)
+    return path.read_bytes()
+
+
+def _patch_json(data, label):
+    try:
+        value = json.loads(data)
+    except (ValueError, UnicodeError) as error:
+        raise Blocked(label + " is not valid JSON") from error
+    if not isinstance(value, dict):
+        raise Blocked(label + " is not a JSON object")
+    return value
+
+
+def _validate_patch_dependencies(receipt, insertion, recipes):
+    order = receipt.get("dependency_order")
+    if (not isinstance(order, list) or not order or
+            any(not isinstance(name, str) or not name for name in order) or len(set(order)) != len(order)):
+        raise Blocked("dependency patchset requires a unique executed recipe order")
+    names = insertion.get("recipes", [insertion.get("name")])
+    before = insertion["before"]
+    if before not in order or order[max(0, order.index(before) - len(names)):order.index(before)] != names:
+        raise Blocked("dependency patchset recipes were not inserted immediately before their consumer")
+    executed = receipt.get("dependency_receipts")
+    if (not isinstance(executed, list) or len(executed) != len(order) or
+            any(not isinstance(row, dict) or row.get("status") != "recipe_completed" for row in executed) or
+            [row.get("name") for row in executed] != order):
+        raise Blocked("executed dependency receipts do not match the declared recipe order")
+    snapshot = {}
+    for row in executed:
+        pin = _patch_file_identity(row.get("recipe"), "executed dependency recipe")
+        snapshot[row["name"]] = pin
+        if row["name"] in recipes:
+            expected = recipes[row["name"]]
+            if PurePosixPath(pin["path"]).parts[-3:] != PurePosixPath(expected["path"]).parts:
+                raise Blocked("executed dependency recipe names a different source path")
+            _matching_patch_file(pin, expected, "executed " + row["name"] + " recipe")
+    if not set(recipes).issubset(snapshot):
+        raise Blocked("an affected dependency recipe was not executed")
+    sidecar = _optional_patch_sidecar(receipt.get("dependency_recipe_manifest"), "dependency recipe snapshot")
+    if sidecar is not None and _patch_json(sidecar, "dependency recipe snapshot") != snapshot:
+        raise Blocked("dependency recipe snapshot differs from the executed recipe identities")
+    return sidecar is not None
+
+
+def validate_dependency_patchset(receipt, kind):
+    """Validate optional build declarations without transferring old test passes.
+
+    Manifest, input, output, and recipe identities are checked independently.
+    This still validates build receipts, not an independent recompilation.
+    """
+    key = kind + "_patchset"
+    if key not in receipt:
+        return None
+    observed = receipt[key]
+    if (not isinstance(observed, dict) or observed.get("applied") is not True or
+            observed.get("status") != "applied_and_verified"):
+        raise Blocked(kind + " patchset is incomplete or was not applied and verified")
+    manifest_path, manifest_hash, patchset_id = {
+        "sqlite": (SQLITE_PATCH_MANIFEST, SQLITE_PATCH_MANIFEST_SHA256, "blended-browser-sqlite-cpython-3.13.13-5.2-v1"),
+        "codec": (CODEC_PATCH_MANIFEST, CODEC_PATCH_MANIFEST_SHA256, "blender-5.2.0-web-codecs-v1"),
+    }[kind]
+    if (manifest_path.is_symlink() or not manifest_path.is_file() or
+            manifest_path.stat().st_size > 1_000_000 or digest(manifest_path) != manifest_hash):
+        raise Blocked("independent " + kind + " patchset manifest is unavailable or changed")
+    manifest = _patch_json(manifest_path.read_bytes(), kind + " manifest")
+    source = manifest.get("blender_source" if kind == "sqlite" else "upstream_blender", {})
+    if (type(manifest.get("schema")) is not int or manifest["schema"] != 1 or
+            manifest.get("id") != patchset_id or manifest.get("port", {}).get("commit") != DEVELOPMENT_PORT_SHA or
+            source.get("commit") != UPSTREAM_SHA or observed.get("id") != patchset_id or
+            observed.get("manifest_sha256") != manifest_hash):
+        raise Blocked(kind + " patchset source or manifest identity differs from this probe")
+    manifest_identity = {"path": str(manifest_path), "bytes": manifest_path.stat().st_size, "sha256": manifest_hash}
+    _matching_patch_file(observed.get("manifest"), manifest_identity, kind + " declared manifest")
+    compiler = receipt.get("compiler", {})
+    if not isinstance(compiler, dict):
+        raise Blocked(kind + " patchset has no compiler identity")
+    expected_compiler = ({"version": manifest["toolchain"]["emsdk_version"],
+                          "commit": manifest["toolchain"]["compiler_commit"],
+                          "emsdk_commit": manifest["toolchain"]["emsdk_commit"],
+                          "release": manifest["toolchain"]["emscripten_release_commit"]}
+                         if kind == "sqlite" else
+                         {"version": manifest["emsdk"]["version"], "commit": manifest["emsdk"]["compiler_commit"]})
+    if any(compiler.get(name) != value for name, value in expected_compiler.items()):
+        raise Blocked(kind + " patchset was declared for a different or unknown compiler")
+    application = observed.get("application")
+    if not isinstance(application, dict) or type(application.get("schema")) is not int or application["schema"] != 1:
+        raise Blocked(kind + " patchset lacks its complete embedded application receipt")
+
+    if kind == "sqlite":
+        helper_path = Path(__file__).resolve().with_name("prepare_browser_sqlite.py")
+        helper_expected = {"bytes": helper_path.stat().st_size if helper_path.is_file() else 0,
+                           "sha256": digest(helper_path) if helper_path.is_file() else ""}
+        helper = _local_patch_file(helper_path, helper_expected, "SQLite application helper")
+        patch = manifest["patches"][0]
+        inputs = manifest["install_files"] + manifest["patches"]
+        for entry in inputs:
+            _local_patch_file(manifest_path.parent / entry["file"], entry, "SQLite patchset input")
+        outputs = [{"path": patch["destination"], "bytes": patch["after_bytes"], "sha256": patch["after_sha256"]},
+                   *[{"path": entry["destination"], "bytes": entry["bytes"], "sha256": entry["sha256"]}
+                     for entry in manifest["install_files"]],
+                   {"path": "scripts/deps/sqlite-patchset.json", "bytes": manifest_identity["bytes"], "sha256": manifest_hash}]
+        insertion = manifest["dependency_insertion"]
+        if (application.get("patchset_id") != patchset_id or
+                application.get("dependency_insertion") != insertion or
+                application.get("environment") != {"BLENDED_SQLITE_PATCHSET_SHA256": manifest_hash} or
+                application.get("requires_enclosing_driver_source_commit_verification") is not True or
+                application.get("source_tests_modified") is not False or
+                application.get("browser_tests_executed") is not False or application.get("full_feature_parity") is not False or
+                application.get("original_python_recipe") != {"bytes": patch["before_bytes"], "sha256": patch["before_sha256"]}):
+            raise Blocked("SQLite application lost its original source or unchanged-test contract")
+        _matching_patch_file(application.get("manifest"), manifest_identity, "SQLite embedded manifest")
+        _patch_file_inventory(application.get("inputs"),
+                              [{"path": entry["file"], "bytes": entry["bytes"], "sha256": entry["sha256"]} for entry in inputs],
+                              "SQLite application inputs", path_key="file")
+        _patch_file_inventory(application.get("outputs"), outputs, "SQLite application outputs")
+    else:
+        helper_entry = manifest["application_helper"]
+        helper = _local_patch_file(manifest_path.parent / helper_entry["file"], helper_entry, "codec application helper")
+        _local_patch_file(manifest_path.parent / manifest["patch"]["file"], manifest["patch"], "codec patch input")
+        outputs = [{"path": entry["path"], "bytes": entry["after_bytes"], "sha256": entry["after_sha256"]}
+                   for entry in manifest["files"]]
+        insertion = manifest["dependency_recipe_insertion"]
+        mode = application.get("application")
+        if (application.get("kind") != "browser-codec-patch-application" or application.get("id") != patchset_id or
+                application.get("status") != "applied_and_verified" or application.get("manifest_sha256") != manifest_hash or
+                application.get("patch_sha256") != manifest["patch"]["sha256"] or
+                mode not in ("applied", "already_applied_exact_bytes") or
+                application.get("dependency_build_verified") is not False or application.get("blender_tests_executed") is not False or
+                application.get("full_feature_parity") is not False):
+            raise Blocked("codec embedded application differs from the reviewed patch contract")
+        rows = application.get("files")
+        if (not isinstance(rows, list) or len(rows) != len(manifest["files"]) or
+                any(not isinstance(row, dict) or not isinstance(row.get("path"), str) for row in rows) or
+                len({row["path"] for row in rows}) != len(rows)):
+            raise Blocked("codec application lost its complete file inventory")
+        by_path = {row["path"]: row for row in rows}
+        for entry in manifest["files"]:
+            row = by_path.get(entry["path"], {})
+            before = entry["before_sha256"] if mode == "applied" else entry["after_sha256"]
+            if (not set(entry).issubset(row) or
+                    not {"observed_before_sha256", "observed_after_sha256"}.issubset(row) or
+                    any(row.get(name) != value for name, value in entry.items()) or
+                    row.get("observed_before_sha256") != before or row.get("observed_after_sha256") != entry["after_sha256"]):
+                raise Blocked("codec application preimage or postimage differs from the reviewed manifest")
+
+    _matching_patch_file(observed.get("application_helper"), helper, kind + " declared helper")
+    _patch_file_inventory(observed.get("outputs"), outputs, kind + " applied outputs")
+    if observed.get("dependency_insertion") != insertion:
+        raise Blocked(kind + " dependency insertion changed")
+    recipes = {PurePosixPath(entry["path"]).stem: entry for entry in outputs
+               if entry["path"].startswith("scripts/deps/") and entry["path"].endswith(".sh") and
+               PurePosixPath(entry["path"]).stem != "codec-common"}
+    snapshot_verified = _validate_patch_dependencies(receipt, insertion, recipes)
+    sidecar = _optional_patch_sidecar(observed.get("application_receipt"), kind + " application receipt")
+    if sidecar is not None and _patch_json(sidecar, kind + " application receipt") != application:
+        raise Blocked(kind + " embedded application differs from its actual sidecar")
+    configuration_verified = None
+    if kind == "codec":
+        configured = receipt.get("configured_features")
+        required = manifest["required_blender_cache"]
+        disabled = receipt.get("disabled_features", [])
+        if (not isinstance(configured, dict) or any(configured.get(name) != value for name, value in required.items()) or
+                not isinstance(disabled, list) or any(name in disabled for name in required)):
+            raise Blocked("codec build lacks the required original Blender image feature flags")
+        if observed.get("configured_oiio_features") != manifest["required_oiio_cache"]:
+            raise Blocked("codec dependency lacks the required static OIIO feature flags")
+        cache = _optional_patch_sidecar(observed.get("oiio_configuration"), "OIIO configuration")
+        configuration_verified = cache is not None
+        if cache is not None:
+            try:
+                values = {line.split(":", 1)[0]: line.split("=", 1)[1] for line in cache.decode("utf-8").splitlines()
+                          if not line.startswith(("#", "//")) and ":" in line and "=" in line}
+            except UnicodeError as error:
+                raise Blocked("OIIO configuration is not UTF-8") from error
+            if any(values.get(name) != value for name, value in manifest["required_oiio_cache"].items()):
+                raise Blocked("actual OIIO cache differs from its required declared feature flags")
+    return {"id": patchset_id, "manifest_sha256": manifest_hash, "manifest": manifest_identity,
+            "applied": True, "status": "applied_and_verified", "outputs": outputs,
+            "application_helper": helper, "application_receipt": observed["application_receipt"],
+            "embedded_application_sha256": hashlib.sha256(json.dumps(application, sort_keys=True, separators=(",", ":")).encode()).hexdigest(),
+            "application_sidecar_locally_verified": sidecar is not None,
+            "dependency_recipe_snapshot_locally_verified": snapshot_verified,
+            "oiio_configuration_locally_verified": configuration_verified,
+            "dependency_insertion": insertion,
+            "runtime_test_passes_inferred": False}
+
+
 def _select_base_artifact_contract(args, report):
     """Select the immutable release or an explicitly identified new source build.
 
@@ -303,6 +544,8 @@ def _select_base_artifact_contract(args, report):
         if receipt.get(key) != value or type(receipt.get(key)) is not type(value):
             raise Blocked("source-build receipt differs from the required contract: " + key)
     numeric_patchset = validate_numeric_patchset(receipt)
+    sqlite_patchset = validate_dependency_patchset(receipt, "sqlite")
+    codec_patchset = validate_dependency_patchset(receipt, "codec")
     artifact = receipt.get("artifact")
     if not isinstance(artifact, dict):
         raise Blocked("source-build receipt has no artifact digest and byte count")
@@ -314,7 +557,9 @@ def _select_base_artifact_contract(args, report):
     report["candidate"] = {"repository": "gessa-ai/blender-web",
                            "source_commit": DEVELOPMENT_PORT_SHA,
                            "kind": "blender-source-development",
-                           "numeric_patchset_id": numeric_patchset["id"] if numeric_patchset else None}
+                           "numeric_patchset_id": numeric_patchset["id"] if numeric_patchset else None,
+                           "sqlite_patchset_id": sqlite_patchset["id"] if sqlite_patchset else None,
+                           "codec_patchset_id": codec_patchset["id"] if codec_patchset else None}
     report["artifact"] = {"url": None, "expected_sha256": value, "expected_bytes": size}
     report["scope"] = "selected upstream Python suite qualification of a new development source build"
     report["source_correspondence_verified"] = False
@@ -323,8 +568,12 @@ def _select_base_artifact_contract(args, report):
         **expected,
         "numeric_patchset": numeric_patchset,
         "numeric_fixes_declared": numeric_patchset is not None,
+        "sqlite_patchset": sqlite_patchset,
+        "sqlite_declared": sqlite_patchset is not None,
+        "codec_patchset": codec_patchset,
+        "codecs_declared": codec_patchset is not None,
         "receipt_sha256": digest(receipt_path),
-        "validation_scope": "Declared source pins and artifact digest only; no independent recompile or release correspondence claimed.",
+        "validation_scope": "Declared source pins, selected patch applications and executed recipe identities, and artifact digest; no independent recompile or release correspondence claimed.",
     }
     return {"url": None, "sha256": value, "bytes": size,
             "label": "selected source-build receipt"}

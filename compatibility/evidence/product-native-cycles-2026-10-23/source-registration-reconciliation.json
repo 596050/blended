@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "original_sources": [
+    {
+      "source_path": "intern/cycles/test/CMakeLists.txt",
+      "line_range": [
+        29,
+        73
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/CMakeLists.txt",
+        "bytes": 1845,
+        "sha256": "5cba185ba6b3d2e71ebcae929adb967351887cfeb5716b23e079de73244b11de"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The explicit source list contains .cpp wrappers; AVX2 wrappers are gated by APPLE and CXX_HAS_AVX2."
+    },
+    {
+      "source_path": "build_files/cmake/testing.cmake",
+      "line_range": [
+        151,
+        164
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "bytes": 14444,
+        "sha256": "351e2d93478e8fd1ecc38a08148c6f8b26af8d608b0832fb05843f5356e57f43"
+      },
+      "verified_against_archive": true,
+      "interpretation": "Configured registration passes source filenames to gtest_add_tests."
+    },
+    {
+      "source_path": "build_files/cmake/Modules/GTest.cmake",
+      "line_range": [
+        338,
+        343
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+        "bytes": 17201,
+        "sha256": "761d328f10790ce74618c9e14770f35d3d4cf6dc39d56425b4c80b78424d2f28"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The scanner reads listed files and regex matches literal declarations; it does not preprocess included headers."
+    },
+    {
+      "source_path": "build_files/cmake/Modules/GTest.cmake",
+      "line_range": [
+        392,
+        413
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+        "bytes": 17201,
+        "sha256": "761d328f10790ce74618c9e14770f35d3d4cf6dc39d56425b4c80b78424d2f28"
+      },
+      "verified_against_archive": true,
+      "interpretation": "Collected suite names become the original explicit framework filter."
+    },
+    {
+      "source_path": "intern/cycles/test/util_half_test.cpp",
+      "line_range": [
+        5,
+        6
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/util_half_test.cpp",
+        "bytes": 162,
+        "sha256": "adf18037f134a12970d0ad89579378ccca901f66a0288415ade8be15dabacd03"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The util_half wrapper defines TEST_CATEGORY_NAME and includes its declaration header."
+    },
+    {
+      "source_path": "intern/cycles/test/util_half_avx2_test.cpp",
+      "line_range": [
+        5,
+        14
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/util_half_avx2_test.cpp",
+        "bytes": 357,
+        "sha256": "0367029be66a7291e5b16b19e61113d57318f012497598c1537bef806b368c3b"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The util_half_avx2 wrapper defines ISA macros and includes the same header under an AVX2 guard."
+    },
+    {
+      "source_path": "intern/cycles/test/util_float8_avx2_test.cpp",
+      "line_range": [
+        5,
+        14
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/util_float8_avx2_test.cpp",
+        "bytes": 359,
+        "sha256": "d42bef7c06b9b336673012d3e03a6d82d8f1ca02dabc3c9893dbcee243876772"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The util_avx2 wrapper defines ISA macros and includes util_float8_test.h."
+    },
+    {
+      "source_path": "intern/cycles/test/util_half_test.h",
+      "line_range": [
+        14,
+        20
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/util_half_test.h",
+        "bytes": 7256,
+        "sha256": "116af3f364b0ac5a238e8ec6037e16cdaa77fbfbbcdd586ed627d2bcd7f97fca"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The original AVX2 tests query runtime CPU support and use GTEST_SKIP when absent."
+    },
+    {
+      "source_path": "intern/cycles/test/util_float8_test.h",
+      "line_range": [
+        13,
+        24
+      ],
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/cycles/test/util_float8_test.h",
+        "bytes": 3689,
+        "sha256": "16a39552b171d57d0ed9136cd7c53985004e2c2a252ee66f1871335f6b1f8bb6"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The original vector tests query runtime CPU support; their early-return guard is preserved."
+    },
+    {
+      "source_path": "tests/gtests/testing/testing_main.cc",
+      "line_range": null,
+      "identity": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/gtests/testing/testing_main.cc",
+        "bytes": 1456,
+        "sha256": "e0198bc6d727d2f383f5fa056e6552f6924a4695ff23a859131f9b67d5622ba1"
+      },
+      "verified_against_archive": true,
+      "interpretation": "The original test main, framework initialization, and guarded allocator checks are unchanged."
+    }
+  ],
+  "conclusion": "The actual configured filter omits 26 compiled cases whose declarations live in included headers. The unfiltered runtime listing and separately executed original binary expose and test them.",
+  "upstream_source_or_configuration_modified": false
+}

@@ -1,0 +1,76 @@
+{
+  "all_upstream_test_parity": false,
+  "capture_tool": {
+    "bytes": 5448,
+    "path": "capture.py",
+    "sha256": "1567a035fda65a682341e677756b1db8e02e6f14d9f4ca6fb6cc9e8e27232b6e"
+  },
+  "claim_limit": "Infrastructure regressions only. This process does not imply that all Blender tests passed or that application feature parity is complete.",
+  "cmake": {
+    "bytes": 255,
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "sha256": "575561204518e8e7f0f208480095ca504bc91c59c50e8a92c4763bec39b86ce4",
+    "version_output": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+  },
+  "command": [
+    "env",
+    "BLENDED_INVENTORY_CMAKE=/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-q"
+  ],
+  "cwd": "/workspace/scratch/d63596d831b2/blended",
+  "duration_seconds": 121.60615608099761,
+  "finished_utc": "2026-10-23T16:20:37.220488+00:00",
+  "full_feature_parity": false,
+  "git_head_before": "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+  "kind": "infrastructure-regression-execution",
+  "python": {
+    "bytes": 30894944,
+    "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+    "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "returncode": 0,
+  "schema": 1,
+  "source_identity_scope": "All regular files under tools, tests, patches, .github/workflows, compatibility/package-overlays, compatibility/build-caches, and the retained original port preimages used by patch regressions, excluding Python bytecode caches. This is not a complete working-tree or runtime dependency snapshot; the existing Git HEAD also predates uncommitted changes recorded in the status log.",
+  "source_inputs_after": {
+    "bytes": 27630,
+    "path": "source-inputs-after.json",
+    "sha256": "9fa5aeef5865b2278f2290148e23422aa7643a27a64043ea7276b6cbe4fc77e1"
+  },
+  "source_inputs_before": {
+    "bytes": 27630,
+    "path": "source-inputs-before.json",
+    "sha256": "9fa5aeef5865b2278f2290148e23422aa7643a27a64043ea7276b6cbe4fc77e1"
+  },
+  "source_inputs_unchanged": true,
+  "started_utc": "2026-10-23T16:18:35.614306+00:00",
+  "status": "passed",
+  "stderr": {
+    "bytes": 101,
+    "path": "stderr.log",
+    "sha256": "3ff2f32f046b6ea12388def2d4eafc14c884d6b96ef3e46e76721c2376308fae"
+  },
+  "stdout": {
+    "bytes": 1794,
+    "path": "stdout.log",
+    "sha256": "bcde3033f098642cd32924550aba992ced538f5c1dfa424fc21118df7978d14e"
+  },
+  "timed_out": false,
+  "unittest_summary": {
+    "reported_duration_seconds": 121.485,
+    "result": "OK",
+    "skipped": 0,
+    "tests_run": 346
+  },
+  "working_tree_before": {
+    "bytes": 96921,
+    "path": "working-tree-before.log",
+    "sha256": "646545965f88714df5b7b18d5fc9728529a0087dc7ca677d102663b983eb3cb0"
+  }
+}

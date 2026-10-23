@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "kind": "recorded-original-imbuf-codec-gap",
+  "inputs": {
+    "native": {
+      "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/imbuf_py_api/native_reference.json",
+      "bytes": 48271,
+      "sha256": "f51d22d1352c66633e8425cc69cfb044d6082568c4c987d919f805ca3cfc8eb2"
+    },
+    "browser": {
+      "path": "compatibility/evidence/unittest-browser-essentials-5.2-2026-10-23/imbuf_py_api/qualification.json",
+      "bytes": 68018,
+      "sha256": "bb4cfa4aeeff0297a87706cd2d72262a5e011d5a327a4c7268648699a9ab8c1c"
+    },
+    "frozen_manifest": {
+      "path": "compatibility/candidate-suites/unittest-main-5.2/imbuf_py_api.json",
+      "bytes": 10548,
+      "sha256": "807e364aa1e57cce4e762b6092d353ac0465509161ae1e1008d4edd8f9dc2fe3"
+    }
+  },
+  "upstream_test": {
+    "path": "tests/python/bl_imbuf_py_api.py",
+    "sha256": "cc97ac9e6a3d1854d87f3937dd273765b37a4a11322b947bd33ef43c9b92ff4e"
+  },
+  "native_parent_inventory": 80,
+  "browser_parent_inventory": 80,
+  "native_subtest_events": 57,
+  "browser_subtest_events": 43,
+  "missing_subtest_ids": [
+    "__main__.TestImBufFileTypes.test_file_types_have_id_and_extensions (type_id='CINEON')",
+    "__main__.TestImBufFileTypes.test_file_types_have_id_and_extensions (type_id='DPX')",
+    "__main__.TestImBufFileTypes.test_file_types_have_id_and_extensions (type_id='JPEG2000')",
+    "__main__.TestImBufFileTypes.test_file_types_have_id_and_extensions (type_id='WEBP')",
+    "__main__.TestImBufFileTypes.test_write_and_detect_all_types (type_id='CINEON')",
+    "__main__.TestImBufFileTypes.test_write_and_detect_all_types (type_id='DPX')",
+    "__main__.TestImBufFileTypes.test_write_and_detect_all_types (type_id='JPEG2000')",
+    "__main__.TestImBufFileTypes.test_write_and_detect_all_types (type_id='WEBP')",
+    "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='JPEG2000', planes=16)",
+    "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='JPEG2000', planes=24)",
+    "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='JPEG2000', planes=32)",
+    "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='JPEG2000', planes=8)",
+    "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='WEBP', planes=24)",
+    "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='WEBP', planes=32)"
+  ],
+  "unexpected_subtest_ids": [],
+  "browser_nonpassing_events": [
+    {
+      "detail": "Traceback (most recent call last):\n  File \"/tmp/blended-original-unittest-7okl97t3/tests/python/bl_imbuf_py_api.py\", line 886, in test_write_and_detect_all_types\n    imbuf.write(ibuf, filepath=filepath)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: write: Unable to write image file (No such file or directory) '/tmp/tmps4piabcy/test.avif'\n",
+      "id": "__main__.TestImBufFileTypes.test_write_and_detect_all_types (type_id='AVIF')",
+      "kind": "subtest",
+      "parent_id": "__main__.TestImBufFileTypes.test_write_and_detect_all_types",
+      "status": "error"
+    },
+    {
+      "detail": "Traceback (most recent call last):\n  File \"/tmp/blended-original-unittest-7okl97t3/tests/python/bl_imbuf_py_api.py\", line 543, in test_planes_roundtrip\n    imbuf.write(ibuf, filepath=filepath)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: write: Unable to write image file (No such file or directory) '/tmp/tmpuu983f3f/test_AVIF_24.avif'\n",
+      "id": "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='AVIF', planes=24)",
+      "kind": "subtest",
+      "parent_id": "__main__.TestImBufPlanes.test_planes_roundtrip",
+      "status": "error"
+    },
+    {
+      "detail": "Traceback (most recent call last):\n  File \"/tmp/blended-original-unittest-7okl97t3/tests/python/bl_imbuf_py_api.py\", line 543, in test_planes_roundtrip\n    imbuf.write(ibuf, filepath=filepath)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: write: Unable to write image file (No such file or directory) '/tmp/tmpuu983f3f/test_AVIF_32.avif'\n",
+      "id": "__main__.TestImBufPlanes.test_planes_roundtrip (file_type='AVIF', planes=32)",
+      "kind": "subtest",
+      "parent_id": "__main__.TestImBufPlanes.test_planes_roundtrip",
+      "status": "error"
+    }
+  ],
+  "native_original_counters": {
+    "testsRun": 80,
+    "errors": 0,
+    "failures": 0,
+    "expected_failures": 0,
+    "skipped": 0
+  },
+  "browser_original_counters": {
+    "testsRun": 80,
+    "errors": 3,
+    "failures": 0,
+    "expected_failures": 0,
+    "skipped": 0
+  },
+  "browser_parent_summary": {
+    "discovered": 80,
+    "executed": 80,
+    "passed": 78,
+    "failed": 2,
+    "skipped": 0,
+    "expected_failures": 0,
+    "missing_outcomes": 0,
+    "failure_events": 3,
+    "subtest_events": 43
+  },
+  "native_process_returncode": 0,
+  "browser_runtime_exit_code": 1,
+  "new_blender_cases_executed": 0,
+  "full_feature_parity": false,
+  "acceptance_obligation": "A rebuilt browser artifact must execute all 80 original parent IDs and all 57 native subtest IDs under the original invocation, assertions and tolerances. Existing parent passes do not discharge missing conditional subtests."
+}

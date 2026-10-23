@@ -1,0 +1,10 @@
+#!/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3
+import hashlib,json,os,subprocess,sys
+from pathlib import Path
+args=sys.argv[1:]
+result=subprocess.run(['/usr/bin/curl',*args])
+if result.returncode==0 and '-o' in args:
+ p=Path(args[args.index('-o')+1])
+ row={'argv':args,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'path':str(p)}
+ with Path(os.environ['BLENDED_CODEC_DOWNLOADS']).open('a') as f: f.write(json.dumps(row)+'\n')
+sys.exit(result.returncode)

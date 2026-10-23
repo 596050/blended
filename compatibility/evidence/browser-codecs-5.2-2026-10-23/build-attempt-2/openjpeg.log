@@ -1,0 +1,64 @@
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/openjpeg/openjpeg-2.5.3 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/build-deps/openjpeg/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_PREFIX_PATH=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm -DBUILD_SHARED_LIBS=OFF '-DCMAKE_C_FLAGS=-pthread -fexceptions' '-DCMAKE_CXX_FLAGS=-pthread -fexceptions' -DBUILD_STATIC_LIBS=ON -DBUILD_CODEC=OFF -DBUILD_TESTING=OFF -DBUILD_UNIT_TESTS=OFF -DBUILD_DOC=OFF -DOPJ_USE_THREAD=ON -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa
+CMake Warning (deprecated) at CMakeLists.txt:10 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- Looking for string.h
+-- Looking for string.h - not found
+-- Looking for memory.h
+-- Looking for memory.h - not found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - not found
+-- Looking for stdio.h
+-- Looking for stdio.h - not found
+-- Looking for math.h
+-- Looking for math.h - not found
+-- Looking for float.h
+-- Looking for float.h - not found
+-- Looking for time.h
+-- Looking for time.h - not found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - not found
+-- Looking for ctype.h
+-- Looking for ctype.h - not found
+-- Looking for assert.h
+-- Looking for assert.h - not found
+-- Looking for stdint.h
+-- Looking for stdint.h - not found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - not found
+-- Looking for strings.h
+-- Looking for strings.h - not found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - not found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - not found
+-- Looking for unistd.h
+-- Looking for unistd.h - not found
+-- Checking for 64-bit off_t
+-- Checking for 64-bit off_t - not present
+-- Checking for fseeko/ftello
+-- Checking for fseeko/ftello - not found
+-- Large File support - not found
+-- Looking for include file malloc.h
+-- Looking for include file malloc.h - not found
+-- Looking for _aligned_malloc
+-- Looking for _aligned_malloc - not found
+-- Looking for posix_memalign
+-- Looking for posix_memalign - not found
+-- Looking for memalign
+-- Looking for memalign - not found
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - no
+CMake Error at src/lib/openjp2/CMakeLists.txt:189 (message):
+  No thread library found and thread/mutex support is required by
+  OPJ_USE_THREAD option
+
+
+-- Configuring incomplete, errors occurred!

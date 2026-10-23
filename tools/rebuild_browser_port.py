@@ -3,9 +3,9 @@
 
 This is an OFF-mode source qualification build, not a reproduction of the
 published v0.1.1 binary or the upstream hardware-gated shipping split profile.
-The pinned port's feature configuration and dependency recipes are retained.
-Build metadata, bounded parallelism and build-tool pinning are adjusted. An
-explicit, hash-bound candidate numerical patchset can also be applied.
+The baseline retains the pinned port's feature configuration. Build metadata,
+bounded parallelism and build-tool pinning are adjusted. Explicit, hash-bound
+numerical, SQLite and image-codec patchsets can extend the selected profile.
 Every command writes a receipt before execution, including failures/timeouts.
 """
 from __future__ import annotations
@@ -37,6 +37,8 @@ EMSCRIPTEN_COMPILER = "1db513782be24469589d7cb8a1f1834e9a33f271"
 DAWN_COMMIT = "36cf1fae0cd8a81a4fb4580751648b80b2e6255c"
 BLENDER_LFS_URL = "https://projects.blender.org/blender/blender.git/info/lfs"
 NUMERIC_PATCHSET_SHA256 = "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147"
+SQLITE_PATCHSET_SHA256 = "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+CODEC_PATCHSET_SHA256 = "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
 DEPENDENCIES = (
     "zlib zstd fmt eigen robinmap imath libdeflate openjph openexr libjpeg "
     "libpng libtiff expat yamlcpp pystring minizipng opencolorio brotli "
@@ -94,6 +96,25 @@ def write_json(path: Path, data):
     temp.replace(path)
 
 
+def insert_dependencies(order, names, before):
+    """Extend the original recipe order without dropping or repeating a recipe."""
+    if (order.count(before) != 1 or not names or len(set(names)) != len(names)
+            or any(not isinstance(name, str) or not re.fullmatch(r"[a-z0-9]+", name)
+                   or name in order for name in names)):
+        raise Blocked("invalid dependency insertion for " + str(before))
+    index = order.index(before)
+    return [*order[:index], *names, *order[index:]]
+
+
+def cache_values(path):
+    values = {}
+    for line in path.read_text().splitlines():
+        match = re.match(r"([^/#][^:]*):([^=]+)=(.*)", line)
+        if match:
+            values[match[1]] = match[3]
+    return values
+
+
 class Build:
     def __init__(self, args):
         self.args = args
@@ -114,6 +135,7 @@ class Build:
             "GIT_LFS_SKIP_SMUDGE": "1", "GIT_TERMINAL_PROMPT": "0",
             "EMSDK_KEEP_DOWNLOADS": "1", "EMSDK_PYTHON": sys.executable,
             "CMAKE_BUILD_PARALLEL_LEVEL": str(args.jobs), "MAKEFLAGS": f"-j{args.jobs}",
+            "PYTHON_CPU_COUNT": str(args.jobs), "EMCC_CORES": str(args.jobs),
             "CCACHE_DIR": str(self.work / "ccache"), "CCACHE_MAXSIZE": "2G",
             "EM_CACHE": str(self.work / "emscripten-cache"), "EM_COMPILER_WRAPPER": "ccache",
             "BLENDED_BUILD_JOBS": str(args.jobs), "BLENDED_SOURCE_EVIDENCE": str(self.out),
@@ -137,6 +159,18 @@ class Build:
         }
         self.process = None
         self.numeric_manifest = None
+        self.sqlite_manifest = None
+        self.codec_manifest = None
+        self.dependency_order = list(DEPENDENCIES)
+        cache_receipt = self.out / "dependency-cache-reuse.json"
+        if cache_receipt.is_file() and not cache_receipt.is_symlink():
+            cache_data = json.loads(cache_receipt.read_text())
+            self.data["restored_dependency_cache"] = {
+                "receipt": digest(cache_receipt), "status": cache_data.get("status"),
+                "cache_key": cache_data.get("cache_key"),
+                "verified_files": cache_data.get("verified_files", 0),
+                "scope": "Prior output identity only. Selected changed recipes run and verify their own outputs.",
+            }
         self.save()
 
     def save(self):
@@ -310,6 +344,7 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
         if sys.version_info[:2] != (3, 13):
             raise Blocked("run with native Python 3.13; NumPy's cross build requires the target minor")
         self.load_numeric_patchset()
+        self.load_dependency_patchsets()
         requirements = self.work / "host-requirements.txt"
         requirements.write_text(HOST_REQUIREMENTS)
         self.env["BLENDED_HOST_REQUIREMENTS"] = str(requirements)
@@ -428,6 +463,148 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
             self.git("dawn-" + rel.replace("/", "-"), path / rel, url, pin)
         self.data["dawn_deps_manifest"] = digest(path / "DEPS")
 
+    def load_dependency_patchsets(self):
+        """Select reviewed manifests before any modified build input executes."""
+        selections = (
+            ("sqlite", getattr(self.args, "sqlite_patchset", None), SQLITE_PATCHSET_SHA256),
+            ("codec", getattr(self.args, "codec_patchset", None), CODEC_PATCHSET_SHA256),
+        )
+        for name, selected, expected in selections:
+            if selected is None:
+                continue
+            if selected.is_symlink() or not selected.is_file():
+                raise Blocked(name + " patchset manifest must be a regular file")
+            path = selected.resolve()
+            identity = digest(path)
+            if identity["sha256"] != expected:
+                raise Blocked("unrecognized " + name + " patchset manifest digest")
+            manifest = json.loads(path.read_text())
+            if name == "sqlite":
+                try:
+                    from .prepare_browser_sqlite import load_patchset
+                except ImportError:
+                    from prepare_browser_sqlite import load_patchset
+                load_patchset(path, expected)
+                pins = manifest["toolchain"]
+                if (manifest.get("id") != "blended-browser-sqlite-cpython-3.13.13-5.2-v1"
+                        or manifest["port"]["commit"] != PORT_COMMIT
+                        or manifest["blender_source"]["commit"] != UPSTREAM_COMMIT
+                        or pins != {"emsdk_version": EMSCRIPTEN_VERSION, "emsdk_commit": EMSDK_COMMIT,
+                                    "emscripten_release_commit": EMSCRIPTEN_RELEASE,
+                                    "compiler_commit": EMSCRIPTEN_COMPILER}):
+                    raise Blocked("SQLite patchset source/toolchain contract mismatch")
+                helper = Path(__file__).resolve().with_name("prepare_browser_sqlite.py")
+                self.sqlite_manifest = manifest
+            else:
+                if (manifest.get("schema") != 1 or manifest.get("id") != "blender-5.2.0-web-codecs-v1"
+                        or manifest["port"]["commit"] != PORT_COMMIT
+                        or manifest["upstream_blender"]["commit"] != UPSTREAM_COMMIT
+                        or manifest["emsdk"] != {"version": EMSCRIPTEN_VERSION,
+                                                 "compiler_commit": EMSCRIPTEN_COMPILER}):
+                    raise Blocked("codec patchset source/toolchain contract mismatch")
+                for entry in (manifest["application_helper"], manifest["patch"]):
+                    file = path.parent / entry["file"]
+                    if (file.is_symlink() or not file.is_file()
+                            or file.stat().st_size != entry["bytes"]
+                            or digest(file)["sha256"] != entry["sha256"]):
+                        raise Blocked("codec patchset input identity mismatch: " + entry["file"])
+                helper = path.parent / manifest["application_helper"]["file"]
+                self.codec_manifest = manifest
+            if helper.is_symlink() or not helper.is_file():
+                raise Blocked(name + " application helper must be a regular file")
+            self.data[name + "_patchset"] = {
+                "id": manifest["id"], "manifest": identity, "manifest_sha256": expected,
+                "status": "verified_inputs", "applied": False,
+                "application_helper": digest(helper), "outputs": [],
+            }
+        self.save()
+
+    def apply_dependency_patchsets(self):
+        """Apply feature extensions before taking the executed recipe snapshot."""
+        order = list(DEPENDENCIES)
+        if self.sqlite_manifest is not None:
+            path = self.args.sqlite_patchset.resolve()
+            helper = Path(__file__).resolve().with_name("prepare_browser_sqlite.py")
+            receipt_path = self.out / "sqlite-patch-application.json"
+            self.run("prepare-sqlite-patchset", [sys.executable, str(helper),
+                "--port-root", str(self.port), "--manifest", str(path),
+                "--manifest-sha256", SQLITE_PATCHSET_SHA256, "--receipt", str(receipt_path)])
+            receipt = json.loads(receipt_path.read_text())
+            insertion = self.sqlite_manifest["dependency_insertion"]
+            if receipt["dependency_insertion"] != insertion:
+                raise Blocked("SQLite helper changed the selected dependency insertion")
+            order = insert_dependencies(order, [insertion["name"]], insertion["before"])
+            if receipt["environment"] != {"BLENDED_SQLITE_PATCHSET_SHA256": SQLITE_PATCHSET_SHA256}:
+                raise Blocked("SQLite helper returned an unexpected build environment")
+            self.env.update(receipt["environment"])
+            self.record_dependency_application("sqlite", receipt_path, receipt,
+                                               receipt["outputs"], insertion)
+        if self.codec_manifest is not None:
+            path = self.args.codec_patchset.resolve()
+            helper = path.parent / self.codec_manifest["application_helper"]["file"]
+            receipt_path = self.out / "codec-patch-application.json"
+            for key in self.codec_manifest["required_environment"]:
+                if not self.env.get(key):
+                    raise Blocked("codec build requires explicit environment: " + key)
+            self.run("prepare-codec-patchset", [sys.executable, str(helper),
+                "--port-root", str(self.port), "--receipt", str(receipt_path),
+                "--expected-manifest-sha256", CODEC_PATCHSET_SHA256])
+            receipt = json.loads(receipt_path.read_text())
+            if receipt.get("status") != "applied_and_verified":
+                raise Blocked("codec helper did not verify its complete application")
+            insertion = self.codec_manifest["dependency_recipe_insertion"]
+            order = insert_dependencies(order, insertion["recipes"], insertion["before"])
+            outputs = [{"path": entry["path"], "bytes": entry["after_bytes"],
+                        "sha256": entry["after_sha256"]} for entry in self.codec_manifest["files"]]
+            self.record_dependency_application("codec", receipt_path, receipt, outputs, insertion)
+        self.dependency_order = order
+        self.data["dependency_order"] = order
+        configuration = self.port / "patches/blender_web.cmake"
+        self.data["effective_feature_configuration"] = digest(configuration)
+        self.data["effective_declared_disabled_features"] = sorted(set(re.findall(
+            r"set\((WITH_\w+)\s+OFF\s+CACHE", configuration.read_text())))
+        self.save()
+
+    def record_dependency_application(self, name, receipt_path, receipt, outputs, insertion):
+        observed = []
+        for expected in outputs:
+            path = self.port / expected["path"]
+            if path.is_symlink() or not path.is_file():
+                raise Blocked(name + " applied output is not a regular file")
+            item = digest(path)
+            item["path"] = expected["path"]
+            if item != expected:
+                raise Blocked(name + " applied output differs from its exact reviewed bytes")
+            observed.append(item)
+        self.data[name + "_patchset"].update({
+            "status": "applied_and_verified", "applied": True,
+            "application_receipt": digest(receipt_path), "application": receipt,
+            "outputs": observed, "dependency_insertion": insertion,
+        })
+        self.save()
+
+    def verify_dependency_features(self, name):
+        if self.sqlite_manifest is not None and name in ("sqlite", "python"):
+            self.run("verify-" + name + "-sqlite-cache", [sys.executable,
+                str(self.port / "scripts/deps/sqlite-cache.py"), "verify", name, str(self.port)])
+            cache = self.port / "lib/wasm/share/blended" / (name + "-sqlite-cache.json")
+            destination = self.out / cache.name
+            shutil.copy2(cache, destination)
+            self.data["sqlite_patchset"].setdefault("dependency_cache_receipts", {})[name] = digest(destination)
+        if self.codec_manifest is not None and name == "openimageio":
+            cache = self.port / self.codec_manifest["installed_oiio_configuration"]
+            if cache.is_symlink() or not cache.is_file():
+                raise Blocked("the OIIO dependency did not preserve its actual configured feature cache")
+            required = self.codec_manifest["required_oiio_cache"]
+            values = cache_values(cache)
+            if any(values.get(key) != value for key, value in required.items()):
+                raise Blocked("the OIIO dependency did not retain the required static codec profile")
+            shutil.copy2(cache, self.out / "openimageio-CMakeCache.txt")
+            self.data["codec_patchset"]["oiio_configuration"] = digest(self.out / "openimageio-CMakeCache.txt")
+            self.data["codec_patchset"]["configured_oiio_features"] = {
+                key: values[key] for key in required}
+        self.save()
+
     def dependencies(self):
         self.dawn()
         # Blender's GitHub mirror carries pointers, not the LFS objects. The
@@ -486,16 +663,18 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
         self.data["recipe_overlays"].append({"path": "scripts/deps/numpy.sh", "purpose": "Pin host build tools only",
             "original_sha256": hashlib.sha256(original.encode()).hexdigest(), "executed": digest(recipe),
             "host_requirements": self.data["host_requirements"]})
-        source_recipes = {name: digest(self.port / "scripts/deps" / (name + ".sh")) for name in DEPENDENCIES}
+        self.apply_dependency_patchsets()
+        source_recipes = {name: digest(self.port / "scripts/deps" / (name + ".sh")) for name in self.dependency_order}
         write_json(self.out / "dependency-recipe-inputs.json", source_recipes)
         self.data["dependency_recipe_manifest"] = digest(self.out / "dependency-recipe-inputs.json")
         self.save()
-        for name in DEPENDENCIES:
+        for name in self.dependency_order:
             args = ["bash", str(self.port / "scripts/deps" / (name + ".sh"))]
             if name == "openusd":
                 args.append(f"--jobs={self.args.jobs}")
             before = time.monotonic()
             self.run("dependency-" + name, args, self.port)
+            self.verify_dependency_features(name)
             self.data["dependency_receipts"].append({"name": name, "status": "recipe_completed",
                 "recipe": source_recipes[name], "duration_seconds": round(time.monotonic() - before, 3)})
             self.save()
@@ -523,16 +702,15 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
             "-DPYTHON_EXECUTABLE=" + sys.executable]
         self.run("configure-engine", command, self.port, env)
         cache = self.build_dir / "CMakeCache.txt"
-        values = {}
-        for line in cache.read_text().splitlines():
-            m = re.match(r"([^/#][^:]*):([^=]+)=(.*)", line)
-            if m:
-                values[m[1]] = m[3]
+        values = cache_values(cache)
         if values.get("WITH_BUILDINFO") != "ON" or values.get("BLENDER_WEB_WASM_SPLIT_MODE") != "OFF":
             raise Blocked("configured build metadata/profile does not match the qualification contract")
         required = ("WITH_PYTHON", "WITH_TBB", "WITH_CYCLES", "WITH_OPENSUBDIV", "WITH_USD", "WITH_INTERNATIONAL", "WITH_WEBGPU_BACKEND", "WITH_GHOST_WEB", "WITH_GTESTS")
         if any(values.get(x) != "ON" for x in required):
             raise Blocked("the configured engine lost a required feature from the pinned port profile")
+        if self.codec_manifest is not None and any(
+                values.get(key) != value for key, value in self.codec_manifest["required_blender_cache"].items()):
+            raise Blocked("the configured engine lost a required original image-codec feature")
         self.data["with_buildinfo"] = True
         self.data["configured_features"] = {k: v for k, v in values.items() if k.startswith("WITH_")}
         self.data["disabled_features"] = sorted(k for k, v in self.data["configured_features"].items() if v == "OFF")
@@ -595,6 +773,28 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
             source_inputs["numeric_patchset"] = {
                 "id": self.numeric_manifest["id"], "manifest_sha256": NUMERIC_PATCHSET_SHA256,
                 "patches": self.numeric_manifest["patches"]}
+        for name, manifest in (("sqlite", self.sqlite_manifest), ("codec", self.codec_manifest)):
+            if manifest is None:
+                continue
+            selected = getattr(self.args, name + "_patchset").resolve()
+            provenance = bundle / "provenance" / ("browser-" + name)
+            provenance.mkdir(parents=True)
+            shutil.copy2(selected, provenance / "manifest.json")
+            receipt = self.data[name + "_patchset"]
+            helper = Path(receipt["application_helper"]["path"])
+            shutil.copy2(helper, provenance / helper.name)
+            if name == "sqlite":
+                inputs = [entry["file"] for entry in manifest["install_files"] + manifest["patches"]]
+            else:
+                inputs = [manifest["patch"]["file"]]
+            for relative in inputs:
+                destination = provenance / relative
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(selected.parent / relative, destination)
+            application = Path(receipt["application_receipt"]["path"])
+            shutil.copy2(application, provenance / "application.json")
+            source_inputs[name + "_patchset"] = {key: receipt[key] for key in
+                ("id", "manifest_sha256", "applied", "outputs", "application_receipt", "application_helper")}
         write_json(bundle / "source-inputs.json", source_inputs)
         artifact = self.out / "blender-source-development.tar.gz"
         # Fixed metadata makes packaging deterministic for the same file bytes.
@@ -614,7 +814,7 @@ sys.exit(subprocess.call([{real_ninja!r},'-j'+os.environ['BLENDED_BUILD_JOBS'],*
         self.data["artifact"] = digest(artifact)
         self.data["engine_files"] = [digest(p) for p in sorted((bundle / "bin").iterdir())]
         self.data["status"] = "built"
-        self.data["reason"] = "Pinned port source and any declared numerical patches built with the original feature profile, build metadata enabled, and OFF development packaging. Runtime tests remain required."
+        self.data["reason"] = "Pinned port source and explicitly selected numerical, SQLite and codec extensions built with verified feature requirements, build metadata enabled, and OFF development packaging. Runtime tests remain required."
         self.save()
 
 
@@ -628,6 +828,10 @@ def main():
     parser.add_argument("--stop-after", choices=("source", "toolchain", "dependencies", "configure", "build"), default="build")
     parser.add_argument("--numeric-patchset", type=Path,
                         help="Explicit reviewed candidate patchset manifest; omitted for the canonical port baseline")
+    parser.add_argument("--sqlite-patchset", type=Path,
+                        help="Explicit reviewed SQLite and CPython dependency extension")
+    parser.add_argument("--codec-patchset", type=Path,
+                        help="Explicit reviewed original image-codec dependency extension")
     args = parser.parse_args()
     if not 1 <= args.jobs <= 4:
         parser.error("--jobs must be between 1 and 4 for this free-runner profile")

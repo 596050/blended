@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "kind": "sqlite-wasm-component-diagnostic",
+  "started_utc": "2026-10-23T15:42:27.821373+00:00",
+  "capture_driver": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/run-sqlite-probe.py",
+    "bytes": 3084,
+    "sha256": "6bb1bbf4883434b1f937bc33328dc3fa205c5886d0e79209f6b1e789093eda4c"
+  },
+  "environment_overrides": {
+    "EM_CONFIG": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/.emscripten",
+    "EM_CACHE": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/emscripten-cache",
+    "EMSDK_NODE": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/node/22.16.0_64bit/bin/node",
+    "EMCC_CORES": "1"
+  },
+  "input_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/probe_sqlite.c",
+      "bytes": 4055,
+      "sha256": "9743fb00c4ee8e66269a45c3d2ddd9cd9939a6d45eb1e0eb046b1ee6a3747d3b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+      "bytes": 1045,
+      "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/node/22.16.0_64bit/bin/node",
+      "bytes": 121509208,
+      "sha256": "8142d37c6f2f372ef040419e7a111a6baf17df89f8078d02447d6c639ae20c1d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/lib/libsqlite3.a",
+      "bytes": 2209218,
+      "sha256": "378e64a8e79e067fa415fe1ec83553e8c4452a4d6c707f4da7b5b830ea7a826b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include/sqlite3.h",
+      "bytes": 671786,
+      "sha256": "19585c8b5230e9d4f223bf31b709ece7b6a0bb3faf00d8310625d8e58cda1b1d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/scripts/deps/sqlite-patchset.json",
+      "bytes": 3104,
+      "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+        "-O2",
+        "-fexceptions",
+        "-matomics",
+        "-mbulk-memory",
+        "-I/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include",
+        "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/probe_sqlite.c",
+        "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/lib/libsqlite3.a",
+        "-lm",
+        "-sENVIRONMENT=web,node",
+        "-sEXIT_RUNTIME=1",
+        "-sALLOW_MEMORY_GROWTH=1",
+        "-sASSERTIONS=1",
+        "-o",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/probe.js"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node",
+      "returncode": 0,
+      "elapsed_seconds": 92.008609,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/compile.log",
+        "bytes": 3236,
+        "sha256": "718d8aabd80ff1e685fd98f6dcba2be629ba7f112dea9b7fcae7e02c3e74fa01"
+      }
+    },
+    {
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/node/22.16.0_64bit/bin/node",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/probe.js"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node",
+      "returncode": 0,
+      "elapsed_seconds": 0.315206,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/execute.log",
+        "bytes": 319,
+        "sha256": "c75db12e3de7d3ac2d786aece0a389077ab7cca00d420994ab5ea6b5db07d819"
+      }
+    }
+  ],
+  "original_blender_tests_executed": false,
+  "full_feature_parity": false,
+  "artifacts": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/probe.js",
+      "bytes": 95834,
+      "sha256": "0e0fdb825415602df0f70d65fb238ac5c2ffe19e1bffa6fb1d6d84be7ecec4fb"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/sqlite-component-node/probe.wasm",
+      "bytes": 1461288,
+      "sha256": "78e27bed3bf26c055026b4d77ab34e7e3e7c0dde58426b428e67c2f57e6728aa"
+    }
+  ],
+  "completed_successfully": true,
+  "finished_utc": "2026-10-23T15:44:00.302481+00:00"
+}

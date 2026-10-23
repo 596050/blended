@@ -1,0 +1,261 @@
+AdaptiveSampling.
+  schedule_samples
+  align_samples
+  need_filter
+IntegratorRenderScheduler.
+  calculate_resolution_divider_for_resolution
+  calculate_resolution_for_divider
+tile_calculate_best_size.
+  Basic
+  Extreme
+KernelCamera.
+  FisheyeLensPolynomialRoundtrip
+  FisheyeLensPolynomialToDirectionSymmetry
+  FisheyeLensPolynomialToDirection
+PanoramaProjection/0.  # TypeParam = ccl::Spherical
+  round_trip
+PanoramaProjection/1.  # TypeParam = ccl::Equirectangular
+  round_trip
+PanoramaProjection/2.  # TypeParam = ccl::FisheyeEquidistant
+  round_trip
+PanoramaProjection/3.  # TypeParam = ccl::FisheyeEquisolid
+  round_trip
+PanoramaProjection/4.  # TypeParam = ccl::MirrorBall
+  round_trip
+PanoramaProjection/5.  # TypeParam = ccl::EquiangularCubemapFace
+  round_trip
+RenderGraph.
+  deduplicate_deep
+  constant_fold_rgb_to_bw
+  constant_fold_emission1
+  constant_fold_emission2
+  constant_fold_background1
+  constant_fold_background2
+  constant_fold_shader_add
+  constant_fold_shader_mix
+  constant_fold_invert
+  constant_fold_invert_fac_0
+  constant_fold_invert_fac_0_const
+  constant_fold_mix_add
+  constant_fold_mix_add_clamp
+  constant_fold_part_mix_dodge_no_fac_0
+  constant_fold_part_mix_light_no_fac_0
+  constant_fold_part_mix_burn_no_fac_0
+  constant_fold_part_mix_blend_clamped_no_fac_0
+  constant_fold_part_mix_blend
+  constant_fold_part_mix_sub_same_fac_bad
+  constant_fold_part_mix_sub_same_fac_1
+  constant_fold_part_mix_add_0
+  constant_fold_part_mix_sub_0
+  constant_fold_part_mix_mul_1
+  constant_fold_part_mix_div_1
+  constant_fold_part_mix_mul_0
+  constant_fold_part_mix_div_0
+  constant_fold_separate_combine_rgb
+  constant_fold_separate_combine_xyz
+  constant_fold_separate_combine_hsv
+  constant_fold_gamma
+  constant_fold_gamma_part_0
+  constant_fold_gamma_part_1
+  constant_fold_bright_contrast
+  constant_fold_blackbody
+  constant_fold_math
+  constant_fold_math_clamp
+  constant_fold_part_math_add_0
+  constant_fold_part_math_sub_0
+  constant_fold_part_math_mul_1
+  constant_fold_part_math_div_1
+  constant_fold_part_math_mul_0
+  constant_fold_part_math_div_0
+  constant_fold_part_math_pow_0
+  constant_fold_part_math_pow_1
+  constant_fold_vector_math
+  constant_fold_part_vecmath_add_0
+  constant_fold_part_vecmath_sub_0
+  constant_fold_part_vecmath_cross_0
+  constant_fold_bump
+  constant_fold_bump_no_input
+  constant_fold_rgb_curves
+  constant_fold_rgb_curves_fac_0
+  constant_fold_rgb_curves_fac_0_const
+  constant_fold_vector_curves
+  constant_fold_vector_curves_fac_0
+  constant_fold_rgb_ramp
+  constant_fold_rgb_ramp_flat
+  constant_fold_convert_float_color_float
+  constant_fold_convert_color_vector_color
+  constant_fold_convert_color_float_color
+  stochastic_sample_math_multiply
+  not_stochastic_sample_math_power
+  stochastic_sample_principled_volume_mix
+util_aligned_malloc.
+  aligned_malloc_16
+  aligned_malloc_32
+BoundBox.
+  transformed
+CacheLimiter.
+  Basic
+  Eviction
+  NoEvictionWhenUsed
+util_colorspace.
+  scene_linear_interop_id
+util_ies.
+  invalid
+math.
+  next_power_of_two
+  prev_power_of_two
+  reverse_integer_bits
+  fast_sinf
+  fast_cosf
+Float3Test.
+  fmod
+Float4Test.
+  fmod
+Float3x3Test.
+  IsNearFloat3x3
+  multiply_scalar_by_matrix
+  multiply_matrix_by_scalar
+  multiply_matrix_by_matrix
+  multiply_matrix_by_vector
+  divide_matrix_by_scalar
+  float3x3_scale
+  transposed
+  determinant
+  adjoint
+  inverted
+  quaternion_to_scaled_rotation
+  quaternion_to_rotation
+PackedFloat3x3Test.
+  init_from_float3x3
+  cast_to_float3x3
+  assign_from_float3x3
+QuaternionTest.
+  IsNearQuaternion
+  Negate
+  MultiplyScalar
+  Add
+  Subtract
+  dot
+  normalized
+  lerp
+RGBE.
+  round_trip
+util.
+  util_md5_string
+util_path_filename.
+  simple_unix
+  root_unix
+  last_slash_unix
+  alternate_slash_unix
+  file_only
+  empty
+util_path_dirname.
+  simple_unix
+  root_unix
+  last_slash_unix
+  alternate_slash_unix
+  file_only
+  empty
+util_path_join.
+  empty_both
+  empty_directory
+  empty_filename
+  simple_unix
+  directory_slash_unix
+  filename_slash_unix
+  both_slash_unix
+  directory_alternate_slash_unix
+  filename_alternate_slash_unix
+  both_alternate_slash_unix
+  empty_dir_filename_slash_unix
+  empty_dir_filename_alternate_slash_unix
+  empty_filename_dir_slash_unix
+  empty_filename_dir_alternate_slash_unix
+util_path_escape.
+  no_escape_chars
+  simple
+  simple_end
+  multiple
+  simple_multiple_end
+util_path_is_relative.
+  filename
+  absolute_unix
+  relative_dir_unix
+  absolute_windir_on_unix
+  relative_windir_on_unix
+simd.
+  bsf
+  bsr
+  btc
+  bitscan
+util_string_printf.
+  no_format
+  int_number
+  float_number_default_precision
+  float_number_custom_precision
+util_string_iequals.
+  empty_a
+  empty_b
+  same_register
+  different_register
+util_string_split.
+  empty
+  only_spaces
+  single
+  simple
+  multiple_spaces
+util_string_replace.
+  empty_haystack_and_other
+  empty_haystack
+  empty_other
+  long_haystack_empty_other
+  long_haystack
+util_string_endswith.
+  empty_both
+  empty_string
+  empty_end
+  simple_true
+  simple_false
+util_string_strip.
+  empty
+  only_spaces
+  no_spaces
+  with_spaces
+util_string_remove_trademark.
+  empty
+  no_trademark
+  only_tm
+  only_r
+  both
+  both_space
+  both_space_around
+  trademark_space_suffix
+  trademark_space_middle
+  r_space_suffix
+  r_space_middle
+util_string_remove_gpu_from_cpu_name.
+  basic
+string_startswith.
+  basic
+string_endswith.
+  basic
+util_task.
+  basic
+  multiple_times
+time_human_readable_to_seconds.
+  Empty
+  Fraction
+  Seconds
+  MinutesSeconds
+  HoursMinutesSeconds
+transform_motion_decompose.
+  Degenerated
+types_base.
+  divide_up
+  divide_up_by_shift
+  align_up
+  round_up
+  round_down
+  is_power_of_two
+PackedSphericalHarmonicsTest.
+  PackUnpack

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "original_capture_template": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "new_capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/capture-native-gtest.py",
+    "bytes": 14128,
+    "sha256": "5562b925e22cad31ca528b8c3fe9b3e8d2ee15d2ea87ce7977bb911e958c11bb"
+  },
+  "changes": {
+    "capture_base = repo / \"compatibility/evidence/product-native-gtest-2026-10-23\"": "capture_base = evidence",
+    "configuration_path = evidence / \"configure-with-optix.json\"": "configuration_path = repo / \"compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json\"",
+    "build_receipt_path = capture_base / (target + \"-build.json\")": "build_receipt_path = evidence / \"build.json\""
+  },
+  "scope": "Evidence paths and one asset-receipt provenance field changed. Original CTest argument preservation, runtime listing, XML parsing and source qualification unchanged.",
+  "tests_executed": 0,
+  "additional_change": "Bind the completed original runtime asset hydration report as an additional provenance field; no execution semantics change."
+}

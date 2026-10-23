@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "kind": "standalone-wasm-cpython-sqlite-build",
+  "started_utc": "2026-10-23T15:53:55.571832+00:00",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+    "-O2",
+    "-g0",
+    "-fexceptions",
+    "-matomics",
+    "-mbulk-memory",
+    "-I/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include/python3.13",
+    "-I/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include",
+    "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/python_component_main.c",
+    "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/lib/libpython3.13.a",
+    "-sUSE_ZLIB=1",
+    "-lm",
+    "-sALLOW_MEMORY_GROWTH=1",
+    "-sSTACK_SIZE=5242880",
+    "-sEXIT_RUNTIME=1",
+    "-sASSERTIONS=1",
+    "-sENVIRONMENT=web,node",
+    "-sFORCE_FILESYSTEM=1",
+    "--pre-js",
+    "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/python_component_pre.js",
+    "--preload-file",
+    "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/lib/python3.13@/usr/local/lib/python3.13",
+    "--preload-file",
+    "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/component-original@/original",
+    "-o",
+    "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.js"
+  ],
+  "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1",
+  "environment_overrides": {
+    "EM_CONFIG": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/.emscripten",
+    "EM_CACHE": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/emscripten-cache",
+    "EMSDK_NODE": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/node/22.16.0_64bit/bin/node",
+    "EMCC_CORES": "1",
+    "BLENDED_SQLITE_PATCHSET_SHA256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+  },
+  "capture_driver": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/build-python-component.py",
+    "bytes": 6207,
+    "sha256": "cf64dc418c085c1a7aa0fceaf139f6bb3559b08ba083286eebf01cfd4d3fa5ae"
+  },
+  "input_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/python_component_main.c",
+      "bytes": 437,
+      "sha256": "438bc128cf68932423430740d83dea30de36209d259020ebb771f3ced4b17367"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/patches/browser-sqlite/python_component_pre.js",
+      "bytes": 401,
+      "sha256": "5151239bf69e14be1dee1ff0e622f8b71c4471e19a04432cb5c9c03d9d827098"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+      "bytes": 1045,
+      "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/lib/libpython3.13.a",
+      "bytes": 43312012,
+      "sha256": "dbda24c657a982107b4add2eb680a9942f9ec3c4afbe00c2ef378375bc4c51e7"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include/python3.13/Python.h",
+      "bytes": 4038,
+      "sha256": "0660af70363eeea689133b9ee0dc3b0cf3e4afc62eed177354d8f9b725fbc86a"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include/python3.13/pyconfig.h",
+      "bytes": 59033,
+      "sha256": "bd332c16df6fee44bbc304f0e760bf0b34d2bd9e4f619aff61f9bb23611dc5fd"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/lib/wasm/include/sqlite3.h",
+      "bytes": 671786,
+      "sha256": "19585c8b5230e9d4f223bf31b709ece7b6a0bb3faf00d8310625d8e58cda1b1d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/scripts/deps/sqlite-patchset.json",
+      "bytes": 3104,
+      "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-inputs.json",
+      "bytes": 2409,
+      "sha256": "6934e2a72e016fa32d884f54a5c0d8931637455180683a99617fd0e563d4b879"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/stdlib-files.json",
+      "bytes": 188144,
+      "sha256": "d252a2214188b7c177e681e252c539d1ef0fccc28324f0160bd6dce49714628b"
+    }
+  ],
+  "cache_verification": {
+    "command": [
+      "python3",
+      "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/scripts/deps/sqlite-cache.py",
+      "verify",
+      "python",
+      "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa"
+    ],
+    "returncode": 0,
+    "log": {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/cache-verification.log",
+      "bytes": 37,
+      "sha256": "e9ca17cce199e9b1ca2779c5c10b43d7d385be4f0def2e6997a55aa44c916385"
+    }
+  },
+  "original_source_files": [
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/__init__.py",
+      "bytes": 98,
+      "sha256": "93cafbd6712b0f6d792bac6563b39f4bec16ab8ab34fd21260eb8b889a9096c9"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/__init__.py",
+      "bytes": 5053,
+      "sha256": "f1a09a5768a161fc922692886a87c03f1f844775777c4850767064dc86a7eac3"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/backend_sqlite.py",
+      "bytes": 10519,
+      "sha256": "abed3157bac99abc7e59d25c9bfcbfa3ffd0e27b948816c5b1f7bfb3fcfee863"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/hash_service.py",
+      "bytes": 6685,
+      "sha256": "8c0b3a230f9d3600187b522f7157ac4072fffd821969efdec5ca73cdf778b07b"
+    },
+    {
+      "upstream_path": "scripts/modules/_bpy_internal/disk_file_hash_service/types.py",
+      "bytes": 1629,
+      "sha256": "903a54e391e244276b540714435e8abd7e3eba9c59fdafa43d76bc7958cfe236"
+    },
+    {
+      "upstream_path": "tests/python/bl_disk_file_hash_service_test.py",
+      "bytes": 14875,
+      "sha256": "a2517a7c960c01cedbc347ba24a1649bcae81485320cf59b6f052ceb5594a5b4"
+    }
+  ],
+  "expected_case_ids": [
+    "DiskFileHashServiceNotOpeningTest.test_closing_unopened_service",
+    "DiskFileHashServiceNotOpeningTest.test_doubly_closing",
+    "DiskFileHashServiceTest.test_cleanup_on_close",
+    "DiskFileHashServiceTest.test_file_matches",
+    "DiskFileHashServiceTest.test_get_file_hash",
+    "DiskFileHashServiceTest.test_rehash_after_modification",
+    "DiskFileHashServiceTest.test_store_hash_callback",
+    "SQLiteBackendTest.test_fetch_nonexistent_file",
+    "SQLiteBackendTest.test_mark_as_fresh",
+    "SQLiteBackendTest.test_remove_older_than",
+    "SQLiteBackendTest.test_store_fetch_update_hash",
+    "SQLiteBackendTest.test_store_multiple_hashes_and_sizes"
+  ],
+  "original_blender_invocation_executed": false,
+  "original_test_assertions_modified": false,
+  "strict_blender_browser_test_passes": 0,
+  "full_feature_parity": false,
+  "returncode": 0,
+  "completed_successfully": true,
+  "elapsed_seconds": 6.084706,
+  "finished_utc": "2026-10-23T15:54:01.688244+00:00",
+  "build_log": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/build.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "artifacts": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.js",
+      "bytes": 208702,
+      "sha256": "dd269cbaf9153f22bf96387515e7f6dbb4529b023af5f684357fdcfe61a0ef05"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.wasm",
+      "bytes": 6964854,
+      "sha256": "7fa3d45d308f022a2b9f4ad1571e99b3e4fe151c1c6f5338eec8bfdfa046dcd5"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.data",
+      "bytes": 13541084,
+      "sha256": "039b5f7271f717055622de81b362c63cb37d3b9d918b789c021a8af1f7bef787"
+    }
+  ]
+}

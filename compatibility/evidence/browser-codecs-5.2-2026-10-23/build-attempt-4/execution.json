@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "kind": "browser-codec-recipe-build-validation",
+  "status": "recipe_builds_passed",
+  "started_at": "2026-10-23T15:37:06.377107+00:00",
+  "work": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work",
+  "runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/run_recipe_builds.py",
+    "bytes": 6772,
+    "sha256": "bcbcc2a0b90b7cc205c3462f796b33da0ff01a0f28e282cad24468675e4670a9"
+  },
+  "jobs": 1,
+  "cache": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache",
+  "sdk": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+  "compiler": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/bin/clang",
+    "bytes": 146590784,
+    "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d"
+  },
+  "host_cmake": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "bytes": 255,
+    "sha256": "575561204518e8e7f0f208480095ca504bc91c59c50e8a92c4763bec39b86ce4"
+  },
+  "emcc": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/emscripten/emcc",
+    "bytes": 1045,
+    "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+  },
+  "recipes": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/aom.sh",
+      "bytes": 1241,
+      "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/codec-common.sh",
+      "bytes": 2878,
+      "sha256": "ed5fe723c0795716c70e0c9c0415542dbee935440bf623834baeef9ee4b3e7ce"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/libheif.sh",
+      "bytes": 2251,
+      "sha256": "b8ef8eb66853793d33add3de4afca879d255269803b4c62ca1c170ffae051979"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/openjpeg.sh",
+      "bytes": 617,
+      "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/webp.sh",
+      "bytes": 1072,
+      "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+    }
+  ],
+  "dependency_patches": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/libheif-static-c-api.patch",
+      "bytes": 355,
+      "sha256": "c87e160de9c1bda6262062fa4317d72450a5a564ee356f89cceb6d436f7db455"
+    }
+  ],
+  "upstream_aom_patch": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/upstream/build_files/build_environment/patches/aom_6d2b7f71b98bfa28e372b1f2d85f137280bdb3de.diff",
+    "bytes": 1460,
+    "sha256": "5cb6ce17857a5283521d507dd834e6a45f8749468eeea1d2a9fd5f2e3e7544ea"
+  },
+  "commands": [
+    {
+      "name": "libheif",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/scripts/deps/libheif.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa",
+      "started_at": "2026-10-23T15:37:06.491238+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:40:21.169112+00:00",
+      "duration_seconds": 194.677453,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/build-attempt-4/libheif.log",
+        "bytes": 29215,
+        "sha256": "7c8706e098197a24ae6a38c81ca4b8a4710241eb9ed12eb825930aa73d2d4efb"
+      }
+    }
+  ],
+  "blender_cases_executed": 0,
+  "browser_feature_parity": false,
+  "limit": "Real codec dependency compilation for wasm32 with the pinned Emscripten toolchain. This is not a rebuilt Blender artifact or an original Blender test execution.",
+  "artifacts": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libaom.a",
+      "bytes": 4776468,
+      "sha256": "b0a0d7bc422d13ab27bcd1630b1b36f35b032c8a1958fb9114980c2c8873f4b9"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libheif.a",
+      "bytes": 3593022,
+      "sha256": "8b10291fd3b88c0d3978e1f806af21085d1371c4172a6cb631e2d253c3e3d17c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libopenjp2.a",
+      "bytes": 426898,
+      "sha256": "097406c11b9fe6fb926a510cf75b3530385acc4c1ff1f05eea475a45e76f1e3d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libsharpyuv.a",
+      "bytes": 22244,
+      "sha256": "612ac5609fa42593653f1fb1cfa1faf0c4afdf4c58277c565ee072eefb313464"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libwebp.a",
+      "bytes": 511440,
+      "sha256": "e168505d4ccc0d211d66fc222a67cb6b2c75dfdd6651d8cf72b7b77fe477606d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libwebpdecoder.a",
+      "bytes": 219242,
+      "sha256": "22e3285f150c6ad42dff9cd4547197fdf54b861bc9a03be964f21ec0b58d3c41"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libwebpdemux.a",
+      "bytes": 11492,
+      "sha256": "42349a592eeeb9376c63c1c124dc81a8a38581f78c6cda5099ecd1d561d00bc7"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/gessa/lib/wasm/lib/libwebpmux.a",
+      "bytes": 41820,
+      "sha256": "cc81b5e3ac3d4058bd5c8d35ad8fb3cc6601774a13e0f0094e67e7337de36ce8"
+    }
+  ],
+  "completed_at": "2026-10-23T15:40:21.180885+00:00"
+}

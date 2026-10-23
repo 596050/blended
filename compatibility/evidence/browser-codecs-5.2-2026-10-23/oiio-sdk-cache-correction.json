@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "kind": "isolated-validation-cache-correction",
+  "observed_at": "2026-10-23T15:55:05.978449+00:00",
+  "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache",
+  "previous_symlink_target": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache",
+  "new_kind": "private_directory",
+  "reason": "Emscripten system-library compile source paths are relative to the cache location; a symlinked cache caused actual configure probes to fail. No codec or zlib source change.",
+  "prior_attempt": "oiio-build-attempt-4",
+  "additional_limit": "That attempt had requested one job but its direct Ninja calls lacked a -j1 shim. Subsequent attempts force Ninja to one job. No claim of a measured peak parallelism is made for attempt4."
+}

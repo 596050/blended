@@ -1,0 +1,4 @@
+#!/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3
+import subprocess,sys
+if sys.argv[1:]==['_NPROCESSORS_ONLN']: print(1)
+else: sys.exit(subprocess.call(['/usr/bin/getconf',*sys.argv[1:]]))

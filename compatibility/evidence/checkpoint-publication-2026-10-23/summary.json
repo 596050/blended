@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "kind": "exact-checkpoint-publication",
+  "status": "published",
+  "recorded_utc": "2026-10-23T15:58:22.801792+00:00",
+  "repository": "596050/blended",
+  "branch": "parity/upstream-browser-ports",
+  "commit": "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+  "tree": "b907c8c8962beab41b17a779e54412da5f4c015f",
+  "parent": "0d09949783ffd696edc575359a62a662580a8964",
+  "remote_base": "b2fa1b96db519d86adb7809ad5f881c26124ac70",
+  "attempts": [
+    {
+      "run_id": 39978987710,
+      "source_commit": "4090aeab54fb41d48efaf9ed705e1cd2f33b6ec0",
+      "status": "failed",
+      "published": false,
+      "reason": "GitHub rejected the exact checkpoint because the original startup.blend LFS object was not yet present in this repository.",
+      "receipt": {
+        "path": "39978987710/receipt.json",
+        "bytes": 20551,
+        "sha256": "211fd6583b6e14384c341458b51189f1949c6ed2e2af824f008ae0698ea5b5aa"
+      }
+    },
+    {
+      "run_id": 39981104052,
+      "source_commit": "0c785118e2fb1ef2f311dead00acc60ae25218b3",
+      "status": "published",
+      "published": true,
+      "receipt": {
+        "path": "39981104052/receipt.json",
+        "bytes": 24133,
+        "sha256": "dd131ab90e9bce9c9eff4ba2cb6f614f4571a38fcb5fb1456ccfe31db5f3527c"
+      }
+    }
+  ],
+  "bundle": {
+    "bytes": 16083388,
+    "sha256": "975de0e275b469a722587a3e5237c8a711200761f2fef568eff248ecce9c482d"
+  },
+  "original_lfs_object": [
+    {
+      "path": "checkpoint-88f5a032ca4f/lfs/startup.blend",
+      "bytes": 121384,
+      "sha256": "1335899143c7e77bcb0f6e3680fd99078c0af481a1238e4ed7d4eb1ddd7dd353"
+    }
+  ],
+  "publication_input_files": [
+    {
+      "path": "manifest.json",
+      "bytes": 8882,
+      "sha256": "ac1069d696fbb09581aae8ffa8c0fa0404facc11d0d48f41dc8a83458584d63a"
+    },
+    {
+      "path": "import_checkpoint.py",
+      "bytes": 11510,
+      "sha256": "31bfc222d72b2a97031976c3e4a058f9f391ef572698a4be43e6ae413b625335"
+    },
+    {
+      "path": "import-checkpoint-88f5a032ca4f.yml",
+      "bytes": 1672,
+      "sha256": "d1c9383a8d99fb271fa36d7be3270d1da091f29b14ee0cacb79c14b21ac15afd"
+    }
+  ],
+  "independent_remote_checks": {
+    "git_ls_remote": "88f5a032ca4fcd26f75ca5f72de27373c27af4db refs/heads/parity/upstream-browser-ports",
+    "github_git_commit_sha": "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+    "github_git_tree_sha": "b907c8c8962beab41b17a779e54412da5f4c015f",
+    "note": "Observed after successful import through a public git ls-remote and the public GitHub Git commit API, separately from the workflow receipt."
+  },
+  "blender_tests_executed": 0,
+  "all_upstream_test_parity": false,
+  "full_feature_parity": false,
+  "scope": "Exact source/evidence checkpoint publication only. Original failed publication and test outcomes remain unchanged."
+}

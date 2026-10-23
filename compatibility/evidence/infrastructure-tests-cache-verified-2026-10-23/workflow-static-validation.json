@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "kind": "workflow-static-validation",
+  "status": "passed",
+  "workflow": {
+    "path": ".github/workflows/browser-source-build.yml",
+    "bytes": 16666,
+    "sha256": "cf330f75ff2ea44c7cf9090950269033ca19de9b0c281e64a87caabfab29fcff"
+  },
+  "yaml_parser": "PyYAML BaseLoader",
+  "embedded_python_ast_checks": [
+    {
+      "job": "source-development",
+      "step": "Install host build prerequisites"
+    },
+    {
+      "job": "source-development",
+      "step": "Rebuild from source if prior dependency outputs cannot be verified"
+    },
+    {
+      "job": "source-development",
+      "step": "Restore the exact original Essentials brush resource"
+    },
+    {
+      "job": "qualify-development",
+      "step": "Identify the actual Chrome binary"
+    },
+    {
+      "job": "preserve-evidence",
+      "step": "Select bounded receipts without binary build output"
+    }
+  ],
+  "cache_policy": "Only the independently selected historical key; no automatic candidate cache reuse",
+  "qualification_plans": [
+    {
+      "name": "main",
+      "inventory": "compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json",
+      "sha256": "25bc5c5e790461d0c56b64e039fe1e4b1663e2ea120c7bbe8f1ec3efb627a0ef",
+      "declarations": 132
+    },
+    {
+      "name": "resources",
+      "inventory": "compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json",
+      "sha256": "9bdd9f03d1910499eee59d7c010ebde7be076e98ba55626d427e2ac3b9462932",
+      "declarations": 3
+    }
+  ],
+  "blender_tests_executed": 0,
+  "full_feature_parity": false
+}

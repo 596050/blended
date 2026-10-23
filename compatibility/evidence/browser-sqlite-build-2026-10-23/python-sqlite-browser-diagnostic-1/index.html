@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>CPython SQLite component</title>
+<script>
+var Module = {
+  print: function (message) { console.log(message); },
+  printErr: function (message) { console.error(message); },
+  onExit: function (code) { window.componentExit = code; },
+  onAbort: function (reason) { window.componentAbort = String(reason); }
+};
+</script><script src="python-sqlite.js"></script>

@@ -1,0 +1,64 @@
+emcmake: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DZLIB_BUILD_EXAMPLES=OFF '-DCMAKE_C_FLAGS=-pthread -O2' -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1
+-- Looking for sys/types.h
+-- Looking for sys/types.h - not found
+-- Looking for stdint.h
+-- Looking for stdint.h - not found
+-- Looking for stddef.h
+-- Looking for stddef.h - not found
+-- Check size of off64_t
+-- Check size of off64_t - failed
+-- Looking for fseeko
+-- Looking for fseeko - not found
+-- Looking for unistd.h
+-- Looking for unistd.h - not found
+-- Renaming
+--     /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/zconf.h
+-- to 'zconf.h.included' because this file is included with zlib
+-- but CMake generates it automatically in the build directory.
+-- Configuring done (6.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build
+emmake: "ninja -C build" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1"
+ninja: Entering directory `build'
+[1/25] Building C object CMakeFiles/zlib.dir/gzlib.c.o
+FAILED: [code=1] CMakeFiles/zlib.dir/gzlib.c.o 
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc -DNO_FSEEKO -DZLIB_DLL -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/build -I/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1 -pthread -O2 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/zlib.dir/gzlib.c.o -MF CMakeFiles/zlib.dir/gzlib.c.o.d -o CMakeFiles/zlib.dir/gzlib.c.o -c /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:242:9: error: call to undeclared function 'lseek'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  242 |         LSEEK(state->fd, 0, SEEK_END);  /* so gzoffset() is correct */
+      |         ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:14:17: note: expanded from macro 'LSEEK'
+   14 | #  define LSEEK lseek
+      |                 ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:242:9: note: did you mean 'fseek'?
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:14:17: note: expanded from macro 'LSEEK'
+   14 | #  define LSEEK lseek
+      |                 ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h:92:5: note: 'fseek' declared here
+   92 | int fseek(FILE *, long, int);
+      |     ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:248:24: error: call to undeclared function 'lseek'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  248 |         state->start = LSEEK(state->fd, 0, SEEK_CUR);
+      |                        ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:14:17: note: expanded from macro 'LSEEK'
+   14 | #  define LSEEK lseek
+      |                 ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:332:9: error: call to undeclared function 'lseek'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  332 |     if (LSEEK(state->fd, state->start, SEEK_SET) == -1)
+      |         ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:14:17: note: expanded from macro 'LSEEK'
+   14 | #  define LSEEK lseek
+      |                 ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:369:15: error: call to undeclared function 'lseek'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  369 |         ret = LSEEK(state->fd, offset - (z_off64_t)state->x.have, SEEK_CUR);
+      |               ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:14:17: note: expanded from macro 'LSEEK'
+   14 | #  define LSEEK lseek
+      |                 ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:455:14: error: call to undeclared function 'lseek'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  455 |     offset = LSEEK(state->fd, 0, SEEK_CUR);
+      |              ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zlib/zlib-1.3.1/gzlib.c:14:17: note: expanded from macro 'LSEEK'
+   14 | #  define LSEEK lseek
+      |                 ^
+5 errors generated.
+ninja: build stopped: subcommand failed.

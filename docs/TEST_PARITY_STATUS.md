@@ -94,6 +94,40 @@ This establishes the selected image comparisons under that host-assisted diagnos
 
 ## Remaining demonstrated gaps
 
+### SQLite and codec implementation progress
+
+The optional [SQLite build extension](../patches/browser-sqlite/manifest.json)
+now compiles genuine SQLite 3.51.3 and CPython 3.13.13 with `_sqlite3` under the
+pinned Emscripten 6.0.5 toolchain. The full CPython dependency recipe completed
+at one job in 552.20 seconds. Separate SQLite WebAssembly checks pass in Node
+and Chrome, including WAL, concurrent connections, transactions, rollback,
+foreign keys and close/reopen behavior. The original disk-hash suite attempted
+on standalone CPython still executes zero cases: its unchanged package
+initializer requires `bpy`. The complete Blender rebuild is therefore required
+before those 12 missing obligations can change. Raw attempts are retained in
+[database build evidence](../compatibility/evidence/browser-sqlite-build-2026-10-23/).
+
+A separate [Python binding diagnostic](../compatibility/evidence/browser-sqlite-python-validation-2026-10-23/)
+also passes with the real `_sqlite3` in Chrome and native Blender's Python.
+It exercises parameter binding, callbacks, backup, normal serialization and
+the documented rejection of a serialized WAL image. An earlier incorrect
+diagnostic precondition failed identically in both environments and remains
+preserved. Neither diagnostic supplies original Blender case passes.
+
+The optional [codec build extension](../patches/browser-codecs/manifest.json)
+compiles the original pinned WebP, OpenJPEG, AOM and libheif libraries. Its
+standalone WebAssembly roundtrip diagnostic observes maximum channel errors of
+0 for WebP, 0 for JPEG2000 and 1 for AVIF. These diagnostic criteria are separate
+from the original Blender assertions. Full OIIO, Blender's CINEON/DPX paths,
+the 80 original ImBuf parent cases and all 57 native ImBuf subtest identities
+still require a newly built Blender artifact. The [codec evidence](../compatibility/evidence/browser-codecs-5.2-2026-10-23/)
+retains failed attempts and successful component observations separately.
+
+The source workflow now selects both byte-bound extensions, preserves the
+original brush overlay, and reruns the frozen initial invocation matrix plus
+resource retries. None of this implementation progress changes the current
+516 strict pairs until the new engine produces its own qualifying observations.
+
 | Gap | Exact evidence | Required implementation or qualification |
 |---|---|---|
 | SQLite | 12 native disk-file hash cases cannot be discovered; browser import fails on `_sqlite3`. The original Python dependency build explicitly disables that module. | Build the embedded Python SQLite extension and its database dependency for the browser, then rerun the complete original 12-case invocation. |
@@ -117,7 +151,7 @@ The old facet gate's hash-only evidence acceptance was replaced with typed case-
 
 The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate and independently checks both base and augmented packages. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
 
-The final local infrastructure run passes **294 tests with zero skips** in 106.474 seconds, including real CMake configuration. Its prospectively recorded [execution receipt](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm that tools, tests, patches and package plans were unchanged during that run. This count validates the project's testing machinery; it is not added to Blender feature passes.
+The latest local infrastructure run passes **346 tests with zero skips** in 121.485 seconds, including real CMake configuration, dependency integration, patch application, qualification validation and the cache failure regressions. Its prospectively captured [execution receipt](../compatibility/evidence/infrastructure-tests-cache-verified-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm all 156 selected implementation, workflow and original-preimage files were unchanged during the run. The preceding [337-test run](../compatibility/evidence/infrastructure-tests-codecs-sqlite-2026-10-23/execution.json) and [294-test run](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) remain unchanged. These counts validate the project's testing machinery; they are not added to Blender feature passes.
 
 ## Product target inventory and configuration
 
@@ -141,6 +175,26 @@ The original executables were built through unchanged upstream CMake targets and
 | `makesdna_test` | 1 | 5 | 5 | 0 |
 | `shader_tool_test` | 1 | 62 | 61 | 1 |
 | Original LibMV targets | 32 | 145 | 145 | 0 |
+| `cycles_test`, original registered filter | 1 | 216 | 216 | 0 |
+
+The new [Cycles reference](../compatibility/evidence/product-native-cycles-2026-10-23/summary.json)
+adds the original `cycles_test` target. Its unchanged build completed in
+1,072.17 seconds at one job. The first execution failed to load `libImath.so.30`
+and remains preserved with zero executed cases. Staging the exact original
+shared-library payloads in the configured runtime directory allowed the
+unchanged registered CTest command to pass all 216 selected cases. The prior
+batch and this registered result have disjoint source-qualified identities:
+38 original invocations now contain 2,232 observations, 2,231 passes and one skip.
+
+The executable's unfiltered listing exposes 242 cases. A separately recorded
+whole-executable run passes all 242, including 26 identities omitted by the
+upstream registration filter: seven `util_half`, seven `util_half_avx2` and
+twelve `util_avx2` cases. The source registration scanner misses tests supplied
+through included headers. The exact [case reconciliation](../compatibility/evidence/product-native-cycles-2026-10-23/additional-case-reconciliation.json)
+retains those 26 separately from the registered 216. Counting only those
+additional identities yields 2,258 distinct native observations, 2,257 passes
+and one skip across the selected product references. No browser product cases
+are inferred, and the configured registration count is not a complete leaf count.
 
 `shader_tool.MatrixConstructors` retains its original non-Apple platform skip and is not counted as a passing assertion. One of the 32 LibMV invocations, `libmv_resect`, has empty registered and unfiltered listings and zero XML cases because the pinned upstream test body is inside `#if 0`. Its process exit is zero, its empty-listing blocker remains visible, and it contributes zero case passes.
 

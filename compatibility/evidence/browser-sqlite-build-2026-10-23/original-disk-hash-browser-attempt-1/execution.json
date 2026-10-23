@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "kind": "standalone-wasm-cpython-browser-original-module",
+  "started_utc": "2026-10-23T16:01:59.577888+00:00",
+  "url": "http://127.0.0.1:37889/index.html",
+  "capture_driver": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/run-python-component-browser.py",
+    "bytes": 8005,
+    "sha256": "1ad09d1db1e703bc74ceb989faaafb45cd1620b3a755666a53b9369df23c1ef9"
+  },
+  "chrome": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64/chrome",
+    "bytes": 297680200,
+    "sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/build.json",
+    "bytes": 8425,
+    "sha256": "3fa0a386820590038b5d59cdb70a3d4424f645d08b3d8c9aa7dc27f06dc58894"
+  },
+  "artifact_inputs": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.js",
+      "bytes": 208702,
+      "sha256": "dd269cbaf9153f22bf96387515e7f6dbb4529b023af5f684357fdcfe61a0ef05"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.wasm",
+      "bytes": 6964854,
+      "sha256": "7fa3d45d308f022a2b9f4ad1571e99b3e4fe151c1c6f5338eec8bfdfa046dcd5"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/python-component-artifact-1/python-sqlite.data",
+      "bytes": 13541084,
+      "sha256": "039b5f7271f717055622de81b362c63cb37d3b9d918b789c021a8af1f7bef787"
+    }
+  ],
+  "html": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-browser-attempt-1/index.html",
+    "bytes": 402,
+    "sha256": "8cf9dc090ec2f6f17df95221ea9c3c68c5b5b6137e4d13320a7098164785abf4"
+  },
+  "launch_arguments": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage"
+  ],
+  "console_events": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "BLENDED_SQLITE_COMPONENT sqlite=3.51.3 python=3.13.13 (main, Oct 23 2026, 20:49:04) [Clang 24.0.0git (https:/github.com/llvm/llvm-project abd3b3a1445b5a8eeffae5c391"
+    },
+    {
+      "type": "error",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "type": "error",
+      "text": "  File \u001b[35m\"/original/tests/python/bl_disk_file_hash_service_test.py\"\u001b[0m, line \u001b[35m18\u001b[0m, in \u001b[35m<module>\u001b[0m"
+    },
+    {
+      "type": "error",
+      "text": "    from _bpy_internal.disk_file_hash_service import backend_sqlite, hash_service, types"
+    },
+    {
+      "type": "error",
+      "text": "  File \u001b[35m\"/original/scripts/modules/_bpy_internal/disk_file_hash_service/__init__.py\"\u001b[0m, line \u001b[35m23\u001b[0m, in \u001b[35m<module>\u001b[0m"
+    },
+    {
+      "type": "error",
+      "text": "    import bpy"
+    },
+    {
+      "type": "error",
+      "text": "\u001b[1;35mModuleNotFoundError\u001b[0m: \u001b[35mNo module named 'bpy'\u001b[0m"
+    },
+    {
+      "type": "log",
+      "text": "BLENDED_SQLITE_COMPONENT_RETURN 1"
+    }
+  ],
+  "page_errors": [],
+  "original_blender_invocation_executed": false,
+  "strict_blender_browser_test_passes": 0,
+  "full_feature_parity": false,
+  "browser_version": "155.0.8059.39",
+  "runtime_exit": 1,
+  "runtime_abort": null,
+  "cross_origin_isolated": true,
+  "browser_log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/original-disk-hash-browser-attempt-1/browser.log",
+    "bytes": 733,
+    "sha256": "cffbfd4f43073d1041d8081137a8f5be5c07ce39d3b889837243141fdb405b1a"
+  },
+  "output_parser": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-sqlite-build-2026-10-23/component-results.py",
+    "bytes": 2340,
+    "sha256": "58f1c99e9bfc0bc2deef209e217fc1aa3a9ee2c837dd591dd58bce14484cd90f"
+  },
+  "case_reconciliation": {
+    "expected_case_ids": [
+      "DiskFileHashServiceNotOpeningTest.test_closing_unopened_service",
+      "DiskFileHashServiceNotOpeningTest.test_doubly_closing",
+      "DiskFileHashServiceTest.test_cleanup_on_close",
+      "DiskFileHashServiceTest.test_file_matches",
+      "DiskFileHashServiceTest.test_get_file_hash",
+      "DiskFileHashServiceTest.test_rehash_after_modification",
+      "DiskFileHashServiceTest.test_store_hash_callback",
+      "SQLiteBackendTest.test_fetch_nonexistent_file",
+      "SQLiteBackendTest.test_mark_as_fresh",
+      "SQLiteBackendTest.test_remove_older_than",
+      "SQLiteBackendTest.test_store_fetch_update_hash",
+      "SQLiteBackendTest.test_store_multiple_hashes_and_sizes"
+    ],
+    "observed_cases": [],
+    "original_summaries": [],
+    "terminal_summaries": [],
+    "component_case_passes": 0,
+    "missing_case_ids": [
+      "DiskFileHashServiceNotOpeningTest.test_closing_unopened_service",
+      "DiskFileHashServiceNotOpeningTest.test_doubly_closing",
+      "DiskFileHashServiceTest.test_cleanup_on_close",
+      "DiskFileHashServiceTest.test_file_matches",
+      "DiskFileHashServiceTest.test_get_file_hash",
+      "DiskFileHashServiceTest.test_rehash_after_modification",
+      "DiskFileHashServiceTest.test_store_hash_callback",
+      "SQLiteBackendTest.test_fetch_nonexistent_file",
+      "SQLiteBackendTest.test_mark_as_fresh",
+      "SQLiteBackendTest.test_remove_older_than",
+      "SQLiteBackendTest.test_store_fetch_update_hash",
+      "SQLiteBackendTest.test_store_multiple_hashes_and_sizes"
+    ],
+    "unexpected_case_ids": [],
+    "complete_original_module_pass_in_component": false,
+    "original_blender_invocation_executed": false,
+    "strict_blender_browser_test_passes": 0,
+    "full_feature_parity": false
+  },
+  "completed_successfully": false,
+  "request_events": [
+    {
+      "message": "\"GET /index.html HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "\"GET /python-sqlite.js HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "\"GET /python-sqlite.data HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "\"GET /python-sqlite.wasm HTTP/1.1\" 200 -"
+    },
+    {
+      "message": "code 404, message File not found"
+    },
+    {
+      "message": "\"GET /favicon.ico HTTP/1.1\" 404 -"
+    }
+  ],
+  "elapsed_seconds": 2.176118,
+  "finished_utc": "2026-10-23T16:02:01.989621+00:00"
+}

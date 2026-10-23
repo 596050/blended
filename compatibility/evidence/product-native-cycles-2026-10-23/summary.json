@@ -1,0 +1,207 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-23T15:48:28.713160+00:00",
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "repository_checkpoint_before_work": "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+  "scope": "Native Cycles unit tests for one exact Linux configuration, with original registered and supplementary unfiltered invocations distinguished.",
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/build.json",
+    "bytes": 6379,
+    "sha256": "abe4881c0ea5e673faf4289f15ce7774f799fb16fa41cb11bf8bebd48b00bc0c"
+  },
+  "build_returncode": 0,
+  "build_wall_seconds": 1072.1718673190007,
+  "build_parallel_jobs": 1,
+  "build_config_before": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/CMakeCache.txt",
+    "bytes": 134664,
+    "sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121"
+  },
+  "build_config_after": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/CMakeCache.txt",
+    "bytes": 134664,
+    "sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121"
+  },
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/cycles_test",
+    "bytes": 21512408,
+    "sha256": "11ea54beed6f6fc365348bfe03118eece0f01fbf2d67310a6103f23529737c61"
+  },
+  "memory_observation_qualification": {
+    "existing_cgroup_memory_limit_bytes": 8589934592,
+    "original_process_group_rss_fields_valid": false,
+    "original_process_group_rss_guard_valid": false,
+    "original_process_group_rss_defect": "Namespace-local Popen PID was compared with outer /proc process-group IDs; the raw wrapper observed an unrelated PID. Do not use its process-group RSS values or claim its RSS guard enforced the threshold.",
+    "valid_original_observations": "Cgroup metrics, kernel memory cap, OOM-event checks, non-file-memory checks, time bound, and free-disk checks are independent of that PID mapping.",
+    "supplementary_observer": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/procfs-memory-observation.json",
+      "bytes": 1897,
+      "sha256": "d05ea5bf8bcb863ce5a4b3e0b227d390678383736b67878bb50b2713278d2689"
+    },
+    "supplementary_sample_count": 419,
+    "supplementary_sampled_process_group_rss_peak_bytes": 2017017856,
+    "supplementary_scope": "Supplementary sampled process-group RSS after namespace mapping; not a full-duration peak or memory guard.",
+    "original_sample_count": 1070,
+    "sampled_minimum_free_disk_bytes": 13771886592,
+    "sampled_peak_cgroup_memory_current_bytes": 8590045184,
+    "cgroup_memory_current_includes_file_cache": true,
+    "oom_events_before": {
+      "low": 0,
+      "high": 0,
+      "max": 68403,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    },
+    "oom_events_after": {
+      "low": 0,
+      "high": 0,
+      "max": 96459,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "first_loader_failure": {
+    "receipt": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles/native-reference.json",
+      "bytes": 21067,
+      "sha256": "c71dffd48c4633ff458b16da8cae3d1ba10988c06a18b767c43e51c1a2746153"
+    },
+    "executed_cases": 0,
+    "test_success": false,
+    "reason": "Original configured library directory was empty; loader could not find libImath.so.30.",
+    "stages": [
+      {
+        "name": "ctest-registration",
+        "returncode": 0
+      },
+      {
+        "name": "registered-listing",
+        "returncode": 127
+      },
+      {
+        "name": "unfiltered-listing",
+        "returncode": 127
+      },
+      {
+        "name": "ctest-execution",
+        "returncode": 8
+      }
+    ]
+  },
+  "runtime_library_staging": {
+    "receipt": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/runtime-library-staging/report.json",
+      "bytes": 8326,
+      "sha256": "d742380e45f5da9232e53c60bb5d6ea2436285133914f9ad6d1acb6afbbbe9f8"
+    },
+    "tracked_entries": 138,
+    "regular_files": 53,
+    "symlinks": 85,
+    "regular_file_bytes": 429185408,
+    "excluded_untracked_entry_count": 2,
+    "original_generated_block_total_entries": 140,
+    "binary_and_configuration_unchanged": true
+  },
+  "original_registered_execution": {
+    "receipt": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles-runtime-libraries/native-reference.json",
+      "bytes": 208458,
+      "sha256": "381785ba1afd7a6296f89fc11c3ae490f2d6a17f6753f51d66c6f4c1243b55e9"
+    },
+    "ctest_name": "cycles",
+    "original_ctest_invocation": true,
+    "listed_cases": 216,
+    "xml_reported_cases": 216,
+    "outcomes": {
+      "passed": 216
+    },
+    "returncode": 0,
+    "disabled": 0,
+    "source_declaration_files": 26,
+    "all_source_identities_resolved": true
+  },
+  "whole_binary_supplementary_execution": {
+    "receipt": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/cycles-unfiltered-supplementary/native-reference.json",
+      "bytes": 230736,
+      "sha256": "115335612f547df4da69b41d5f08cd2ff113886fc50ea1b6e75f923565632f87"
+    },
+    "original_ctest_invocation": false,
+    "framework_filter": "*",
+    "listed_cases": 242,
+    "xml_reported_cases": 242,
+    "outcomes": {
+      "passed": 242
+    },
+    "returncode": 0,
+    "disabled": 0,
+    "source_declaration_files": 28,
+    "all_source_identities_resolved": true
+  },
+  "additional_case_reconciliation": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/additional-case-reconciliation.json",
+    "bytes": 11472,
+    "sha256": "676ed61c4c66d35481c6c9199a8c70738e604701ae6935e1f71af54614b9bbfd"
+  },
+  "source_registration_reconciliation": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/source-registration-reconciliation.json",
+    "bytes": 6386,
+    "sha256": "3a2686aecee72e389e7d7d95f0e95c4e4e45909646a4fbea62488b92b2006334"
+  },
+  "host_observation": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/host-observation.json",
+    "bytes": 1418,
+    "sha256": "3b700e2eb976afbe829fd79514876a5a968163a6820aef6c103c42fa706090a7"
+  },
+  "prior_native_checkpoint": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/summary.json",
+    "bytes": 73532,
+    "sha256": "49fa3a4710cd5e192044c0aed8a50ea1460761caeb04909e2be30b987ba6f492"
+  },
+  "disjoint_from_previous_source_qualified_ids": true,
+  "combined_original_registered_source_identities": {
+    "count": 2232,
+    "outcomes": {
+      "passed": 2231,
+      "skipped": 1
+    },
+    "distinct_original_ctest_registrations": 38,
+    "retained_empty_original_registrations": 1
+  },
+  "combined_source_identities_including_supplementary": {
+    "count": 2258,
+    "outcomes": {
+      "passed": 2257,
+      "skipped": 1
+    },
+    "additional_supplementary_only_cases": 26
+  },
+  "remaining_build_assessment": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/remaining-build-assessment.json",
+    "bytes": 965988,
+    "sha256": "3f8767741a8496d188f9b10257bff3b2b2cdd352ab8d1025cd20f26996253efd"
+  },
+  "summary_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-cycles-2026-10-23/summarize-cycles.py",
+    "bytes": 16870,
+    "sha256": "dd500f78956689bcb21672e688cff792f636f9378d3eac986b9fbabc4826a9e7"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "remaining_obligations": [
+    "Build and runtime-expand remaining configured native test binaries and Python/application drivers.",
+    "Reconcile required configuration, platform, rendering-device and feature variants against source registrations.",
+    "Preserve the distinct source pin and runtime context when pairing browser and native outcomes.",
+    "Whole application runtime, GPU execution, render-suite completion, and browser implementation remain unproven by this unit-test run.",
+    "The original configured CTest filter still omits 26 compiled Cycles cases; the supplementary receipt does not modify that registration."
+  ]
+}

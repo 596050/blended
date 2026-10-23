@@ -15,6 +15,8 @@ previously downloaded gessa v0.1.1 release.
 | Emscripten | 6.0.5, compiler `1db513782be24469589d7cb8a1f1834e9a33f271` |
 | Browser build profile | `BLENDER_WEB_WASM_SPLIT_MODE=OFF`, `WITH_BUILDINFO=ON` |
 | Explicit numerical patchset | `blender-5.2.0-web-numerics-v1`, recorded separately from the canonical port patch |
+| Explicit database extension | SQLite 3.51.3 and CPython 3.13.13 with the genuine `_sqlite3` extension |
+| Explicit image-codec extension | WebP 1.6.0, OpenJPEG 2.5.3, AOM 3.13.1 and libheif 1.20.2, with static OIIO plugins |
 
 The published v0.1.1 artifact uses port source
 `cc22090b88da63cc617d48b218f4945175928844`. Its canonical patch has a different
@@ -40,7 +42,9 @@ python3 tools/rebuild_browser_port.py \
   --work-dir .cache/browser-source \
   --output evidence/browser-source-build \
   --jobs 2 \
-  --numeric-patchset patches/browser-numerics/manifest.json
+  --numeric-patchset patches/browser-numerics/manifest.json \
+  --sqlite-patchset patches/browser-sqlite/manifest.json \
+  --codec-patchset patches/browser-codecs/manifest.json
 ```
 
 The stages are:
@@ -50,10 +54,13 @@ The stages are:
 2. Install the exact Emscripten SDK and hash-verified host Python build tools.
    Verify and apply the explicitly selected numerical patches, then rebuild
    both required libc variants in a cache isolated by the manifest digest.
-3. Fetch the pinned Dawn dependency closure and run the port's dependency
-   recipes, including Python, NumPy, OpenSubdiv and OpenUSD.
+3. Fetch the pinned Dawn dependency closure. Apply the exact selected dependency
+   patches before recording executed recipe identities. Build SQLite before
+   Python, and WebP, OpenJPEG, AOM and libheif before OIIO, followed by the
+   remaining original dependencies.
 4. Build native code generators and locale files, then configure the browser
-   engine with the port's existing feature profile.
+   engine with the selected feature profile. Require the three added image
+   flags and the existing enabled feature requirements to remain enabled.
 5. Generate Blender's build-info header, compile the actual `blender_browser`
    target and package its shell and engine files.
 
@@ -67,9 +74,9 @@ required enabled feature disappears. The source port already disables some
 desktop features; those remain explicit in the receipt. The runner does not
 resolve portability failures by silently disabling additional features.
 
-Omit `--numeric-patchset` to rebuild the original canonical port baseline.
+Omit all three optional patchset arguments to rebuild the canonical port baseline.
 Patched and unpatched build receipts remain distinguishable. CI selects the
-reviewed numerical patchset explicitly, and a newer source commit supersedes
+reviewed patchsets explicitly, and a newer source commit supersedes
 an older source build to avoid compiling both full engines unnecessarily.
 
 The OFF development profile avoids the port's hardware-dependent shipping
@@ -109,20 +116,62 @@ results and matched the native results after these changes. Fresh `libc` and
 WebAssembly. These regressions justify testing the patches in the full engine;
 they do not establish that the application has passed its suites.
 
-Caches preserve dependency/compiler progress and are keyed to the entry-point
-bytes. A cache hit is an optimization, not acceptance evidence. Each run still
-produces a fresh receipt and verifies the inputs it uses.
+Caches preserve dependency/compiler progress as candidates for later review.
+A matching input key alone cannot qualify installed outputs, and newly saved
+candidates are never restored automatically, including after a failed build or
+on a rerun. The workflow restores only the specific cache from source run
+`39841653080`, and must first verify all 4,103
+original dependency outputs against its independently preserved
+[harvest manifest](../compatibility/build-caches/source-39841653080-harvest.jsonl).
+Missing, additional or changed files reject that reuse and cause the generated
+dependency prefix to be rebuilt. The actual cache key must match, and exactly
+three PNG aliases must satisfy the independently
+[source-derived alias contract](../compatibility/build-caches/source-39841653080-alias-contract/contract.json).
+Their names, relative link text and original target identities are checked;
+unknown, missing or redirected aliases reject reuse. The contract does not
+pretend that historical link metadata was captured. A cache hit establishes
+no test pass or independent recompilation.
+
+The [SQLite manifest](../patches/browser-sqlite/manifest.json) binds the original
+archive checksums, real amalgamation recipe, CPython recipe diff and cache
+validator. The genuine SQLite archive is merged into static `libpython3.13.a`;
+required SQLite and `_sqlite3` symbols and output identities are checked.
+Existing libraries built without SQLite cannot satisfy the new cache contract.
+`PYTHON_CPU_COUNT`, `EMCC_CORES`, Make and CMake concurrency follow `--jobs`.
+
+The [codec manifest](../patches/browser-codecs/manifest.json) binds every changed
+port file and source archive. Its four new recipes and OIIO rebuild explicitly.
+OIIO must retain static WebP, JPEG2000, HEIF and DPX plugins and the original AOM
+AV1 encoder and decoder. The recipe preserves its actual CMake cache before
+scratch cleanup, and the driver verifies the required options. Blender must
+configure `WITH_IMAGE_CINEON`, `WITH_IMAGE_OPENJPEG` and `WITH_IMAGE_WEBP` as `ON`.
+The libheif patch disables its unused standalone JavaScript binding wrapper
+when embedding the C API; it preserves the codec implementations.
+
+Both patchsets are explicit build inputs and are included with their application
+receipts in package provenance. Component compilation and standalone diagnostics
+remain separate from original Blender runtime test results.
 
 ## Qualify the exact output
 
-On a successful build, a separate CI job downloads that run's artifact and
-executes:
+After a successful build, CI assembles the already reviewed original Essentials
+resource overlay, retaining both the base archive and independently verified
+augmented archive. Two qualification jobs download those exact artifacts and
+execute the frozen initial invocation plan and its explicit resource retries.
+For the initial plan, run:
 
 ```sh
-python3 tools/probe_browser_port.py \
+python3 tools/run_unittest_browser_matrix.py \
+  --native-inventory compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json \
+  --native-inventory-sha256 25bc5c5e790461d0c56b64e039fe1e4b1663e2ea120c7bbe8f1ec3efb627a0ef \
+  --repo-root . \
   --source-build-receipt source-build/source-build.json \
-  --asset source-build/blender-source-development.tar.gz \
-  --output evidence/source-development-qualification \
+  --asset source-build/essentials/blender-source-development-essentials.tar.gz \
+  --package-overlay-receipt source-build/essentials/package-overlay.json \
+  --package-base-asset source-build/blender-source-development.tar.gz \
+  --browser-executable /opt/google/chrome/chrome \
+  --output evidence/source-development-qualification-main \
+  --jobs 1 \
   --timeout 240
 ```
 
@@ -132,15 +181,21 @@ the running engine to report the expected Blender version and upstream build
 hash. A matching receipt alone is not a runtime identity check or an independent
 recompile.
 
-For a patched artifact it additionally checks the manifest digest, every patch
-identity, the applied flag and the exact compiler identity. Unknown or partial
-patch declarations cannot inherit the unpatched baseline's identity.
+For a patched artifact it additionally checks each manifest digest, exact
+source and compiler identities, application inputs and outputs, dependency order,
+executed recipe identities and required configured features. Unknown or partial
+patch declarations cannot inherit the baseline's identity.
 
-Both complete upstream files, `bl_pyapi_mathutils.py` and `bl_pyapi_bmesh.py`,
-are fetched from the exact reference and verified by digest before execution.
-Their assertions and tolerances remain unchanged. The probe preserves missing
-tests, failures, errors, skips and subtests. It cannot obtain a pass merely
-because a page boots or native Blender passes the same tests.
+Every selected upstream file and helper is fetched from the exact reference and
+verified by digest and size before execution, unless an explicit local source
+root supplies those same bytes. Each invocation gets a fresh browser and engine.
+Its original `__main__`, arguments, assertions, tolerances and resources remain
+required. The resource retry plan has SHA256
+`9bdd9f03d1910499eee59d7c010ebde7be076e98ba55626d427e2ac3b9462932`.
+The initial and resource attempts stay separate until ledger reconciliation.
+Missing outcomes, failed processes, errors, expected failures and subtests
+cannot disappear from the gate. The bounded 132-declaration plan still has
+unexpanded entries, so executing this matrix cannot establish all-upstream parity.
 
 The current CI browser requests a software GPU. Its observed adapter is recorded
 separately, and the probe does not claim real hardware or deployed-URL coverage.
@@ -196,7 +251,8 @@ unittest's base ID method because Blender's custom-property tests use an `id`
 property for the datablock under test. This reporting correction does not
 change that property or the tested Blender behavior.
 
-The default remains the original 192 numerical cases. The additional cohort
+The standalone probe default remains the original 192 numerical cases; the
+source-build workflow now uses the frozen matrix described above. The additional cohort
 provides selected `scene_data` and `python_api` evidence; it does not complete
 either facet. The separate `.blend` I/O script uses a custom driver and is not
 counted among these 48 cases.
@@ -282,11 +338,12 @@ generated binary files remain run artifacts.
 
 ## Current acceptance boundary
 
-The source reconstruction and native reference have been exercised. The
-published browser release still fails two of the 192 selected top-level tests
-and reports an unknown source build hash. Source compilation, a verified
-development runtime and fixes to those divergences must be established through
-their own fresh receipts.
+The separately qualified development package currently has 516 strict successful
+pairs in the selected 829-obligation scope. The historical published port release
+and later source-built packages retain their own results. The new SQLite and
+codec extensions require a complete rebuild and a fresh original-test matrix;
+their component diagnostics do not change that existing parity count. See
+[current test status](TEST_PARITY_STATUS.md) for the exact artifacts and blockers.
 
 The [parity programme](BROWSER_PARITY_PROGRAM.md) defines the remaining facet,
 fixture, workflow, hardware, deployment and version-migration requirements.

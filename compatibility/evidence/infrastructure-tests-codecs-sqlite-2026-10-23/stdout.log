@@ -1,0 +1,16 @@
+{"status": "failed", "summary": {"expected_files": 4, "compared": 0, "matched": 0, "different_or_failed": 0, "missing_or_blocked": 4}, "evidence": "/tmp/tmp35ld8c48/failed-method-report/exchange.json"}
+{"status": "blocked", "summary": {"expected_files": 4, "compared": 0, "matched": 0, "different_or_failed": 0, "missing_or_blocked": 4}, "evidence": "/tmp/tmpez08so_v/report/exchange.json"}
+{"status": "verified_candidate_closure", "counts": {"verified_download_objects": 0, "verified_cache_objects": 1, "verified_existing_payload_objects": 0, "download_failed_attempts": 0, "batch_failed_attempts": 0, "hydrated_paths": 2, "already_verified_payload_paths": 0, "candidate_paths": 3, "verified_paths": 3, "regular_paths": 1, "lfs_paths": 2, "unique_lfs_objects": 1, "unique_lfs_bytes": 24}, "report": {"path": "/tmp/tmpvfc6s8sx/evidence/report.json", "bytes": 3217, "sha256": "af014215350eae96142fb68a02244ba69d29c65d6b56c8260ccd180852413391"}}
+SOURCE BUILD: prepare-sqlite-patchset
+SOURCE BUILD: prepare-codec-patchset
+SOURCE BUILD: prepare-sqlite-patchset
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tools/prepare_browser_sqlite.py", line 253, in <module>
+    main()
+  File "/workspace/scratch/d63596d831b2/blended/tools/prepare_browser_sqlite.py", line 248, in main
+    result = apply_patchset(args.port_root, args.manifest, args.manifest_sha256, args.receipt)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d63596d831b2/blended/tools/prepare_browser_sqlite.py", line 194, in apply_patchset
+    raise ValueError("CPython recipe is neither the pinned original nor the exact patched result")
+ValueError: CPython recipe is neither the pinned original nor the exact patched result
+
