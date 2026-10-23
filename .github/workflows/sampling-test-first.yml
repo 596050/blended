@@ -1,0 +1,42 @@
+name: Image and curve sampling test-first evidence
+on:
+  push:
+    branches: [compat/sampling-curves]
+    paths: ['tools/port_sampling_tests.py', '.github/workflows/sampling-test-first.yml']
+permissions:
+  contents: read
+jobs:
+  test-first:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Reproduce all original cases and preserve source identity
+        run: |
+          set -euo pipefail
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_sampling_tests.py
+          mkdir -p evidence/sampling-tdd
+      - name: Execute the tests without suppressing missing-implementation failures
+        run: |
+          set -o pipefail
+          cargo test --locked -p blended-core --test upstream_sampling --test upstream_curves 2>&1 | tee evidence/sampling-tdd/native.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sampling-test-first-evidence
+          path: |
+            evidence/sampling-tdd/
+            compatibility/sampling-ports.json
+            compatibility/curve-ports.json
+            crates/blended-core/src/sampling_cases.rs
+            crates/blended-core/src/curve_cases.rs
+            crates/blended-core/tests/upstream_sampling.rs
+            crates/blended-core/tests/upstream_curves.rs
+          retention-days: 1
