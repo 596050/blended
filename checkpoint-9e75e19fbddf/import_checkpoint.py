@@ -27,6 +27,20 @@ LFS_OID = "1335899143c7e77bcb0f6e3680fd99078c0af481a1238e4ed7d4eb1ddd7dd353"
 LFS_BYTES = 121384
 LFS_PATH = "checkpoint-9e75e19fbddf/lfs/startup.blend"
 LFS_POINTER = "compatibility/evidence/product-configure-2026-10-23/startup.blend.pointer"
+GIT_LFS_OBJECTS = [
+    {
+        "pointer_git_path": "compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/original-fixture-pointer.txt",
+        "payload_git_path": "compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/source/tests/files/modeling/bevel_regression.blend",
+        "bytes": 2387547,
+        "sha256": "dad2aa2c02cb6ceb9e025b729e1886a95b3d744c10dce56503adbd15ec312771"
+    },
+    {
+        "pointer_git_path": "compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/original-fixture-pointer.txt",
+        "payload_git_path": "compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/files/modeling/operators.blend",
+        "bytes": 4028858,
+        "sha256": "345857f0185fc38799d26e671e88ed06bf7754163c0ea58b4b8475c57908f9cc"
+    }
+]
 
 
 def utc():
@@ -111,6 +125,9 @@ def main():
         require(len(lfs_payload) == LFS_BYTES and hashlib.sha256(lfs_payload).hexdigest() == LFS_OID,
                 "Original LFS payload does not match its source pointer")
         receipt["lfs_objects"] = [expected_lfs]
+        require(manifest.get("git_lfs_objects") == GIT_LFS_OBJECTS,
+                "Unexpected in-tree original fixture LFS contract")
+        receipt["git_lfs_objects"] = []
         receipt["lfs_upload_outcome"] = "not_attempted"
         chunks = manifest["chunks"]
         require(len(chunks) == 4, "Unexpected chunk count")
@@ -159,6 +176,27 @@ def main():
         original_pointer = run("original-lfs-pointer", git + ["show", target + ":" + LFS_POINTER])
         require(generated_pointer == original_pointer, "Git LFS did not reproduce the committed evidence pointer")
 
+        for index, item in enumerate(GIT_LFS_OBJECTS):
+            payload = run(f"fixture-{index}-payload", git + [
+                "show", target + ":" + item["payload_git_path"]])
+            require(len(payload) == item["bytes"] and
+                    hashlib.sha256(payload).hexdigest() == item["sha256"],
+                    f"Original in-tree fixture {index} failed its byte/hash contract")
+            pointer = run(f"fixture-{index}-pointer", git + [
+                "show", target + ":" + item["pointer_git_path"]])
+            expected_pointer = (
+                "version https://git-lfs.github.com/spec/v1\n"
+                f"oid sha256:{item['sha256']}\nsize {item['bytes']}\n"
+            ).encode("ascii")
+            require(pointer == expected_pointer,
+                    f"Original in-tree fixture {index} pointer mismatch")
+            cleaned = run(f"fixture-{index}-lfs-clean", git + ["lfs", "clean"],
+                          input_data=payload)
+            require(cleaned == pointer,
+                    f"Git LFS did not reproduce original fixture {index} pointer")
+            receipt["git_lfs_objects"].append(item)
+            save()
+
         branch_ref = "refs/heads/" + EXPECTED["target_branch"]
         def read_head(name):
             output = run(name, git + ["ls-remote", "--exit-code", "--heads", "origin", branch_ref]).decode().strip()
@@ -173,11 +211,13 @@ def main():
         receipt["status"] = "verified"
         if args.push:
             if before != target:
-                # This uploads only the one immutable payload referenced by the
-                # reviewed pointer. The target commit and pointer remain unchanged.
+                # Upload only the fixed, verified original payload identities.
+                # The target commit, tree, tests and pointer bytes remain unchanged.
                 receipt["lfs_upload_outcome"] = "unknown"
                 save()
-                run("lfs-push", git + ["lfs", "push", "--object-id", "origin", LFS_OID], timeout=180)
+                object_ids = [LFS_OID] + [item["sha256"] for item in GIT_LFS_OBJECTS]
+                run("lfs-push", git + ["lfs", "push", "--object-id", "origin"] +
+                    object_ids, timeout=180)
                 receipt["lfs_upload_outcome"] = "completed"
                 # The ancestry check above proves this is a fast-forward.
                 # The explicit lease adds an atomic check against a concurrent change.
