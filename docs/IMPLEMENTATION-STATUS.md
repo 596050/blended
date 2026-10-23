@@ -1,23 +1,36 @@
 # Implementation status, 23 October 2026
 
-## Latest verified compatibility batch
+## Verified source
 
-131 Blender runtime cases / 1,049 assertion events pass in native Rust and the actual deployed browser. Original C++ assertion transcripts independently match native Rust and Chromium WASM without floating differences requiring tolerance allowance. Reference: `94363991e7dcf39e2d70614aa002ab6f67764a5d`; verified runtime source: `2c7abe637e8eca6ea8937c871f406fa6ac123006`; run: `39918173966`.
+`8bb0e6e43237cc68cf5e3c403dfc0b9419f083ed` consolidates the previously separate numeric, matrix, string, bit, geometry and sampling work. It has been promoted to `main`. Later documentation commits do not change the verified Rust implementation.
 
-The new 32 cases cover four complete collection test files and preserve 170 assertion sites / 521 runtime events. The signed-zero vector hash compile-time assertion is now ported, positively compiled and mutation-tested on native and WASM targets. It is not counted among runtime cases. Total native Rust runtime tests: 144, consisting of 131 Blender, three Cycles, six product geometry and four safety tests.
+Run [40007823640](https://github.com/596050/blended/actions/runs/40007823640) completed the subset's source reproduction, fresh native compilation and execution, original pinned C++ execution, Rust/Chromium assertion comparison, production WebAssembly build and actual public-URL verification. The full-completeness job failed because full-suite coverage is not implemented.
 
-Corrected inventory source `986ac6ffc6892e5e3738d7e281da9413cf453914`, run `39918761201`, verifies 132 mapped source identities against the exact checkout. The heuristic candidate count increased to 5,673 after C++ numeric separators stopped hiding declarations. There are 5,541 unmapped source candidates. None of these counts establishes a complete runtime denominator.
+| Measure | Verified result |
+| --- | ---: |
+| Unique Blender runtime ports | 338 |
+| Original assertion executions compared per implementation | 16,804 |
+| All native Rust runtime tests | 359 |
+| Cycles cases included in that total | 3 |
+| Product/safety/regression tests included in that total | 18 |
+| Separately tracked compile-time assertions | 6 |
+| Full Blender runtime denominator | Unknown |
+| Full test port / feature parity | Not achieved |
 
-## Working modeller and failed renderer remain separate
+The original assertion traces contain eight native and nine browser float differences within original tolerances. No tolerance was widened. They occur in earlier colour cases; the new image/curve cases added no such differences in this run.
 
-The repository's prominent launch link opens the previously verified Rust/Three.js modeller at source `25e641c0d311f61c473755d1c7ee821289a27d15`, static commit `15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38`. Its public-URL workflow `39860686907` passed the limited editing/rendering/interchange acceptance checks. The modeller's existing button retains the 17-case ABI; the separate conformance workbench executes all 131 runtime ports. New test-library additions are not new modelling features.
+## Newly implemented sampling
 
-The Solarxy-derived application compiled, and selected existing suites previously passed, but actual browser rendering failed with blank imported geometry and some GPU-device-loss/panic runs. That failure remains unresolved in issue #1 and `deployment-evidence`. The working Three.js modeller does not inherit Solarxy's procedural editor or turn the failed experiment into a pass.
+27 image-interpolation cases and nine length-parameterisation cases add 402 assertion executions. Exact original source snapshots, data, comparison kinds, expected values and loop lengths are preserved. CPU implementations include nearest, bilinear, B-spline and Mitchell sampling; border/repeat/extend modes; accumulated curve lengths; endpoint-aware uniform sampling; arbitrary-length sampling; and interpolated scalar/vector/colour values. They are not yet exposed as interactive editor features and do not establish GPU or renderer parity.
 
-## Full-parity work remains incomplete
+## Existing application
 
-The full-completeness CI job remains failed. Broad native runtime enumeration, the remaining test ports, executing fixture-based application workflows and Blender-compatible rendering are unfinished. This includes mesh/BMesh editing, modifiers, sculpting, Geometry Nodes, animation, rigging, physics, compositor, video editor, Python/add-on API and .blend serialisation. There is no claimed full Blender/Cycles/EEVEE parity.
+The Three.js object modeller remains a distinct alpha. It supports primitives, object transforms, basic appearance, undo/redo and limited interchange. It lacks Blender's comprehensive polygon editing, sculpting, modifiers, procedural nodes, animation, rigging, simulation, compositor, native blend files, Python add-ons and production rendering. The separate Solarxy-derived rendering failure remains unresolved.
 
-Original native BLI discovery retained 1,644 registrations and the duplicate stack.Peek identity; it is not all Blender tests and not a count of ported/passing tests. The prior tests/files LFS hash verification covered 6,691 objects, not every possible dependency or execution job.
+## Outstanding whole-suite requirements
 
-See `COMPLETE-TEST-PORT.md`, `ASSERTION-FIDELITY.md`, `COLLECTION-PORT-VERIFICATION.md` and the machine-readable status/evidence files. Do not remove failing, missing, blocked or unsupported work from the completion criteria.
+The latest heuristic source scan contains 5,859 candidates, of which 344 have reviewed mappings and 5,515 remain unported. These are not exact remaining runtime counts. The current runtime inventory is absent or incomplete, and the gate reports `unported_runtime_cases: null`. All configurations and runtime families, typed/parameterised expansions, Python, UI, render and CTest cases still require reconciliation. Nine vector type/layout compile-time assertions remain unported.
+
+Previous test-asset retrieval verified 6,691 LFS objects under `tests/files/**`, but fresh reference checkouts must materialise the fixtures actually needed for execution. The source inventory retains pointers and does not claim those payloads are available merely because a historical download passed. The new sampling tests use source-embedded data rather than blend-file fixtures.
+
+[Verification details](SAMPLING-PORT-VERIFICATION.md) · [Completeness requirement](COMPLETE-TEST-PORT.md) · [Current status JSON](../evidence/TEST-PORT-STATUS.json) · [Open completion issue](https://github.com/596050/blended/issues/3)

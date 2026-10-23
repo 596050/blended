@@ -1,17 +1,15 @@
-# Open Blended in your browser
+# Open Blended
 
-## [Launch the deployed Blended modeller](https://rawcdn.githack.com/596050/blended/15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38/index.html)
+## [Launch the browser modeller alpha](https://rawcdn.githack.com/596050/blended/15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38/index.html)
 
-This opens the working modeller alpha, not a test dashboard. It is not a complete Blender replacement. Use public sample files on this shared-origin preview and save work locally. Verified source: `25e641c0d311f61c473755d1c7ee821289a27d15`; [public build/deployment test](https://github.com/596050/blended/actions/runs/39860686907).
+This is the modelling application, not the test workbench. It is an object-editing alpha, not a complete Blender replacement. This historical immutable build was verified from source `25e641c0d311f61c473755d1c7ee821289a27d15`. Use public sample models on the shared-origin preview and save work locally.
 
-## [Open the deployed 131-case Blender test-port workbench](https://rawcdn.githack.com/596050/blended/959d4ccef446cfcd4f4e82a701fb3c32541a0f9d/index.html)
+## [Run the verified 338-case Blender test workbench](https://rawcdn.githack.com/596050/blended/a5fc4aa4074e556431c8e7fd1bb1185f130b3be0/index.html)
 
-This separate page runs 131 currently ported Blender runtime cases, representing 1,049 assertion events. It does not open the modelling application. Verified source: `2c7abe637e8eca6ea8937c871f406fa6ac123006`; [original-reference, native, WASM and actual public-URL verification](https://github.com/596050/blended/actions/runs/39918173966).
+This separate page executes every currently registered Blender runtime port. Source: `8bb0e6e43237cc68cf5e3c403dfc0b9419f083ed`. Static build: `a5fc4aa4074e556431c8e7fd1bb1185f130b3be0`. Original reference: `94363991e7dcf39e2d70614aa002ab6f67764a5d`.
 
-The native Rust and diagnostic browser assertion transcripts were independently compared with original pinned Blender C++ execution. Both matched. The separately ported signed-zero hash assertion is evaluated by the native and WASM compilers and is not added to the runtime case count.
+All 338 cases passed at the actual public URL, with no browser errors. The ordered original-C++ comparisons cover 16,804 assertion executions in both native Rust and Chromium WebAssembly. The six separately tracked compile-time assertions are not browser runtime cases. Diagnostic runs and production-URL tests remain separate.
 
-[Public workbench results](https://github.com/596050/blended/blob/test-port-evidence/result.json) · [Original C++ versus native Rust](https://github.com/596050/blended/blob/assertion-fidelity-evidence/native-comparison.json) · [Original C++ versus browser WASM](https://github.com/596050/blended/blob/assertion-fidelity-evidence/browser-comparison.json) · [Audit methodology](docs/ASSERTION-FIDELITY.md)
+[Build and public verification run](https://github.com/596050/blended/actions/runs/40007823640) · [Durable assertion evidence for that run](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40007823640) · [Static build source and audit](https://github.com/596050/blended/tree/a5fc4aa4074e556431c8e7fd1bb1185f130b3be0) · [Sampling verification](docs/SAMPLING-PORT-VERIFICATION.md)
 
-**The complete Blender test port remains incomplete.** The full-completeness job remains failed; these passing subset checks are not a complete compatibility certificate. [Remaining requirements](docs/COMPLETE-TEST-PORT.md).
-
-Evidence branches can advance; the immutable URLs above do not. The two applications deliberately use distinct URLs and recorded source revisions.
+The full Blender test port remains incomplete and its completeness gate remains failed. Passing the implemented subset does not establish all Blender features, renderer compatibility or performance parity. Evidence branches can advance; the immutable URLs above do not.

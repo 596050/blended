@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "diagnostic implementation mutations and smoke-call observation, not upstream case counts",
+  "source_commit": "8bb0e6e43237cc68cf5e3c403dfc0b9419f083ed",
+  "image_mutation": {
+    "original_sha256": "0580ed0a3d746b01be0d03de9486bc4bad1e479baf6fca74dbe76b1d78b5f041",
+    "diagnostic_sha256": "597a3de3ce7e347d822bcab1c5db2efd682055f3e201aa2c19e2e652f22e1302",
+    "change": "border byte sampler uses Extend instead of Border; wrap sampler increments a diagnostic counter for the preserved nonfinite call"
+  },
+  "curve_mutation": {
+    "original_sha256": "e5ca6f46a6a981563636866494f1e78e05ebdaac8e67ad8ee48da8f5c8e1f772",
+    "diagnostic_sha256": "134ab121d92974163cbd464d0030e0f8c33de7641ebd91aa02cd1657e557a214",
+    "change": "include_last no longer changes the uniform denominator"
+  },
+  "unchanged_test_sha256": {
+    "crates/blended-core/src/sampling_cases.rs": "f8f7332a4310354a5c8ae5b66b87b1a885bf7794f87080aac0d7383bd37722c5",
+    "crates/blended-core/src/curve_cases.rs": "e9e98b4818d3ccd4e2f3dd6f700a18151816ef0bcdaca55c24f33d9d7fea98aa"
+  },
+  "browser": {
+    "version": "155.0.8059.39",
+    "result": {
+      "control": 1,
+      "border": 0,
+      "border_assertions": 3,
+      "curve": 0,
+      "curve_assertions": 7,
+      "smoke": 1,
+      "visits": 1
+    },
+    "errors": [],
+    "wasm_sha256": "252693302313b3ec9d64155d9138d402560f67484bb55da6c502577d122fc868",
+    "mode": "local diagnostic module; not deployed production build"
+  }
+}
