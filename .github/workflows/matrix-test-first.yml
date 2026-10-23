@@ -1,0 +1,54 @@
+name: Matrix test-first implementation
+on:
+  push:
+    branches: [compat/numerics-and-text]
+    paths: ['.github/workflows/matrix-test-first.yml']
+permissions:
+  contents: write
+jobs:
+  red:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Pin and generate the reviewed matrix test source
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('tools/port_matrix_type_tests.py');s=p.read_text()
+          assert s.count("SHA='REPLACE_WITH_VERIFIED_HASH'")==1
+          p.write_text(s.replace("SHA='REPLACE_WITH_VERIFIED_HASH'","SHA='faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345'"))
+          p=Path('crates/blended-core/src/lib.rs');s=p.read_text()
+          assert 'pub mod matrix_type_cases;' not in s
+          p.write_text(s+'\npub mod matrix_type_cases;\n')
+          PY
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/port_matrix_type_tests.py
+      - name: Commit the test bodies first
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add tools crates tests compatibility
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Test-first: 21 matrix cases preserve 289 scalar assertions; matrix implementation absent'
+          git push origin HEAD:refs/heads/compat/numerics-and-text
+      - name: Execute new tests without suppressing missing implementation failures
+        run: |
+          mkdir -p evidence/matrix-tdd
+          git rev-parse HEAD > evidence/matrix-tdd/commit.txt
+          set -o pipefail
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/matrix-tdd/red.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: matrix-test-first-evidence
+          path: evidence/matrix-tdd/
+          retention-days: 3
