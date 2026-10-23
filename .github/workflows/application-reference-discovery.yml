@@ -1,0 +1,100 @@
+name: Pinned application reference discovery
+on:
+  push:
+    branches: [compat/complete-families]
+    paths: ['.github/workflows/application-reference-discovery.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  remove-temporary-kit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      actions: write
+    steps:
+      - name: Remove the downloaded temporary compiler artifact to avoid retaining large storage
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          NAME=$(gh api "repos/${REPO}/actions/artifacts/12500415280" --jq .name)
+          test "$NAME" = offline-port-development-kit
+          gh api --method DELETE "repos/${REPO}/actions/artifacts/12500415280"
+  application-reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    env:
+      CC: clang
+      CXX: clang++
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch original pinned sources, test assets and application libraries
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/application-reference
+          printf '%s\n' '${{ github.sha }}' > evidence/application-reference/project-commit.txt
+          printf '%s\n' '${{ github.run_id }}' > evidence/application-reference/run-id.txt
+          clang --version > evidence/application-reference/compiler.txt
+          df -h > evidence/application-reference/disk-before.txt
+          python3 tools/fetch_upstreams.py blender
+          git -C .upstream/blender rev-parse HEAD > evidence/application-reference/blender-commit.txt
+          git -C .upstream/blender lfs install --local
+          git -C .upstream/blender config lfs.url https://projects.blender.org/blender/blender.git/info/lfs
+          git -C .upstream/blender config lfs.https://projects.blender.org/blender/blender.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender lfs pull --include='release/datafiles/**,tests/files/**' --exclude=''
+          GIT_LFS_SKIP_SMUDGE=1 git -C .upstream/blender submodule update --init --depth=1 --checkout lib/linux_x64
+          git -C .upstream/blender/lib/linux_x64 rev-parse HEAD > evidence/application-reference/libraries-commit.txt
+          git -C .upstream/blender/lib/linux_x64 lfs install --local
+          git -C .upstream/blender/lib/linux_x64 config lfs.https://projects.blender.org/blender/lib-linux_x64.git/info/lfs.access none
+          GIT_TERMINAL_PROMPT=0 git -C .upstream/blender/lib/linux_x64 lfs pull --include='' --exclude='llvm/**,osl/**'
+          df -h > evidence/application-reference/disk-after-download.txt
+      - name: Configure the full CPU application, explicitly excluding GPU device and OSL configurations
+        run: |
+          set -o pipefail
+          cmake -S .upstream/blender -B build/application-reference -G Ninja \
+            -C .upstream/blender/build_files/cmake/config/blender_headless.cmake \
+            -DCMAKE_BUILD_TYPE=Release -DWITH_GTESTS=ON -DWITH_TESTS_BATCHED=OFF \
+            -DWITH_CYCLES_OSL=OFF -DWITH_CYCLES_DEVICE_CUDA=OFF -DWITH_CYCLES_DEVICE_OPTIX=OFF \
+            -DWITH_CYCLES_DEVICE_HIP=OFF -DWITH_CYCLES_DEVICE_ONEAPI=OFF \
+            -DWITH_VULKAN_BACKEND=OFF -DWITH_GHOST_WAYLAND=OFF \
+            -DWITH_COMPILER_ASAN=OFF 2>&1 | tee evidence/application-reference/configure.log
+          cp build/application-reference/CMakeCache.txt evidence/application-reference/
+      - name: Build the original application and all configured native test binaries
+        run: |
+          set -o pipefail
+          cmake --build build/application-reference -j 3 2>&1 | tee evidence/application-reference/build.log
+          cmake --install build/application-reference > evidence/application-reference/install.log 2>&1
+      - name: Retain CTest commands and all compiled GoogleTest runtime registrations
+        run: |
+          set -euo pipefail
+          LIBPATH=$(find "$PWD/.upstream/blender/lib/linux_x64" -type d \( -name lib -o -name lib64 \) -printf '%p:')
+          export LD_LIBRARY_PATH="${LIBPATH}${LD_LIBRARY_PATH:-}"
+          ctest --test-dir build/application-reference --show-only=json-v1 > evidence/application-reference/ctest.json
+          python3 - <<'PY'
+          import hashlib,json,os,subprocess
+          from pathlib import Path
+          out=Path('evidence/application-reference');records=[]
+          for exe in sorted(Path('build/application-reference/bin/tests').rglob('*')):
+              if not exe.is_file() or not os.access(exe,os.X_OK): continue
+              with exe.open('rb') as f: magic=f.read(4)
+              if magic!=b'\x7fELF':continue
+              result=subprocess.run([str(exe.resolve()),'--gtest_list_tests'],capture_output=True,text=True,timeout=180)
+              name=exe.name; (out/(name+'.list.txt')).write_text(result.stdout);(out/(name+'.stderr.txt')).write_text(result.stderr)
+              records.append({'executable':name,'sha256':hashlib.sha256(exe.read_bytes()).hexdigest(),'returncode':result.returncode,'listing_sha256':hashlib.sha256(result.stdout.encode()).hexdigest()})
+          ctest=json.loads((out/'ctest.json').read_text())
+          report={'reference_commit':(out/'blender-commit.txt').read_text().strip(),'scope':'configured Linux headless CPU application; excludes OSL, hardware GPU device configurations and other operating systems','ctest_registrations':len(ctest.get('tests',[])),'native_binaries':records,'all_configured_binaries_listed':bool(records) and all(r['returncode']==0 for r in records),'full_blender_runtime_enumeration':False,'complete_blender_test_port':False,'tests_executed':False}
+          (out/'discovery-summary.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          if not report['all_configured_binaries_listed']:raise SystemExit(1)
+          PY
+          build/application-reference/bin/blender --background --factory-startup --python-expr 'import bpy; print(bpy.app.version_string); print(bpy.app.build_hash)' > evidence/application-reference/application-smoke.txt 2>&1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: application-reference-discovery
+          path: evidence/application-reference/
+          retention-days: 1
