@@ -11,7 +11,7 @@ from port_numerics_text_tests import numbers,comments,vector_expr
 ROOT=Path(__file__).resolve().parents[1]
 PIN='94363991e7dcf39e2d70614aa002ab6f67764a5d'
 SOURCE='source/blender/blenlib/tests/BLI_math_matrix_types_test.cc'
-SHA='REPLACE_WITH_VERIFIED_HASH'
+SHA='faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345'
 HEADER='''// SPDX-FileCopyrightText: 2023 Blender Authors
 // SPDX-License-Identifier: Apache-2.0
 // Generated from pinned original matrix test bodies, not replacement expectations.

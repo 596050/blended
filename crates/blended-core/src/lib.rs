@@ -80,3 +80,5 @@ pub extern "C" fn blended_numerics_text_run_case(index:u32)->i32 {
 pub extern "C" fn blended_numerics_text_assertion_count(index:u32)->u32 {
     numerics_text_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
 }
+
+pub mod matrix_type_cases;
