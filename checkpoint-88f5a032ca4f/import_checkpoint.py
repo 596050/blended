@@ -23,6 +23,10 @@ BUNDLE_SHA256 = "975de0e275b469a722587a3e5237c8a711200761f2fef568eff248ecce9c482
 BUNDLE_BYTES = 16083388
 LEDGER_PATH = "compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/report.json"
 LEDGER_SHA256 = "d1b6df970fd0be756b374eba9ca2c662372106c9e3ec1fe6df9ea80bff553e81"
+LFS_OID = "1335899143c7e77bcb0f6e3680fd99078c0af481a1238e4ed7d4eb1ddd7dd353"
+LFS_BYTES = 121384
+LFS_PATH = "checkpoint-88f5a032ca4f/lfs/startup.blend"
+LFS_POINTER = "compatibility/evidence/product-configure-2026-10-23/startup.blend.pointer"
 
 
 def utc():
@@ -59,13 +63,16 @@ def main():
     def save():
         (work / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
 
-    def run(name, argv, *, timeout=180):
+    def run(name, argv, *, timeout=180, input_data=None):
         record = {"name": name, "argv": [str(x) for x in argv], "started_utc": utc()}
+        if input_data is not None:
+            record["stdin"] = {"bytes": len(input_data), "sha256": hashlib.sha256(input_data).hexdigest()}
         receipt["commands"].append(record)
         save()
         try:
             result = subprocess.run(record["argv"], stdout=subprocess.PIPE,
-                                    stderr=subprocess.PIPE, timeout=timeout, check=False)
+                                    stderr=subprocess.PIPE, input=input_data,
+                                    timeout=timeout, check=False)
             stdout, stderr, returncode = result.stdout, result.stderr, result.returncode
             timed_out = False
         except subprocess.TimeoutExpired as error:
@@ -95,6 +102,16 @@ def main():
             "ref": "refs/heads/" + EXPECTED["target_branch"],
         }, "Unexpected bundle contract")
         root = args.chunks_root.resolve()
+        expected_lfs = {"path": LFS_PATH, "bytes": LFS_BYTES, "sha256": LFS_OID}
+        require(manifest.get("lfs_objects") == [expected_lfs], "Unexpected referenced LFS object contract")
+        lfs_path = root / LFS_PATH
+        require(not lfs_path.is_symlink() and lfs_path.resolve().is_relative_to(root),
+                "LFS payload is not an ordinary in-root file")
+        lfs_payload = lfs_path.read_bytes()
+        require(len(lfs_payload) == LFS_BYTES and hashlib.sha256(lfs_payload).hexdigest() == LFS_OID,
+                "Original LFS payload does not match its source pointer")
+        receipt["lfs_objects"] = [expected_lfs]
+        receipt["lfs_upload_outcome"] = "not_attempted"
         chunks = manifest["chunks"]
         require(len(chunks) == 31, "Unexpected chunk count")
         bundle = work / "verified.bundle"
@@ -137,6 +154,10 @@ def main():
         ledger_data = run("ledger", git + ["show", target + ":" + LEDGER_PATH])
         require(hashlib.sha256(ledger_data).hexdigest() == LEDGER_SHA256, "Ledger digest mismatch")
         receipt["verified_ledger_sha256"] = LEDGER_SHA256
+        run("lfs-version", git + ["lfs", "version"])
+        generated_pointer = run("lfs-clean", git + ["lfs", "clean"], input_data=lfs_payload)
+        original_pointer = run("original-lfs-pointer", git + ["show", target + ":" + LFS_POINTER])
+        require(generated_pointer == original_pointer, "Git LFS did not reproduce the committed evidence pointer")
 
         branch_ref = "refs/heads/" + EXPECTED["target_branch"]
         def read_head(name):
@@ -152,6 +173,12 @@ def main():
         receipt["status"] = "verified"
         if args.push:
             if before != target:
+                # This uploads only the one immutable payload referenced by the
+                # reviewed pointer. The target commit and pointer remain unchanged.
+                receipt["lfs_upload_outcome"] = "unknown"
+                save()
+                run("lfs-push", git + ["lfs", "push", "--object-id", "origin", LFS_OID], timeout=180)
+                receipt["lfs_upload_outcome"] = "completed"
                 # The ancestry check above proves this is a fast-forward.
                 # The explicit lease adds an atomic check against a concurrent change.
                 receipt.update(publication_outcome="unknown", published=None)
