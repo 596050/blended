@@ -28,15 +28,17 @@ jobs:
           mkdir -p evidence/collection-integration
           cargo test --locked --workspace --all-targets > evidence/collection-integration/native.txt 2>&1
           python3 tools/verify_static_port.py --output evidence/collection-integration/static-port.json
-      - name: Commit generated source and integration, without claiming fidelity execution yet
+          cp .github/workflows/test-port-conformance.yml evidence/collection-integration/proposed-conformance.yml
+      - name: Commit generated source using content-only permissions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          git rm tools/install_collection_batch.py .github/workflows/collection-bootstrap.yml
-          git add crates tools tests compatibility .github/workflows/test-port-conformance.yml evidence/collection-integration
+          git restore .github/workflows/test-port-conformance.yml
+          git rm tools/install_collection_batch.py
+          git add crates tools tests compatibility evidence/collection-integration
           gh auth setup-git
-          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register 32 complete collection ports and native/WASM signed-zero compile-time check; fidelity verification pending'
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register 32 complete collection ports and native/WASM signed-zero compile-time check; original-reference fidelity verification pending'
           git push origin HEAD:refs/heads/compat/collections-fidelity
       - uses: actions/upload-artifact@v4
         if: always()
