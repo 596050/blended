@@ -68,9 +68,13 @@ def load_ports(inventory):
         if not generated.exists():continue
         data=json.loads(generated.read_text())
         if data['upstream_commit']!=inventory['commit']:raise ValueError('Port reference commit mismatch')
-        target_hash=hashlib.sha256((ROOT/target_path).read_bytes()).hexdigest()
         for p in data['cases']:
-            ports.append(dict(p,semantics_reviewed=False,target_test=module+'::'+p['rust_function'],target_path=target_path,target_sha256=target_hash))
+            # Embedded compile-time assertions live in their original translated
+            # runtime module, not in the standalone compile_time_cases module.
+            case_path=p.get('target_path',target_path)
+            case_module=p.get('target_module',module)
+            target_hash=hashlib.sha256((ROOT/case_path).read_bytes()).hexdigest()
+            ports.append(dict(p,semantics_reviewed=False,target_test=case_module+'::'+p['rust_function'],target_path=case_path,target_sha256=target_hash))
     original=ROOT/'crates/blended-core/src/compat_cases.rs'
     ids=set(re.findall(r'\("(math_vector\.[^"]+)"',original.read_text()))
     path='source/blender/blenlib/tests/BLI_math_vector_test.cc'
