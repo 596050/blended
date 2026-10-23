@@ -5,16 +5,18 @@ on:
   push:
     branches: ['parity/**']
     paths:
-      - tools/*.py
+      - tools/**
       - tests/**
       - compatibility/candidate-suites/**
+      - compatibility/package-overlays/**
       - compatibility/evidence/**
       - .github/workflows/test-parity-ledger.yml
   pull_request:
     paths:
-      - tools/*.py
+      - tools/**
       - tests/**
       - compatibility/candidate-suites/**
+      - compatibility/package-overlays/**
       - compatibility/evidence/**
       - .github/workflows/test-parity-ledger.yml
 
@@ -45,9 +47,21 @@ jobs:
         run: python3 -m unittest discover -s tests -q
 
   original-test-parity:
-    name: Require every declared native/browser obligation
+    name: Require declared native/browser obligations (${{ matrix.package }})
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - package: base
+            browser_matrix: unittest-browser-matrix-5.2-2026-10-23
+            resource_matrix: unittest-browser-resources-5.2-2026-10-23
+            context: runtime-context-2026-10-23
+          - package: essentials
+            browser_matrix: unittest-browser-essentials-5.2-2026-10-23
+            resource_matrix: unittest-browser-essentials-resources-5.2-2026-10-23
+            context: runtime-context-essentials-2026-10-23
     steps:
       - uses: actions/checkout@v4
         with:
@@ -61,10 +75,10 @@ jobs:
           --repo-root .
           --source-plan compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json
           --native-retry-plan compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json
-          --browser-matrix compatibility/evidence/unittest-browser-matrix-5.2-2026-10-23/matrix.json
-          --browser-matrix compatibility/evidence/unittest-browser-resources-5.2-2026-10-23/matrix.json
+          --browser-matrix compatibility/evidence/${{ matrix.browser_matrix }}/matrix.json
+          --browser-matrix compatibility/evidence/${{ matrix.resource_matrix }}/matrix.json
           --native-context compatibility/evidence/runtime-context-2026-10-23/native-context.json
-          --browser-context compatibility/evidence/runtime-context-2026-10-23/browser-context.json
+          --browser-context compatibility/evidence/${{ matrix.context }}/browser-context.json
           --output evidence/reconciled-original-tests
           --report-only
       - name: Enforce the strict declared-scope gate
@@ -79,7 +93,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: original-test-ledger-${{ github.run_id }}
+          name: original-test-ledger-${{ matrix.package }}-${{ github.run_id }}
           path: evidence/reconciled-original-tests/
           retention-days: 14
           if-no-files-found: error

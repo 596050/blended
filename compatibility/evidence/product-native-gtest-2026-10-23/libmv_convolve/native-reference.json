@@ -1,0 +1,588 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve_test-build.json",
+    "bytes": 3294,
+    "sha256": "f368b19095b0569323fd3135353c52ca995cfce82390471e3088d0cb1f3ca0b8"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+    "bytes": 1119456,
+    "sha256": "61a64e570bdfb0d50e102449541120e95bfc9f345431160774d1d4c8ca3c23a5"
+  },
+  "original_registration": {
+    "id": "ctest:c6b1a94aa72e7fb6de906e5a4ac33eacab766e58121e3a3cd998aa201cf77038",
+    "identity": "libmv_convolve",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 213,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_convolve",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:04.112937+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:04.117852+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/registered-listing.stdout.txt",
+          "bytes": 230,
+          "sha256": "25b389cafe94a627fee94cb2dd693780fd67f58e74377a299811f1afae6fcf81"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/registered-gtest-inventory.json",
+        "bytes": 8207,
+        "sha256": "ba89796d5faf2204fcadfebbf635869f40d5ca1719576aa8fdcae22290d8e9f5"
+      },
+      "counts": {
+        "cases": 7,
+        "disabled": 0,
+        "not_run": 7
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:04.117962+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:04.121743+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/unfiltered-listing.stdout.txt",
+          "bytes": 230,
+          "sha256": "25b389cafe94a627fee94cb2dd693780fd67f58e74377a299811f1afae6fcf81"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/unfiltered-gtest-inventory.json",
+        "bytes": 8233,
+        "sha256": "ac55ed505869f96cb89e61e13f3bc0eaed758a99db336d4ac13140412def176c"
+      },
+      "counts": {
+        "cases": 7,
+        "disabled": 0,
+        "not_run": 7
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_convolve$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:12:04.213391+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:12:04.378152+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-execution.stdout.txt",
+      "bytes": 2411,
+      "sha256": "9cbe193f377d50e138d1f9f26f95ae1b99c2365c4751983957a2d6ff3507b6ae"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_convolve$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:03.895735+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:04.110297+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-registration.stdout.txt",
+        "bytes": 2041,
+        "sha256": "6fa2a983c546c9a00b2fd96b62c73563494b8851af34bcc4ebcffe1ced7050aa"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:04.112937+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:04.117852+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/registered-listing.stdout.txt",
+        "bytes": 230,
+        "sha256": "25b389cafe94a627fee94cb2dd693780fd67f58e74377a299811f1afae6fcf81"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:04.117962+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:04.121743+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/unfiltered-listing.stdout.txt",
+        "bytes": 230,
+        "sha256": "25b389cafe94a627fee94cb2dd693780fd67f58e74377a299811f1afae6fcf81"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_convolve$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:04.213391+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:04.378152+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-execution.stdout.txt",
+        "bytes": 2411,
+        "sha256": "9cbe193f377d50e138d1f9f26f95ae1b99c2365c4751983957a2d6ff3507b6ae"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "7",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T19:12:04.370",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "Convolve.ComputeGaussianKernel",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ComputeGaussianKernel",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "32",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:9a1505bff88468e9971efca127b9ba4912616c14252444e7965a857411248118",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 32,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    },
+    {
+      "identity": "Convolve.ConvolveGaussian",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ConvolveGaussian",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "39",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b09f04a7dd2ea374037d6892b27e28d6f394eb80b2e8822d3e16da07a8b58e6b",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 39,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    },
+    {
+      "identity": "Convolve.BoxFilterHorizontal",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BoxFilterHorizontal",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "47",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:dc875023dde4f7a1431fc309c8b5bdcae2c0d34dc28768f9d34de01356c589e7",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 47,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    },
+    {
+      "identity": "Convolve.BoxFilter",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BoxFilter",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "58",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:42b16ca3d50332219cdad24bf646ca80c6595370e8574233bd0633a3750a4e39",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 58,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    },
+    {
+      "identity": "Convolve.BlurredImageAndDerivativesChannelsFlat",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BlurredImageAndDerivativesChannelsFlat",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "75",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:504c2d0982d6bcad74fa2649757a81e816be56268b0d582a88fc4ab97ec4833e",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 75,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    },
+    {
+      "identity": "Convolve.BlurredImageAndDerivativesChannelsHorizontalSlope",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BlurredImageAndDerivativesChannelsHorizontalSlope",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "84",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:45e2e4792220021709e16c70528687f0b2a69ab78ec90669b977eda9541234d5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 84,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    },
+    {
+      "identity": "Convolve.BlurredImageAndDerivativesChannelsVerticalSlope",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BlurredImageAndDerivativesChannelsVerticalSlope",
+        "file": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": "97",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:04.370",
+        "classname": "Convolve"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:7b644fb663e6cc6d360084bc9f2bfd40241ccc09f302252b32cf63a6155e78a3",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/convolve_test.cc",
+        "line": 97,
+        "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/image/convolve_test.cc": {
+      "path": "intern/libmv/libmv/image/convolve_test.cc",
+      "bytes": 3776,
+      "sha256": "c9d5435054c975d45ccc97ba2ab10bd697e1847e13da351666ab4eebf2638465",
+      "line_count": 110,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 7
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/gtest-results.xml",
+    "bytes": 1805,
+    "sha256": "0cee74df04a23c9c0f55d8b27134077a8d490a6bc53bcc05bfa6df0c6899f439"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_convolve/ctest-results.xml",
+    "bytes": 1455,
+    "sha256": "9c61604ec52993e2449824525d8939c2f560232cdcf33bea90a78475dc3837de"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

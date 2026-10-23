@@ -62,6 +62,7 @@ the checkout are rejected.
 | `conversion.json` | Per-registration diagnostics, raw exceptions, original input locations, and explicit superseded attempts. |
 | `raw/` | Content-addressed copies of the exact input evidence bytes, logs, archived inputs, context measurements, and browser harness snapshots. |
 | `normalizer/` | The converter and its validation dependencies as used for this conversion. |
+| `compatibility/package-overlays/` | The exact independently reviewed resource plan used by the archived normalizer. |
 
 All generated receipt references are relative to the output directory. The
 normalized output can be copied on its own and reassessed without the original
@@ -116,6 +117,41 @@ native CMake cache or prove independent source-to-binary reproduction.
 Receipt producers remain a trust boundary. Hashes and internal consistency
 checks establish which observations are being assessed; they do not independently
 re-execute the machine that produced them.
+
+## Separately identified package overlays
+
+The Essentials resource package has a different archive identity from its base
+source build. Its context retains the original `source_build_receipt` and CMake
+cache and adds three bound inputs: `package_overlay_receipt`,
+`package_base_asset`, and `package_overlay_measurement`. All three are required.
+A matrix for that artifact must independently bind the same overlay receipt and
+base archive, and each recorded host command must request those exact inputs.
+An earlier base-package execution cannot be transferred to the changed package.
+
+The converter checks the overlay against the fixed, reviewed resource plan. The
+independent package measurement binds the actual augmented archive, the original
+archive, unchanged source receipt, original browser context, measurement code,
+and package verifier. Its recorded archive-member identities must retain the
+original Wasm, identify the changed JavaScript, and account for the exact added
+preload bytes. Browser observations must match those independently measured
+member hashes and the full verification result. The producer harness must also
+contain the same verifier and reviewed plan.
+
+The measurement's historical verifier path is mapped explicitly to its adjacent
+preserved `browser_package_overlay.py` snapshot, with an exact hash/size check.
+External archive paths remain measured identities, so replay does not depend on
+the original runtime installation. Archive verification supplies no test passes
+and does not claim another engine compilation. Its result and all original
+test-execution results remain separate evidence.
+
+To assess the augmented package, keep the same native source and retry plans but
+use these browser inputs, choosing a fresh output directory:
+
+```sh
+--browser-matrix compatibility/evidence/unittest-browser-essentials-5.2-2026-10-23/matrix.json
+--browser-matrix compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/matrix.json
+--browser-context compatibility/evidence/runtime-context-essentials-2026-10-23/browser-context.json
+```
 
 ## Case and subtest semantics
 

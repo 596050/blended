@@ -1,0 +1,588 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography_test-build.json",
+    "bytes": 3305,
+    "sha256": "95996df2ef475c35701340560bf0ca51310f149aa200d89f87f6bc956d6c1491"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+    "bytes": 1236800,
+    "sha256": "461f1394bb67f7431cf7a4b567953134de26d7a4a39130746ea2f8de3073e611"
+  },
+  "original_registration": {
+    "id": "ctest:3e499be93ad20c49fde5373de8316ab2a26cf0d8aed771b2b304acfb7629c80e",
+    "identity": "libmv_homography",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 219,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_homography",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:16.788476+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:16.792150+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/registered-listing.stdout.txt",
+          "bytes": 183,
+          "sha256": "6bf6449578d5704eeab2695b48b964b7db34289e1aeafa347b5273a3e449b02e"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/registered-gtest-inventory.json",
+        "bytes": 8179,
+        "sha256": "e3f3c458b53abadb9ad616b2bacc3d81378d21475e870d42edee0cbfc94ddf2a"
+      },
+      "counts": {
+        "cases": 7,
+        "disabled": 0,
+        "not_run": 7
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:16.792206+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:16.795723+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/unfiltered-listing.stdout.txt",
+          "bytes": 183,
+          "sha256": "6bf6449578d5704eeab2695b48b964b7db34289e1aeafa347b5273a3e449b02e"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/unfiltered-gtest-inventory.json",
+        "bytes": 8205,
+        "sha256": "1e51a4d6e463f09029b14a6c0506d5dcca934faebf9655f1f9bd9460005e2838"
+      },
+      "counts": {
+        "cases": 7,
+        "disabled": 0,
+        "not_run": 7
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_homography$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:12:16.884289+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:12:17.048974+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-execution.stdout.txt",
+      "bytes": 2544,
+      "sha256": "e51772be9075a02c003b48678ea8dca2cf8724ac2b3755482df497a048bf95f8"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_homography$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:16.621053+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:16.785558+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-registration.stdout.txt",
+        "bytes": 2045,
+        "sha256": "5b129284efcfd65c836740563f01042123ec6db0fe4f53baa981f03e610640e6"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:16.788476+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:16.792150+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/registered-listing.stdout.txt",
+        "bytes": 183,
+        "sha256": "6bf6449578d5704eeab2695b48b964b7db34289e1aeafa347b5273a3e449b02e"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_homography_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:16.792206+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:16.795723+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/unfiltered-listing.stdout.txt",
+        "bytes": 183,
+        "sha256": "6bf6449578d5704eeab2695b48b964b7db34289e1aeafa347b5273a3e449b02e"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_homography$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:16.884289+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:17.048974+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-execution.stdout.txt",
+        "bytes": 2544,
+        "sha256": "e51772be9075a02c003b48678ea8dca2cf8724ac2b3755482df497a048bf95f8"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "7",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T19:12:17.034",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "Homography2DTest.Rotation45AndTranslationXY",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Rotation45AndTranslationXY",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "48",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography2DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1fa1b75b7163d79191ffc1cbe40945e5ad5197a30a345240b61a80e4d1993cb8",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 48,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    },
+    {
+      "identity": "Homography2DTest.AffineGeneral4",
+      "outcome": "passed",
+      "attributes": {
+        "name": "AffineGeneral4",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "79",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography2DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:ebdcf93c8c6ed5d1e4acb1f844744fded30a74ab90ac9e10b10f9e1e2fd719f1",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 79,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    },
+    {
+      "identity": "Homography2DTest.AffineGeneral5",
+      "outcome": "passed",
+      "attributes": {
+        "name": "AffineGeneral5",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "117",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography2DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:2a9e4cab8fbe6a3ce84738e9e67bd5cf821420989c691f5070e750fdd89105e2",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 117,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    },
+    {
+      "identity": "Homography2DTest.HomographyGeneral",
+      "outcome": "passed",
+      "attributes": {
+        "name": "HomographyGeneral",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "155",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography2DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:ea507eb2722a433a5f73c9be7b7d1871114a1824c059930773b6856080843ec9",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 155,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    },
+    {
+      "identity": "Homography3DTest.RotationAndTranslationXYZ",
+      "outcome": "passed",
+      "attributes": {
+        "name": "RotationAndTranslationXYZ",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "182",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography3DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:2a69829b4edaeb3ec45e7900447e57f1166584af3815d344c223ddb58dac666c",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 182,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    },
+    {
+      "identity": "Homography3DTest.AffineGeneral",
+      "outcome": "passed",
+      "attributes": {
+        "name": "AffineGeneral",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "238",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography3DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:6b93b9e3e1e4a76ae633d4d12cf370c9ce8b5f2f566cfcdbf00b2802031af147",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 238,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    },
+    {
+      "identity": "Homography3DTest.HomographyGeneral",
+      "outcome": "passed",
+      "attributes": {
+        "name": "HomographyGeneral",
+        "file": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": "266",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:17.034",
+        "classname": "Homography3DTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1fa4e74987700c55ee2148e6496b3e035650b97bf4abced676dedf4470f22c8a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/multiview/homography_test.cc",
+        "line": 266,
+        "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/multiview/homography_test.cc": {
+      "path": "intern/libmv/libmv/multiview/homography_test.cc",
+      "bytes": 8057,
+      "sha256": "f7caee444a7278769bed5f540f72bf85fb1e354660419fedc7044c12bed83afd",
+      "line_count": 294,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 7
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/gtest-results.xml",
+    "bytes": 2001,
+    "sha256": "70fc48469b65546143c77250c227e2e4e95a2d9d0e015a1f5e6b7859b04efa3e"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_homography/ctest-results.xml",
+    "bytes": 1459,
+    "sha256": "1df7d1a5d63bde60b917e54fae41c8cb90a7aff73616f422f3b5837a81587830"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

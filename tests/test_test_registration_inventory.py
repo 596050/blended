@@ -274,10 +274,48 @@ class GTestRuntimeInventoryTests(unittest.TestCase):
         self.assertEqual([c["identity"] for c in result["cases"]], ["Old.First"])
         self.assertEqual(len(result["unparsed_lines"]), 2)
 
-    def test_duplicate_case_or_suite_is_rejected(self):
-        for text in ("S.\n  C\n  C\n", "S.\n  C\nS.\n  D\n"):
-            with self.subTest(text=text), self.assertRaisesRegex(ValueError, "Duplicate"):
-                gtest_inventory(text)
+    def test_original_duplicate_case_names_remain_unresolved_observations(self):
+        # The real product BLI binary registers stack.Peek from both the C and
+        # C++ stack test files. Its list output contains no source locations.
+        result = gtest_inventory("stack.\n  Push\n  Peek\n  Empty\n  Peek\n")
+        self.assertEqual([case["identity"] for case in result["cases"]],
+                         ["stack.Push", "stack.Peek", "stack.Empty", "stack.Peek"])
+        duplicates = [case for case in result["cases"] if case["identity"] == "stack.Peek"]
+        self.assertEqual(len({case["id"] for case in result["cases"]}), 4)
+        self.assertTrue(all(case["kind"] == "gtest_runtime_observation" for case in duplicates))
+        self.assertTrue(all(case["identity_status"] == "ambiguous_duplicate_name" for case in duplicates))
+        self.assertTrue(all(case["expansion_obligation"]["status"] == "unresolved" for case in duplicates))
+        self.assertTrue(all(case["execution"] == "not_run" for case in duplicates))
+        self.assertEqual(result["duplicate_identities"][0]["listing_lines"], [3, 5])
+        self.assertIn("ambiguous_duplicate_case_names", result["blockers"])
+        self.assertFalse(result["runtime_identities_unambiguous"])
+        self.assertFalse(result["runtime_enumeration_complete"])
+        self.assertTrue(result["listing_parse_complete"])
+        unique = gtest_inventory("stack.\n  Push\n")["cases"][0]
+        self.assertEqual(unique["id"], result["cases"][0]["id"])
+
+    def test_duplicate_suite_headers_still_reject_ambiguous_capture_structure(self):
+        with self.assertRaisesRegex(ValueError, "Duplicate"):
+            gtest_inventory("S.\n  C\nS.\n  D\n")
+
+    def test_source_qualified_identity_resolves_equal_names_without_order(self):
+        from tools.test_registration_inventory import gtest_source_case_id
+        common = {"source_commit": PRODUCT_COMMIT, "source_sha256": "a" * 64}
+        first = gtest_source_case_id("stack.Peek", source_path="source/blender/blenlib/tests/BLI_stack_test.cc",
+                                    source_line=97, **common)
+        second = gtest_source_case_id("stack.Peek", source_path="source/blender/blenlib/tests/BLI_stack_cxx_test.cc",
+                                     source_line=172, **common)
+        self.assertNotEqual(first, second)
+        again = gtest_source_case_id("stack.Peek", source_path="source/blender/blenlib/tests/BLI_stack_test.cc",
+                                    source_line=97, **common)
+        self.assertEqual(first, again)
+        for invalid in ({"source_path": "../outside.cc", "source_line": 1},
+                        {"source_path": "/absolute.cc", "source_line": 1},
+                        {"source_path": "file.cc", "source_line": True},
+                        {"source_path": "file.cc", "source_line": 0},
+                        {"source_path": "file.cc", "source_line": None}):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                gtest_source_case_id("stack.Peek", **common, **invalid)
 
     def test_empty_listing_and_empty_suite_keep_unknown_denominator(self):
         empty = gtest_inventory("")

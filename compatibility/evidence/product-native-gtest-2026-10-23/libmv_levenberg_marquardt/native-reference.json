@@ -1,0 +1,444 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt_test-build.json",
+    "bytes": 3351,
+    "sha256": "438e2eef030064c900f70d8e0017faeb8db15e52ce998f626626696d45e2d78e"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+    "bytes": 1029472,
+    "sha256": "4893f3c30851f4d6d747e2ca66d82c2c96654d35d87bb8d76f62a4860b1fbe7e"
+  },
+  "original_registration": {
+    "id": "ctest:9882bdfeec9bd595a1c2d12b0719a6d18e07626aba8209e8233a0059f976513d",
+    "identity": "libmv_levenberg_marquardt",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 227,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_levenberg_marquardt",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:27.780110+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:27.783844+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/registered-listing.stdout.txt",
+          "bytes": 33,
+          "sha256": "e9796dbb5089d1fff208099393a553f5122539fafa64a82ab35357d7eafac26f"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/registered-gtest-inventory.json",
+        "bytes": 3207,
+        "sha256": "55827eaf6faa010ac438f8733fb0f24aa67a593ec72e1dbf946e495b1ba665e7"
+      },
+      "counts": {
+        "cases": 1,
+        "disabled": 0,
+        "not_run": 1
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:27.783907+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:27.787517+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/unfiltered-listing.stdout.txt",
+          "bytes": 33,
+          "sha256": "e9796dbb5089d1fff208099393a553f5122539fafa64a82ab35357d7eafac26f"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/unfiltered-gtest-inventory.json",
+        "bytes": 3233,
+        "sha256": "66883fdae43b6a61978c98fbec494f11d98a86ffe45bc483701a689019f494fc"
+      },
+      "counts": {
+        "cases": 1,
+        "disabled": 0,
+        "not_run": 1
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_levenberg_marquardt$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:12:27.880414+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:12:28.044976+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-execution.stdout.txt",
+      "bytes": 1766,
+      "sha256": "ed3338903eef50752c859de08784d4b9bc31433d5a8a0253ccda1e5c02371dd9"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_levenberg_marquardt$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:27.612961+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:27.777974+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-registration.stdout.txt",
+        "bytes": 2063,
+        "sha256": "8818a69e77bf8b476d1554bf3a6a99a97ef6f571f720abe513aad8115642f6ea"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:27.780110+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:27.783844+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/registered-listing.stdout.txt",
+        "bytes": 33,
+        "sha256": "e9796dbb5089d1fff208099393a553f5122539fafa64a82ab35357d7eafac26f"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_levenberg_marquardt_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:27.783907+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:27.787517+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/unfiltered-listing.stdout.txt",
+        "bytes": 33,
+        "sha256": "e9796dbb5089d1fff208099393a553f5122539fafa64a82ab35357d7eafac26f"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_levenberg_marquardt$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:27.880414+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:28.044976+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-execution.stdout.txt",
+        "bytes": 1766,
+        "sha256": "ed3338903eef50752c859de08784d4b9bc31433d5a8a0253ccda1e5c02371dd9"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "1",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T19:12:28.016",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "LevenbergMarquardt.SimpleCase",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SimpleCase",
+        "file": "intern/libmv/libmv/numeric/levenberg_marquardt_test.cc",
+        "line": "42",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:28.016",
+        "classname": "LevenbergMarquardt"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:6eae84c3c26867708396e1913eb6d4466a10f7bc29621f8ae10cbab83f2e9f07",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/levenberg_marquardt_test.cc",
+        "line": 42,
+        "sha256": "0c999e76e6d37c5cbae1bf84280cf5ae6df760d21f8c316f715e03416eee0c30"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/numeric/levenberg_marquardt_test.cc": {
+      "path": "intern/libmv/libmv/numeric/levenberg_marquardt_test.cc",
+      "bytes": 1927,
+      "sha256": "0c999e76e6d37c5cbae1bf84280cf5ae6df760d21f8c316f715e03416eee0c30",
+      "line_count": 54,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 1
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/gtest-results.xml",
+    "bytes": 551,
+    "sha256": "70f31c9d60f3a8bd15fe87e3c13a8cd11e75b48626c72252868c47e9d82b56a2"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_levenberg_marquardt/ctest-results.xml",
+    "bytes": 771,
+    "sha256": "c4ec8e355e68b06d6a77a7b687bb34ddc94a6335480cd9ce995e66fa75ea163f"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "3be8a9bfc5ce0534d56f3fca86cba6f21ba9aac9f3bfa9ac4de73ea7ca711e1d"
+  },
+  "registration_id": "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T14:13:02.348099+00:00",
+    "name": "registered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T14:13:02.339760+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 258,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-listing.stdout.txt",
+      "sha256": "5b58c8b59c7c0e082a65c4eb5c9cb386aa32a47de0c9417c44ba765530e391b1"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "5b58c8b59c7c0e082a65c4eb5c9cb386aa32a47de0c9417c44ba765530e391b1",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_identities_unambiguous": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:49d16cf7161633472562f3ddcab7bea2fd9a957fa8c37207ef9e6b57c397e53f",
+      "identity": "VectorAlignmentTest.PushBack",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorAlignmentTest",
+      "name": "PushBack",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:160c8e1b775d48cf3e6a1ae90dce5d72aa017718bddb684c45b8738b5b2368cc",
+      "identity": "VectorTest.EmptyVectorDoesNotConstruct",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "EmptyVectorDoesNotConstruct",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 4,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e72f5634d4ede7e085ec140914f7331f1bd6b4706f1f129b2b38eb05a63d54c2",
+      "identity": "VectorTest.DestructorGetsCalled",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "DestructorGetsCalled",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 5,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d5b580abedaf2c50ba3bf04a8d937d0d4e5eb835549acb844f8c6049c8947802",
+      "identity": "VectorTest.ReserveDoesNotCallConstructorsOrDestructors",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "ReserveDoesNotCallConstructorsOrDestructors",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 6,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ac1771633821941a076391c20e574ff68747110a1e8e82cd7f6846b0d31b4f5e",
+      "identity": "VectorTest.ResizeConstructsAndDestructsAsExpected",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "ResizeConstructsAndDestructsAsExpected",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 7,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e8a4a54f80c299539b1e441b0e04598cfd6330cc6f84d11321c5e09c4aa2144a",
+      "identity": "VectorTest.PushPopBack",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "PushPopBack",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 8,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:d9061d0800b0e3766a685d47bcdf4de3a47be4a361867dc814e4b5f5386206f7",
+      "identity": "VectorTest.CopyConstructor",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "CopyConstructor",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 9,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3c635448ede1c97bbfc5955022c29722a02953b8cdd1bb3215bd08f96901413b",
+      "identity": "VectorTest.OperatorEquals",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "OperatorEquals",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 10,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3948bc6938173691a05af71eb862929ce23f48d262251d516f25ee2ae74e2be7",
+      "identity": "VectorTest.STLFind",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "VectorTest",
+      "name": "STLFind",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 11,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ee757f892a24d58cc3f659c39401a91997c00dc4ab8e5b1b5df7b09a01c24fb7",
+      "identity": "Vector.swap",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Vector",
+      "name": "swap",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc"
+      ],
+      "listing_line": 13,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "duplicate_identities": [],
+  "counts": {
+    "cases": 10,
+    "disabled": 0,
+    "not_run": 10
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

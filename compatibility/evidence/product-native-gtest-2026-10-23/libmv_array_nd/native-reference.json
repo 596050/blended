@@ -1,0 +1,996 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd_test-build.json",
+    "bytes": 3296,
+    "sha256": "e6b90d3594ee446068a9cd1e5af36a05c05dfd5ce6b57837df75189ebc335bb5"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+    "bytes": 1129048,
+    "sha256": "d5d33e23ecfe1587222626f5e44459e07b1f492779b930b5bada7f266273a010"
+  },
+  "original_registration": {
+    "id": "ctest:8667d6783739980425e771b4e05afe426451302e34c0ad1d31ee58b10ce73d42",
+    "identity": "libmv_array_nd",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 212,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_array_nd",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:11:57.835793+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:11:57.843667+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/registered-listing.stdout.txt",
+          "bytes": 398,
+          "sha256": "dbd9f0e559e33c6e4b62b591e88adffa9274fbe7a93d419566fb4b15270d9fa3"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/registered-gtest-inventory.json",
+        "bytes": 21620,
+        "sha256": "0e23cd2d62a618234647766550b02abbee5179f38215c5d5544041d7a5980b4a"
+      },
+      "counts": {
+        "cases": 24,
+        "disabled": 0,
+        "not_run": 24
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:11:57.843740+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:11:57.847353+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/unfiltered-listing.stdout.txt",
+          "bytes": 398,
+          "sha256": "dbd9f0e559e33c6e4b62b591e88adffa9274fbe7a93d419566fb4b15270d9fa3"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/unfiltered-gtest-inventory.json",
+        "bytes": 21646,
+        "sha256": "ad342e71db85c37294cd8d3be93cb88e237a92654bab251517a9b58862c65889"
+      },
+      "counts": {
+        "cases": 24,
+        "disabled": 0,
+        "not_run": 24
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_array_nd$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:11:57.956340+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:11:58.121201+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-execution.stdout.txt",
+      "bytes": 3753,
+      "sha256": "299dc58c2f6904ad20d9d6c8774e0e6d62a2ab31933010a90feadf99805e8ff1"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_array_nd$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:11:57.668352+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:11:57.832755+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-registration.stdout.txt",
+        "bytes": 2041,
+        "sha256": "2bf8e947b9dba93bb41ab28802dceed5adec64afc07b6d98a0e83cb963598d2d"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:11:57.835793+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:11:57.843667+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/registered-listing.stdout.txt",
+        "bytes": 398,
+        "sha256": "dbd9f0e559e33c6e4b62b591e88adffa9274fbe7a93d419566fb4b15270d9fa3"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_array_nd_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:11:57.843740+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:11:57.847353+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/unfiltered-listing.stdout.txt",
+        "bytes": 398,
+        "sha256": "dbd9f0e559e33c6e4b62b591e88adffa9274fbe7a93d419566fb4b15270d9fa3"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_array_nd$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:11:57.956340+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:11:58.121201+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-execution.stdout.txt",
+        "bytes": 3753,
+        "sha256": "299dc58c2f6904ad20d9d6c8774e0e6d62a2ab31933010a90feadf99805e8ff1"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "24",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T19:11:58.105",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "ArrayND.EmptyConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "EmptyConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "30",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:f8bea21758c0ab64265f2d763ccbefbf75cbf7ef5322cb1d6b6f5d70aaaf3033",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 30,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.IndexConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "IndexConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "37",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:776877d310d0f49ad7fd50fbf27a189358148f8241007318ea80299b88e2a726",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 37,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.PointerConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PointerConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "47",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:3269685d9b9884ca84880aed427e778a1d27a67a9e952b4b2698d46b9fdba61a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 47,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.CopyConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CopyConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "56",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1cfe5273046f59734ac892247e8cc30f748cb4809d67afbeb1f2eca7d80a3a66",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 56,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.Assignation",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Assignation",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "70",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:f330d094bfb5d8fca995059c32e31f91d981c7635671200244b6161d806694ee",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 70,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.Fill",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Fill",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "85",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:9ac24c18ea98f6fbebf038d4c69ad0152702c267f892b7e1790c0014c8368360",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 85,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.Size",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Size",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "95",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b142a8e626bb50a1da41cc87d695e1296b7a5509065d58ec82a1e4b19a65b2a9",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 95,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.MemorySizeInBytes",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MemorySizeInBytes",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "108",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1e70424cddfd4ff5fdbd875ffdf197b8bc774671b997467465a951401abbd6cc",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 108,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.Parenthesis",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Parenthesis",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "117",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:3882e905efba713698cbe1a2ad711e6cd01251f721b1838ab6d928f9a99d2be8",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 117,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.1DConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "1DConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "132",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:f3868bfc5740787eb923ac789a6fb8604e032c2342899042caf9cf8471bde61f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 132,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.2DConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "2DConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "138",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:5b9b3afd26926eaab7d8e815c0a08f6bc545e9638a524b2448d8ad3a133ceeef",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 138,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.3DConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "3DConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "145",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:dd084804599b28d1b4dfafb360135e9d09163ab808cab791dbcb83b090417dce",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 145,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.1DAccessor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "1DAccessor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "153",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a46fc4741444fce35933c307de1965cd5b668a0a4bd09e02045c364f9897ad78",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 153,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.2DAccessor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "2DAccessor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "164",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1b185c62d97e956295f45be3001f1f5b71bc15d4c15018bab9de9fdc77517bf5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 164,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.3DAccessor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "3DAccessor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "175",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:79ac10f1086722dbec8bcce28f5139ebba6cb66cb23033d3cf48a2199d0fe8c4",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 175,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.CopyFrom",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CopyFrom",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "186",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:7558a387dd44456c498ac0e759fc6c341f88ea78b202594165d6d40ebbd94995",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 186,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.MultiplyElements",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MultiplyElements",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "200",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:75e4ae333a63d20c5214b362bd42cd4cf5b30ebe13ec83c8fe59c9dde67b299d",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 200,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.IsEqualOperator",
+      "outcome": "passed",
+      "attributes": {
+        "name": "IsEqualOperator",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "219",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:83a941ab30aee1e64d048355a017164edcd5ad6dcee52ba942ab98d1e76b32d1",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 219,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "ArrayND.MultiplyElementsGeneric",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MultiplyElementsGeneric",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "297",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "ArrayND"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:22727d7fe0f07c76a1885e54a0b6ad0244cf6899a409fe7140fa9c6b71f53fae",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 297,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "Array3D.Sizes",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Sizes",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "237",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "Array3D"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:02f6f97dcdaef91827f29d304340304c06770986631fddf46961d0efa7e9e202",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 237,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "Array3D.CopyConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CopyConstructor",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "245",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "Array3D"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:23300645d5a0c95c4d9ea2b7c9e29763ea00e79aa719a37db6d0c6cca66b4c57",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 245,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "Array3D.Assignation",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Assignation",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "258",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "Array3D"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:c4a4ee4c60b633e9905aa41dad02998f090ac6087cb2e66e56323ef6aee838cd",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 258,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "Array3D.Parenthesis",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Parenthesis",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "272",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "Array3D"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:64cc0ba6dd328a8c60f5c6b4a61997699e881202e44747e42250b2a7ce07ce12",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 272,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    },
+    {
+      "identity": "Array3Df.SplitChannels",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SplitChannels",
+        "file": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": "278",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:11:58.105",
+        "classname": "Array3Df"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:67b0a861443dc61e0c4735e87221de17e85cdf15c1133e8b385bdc65085c20fe",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/image/array_nd_test.cc",
+        "line": 278,
+        "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/image/array_nd_test.cc": {
+      "path": "intern/libmv/libmv/image/array_nd_test.cc",
+      "bytes": 7583,
+      "sha256": "acfd8bbe79494f42f1599bf26c95e85d3e3e7aa867aed1dfba2fbd07d2fe85c7",
+      "line_count": 328,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 24
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/gtest-results.xml",
+    "bytes": 5309,
+    "sha256": "b5b43c3eb52a94aaedc00ba6d04483f2730be688490c28a52676572bc3eb9ad8"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_array_nd/ctest-results.xml",
+    "bytes": 1455,
+    "sha256": "861f921a606b565469cf3c8b4d48b976e95a950a1666f28c28628fa8c57a7d4f"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

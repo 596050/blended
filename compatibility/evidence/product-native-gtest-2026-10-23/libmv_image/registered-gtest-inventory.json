@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "a6ba5f79eea7a3049ddf1b3dc51f94d64a013908115ed1686dd7b3ddd78e5e2d"
+  },
+  "registration_id": "ctest:ca1724a392cf962059ac1586cf84a5408d6c7a1222198e47fa1432654054441c",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_image_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T14:12:18.913115+00:00",
+    "name": "registered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T14:12:18.905081+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_image/registered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 50,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_image/registered-listing.stdout.txt",
+      "sha256": "da60e83db3d74695fe70c128529767d7349bd547d8a8f82d3c6a24abc8906575"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "da60e83db3d74695fe70c128529767d7349bd547d8a8f82d3c6a24abc8906575",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_identities_unambiguous": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:a2ef3a64dba071abdad42007e877f7bd266e4814146edde5a88ceb23ad1b36c9",
+      "identity": "Image.SimpleImageAccessors",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Image",
+      "name": "SimpleImageAccessors",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:ca1724a392cf962059ac1586cf84a5408d6c7a1222198e47fa1432654054441c"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8ed133271f3a2fdadfb28eaeb543aad3d50c1718aefed212977aa1102a4e4ad9",
+      "identity": "Image.MemorySizeInBytes",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Image",
+      "name": "MemorySizeInBytes",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:ca1724a392cf962059ac1586cf84a5408d6c7a1222198e47fa1432654054441c"
+      ],
+      "listing_line": 3,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "duplicate_identities": [],
+  "counts": {
+    "cases": 2,
+    "disabled": 0,
+    "not_run": 2
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

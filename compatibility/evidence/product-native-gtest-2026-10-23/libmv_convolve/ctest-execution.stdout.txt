@@ -1,0 +1,47 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 8
+    Start 8: libmv_convolve
+
+8: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_convolve_test "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+8: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+8: Environment variables: 
+8:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+8:  $$LD_LIBRARY_PATH
+8: Test timeout computed to be: 600
+8: [==========] Running 7 tests from 1 test suite.
+8: [----------] Global test environment set-up.
+8: [----------] 7 tests from Convolve
+8: [ RUN      ] Convolve.ComputeGaussianKernel
+8: [       OK ] Convolve.ComputeGaussianKernel (0 ms)
+8: [ RUN      ] Convolve.ConvolveGaussian
+8: [       OK ] Convolve.ConvolveGaussian (0 ms)
+8: [ RUN      ] Convolve.BoxFilterHorizontal
+8: [       OK ] Convolve.BoxFilterHorizontal (0 ms)
+8: [ RUN      ] Convolve.BoxFilter
+8: [       OK ] Convolve.BoxFilter (0 ms)
+8: [ RUN      ] Convolve.BlurredImageAndDerivativesChannelsFlat
+8: [       OK ] Convolve.BlurredImageAndDerivativesChannelsFlat (0 ms)
+8: [ RUN      ] Convolve.BlurredImageAndDerivativesChannelsHorizontalSlope
+8: [       OK ] Convolve.BlurredImageAndDerivativesChannelsHorizontalSlope (0 ms)
+8: [ RUN      ] Convolve.BlurredImageAndDerivativesChannelsVerticalSlope
+8: [       OK ] Convolve.BlurredImageAndDerivativesChannelsVerticalSlope (0 ms)
+8: [----------] 7 tests from Convolve (0 ms total)
+8: 
+8: [----------] Global test environment tear-down
+8: [==========] 7 tests from 1 test suite ran. (0 ms total)
+8: [  PASSED  ] 7 tests.
+1/1 Test #8: libmv_convolve ...................   Passed    0.01 sec
+
+The following tests passed:
+	libmv_convolve
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.05 sec

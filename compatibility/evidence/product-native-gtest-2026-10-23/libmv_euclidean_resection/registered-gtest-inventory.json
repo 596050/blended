@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "d3a35806cd821261cb55ce613dbfa891e14cc975a894a7094b47211b947e9a52"
+  },
+  "registration_id": "ctest:b87b120db9459eb4f2c010ccb47dcbec6fea3c502d91c413275f7c12640b485c",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_euclidean_resection_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T14:12:10.422830+00:00",
+    "name": "registered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T14:12:10.418516+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_euclidean_resection/registered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 137,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_euclidean_resection/registered-listing.stdout.txt",
+      "sha256": "e94b2de2c7a78a2dccfeb007cc878dba89b76c2c18820b2f6a16e1e04d754051"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "e94b2de2c7a78a2dccfeb007cc878dba89b76c2c18820b2f6a16e1e04d754051",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_identities_unambiguous": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:b678076f8044747b61dae69ed310b4bfc741f3ce5b516eb4256a2169816375c2",
+      "identity": "AbsoluteOrientation.QuaternionSolution",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "AbsoluteOrientation",
+      "name": "QuaternionSolution",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:b87b120db9459eb4f2c010ccb47dcbec6fea3c502d91c413275f7c12640b485c"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:db9b5a42e18dafd56cd0d660d11d19a8e1dc6fe82249b624bdbb7fd01c9a73d5",
+      "identity": "EuclideanResection.Points4KnownImagePointsRandomTranslationRotation",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "EuclideanResection",
+      "name": "Points4KnownImagePointsRandomTranslationRotation",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:b87b120db9459eb4f2c010ccb47dcbec6fea3c502d91c413275f7c12640b485c"
+      ],
+      "listing_line": 4,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:967ea65abdfc66a75f276b4f7511315c53ddc16c128f69322d8b9f5dc5a41d10",
+      "identity": "EuclideanResection.Points6AllRandomInput",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "EuclideanResection",
+      "name": "Points6AllRandomInput",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:b87b120db9459eb4f2c010ccb47dcbec6fea3c502d91c413275f7c12640b485c"
+      ],
+      "listing_line": 5,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "duplicate_identities": [],
+  "counts": {
+    "cases": 3,
+    "disabled": 0,
+    "not_run": 3
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

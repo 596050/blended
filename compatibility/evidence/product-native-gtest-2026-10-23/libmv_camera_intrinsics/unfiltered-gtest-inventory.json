@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "9ffe8fcba2a39822ccaa38755855de039fd87fcee8c454de93695b85cf762d1b"
+  },
+  "registration_id": "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_filter=*",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T14:12:01.984025+00:00",
+    "name": "unfiltered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T14:12:01.980440+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 213,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-listing.stdout.txt",
+      "sha256": "1df8c864d24077e3a801fe2063ca53a6479f12811bd0d373220b4454de7983d5"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "1df8c864d24077e3a801fe2063ca53a6479f12811bd0d373220b4454de7983d5",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_identities_unambiguous": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:0415e384fae19b20d5d64e56d443b6d7d4de3f3052d10209cba8a72757041b2e",
+      "identity": "PolynomialCameraIntrinsics2.ApplyOnFocalCenter",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics2",
+      "name": "ApplyOnFocalCenter",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:066e3a8311ecda841ca504dd33cb802077ffea158c7ac5c0025c16a165fadd82",
+      "identity": "PolynomialCameraIntrinsics.InvertOnFocalCenter",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics",
+      "name": "InvertOnFocalCenter",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 4,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:3324f8487f37b18f75a0a7819d11a6776e424008ef3ee61c3f1faa9edcc8356c",
+      "identity": "PolynomialCameraIntrinsics.ApplyIntrinsics",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics",
+      "name": "ApplyIntrinsics",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 5,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1294c093056bbe2f6a9fb8dc7216b5c1554cd19407e30a8ba7b793eccc0c7558",
+      "identity": "PolynomialCameraIntrinsics.InvertIntrinsics",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics",
+      "name": "InvertIntrinsics",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 6,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:af25641dc7877b517344acb00cc004a4c33e9399b7c566743cf95bb434d0aa8c",
+      "identity": "PolynomialCameraIntrinsics.ApplyIsInvertibleSimple",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics",
+      "name": "ApplyIsInvertibleSimple",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 7,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:1aa7cf7cbbb6b3923592c86a77f9bf4036cb90e525fe2808df84aa4589c65152",
+      "identity": "PolynomialCameraIntrinsics.IdentityDistortBuffer",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics",
+      "name": "IdentityDistortBuffer",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 8,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:575696c5973641cca8f11ed09957d4266a99928add1ad1c167ee9893d7da6f0b",
+      "identity": "PolynomialCameraIntrinsics.IdentityUndistortBuffer",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "PolynomialCameraIntrinsics",
+      "name": "IdentityUndistortBuffer",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6"
+      ],
+      "listing_line": 9,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "duplicate_identities": [],
+  "counts": {
+    "cases": 7,
+    "disabled": 0,
+    "not_run": 7
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

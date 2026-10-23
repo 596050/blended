@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "-S",
+    "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "-B",
+    "/workspace/scratch/d63596d831b2/runtime/product-native-configure-host-deps",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON",
+    "-DCMAKE_C_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14",
+    "-DCMAKE_CXX_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14",
+    "-DLIBDIR=/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+    "-DCMAKE_FIND_ROOT_PATH=/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER",
+    "-DPKG_CONFIG_EXECUTABLE=/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/bin/pkgconf"
+  ],
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "prior_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-native-libs.json",
+    "bytes": 3088,
+    "sha256": "6886edf7fb167cd3cfb5122b279e23fb5f671a8a1d40071ed4c8bf60d15a68cd"
+  },
+  "host_dependency_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/host-dependency-packages.json",
+    "bytes": 49768,
+    "sha256": "e392d5e531f17b9abec046833724259e913dc6e9481292facb3e7823e6678f54"
+  },
+  "test_flags_preserved": [
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON"
+  ],
+  "feature_flags_disabled_for_configuration": [],
+  "started_utc": "2026-10-23T13:43:53.977619+00:00",
+  "finished_utc": "2026-10-23T13:44:03.947477+00:00",
+  "returncode": 1,
+  "configured": false,
+  "tests_executed": 0,
+  "runtime_enumeration_complete": false,
+  "log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-host-deps.log",
+    "bytes": 22846,
+    "sha256": "9a49a0e9fcafe032d59f67608cb2778bc6ad3451acb396204e2875a1a9e3ce2f"
+  },
+  "generated_configuration_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/host-deps-CMakeCache.txt",
+      "bytes": 134441,
+      "sha256": "128850ea1c1d48f433e63fba104e9509d1c038a4664b595189ab2ea2a148d73d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/host-deps-CMakeConfigureLog.yaml",
+      "bytes": 42586703,
+      "sha256": "8f2e483cc330bdd98148d645d7b41576d83d7506d221342c23bf5669671bd195"
+    }
+  ]
+}

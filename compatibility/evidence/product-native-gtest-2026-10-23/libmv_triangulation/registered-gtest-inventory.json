@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "64dff44f3b525649bf22ddd93822d57102502a04b566e665440413da698e2fc7"
+  },
+  "registration_id": "ctest:6f3a1321c9f08f57539847136553cd09bd01b71a4ab1f8940ff8f8fce5752235",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_triangulation_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T14:12:58.024117+00:00",
+    "name": "registered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T14:12:58.020354+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_triangulation/registered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 32,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_triangulation/registered-listing.stdout.txt",
+      "sha256": "41c968b86a99f1f39edc6369ca36b230377ad99ea9b7e5b43869486a2b0fea41"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "41c968b86a99f1f39edc6369ca36b230377ad99ea9b7e5b43869486a2b0fea41",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_identities_unambiguous": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:546b0ecda6c88f5af9f1080458ffbc113177eae63eaf30e16f2e623caf4b3ed8",
+      "identity": "Triangulation.TriangulateDLT",
+      "identity_status": "unique_name_in_listing",
+      "kind": "gtest_runtime_case",
+      "suite": "Triangulation",
+      "name": "TriangulateDLT",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:6f3a1321c9f08f57539847136553cd09bd01b71a4ab1f8940ff8f8fce5752235"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "duplicate_identities": [],
+  "counts": {
+    "cases": 1,
+    "disabled": 0,
+    "not_run": 1
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

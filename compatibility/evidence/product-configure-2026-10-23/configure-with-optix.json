@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "-S",
+    "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "-B",
+    "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON",
+    "-DCMAKE_C_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14",
+    "-DCMAKE_CXX_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14",
+    "-DLIBDIR=/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+    "-DCMAKE_FIND_ROOT_PATH=/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER",
+    "-DPKG_CONFIG_EXECUTABLE=/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/bin/pkgconf",
+    "-DOPTIX_ROOT_DIR=/workspace/scratch/d63596d831b2/runtime/product-optix-8.0.0"
+  ],
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "prior_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-host-deps.json",
+    "bytes": 3736,
+    "sha256": "cc3f7d18319e275c0f2a4e806189e5c403b84b46b0c2c3da9ce4707d3a9d3d2c"
+  },
+  "optix_header_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/optix-headers.json",
+    "bytes": 4722,
+    "sha256": "23379ca807662e12dd5f6e65788c602acbb5b4b794e3a28e8e6bc68d85c05349"
+  },
+  "test_flags_preserved": [
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON"
+  ],
+  "feature_flags_disabled_for_configuration": [],
+  "started_utc": "2026-10-23T13:45:26.495040+00:00",
+  "finished_utc": "2026-10-23T13:45:40.593740+00:00",
+  "returncode": 0,
+  "configured": true,
+  "tests_executed": 0,
+  "runtime_enumeration_complete": false,
+  "log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.log",
+    "bytes": 22821,
+    "sha256": "91106a349f003fee44ef7e86da2868f8aa0b0b674032ea040e5037457be2400d"
+  },
+  "generated_configuration_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/optix-CMakeCache.txt",
+      "bytes": 134664,
+      "sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/optix-CMakeConfigureLog.yaml",
+      "bytes": 42579770,
+      "sha256": "67cb8e3c3a28125e26b57b5af629f46721563429e8c57e5ff19fd7602077d575"
+    }
+  ]
+}

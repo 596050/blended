@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "inventory_kind": "gtest_runtime_cases",
+  "scope": {
+    "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+    "artifact_sha256": "68205d06088328d0ee1421c7ec57f3f6b45e0b777937c16ac942810b96d3d843"
+  },
+  "registration_id": "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf",
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+      "--gtest_filter=*",
+      "--gtest_list_tests"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+    "finished_utc": "2026-10-23T13:52:56.484329+00:00",
+    "name": "unfiltered-listing",
+    "returncode": 0,
+    "started_utc": "2026-10-23T13:52:56.480316+00:00",
+    "stderr": {
+      "bytes": 0,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 191,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stdout.txt",
+      "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+    },
+    "timed_out": false,
+    "timeout_seconds": 600
+  },
+  "input_sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc",
+  "input_hash_encoding": "raw_utf8",
+  "listing_parse_complete": true,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "cases": [
+    {
+      "id": "gtest:b2f4891a0d2fe84acc4ff2dc4bed7a4034a30c462713b57fc1a85679627c2f59",
+      "identity": "LockFreeAllocatorTest.MEM_new_uninitialized_aligned",
+      "kind": "gtest_runtime_case",
+      "suite": "LockFreeAllocatorTest",
+      "name": "MEM_new_uninitialized_aligned",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf"
+      ],
+      "listing_line": 2,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:dbeb9074c6c91c16a3726f81619bb52e15a5445b4a3b09a2bd56a2f184c19073",
+      "identity": "LockFreeAllocatorTest.LockfreeIntegerOverflow",
+      "kind": "gtest_runtime_case",
+      "suite": "LockFreeAllocatorTest",
+      "name": "LockfreeIntegerOverflow",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf"
+      ],
+      "listing_line": 3,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:e10c9a15399d01127a5f2eea498f3540cbdec21feb5d6ab0c8b40da0ddd9a8bf",
+      "identity": "GuardedAllocatorTest.MEM_new_uninitialized_aligned",
+      "kind": "gtest_runtime_case",
+      "suite": "GuardedAllocatorTest",
+      "name": "MEM_new_uninitialized_aligned",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf"
+      ],
+      "listing_line": 5,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:8729d4f507da9704cc6540ea3ac94d60c55f5a7cd8036654ddf6fff83ae3c74c",
+      "identity": "GuardedAllocatorTest.GuardedIntegerOverflow",
+      "kind": "gtest_runtime_case",
+      "suite": "GuardedAllocatorTest",
+      "name": "GuardedIntegerOverflow",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf"
+      ],
+      "listing_line": 6,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:517784dc3c54babb968ec7fab5bc554e799f2c98cb4ff742aabdb0414b076588",
+      "identity": "safe_multiply.SizeT",
+      "kind": "gtest_runtime_case",
+      "suite": "safe_multiply",
+      "name": "SizeT",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf"
+      ],
+      "listing_line": 8,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    },
+    {
+      "id": "gtest:ef328aacdc4e34569ed33c696f85c5492691879415033561ba02a1b57fad05ca",
+      "identity": "safe_multiply.Int64",
+      "kind": "gtest_runtime_case",
+      "suite": "safe_multiply",
+      "name": "Int64",
+      "type_parameter": null,
+      "value_parameter": null,
+      "parameter_metadata_fidelity": "display_only_may_be_truncated",
+      "disabled": false,
+      "registration_ids": [
+        "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf"
+      ],
+      "listing_line": 9,
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "expanded",
+        "reason": "Concrete runtime case identity; listing scope still requires attestation.",
+        "children": []
+      }
+    }
+  ],
+  "preamble": [],
+  "unparsed_lines": [],
+  "empty_suites": [],
+  "counts": {
+    "cases": 6,
+    "disabled": 0,
+    "not_run": 6
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "fixture_closure_unverified"
+  ]
+}

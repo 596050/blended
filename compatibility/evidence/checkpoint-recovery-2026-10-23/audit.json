@@ -1,0 +1,238 @@
+{
+  "schema": 1,
+  "kind": "git-bundle-recovery-audit",
+  "status": "failed",
+  "started_at": "2026-10-23T13:44:36.992225+00:00",
+  "source_repository": "/workspace/scratch/d63596d831b2/blended",
+  "independent_checkout": "/workspace/scratch/d63596d831b2/recovery-checkout-0d09949783ff",
+  "expected_base": "b2fa1b96db519d86adb7809ad5f881c26124ac70",
+  "expected_head": "0d09949783ffd696edc575359a62a662580a8964",
+  "public_origin": "https://github.com/596050/blended.git",
+  "base_origin": "Fetched the exact public base commit from the public HTTPS remote into an empty Git repository; no clone, local object alternate, or fetch from the working repository was used.",
+  "bundle": {
+    "path": "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle",
+    "bytes": 9759413,
+    "sha256": "cd2aabcfbfa6a155c7bc14aa10fe0b5bcbaa9714f459e752d50d6bfc756c9c22"
+  },
+  "audit_runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/checkpoint-recovery-2026-10-23/verify_recovery.py",
+    "bytes": 9896,
+    "sha256": "c194d8edd83f8f7865e0206ce63a58429a1e384cec536a50595f42343e107d06"
+  },
+  "commands": [
+    {
+      "label": "source-identity",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_at": "2026-10-23T13:44:37.003982+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.006579+00:00",
+      "duration_seconds": 0.002371,
+      "stdout": {
+        "path": "commands/01-source-identity.stdout.log",
+        "bytes": 82,
+        "sha256": "c3247ad156a845ce5710b0e6984cc3ca926ca09a1fe5c3f3d93e9157a5f1510d"
+      },
+      "stderr": {
+        "path": "commands/01-source-identity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "source-commit",
+      "command": [
+        "git",
+        "cat-file",
+        "commit",
+        "0d09949783ffd696edc575359a62a662580a8964"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_at": "2026-10-23T13:44:37.007170+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.009065+00:00",
+      "duration_seconds": 0.001636,
+      "stdout": {
+        "path": "commands/02-source-commit.stdout.log",
+        "bytes": 261,
+        "sha256": "5170f6ce7b9dfec55b160ad0356b3328e6c4151648d703d9408dfbedfa3a4c94"
+      },
+      "stderr": {
+        "path": "commands/02-source-commit.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "bundle-heads",
+      "command": [
+        "git",
+        "bundle",
+        "list-heads",
+        "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_at": "2026-10-23T13:44:37.009452+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.011198+00:00",
+      "duration_seconds": 0.001546,
+      "stdout": {
+        "path": "commands/03-bundle-heads.stdout.log",
+        "bytes": 46,
+        "sha256": "12f19f5f56a652cb67b16367f1e698c7c04064fd5cb528cd67517d41dd634d57"
+      },
+      "stderr": {
+        "path": "commands/03-bundle-heads.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "init-empty",
+      "command": [
+        "git",
+        "init",
+        "--initial-branch=recovery"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:44:37.011790+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.015405+00:00",
+      "duration_seconds": 0.003408,
+      "stdout": {
+        "path": "commands/04-init-empty.stdout.log",
+        "bytes": 105,
+        "sha256": "c659f99e79b5d84048f768c9226ef17e66ad698ec2da9cb2d8cc238f09e1ca41"
+      },
+      "stderr": {
+        "path": "commands/04-init-empty.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "bundle-prerequisite-absent",
+      "command": [
+        "git",
+        "bundle",
+        "verify",
+        "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:44:37.015991+00:00",
+      "returncode": 1,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.017695+00:00",
+      "duration_seconds": 0.001505,
+      "stdout": {
+        "path": "commands/05-bundle-prerequisite-absent.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/05-bundle-prerequisite-absent.stderr.log",
+        "bytes": 101,
+        "sha256": "1b5d512238b81897484fcf5b9cf392edf7176a532372e0c5966e61c4aca74096"
+      },
+      "expected_returncodes": [
+        1
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "add-public-origin",
+      "command": [
+        "git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/596050/blended.git"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:44:37.018215+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.020512+00:00",
+      "duration_seconds": 0.002084,
+      "stdout": {
+        "path": "commands/06-add-public-origin.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/06-add-public-origin.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "fetch-public-base",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--no-progress",
+        "origin",
+        "b2fa1b96db519d86adb7809ad5f881c26124ac70"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:44:37.021167+00:00",
+      "returncode": 128,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:44:37.031552+00:00",
+      "duration_seconds": 0.010196,
+      "stdout": {
+        "path": "commands/07-fetch-public-base.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/07-fetch-public-base.stderr.log",
+        "bytes": 150,
+        "sha256": "baef7bdc9fb4a0185522de383220d6eb23f506ea51bd8472779c4b303aba9ebf"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": false
+    }
+  ],
+  "verification": {},
+  "claim_limit": "This verifies bundle recovery and replay of committed, bounded test evidence. It is not a new Blender execution, full upstream test pass, or application feature parity proof.",
+  "bundle_header": [
+    "# v2 git bundle",
+    "-b2fa1b96db519d86adb7809ad5f881c26124ac70 Run the original 17-method Blender library cohort with verified fixtures",
+    "0d09949783ffd696edc575359a62a662580a8964 HEAD"
+  ],
+  "error": "unexpected result in fetch-public-base: fatal: unable to access 'https://github.com/596050/blended.git/': Failed to connect to browser-proxy port 8889 after 0 ms: Couldn't connect to server\n",
+  "completed_at": "2026-10-23T13:44:37.032297+00:00"
+}

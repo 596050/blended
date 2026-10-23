@@ -1,0 +1,166 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 36
+    Start 36: shader_tool
+
+36: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test "--gtest_filter=shader_tool.*:bsl_grammar.*:TEST(true).*" "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+36: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+36: Environment variables: 
+36:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+36:  $$LD_LIBRARY_PATH
+36: Test timeout computed to be: 600
+36: Note: Google Test filter = shader_tool.*:bsl_grammar.*:TEST(true).*
+36: [==========] Running 62 tests from 2 test suites.
+36: [----------] Global test environment set-up.
+36: [----------] 45 tests from shader_tool
+36: [ RUN      ] shader_tool.ExpressionParser
+36: [       OK ] shader_tool.ExpressionParser (0 ms)
+36: [ RUN      ] shader_tool.Unroll
+36: [       OK ] shader_tool.Unroll (147 ms)
+36: [ RUN      ] shader_tool.StaticBranch
+36: [       OK ] shader_tool.StaticBranch (59 ms)
+36: [ RUN      ] shader_tool.BoolCast
+36: [       OK ] shader_tool.BoolCast (36 ms)
+36: [ RUN      ] shader_tool.ForceInline
+36: [       OK ] shader_tool.ForceInline (50 ms)
+36: [ RUN      ] shader_tool.StructMethods
+36: [       OK ] shader_tool.StructMethods (1 ms)
+36: [ RUN      ] shader_tool.DefaultArguments
+36: [       OK ] shader_tool.DefaultArguments (22 ms)
+36: [ RUN      ] shader_tool.FunctionOverloads
+36: [       OK ] shader_tool.FunctionOverloads (0 ms)
+36: [ RUN      ] shader_tool.ForwardDecl
+36: [       OK ] shader_tool.ForwardDecl (18 ms)
+36: [ RUN      ] shader_tool.Include
+36: [       OK ] shader_tool.Include (0 ms)
+36: [ RUN      ] shader_tool.Namespace
+36: [       OK ] shader_tool.Namespace (2 ms)
+36: [ RUN      ] shader_tool.Using
+36: [       OK ] shader_tool.Using (11 ms)
+36: [ RUN      ] shader_tool.Parser
+36: [       OK ] shader_tool.Parser (0 ms)
+36: [ RUN      ] shader_tool.Cleanup
+36: [       OK ] shader_tool.Cleanup (0 ms)
+36: [ RUN      ] shader_tool.ResourceGuard
+36: [       OK ] shader_tool.ResourceGuard (1 ms)
+36: [ RUN      ] shader_tool.SrtMutations
+36: [       OK ] shader_tool.SrtMutations (0 ms)
+36: [ RUN      ] shader_tool.SrtMethod
+36: [       OK ] shader_tool.SrtMethod (0 ms)
+36: [ RUN      ] shader_tool.SrtCompilationConstant
+36: [       OK ] shader_tool.SrtCompilationConstant (11 ms)
+36: [ RUN      ] shader_tool.SrtTemplateWrapper
+36: [       OK ] shader_tool.SrtTemplateWrapper (0 ms)
+36: [ RUN      ] shader_tool.EntryPointResources
+36: [       OK ] shader_tool.EntryPointResources (1 ms)
+36: [ RUN      ] shader_tool.ConditionalLinting
+36: [       OK ] shader_tool.ConditionalLinting (34 ms)
+36: [ RUN      ] shader_tool.PipelineDescription
+36: [       OK ] shader_tool.PipelineDescription (0 ms)
+36: [ RUN      ] shader_tool.Union
+36: [       OK ] shader_tool.Union (63 ms)
+36: [ RUN      ] shader_tool.Enum
+36: [       OK ] shader_tool.Enum (0 ms)
+36: [ RUN      ] shader_tool.EmptyStruct
+36: [       OK ] shader_tool.EmptyStruct (15 ms)
+36: [ RUN      ] shader_tool.NestedStruct
+36: [       OK ] shader_tool.NestedStruct (16 ms)
+36: [ RUN      ] shader_tool.StructuredBindings
+36: [       OK ] shader_tool.StructuredBindings (10 ms)
+36: [ RUN      ] shader_tool.InitializerList
+36: [       OK ] shader_tool.InitializerList (27 ms)
+36: [ RUN      ] shader_tool.BitField
+36: [       OK ] shader_tool.BitField (58 ms)
+36: [ RUN      ] shader_tool.StructBufferLinting
+36: [       OK ] shader_tool.StructBufferLinting (329 ms)
+36: [ RUN      ] shader_tool.Inheritance
+36: [       OK ] shader_tool.Inheritance (100 ms)
+36: [ RUN      ] shader_tool.Array
+36: [       OK ] shader_tool.Array (86 ms)
+36: [ RUN      ] shader_tool.Swizzle
+36: [       OK ] shader_tool.Swizzle (0 ms)
+36: [ RUN      ] shader_tool.BinaryLiterals
+36: [       OK ] shader_tool.BinaryLiterals (0 ms)
+36: [ RUN      ] shader_tool.MatrixConstructors
+36: source/blender/gpu/shader_tool/tests/syntax_test.cc:133: Skipped
+36: This processing is only done for metal compatibility.
+36: 
+36: [  SKIPPED ] shader_tool.MatrixConstructors (0 ms)
+36: [ RUN      ] shader_tool.CommaDeclaration
+36: [       OK ] shader_tool.CommaDeclaration (0 ms)
+36: [ RUN      ] shader_tool.Reference
+36: [       OK ] shader_tool.Reference (160 ms)
+36: [ RUN      ] shader_tool.Constexpr
+36: [       OK ] shader_tool.Constexpr (9 ms)
+36: [ RUN      ] shader_tool.ConstexprVector
+36: [       OK ] shader_tool.ConstexprVector (106 ms)
+36: [ RUN      ] shader_tool.Auto
+36: [       OK ] shader_tool.Auto (8 ms)
+36: [ RUN      ] shader_tool.ArrayAggregate
+36: [       OK ] shader_tool.ArrayAggregate (18 ms)
+36: [ RUN      ] shader_tool.AttributeCapacity
+36: [       OK ] shader_tool.AttributeCapacity (14 ms)
+36: [ RUN      ] shader_tool.PointerDereference
+36: [       OK ] shader_tool.PointerDereference (30 ms)
+36: [ RUN      ] shader_tool.Template
+36: [       OK ] shader_tool.Template (107 ms)
+36: [ RUN      ] shader_tool.TemplateStruct
+36: [       OK ] shader_tool.TemplateStruct (28 ms)
+36: [----------] 45 tests from shader_tool (1598 ms total)
+36: 
+36: [----------] 17 tests from bsl_grammar
+36: [ RUN      ] bsl_grammar.EmptyTranslationUnit
+36: [       OK ] bsl_grammar.EmptyTranslationUnit (0 ms)
+36: [ RUN      ] bsl_grammar.PreprocessorDirectives
+36: [       OK ] bsl_grammar.PreprocessorDirectives (0 ms)
+36: [ RUN      ] bsl_grammar.NamespaceDeclarations
+36: [       OK ] bsl_grammar.NamespaceDeclarations (0 ms)
+36: [ RUN      ] bsl_grammar.UsingStatements
+36: [       OK ] bsl_grammar.UsingStatements (0 ms)
+36: [ RUN      ] bsl_grammar.StandardStructDeclaration
+36: [       OK ] bsl_grammar.StandardStructDeclaration (0 ms)
+36: [ RUN      ] bsl_grammar.StructWithAccessSpecifiers
+36: [       OK ] bsl_grammar.StructWithAccessSpecifiers (0 ms)
+36: [ RUN      ] bsl_grammar.MemberKeywordsAndAttributes
+36: [       OK ] bsl_grammar.MemberKeywordsAndAttributes (0 ms)
+36: [ RUN      ] bsl_grammar.PipelineDeclarations
+36: [       OK ] bsl_grammar.PipelineDeclarations (0 ms)
+36: [ RUN      ] bsl_grammar.TemplateDeclarationsAndInstantiations
+36: [       OK ] bsl_grammar.TemplateDeclarationsAndInstantiations (0 ms)
+36: [ RUN      ] bsl_grammar.FunctionDeclarationsAndDefinitions
+36: [       OK ] bsl_grammar.FunctionDeclarationsAndDefinitions (0 ms)
+36: [ RUN      ] bsl_grammar.ConditionalStatements
+36: [       OK ] bsl_grammar.ConditionalStatements (0 ms)
+36: [ RUN      ] bsl_grammar.LoopConstructs
+36: [       OK ] bsl_grammar.LoopConstructs (0 ms)
+36: [ RUN      ] bsl_grammar.SwitchCaseParsing
+36: [       OK ] bsl_grammar.SwitchCaseParsing (0 ms)
+36: [ RUN      ] bsl_grammar.Attributes
+36: [       OK ] bsl_grammar.Attributes (0 ms)
+36: [ RUN      ] bsl_grammar.Enum
+36: [       OK ] bsl_grammar.Enum (0 ms)
+36: [ RUN      ] bsl_grammar.ForwardClassDeclarations
+36: [       OK ] bsl_grammar.ForwardClassDeclarations (0 ms)
+36: [ RUN      ] bsl_grammar.UnexpectedTokens
+36: [       OK ] bsl_grammar.UnexpectedTokens (0 ms)
+36: [----------] 17 tests from bsl_grammar (0 ms total)
+36: 
+36: [----------] Global test environment tear-down
+36: [==========] 62 tests from 2 test suites ran. (1598 ms total)
+36: [  PASSED  ] 61 tests.
+36: [  SKIPPED ] 1 test, listed below:
+36: [  SKIPPED ] shader_tool.MatrixConstructors
+1/1 Test #36: shader_tool ......................   Passed    1.60 sec
+
+The following tests passed:
+	shader_tool
+
+100% tests passed out of 1
+
+Total Test time (real) =   1.65 sec

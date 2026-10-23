@@ -1,0 +1,88 @@
+{
+  "all_ledger_fields_and_pairs_match": true,
+  "claim_limit": "Evidence consumer replay only. No Blender execution or independent archive measurement is inferred. The strict blocked exit is expected; no parity gate data was changed.",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "normalizer/test_parity_ledger.py",
+    "--contract",
+    "contract.json",
+    "--inventory",
+    "inventory.json",
+    "--executions",
+    "executions.json",
+    "--evidence-root",
+    ".",
+    "--output",
+    "replayed-report.json"
+  ],
+  "consumer": {
+    "bytes": 24508,
+    "path": "normalizer/test_parity_ledger.py",
+    "sha256": "c247fbff7210efdd7327651fd81908a06e8f2747cf8ff3c299a2c462487c24eb"
+  },
+  "converter_only_diagnostic_fields": [
+    "missing_browser_subtest_count",
+    "observation_count_limit",
+    "observation_totals",
+    "unexpected_browser_subtest_count"
+  ],
+  "cwd": "/workspace/scratch/d63596d831b2/replay-essentials-ledger-2026-10-23",
+  "duration_seconds": 0.5739551710030355,
+  "finished_utc": "2026-10-23T13:58:48.442046+00:00",
+  "independent_directory": "/workspace/scratch/d63596d831b2/replay-essentials-ledger-2026-10-23",
+  "inputs": [
+    {
+      "bytes": 134901,
+      "path": "contract.json",
+      "sha256": "767343756617a61490e2298d1341741060fc8b1f2b84b963a49830b010f9b508"
+    },
+    {
+      "bytes": 126130,
+      "path": "inventory.json",
+      "sha256": "20caa9fd8047702289989abd490fbb9bb4f9267200bf9a61b8076466d352c823"
+    },
+    {
+      "bytes": 29331,
+      "path": "executions.json",
+      "sha256": "d846ec4f12d761ec71d3737e68dd52fd52ca4311bbf2a3ce15ab463c76a278e1"
+    }
+  ],
+  "kind": "relocated-ledger-consumer-replay",
+  "original_report": {
+    "bytes": 752770,
+    "path": "report.json",
+    "sha256": "d1b6df970fd0be756b374eba9ca2c662372106c9e3ec1fe6df9ea80bff553e81"
+  },
+  "replayed_report": {
+    "bytes": 751831,
+    "path": "relocated-report.json",
+    "sha256": "aa828c29bb685e671082dd34776200adadc7f5c6506c0094642a2fcb06d8c9ec"
+  },
+  "result": {
+    "all_upstream_test_parity": false,
+    "declared_scope_test_parity": false,
+    "full_feature_parity": false,
+    "gate": "blocked",
+    "outcome_agreement_count": 601,
+    "paired_obligation_count": 829,
+    "required_registration_count": 132,
+    "successful_execution_pair_count": 516,
+    "unresolved_registration_count": 101
+  },
+  "returncode": 1,
+  "schema": 1,
+  "source_directory": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23",
+  "started_utc": "2026-10-23T13:58:47.868089+00:00",
+  "status": "verified",
+  "stderr": {
+    "bytes": 0,
+    "path": "relocation-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 1243,
+    "path": "relocation-stdout.log",
+    "sha256": "ee56d0a092c024721aa9783f726b0c1f808f1af480c2f6a45e1edb205d8cc8e1"
+  },
+  "timed_out": false
+}

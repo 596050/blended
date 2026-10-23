@@ -1,0 +1,44 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 16
+    Start 16: libmv_panography
+
+16: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_panography_test "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+16: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+16: Environment variables: 
+16:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+16:  $$LD_LIBRARY_PATH
+16: Test timeout computed to be: 600
+16: [==========] Running 4 tests from 2 test suites.
+16: [----------] Global test environment set-up.
+16: [----------] 3 tests from Panography
+16: [ RUN      ] Panography.PrintSomeSharedFocalEstimationValues
+16: [       OK ] Panography.PrintSomeSharedFocalEstimationValues (0 ms)
+16: [ RUN      ] Panography.GetR_FixedCameraCenterWithIdentity
+16: [       OK ] Panography.GetR_FixedCameraCenterWithIdentity (0 ms)
+16: [ RUN      ] Panography.Homography_GetR_Test_PitchY30
+16: [       OK ] Panography.Homography_GetR_Test_PitchY30 (0 ms)
+16: [----------] 3 tests from Panography (0 ms total)
+16: 
+16: [----------] 1 test from MinimalPanoramic
+16: [ RUN      ] MinimalPanoramic.Real_Case_Kernel
+16: [       OK ] MinimalPanoramic.Real_Case_Kernel (0 ms)
+16: [----------] 1 test from MinimalPanoramic (0 ms total)
+16: 
+16: [----------] Global test environment tear-down
+16: [==========] 4 tests from 2 test suites ran. (0 ms total)
+16: [  PASSED  ] 4 tests.
+1/1 Test #16: libmv_panography .................   Passed    0.01 sec
+
+The following tests passed:
+	libmv_panography
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.06 sec

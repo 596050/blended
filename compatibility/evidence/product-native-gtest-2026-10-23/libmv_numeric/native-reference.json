@@ -1,0 +1,1116 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric_test-build.json",
+    "bytes": 3291,
+    "sha256": "5e1bce4fe94e4f629726e867f0d08bc4cbeaffd6bd63009d985c3faa91de32c1"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+    "bytes": 1371192,
+    "sha256": "622531730347d7cc8632cd9f46b1fcc4a6dece353e81e4b10708f269c6c80007"
+  },
+  "original_registration": {
+    "id": "ctest:0e64bce5ed3fc9b1e62e9a623ba9350df7f645ba449bc062610ad40c8db56e74",
+    "identity": "libmv_numeric",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 228,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_numeric",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:32.007437+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:32.011169+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/registered-listing.stdout.txt",
+          "bytes": 499,
+          "sha256": "308a12990dd50af09521620fca8148cac1c4cdf1e486809fe0e8984b5fe253fa"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/registered-gtest-inventory.json",
+        "bytes": 25715,
+        "sha256": "bfecf99ab672521c5e39ed65a451b3a48fda0bd6ac4da56288807307ac89ccf5"
+      },
+      "counts": {
+        "cases": 29,
+        "disabled": 0,
+        "not_run": 29
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:32.011246+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:32.014851+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/unfiltered-listing.stdout.txt",
+          "bytes": 499,
+          "sha256": "308a12990dd50af09521620fca8148cac1c4cdf1e486809fe0e8984b5fe253fa"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/unfiltered-gtest-inventory.json",
+        "bytes": 25741,
+        "sha256": "04839d21080f8abacc39af0a53b6b6c1dc4345a6ecf6e262d498b4a26a2205e7"
+      },
+      "counts": {
+        "cases": 29,
+        "disabled": 0,
+        "not_run": 29
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_numeric$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:12:32.107951+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:12:32.323002+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-execution.stdout.txt",
+      "bytes": 4134,
+      "sha256": "4b4881e45164ff3e2d052c0546054281ec24b66a889bbc6475c8e6455414ae3e"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_numeric$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:31.839738+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:32.004278+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-registration.stdout.txt",
+        "bytes": 2039,
+        "sha256": "dbc0587e0747b86687418a68b7ba0ab0224e8e1108d0086f575a77ef0798c8d4"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:32.007437+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:32.011169+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/registered-listing.stdout.txt",
+        "bytes": 499,
+        "sha256": "308a12990dd50af09521620fca8148cac1c4cdf1e486809fe0e8984b5fe253fa"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_numeric_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:32.011246+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:32.014851+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/unfiltered-listing.stdout.txt",
+        "bytes": 499,
+        "sha256": "308a12990dd50af09521620fca8148cac1c4cdf1e486809fe0e8984b5fe253fa"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_numeric$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:32.107951+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:32.323002+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-execution.stdout.txt",
+        "bytes": 4134,
+        "sha256": "4b4881e45164ff3e2d052c0546054281ec24b66a889bbc6475c8e6455414ae3e"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "29",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T19:12:32.273",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "Numeric.DynamicSizedNullspace",
+      "outcome": "passed",
+      "attributes": {
+        "name": "DynamicSizedNullspace",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "28",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:74d2840175909217ba6acb5a4e2c23f51f6fd2dabf2bfed76e593652e7408350",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 28,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.FixedSizeMatrixNullspace",
+      "outcome": "passed",
+      "attributes": {
+        "name": "FixedSizeMatrixNullspace",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "42",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:04454bb58fafe9a41012d434dc2a70128140617fa6486469ba58a5e9452e2ec9",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 42,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.NullspaceMatchesLapackSVD",
+      "outcome": "passed",
+      "attributes": {
+        "name": "NullspaceMatchesLapackSVD",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "56",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b684cf36c7e6bff288d3cede5047a24ce8d9737d208cc67d76cc6ed02ab17f1f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 56,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Nullspace2",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Nullspace2",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "75",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:bbdc3825e151c3a7ac2c96b798929013256a21cf5f77e8fd77fdda125a540493",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 75,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.TinyMatrixSquareTranspose",
+      "outcome": "passed",
+      "attributes": {
+        "name": "TinyMatrixSquareTranspose",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "101",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:43e3798120259feb146fa9829f558558a769f66b42be2b459360d8774cc2bda5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 101,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.NormalizeL1",
+      "outcome": "passed",
+      "attributes": {
+        "name": "NormalizeL1",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "111",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:af524c988492e9d0f8d26d068049d4af5efc34fc048d67ebb7e2dfaa13a2209d",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 111,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.NormalizeL2",
+      "outcome": "passed",
+      "attributes": {
+        "name": "NormalizeL2",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "120",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:aaf6038e33016e0680a4de6afdaac3018a7ba85a88cdb54bc49c2644bd702fd0",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 120,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Diag",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Diag",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "129",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:31e768d39b6fce019b721041b148edb115052954db040032dc79d8ab92246e17",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 129,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Determinant",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Determinant",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "139",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:42ac59d65e9b3bccc2d0cbf32bf83a1678442d3737b4c1a7dfd8317cb81ad4e3",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 139,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Inverse",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Inverse",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "161",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:04e947dc0108d3def2bb3175a70e33e7466538ec8ad0fce54463feab36693054",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 161,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.MeanAndVarianceAlongRows",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MeanAndVarianceAlongRows",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "193",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:faa4eabe864ff5155701344df8b91d894d61ad82529a7a2c5f5091004b9e3146",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 193,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.HorizontalStack",
+      "outcome": "passed",
+      "attributes": {
+        "name": "HorizontalStack",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "210",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:40e4e8dd42b4c4eef3f65cd46f01a0b67545eed9980c9c94371b4240a494c2c7",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 210,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.HStack",
+      "outcome": "passed",
+      "attributes": {
+        "name": "HStack",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "225",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:4d127311b73ef7e7c278daf4671b1796c55f3e3031771f14e340a32c556a3fc6",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 225,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.VStack",
+      "outcome": "passed",
+      "attributes": {
+        "name": "VStack",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "246",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b3c365c2e70e914cddc1d2b18af84f16639c459a37194e3d3ec8e434e56dd0eb",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 246,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.VerticalStack",
+      "outcome": "passed",
+      "attributes": {
+        "name": "VerticalStack",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "269",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:80061e031d87b7d7f0e160fd8b7382f02dbe970b327f185d22da336fb3e769c2",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 269,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.CrossProduct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CrossProduct",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "283",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a10d284b5fdeb5dfe5a6c6affaa59421ef6b15e285d2140e241c950d57b1d62d",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 283,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.CrossProductMatrix",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CrossProductMatrix",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "296",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a483dee3cdd0d713477c07f96ea3bcd090dffe1cd65a84018e41a73a6cd5070b",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 296,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.MatrixColumn",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MatrixColumn",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "310",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b3f4bc2978cf23aaa114646999562527165923567d53844153b851f9715d2f38",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 310,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.TinyMatrixView",
+      "outcome": "passed",
+      "attributes": {
+        "name": "TinyMatrixView",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "349",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:c11255d98fe15d326a0d22447173545ee5257efa03e4addcd7b46c4fdb99414e",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 349,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Mat3MatProduct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Mat3MatProduct",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "355",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:3725b44d40098db78e6cd99c3d2e9964ecdd738f78d3274dd50be8fb439dc908",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 355,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Vec3Negative",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Vec3Negative",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "362",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:76cce242e53df62c62a1cb8bcbce89b185dca9bf397d699b7e6333b74983c2f0",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 362,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Vec3VecInteroperability",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Vec3VecInteroperability",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "372",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:5e017e7c202c6c66db4633cc58dd8dfcafdfddc1eab262e485dc0a1e235ab6f0",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 372,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.DeterminantLU7",
+      "outcome": "passed",
+      "attributes": {
+        "name": "DeterminantLU7",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "382",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:4632fe62c2fdb2da3448941137649fa33f4250470aad4f4f3532bf764fee0949",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 382,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.DeterminantLU",
+      "outcome": "passed",
+      "attributes": {
+        "name": "DeterminantLU",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "395",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:5a1d73cecc1a3bc73c36a578b96f9833f168c7e1e4c16811cdb206c413071b33",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 395,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.InplaceProduct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "InplaceProduct",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "406",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:01d25fe388a5656defaaab3ddb2c46ab555c2bb204bb43e889c524a7e1f05875",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 406,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.ExtractColumns",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ExtractColumns",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "418",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:ea07eb3a4257c7ca4cd3f1a79434a98a3fda298976908cc24735aa9380dc50b1",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 418,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.RotationRodrigues",
+      "outcome": "passed",
+      "attributes": {
+        "name": "RotationRodrigues",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "433",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:dd9fe96ddd80fd081a1d9b148ad5c74c46c8a12cbb9199f4200ae33109e74258",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 433,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.LookAt",
+      "outcome": "passed",
+      "attributes": {
+        "name": "LookAt",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "452",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:3faa26a7fb8db29c198d03fe146909e0b9533f95f6e819da908b40dd31409d02",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 452,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    },
+    {
+      "identity": "Numeric.Reshape",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Reshape",
+        "file": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": "464",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:32.273",
+        "classname": "Numeric"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:9bb6891aca277b5161ec57d1fa6963ddfa7b8859aebf43b664d22cb6557d7a7a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+        "line": 464,
+        "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/numeric/numeric_test.cc": {
+      "path": "intern/libmv/libmv/numeric/numeric_test.cc",
+      "bytes": 11287,
+      "sha256": "e7c6be129d3cda3b2fa2e21fce065e308fad2dfe8ffc990e83e54bd3a6d6c012",
+      "line_count": 473,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 29
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/gtest-results.xml",
+    "bytes": 6061,
+    "sha256": "76e78d219894f980d81f33cf2b828ecc02981f92c4032b8b81419b78abb86571"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_numeric/ctest-results.xml",
+    "bytes": 1453,
+    "sha256": "6f6a4ce4d3c177436c3582a1aa1d4b7f939d5bd1e79653cfb4d69057078bfc82"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

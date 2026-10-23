@@ -1,0 +1,588 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics_test-build.json",
+    "bytes": 3341,
+    "sha256": "49123b3e724bad2afa00306ceaafa1030640697fd6dad5288e5e6154894a9494"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+    "bytes": 1143152,
+    "sha256": "9ffe8fcba2a39822ccaa38755855de039fd87fcee8c454de93695b85cf762d1b"
+  },
+  "original_registration": {
+    "id": "ctest:32eebb6612aef8175a56826bf9fbd523224e7b3b84406825d1340d6631b2a8e6",
+    "identity": "libmv_camera_intrinsics",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 230,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_camera_intrinsics",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:01.976573+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:01.980372+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/registered-listing.stdout.txt",
+          "bytes": 213,
+          "sha256": "1df8c864d24077e3a801fe2063ca53a6479f12811bd0d373220b4454de7983d5"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/registered-gtest-inventory.json",
+        "bytes": 8360,
+        "sha256": "f3b2f58906eaee7273bbd3c6961fd1ee4d3fe4078c14e26c01e5a5d2f4a9b56d"
+      },
+      "counts": {
+        "cases": 7,
+        "disabled": 0,
+        "not_run": 7
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:01.980440+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:01.984025+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-listing.stdout.txt",
+          "bytes": 213,
+          "sha256": "1df8c864d24077e3a801fe2063ca53a6479f12811bd0d373220b4454de7983d5"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-gtest-inventory.json",
+        "bytes": 8386,
+        "sha256": "018fdc42400382ce0b129a68118d654a75e99f6012d1ed1512a17032209f627b"
+      },
+      "counts": {
+        "cases": 7,
+        "disabled": 0,
+        "not_run": 7
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_camera_intrinsics$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:12:02.074571+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:12:02.239461+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-execution.stdout.txt",
+      "bytes": 2765,
+      "sha256": "8be63ea25679d37b6875b4b3b4a3d0f62219861176aebcc9927139ffcc11269a"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_camera_intrinsics$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:01.808729+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:01.973216+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-registration.stdout.txt",
+        "bytes": 2059,
+        "sha256": "6d46193bcab928ec2b1841aed985294f19053b33e9e96ff05742d3beed82cfb9"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:01.976573+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:01.980372+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/registered-listing.stdout.txt",
+        "bytes": 213,
+        "sha256": "1df8c864d24077e3a801fe2063ca53a6479f12811bd0d373220b4454de7983d5"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_camera_intrinsics_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:01.980440+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:01.984025+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-listing.stdout.txt",
+        "bytes": 213,
+        "sha256": "1df8c864d24077e3a801fe2063ca53a6479f12811bd0d373220b4454de7983d5"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_camera_intrinsics$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:02.074571+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:02.239461+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-execution.stdout.txt",
+        "bytes": 2765,
+        "sha256": "8be63ea25679d37b6875b4b3b4a3d0f62219861176aebcc9927139ffcc11269a"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "7",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.001",
+    "timestamp": "2026-10-23T19:12:02.223",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "PolynomialCameraIntrinsics2.ApplyOnFocalCenter",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ApplyOnFocalCenter",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "32",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.223",
+        "classname": "PolynomialCameraIntrinsics2"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:361ce7aadf33e16f7f4e0ce2fb8038a4b6088129af44ad825e3f72b39ca4a04e",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 32,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    },
+    {
+      "identity": "PolynomialCameraIntrinsics.InvertOnFocalCenter",
+      "outcome": "passed",
+      "attributes": {
+        "name": "InvertOnFocalCenter",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "45",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.223",
+        "classname": "PolynomialCameraIntrinsics"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:389d8d7957ba60c719331ebb28648fba3c143b6bc1b9690694b5781d02ba3cde",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 45,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    },
+    {
+      "identity": "PolynomialCameraIntrinsics.ApplyIntrinsics",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ApplyIntrinsics",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "58",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.223",
+        "classname": "PolynomialCameraIntrinsics"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:030aff509043adf68e595d56691e7a6fa18143e6ca6b589bf0ec3efcae1ca6dc",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 58,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    },
+    {
+      "identity": "PolynomialCameraIntrinsics.InvertIntrinsics",
+      "outcome": "passed",
+      "attributes": {
+        "name": "InvertIntrinsics",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "114",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.223",
+        "classname": "PolynomialCameraIntrinsics"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:7aea45d15944b70169cf29a389a8fc8463170ce56beb086d9c9bb633da6f9915",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 114,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    },
+    {
+      "identity": "PolynomialCameraIntrinsics.ApplyIsInvertibleSimple",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ApplyIsInvertibleSimple",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "170",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.223",
+        "classname": "PolynomialCameraIntrinsics"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:ddbcfd7a2493804fcf071984343be53c72c20abe0ab9ac0f4e2e5becbcf4328e",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 170,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    },
+    {
+      "identity": "PolynomialCameraIntrinsics.IdentityDistortBuffer",
+      "outcome": "passed",
+      "attributes": {
+        "name": "IdentityDistortBuffer",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "194",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.223",
+        "classname": "PolynomialCameraIntrinsics"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1044d86af0a7c55975b8d7143ccb4719f961794e11a03b8fd3524ade491d891a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 194,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    },
+    {
+      "identity": "PolynomialCameraIntrinsics.IdentityUndistortBuffer",
+      "outcome": "passed",
+      "attributes": {
+        "name": "IdentityUndistortBuffer",
+        "file": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": "226",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:02.224",
+        "classname": "PolynomialCameraIntrinsics"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1d64a818265cb87fdc25932885aabd0aef9d94dfbd23c4a239a3522c65ee90c5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+        "line": 226,
+        "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc": {
+      "path": "intern/libmv/libmv/simple_pipeline/camera_intrinsics_test.cc",
+      "bytes": 8536,
+      "sha256": "3d11b300f82968ef8a270ad6eb1e16a803ca0743e09e736353225657d85e0fd5",
+      "line_count": 258,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 7
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/gtest-results.xml",
+    "bytes": 2198,
+    "sha256": "19c8f55e372c64762ba22a072f3af8b415a039a74112976812d14eb78ca0f44e"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_camera_intrinsics/ctest-results.xml",
+    "bytes": 1473,
+    "sha256": "fc152259039736b5521be3987fdfbff304ea640c1ef7d42f14f87432a5682dce"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

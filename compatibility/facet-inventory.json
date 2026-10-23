@@ -8,10 +8,10 @@
   "facets_complete": [],
   "cases": [],
   "blockers": [
-    "Full native runtime enumeration has not been performed at the product pin.",
-    "Git LFS fixture payloads and reference output hashes have not been fully verified.",
+    "Product-pin native configuration and selected runtime enumeration are recorded separately; complete cross-configuration and per-facet runtime enumeration is still missing.",
+    "All 7,353 declared candidate fixture paths and all original product source-archive LFS payload paths have exact hash and size verification, but per-invocation runtime resource and reference-output closure is not complete.",
     "Candidate source ports target older Blender commits and cannot inherit product-target passes.",
     "Feature and browser workflow obligations must be enumerated before a facet can be complete."
   ],
-  "scope": "Seed inventory, not a test result. Zero enumerated runtime cases does not imply zero required cases."
+  "scope": "Seed facet inventory, not a test result. Selected product-native runtime cases are recorded under compatibility/evidence/product-native-gtest-2026-10-23 and have not been promoted into complete facet contracts. The empty cases array does not imply zero required or zero separately observed cases."
 }

@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "purpose": "private dependencies for the unchanged original system-Python CTest driver",
+  "started_utc": "2026-10-23T14:03:05.379617+00:00",
+  "requested_packages": [
+    "python3-setuptools=68.1.2-2ubuntu1.2",
+    "python3-pkg-resources=68.1.2-2ubuntu1.2"
+  ],
+  "stages": [
+    {
+      "name": "plan",
+      "command": [
+        "/usr/bin/apt-get",
+        "--simulate",
+        "--no-install-recommends",
+        "--no-install-suggests",
+        "--reinstall",
+        "install",
+        "python3-setuptools=68.1.2-2ubuntu1.2",
+        "python3-pkg-resources=68.1.2-2ubuntu1.2"
+      ],
+      "started_utc": "2026-10-23T14:03:05.973569+00:00",
+      "finished_utc": "2026-10-23T14:03:08.010038+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/dependency-plan.log",
+        "bytes": 694,
+        "sha256": "3d2682cbfd795f95c35a6610612ccefed799d05b345a722460ce42c5793c1c92"
+      }
+    },
+    {
+      "name": "uris",
+      "command": [
+        "/usr/bin/apt-get",
+        "--print-uris",
+        "--download-only",
+        "--no-install-recommends",
+        "--no-install-suggests",
+        "--reinstall",
+        "install",
+        "python3-setuptools=68.1.2-2ubuntu1.2",
+        "python3-pkg-resources=68.1.2-2ubuntu1.2"
+      ],
+      "started_utc": "2026-10-23T14:03:08.013333+00:00",
+      "finished_utc": "2026-10-23T14:03:09.239224+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/dependency-uris.log",
+        "bytes": 743,
+        "sha256": "6570f9f05238c4d1fb5c91876593bf6176b5dcf88020d13fd7f8a87790d06712"
+      }
+    },
+    {
+      "name": "download",
+      "command": [
+        "/usr/bin/apt-get",
+        "--yes",
+        "--download-only",
+        "--no-install-recommends",
+        "--no-install-suggests",
+        "--reinstall",
+        "install",
+        "python3-setuptools=68.1.2-2ubuntu1.2",
+        "python3-pkg-resources=68.1.2-2ubuntu1.2"
+      ],
+      "started_utc": "2026-10-23T14:03:09.239461+00:00",
+      "finished_utc": "2026-10-23T14:03:11.463337+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/dependency-download.log",
+        "bytes": 654,
+        "sha256": "cd22ba627c59ccf8130845cf8cfee23af106633fb7158df415bbfcb294246ded"
+      }
+    }
+  ],
+  "packages": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/python3-setuptools_68.1.2-2ubuntu1.2_all.deb",
+      "bytes": 396614,
+      "sha256": "27ede03d8c5046c30cf1dcdc8835708408d27bdd3561e881b5d66656e6ff23e7",
+      "package": "python3-setuptools",
+      "version": "68.1.2-2ubuntu1.2",
+      "architecture": "all",
+      "authenticated_sha256": "27ede03d8c5046c30cf1dcdc8835708408d27bdd3561e881b5d66656e6ff23e7",
+      "official_archive_path": "pool/main/s/setuptools/python3-setuptools_68.1.2-2ubuntu1.2_all.deb",
+      "depends": "python3-pkg-resources (= 68.1.2-2ubuntu1.2), python3:any",
+      "metadata": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/python3-setuptools.authenticated-metadata.txt",
+        "bytes": 1165,
+        "sha256": "e2d73e1ffbdbf5014da4bb7d5be0d14e0ae7092ca275a67406204922b4c106d9"
+      },
+      "extraction_returncode": 0,
+      "extraction_stdout": "",
+      "extraction_stderr": ""
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/python3-pkg-resources_68.1.2-2ubuntu1.2_all.deb",
+      "bytes": 167914,
+      "sha256": "13caaa69d5ba8b02e90087d4bcef714c0581e591e820804d15d12f582055147a",
+      "package": "python3-pkg-resources",
+      "version": "68.1.2-2ubuntu1.2",
+      "architecture": "all",
+      "authenticated_sha256": "13caaa69d5ba8b02e90087d4bcef714c0581e591e820804d15d12f582055147a",
+      "official_archive_path": "pool/main/s/setuptools/python3-pkg-resources_68.1.2-2ubuntu1.2_all.deb",
+      "depends": "python3:any",
+      "metadata": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/python3-pkg-resources.authenticated-metadata.txt",
+        "bytes": 1018,
+        "sha256": "6cc330d2f2e0070f5b46cdaf2d32ad401d57d45544b0cbbd2caf03a3cb6d6492"
+      },
+      "extraction_returncode": 0,
+      "extraction_stdout": "",
+      "extraction_stderr": ""
+    }
+  ],
+  "environment_overrides": {
+    "APT_CONFIG": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/apt.conf"
+  },
+  "authenticated_index_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/host-package-index.json",
+    "bytes": 6099,
+    "sha256": "85cf81c4032a2c8894f069556c330399e08204c09e17745c59a61c731f04044d"
+  },
+  "host_package_status_before": {
+    "path": "/var/lib/dpkg/status",
+    "bytes": 845899,
+    "sha256": "315debd2c0d91242550234b1fc27842103bccdf4274aa75c59b6d1f51d07966e"
+  },
+  "extraction_root": "/workspace/scratch/d63596d831b2/runtime/product-system-python-deps/root",
+  "host_package_installations": 0,
+  "tests_executed": 0,
+  "extracted_files": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/extracted-package-files.json",
+    "bytes": 49799,
+    "sha256": "c52bd5f85efd7f1204dd21c420a82d8a9e7b9351276933253b591c5bb078a7ef"
+  },
+  "status": "verified_extracted",
+  "finished_utc": "2026-10-23T14:03:11.563496+00:00",
+  "host_package_status_after": {
+    "path": "/var/lib/dpkg/status",
+    "bytes": 845899,
+    "sha256": "315debd2c0d91242550234b1fc27842103bccdf4274aa75c59b6d1f51d07966e"
+  },
+  "tool": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-system-python-retry-2026-10-23/prepare-dependencies.py",
+    "bytes": 6767,
+    "sha256": "d9d517501ec9ed0a40ee5dcbcdcf0bc7330148c8d13aadf75d6e298b30be98d6"
+  }
+}

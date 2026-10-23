@@ -1,0 +1,58 @@
+test_real_configuration_fixture_and_unavailable_command_inventory (tests.test_test_registration_inventory.CTestInfrastructureIntegrationTests.test_real_configuration_fixture_and_unavailable_command_inventory) ... ok
+test_aggregate_registration_requires_child_cases (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_aggregate_registration_requires_child_cases) ... ok
+test_configuration_and_source_backtrace_are_preserved (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_configuration_and_source_backtrace_are_preserved) ... ok
+test_configuration_mismatch_is_rejected (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_configuration_mismatch_is_rejected) ... ok
+test_disabled_fixture_registration_is_preserved (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_disabled_fixture_registration_is_preserved) ... ok
+test_duplicate_names_and_properties_are_rejected (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_duplicate_names_and_properties_are_rejected) ... ok
+test_empty_listing_does_not_prove_no_obligations (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_empty_listing_does_not_prove_no_obligations) ... ok
+test_failed_capture_never_becomes_complete (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_failed_capture_never_becomes_complete) ... ok
+test_future_property_values_are_preserved_without_claiming_support (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_future_property_values_are_preserved_without_claiming_support) ... ok
+test_invalid_graph_indices_and_cycles_are_rejected (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_invalid_graph_indices_and_cycles_are_rejected) ... ok
+test_missing_or_empty_command_keeps_unresolved_registration (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_missing_or_empty_command_keeps_unresolved_registration) ... ok
+test_raw_listing_hash_keeps_original_bytes_and_encoding (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_raw_listing_hash_keeps_original_bytes_and_encoding) ... ok
+test_registration_order_does_not_change_identity (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_registration_order_does_not_change_identity) ... ok
+test_source_and_build_changes_cannot_reuse_registration_ids (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_source_and_build_changes_cannot_reuse_registration_ids) ... ok
+test_strict_json_rejects_duplicate_keys_and_nonfinite_numbers (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_strict_json_rejects_duplicate_keys_and_nonfinite_numbers) ... ok
+test_unknown_disabled_type_does_not_turn_into_false (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_unknown_disabled_type_does_not_turn_into_false) ... ok
+test_unsupported_version_and_malformed_tests_are_rejected (tests.test_test_registration_inventory.CTestRegistrationInventoryTests.test_unsupported_version_and_malformed_tests_are_rejected) ... ok
+test_annotations_are_display_metadata_not_parameter_identity (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_annotations_are_display_metadata_not_parameter_identity) ... ok
+test_disabled_instantiated_suites_and_cases_stay_in_denominator (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_disabled_instantiated_suites_and_cases_stay_in_denominator) ... ok
+test_duplicate_suite_headers_still_reject_ambiguous_capture_structure (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_duplicate_suite_headers_still_reject_ambiguous_capture_structure) ... ok
+test_empty_listing_and_empty_suite_keep_unknown_denominator (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_empty_listing_and_empty_suite_keep_unknown_denominator) ... ok
+test_filter_and_environment_are_not_assumed_universal (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_filter_and_environment_are_not_assumed_universal) ... ok
+test_known_main_banner_is_retained (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_known_main_banner_is_retained) ... ok
+test_original_duplicate_case_names_remain_unresolved_observations (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_original_duplicate_case_names_remain_unresolved_observations) ... ERROR
+test_runtime_names_keep_typed_and_value_parameter_suffixes (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_runtime_names_keep_typed_and_value_parameter_suffixes) ... ok
+test_same_leaf_under_multiple_registrations_has_one_execution_identity (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_same_leaf_under_multiple_registrations_has_one_execution_identity) ... ok
+test_source_commit_and_artifact_require_full_hashes (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_source_commit_and_artifact_require_full_hashes) ... ok
+test_source_qualified_identity_resolves_equal_names_without_order (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_source_qualified_identity_resolves_equal_names_without_order) ... ERROR
+test_unknown_lines_and_orphans_cannot_be_silently_dropped (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_unknown_lines_and_orphans_cannot_be_silently_dropped) ... ok
+test_unparsed_suite_cannot_reassign_cases_to_previous_suite (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_unparsed_suite_cannot_reassign_cases_to_previous_suite) ... ok
+test_wrong_source_build_or_artifact_cannot_reuse_case_identity (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_wrong_source_build_or_artifact_cannot_reuse_case_identity) ... ok
+
+======================================================================
+ERROR: test_original_duplicate_case_names_remain_unresolved_observations (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_original_duplicate_case_names_remain_unresolved_observations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_test_registration_inventory.py", line 280, in test_original_duplicate_case_names_remain_unresolved_observations
+    result = gtest_inventory("stack.\n  Push\n  Peek\n  Empty\n  Peek\n")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_test_registration_inventory.py", line 61, in gtest_inventory
+    return inventory_gtest(
+           ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py", line 338, in inventory_gtest
+    raise ValueError(f"Duplicate GoogleTest case: {identity}")
+ValueError: Duplicate GoogleTest case: stack.Peek
+
+======================================================================
+ERROR: test_source_qualified_identity_resolves_equal_names_without_order (tests.test_test_registration_inventory.GTestRuntimeInventoryTests.test_source_qualified_identity_resolves_equal_names_without_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_test_registration_inventory.py", line 302, in test_source_qualified_identity_resolves_equal_names_without_order
+    from tools.test_registration_inventory import gtest_source_case_id
+ImportError: cannot import name 'gtest_source_case_id' from 'tools.test_registration_inventory' (/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py)
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.374s
+
+FAILED (errors=2)

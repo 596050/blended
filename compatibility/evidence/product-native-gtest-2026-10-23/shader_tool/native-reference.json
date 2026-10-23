@@ -1,0 +1,1995 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool_test-build.json",
+    "bytes": 3285,
+    "sha256": "0d69ea0ec917f175b050f9b05d4b5b1a9a1ee0ebacd4553e682f1acb5bfd8860"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+    "bytes": 4942776,
+    "sha256": "5ba303daa32228f231823fd3cdc6fdca9c6ac4ae993acedcfbebad5225fcd925"
+  },
+  "original_registration": {
+    "id": "ctest:d9f7d65f9d2e2ce0169aed3765d020f2c9d309deaf67adfc3cf738dc177bb005",
+    "identity": "shader_tool",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+      "--gtest_filter=shader_tool.*:bsl_grammar.*:TEST(true).*",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+        "line": 394,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 154,
+        "command": "gtest_add_tests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 315,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/source/blender/gpu/shader_tool/CMakeLists.txt",
+        "line": 108,
+        "command": "blender_add_test_suite_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/source/blender/gpu/shader_tool/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 5,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+        "--gtest_filter=shader_tool.*:bsl_grammar.*:TEST(true).*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "shader_tool",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+          "--gtest_filter=shader_tool.*:bsl_grammar.*:TEST(true).*",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:03:44.057204+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:03:44.061602+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-listing.stdout.txt",
+          "bytes": 1110,
+          "sha256": "1f70619348453dc25610a477cf71031365a42bbb644458cecd4d08175b7e6b22"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-gtest-inventory.json",
+        "bytes": 52935,
+        "sha256": "0a611872ae9a9987f588328f54a76046ac56b551d0964cd15fbc3172620a3e6a"
+      },
+      "counts": {
+        "cases": 62,
+        "disabled": 0,
+        "not_run": 62
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:03:44.061674+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:03:44.065518+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-listing.stdout.txt",
+          "bytes": 1110,
+          "sha256": "1f70619348453dc25610a477cf71031365a42bbb644458cecd4d08175b7e6b22"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-gtest-inventory.json",
+        "bytes": 52896,
+        "sha256": "0626ec9ce4b08e2204a73c1e3159798be01636aedf18911259d8b8fd2378dea9"
+      },
+      "counts": {
+        "cases": 62,
+        "disabled": 0,
+        "not_run": 62
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^shader_tool$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:03:44.169820+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:03:45.992644+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-execution.stdout.txt",
+      "bytes": 8061,
+      "sha256": "767343fa005ed4f8d305ddd766873e1f8e9656eb186958c8f286fe629d4ebc3a"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^shader_tool$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:03:43.833657+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:03:44.050315+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-registration.stdout.txt",
+        "bytes": 2407,
+        "sha256": "90eed264c5b508fd71d914b9f6172c26d60fcdfc5ad699fc527bb2132f5d018a"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+        "--gtest_filter=shader_tool.*:bsl_grammar.*:TEST(true).*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:03:44.057204+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:03:44.061602+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-listing.stdout.txt",
+        "bytes": 1110,
+        "sha256": "1f70619348453dc25610a477cf71031365a42bbb644458cecd4d08175b7e6b22"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:03:44.061674+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:03:44.065518+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-listing.stdout.txt",
+        "bytes": 1110,
+        "sha256": "1f70619348453dc25610a477cf71031365a42bbb644458cecd4d08175b7e6b22"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^shader_tool$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:03:44.169820+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:03:45.992644+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-execution.stdout.txt",
+        "bytes": 8061,
+        "sha256": "767343fa005ed4f8d305ddd766873e1f8e9656eb186958c8f286fe629d4ebc3a"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "62",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "1.598",
+    "timestamp": "2026-10-23T19:03:44.345",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "shader_tool.ExpressionParser",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ExpressionParser",
+        "file": "source/blender/gpu/shader_tool/tests/expression_test.cc",
+        "line": "27",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.345",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:2ae244c0cb4aae7354601476a4950ef7f4e3eb592d388906c61233ebbebe3935",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/expression_test.cc",
+        "line": 27,
+        "sha256": "d88f9ccf4868e4370e042988003d81d4317bccf40b989f3aa7965360481a9148"
+      }
+    },
+    {
+      "identity": "shader_tool.Unroll",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Unroll",
+        "file": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.147",
+        "timestamp": "2026-10-23T19:03:44.345",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:e5d3071784d8a4f745b198445d9a7a43b264a92c6792fcd0b91ae3e0e7601e75",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": 13,
+        "sha256": "90d5c19b4297df397bd38d431ebac7b86296317a94f67218d859e5d992667f12"
+      }
+    },
+    {
+      "identity": "shader_tool.StaticBranch",
+      "outcome": "passed",
+      "attributes": {
+        "name": "StaticBranch",
+        "file": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": "284",
+        "status": "run",
+        "result": "completed",
+        "time": "0.059",
+        "timestamp": "2026-10-23T19:03:44.493",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:eb0e85dcab7cfdbcf77a6187351127f6f6c82db67c88dc71295feb6343c2a451",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": 284,
+        "sha256": "90d5c19b4297df397bd38d431ebac7b86296317a94f67218d859e5d992667f12"
+      }
+    },
+    {
+      "identity": "shader_tool.BoolCast",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BoolCast",
+        "file": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": "784",
+        "status": "run",
+        "result": "completed",
+        "time": "0.036",
+        "timestamp": "2026-10-23T19:03:44.553",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:6467c6ecd97874a085223398c1e3042174888fd610b2b60db26f7b2f3790f1a0",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": 784,
+        "sha256": "90d5c19b4297df397bd38d431ebac7b86296317a94f67218d859e5d992667f12"
+      }
+    },
+    {
+      "identity": "shader_tool.ForceInline",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ForceInline",
+        "file": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": "826",
+        "status": "run",
+        "result": "completed",
+        "time": "0.05",
+        "timestamp": "2026-10-23T19:03:44.589",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:f381373ff5651648d3dec836990e2044d45088ca597db3f85f5ec58dd9e25205",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+        "line": 826,
+        "sha256": "90d5c19b4297df397bd38d431ebac7b86296317a94f67218d859e5d992667f12"
+      }
+    },
+    {
+      "identity": "shader_tool.StructMethods",
+      "outcome": "passed",
+      "attributes": {
+        "name": "StructMethods",
+        "file": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.001",
+        "timestamp": "2026-10-23T19:03:44.639",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:de639a3260a6577fc37ba49acf756f0ff86f1442fedff710f655cf334521bfc3",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": 13,
+        "sha256": "f233e0bd1ed8bdc212cf2c605f525de8570da1732271f9c9d0318fb7ed1aa107"
+      }
+    },
+    {
+      "identity": "shader_tool.DefaultArguments",
+      "outcome": "passed",
+      "attributes": {
+        "name": "DefaultArguments",
+        "file": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": "190",
+        "status": "run",
+        "result": "completed",
+        "time": "0.022",
+        "timestamp": "2026-10-23T19:03:44.641",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:7224ae40eed3fa33e1303b683c01ca890d7cd14787f87455df997f0f94f664cc",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": 190,
+        "sha256": "f233e0bd1ed8bdc212cf2c605f525de8570da1732271f9c9d0318fb7ed1aa107"
+      }
+    },
+    {
+      "identity": "shader_tool.FunctionOverloads",
+      "outcome": "passed",
+      "attributes": {
+        "name": "FunctionOverloads",
+        "file": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": "355",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.664",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b618f4baf7cdbafd843a0d9e940265e37d0a101d71166fc5065a491fb11a343f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": 355,
+        "sha256": "f233e0bd1ed8bdc212cf2c605f525de8570da1732271f9c9d0318fb7ed1aa107"
+      }
+    },
+    {
+      "identity": "shader_tool.ForwardDecl",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ForwardDecl",
+        "file": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": "418",
+        "status": "run",
+        "result": "completed",
+        "time": "0.018",
+        "timestamp": "2026-10-23T19:03:44.664",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:bb233d93538038938d8e4b55ea328d9e1c5d1262ecacd20ca05ea1ba10014c14",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/function_test.cc",
+        "line": 418,
+        "sha256": "f233e0bd1ed8bdc212cf2c605f525de8570da1732271f9c9d0318fb7ed1aa107"
+      }
+    },
+    {
+      "identity": "shader_tool.Include",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Include",
+        "file": "source/blender/gpu/shader_tool/tests/metadata_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.682",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:f464cd12be54997238f13d941d14cf51305fe059f54468c67c939f60c7d88a21",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/metadata_test.cc",
+        "line": 13,
+        "sha256": "7a9d0850ab35413382cd4a4ad1f9b3356d7f54ec2cf5002f4c190cb02fe87502"
+      }
+    },
+    {
+      "identity": "shader_tool.Namespace",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Namespace",
+        "file": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.002",
+        "timestamp": "2026-10-23T19:03:44.682",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:25f3bce96205d5211037d1f5751f9b820f1131a7ebd20146dd785ea99bc52966",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+        "line": 13,
+        "sha256": "2b2eb361951e88d554761f3010c3dce87dd28d3ab335eb8263afc8a54cbe99ea"
+      }
+    },
+    {
+      "identity": "shader_tool.Using",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Using",
+        "file": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+        "line": "410",
+        "status": "run",
+        "result": "completed",
+        "time": "0.011",
+        "timestamp": "2026-10-23T19:03:44.685",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:fd3aec6f56330fad6a8c5a8012490a022b493c1ff6882e0b19249fd9ce84b7a5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+        "line": 410,
+        "sha256": "2b2eb361951e88d554761f3010c3dce87dd28d3ab335eb8263afc8a54cbe99ea"
+      }
+    },
+    {
+      "identity": "shader_tool.Parser",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Parser",
+        "file": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.696",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:10dcfae6e947a6ce3e6fe7aeff77ae71f38c048ad4c1e1f5729e3e141cae1a46",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+        "line": 13,
+        "sha256": "c0113802ec3f661ad76cd38e7aa00bfa3919aa36a61a199cc388b3513fc99a6a"
+      }
+    },
+    {
+      "identity": "shader_tool.Cleanup",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Cleanup",
+        "file": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+        "line": "181",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.696",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:0369924868b1a981feb57643e38dd199207de6ba3ee4c0e6d266858d9c0cb5ad",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+        "line": 181,
+        "sha256": "c0113802ec3f661ad76cd38e7aa00bfa3919aa36a61a199cc388b3513fc99a6a"
+      }
+    },
+    {
+      "identity": "shader_tool.ResourceGuard",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ResourceGuard",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.001",
+        "timestamp": "2026-10-23T19:03:44.697",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:507ab98659ab9c172e4fbf3bfdbfc8bc6a0e2b2aa724b82702626f86f6ff8d71",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 13,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.SrtMutations",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SrtMutations",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "156",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.698",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:f7a49ae943e5c684b2e3f90d1f5081f03d94056ea8f3df1f8b9dbae372ea9708",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 156,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.SrtMethod",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SrtMethod",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "213",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.699",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:fa3ffeb717cce9c3ce822cce91446b9743dc79956be6696fca9e688bdca29960",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 213,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.SrtCompilationConstant",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SrtCompilationConstant",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "276",
+        "status": "run",
+        "result": "completed",
+        "time": "0.011",
+        "timestamp": "2026-10-23T19:03:44.699",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:40dcd602bd7af314fc82b75dab0a14efb55c4573a5bbad32b779d33a6e9f2a98",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 276,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.SrtTemplateWrapper",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SrtTemplateWrapper",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "293",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.710",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:44d68b64f67519d8d5fcbb00cb91ca4562f8a31bb3e309fb5c00d714adfa14fc",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 293,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.EntryPointResources",
+      "outcome": "passed",
+      "attributes": {
+        "name": "EntryPointResources",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "375",
+        "status": "run",
+        "result": "completed",
+        "time": "0.001",
+        "timestamp": "2026-10-23T19:03:44.711",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:8cd8d7fb4efbaf504782a5091d8d4d2bcecc669b3aa071b89519cb92765cd371",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 375,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.ConditionalLinting",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ConditionalLinting",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "614",
+        "status": "run",
+        "result": "completed",
+        "time": "0.034",
+        "timestamp": "2026-10-23T19:03:44.713",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:0222170a4fdf726e770b0d70c3bea1731a1ee0d5385d21d31d2360653801d0eb",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 614,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.PipelineDescription",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PipelineDescription",
+        "file": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": "649",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.747",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:2072d4c4df84d0107f95d8c3a382b633a73b6198bd15cce1c15b662193e95710",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+        "line": 649,
+        "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+      }
+    },
+    {
+      "identity": "shader_tool.Union",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Union",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.063",
+        "timestamp": "2026-10-23T19:03:44.747",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:5b768730d4da2eabe76a71092de22220422d521f3b8812c781b9e01429c1edf8",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 13,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.Enum",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Enum",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "685",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:44.811",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:1a1ce1b2d4cb7e75a9fbe047c9db08990b49b5e7d9b9a1bee7ac167bab3ace97",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 685,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.EmptyStruct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "EmptyStruct",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "774",
+        "status": "run",
+        "result": "completed",
+        "time": "0.015",
+        "timestamp": "2026-10-23T19:03:44.811",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:7508c6916b47c97b961c00b0becbdb884404092243ea431e33ac213e1d979048",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 774,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.NestedStruct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "NestedStruct",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "859",
+        "status": "run",
+        "result": "completed",
+        "time": "0.016",
+        "timestamp": "2026-10-23T19:03:44.827",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:e7cda7c43a4123805579ca7239f71190bc0bd895826d463bf17fba9ddff6c6b3",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 859,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.StructuredBindings",
+      "outcome": "passed",
+      "attributes": {
+        "name": "StructuredBindings",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "904",
+        "status": "run",
+        "result": "completed",
+        "time": "0.01",
+        "timestamp": "2026-10-23T19:03:44.843",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:03cdc67ecd692bcade4ecad0f95ba0ad706a59a84a9a0be6ae42a0ab654c633f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 904,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.InitializerList",
+      "outcome": "passed",
+      "attributes": {
+        "name": "InitializerList",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "1000",
+        "status": "run",
+        "result": "completed",
+        "time": "0.027",
+        "timestamp": "2026-10-23T19:03:44.854",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:e933c8dec09616539533b4e86fef9cd6402b637c347f22d20b580517b3e01337",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 1000,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.BitField",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BitField",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "1189",
+        "status": "run",
+        "result": "completed",
+        "time": "0.058",
+        "timestamp": "2026-10-23T19:03:44.882",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:3ecc94b1a3f5cc32a0c9d24a1c0a0f7b3237ef65bdfcbc4c57cab35c77782e9d",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 1189,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.StructBufferLinting",
+      "outcome": "passed",
+      "attributes": {
+        "name": "StructBufferLinting",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "1358",
+        "status": "run",
+        "result": "completed",
+        "time": "0.329",
+        "timestamp": "2026-10-23T19:03:44.940",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:4349e1d0beec2b571fe55db8effc13387b3668de5621fdc4b2fd549c5e19033a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 1358,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.Inheritance",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Inheritance",
+        "file": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": "1587",
+        "status": "run",
+        "result": "completed",
+        "time": "0.1",
+        "timestamp": "2026-10-23T19:03:45.269",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:c1be6122ac37fabc299593209f45a25ef25cba528052ee87b4330817e9ff0562",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+        "line": 1587,
+        "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+      }
+    },
+    {
+      "identity": "shader_tool.Array",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Array",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "12",
+        "status": "run",
+        "result": "completed",
+        "time": "0.086",
+        "timestamp": "2026-10-23T19:03:45.370",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:88fee6428e4f308812b8fa12724e48997a595642f818f8953c29422bc92d91c9",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 12,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.Swizzle",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Swizzle",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "108",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.457",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:2c5d665943b93430f471a439173d6871cc22a4c864f97b9db95f944283c120e5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 108,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.BinaryLiterals",
+      "outcome": "passed",
+      "attributes": {
+        "name": "BinaryLiterals",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "119",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.457",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:d177c5d445f790e1582c40f4fd41045af13ab5d505ae1f627e8c402fb4b85e19",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 119,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.MatrixConstructors",
+      "outcome": "skipped",
+      "attributes": {
+        "name": "MatrixConstructors",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "130",
+        "status": "run",
+        "result": "skipped",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.457",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [
+        {
+          "attributes": {
+            "message": "source/blender/gpu/shader_tool/tests/syntax_test.cc:133\nThis processing is only done for metal compatibility.\n"
+          },
+          "text": "source/blender/gpu/shader_tool/tests/syntax_test.cc:133\nThis processing is only done for metal compatibility.\n"
+        }
+      ],
+      "case_id": "gtest-source:de1a473e8b36394d14fd725563f7442aee0f922653da7cd0f5dcd3c10d4caafa",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 130,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.CommaDeclaration",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CommaDeclaration",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "145",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.457",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:ca1179b049d0eb0ed52d0f35e2bc55d1adec2440af2c92af25e672624ed19c24",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 145,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.Reference",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Reference",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "169",
+        "status": "run",
+        "result": "completed",
+        "time": "0.16",
+        "timestamp": "2026-10-23T19:03:45.457",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:e80ce263f4b0c8ab9fcf81199f4308829a297f2dc0632202be6b8dd76778288f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 169,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.Constexpr",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Constexpr",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "298",
+        "status": "run",
+        "result": "completed",
+        "time": "0.009",
+        "timestamp": "2026-10-23T19:03:45.617",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:24ac1cf97f683bf2a3b2993688f30cf505fd7c8f684cac5a0f69be6c8d282da5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 298,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.ConstexprVector",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ConstexprVector",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "327",
+        "status": "run",
+        "result": "completed",
+        "time": "0.106",
+        "timestamp": "2026-10-23T19:03:45.627",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a7d0df108b1b94cbf5b7d403950ad28ebd0421ce77386537810fb27d7fb6c7bf",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 327,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.Auto",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Auto",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "513",
+        "status": "run",
+        "result": "completed",
+        "time": "0.008",
+        "timestamp": "2026-10-23T19:03:45.734",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:43584dede14c99b8646c37878d9fcec012d3aff15bf43118cb553af0b5346031",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 513,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.ArrayAggregate",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ArrayAggregate",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "548",
+        "status": "run",
+        "result": "completed",
+        "time": "0.018",
+        "timestamp": "2026-10-23T19:03:45.743",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:27e21e4b9a10221aeb90fd47b85ca96609683d801aa2c63d75d7eaa9d544786c",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 548,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.AttributeCapacity",
+      "outcome": "passed",
+      "attributes": {
+        "name": "AttributeCapacity",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "566",
+        "status": "run",
+        "result": "completed",
+        "time": "0.014",
+        "timestamp": "2026-10-23T19:03:45.762",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:0828b3ff9c1bf7d871b36d079f245c7c6abdb7c99511446617d6589815c44429",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 566,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.PointerDereference",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PointerDereference",
+        "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": "589",
+        "status": "run",
+        "result": "completed",
+        "time": "0.03",
+        "timestamp": "2026-10-23T19:03:45.777",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:0395b1e8e6bf2580ae6c1e5de96094aef2550f726ac37a6387693fa90243da80",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+        "line": 589,
+        "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+      }
+    },
+    {
+      "identity": "shader_tool.Template",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Template",
+        "file": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+        "line": "13",
+        "status": "run",
+        "result": "completed",
+        "time": "0.107",
+        "timestamp": "2026-10-23T19:03:45.807",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:2b533cf2a27c848af225c3e6a5ebb2f74c56eb77d75ed3e8485d578e00c27a86",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+        "line": 13,
+        "sha256": "3c6d36d150ac120bb1d9b1d91769581256ffd404b374deb219a1e61d1d07d1b7"
+      }
+    },
+    {
+      "identity": "shader_tool.TemplateStruct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "TemplateStruct",
+        "file": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+        "line": "457",
+        "status": "run",
+        "result": "completed",
+        "time": "0.028",
+        "timestamp": "2026-10-23T19:03:45.914",
+        "classname": "shader_tool"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:6931914cc150b1e43f9a21d3050d9161d311d25bdf10a738ad197a7a1f81c3c4",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+        "line": 457,
+        "sha256": "3c6d36d150ac120bb1d9b1d91769581256ffd404b374deb219a1e61d1d07d1b7"
+      }
+    },
+    {
+      "identity": "bsl_grammar.EmptyTranslationUnit",
+      "outcome": "passed",
+      "attributes": {
+        "name": "EmptyTranslationUnit",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "43",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:064669607d9778823e0b0a0f1f157d3f54305c032aea0080c5df284ec656a423",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 43,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.PreprocessorDirectives",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PreprocessorDirectives",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "51",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b836966517889546edd73333a57c5dbdd36f80d2e19b42acc12e3b19b08c64ad",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 51,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.NamespaceDeclarations",
+      "outcome": "passed",
+      "attributes": {
+        "name": "NamespaceDeclarations",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "61",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a9db3a34cc9301489e580c22a35b9001c6de98847f6141a3188c0e92c3d7dd47",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 61,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.UsingStatements",
+      "outcome": "passed",
+      "attributes": {
+        "name": "UsingStatements",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "70",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:0c8214b185df00d5e3c1d8900bc6e2df476093974017d3693a131e6f24565b0f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 70,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.StandardStructDeclaration",
+      "outcome": "passed",
+      "attributes": {
+        "name": "StandardStructDeclaration",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "78",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:34342cae39410a923ad410d788c5a594186711032737e5eb1dc79e96ebe24e4d",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 78,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.StructWithAccessSpecifiers",
+      "outcome": "passed",
+      "attributes": {
+        "name": "StructWithAccessSpecifiers",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "88",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:48f0eac07ede0321e65e4c7c3e009374d6380a38106bd84a9e02bba70fdeb6dc",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 88,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.MemberKeywordsAndAttributes",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MemberKeywordsAndAttributes",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "100",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:fda18111c927b2de31e5200818d22530bb859ad5e6873b5507974a93269ed503",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 100,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.PipelineDeclarations",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PipelineDeclarations",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "111",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:11b492386b9f93a7d6fc6fb84c2aac36bd52518d910f65e8273234be28346977",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 111,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.TemplateDeclarationsAndInstantiations",
+      "outcome": "passed",
+      "attributes": {
+        "name": "TemplateDeclarationsAndInstantiations",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "119",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:72c80c3104bd70e8e81f636cf3ff8ef6a83ca3e33908fd337dddbcda9271358e",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 119,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.FunctionDeclarationsAndDefinitions",
+      "outcome": "passed",
+      "attributes": {
+        "name": "FunctionDeclarationsAndDefinitions",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "130",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:e624d1da5f86da65272943d4b0503ca2edf731da95d4b22b3182170c74e35505",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 130,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.ConditionalStatements",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ConditionalStatements",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "139",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:9c2c94e5112cfa3ec7bc137f46d41882d4487a5b825d13e8bf3c68ddb9ffed18",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 139,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.LoopConstructs",
+      "outcome": "passed",
+      "attributes": {
+        "name": "LoopConstructs",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "154",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a36ab799d8b35f971a13b637fb9e0c42904564d4f46b258e0da3bf4e3fadbbf5",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 154,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.SwitchCaseParsing",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SwitchCaseParsing",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "165",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:bbb1be3539005de0499b722f9241a6df960807c86fb80bfcdb1a1b3872bfe854",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 165,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.Attributes",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Attributes",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "181",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a63cfe85e92b6aeb7aee6dd588f1b8d3d2f2597ff3bc10248a76532330ff6284",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 181,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.Enum",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Enum",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "190",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.943",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:63f70c8fabced779497bcb9a1904a24b174eee42a45218037b556ba158c89674",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 190,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.ForwardClassDeclarations",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ForwardClassDeclarations",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "210",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.944",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:417b10bc66edb4c72742a90dd7e4f4d8b981f8538809ee054ad973afb30dfa85",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 210,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    },
+    {
+      "identity": "bsl_grammar.UnexpectedTokens",
+      "outcome": "passed",
+      "attributes": {
+        "name": "UnexpectedTokens",
+        "file": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": "216",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:03:45.944",
+        "classname": "bsl_grammar"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:a3f64547bea34842b28aa06ee88c376d6a5b9c7a5a5c9bf8236985cb1e6e4da6",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+        "line": 216,
+        "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "source/blender/gpu/shader_tool/tests/expression_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/expression_test.cc",
+      "bytes": 3619,
+      "sha256": "d88f9ccf4868e4370e042988003d81d4317bccf40b989f3aa7965360481a9148",
+      "line_count": 113,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/flow_control_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+      "bytes": 20425,
+      "sha256": "90d5c19b4297df397bd38d431ebac7b86296317a94f67218d859e5d992667f12",
+      "line_count": 916,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/function_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/function_test.cc",
+      "bytes": 7156,
+      "sha256": "f233e0bd1ed8bdc212cf2c605f525de8570da1732271f9c9d0318fb7ed1aa107",
+      "line_count": 478,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/metadata_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/metadata_test.cc",
+      "bytes": 913,
+      "sha256": "7a9d0850ab35413382cd4a4ad1f9b3356d7f54ec2cf5002f4c190cb02fe87502",
+      "line_count": 42,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/namespace_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+      "bytes": 7466,
+      "sha256": "2b2eb361951e88d554761f3010c3dce87dd28d3ab335eb8263afc8a54cbe99ea",
+      "line_count": 432,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/parser_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+      "bytes": 4157,
+      "sha256": "c0113802ec3f661ad76cd38e7aa00bfa3919aa36a61a199cc388b3513fc99a6a",
+      "line_count": 212,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/resource_table_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+      "bytes": 15818,
+      "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551",
+      "line_count": 711,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/struct_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+      "bytes": 39699,
+      "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb",
+      "line_count": 1989,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/syntax_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+      "bytes": 19304,
+      "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef",
+      "line_count": 641,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/templates_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+      "bytes": 14578,
+      "sha256": "3c6d36d150ac120bb1d9b1d91769581256ffd404b374deb219a1e61d1d07d1b7",
+      "line_count": 684,
+      "verified_against_archive": true
+    },
+    "source/blender/gpu/shader_tool/tests/grammar_test.cc": {
+      "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+      "bytes": 5054,
+      "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2",
+      "line_count": 222,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 61,
+    "skipped": 1
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/gtest-results.xml",
+    "bytes": 14099,
+    "sha256": "651cac9e71efb5d401666c0f1ba3b8e6a3ab5aea23386ad851ccecb2f50aec91"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-results.xml",
+    "bytes": 1446,
+    "sha256": "f5b3b9c55c267cc3f2a76e66407f01e478e9105fc412bf6b3ce621009bf1a36e"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

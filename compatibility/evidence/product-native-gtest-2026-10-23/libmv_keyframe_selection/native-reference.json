@@ -1,0 +1,564 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection_test-build.json",
+    "bytes": 3345,
+    "sha256": "2e98d4315790870a79a30e8b35a6d4a88a0b7b134def169fdbf7534ad171d020"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+    "bytes": 1929064,
+    "sha256": "49608d2cb54de2084a9deaddf489c5215eb9064614774888c2567bef39e26adc"
+  },
+  "original_registration": {
+    "id": "ctest:9f5a36655bf38ef97bd91a48f9a97bdb936fe8f17da782ba82d59e89ff6f2c2d",
+    "identity": "libmv_keyframe_selection",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 233,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_keyframe_selection",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:23.077708+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:23.081546+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/registered-listing.stdout.txt",
+          "bytes": 192,
+          "sha256": "21ed52b610d877f624b61f9be501a13aacb68e8224076913e26d22ff704f91d6"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/registered-gtest-inventory.json",
+        "bytes": 7478,
+        "sha256": "92628048ea2e2cae1e6ebdd8e147003c8cd211612ca879f7d4c0eafba17272fa"
+      },
+      "counts": {
+        "cases": 6,
+        "disabled": 0,
+        "not_run": 6
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:12:23.081614+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:12:23.089638+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/unfiltered-listing.stdout.txt",
+          "bytes": 192,
+          "sha256": "21ed52b610d877f624b61f9be501a13aacb68e8224076913e26d22ff704f91d6"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/unfiltered-gtest-inventory.json",
+        "bytes": 7504,
+        "sha256": "654dc275c6d763bb464c24c8741206dcc869c32b582ae69287cb663357278c92"
+      },
+      "counts": {
+        "cases": 6,
+        "disabled": 0,
+        "not_run": 6
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_keyframe_selection$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:12:23.194793+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:12:23.409998+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-execution.stdout.txt",
+      "bytes": 3050,
+      "sha256": "a79ab4eabffbfc0d575e4689395f38681610d8eb90558965d3877eb246ef3b02"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_keyframe_selection$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:22.905694+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:23.073979+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-registration.stdout.txt",
+        "bytes": 2061,
+        "sha256": "94942f305339e73d4f48bf116f07aca1661486ded65e9e759db9e74dc86ab2b6"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:23.077708+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:23.081546+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/registered-listing.stdout.txt",
+        "bytes": 192,
+        "sha256": "21ed52b610d877f624b61f9be501a13aacb68e8224076913e26d22ff704f91d6"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_keyframe_selection_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:12:23.081614+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:23.089638+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/unfiltered-listing.stdout.txt",
+        "bytes": 192,
+        "sha256": "21ed52b610d877f624b61f9be501a13aacb68e8224076913e26d22ff704f91d6"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_keyframe_selection$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:12:23.194793+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:12:23.409998+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-execution.stdout.txt",
+        "bytes": 3050,
+        "sha256": "a79ab4eabffbfc0d575e4689395f38681610d8eb90558965d3877eb246ef3b02"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "6",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.059",
+    "timestamp": "2026-10-23T19:12:23.345",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "KeyframeSelection.SyntheticNeighborFrame",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SyntheticNeighborFrame",
+        "file": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": "31",
+        "status": "run",
+        "result": "completed",
+        "time": "0.004",
+        "timestamp": "2026-10-23T19:12:23.345",
+        "classname": "KeyframeSelection"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:505301700c73b57b12d453990286354d7b8ee5d9cc4d1c5c0110683b4bf1b4dc",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": 31,
+        "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f"
+      }
+    },
+    {
+      "identity": "KeyframeSelection.FabrikEingangNeighborFrames",
+      "outcome": "passed",
+      "attributes": {
+        "name": "FabrikEingangNeighborFrames",
+        "file": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": "63",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:12:23.349",
+        "classname": "KeyframeSelection"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:27aa83c86db60cf61a5f5ebb217d40ad2dd59d841b2002a3309475913f942b28",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": 63,
+        "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f"
+      }
+    },
+    {
+      "identity": "KeyframeSelection.FabrikEingangFarFrames",
+      "outcome": "passed",
+      "attributes": {
+        "name": "FabrikEingangFarFrames",
+        "file": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": "136",
+        "status": "run",
+        "result": "completed",
+        "time": "0.004",
+        "timestamp": "2026-10-23T19:12:23.350",
+        "classname": "KeyframeSelection"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:43a8cab651a366cc3c897ffa8c1fdfe31cbdfc39856d283b92471a4cb73709ea",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": 136,
+        "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f"
+      }
+    },
+    {
+      "identity": "KeyframeSelection.CopterManualKeyFrames",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CopterManualKeyFrames",
+        "file": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": "187",
+        "status": "run",
+        "result": "completed",
+        "time": "0.003",
+        "timestamp": "2026-10-23T19:12:23.355",
+        "classname": "KeyframeSelection"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:143566926878f8b485be8b8cb1c908dd2aed221af0f76f876e2cd58d891da87f",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": 187,
+        "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f"
+      }
+    },
+    {
+      "identity": "KeyframeSelection.ElevatorManualKeyframesFrames",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ElevatorManualKeyframesFrames",
+        "file": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": "241",
+        "status": "run",
+        "result": "completed",
+        "time": "0.029",
+        "timestamp": "2026-10-23T19:12:23.358",
+        "classname": "KeyframeSelection"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:784b0d8276ede02019d533138442426884af249ea1d6cae9f870cafd8616edad",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": 241,
+        "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f"
+      }
+    },
+    {
+      "identity": "KeyframeSelection.ElevatorReconstructionVarianceTest",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ElevatorReconstructionVarianceTest",
+        "file": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": "398",
+        "status": "run",
+        "result": "completed",
+        "time": "0.017",
+        "timestamp": "2026-10-23T19:12:23.388",
+        "classname": "KeyframeSelection"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:97a37f9ac38b9641641fdd7108b5c03ea8f1b964da026137cb871c213f1788ff",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+        "line": 398,
+        "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc": {
+      "path": "intern/libmv/libmv/simple_pipeline/keyframe_selection_test.cc",
+      "bytes": 22812,
+      "sha256": "6163eea265a8517f216bb5d691e8f4faefae2318a973a5a62e188ca04fdaf42f",
+      "line_count": 529,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 6
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/gtest-results.xml",
+    "bytes": 1786,
+    "sha256": "92bf89b75b47358ce710d375ddacd98321d231fb06e05dc03dfe298f9733b2fb"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_keyframe_selection/ctest-results.xml",
+    "bytes": 1474,
+    "sha256": "a805b6c348ad6a2009ba650daec6932b66ac5d3fc76544f601706f353a9e5ec7"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

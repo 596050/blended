@@ -1,0 +1,1340 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic_test-build.json",
+    "bytes": 3002,
+    "sha256": "41c1239660aaa8fbf2aa0ed2d4e0164d7317567a767b11500ea11dd09b543101"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+    "bytes": 1302016,
+    "sha256": "86d50fe22177f32e74f64258eba96ae736184f27749aba91195056550ca01edb"
+  },
+  "original_registration": {
+    "id": "ctest:9549aea5eef142ebcf631cff32d72bb3c0585947a86bd84175cf7d6e6b6d7aeb",
+    "identity": "atomic",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/atomic/CMakeLists.txt",
+        "line": 34,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/atomic/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "atomic",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T13:51:30.427541+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T13:51:30.431096+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-listing.stdout.txt",
+          "bytes": 1401,
+          "sha256": "eba5e9583d81dc40692782e20897e92d52fd42b5b3550e737e00b6415663ceea"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-gtest-inventory.json",
+        "bytes": 45305,
+        "sha256": "4cb986f29e7bfab45f65976367612144c4ad6813ad99bd099f2011f12d829842"
+      },
+      "counts": {
+        "cases": 56,
+        "disabled": 0,
+        "not_run": 56
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T13:51:30.431245+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T13:51:30.443052+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-listing.stdout.txt",
+          "bytes": 1401,
+          "sha256": "eba5e9583d81dc40692782e20897e92d52fd42b5b3550e737e00b6415663ceea"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-gtest-inventory.json",
+        "bytes": 45331,
+        "sha256": "67bad2fda37d7cc9812a6a38faf6d9bff1bfe312fbae2be66f367979e2cf51f7"
+      },
+      "counts": {
+        "cases": 56,
+        "disabled": 0,
+        "not_run": 56
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^atomic$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T13:51:30.447998+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T13:51:30.768396+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-execution.stdout.txt",
+      "bytes": 7107,
+      "sha256": "cd8b18c4b999257f9f4fe16212a023e879153ace4ef3b7f80486ce924cd1dd30"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^atomic$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T13:51:30.208022+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:51:30.424988+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-registration.stdout.txt",
+        "bytes": 2025,
+        "sha256": "31a0a1f373ab179288b43e87395a6f9afefdaa1e95ee92f5b9008804dfaceae3"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T13:51:30.427541+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:51:30.431096+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-listing.stdout.txt",
+        "bytes": 1401,
+        "sha256": "eba5e9583d81dc40692782e20897e92d52fd42b5b3550e737e00b6415663ceea"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T13:51:30.431245+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:51:30.443052+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-listing.stdout.txt",
+        "bytes": 1401,
+        "sha256": "eba5e9583d81dc40692782e20897e92d52fd42b5b3550e737e00b6415663ceea"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^atomic$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T13:51:30.447998+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:51:30.768396+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-execution.stdout.txt",
+        "bytes": 7107,
+        "sha256": "cd8b18c4b999257f9f4fe16212a023e879153ace4ef3b7f80486ce924cd1dd30"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "56",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T18:51:30.717",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "atomic.atomic_add_and_fetch_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "17",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_sub_and_fetch_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_sub_and_fetch_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "38",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_add_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_add_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "65",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_sub_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_sub_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "86",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "113",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_load_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_load_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "142",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_store_uint64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_store_uint64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "158",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_add_and_fetch_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "182",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_sub_and_fetch_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_sub_and_fetch_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "203",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_add_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_add_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "230",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_sub_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_sub_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "251",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "278",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_load_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_load_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "310",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_store_int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_store_int64",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "326",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_add_and_fetch_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "350",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_sub_and_fetch_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_sub_and_fetch_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "371",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "398",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_load_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_load_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "425",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_store_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_store_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "441",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_add_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_add_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "459",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_or_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_or_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "480",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_and_uint32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_and_uint32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "501",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_add_and_fetch_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "528",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_sub_and_fetch_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_sub_and_fetch_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "549",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "576",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_load_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_load_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "606",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_store_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_store_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "622",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_add_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_add_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "640",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_or_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_or_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "661",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_and_int32",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_and_int32",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "678",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_or_int16",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_or_int16",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "699",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_and_int16",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_and_int16",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "714",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_or_uint8",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_or_uint8",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "735",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_and_uint8",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_and_uint8",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "744",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_or_int8",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_or_int8",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "758",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_and_int8",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_and_int8",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "767",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_or_char",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_or_char",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "782",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_and_char",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_and_char",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "791",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_add_and_fetch_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "806",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_sub_and_fetch_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_sub_and_fetch_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "824",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_add_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_add_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "842",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_sub_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_sub_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "860",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "878",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_load_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_load_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "896",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_store_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_store_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "912",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_update_max_z",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_update_max_z",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "930",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_add_and_fetch_u",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_u",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "952",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_sub_and_fetch_u",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_sub_and_fetch_u",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "970",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_add_u",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_add_u",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "988",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_fetch_and_sub_u",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_fetch_and_sub_u",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1006",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_u",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_u",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1024",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_ptr",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_ptr",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1050",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_load_ptr",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_load_ptr",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1059",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_store_ptr",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_store_ptr",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1068",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_cas_float",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_cas_float",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1086",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "atomic.atomic_add_and_fetch_fl",
+      "outcome": "passed",
+      "attributes": {
+        "name": "atomic_add_and_fetch_fl",
+        "file": "intern/atomic/tests/atomic_test.cc",
+        "line": "1095",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:51:30.717",
+        "classname": "atomic"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    }
+  ],
+  "observed_outcome_counts": {
+    "passed": 56
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/gtest-results.xml",
+    "bytes": 11353,
+    "sha256": "5fd8c16ca8df6f1514f5961b9cdc9f00c644eaa4faa5d3110ce65781441e6d50"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-results.xml",
+    "bytes": 1439,
+    "sha256": "1f9f4e818c1f72ac69184f601570ebb48e22422e268995d4afb912603bc2b883"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false
+}

@@ -1,0 +1,59 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 6
+    Start 6: libmv_vector
+
+6: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+6: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+6: Environment variables: 
+6:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+6:  $$LD_LIBRARY_PATH
+6: Test timeout computed to be: 600
+6: [==========] Running 10 tests from 3 test suites.
+6: [----------] Global test environment set-up.
+6: [----------] 1 test from VectorAlignmentTest
+6: [ RUN      ] VectorAlignmentTest.PushBack
+6: [       OK ] VectorAlignmentTest.PushBack (0 ms)
+6: [----------] 1 test from VectorAlignmentTest (0 ms total)
+6: 
+6: [----------] 8 tests from VectorTest
+6: [ RUN      ] VectorTest.EmptyVectorDoesNotConstruct
+6: [       OK ] VectorTest.EmptyVectorDoesNotConstruct (0 ms)
+6: [ RUN      ] VectorTest.DestructorGetsCalled
+6: [       OK ] VectorTest.DestructorGetsCalled (0 ms)
+6: [ RUN      ] VectorTest.ReserveDoesNotCallConstructorsOrDestructors
+6: [       OK ] VectorTest.ReserveDoesNotCallConstructorsOrDestructors (0 ms)
+6: [ RUN      ] VectorTest.ResizeConstructsAndDestructsAsExpected
+6: [       OK ] VectorTest.ResizeConstructsAndDestructsAsExpected (0 ms)
+6: [ RUN      ] VectorTest.PushPopBack
+6: [       OK ] VectorTest.PushPopBack (0 ms)
+6: [ RUN      ] VectorTest.CopyConstructor
+6: [       OK ] VectorTest.CopyConstructor (0 ms)
+6: [ RUN      ] VectorTest.OperatorEquals
+6: [       OK ] VectorTest.OperatorEquals (0 ms)
+6: [ RUN      ] VectorTest.STLFind
+6: [       OK ] VectorTest.STLFind (0 ms)
+6: [----------] 8 tests from VectorTest (0 ms total)
+6: 
+6: [----------] 1 test from Vector
+6: [ RUN      ] Vector.swap
+6: [       OK ] Vector.swap (0 ms)
+6: [----------] 1 test from Vector (0 ms total)
+6: 
+6: [----------] Global test environment tear-down
+6: [==========] 10 tests from 3 test suites ran. (0 ms total)
+6: [  PASSED  ] 10 tests.
+1/1 Test #6: libmv_vector .....................   Passed    0.01 sec
+
+The following tests passed:
+	libmv_vector
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.05 sec

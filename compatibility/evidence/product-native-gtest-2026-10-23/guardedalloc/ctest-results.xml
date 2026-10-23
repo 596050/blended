@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="0"
+	timestamp="2026-10-23T18:52:56"
+	>
+	<testcase name="guardedalloc" classname="guardedalloc" time="0.00755417" status="run">
+		<properties/>
+		<system-out>Note: Google Test filter = LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*
+[==========] Running 6 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 2 tests from LockFreeAllocatorTest
+[ RUN      ] LockFreeAllocatorTest.MEM_new_uninitialized_aligned
+[       OK ] LockFreeAllocatorTest.MEM_new_uninitialized_aligned (0 ms)
+[ RUN      ] LockFreeAllocatorTest.LockfreeIntegerOverflow
+
+[WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+
+[WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number o...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

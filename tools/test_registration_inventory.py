@@ -12,7 +12,7 @@ import argparse
 import hashlib
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 from typing import Any
 
@@ -296,6 +296,35 @@ def _gtest_disabled(name: str) -> bool:
     return name.startswith("DISABLED_") or "/DISABLED_" in name
 
 
+def gtest_source_case_id(identity: str, *, source_commit: str, source_path: str,
+                         source_sha256: str, source_line: int) -> str:
+    """Identify a runtime registration using independently verified source data.
+
+    GoogleTest permits equal suite/test names from different C++ namespaces.
+    Its original XML includes declaration file and line, while list output does
+    not. A caller must verify the file against the pinned source, match the name
+    multiplicities, and reject any remaining equal source-qualified identities.
+    This function validates identity fields; it does not attest those bindings.
+    Ordering, report timestamps and runtime artifact hashes are not identifiers
+    of the original source case.
+    """
+    _string(identity, "GoogleTest case name")
+    _hex(source_commit, 40, "source_commit")
+    _hex(source_sha256, 64, "source_sha256")
+    _string(source_path, "source_path")
+    path = PurePosixPath(source_path)
+    if path.is_absolute() or ".." in path.parts or "\\" in source_path or ":" in source_path:
+        raise ValueError("source_path must be a confined repository-relative POSIX path")
+    if path.as_posix() != source_path or source_path == ".":
+        raise ValueError("source_path must be normalized and nonempty")
+    if type(source_line) is not int or source_line < 1:
+        raise ValueError("source_line must be a positive integer")
+    return _identifier("gtest-source", {"source_commit": source_commit}, {
+        "name": identity, "source_path": source_path, "source_sha256": source_sha256,
+        "source_line": source_line,
+    })
+
+
 def inventory_gtest(text: str, *, source_commit: str, build_config_sha256: str,
                     artifact_sha256: str, registration_id: str,
                     provenance: dict) -> dict:
@@ -306,7 +335,10 @@ def inventory_gtest(text: str, *, source_commit: str, build_config_sha256: str,
     configurations. Displayed type/value annotations can be truncated upstream
     and are not canonical parameter values. Execution IDs deliberately exclude
     the parent registration so overlapping CTest filters cannot double-count a
-    single case in the same artifact/build/source scope.
+    single unambiguous case in the same artifact/build/source scope. Equal names
+    are retained as unresolved observations, never silently deduplicated. Their
+    capture-local IDs cannot become canonical case identities without separate
+    source-location metadata from the runtime framework.
     """
     _string(text, "GoogleTest listing", empty=True)
     _string(registration_id, "registration_id")
@@ -315,7 +347,7 @@ def inventory_gtest(text: str, *, source_commit: str, build_config_sha256: str,
     provenance, blockers = _provenance(provenance)
     blockers += ["source_and_configuration_reconciliation_required", "fixture_closure_unverified"]
     cases, unparsed, preamble = [], [], []
-    suites, names, current = {}, set(), None
+    suites, name_groups, current = {}, {}, None
     for number, line in enumerate(text.splitlines(), 1):
         if not line.strip():
             continue
@@ -334,13 +366,11 @@ def inventory_gtest(text: str, *, source_commit: str, build_config_sha256: str,
         if case_match and current is not None:
             name, value_parameter = case_match.groups()
             identity = f"{current}.{name}"
-            if identity in names:
-                raise ValueError(f"Duplicate GoogleTest case: {identity}")
-            names.add(identity)
             suites[current]["count"] += 1
-            cases.append({
+            case = {
                 "id": _identifier("gtest", scope, {"suite": current, "name": name}),
                 "identity": identity,
+                "identity_status": "unique_name_in_listing",
                 "kind": "gtest_runtime_case",
                 "suite": current,
                 "name": name,
@@ -356,7 +386,9 @@ def inventory_gtest(text: str, *, source_commit: str, build_config_sha256: str,
                     "reason": "Concrete runtime case identity; listing scope still requires attestation.",
                     "children": [],
                 },
-            })
+            }
+            cases.append(case)
+            name_groups.setdefault(identity, []).append(case)
             continue
         unparsed.append({"line": number, "text": line})
         # A malformed/new header must never assign following cases to an old suite.
@@ -369,21 +401,45 @@ def inventory_gtest(text: str, *, source_commit: str, build_config_sha256: str,
         blockers.append("empty_suites")
     if not cases:
         blockers.append("empty_runtime_listing")
+    input_sha256 = _hash(text.encode("utf-8"))
+    duplicates = []
+    for identity, group in name_groups.items():
+        if len(group) < 2:
+            continue
+        for case in group:
+            case.update(
+                id=_identifier("gtest-observation", scope, {
+                    "input_sha256": input_sha256, "listing_line": case["listing_line"],
+                }),
+                kind="gtest_runtime_observation",
+                identity_status="ambiguous_duplicate_name",
+                expansion_obligation={
+                    "status": "unresolved",
+                    "reason": "Equal runtime names require independently verified source-location metadata; listing order is not a case identity.",
+                    "children": [],
+                },
+            )
+        duplicates.append({"identity": identity, "listing_lines": [case["listing_line"] for case in group],
+                           "observation_ids": [case["id"] for case in group]})
+    if duplicates:
+        blockers.append("ambiguous_duplicate_case_names")
     return {
         "schema": 1,
         "inventory_kind": "gtest_runtime_cases",
         "scope": scope,
         "registration_id": registration_id,
         "provenance": provenance,
-        "input_sha256": _hash(text.encode("utf-8")),
+        "input_sha256": input_sha256,
         "input_hash_encoding": "raw_utf8",
         "listing_parse_complete": not unparsed and not empty_suites,
+        "runtime_identities_unambiguous": not duplicates,
         "runtime_enumeration_complete": False,
         "fixture_completeness": "unknown",
         "cases": cases,
         "preamble": preamble,
         "unparsed_lines": unparsed,
         "empty_suites": empty_suites,
+        "duplicate_identities": duplicates,
         "counts": {"cases": len(cases), "disabled": sum(case["disabled"] for case in cases), "not_run": len(cases)},
         "blockers": blockers,
     }

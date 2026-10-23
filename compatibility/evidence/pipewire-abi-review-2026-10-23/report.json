@@ -1,0 +1,3577 @@
+{
+  "schema": 1,
+  "purpose": "independent ABI and exact-package review for the unchanged Blender PipeWire >=1.1.0 requirement",
+  "created_utc": "2026-10-23T13:44:53.932363+00:00",
+  "verifier": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/pipewire-abi-review-2026-10-23/verify.py",
+    "bytes": 6163,
+    "sha256": "a4b4c73c08fd6858d44aad81b9fbbeb51f74c01bfe0601156a7e5e83538fd892"
+  },
+  "authenticated_package_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/host-dependency-packages.json",
+    "bytes": 49768,
+    "sha256": "e392d5e531f17b9abec046833724259e913dc6e9481292facb3e7823e6678f54"
+  },
+  "host_glibc": [
+    "glibc",
+    "2.39"
+  ],
+  "host_libc": {
+    "path": "/lib/x86_64-linux-gnu/libc.so.6",
+    "bytes": 2125328,
+    "sha256": "511f825ee075610ac9c0f7f91e2c13de2000d0f7b859f6461137e809a0a009d0"
+  },
+  "host_package_status": {
+    "path": "/var/lib/dpkg/status",
+    "bytes": 845899,
+    "sha256": "315debd2c0d91242550234b1fc27842103bccdf4274aa75c59b6d1f51d07966e"
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "packages": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/libpipewire-0.3-0t64_1.4.7-3ubuntu2_amd64.deb",
+      "bytes": 292038,
+      "sha256": "5aca517f4c0019720abf76b63dba8dac8d3856e9eaf5e8787282404154114c6f",
+      "package": "libpipewire-0.3-0t64",
+      "version": "1.4.7-3ubuntu2",
+      "official_archive_path": "pool/main/p/pipewire/libpipewire-0.3-0t64_1.4.7-3ubuntu2_amd64.deb",
+      "depends": "libspa-0.2-modules (= 1.4.7-3ubuntu2), libc6 (>= 2.38)"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/libpipewire-0.3-dev_1.4.7-3ubuntu2_amd64.deb",
+      "bytes": 59468,
+      "sha256": "14eb62b298b254274f6e651550bc21ed3cced4f420331f3335f2f73427f13731",
+      "package": "libpipewire-0.3-dev",
+      "version": "1.4.7-3ubuntu2",
+      "official_archive_path": "pool/main/p/pipewire/libpipewire-0.3-dev_1.4.7-3ubuntu2_amd64.deb",
+      "depends": "libpipewire-0.3-0t64 (= 1.4.7-3ubuntu2), libspa-0.2-dev (= 1.4.7-3ubuntu2)"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/libspa-0.2-dev_1.4.7-3ubuntu2_amd64.deb",
+      "bytes": 123214,
+      "sha256": "51475135e0bbcc550be8af34d55da596aa722a6b9106682275579183b552e413",
+      "package": "libspa-0.2-dev",
+      "version": "1.4.7-3ubuntu2",
+      "official_archive_path": "pool/main/p/pipewire/libspa-0.2-dev_1.4.7-3ubuntu2_amd64.deb",
+      "depends": ""
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/libspa-0.2-modules_1.4.7-3ubuntu2_amd64.deb",
+      "bytes": 1115238,
+      "sha256": "9c0f0af0f9f8f310f2aa83e95e75600bbec86e6819e847fb36a87cb7025b2385",
+      "package": "libspa-0.2-modules",
+      "version": "1.4.7-3ubuntu2",
+      "official_archive_path": "pool/main/p/pipewire/libspa-0.2-modules_1.4.7-3ubuntu2_amd64.deb",
+      "depends": "libasound2t64 (>= 1.2.10), libc6 (>= 2.38), libdbus-1-3 (>= 1.10), libfftw3-single3 (>= 3.3.10), libgcc-s1 (>= 3.3.1), libsndfile1 (>= 1.0.20), libstdc++6 (>= 12), libsystemd0, libudev1 (>= 183), libwebrtc-audio-processing-1-3 (>= 1.3)"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/libwebrtc-audio-processing-1-3_1.3-3build1_amd64.deb",
+      "bytes": 401154,
+      "sha256": "989b29d2c6871a1e4ea55915222b378c00bb88b5d0e8fb8712f7a4f99d4b8722",
+      "package": "libwebrtc-audio-processing-1-3",
+      "version": "1.3-3build1",
+      "official_archive_path": "pool/main/w/webrtc-audio-processing/libwebrtc-audio-processing-1-3_1.3-3build1_amd64.deb",
+      "depends": "libabsl20240722 (>= 20240722.0-1), libc6 (>= 2.38), libgcc-s1 (>= 3.3.1), libstdc++6 (>= 12)"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/apt/cache/archives/libabsl20240722_20240722.0-4ubuntu1_amd64.deb",
+      "bytes": 527710,
+      "sha256": "bf544c976bdd21a2f23ad9b383414fd41e1de774959c6fbbe0e62de715d032c5",
+      "package": "libabsl20240722",
+      "version": "20240722.0-4ubuntu1",
+      "official_archive_path": "pool/main/a/abseil/libabsl20240722_20240722.0-4ubuntu1_amd64.deb",
+      "depends": "libc6 (>= 2.38), libgcc-s1 (>= 3.4), libstdc++6 (>= 13.1)"
+    }
+  ],
+  "elf_count": 111,
+  "maximum_required_glibc": "GLIBC_2.38",
+  "elfs": [
+    {
+      "package": "libpipewire-0.3-0t64",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libpipewire-0.3.so.0.1407.0",
+      "bytes": 888064,
+      "sha256": "198392b8f3a1af6980a1cbe5167f20c3a4b42f510111b1e5c321573549d00725",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libpipewire-0.3.so.0.1407.0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.25",
+        "GLIBC_2.26",
+        "GLIBC_2.27",
+        "GLIBC_2.28",
+        "GLIBC_2.3",
+        "GLIBC_2.3.2",
+        "GLIBC_2.3.4",
+        "GLIBC_2.33",
+        "GLIBC_2.34",
+        "GLIBC_2.38",
+        "GLIBC_2.4",
+        "GLIBC_2.8"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libpipewire-0.3.so.0.1407.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/aec/libspa-aec-null.so",
+      "bytes": 14872,
+      "sha256": "d7addbe6f254fae4ce778eaeb61dc29b1c1f6099420207fd20e680691c844801",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/aec/libspa-aec-null.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/aec/libspa-aec-null.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/aec/libspa-aec-webrtc.so",
+      "bytes": 19056,
+      "sha256": "52d1d99a42d9d35c314169bef60dc4fc4ed1c07fbdc5da67c11e727d518b7d77",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/aec/libspa-aec-webrtc.so",
+      "needed": [
+        "libwebrtc-audio-processing-1.so.3",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.30",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/aec/libspa-aec-webrtc.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/alsa/libspa-alsa.so",
+      "bytes": 933960,
+      "sha256": "3ba70d6609d7415dfffa520c93f720283ea473b8a5ae5817c3f1cb914a717bfa",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/alsa/libspa-alsa.so",
+      "needed": [
+        "libasound.so.2",
+        "libm.so.6",
+        "libudev.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.29",
+        "GLIBC_2.3",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4",
+        "GLIBC_2.8",
+        "GLIBC_2.9"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/alsa/libspa-alsa.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/audioconvert/libspa-audioconvert.so",
+      "bytes": 875152,
+      "sha256": "26b2becd5c6a57b23851f731707aa83d873d808749a705f2c3819fb67755f3c1",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/audioconvert/libspa-audioconvert.so",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.29",
+        "GLIBC_2.3",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/audioconvert/libspa-audioconvert.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/audiomixer/libspa-audiomixer.so",
+      "bytes": 101576,
+      "sha256": "295ef909ef160c7b21cadb0944caf879bc5b9ddbcfb578a7df97b4ec1f95a201",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/audiomixer/libspa-audiomixer.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/audiomixer/libspa-audiomixer.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/audiotestsrc/libspa-audiotestsrc.so",
+      "bytes": 76312,
+      "sha256": "2806aed5f4ebe97549a9b13def464c15a794eb3120c77e46d3cd51c373e90f4c",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/audiotestsrc/libspa-audiotestsrc.so",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/audiotestsrc/libspa-audiotestsrc.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/avb/libspa-avb.so",
+      "bytes": 129560,
+      "sha256": "0597f9e5888d850baf22d5afec828301865e2cc151b01e7ae184ed74ed91910e",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/avb/libspa-avb.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/avb/libspa-avb.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/control/libspa-control.so",
+      "bytes": 72216,
+      "sha256": "8c1fc5f70a8bfdaec875e05e65110870a52da5fecb1d26caa4b9fa602ee2c4f1",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/control/libspa-control.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/control/libspa-control.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph-plugin-builtin.so",
+      "bytes": 430808,
+      "sha256": "79e9358673248d978b53a98409ba34a92d8fb05c29af773443b0a7d354c6bb4c",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph-plugin-builtin.so",
+      "needed": [
+        "libm.so.6",
+        "libsndfile.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.27",
+        "GLIBC_2.29",
+        "GLIBC_2.3",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph-plugin-builtin.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph-plugin-ladspa.so",
+      "bytes": 18904,
+      "sha256": "e0b3516a047cef82fd8cef931377f4dd73da38a2d457aa9ee02a4626f9cda09f",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph-plugin-ladspa.so",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.27",
+        "GLIBC_2.3.4",
+        "GLIBC_2.34",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph-plugin-ladspa.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph.so",
+      "bytes": 203456,
+      "sha256": "c90b0836fe16b82e197c12f0b5570d7800dbc813009a1c33cbb8700ed3fc50c3",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph.so",
+      "needed": [
+        "libm.so.6",
+        "libfftw3f.so.3",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/filter-graph/libspa-filter-graph.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/libspa.so",
+      "bytes": 207232,
+      "sha256": "d195dd9f88ab48604ce493f7649d372d48493c648dc126e0a2e0759179917d12",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/libspa.so",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.29",
+        "GLIBC_2.3",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/libspa.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-dbus.so",
+      "bytes": 31256,
+      "sha256": "2aa57e99312edbb16bb45334f7d410cf7bf632d4f0d4844ab4c5a824886d7d75",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-dbus.so",
+      "needed": [
+        "libdbus-1.so.3",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-dbus.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-journal.so",
+      "bytes": 18968,
+      "sha256": "365865b18c8178482b56fb6d153a3150856c99400303274cf4620227bb3b9f59",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-journal.so",
+      "needed": [
+        "libsystemd.so.0",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.30",
+        "GLIBC_2.33",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-journal.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-support.so",
+      "bytes": 154336,
+      "sha256": "3f33a92c7bbd867c319c7ca161751b260094ed17697d7574cf92e6737078eea6",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-support.so",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.29",
+        "GLIBC_2.3.2",
+        "GLIBC_2.3.4",
+        "GLIBC_2.34",
+        "GLIBC_2.38",
+        "GLIBC_2.4",
+        "GLIBC_2.6",
+        "GLIBC_2.7",
+        "GLIBC_2.8",
+        "GLIBC_2.9"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/support/libspa-support.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/test/libspa-test.so",
+      "bytes": 88640,
+      "sha256": "3dc08ed44ac89451eda88a4d13aebe679300b765b06c1298ca8bb40f836ee214",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/test/libspa-test.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/test/libspa-test.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/v4l2/libspa-v4l2.so",
+      "bytes": 133776,
+      "sha256": "9897bcb0822d833d541178bb94789747cba21796fb94cfada046008ad2a27e9a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/v4l2/libspa-v4l2.so",
+      "needed": [
+        "libm.so.6",
+        "libudev.so.1",
+        "libsystemd.so.0",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.29",
+        "GLIBC_2.3.4",
+        "GLIBC_2.33",
+        "GLIBC_2.38",
+        "GLIBC_2.4",
+        "GLIBC_2.9"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/v4l2/libspa-v4l2.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/videoconvert/libspa-videoconvert.so",
+      "bytes": 182848,
+      "sha256": "9848f743bff4b75ad45489c69a185edd85ba3f3ae28e4f1bba52019013c28e82",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/videoconvert/libspa-videoconvert.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/videoconvert/libspa-videoconvert.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libspa-0.2-modules",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/videotestsrc/libspa-videotestsrc.so",
+      "bytes": 80504,
+      "sha256": "f0bae594704b57f31f9957075256f410f4cc0a3b2adf3ceef443f6e53115f18b",
+      "archive_member": "usr/lib/x86_64-linux-gnu/spa-0.2/videotestsrc/libspa-videotestsrc.so",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/spa-0.2/videotestsrc/libspa-videotestsrc.so"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libwebrtc-audio-processing-1-3",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libwebrtc-audio-processing-1.so.3",
+      "bytes": 1018184,
+      "sha256": "53937033c879c8fb20b9dcf338c00e874c19b43d68b9e4397ace21a52072cca2",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libwebrtc-audio-processing-1.so.3",
+      "needed": [
+        "libabsl_bad_optional_access.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.8",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.20",
+        "GLIBCXX_3.4.29",
+        "GLIBCXX_3.4.30",
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.27",
+        "GLIBC_2.29",
+        "GLIBC_2.3",
+        "GLIBC_2.3.2",
+        "GLIBC_2.3.4",
+        "GLIBC_2.34",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libwebrtc-audio-processing-1.so.3"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_bad_any_cast_impl.so.20240722.0.0",
+      "bytes": 14648,
+      "sha256": "cff1841df049efe6cb2c379b5931ebe8bf6a5d20b36a991dd2081a8ee1e0bb8d",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_bad_any_cast_impl.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_bad_any_cast_impl.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_bad_optional_access.so.20240722.0.0",
+      "bytes": 14648,
+      "sha256": "81e66e4e07f47b9361679abea8d7a1644255185a126e536fe2791b337525859a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_bad_optional_access.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_bad_optional_access.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_bad_variant_access.so.20240722.0.0",
+      "bytes": 14648,
+      "sha256": "17f5174f3fbe962e953edab9119ed72831a8ba07223908e28cba43359e7695b9",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_bad_variant_access.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_bad_variant_access.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_base.so.20240722.0.0",
+      "bytes": 27048,
+      "sha256": "de4b326b6da2fb04ab97de76bcfbc4080df345d75518495626785f6b455c9f42",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_base.so.20240722.0.0",
+      "needed": [
+        "libabsl_raw_logging_internal.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4.17",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3",
+        "GLIBC_2.32",
+        "GLIBC_2.34",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_base.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_city.so.20240722.0.0",
+      "bytes": 14200,
+      "sha256": "134af155ac7bf3e27d52c69f6427db45efaeeb82d5c3a758813a53fcc42a93a2",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_city.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_city.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_civil_time.so.20240722.0.0",
+      "bytes": 26944,
+      "sha256": "ef1022d4a40b91d5e6fcc927f4074dde9ef75f488104762715f60d0766beb312",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_civil_time.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_civil_time.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cord.so.20240722.0.0",
+      "bytes": 125248,
+      "sha256": "f2935ebec9cd261ca7a8c5bf0e45dc1d71ea26ec899f401464fa7bcbd709abba",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_cord.so.20240722.0.0",
+      "needed": [
+        "libabsl_cordz_info.so.20240722",
+        "libabsl_cord_internal.so.20240722",
+        "libabsl_crc_cord_state.so.20240722",
+        "libabsl_str_format_internal.so.20240722",
+        "libabsl_cordz_functions.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.18",
+        "GLIBCXX_3.4.20",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.29",
+        "GLIBCXX_3.4.32",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cord.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cord_internal.so.20240722.0.0",
+      "bytes": 72000,
+      "sha256": "4fee6307e8f85a0600f3e9c44e560692640572269721d2b2ef96796f5ddb554d",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_cord_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_crc_cord_state.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cord_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_functions.so.20240722.0.0",
+      "bytes": 14640,
+      "sha256": "8550e992a1da1d0b81c304c2375005fb36f9b6b16460d6cd3243b7948d0beacd",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_cordz_functions.so.20240722.0.0",
+      "needed": [
+        "libabsl_exponential_biased.so.20240722",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.3"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_functions.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_handle.so.20240722.0.0",
+      "bytes": 18832,
+      "sha256": "041cc3ca150c1e6f5ac0e8567937d2d7c9b0f3c98321825c94245578d99580de",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_cordz_handle.so.20240722.0.0",
+      "needed": [
+        "libabsl_synchronization.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_handle.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_info.so.20240722.0.0",
+      "bytes": 27048,
+      "sha256": "453ac8c9b7fd4e9550468fe867897fa5164d78341c0fced3fad05ef2707322f0",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_cordz_info.so.20240722.0.0",
+      "needed": [
+        "libabsl_cord_internal.so.20240722",
+        "libabsl_cordz_handle.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_stacktrace.so.20240722",
+        "libabsl_time.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_info.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_sample_token.so.20240722.0.0",
+      "bytes": 14344,
+      "sha256": "88fdc58f2a42b4405c8496cffd628079e4113095202cbf545afc1f68e3e8f672",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_cordz_sample_token.so.20240722.0.0",
+      "needed": [
+        "libabsl_cordz_info.so.20240722"
+      ],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_cordz_sample_token.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc32c.so.20240722.0.0",
+      "bytes": 18832,
+      "sha256": "20a9aa82810f1c1a140d7a7e48ff49062201978d24e6ff68fb3fc0a1afd00e6f",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_crc32c.so.20240722.0.0",
+      "needed": [
+        "libabsl_crc_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc32c.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc_cord_state.so.20240722.0.0",
+      "bytes": 26944,
+      "sha256": "bb7091f28195815cef142aaee262b662921982812505c9549fde8fd02f7ce37b",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_crc_cord_state.so.20240722.0.0",
+      "needed": [
+        "libabsl_crc32c.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc_cord_state.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc_cpu_detect.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "af7ee320b177e75a697fd26dd811b35322d16ad2f8cad027f6d79710500eaa41",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_crc_cpu_detect.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc_cpu_detect.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc_internal.so.20240722.0.0",
+      "bytes": 18832,
+      "sha256": "89eb899848bfd3bc20d75d3dd08169119f0638fda37bc3ed954e3ed27062bfd9",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_crc_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_crc_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_debugging_internal.so.20240722.0.0",
+      "bytes": 26960,
+      "sha256": "bb47ed88f79686b49a2894a0850dda1e87565dfad6817a8db9d7dd134b16379d",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_debugging_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBC_2.16",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_debugging_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_decode_rust_punycode.so.20240722.0.0",
+      "bytes": 14496,
+      "sha256": "81f22c85b80a727f589bd24b695f61413fc5dbe74b5e04ccfaa0933424a45d7d",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_decode_rust_punycode.so.20240722.0.0",
+      "needed": [
+        "libabsl_utf8_for_code_point.so.20240722",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_decode_rust_punycode.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_demangle_internal.so.20240722.0.0",
+      "bytes": 55696,
+      "sha256": "dfb28feecf17b9bf232473173b9d43184ee322476a24bb5a10883bf16e7cc329",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_demangle_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_demangle_rust.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_demangle_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_demangle_rust.so.20240722.0.0",
+      "bytes": 22760,
+      "sha256": "e458db80542a5ad6e82baf367f7b062982e332ef78c324c236bc74d5bffa9163",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_demangle_rust.so.20240722.0.0",
+      "needed": [
+        "libabsl_decode_rust_punycode.so.20240722",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_demangle_rust.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_die_if_null.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "2b466eaa9e0f128fa243437a6b72eccb39736ffc7bed9baba8cc067ad8eb452d",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_die_if_null.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_internal_message.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libstdc++.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_die_if_null.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_examine_stack.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "6317e11d85b6278b71f1a8ac0d41fccfcd26bd1e06db51998e98cdb09ce23711",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_examine_stack.so.20240722.0.0",
+      "needed": [
+        "libabsl_stacktrace.so.20240722",
+        "libabsl_symbolize.so.20240722",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_examine_stack.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_exponential_biased.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "110f248bb2718677de30a284d893992e1aaea8025e48da664786c7af58e27085",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_exponential_biased.so.20240722.0.0",
+      "needed": [
+        "libm.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.29"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_exponential_biased.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_failure_signal_handler.so.20240722.0.0",
+      "bytes": 19984,
+      "sha256": "b56ae8ca958bfcfbf41116b2d1520e32b888250f5459baac3e3ff8094da845d7",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_failure_signal_handler.so.20240722.0.0",
+      "needed": [
+        "libabsl_examine_stack.so.20240722",
+        "libabsl_stacktrace.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4",
+        "GLIBC_2.6"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_failure_signal_handler.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_commandlineflag.so.20240722.0.0",
+      "bytes": 14504,
+      "sha256": "8402f42fabbe972eea81bb120449d8c15c2ed5281cfe7d025450de992db547d5",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_commandlineflag.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_commandlineflag.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_commandlineflag_internal.so.20240722.0.0",
+      "bytes": 14648,
+      "sha256": "b25af453a8e8700ef36a6e0ed0d7a48f075de2ce12d34d3d33d25ba42ec64db1",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_commandlineflag_internal.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_commandlineflag_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_config.so.20240722.0.0",
+      "bytes": 22928,
+      "sha256": "ce823a8402d0321203ba0399abc709ada674f7aeaa1bff1f6bdfaf49ff430bc2",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_config.so.20240722.0.0",
+      "needed": [
+        "libabsl_flags_program_name.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.11",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_config.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_internal.so.20240722.0.0",
+      "bytes": 47504,
+      "sha256": "4d30153cfb82746ac06362199b8a5526642339ae7626deee9a882dd0afd8ba2f",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_flags_commandlineflag.so.20240722",
+        "libabsl_flags_commandlineflag_internal.so.20240722",
+        "libabsl_flags_config.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.14",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_marshalling.so.20240722.0.0",
+      "bytes": 43408,
+      "sha256": "4d010f1933a58ab433ae4b708150b272d9eeb447867164d3815075f96d7e47df",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_marshalling.so.20240722.0.0",
+      "needed": [
+        "libabsl_str_format_internal.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_int128.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_marshalling.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_parse.so.20240722.0.0",
+      "bytes": 72680,
+      "sha256": "1aade22bad6859138a5e7dc08f1e80132338349f063c34007d9e78672537a3f8",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_parse.so.20240722.0.0",
+      "needed": [
+        "libabsl_flags_usage.so.20240722",
+        "libabsl_flags_usage_internal.so.20240722",
+        "libabsl_flags_internal.so.20240722",
+        "libabsl_flags_marshalling.so.20240722",
+        "libabsl_flags_reflection.so.20240722",
+        "libabsl_flags_config.so.20240722",
+        "libabsl_flags_program_name.so.20240722",
+        "libabsl_flags_private_handle_accessor.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.11",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_parse.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_private_handle_accessor.so.20240722.0.0",
+      "bytes": 14496,
+      "sha256": "9f5c6af9921fcfd1b937ce0c8979dc174545b488524ddf4c6e95b439bd42d3ad",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_private_handle_accessor.so.20240722.0.0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_private_handle_accessor.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_program_name.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "f0f8af6fcb21b5b7588fe4ac70eca671b7b5553274669fd408ebccbf1c1dde32",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_program_name.so.20240722.0.0",
+      "needed": [
+        "libabsl_synchronization.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_program_name.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_reflection.so.20240722.0.0",
+      "bytes": 63888,
+      "sha256": "5159582adb0f99be61c78e9b99df03fe184a16fdc47ef35886862628bb47ea22",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_reflection.so.20240722.0.0",
+      "needed": [
+        "libabsl_flags_private_handle_accessor.so.20240722",
+        "libabsl_flags_config.so.20240722",
+        "libabsl_flags_commandlineflag.so.20240722",
+        "libabsl_raw_hash_set.so.20240722",
+        "libabsl_hash.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.14",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_reflection.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_usage.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "32bef007db7ec4b79bb9244baa08992f3ea592d2ab27747ba46faf8be6bc6385",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_usage.so.20240722.0.0",
+      "needed": [
+        "libabsl_synchronization.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_usage.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_usage_internal.so.20240722.0.0",
+      "bytes": 51600,
+      "sha256": "506e5f1ea34dc0cb7d3b9b4afaa8a505f0be86596467bc830acea3271dfa3bbf",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_flags_usage_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_flags_internal.so.20240722",
+        "libabsl_flags_reflection.so.20240722",
+        "libabsl_flags_config.so.20240722",
+        "libabsl_flags_program_name.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.14",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_flags_usage_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_graphcycles_internal.so.20240722.0.0",
+      "bytes": 31040,
+      "sha256": "0b5974890742ffa91ded25717e9d1bb3c89e1daf1ac3c1297e78e34b0db72cfd",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_graphcycles_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_malloc_internal.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_graphcycles_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_hash.so.20240722.0.0",
+      "bytes": 14488,
+      "sha256": "9e9a38d6a098aa19f29da4be8d46486c8a5d333ed97fdffc1009fea5c9934f69",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_hash.so.20240722.0.0",
+      "needed": [
+        "libabsl_city.so.20240722",
+        "libabsl_low_level_hash.so.20240722"
+      ],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_hash.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_hashtablez_sampler.so.20240722.0.0",
+      "bytes": 18760,
+      "sha256": "27b9f60b5e075d80d51f68aaff2dade10d8c6b12e1b84e2c95431bf32a07c876",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_hashtablez_sampler.so.20240722.0.0",
+      "needed": [
+        "libabsl_synchronization.so.20240722",
+        "libabsl_time.so.20240722",
+        "libabsl_stacktrace.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_hashtablez_sampler.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_int128.so.20240722.0.0",
+      "bytes": 22848,
+      "sha256": "5ed880dd5e4f16ad7206b2206c7b5a3efb3354ac9b40e9c094f7348f8cd781ff",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_int128.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.11",
+        "GLIBCXX_3.4.20",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_int128.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_kernel_timeout_internal.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "ca2713a58fdc97082251b131d6e230e199b143e28b7a23fffa9b70173f6ee53a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_kernel_timeout_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_time.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBCXX_3.4.19",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_kernel_timeout_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_leak_check.so.20240722.0.0",
+      "bytes": 14200,
+      "sha256": "587405de6965f31a32ec4120bec5700bafbba5c5bdfe0845951412c553de78c7",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_leak_check.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_leak_check.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_entry.so.20240722.0.0",
+      "bytes": 14120,
+      "sha256": "dadf8f995741c5c205a7c31dcd692be11e1fc0ce89e413d7e62e29f79885c23a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_entry.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_entry.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_flags.so.20240722.0.0",
+      "bytes": 27760,
+      "sha256": "9f96618b0b6f45fffa73ed9bf58ee90059391ca66420621c65e723f3fe6a35f8",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_flags.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_globals.so.20240722",
+        "libabsl_vlog_config_internal.so.20240722",
+        "libabsl_flags_internal.so.20240722",
+        "libabsl_flags_marshalling.so.20240722",
+        "libabsl_flags_reflection.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_flags.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_globals.so.20240722.0.0",
+      "bytes": 18784,
+      "sha256": "80e52f738977e0af04937cf6af59d3b63ed76ba05b77c72510cf222941b598b6",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_globals.so.20240722.0.0",
+      "needed": [
+        "libabsl_hash.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_globals.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_initialize.so.20240722.0.0",
+      "bytes": 14344,
+      "sha256": "43e6ad71254e7b24ef8d5411e3dfed02a6138e279bc1ba04eb11a01ba529c086",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_initialize.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_internal_globals.so.20240722",
+        "libabsl_time_zone.so.20240722"
+      ],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_initialize.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_check_op.so.20240722.0.0",
+      "bytes": 31040,
+      "sha256": "2ca5515b89bad74147e8b5cd62b4477a2b7dd832f300096eb07bfe2fbae9181c",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_check_op.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_internal_nullguard.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_check_op.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_conditions.so.20240722.0.0",
+      "bytes": 14416,
+      "sha256": "b6f6519a4db6df6137536ba24e4fb4059ee0364ccace70576bc42b350b2de96b",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_conditions.so.20240722.0.0",
+      "needed": [
+        "libabsl_base.so.20240722"
+      ],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_conditions.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_fnmatch.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "f7f7d0799ee5959bb8d19cdcdbc1c799b3306936bb44f2f540e5b32079afdf6a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_fnmatch.so.20240722.0.0",
+      "needed": [
+        "libabsl_string_view.so.20240722",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_fnmatch.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_format.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "c8e3b458b676c7557ca6130f3f1974f33b06bd554b1f6acc87fb68e6b5a843e9",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_format.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_internal_globals.so.20240722",
+        "libabsl_time.so.20240722",
+        "libabsl_str_format_internal.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_format.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_globals.so.20240722.0.0",
+      "bytes": 14576,
+      "sha256": "15a14fdabae9709adf8251b2e863aaeed0d5f5f0be03b902821fd2f3c82f2c14",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_globals.so.20240722.0.0",
+      "needed": [
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBCXX_3.4",
+        "GLIBC_2.2.5"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_globals.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_log_sink_set.so.20240722.0.0",
+      "bytes": 23000,
+      "sha256": "40971f03b2109e1602862caf1810711ef174f906001cdecd6c5c8e07e95e6c96",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_log_sink_set.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_internal_globals.so.20240722",
+        "libabsl_log_globals.so.20240722",
+        "libabsl_log_sink.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_log_sink_set.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_message.so.20240722.0.0",
+      "bytes": 47504,
+      "sha256": "0d53bfb935c24561cdbd5fb3cc003f2353c37af3b86708fab98272956acdacb4",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_message.so.20240722.0.0",
+      "needed": [
+        "libabsl_examine_stack.so.20240722",
+        "libabsl_log_internal_format.so.20240722",
+        "libabsl_log_internal_proto.so.20240722",
+        "libabsl_strerror.so.20240722",
+        "libabsl_log_internal_log_sink_set.so.20240722",
+        "libabsl_log_internal_globals.so.20240722",
+        "libabsl_log_globals.so.20240722",
+        "libabsl_time.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.29",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_message.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_nullguard.so.20240722.0.0",
+      "bytes": 14192,
+      "sha256": "d9e27602fceff5c7690ee97b5f2ae513d3a5611d0a0b8dbde4556fd77cd099a2",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_nullguard.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_nullguard.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_proto.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "7606c7a6896a76e63768e0c5986e93290909b4f678ab6488db25ab4489d0c8c6",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_internal_proto.so.20240722.0.0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_internal_proto.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_severity.so.20240722.0.0",
+      "bytes": 14568,
+      "sha256": "3ba2f06f21c42a26c51922adf7c737c39d71abb970cc59755824fefc865b949a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_severity.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.9"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_severity.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_sink.so.20240722.0.0",
+      "bytes": 14504,
+      "sha256": "48e910d015cb171b3e523646722ced706f4dced7e155cb53cc8ad5933294c988",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_log_sink.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_log_sink.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_low_level_hash.so.20240722.0.0",
+      "bytes": 14200,
+      "sha256": "3d9e0f45255b4a3f3cca81c067509390faab7bf6ab30075c3d2527369825d3b0",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_low_level_hash.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_low_level_hash.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_malloc_internal.so.20240722.0.0",
+      "bytes": 22928,
+      "sha256": "66e2c2b3c8a9fe5af4125f414fc0d469e686f970a0de2c327060027904dc7f3d",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_malloc_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_base.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBC_2.2.5",
+        "GLIBC_2.32",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_malloc_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_periodic_sampler.so.20240722.0.0",
+      "bytes": 14736,
+      "sha256": "1db9cd0b73cda5c2f5f6704adf6e664f5cbfe3be2a95916528f46dc525f797cd",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_periodic_sampler.so.20240722.0.0",
+      "needed": [
+        "libabsl_exponential_biased.so.20240722",
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_periodic_sampler.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_poison.so.20240722.0.0",
+      "bytes": 14496,
+      "sha256": "950a7c92776ce50ccedb819fd4ffea8a68e10897ce4559c1785b4ca36987dc4a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_poison.so.20240722.0.0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_poison.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_distributions.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "f7e89a3e9a193f8e347f1e0a8eb3691ba5eebf29c6794c2bb470064bb0d0ceca",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_distributions.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.32",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_distributions.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_distribution_test_util.so.20240722.0.0",
+      "bytes": 26944,
+      "sha256": "3997dcfea0a8451f7ff802210cd294398aba687e0b233f075508f889d8590129",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_distribution_test_util.so.20240722.0.0",
+      "needed": [
+        "libabsl_str_format_internal.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.2.5",
+        "GLIBC_2.23",
+        "GLIBC_2.29",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_distribution_test_util.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_platform.so.20240722.0.0",
+      "bytes": 18288,
+      "sha256": "e432e77461bd839a31d82b1a1e16f9044ca0c150178e4d2464356f838cad1cc3",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_platform.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_platform.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_pool_urbg.so.20240722.0.0",
+      "bytes": 18824,
+      "sha256": "c39947c4101345c7c0f1c1c01c4c16a030127ce33b1f19f9ee837edc3f71d1d3",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_pool_urbg.so.20240722.0.0",
+      "needed": [
+        "libabsl_random_internal_randen.so.20240722",
+        "libabsl_random_internal_seed_material.so.20240722",
+        "libabsl_random_seed_gen_exception.so.20240722",
+        "libabsl_random_internal_randen_hwaes_impl.so.20240722",
+        "libabsl_random_internal_randen_slow.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_pool_urbg.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen.so.20240722.0.0",
+      "bytes": 14584,
+      "sha256": "5b8ecfd8f465e265b853f30912ee7eae30e9d43cb7ffb4a9b6fc77c922aa43a4",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen.so.20240722.0.0",
+      "needed": [
+        "libabsl_random_internal_randen_hwaes.so.20240722",
+        "libabsl_random_internal_randen_slow.so.20240722",
+        "libabsl_random_internal_randen_hwaes_impl.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_hwaes.so.20240722.0.0",
+      "bytes": 14200,
+      "sha256": "b85fd465791f567fd7803d48509a999ffec3ec774e86488f583251b2eb537430",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_hwaes.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_hwaes.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_hwaes_impl.so.20240722.0.0",
+      "bytes": 14200,
+      "sha256": "3343d5982013485b39320eb898653b99f238cba2903292a7e45a4a394bdd341a",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_hwaes_impl.so.20240722.0.0",
+      "needed": [
+        "libabsl_random_internal_platform.so.20240722"
+      ],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_hwaes_impl.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_slow.so.20240722.0.0",
+      "bytes": 18368,
+      "sha256": "98ec0b23c94071cf6657e5075177430411b72de8c5b4ffa40095c377f7532eb0",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_slow.so.20240722.0.0",
+      "needed": [
+        "libabsl_random_internal_platform.so.20240722"
+      ],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_randen_slow.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_seed_material.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "5079ae1a69054b7eac27e5dbdf5302fbdfa7afa2bf92640d4a4d24a49f31e6e1",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_internal_seed_material.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBC_2.2.5",
+        "GLIBC_2.25",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_internal_seed_material.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_seed_gen_exception.so.20240722.0.0",
+      "bytes": 14648,
+      "sha256": "ada9ee76fd785daef9e091cce3112b294893e86bb34248e0fc29bf3057fc5e40",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_seed_gen_exception.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.32"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_seed_gen_exception.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_seed_sequences.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "d3b6f09e2a8237a554cc422fd999e8e62fa92a3d6525bc41fcc93c9f10d78af8",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_random_seed_sequences.so.20240722.0.0",
+      "needed": [
+        "libabsl_random_internal_pool_urbg.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_random_seed_sequences.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_raw_hash_set.so.20240722.0.0",
+      "bytes": 26928,
+      "sha256": "7a8215c75938475d61685e368efd508d9342f71e61c787a228746e40be60e280",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_raw_hash_set.so.20240722.0.0",
+      "needed": [
+        "libabsl_hash.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_raw_hash_set.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_raw_logging_internal.so.20240722.0.0",
+      "bytes": 14624,
+      "sha256": "81dcd44e661444851bf6adfe34d67bcd823c282b66195d53ab818726f0def045",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_raw_logging_internal.so.20240722.0.0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_raw_logging_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_scoped_set_env.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "18df7e8eeb34f79f7a7ae7c15bae3fbc7bfac3d7457e8b37ea0121b39c0b9413",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_scoped_set_env.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_scoped_set_env.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_spinlock_wait.so.20240722.0.0",
+      "bytes": 14496,
+      "sha256": "654a98fd9b59cbfed42304ea54c71a1a82b4d93ba1f50867c8d10b119394b3f8",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_spinlock_wait.so.20240722.0.0",
+      "needed": [
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_spinlock_wait.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_stacktrace.so.20240722.0.0",
+      "bytes": 14496,
+      "sha256": "eb062223f5d90d8e702657dc1e7b4a727f4e6de4bf7396cb2ab34922e4c666c0",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_stacktrace.so.20240722.0.0",
+      "needed": [
+        "libabsl_debugging_internal.so.20240722",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "GLIBC_2.2.5"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_stacktrace.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_status.so.20240722.0.0",
+      "bytes": 43344,
+      "sha256": "234dd72719e4fe28c9db99a44b5cfe4cc6e5144db9badcf7cfb59a96fe8f3564",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_status.so.20240722.0.0",
+      "needed": [
+        "libabsl_cord.so.20240722",
+        "libabsl_strerror.so.20240722",
+        "libabsl_cordz_info.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.29",
+        "GLIBCXX_3.4.32",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_status.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_statusor.so.20240722.0.0",
+      "bytes": 18832,
+      "sha256": "cf4d6f8888a928efc1e02fee59e7361960b2d9acf77e6006a726f99b81e828d5",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_statusor.so.20240722.0.0",
+      "needed": [
+        "libabsl_status.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_statusor.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_str_format_internal.so.20240722.0.0",
+      "bytes": 117056,
+      "sha256": "6b62b09f4f5cc80ade646bb46788f4668036c56dad671e3b19b1b3a309e8b4df",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_str_format_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_strings.so.20240722",
+        "libabsl_int128.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.18",
+        "GLIBCXX_3.4.20",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.29",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_str_format_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_strerror.so.20240722.0.0",
+      "bytes": 14656,
+      "sha256": "4daab09941ec25eab0b62678676ec8a9e6b4e030db52d6d1f1a8e5c62e51d929",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_strerror.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_strerror.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_string_view.so.20240722.0.0",
+      "bytes": 14584,
+      "sha256": "8830e4dc40734d6f75de4ed7cd37fbf17df244c5964df3fefbfaeee52db28e6b",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_string_view.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.11",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_string_view.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_strings.so.20240722.0.0",
+      "bytes": 129344,
+      "sha256": "67741fbc5893f747f3b0bd1914339d17df7298b0322c0be8cf5eacfcf55ca2e1",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_strings.so.20240722.0.0",
+      "needed": [
+        "libabsl_strings_internal.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.20",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.32",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_strings.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_strings_internal.so.20240722.0.0",
+      "bytes": 18832,
+      "sha256": "0ea24a5e77148fc4b69594822bcd427bedd4ffc8246c68e6e846e3f2e1c42ce7",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_strings_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_strings_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_symbolize.so.20240722.0.0",
+      "bytes": 31040,
+      "sha256": "e09f4c5ddf78d5cde5aacf474f3a2a4b29ff56d34caf915cd1cb7711e92422b2",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_symbolize.so.20240722.0.0",
+      "needed": [
+        "libabsl_debugging_internal.so.20240722",
+        "libabsl_demangle_internal.so.20240722",
+        "libabsl_malloc_internal.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4.14",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.4",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_symbolize.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_synchronization.so.20240722.0.0",
+      "bytes": 72144,
+      "sha256": "b59624888e0a63161a3743983398d4877fd86225249c928a29f1ca11fe415935",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_synchronization.so.20240722.0.0",
+      "needed": [
+        "libabsl_graphcycles_internal.so.20240722",
+        "libabsl_kernel_timeout_internal.so.20240722",
+        "libabsl_stacktrace.so.20240722",
+        "libabsl_symbolize.so.20240722",
+        "libabsl_time.so.20240722",
+        "libabsl_malloc_internal.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_spinlock_wait.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4.11",
+        "GLIBCXX_3.4.19",
+        "GLIBCXX_3.4.30",
+        "GLIBC_2.2.5",
+        "GLIBC_2.3.2",
+        "GLIBC_2.3.4",
+        "GLIBC_2.34",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_synchronization.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_throw_delegate.so.20240722.0.0",
+      "bytes": 18680,
+      "sha256": "78b7265541b75b2030a899637cbb3a7cca4b11685f44675142b18583361278a1",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_throw_delegate.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.15",
+        "GLIBCXX_3.4.21"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_throw_delegate.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_time.so.20240722.0.0",
+      "bytes": 72160,
+      "sha256": "6979401a960d5f34bc849b1af765eaed0acef026ed3cea710a34b65d761f3331",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_time.so.20240722.0.0",
+      "needed": [
+        "libabsl_strings.so.20240722",
+        "libabsl_time_zone.so.20240722",
+        "libabsl_raw_logging_internal.so.20240722",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.17",
+        "GLIBC_2.2.5",
+        "GLIBC_2.38",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_time.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_time_zone.so.20240722.0.0",
+      "bytes": 108952,
+      "sha256": "e89c6735e2f15a2ca59af1a268586cd643a3a1af107144b356b8867d517ac59c",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_time_zone.so.20240722.0.0",
+      "needed": [
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.5",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.11",
+        "GLIBCXX_3.4.14",
+        "GLIBCXX_3.4.18",
+        "GLIBCXX_3.4.20",
+        "GLIBCXX_3.4.21",
+        "GLIBCXX_3.4.29",
+        "GLIBCXX_3.4.9",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_time_zone.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_utf8_for_code_point.so.20240722.0.0",
+      "bytes": 14272,
+      "sha256": "39e7d00d260c8a8dab29fccb73c98eff641f2d18704342bf398f553669c7315b",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_utf8_for_code_point.so.20240722.0.0",
+      "needed": [],
+      "required_symbol_versions": [],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_utf8_for_code_point.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    },
+    {
+      "package": "libabsl20240722",
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_vlog_config_internal.so.20240722.0.0",
+      "bytes": 31040,
+      "sha256": "a35116c599cbb5146ca5bb75cb54b071630b61d0ecd4d61d17f999e4dd37a497",
+      "archive_member": "usr/lib/x86_64-linux-gnu/libabsl_vlog_config_internal.so.20240722.0.0",
+      "needed": [
+        "libabsl_log_internal_fnmatch.so.20240722",
+        "libabsl_synchronization.so.20240722",
+        "libabsl_strings.so.20240722",
+        "libabsl_string_view.so.20240722",
+        "libabsl_base.so.20240722",
+        "libabsl_throw_delegate.so.20240722",
+        "libstdc++.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "required_symbol_versions": [
+        "CXXABI_1.3",
+        "CXXABI_1.3.9",
+        "GLIBCXX_3.4",
+        "GLIBCXX_3.4.14",
+        "GLIBCXX_3.4.21",
+        "GLIBC_2.14",
+        "GLIBC_2.2.5",
+        "GLIBC_2.4"
+      ],
+      "runtime_load": {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-c",
+          "import ctypes,sys; ctypes.CDLL(sys.argv[1]); print('loaded')",
+          "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libabsl_vlog_config_internal.so.20240722.0.0"
+        ],
+        "returncode": 0,
+        "stdout": "loaded\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "checks": [
+    {
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/bin/pkgconf",
+        "--atleast-version=1.1.0",
+        "libpipewire-0.3"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/bin/pkgconf",
+        "--modversion",
+        "libpipewire-0.3"
+      ],
+      "returncode": 0,
+      "stdout": "1.4.7\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/bin/pkgconf",
+        "--cflags",
+        "--libs",
+        "libpipewire-0.3"
+      ],
+      "returncode": 0,
+      "stdout": "-I/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/include/pipewire-0.3 -I/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/include/spa-0.2 -D_REENTRANT -L/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu -lpipewire-0.3 \n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-c",
+        "import ctypes,sys; p=ctypes.CDLL(sys.argv[1]); p.pw_get_library_version.restype=ctypes.c_char_p; print(p.pw_get_library_version().decode())",
+        "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/libpipewire-0.3.so.0.1407.0"
+      ],
+      "returncode": 0,
+      "stdout": "1.4.7\n",
+      "stderr": ""
+    }
+  ],
+  "status": "compatible_library_closure",
+  "host_package_installations": 0,
+  "blender_flags_changed": false,
+  "tests_executed": 0,
+  "limitations": [
+    "No audio daemon or device test was performed.",
+    "This is dependency and ABI evidence, not a Blender build or parity pass.",
+    "The isolated extraction uses selected official Questing packages on a Noble host; it is not a Noble backport."
+  ]
+}

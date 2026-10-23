@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "kind": "selected-original-ctest-execution",
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "configuration": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/configure.json",
+    "bytes": 4356,
+    "sha256": "5d234dd31ed27145b773986359283decf332ace05c3be6d217001b04f86431b1"
+  },
+  "ctest_listing": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/ctest.json",
+    "bytes": 2241336,
+    "sha256": "a7dceadfb111179cece45fd1fd5ccafc8a58ef2102a206fdef755911063700c7"
+  },
+  "original_registration": {
+    "backtrace": 346,
+    "command": [
+      "/usr/bin/python3.12",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/python/system_python/load_tool_scripts.py",
+      "--root-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d"
+    ],
+    "config": "Release",
+    "name": "script_validate_on_system_python",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-expanded-tests/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-expanded-tests/bin"
+      }
+    ]
+  },
+  "original_script": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/python/system_python/load_tool_scripts.py",
+    "bytes": 4441,
+    "sha256": "9a507c43748d7d59f6ab76df17c034551a234fca40ddbd76060dc24baa34a622"
+  },
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/d63596d831b2/runtime/product-native-configure-expanded-tests",
+    "--build-config",
+    "Release",
+    "--tests-regex",
+    "^script_validate_on_system_python$",
+    "--no-tests=error",
+    "--output-on-failure",
+    "--output-junit",
+    "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/system-python-junit.xml"
+  ],
+  "tool": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/run-system-python.py",
+    "bytes": 2763,
+    "sha256": "3400ee3a57fe3706640bc2165b739bb182740142e939a9068f5a1abd4122e6e3"
+  },
+  "started_utc": "2026-10-23T13:58:45.053505+00:00",
+  "selected_registration_count": 1,
+  "runtime_leaf_enumeration_complete": false,
+  "browser_parity": false,
+  "full_feature_parity": false,
+  "scope": "Only this original system-Python driver is selected; a CTest success is not an inferred leaf-case count.",
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "finished_utc": "2026-10-23T13:58:45.472664+00:00",
+  "returncode": 8,
+  "log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/system-python.log",
+    "bytes": 2249,
+    "sha256": "adbe90ed15ebd040a5f514e77a9736d5d601a1444ea44a40ef781bb8f7f8b6d1"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/system-python-junit.xml",
+    "bytes": 2285,
+    "sha256": "62fb5ef185ebe1aa854ce4e9f45ad66810f5c31f98c82de7acb1b0896c8caeb5"
+  }
+}

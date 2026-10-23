@@ -1,0 +1,1417 @@
+{
+  "schema": 1,
+  "review": "independent native product GoogleTest evidence reconciliation",
+  "status": "verified",
+  "started_utc": "2026-10-23T14:15:30.305663+00:00",
+  "finished_utc": "2026-10-23T14:15:33.561345+00:00",
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "audit_script": {
+    "path": "compatibility/evidence/product-native-independent-review-2026-10-23/audit.py",
+    "bytes": 22229,
+    "sha256": "77c026223b2f051d46f04e485e6166fd1717826f1b1f0964e099258185518310"
+  },
+  "asserted_invariants_checked": 119711,
+  "suites": [
+    {
+      "suite": "BLI-source-identities",
+      "reference": {
+        "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/native-reference.json",
+        "bytes": 1500104,
+        "sha256": "251cf1a315b0014d29eaca2cd5078a4adec375b637957bf9d7b4ef2944663dfe"
+      },
+      "listed_observations": 1742,
+      "distinct_display_names": 1741,
+      "raw_xml_outcomes": {
+        "passed": 1742
+      },
+      "unique_source_identities_recomputed": 1742,
+      "declaration_files_verified": 97,
+      "registered_filter_missing_from_unfiltered": {},
+      "listing_xml_missing_or_added": {},
+      "ctest_driver_returncode": 0,
+      "original_argv_environment_cwd_confirmed_in_log": true,
+      "browser_cases_executed": 0,
+      "source_identity_fields_present_in_original_receipt": true,
+      "skips": []
+    },
+    {
+      "suite": "atomic",
+      "reference": {
+        "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/native-reference.json",
+        "bytes": 42321,
+        "sha256": "6930cfc34e4a87ea3ac64d87cc832eb3b4cdfe03f5c1ca681e24f422f8359529"
+      },
+      "listed_observations": 56,
+      "distinct_display_names": 56,
+      "raw_xml_outcomes": {
+        "passed": 56
+      },
+      "unique_source_identities_recomputed": 56,
+      "declaration_files_verified": 1,
+      "registered_filter_missing_from_unfiltered": {},
+      "listing_xml_missing_or_added": {},
+      "ctest_driver_returncode": 0,
+      "original_argv_environment_cwd_confirmed_in_log": true,
+      "browser_cases_executed": 0,
+      "source_identity_fields_present_in_original_receipt": false,
+      "skips": []
+    },
+    {
+      "suite": "guardedalloc",
+      "reference": {
+        "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/native-reference.json",
+        "bytes": 20432,
+        "sha256": "6e43112c6366a29b525fe93544646bb31c1b4d141baa8ea4ef8ab843440e419d"
+      },
+      "listed_observations": 6,
+      "distinct_display_names": 6,
+      "raw_xml_outcomes": {
+        "passed": 6
+      },
+      "unique_source_identities_recomputed": 6,
+      "declaration_files_verified": 3,
+      "registered_filter_missing_from_unfiltered": {},
+      "listing_xml_missing_or_added": {},
+      "ctest_driver_returncode": 0,
+      "original_argv_environment_cwd_confirmed_in_log": true,
+      "browser_cases_executed": 0,
+      "source_identity_fields_present_in_original_receipt": false,
+      "skips": []
+    },
+    {
+      "suite": "makesdna",
+      "reference": {
+        "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/native-reference.json",
+        "bytes": 22254,
+        "sha256": "9fbc9fc7b142832123597ca3b64e924113ae6ff72045ff921bbdbc4d52618ebb"
+      },
+      "listed_observations": 5,
+      "distinct_display_names": 5,
+      "raw_xml_outcomes": {
+        "passed": 5
+      },
+      "unique_source_identities_recomputed": 5,
+      "declaration_files_verified": 1,
+      "registered_filter_missing_from_unfiltered": {},
+      "listing_xml_missing_or_added": {},
+      "ctest_driver_returncode": 0,
+      "original_argv_environment_cwd_confirmed_in_log": true,
+      "browser_cases_executed": 0,
+      "source_identity_fields_present_in_original_receipt": true,
+      "skips": []
+    },
+    {
+      "suite": "shader_tool",
+      "reference": {
+        "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/native-reference.json",
+        "bytes": 73874,
+        "sha256": "0caeee427245bd1a0231a2883ff8f10843f36d9aee76c66c9f44b1ab338fd6a3"
+      },
+      "listed_observations": 62,
+      "distinct_display_names": 62,
+      "raw_xml_outcomes": {
+        "passed": 61,
+        "skipped": 1
+      },
+      "unique_source_identities_recomputed": 62,
+      "declaration_files_verified": 11,
+      "registered_filter_missing_from_unfiltered": {},
+      "listing_xml_missing_or_added": {},
+      "ctest_driver_returncode": 0,
+      "original_argv_environment_cwd_confirmed_in_log": true,
+      "browser_cases_executed": 0,
+      "source_identity_fields_present_in_original_receipt": true,
+      "skips": [
+        {
+          "identity": "shader_tool.MatrixConstructors",
+          "outcome": "skipped",
+          "attributes": {
+            "name": "MatrixConstructors",
+            "file": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+            "line": "130",
+            "status": "run",
+            "result": "skipped",
+            "time": "0.",
+            "timestamp": "2026-10-23T19:03:45.457",
+            "classname": "shader_tool"
+          },
+          "failures": [],
+          "errors": [],
+          "skipped": [
+            {
+              "attributes": {
+                "message": "source/blender/gpu/shader_tool/tests/syntax_test.cc:133\nThis processing is only done for metal compatibility.\n"
+              },
+              "text": "source/blender/gpu/shader_tool/tests/syntax_test.cc:133\nThis processing is only done for metal compatibility.\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "duplicate_stack_peek": [
+    {
+      "display_name": "stack.Peek",
+      "source_location": {
+        "path": "source/blender/blenlib/tests/BLI_stack_cxx_test.cc",
+        "line": 172,
+        "sha256": "c4502b18da347f063ab2c9a37843626ecb7b9930a5358d6694edb0dd51a96b23"
+      },
+      "case_id": "gtest-source:87951383bb351366a91e08919f0802463d9fc06ebd0e0df0a8031dcae9765dc1",
+      "declaration": "TEST(stack, Peek)",
+      "namespace": "namespace blender::tests {",
+      "outcome": "passed"
+    },
+    {
+      "display_name": "stack.Peek",
+      "source_location": {
+        "path": "source/blender/blenlib/tests/BLI_stack_test.cc",
+        "line": 97,
+        "sha256": "60944c7f178b7ce5ba54bcb04e9ccb81fe7aef56faa83004a6bf779fd5fe88d1"
+      },
+      "case_id": "gtest-source:a7a2f9856d37a32cd29a3e0f93f64e211a2e9cb9c1ab8e2dcfaba24ce2752863",
+      "declaration": "TEST(stack, Peek)",
+      "namespace": "namespace blender {",
+      "outcome": "passed"
+    }
+  ],
+  "canonical_identity_uses_list_order": false,
+  "canonical_identity_reverse_order_check": true,
+  "preserved_initial_bli_failure": {
+    "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/failed-capture.json",
+    "bytes": 1802,
+    "sha256": "84b820d0eeef85644013dadc24e8492ac75e723468c64174e070159a1e61e80e"
+  },
+  "original_files_verified_against_archive": [
+    {
+      "path": "build_files/cmake/Modules/GTest.cmake",
+      "bytes": 17201,
+      "sha256": "761d328f10790ce74618c9e14770f35d3d4cf6dc39d56425b4c80b78424d2f28"
+    },
+    {
+      "path": "build_files/cmake/testing.cmake",
+      "bytes": 14444,
+      "sha256": "351e2d93478e8fd1ecc38a08148c6f8b26af8d608b0832fb05843f5356e57f43"
+    },
+    {
+      "path": "intern/atomic/CMakeLists.txt",
+      "bytes": 650,
+      "sha256": "2dd9b2fdf4f354aa095a0babdf4394b1f033e7659903e0645cefbad7622a43db"
+    },
+    {
+      "path": "intern/atomic/tests/atomic_test.cc",
+      "bytes": 24985,
+      "sha256": "fc3034f0f7a8ca9364bdd20ad42a9c000128023e4def47c5e9d27b23906738e9"
+    },
+    {
+      "path": "intern/guardedalloc/CMakeLists.txt",
+      "bytes": 1490,
+      "sha256": "30e72c4755d85b045dd57fdb5916e2cb6073310e19e44a84305aa74dcfbe79fc"
+    },
+    {
+      "path": "intern/guardedalloc/tests/guardedalloc_alignment_test.cc",
+      "bytes": 1432,
+      "sha256": "de23740d9f8b0037dfa2d3a274d35ec2c69bae51910def257ca4f441f2dd7ad2"
+    },
+    {
+      "path": "intern/guardedalloc/tests/guardedalloc_overflow_test.cc",
+      "bytes": 1687,
+      "sha256": "cef835b5be7006a57fbece7d35d6ad8625b4ac4e33ddc9b7ff70c28d1dbe645d"
+    },
+    {
+      "path": "intern/guardedalloc/tests/guardedalloc_safe_multiply_test.cc",
+      "bytes": 2616,
+      "sha256": "3edf6daaa5f591ebdda79da96695f1beae0f2d823f4854121c74a93989491540"
+    },
+    {
+      "path": "source/blender/blenlib/CMakeLists.txt",
+      "bytes": 15058,
+      "sha256": "dd0c578626cce10c50e575bf55939aa867b5b32a5cec11d2063cd0b682218309"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_any_derived_test.cc",
+      "bytes": 1410,
+      "sha256": "ccf03f0b50f2bbb11116d1205f17c5e781187ad347016e451bd2551fa3d99f99"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_any_test.cc",
+      "bytes": 2931,
+      "sha256": "e5b29929618031cc72159c8ee9fd5ce8cf12ab20e8d4e8d7ab178389568cd00a"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_array_state_test.cc",
+      "bytes": 1946,
+      "sha256": "ac8ec63d58f04edfc30a6d9bd250bc419b53d12b87366ce57e92cf0607afc9a3"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_array_store_test.cc",
+      "bytes": 34464,
+      "sha256": "1757096e6e93e0f4d7bcc7f3451326658ebaf645e947c8ac0f49f0b9262043d4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_array_test.cc",
+      "bytes": 7424,
+      "sha256": "bbac846ee7c32e691cc1e690550035b99d1077ab9958f7cbc7f94b6de27cf7c9"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_array_utils_test.cc",
+      "bytes": 11356,
+      "sha256": "06858c8551a0c0647efcc796fc156b3c9138782d093327b629e2437add49278a"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_binary_search_test.cc",
+      "bytes": 1916,
+      "sha256": "727451f8fcbc5d230558c26f82d6c46b62752688b006ca5e1e54c7d90daa9f5d"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_bit_group_vector_test.cc",
+      "bytes": 1841,
+      "sha256": "246c01c57c51251ff2fe657fd6a1c85138baa00ddb492b7fc223293046e39763"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_bit_ref_test.cc",
+      "bytes": 5975,
+      "sha256": "1d101274b2f6c0e52cbeaf892103d36b4af695bbbeecd11f43178ea7df572b40"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_bit_span_test.cc",
+      "bytes": 11875,
+      "sha256": "8dcf6c71063a45f72623b2d33dcaddaad7c4c06d447b93bfc15754a96a8fff82"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_bit_vector_test.cc",
+      "bytes": 3519,
+      "sha256": "21297ed08bd7a266030f15d416dc483fe43fca1901fa99e4a3ccba02ccbe744c"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_bitmap_test.cc",
+      "bytes": 1186,
+      "sha256": "49c1ee49fb00de67637066d232214ddab45375ebda6141ccb4811ca26aaa296d"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_bounds_test.cc",
+      "bytes": 9749,
+      "sha256": "a0b86885646bd7e606917154df25260e0bdfb8b36d2b24a1e3d6a7f9040fca1c"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_build_config_test.cc",
+      "bytes": 1159,
+      "sha256": "2e694f4a676c704bf5e949ead321bf4c038dbc545b5cfa0c0a933cf7f1487245"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "bytes": 4192,
+      "sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_compression_test.cc",
+      "bytes": 1685,
+      "sha256": "4166b301eef6dd62c28a33320fc38f7929ecaa5c692391d7065b31dad6465e88"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_convexhull_2d_test.cc",
+      "bytes": 19601,
+      "sha256": "db41e8d342958ff4407bdab50d2d61d8a275ae97d37d343303bff21f39bd82d5"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_cpp_type_test.cc",
+      "bytes": 14577,
+      "sha256": "19d9a9474362833e6280adc58fed84ab20221ae9a77f528152688fff1b3b8d33"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_csv_parse_test.cc",
+      "bytes": 10109,
+      "sha256": "802ef8d0c4cbdb32529940f8ce5f3a1fd1b409ac013620dc55384db1ba5c1120"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_delaunay_2d_test.cc",
+      "bytes": 144814,
+      "sha256": "05098dde28487ea87a6e87039519094685cec207bd4fb0473fbfac5ef3b6414e"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_disjoint_set_test.cc",
+      "bytes": 996,
+      "sha256": "09aec67cc7ba73aa5536beb0556c8a43a75047c3b059a50bc7c342b8eabafeba"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_expr_pylike_eval_test.cc",
+      "bytes": 10459,
+      "sha256": "947cea40e9ffa59379d5477d62b4e0f6be100c08680e4e6c2566e5d149390487"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_fileops_test.cc",
+      "bytes": 11469,
+      "sha256": "88aeefbf9208907436a7317119ffe3ad6aceea83641caa8df08660a016480a69"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_fixed_width_int_test.cc",
+      "bytes": 5252,
+      "sha256": "e85338c826db744ada8452a826037e2bf7e0fd8260a5d23b4d5fad2bb873abd2"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "bytes": 3246,
+      "sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_generic_array_test.cc",
+      "bytes": 4482,
+      "sha256": "ed920cb4fcbdadebd0968ddcc86a1ae7d4cd8543f860d44176a7c8a8a25a6e70"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "bytes": 1561,
+      "sha256": "82a5c3d10cdc7a7665df1b0900ef50fcbbea4bfd538be90f6c1ea761ecf92b16"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_generic_vector_array_test.cc",
+      "bytes": 1286,
+      "sha256": "6c548fee363c02d603f6dc4f4d9adf6546f4ab2274b3cadee46531d3450423eb"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_ghash_test.cc",
+      "bytes": 5788,
+      "sha256": "43c9bb09af8235a5d72a20cb997a23d7b6879b4b1388da0731f814fcc5bb15a2"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_hash_mm2a_test.cc",
+      "bytes": 2210,
+      "sha256": "2e357f9c998653c6de90eb51799bedd5f3de2d4c3247aeb53524b2f09acd08f4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "bytes": 3399,
+      "sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "bytes": 5659,
+      "sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_implicit_sharing_test.cc",
+      "bytes": 3176,
+      "sha256": "99f69ad169777f1215e0f633d8cb62dfbbf07936e5f1a439304b20d6c6a3a677"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_index_mask_expression_test.cc",
+      "bytes": 12370,
+      "sha256": "2e502225bf3f5214261404bb8c0e5f8a4e8877491db1d07479caead1eaa8ddd4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_index_mask_test.cc",
+      "bytes": 43455,
+      "sha256": "07e46b12a72073b98f72736d091a1f8e32ece9ca4c862627e35f68a9c392ca05"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_index_range_test.cc",
+      "bytes": 9484,
+      "sha256": "df16feb982375c7420535382262caa09ee454c4330bb8c3357b24d712f15c74a"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_index_ranges_builder_test.cc",
+      "bytes": 2194,
+      "sha256": "9b24613cc64a90a6ae177173fdd3f63fa35c185ac7e8a83f63d1eb0d90cdd7cc"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "bytes": 3271,
+      "sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_kdopbvh_test.cc",
+      "bytes": 3762,
+      "sha256": "95f1afdb1e37388600cf335ee87e03312baf6e8762b0dcffd370f6be42399d89"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_kdtree_test.cc",
+      "bytes": 25648,
+      "sha256": "79cd765a978c44203491eccd6fefe9aabd5b53452c05056ade7865596a4c5110"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "bytes": 8033,
+      "sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_linear_allocator_chunked_list_test.cc",
+      "bytes": 3823,
+      "sha256": "b812eace9a559019e6e5364ff45aea3669465f171e07bd8a61b4ec6b2b534b05"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_linear_allocator_test.cc",
+      "bytes": 5241,
+      "sha256": "1f35b298b4d6c8ae941b5d3c1b67410923d47a5c42ad96b8a88cc105cc0e3971"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_linklist_lockfree_test.cc",
+      "bytes": 3568,
+      "sha256": "3fc16cebeec02095d25aac4fdc8fae67bb2bfbde8dc5d21cb23c490ba727ec18"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_listbase_test.cc",
+      "bytes": 16278,
+      "sha256": "8991c3acab68e7773b18948adee6d289f3839473a1fa69810f05e291eb5cb481"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_map_test.cc",
+      "bytes": 23573,
+      "sha256": "54cf26073e5dec64524d81b99eac1ed8aec19af6f18643a94505dd2ff9768ede"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_base_safe_test.cc",
+      "bytes": 1301,
+      "sha256": "c31be0d9964e56534459d8007f6a3343c3aef016ea370cfd5ee953401c6d3b78"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_base_test.cc",
+      "bytes": 8399,
+      "sha256": "afffefc44fbf4f8591ac97ede6958f0bff157c684116b07e63d66a0981581a8e"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_bits_test.cc",
+      "bytes": 2350,
+      "sha256": "344cadb1445fd5f4c92dd848c919ee518f0265d1fcef2c4829ee0e213c0f502e"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_color_test.cc",
+      "bytes": 7542,
+      "sha256": "fceacb3eb0e8ae084dc8d3640c6ab4964f6549077f86b010c34db287f2bc74ad"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_geom_hh_test.cc",
+      "bytes": 13742,
+      "sha256": "6450b2a9c1ac4f54bc1f73f1c9478f77c6b88388438b2e8b384342711ed0f6a4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_geom_test.cc",
+      "bytes": 6846,
+      "sha256": "9d03dac9a1a797eade844f588276c114b3dc79241a52830bfbc7323fdc8dc07d"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "bytes": 13269,
+      "sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_interp_test.cc",
+      "bytes": 20937,
+      "sha256": "1057f15ff1a473a157e4fbf81fdaed258b1105a0f54e860c4b6df43d228be28e"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_test.cc",
+      "bytes": 26424,
+      "sha256": "31b98ab2bcde40c3db6e2bcb279ee56b3faad6aaa16df2b49087ea8252759626"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "bytes": 11633,
+      "sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_rotation_test.cc",
+      "bytes": 36528,
+      "sha256": "1eae6aeae343508bdefd773806f88c8c29ad57f26061b10d3f9e4f6df7b68e17"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_rotation_types_test.cc",
+      "bytes": 21323,
+      "sha256": "8031d1124effd8ffc425ef16699c2539a86816b6b02603704597a755f6048202"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_solvers_test.cc",
+      "bytes": 1705,
+      "sha256": "352bfa9b6384039123f872ab5b7ef6d4908b66b3e8de44f720b6663dc9197c08"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_time_test.cc",
+      "bytes": 1395,
+      "sha256": "a313532d82a278d570f44e1fae37895d9e8da4f1767f9d92cdb0f49f81bc3f76"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_vector_test.cc",
+      "bytes": 6228,
+      "sha256": "b52b9c6cb1d46b9f6c35cd6dbcdeccba9641c4649cf3fbe4f6bbd62c6107da51"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "bytes": 11455,
+      "sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_memory_cache_test.cc",
+      "bytes": 2802,
+      "sha256": "cc81ecfbb9064746665279696a41f55483afb7c370b454e0adc786dce9b61ed1"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_memory_counter_test.cc",
+      "bytes": 1528,
+      "sha256": "61a2c2776e0d0a759b0799bc7abb446a79cc3347fe42a3e1734a9426931b915d"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_memory_utils_test.cc",
+      "bytes": 3518,
+      "sha256": "f25c7479a794bce8e0bae39a97094e20aaa44db179dfe166213c61e255865ad5"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_mesh_boolean_test.cc",
+      "bytes": 16825,
+      "sha256": "a7a3bbbaa9df4db0ef4b700c5169e5578e8009092156a762d7da709d86efc624"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_mesh_intersect_test.cc",
+      "bytes": 38337,
+      "sha256": "a065ae7fc6ef40bc334a6e2bdb64bffd9ea3eab0bf2782614507ab88f300752b"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "bytes": 3227,
+      "sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_normalized_int_test.cc",
+      "bytes": 1057,
+      "sha256": "06537f28199781c45d94ddadf080f386e0c54bec7c907b9413f22d867d1e35c0"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_offset_indices_test.cc",
+      "bytes": 8209,
+      "sha256": "e0db22c88dc63b623c034730661efbe4d74a30a06c0d1778259921727c60f49a"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_path_utils_test.cc",
+      "bytes": 64064,
+      "sha256": "0f46741dedda5dda41e0a60bb2765351868a725a354a9e2dfaa78a93a390779c"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
+      "bytes": 23948,
+      "sha256": "10bbd9b39d4cf465f4df070e517b2d41d5b55c8cfba5a380f23dfa23f468652b"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_pool_test.cc",
+      "bytes": 981,
+      "sha256": "5a5153ffd2b2689d2233b492431ab2c91a16fe37897e3bd5f26c46c5ff9cb0ac"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_random_access_iterator_mixin_test.cc",
+      "bytes": 1106,
+      "sha256": "c3100113d8b5a14f3f90127b75b2a17b71679b8dabe34ec40e4ad58f89d40034"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_serialize_test.cc",
+      "bytes": 10646,
+      "sha256": "45ba18407f349473e25e0b26ecfb4239a4af55f8fadce44fd0b861edd6026d28"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_session_uid_test.cc",
+      "bytes": 491,
+      "sha256": "5a4634b1119f9176e7459715498befb068456f5135e3d4c848660c0672356fa8"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_set_test.cc",
+      "bytes": 20800,
+      "sha256": "85a34ef26619a190ef0e614a5964947fc14595ffbe44d606697db2beaa4d72b3"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_span_test.cc",
+      "bytes": 10948,
+      "sha256": "2cf7cfb2188f4181c3f51ef0ab8b0c217ac7e7a7c095e9849651e5f763bba43c"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_stack_cxx_test.cc",
+      "bytes": 5967,
+      "sha256": "c4502b18da347f063ab2c9a37843626ecb7b9930a5358d6694edb0dd51a96b23"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_stack_test.cc",
+      "bytes": 5205,
+      "sha256": "60944c7f178b7ce5ba54bcb04e9ccb81fe7aef56faa83004a6bf779fd5fe88d1"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "bytes": 14104,
+      "sha256": "c5ff75c549388f3e0b58aa29909f97134f3108dcd17b6d12d1f8ecb4980f43c3"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_string_search_test.cc",
+      "bytes": 2472,
+      "sha256": "cb9933e4e03afce0c64003e182ef2940e2ada6865dd990f1124a7aba7007f9d0"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_string_test.cc",
+      "bytes": 45082,
+      "sha256": "aa13f49f37424ccf376f1b91434dc7bc2a1dd0867408c29a89b5ebb718bac7d4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_string_utf8_test.cc",
+      "bytes": 62667,
+      "sha256": "0821a446fa0de157022ec8d27ffbd5b50ae50d6f9889bb67a9cf7ac0d269b572"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_string_utils_test.cc",
+      "bytes": 2370,
+      "sha256": "0cf9854d8ef84186abe772ce890c09e6dbec14855e8029201a4ed23bcf3b52b4"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_task_graph_test.cc",
+      "bytes": 6377,
+      "sha256": "2c5da2ff6a07c737220fad6b48515a3f779ef9fb9f7cef95cb205d8716b0dbcd"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_task_test.cc",
+      "bytes": 7174,
+      "sha256": "b9f0cba5817275f92f8aa8a07cc3bf508e8de4c158fcf9dc8d074bd1b2c36499"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_tempfile_test.cc",
+      "bytes": 615,
+      "sha256": "3f241fda9db64a001ee16332ec3bea121d7b762c3cdcec56b1f9de52413a3105"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_unique_sorted_indices_test.cc",
+      "bytes": 3430,
+      "sha256": "9230df5cc6251e46aeacc59e95489591b908a190f7647076fde2d2eed8b4341f"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_ustring_test.cc",
+      "bytes": 7888,
+      "sha256": "b4e5ce1b7e57e1f21ace47b6acb886be498555c991504a9ff46dab6092de05bd"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_utildefines_test.cc",
+      "bytes": 826,
+      "sha256": "d7334bfddd09c316a5fcb53ec9063b39d4cfd84a0109369a9260496cf048a3e7"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_uuid_test.cc",
+      "bytes": 5059,
+      "sha256": "4e20d2480a2ee9ed69e76d9c2fa53824ffd593e5d4365b9a3a7b529736edc730"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_vector_list_test.cc",
+      "bytes": 5327,
+      "sha256": "4dd1e0dd2cf1542ce0cb326c13a00ec7c38813cb6134ac8b0c9db4085d626ddb"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_vector_set_test.cc",
+      "bytes": 14052,
+      "sha256": "7411a122710c02fb1bc1035b2af883f8518ca41c7e7153d693cf42ebc4f84634"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_vector_test.cc",
+      "bytes": 23278,
+      "sha256": "50dab15d384dc131c0b62b83a07a37f519ce910e3006eac71b35d73c74ca65ee"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_virtual_array_exec_test.cc",
+      "bytes": 16014,
+      "sha256": "84a42481844296dc0c783c5a7a0d2e576aea850d1bc3c1490916026c0860c2b9"
+    },
+    {
+      "path": "source/blender/blenlib/tests/BLI_virtual_array_test.cc",
+      "bytes": 11663,
+      "sha256": "38634f33d2c96233451d36fd95ba5d207074739a06ca2af5ca8e7dcaf376d530"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/CMakeLists.txt",
+      "bytes": 1983,
+      "sha256": "b131bb51db6244ceba83576171febf66eb27ae93b34d2a9eab838f8ffc4aef8f"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/expression_test.cc",
+      "bytes": 3619,
+      "sha256": "d88f9ccf4868e4370e042988003d81d4317bccf40b989f3aa7965360481a9148"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/flow_control_test.cc",
+      "bytes": 20425,
+      "sha256": "90d5c19b4297df397bd38d431ebac7b86296317a94f67218d859e5d992667f12"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/function_test.cc",
+      "bytes": 7156,
+      "sha256": "f233e0bd1ed8bdc212cf2c605f525de8570da1732271f9c9d0318fb7ed1aa107"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/grammar_test.cc",
+      "bytes": 5054,
+      "sha256": "7ebd8e4fd7645dd0a4b86c29cfb345d104cc54af1080dc9ff88386d9d87c45b2"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/metadata_test.cc",
+      "bytes": 913,
+      "sha256": "7a9d0850ab35413382cd4a4ad1f9b3356d7f54ec2cf5002f4c190cb02fe87502"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/namespace_test.cc",
+      "bytes": 7466,
+      "sha256": "2b2eb361951e88d554761f3010c3dce87dd28d3ab335eb8263afc8a54cbe99ea"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/parser_test.cc",
+      "bytes": 4157,
+      "sha256": "c0113802ec3f661ad76cd38e7aa00bfa3919aa36a61a199cc388b3513fc99a6a"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/resource_table_test.cc",
+      "bytes": 15818,
+      "sha256": "fe63a684c69654b01033f3cba327df4d84800225c41656d11cfc685260292551"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/struct_test.cc",
+      "bytes": 39699,
+      "sha256": "ec9b4ea1050428faea2e909a6d57dafc482cad23acbdd502efc7e2542f7dd9cb"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/syntax_test.cc",
+      "bytes": 19304,
+      "sha256": "6c888be7c1905b3fb6330912dc6e96fc5d7f222af0ef7d17368c58055f42c0ef"
+    },
+    {
+      "path": "source/blender/gpu/shader_tool/tests/templates_test.cc",
+      "bytes": 14578,
+      "sha256": "3c6d36d150ac120bb1d9b1d91769581256ffd404b374deb219a1e61d1d07d1b7"
+    },
+    {
+      "path": "source/blender/makesdna/tests/CMakeLists.txt",
+      "bytes": 1868,
+      "sha256": "fffbadcaee38d7870ffbc86d9dd9ba92611a6bf9f8604b34723fada01dd0a5e9"
+    },
+    {
+      "path": "source/blender/makesdna/tests/makesdna_test.cc",
+      "bytes": 7266,
+      "sha256": "3fa67f529ccbeeb7b54f0da0c9a88e147fe39f2c361055779ee23b2638d270eb"
+    }
+  ],
+  "checked_input_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+      "bytes": 80900636,
+      "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/CMakeCache.txt",
+      "bytes": 134664,
+      "sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/BLI_test",
+      "bytes": 16633704,
+      "sha256": "b977d0adc79a5eb5128fbbcd6f3aac2c996a53c6ad877282711857ba552a0968"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/atomic_test",
+      "bytes": 1302016,
+      "sha256": "86d50fe22177f32e74f64258eba96ae736184f27749aba91195056550ca01edb"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+      "bytes": 1074456,
+      "sha256": "68205d06088328d0ee1421c7ec57f3f6b45e0b777937c16ac942810b96d3d843"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/makesdna_test",
+      "bytes": 1297656,
+      "sha256": "c8c6947dda4cbdffd41239dcdb66c48280736cb0137663c309e927abe904fa4f"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/shader_tool_test",
+      "bytes": 4942776,
+      "sha256": "5ba303daa32228f231823fd3cdc6fdca9c6ac4ae993acedcfbebad5225fcd925"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/atomic/CMakeFiles/atomic_test.dir/DependInfo.cmake",
+      "bytes": 955,
+      "sha256": "8e4ded62477a5c824be82513aa57122580609c89c3f0801fe57b369f3d54b87d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/atomic/CMakeFiles/atomic_test.dir/build.make",
+      "bytes": 8006,
+      "sha256": "6fb707cdf1d4663d858aa9de0e5d8fbc53f6b0d33a241482d86dfa383329496c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/atomic/CMakeFiles/atomic_test.dir/flags.make",
+      "bytes": 2456,
+      "sha256": "042a912655f02839b01a40f5235da4e4ee545725f6b8313370d9164a14590961"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/atomic/CMakeFiles/atomic_test.dir/link.txt",
+      "bytes": 2112,
+      "sha256": "065b87559bd3651f5e0c44b2a9f74b0e5652d385cf12a39245d942dfa66e805c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/guardedalloc/CMakeFiles/guardedalloc_test.dir/DependInfo.cmake",
+      "bytes": 1786,
+      "sha256": "5bb607d5861434d4a7844beb20b63407c336d1f71577f30107b71ab24ecff012"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/guardedalloc/CMakeFiles/guardedalloc_test.dir/build.make",
+      "bytes": 16908,
+      "sha256": "8107c9b2ff75ec749c0462c24ac35c8fd69418b95df516fd55fe62380eda3d2c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/guardedalloc/CMakeFiles/guardedalloc_test.dir/flags.make",
+      "bytes": 3158,
+      "sha256": "a004264daaf73245b5d4078f33177b045da6b91fbca76822d00fe2fe52addb37"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/intern/guardedalloc/CMakeFiles/guardedalloc_test.dir/link.txt",
+      "bytes": 4242,
+      "sha256": "96d348b7b57a304babc0129a3ef7a874bc8181da7232511551f92eb2fadb704a"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/blenlib/CMakeFiles/BLI_test.dir/DependInfo.cmake",
+      "bytes": 33061,
+      "sha256": "c47763a07f2dec42f2355f321fc481eec9a33b5797a804ff72ff8621fc872a50"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/blenlib/CMakeFiles/BLI_test.dir/build.make",
+      "bytes": 296611,
+      "sha256": "8a5ea5a4082c411a32e5bab69ca18bf3ce9b4d8d6717a124648d641cba91ae67"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/blenlib/CMakeFiles/BLI_test.dir/flags.make",
+      "bytes": 4299,
+      "sha256": "353cc30e9fc3f271276423d13d61081eb881632babc0da10b2ac1d24f13074a6"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/blenlib/CMakeFiles/BLI_test.dir/link.txt",
+      "bytes": 9803,
+      "sha256": "f78e2bac1a44a2b826630bd8e3bd9cf618c50f5a6d0dff2c9a8d9048c385fe8f"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/gpu/shader_tool/CMakeFiles/shader_tool_test.dir/DependInfo.cmake",
+      "bytes": 14114,
+      "sha256": "2b7b0220dbeb764683de0d3b6832e9cbcd3a1060e3b83519ae0d8ab8d93b27f9"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/gpu/shader_tool/CMakeFiles/shader_tool_test.dir/build.make",
+      "bytes": 126682,
+      "sha256": "0e4c285918924f78f0529474701d273b35eeace49ba46307f32cb279f892005d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/gpu/shader_tool/CMakeFiles/shader_tool_test.dir/flags.make",
+      "bytes": 2761,
+      "sha256": "7f1c7807f1f0f4efcd3219376609c93631afb6645f5e0a23c1276ef869cddebc"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/gpu/shader_tool/CMakeFiles/shader_tool_test.dir/link.txt",
+      "bytes": 4185,
+      "sha256": "99bea2f2493db12c7863c1a4323f78d747fb56a290bd9c6facbb9839d5a0cf25"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/makesdna/tests/CMakeFiles/makesdna_test.dir/DependInfo.cmake",
+      "bytes": 2950,
+      "sha256": "e1bab25c3bdc7a0059db8d88d87b9225f4b5291fce7225c6db0321fb7efe2038"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/makesdna/tests/CMakeFiles/makesdna_test.dir/build.make",
+      "bytes": 23208,
+      "sha256": "1af9c37534b3d97963295552865c9420372bdef02b5ae76c06251a04f76ffc93"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/makesdna/tests/CMakeFiles/makesdna_test.dir/flags.make",
+      "bytes": 3170,
+      "sha256": "3b62dd25af3ad3ce7cdda7c677f71c6c91b08dee612cbcce2b945873ee5a5713"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/source/blender/makesdna/tests/CMakeFiles/makesdna_test.dir/link.txt",
+      "bytes": 4322,
+      "sha256": "2563fbfd93f6a1650aa7175f5397366f1f35833669399d1dae2e52c8f62482db"
+    },
+    {
+      "path": "compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+      "bytes": 13941,
+      "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+    },
+    {
+      "path": "compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+      "bytes": 3786,
+      "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+    },
+    {
+      "path": "compatibility/evidence/product-configure-2026-10-23/optix-CMakeCache.txt",
+      "bytes": 134664,
+      "sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121"
+    },
+    {
+      "path": "compatibility/evidence/product-configure-2026-10-23/optix-CMakeConfigureLog.yaml",
+      "bytes": 42579770,
+      "sha256": "67cb8e3c3a28125e26b57b5af629f46721563429e8c57e5ff19fd7602077d575"
+    },
+    {
+      "path": "compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+      "bytes": 3095278,
+      "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/ctest-execution.stdout.txt",
+      "bytes": 199843,
+      "sha256": "cf98db19592c5ed2f2ae6d4bcbe529f10ff5d000034d549bc67bd010e36cec93"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/ctest-registration.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/ctest-registration.stdout.txt",
+      "bytes": 3996,
+      "sha256": "d4fc3356addb90a0a52ff6233bbe6139a7e02dc5305d07279b5f08f12340a6af"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/ctest-results.xml",
+      "bytes": 1430,
+      "sha256": "77da486285ab8b563c029ebec8370c64fb7bdc3b675b2082e3b3641ae468ccb1"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/gtest-results.xml",
+      "bytes": 387087,
+      "sha256": "6984fe6d9cfdf3d33ce222ad4a8782e781c540ec4d28a0aa5bfc1df40a384a3a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/native-reference.json",
+      "bytes": 1500104,
+      "sha256": "251cf1a315b0014d29eaca2cd5078a4adec375b637957bf9d7b4ef2944663dfe"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/registered-gtest-inventory.json",
+      "bytes": 1429424,
+      "sha256": "0f68a177afa3b852e7705542ae85b24fd4f0e54ab872ad1239ea54170bfa726a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/registered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/registered-listing.stdout.txt",
+      "bytes": 34768,
+      "sha256": "66804c1a67f82ec4bbebf55f9e6b263a87593032c7888e04edb8ca83dce6d36a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/unfiltered-gtest-inventory.json",
+      "bytes": 1427772,
+      "sha256": "32814731c8a21fe3e3dee4a1e9f747e1ef24d249ee744bdd4342acc394a00080"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/unfiltered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI-source-identities/unfiltered-listing.stdout.txt",
+      "bytes": 34768,
+      "sha256": "66804c1a67f82ec4bbebf55f9e6b263a87593032c7888e04edb8ca83dce6d36a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/capture-script-before-duplicate-fix.py",
+      "bytes": 9235,
+      "sha256": "fd9fbc14f424594ffc1597a2161b6d3c254650d9d1a4a7e17b603d08be030137"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/ctest-registration.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/ctest-registration.stdout.txt",
+      "bytes": 3996,
+      "sha256": "d4fc3356addb90a0a52ff6233bbe6139a7e02dc5305d07279b5f08f12340a6af"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/failed-capture.json",
+      "bytes": 1802,
+      "sha256": "84b820d0eeef85644013dadc24e8492ac75e723468c64174e070159a1e61e80e"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/registered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/registered-listing.stdout.txt",
+      "bytes": 34768,
+      "sha256": "66804c1a67f82ec4bbebf55f9e6b263a87593032c7888e04edb8ca83dce6d36a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/unfiltered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI/unfiltered-listing.stdout.txt",
+      "bytes": 34768,
+      "sha256": "66804c1a67f82ec4bbebf55f9e6b263a87593032c7888e04edb8ca83dce6d36a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI_test-build-rules.json",
+      "bytes": 349555,
+      "sha256": "8185ba41e30f5b2b4b0c60f4da43859d9a9b1abda5578074fe9a55292e8fb290"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI_test-build.json",
+      "bytes": 2991,
+      "sha256": "79a3eb761a5aa9764e94b655aac4f35aceb2229a1f18664f3688d475da3c1db2"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/BLI_test-build.log",
+      "bytes": 10953,
+      "sha256": "170eb8f6082ba05a8fe8eee570d5416f52cec4f77fb9aebb63787db16b7e232b"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-execution.stdout.txt",
+      "bytes": 7107,
+      "sha256": "cd8b18c4b999257f9f4fe16212a023e879153ace4ef3b7f80486ce924cd1dd30"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-registration.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-registration.stdout.txt",
+      "bytes": 2025,
+      "sha256": "31a0a1f373ab179288b43e87395a6f9afefdaa1e95ee92f5b9008804dfaceae3"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/ctest-results.xml",
+      "bytes": 1439,
+      "sha256": "1f9f4e818c1f72ac69184f601570ebb48e22422e268995d4afb912603bc2b883"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/gtest-results.xml",
+      "bytes": 11353,
+      "sha256": "5fd8c16ca8df6f1514f5961b9cdc9f00c644eaa4faa5d3110ce65781441e6d50"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/native-reference.json",
+      "bytes": 42321,
+      "sha256": "6930cfc34e4a87ea3ac64d87cc832eb3b4cdfe03f5c1ca681e24f422f8359529"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-gtest-inventory.json",
+      "bytes": 45305,
+      "sha256": "4cb986f29e7bfab45f65976367612144c4ad6813ad99bd099f2011f12d829842"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/registered-listing.stdout.txt",
+      "bytes": 1401,
+      "sha256": "eba5e9583d81dc40692782e20897e92d52fd42b5b3550e737e00b6415663ceea"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-gtest-inventory.json",
+      "bytes": 45331,
+      "sha256": "67bad2fda37d7cc9812a6a38faf6d9bff1bfe312fbae2be66f367979e2cf51f7"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic/unfiltered-listing.stdout.txt",
+      "bytes": 1401,
+      "sha256": "eba5e9583d81dc40692782e20897e92d52fd42b5b3550e737e00b6415663ceea"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic_test-build-rules.json",
+      "bytes": 14843,
+      "sha256": "c9f3eb5652cdb3e6446c3d2d77ec1246b1e9be4e383b61ce112dd006155b0c58"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic_test-build.json",
+      "bytes": 3002,
+      "sha256": "41c1239660aaa8fbf2aa0ed2d4e0164d7317567a767b11500ea11dd09b543101"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/atomic_test-build.log",
+      "bytes": 4367,
+      "sha256": "4d3f6fdb62632c07edc682c230cf92d3593afdf601a91eab4bbb6198fac8be95"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-execution.stdout.txt",
+      "bytes": 6116,
+      "sha256": "3ec772199a756bbe96109fa55c2574427a4ff1e5f6af485fdf2f5f365285ed19"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-registration.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-registration.stdout.txt",
+      "bytes": 2419,
+      "sha256": "ca21bc9d2fb3ed916638eeee00c2440f66d1ef3056b871f63dda0b6989bc1eab"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-results.xml",
+      "bytes": 1451,
+      "sha256": "067cacd6e7e744f9c0faecf37823ffe137d28503110e3cc5faf24995168f8d95"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/gtest-results.xml",
+      "bytes": 2037,
+      "sha256": "535deb75bb4076895fba4f2b71071e10e9efee21e3f4b143c2ae76f8e606705a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/native-reference.json",
+      "bytes": 20432,
+      "sha256": "6e43112c6366a29b525fe93544646bb31c1b4d141baa8ea4ef8ab843440e419d"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-gtest-inventory.json",
+      "bytes": 7079,
+      "sha256": "c0017a0283e008c40c9cdbacc89ee6fcfe673d61637a8e733d4647e426f3e936"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-listing.stdout.txt",
+      "bytes": 191,
+      "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-gtest-inventory.json",
+      "bytes": 7018,
+      "sha256": "af2e39e861e613858a44e728c39584450bab34fae3d55cf3e70708a3f1e26daa"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stdout.txt",
+      "bytes": 191,
+      "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc_test-build-rules.json",
+      "bytes": 27566,
+      "sha256": "17e4a661652194cb7c9027159a80643ba1e566c1485c216d4e4ad45511fbcaa8"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc_test-build.json",
+      "bytes": 3033,
+      "sha256": "b9577b92ccce71d4a188969a9c4eb81a520ea63ff49e56fd45b765cfa165e223"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc_test-build.log",
+      "bytes": 17835,
+      "sha256": "75b2d67372a67b1c7a43cc58e2592820d0378dccf9102958fbb01dec9b081042"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/ctest-execution.stdout.txt",
+      "bytes": 2094,
+      "sha256": "b36c2921fa9efd99f98280028717fdcf1354e6eadfce7c3ca556b38a8d30f30f"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/ctest-registration.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/ctest-registration.stdout.txt",
+      "bytes": 2045,
+      "sha256": "b7d5d2d0ee18d383038ec80c5a542213a053b60e0504838d14c4803a31daca22"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/ctest-results.xml",
+      "bytes": 1084,
+      "sha256": "de707dbc45aaab17cd08126912e1d284b82d2098753aec5a2b7264fae5b9c239"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/gtest-results.xml",
+      "bytes": 1363,
+      "sha256": "20237e8371aa5e586d72a3cf96bebd701356a0e11a6de9c5dc39d2d1a5374916"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/native-reference.json",
+      "bytes": 22254,
+      "sha256": "9fbc9fc7b142832123597ca3b64e924113ae6ff72045ff921bbdbc4d52618ebb"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/registered-gtest-inventory.json",
+      "bytes": 6423,
+      "sha256": "2922906b7118969989caa774e518ff9a528bd8857fdddecbc7a352ad4031b72d"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/registered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/registered-listing.stdout.txt",
+      "bytes": 120,
+      "sha256": "4d6bb5b37a0c2a2c9b98f59375e948863f2d751274d10f691375b5ff6ce46625"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/unfiltered-gtest-inventory.json",
+      "bytes": 6449,
+      "sha256": "c565c889c0f04ffab30e55246ab418878e85d02af87b59f63482b5f43c5bdc1e"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/unfiltered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna/unfiltered-listing.stdout.txt",
+      "bytes": 120,
+      "sha256": "4d6bb5b37a0c2a2c9b98f59375e948863f2d751274d10f691375b5ff6ce46625"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna_test-build-rules.json",
+      "bytes": 35251,
+      "sha256": "5333c641a267cef4c9c50565e63fb4ceea78086567ac600d8cf4c7ace1924fa2"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna_test-build.json",
+      "bytes": 3270,
+      "sha256": "a5280f848e0f4febca416e1880a2082b955a32bd68666d8c81371cb5ab299cbc"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/makesdna_test-build.log",
+      "bytes": 1199,
+      "sha256": "be429f30aa7bcae02925901de1a61e6d4b59a716123b8cd7d8cc73720ee34a8b"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-execution.stdout.txt",
+      "bytes": 8061,
+      "sha256": "767343fa005ed4f8d305ddd766873e1f8e9656eb186958c8f286fe629d4ebc3a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-registration.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-registration.stdout.txt",
+      "bytes": 2407,
+      "sha256": "90eed264c5b508fd71d914b9f6172c26d60fcdfc5ad699fc527bb2132f5d018a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/ctest-results.xml",
+      "bytes": 1446,
+      "sha256": "f5b3b9c55c267cc3f2a76e66407f01e478e9105fc412bf6b3ce621009bf1a36e"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/gtest-results.xml",
+      "bytes": 14099,
+      "sha256": "651cac9e71efb5d401666c0f1ba3b8e6a3ab5aea23386ad851ccecb2f50aec91"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/native-reference.json",
+      "bytes": 73874,
+      "sha256": "0caeee427245bd1a0231a2883ff8f10843f36d9aee76c66c9f44b1ab338fd6a3"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-gtest-inventory.json",
+      "bytes": 52935,
+      "sha256": "0a611872ae9a9987f588328f54a76046ac56b551d0964cd15fbc3172620a3e6a"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/registered-listing.stdout.txt",
+      "bytes": 1110,
+      "sha256": "1f70619348453dc25610a477cf71031365a42bbb644458cecd4d08175b7e6b22"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-gtest-inventory.json",
+      "bytes": 52896,
+      "sha256": "0626ec9ce4b08e2204a73c1e3159798be01636aedf18911259d8b8fd2378dea9"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-listing.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool/unfiltered-listing.stdout.txt",
+      "bytes": 1110,
+      "sha256": "1f70619348453dc25610a477cf71031365a42bbb644458cecd4d08175b7e6b22"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool_test-build-rules.json",
+      "bytes": 150942,
+      "sha256": "a07f5960e9eb92c350c2ca0643675d7b2c8e8f18b03f45ca8b73bc8235809d17"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool_test-build.json",
+      "bytes": 3285,
+      "sha256": "0d69ea0ec917f175b050f9b05d4b5b1a9a1ee0ebacd4553e682f1acb5bfd8860"
+    },
+    {
+      "path": "compatibility/evidence/product-native-gtest-2026-10-23/shader_tool_test-build.log",
+      "bytes": 4849,
+      "sha256": "34e96ed3d85b35ec45b5f85a7c5ed1f591d8a8ad820e15c5f1a00011be4e83b7"
+    },
+    {
+      "path": "compatibility/evidence/product-native-independent-review-2026-10-23/audit.py",
+      "bytes": 22229,
+      "sha256": "77c026223b2f051d46f04e485e6166fd1717826f1b1f0964e099258185518310"
+    },
+    {
+      "path": "tools/test_registration_inventory.py",
+      "bytes": 21367,
+      "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+    }
+  ],
+  "new_native_tests_executed_by_review": 0,
+  "browser_cases_executed": 0,
+  "browser_passes_inferred": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "full_feature_parity": false,
+  "limitations": [
+    "This audits five already-executed native CTest drivers for one Linux Release configuration, not all Blender tests or configurations.",
+    "Atomic and guardedalloc predate capture-script and source-case identity fields; their original XML/listings/build/CTest bindings are checked independently without rewriting historical receipts.",
+    "Registered and unfiltered equality proves coverage of these compiled executable listings, not source cases excluded by compile-time platform/feature conditions or unbuilt executables.",
+    "No browser execution, engine changes, original assertion changes, or new test passes are produced by this review.",
+    "Hash-bound capture code removes inherited GTEST_* variables; captured original argv/properties and full runtime listing/XML reconciliation support the no-hidden-filter conclusion. The complete inherited non-GTEST environment was not archived."
+  ]
+}

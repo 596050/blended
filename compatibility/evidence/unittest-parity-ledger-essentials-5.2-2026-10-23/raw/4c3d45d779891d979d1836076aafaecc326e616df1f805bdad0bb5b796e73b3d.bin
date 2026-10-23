@@ -1,0 +1,13 @@
+--- a/system/lib/libc/musl/src/math/acosf.c
++++ b/system/lib/libc/musl/src/math/acosf.c
+@@ -49,8 +49,8 @@
+ 	}
+ 	/* |x| < 0.5 */
+ 	if (ix < 0x3f000000) {
+-		if (ix <= 0x32800000) /* |x| < 2**-26 */
+-			return pio2_hi + 0x1p-120f;
++		if (ix <= 0x32800000) /* |x| <= 2**-26: rounds to pi/2. */
++			return pio2_hi + pio2_lo;
+ 		return pio2_hi - (x - (pio2_lo-x*R(x*x)));
+ 	}
+ 	/* x < -0.5 */

@@ -1,0 +1,499 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc_test-build.json",
+    "bytes": 3033,
+    "sha256": "b9577b92ccce71d4a188969a9c4eb81a520ea63ff49e56fd45b765cfa165e223"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+    "bytes": 1074456,
+    "sha256": "68205d06088328d0ee1421c7ec57f3f6b45e0b777937c16ac942810b96d3d843"
+  },
+  "original_registration": {
+    "id": "ctest:5673ad285580d7d5e6cd4e40b0ec3e3ece8fa90e7dc8857d41121ac613a26ecf",
+    "identity": "guardedalloc",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+      "--gtest_filter=LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+        "line": 394,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 154,
+        "command": "gtest_add_tests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 315,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/guardedalloc/CMakeLists.txt",
+        "line": 65,
+        "command": "blender_add_test_suite_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/guardedalloc/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 5,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+        "--gtest_filter=LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "guardedalloc",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+          "--gtest_filter=LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T13:52:56.476236+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T13:52:56.480251+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-listing.stdout.txt",
+          "bytes": 191,
+          "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-gtest-inventory.json",
+        "bytes": 7079,
+        "sha256": "c0017a0283e008c40c9cdbacc89ee6fcfe673d61637a8e733d4647e426f3e936"
+      },
+      "counts": {
+        "cases": 6,
+        "disabled": 0,
+        "not_run": 6
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T13:52:56.480316+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T13:52:56.484329+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stdout.txt",
+          "bytes": 191,
+          "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-gtest-inventory.json",
+        "bytes": 7018,
+        "sha256": "af2e39e861e613858a44e728c39584450bab34fae3d55cf3e70708a3f1e26daa"
+      },
+      "counts": {
+        "cases": 6,
+        "disabled": 0,
+        "not_run": 6
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^guardedalloc$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T13:52:56.486649+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T13:52:56.705559+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-execution.stdout.txt",
+      "bytes": 6116,
+      "sha256": "3ec772199a756bbe96109fa55c2574427a4ff1e5f6af485fdf2f5f365285ed19"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^guardedalloc$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T13:52:56.258635+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:52:56.474011+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-registration.stdout.txt",
+        "bytes": 2419,
+        "sha256": "ca21bc9d2fb3ed916638eeee00c2440f66d1ef3056b871f63dda0b6989bc1eab"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+        "--gtest_filter=LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T13:52:56.476236+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:52:56.480251+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-listing.stdout.txt",
+        "bytes": 191,
+        "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T13:52:56.480316+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:52:56.484329+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stdout.txt",
+        "bytes": 191,
+        "sha256": "61a6d16c197db80b19b050bba43ef15caeaba612d6859e1ecdd2db4c7ea68dcc"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^guardedalloc$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T13:52:56.486649+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T13:52:56.705559+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-execution.stdout.txt",
+        "bytes": 6116,
+        "sha256": "3ec772199a756bbe96109fa55c2574427a4ff1e5f6af485fdf2f5f365285ed19"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "6",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.003",
+    "timestamp": "2026-10-23T18:52:56.672",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "LockFreeAllocatorTest.MEM_new_uninitialized_aligned",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MEM_new_uninitialized_aligned",
+        "file": "intern/guardedalloc/tests/guardedalloc_alignment_test.cc",
+        "line": "38",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:52:56.672",
+        "classname": "LockFreeAllocatorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "LockFreeAllocatorTest.LockfreeIntegerOverflow",
+      "outcome": "passed",
+      "attributes": {
+        "name": "LockfreeIntegerOverflow",
+        "file": "intern/guardedalloc/tests/guardedalloc_overflow_test.cc",
+        "line": "38",
+        "status": "run",
+        "result": "completed",
+        "time": "0.001",
+        "timestamp": "2026-10-23T18:52:56.672",
+        "classname": "LockFreeAllocatorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "GuardedAllocatorTest.MEM_new_uninitialized_aligned",
+      "outcome": "passed",
+      "attributes": {
+        "name": "MEM_new_uninitialized_aligned",
+        "file": "intern/guardedalloc/tests/guardedalloc_alignment_test.cc",
+        "line": "50",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:52:56.674",
+        "classname": "GuardedAllocatorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "GuardedAllocatorTest.GuardedIntegerOverflow",
+      "outcome": "passed",
+      "attributes": {
+        "name": "GuardedIntegerOverflow",
+        "file": "intern/guardedalloc/tests/guardedalloc_overflow_test.cc",
+        "line": "51",
+        "status": "run",
+        "result": "completed",
+        "time": "0.001",
+        "timestamp": "2026-10-23T18:52:56.674",
+        "classname": "GuardedAllocatorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "safe_multiply.SizeT",
+      "outcome": "passed",
+      "attributes": {
+        "name": "SizeT",
+        "file": "intern/guardedalloc/tests/guardedalloc_safe_multiply_test.cc",
+        "line": "27",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:52:56.676",
+        "classname": "safe_multiply"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    },
+    {
+      "identity": "safe_multiply.Int64",
+      "outcome": "passed",
+      "attributes": {
+        "name": "Int64",
+        "file": "intern/guardedalloc/tests/guardedalloc_safe_multiply_test.cc",
+        "line": "53",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T18:52:56.676",
+        "classname": "safe_multiply"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": []
+    }
+  ],
+  "observed_outcome_counts": {
+    "passed": 6
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/gtest-results.xml",
+    "bytes": 2037,
+    "sha256": "535deb75bb4076895fba4f2b71071e10e9efee21e3f4b143c2ae76f8e606705a"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/guardedalloc/ctest-results.xml",
+    "bytes": 1451,
+    "sha256": "067cacd6e7e744f9c0faecf37823ffe137d28503110e3cc5faf24995168f8d95"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false
+}

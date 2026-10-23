@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "kind": "checkpoint-recovery-audit-index",
+  "status": "verified",
+  "verified_audit": {
+    "path": "verified-recovery/audit.json",
+    "bytes": 24066,
+    "sha256": "9e332524e79efab48f5bd607c9533cf1546ef6f30673684e54ef7885d191adda"
+  },
+  "replay": {
+    "path": "verified-recovery/replayed-ledger-report.json",
+    "bytes": 752366,
+    "sha256": "ec6f6ee743d05e4d6312283320f578940b39772fb2d093e19bd37a24c81b650f"
+  },
+  "bundle": {
+    "path": "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle",
+    "bytes": 9759413,
+    "sha256": "cd2aabcfbfa6a155c7bc14aa10fe0b5bcbaa9714f459e752d50d6bfc756c9c22"
+  },
+  "verification": {
+    "public_base_fetched_directly": true,
+    "bundle_rejected_without_prerequisite": true,
+    "target_commit_absent_before_bundle": true,
+    "bundle_verified_with_public_base": true,
+    "recovered_head": "0d09949783ffd696edc575359a62a662580a8964",
+    "recovered_tree": "35f3c632814268a5673ea3b4c1cda7b6e509c7a9",
+    "source_head_and_tree_identical": true,
+    "raw_commit_bytes_identical": true,
+    "recovered_parent": "b2fa1b96db519d86adb7809ad5f881c26124ac70",
+    "git_fsck_passed": true,
+    "recovered_working_tree_clean": true,
+    "strict_ledger_expected_exit_code": 1,
+    "strict_ledger_report_byte_identical": false,
+    "strict_ledger_assessment_identical": true,
+    "converter_only_diagnostic_fields": [
+      "missing_browser_subtest_count",
+      "observation_count_limit",
+      "observation_totals",
+      "unexpected_browser_subtest_count"
+    ],
+    "assessment_comparison": "Every field emitted by the archived standalone ledger, including all registrations and all 829 pairs, matches the committed converter report. The converter report separately adds four observation diagnostics; its key ordering and complete raw JSON bytes therefore differ.",
+    "strict_ledger_result": {
+      "gate": "blocked",
+      "paired_obligation_count": 829,
+      "successful_execution_pair_count": 512,
+      "outcome_agreement_count": 597,
+      "required_registration_count": 132,
+      "unresolved_registration_count": 101,
+      "declared_scope_test_parity": false,
+      "all_upstream_test_parity": false,
+      "full_feature_parity": false
+    },
+    "strict_ledger_report": {
+      "path": "replayed-ledger-report.json",
+      "bytes": 752366,
+      "sha256": "ec6f6ee743d05e4d6312283320f578940b39772fb2d093e19bd37a24c81b650f"
+    }
+  },
+  "prior_attempts": [
+    {
+      "audit": {
+        "path": "audit.json",
+        "bytes": 8353,
+        "sha256": "b9d02e5907d7d930040a2cbf8a27884a8264b7cff10ba47a69a7d33192e78eae"
+      },
+      "runner_snapshot": {
+        "path": "executed-runner-v1.py",
+        "bytes": 9896,
+        "sha256": "c194d8edd83f8f7865e0206ce63a58429a1e384cec536a50595f42343e107d06"
+      },
+      "reason": "Default execution environment could not connect to its configured proxy; the public base fetch failed before bundle import."
+    },
+    {
+      "audit": {
+        "path": "public-fetch-retry/audit.json",
+        "bytes": 21215,
+        "sha256": "9239c047a4347916ed732d40502ef5f347abdbf393704c2c7963926716c95237"
+      },
+      "runner_snapshot": {
+        "path": "public-fetch-retry/executed-runner-v1.py",
+        "bytes": 9896,
+        "sha256": "c194d8edd83f8f7865e0206ce63a58429a1e384cec536a50595f42343e107d06"
+      },
+      "reason": "Public-base recovery and strict replay succeeded. The first audit script incorrectly required raw JSON equality against a converter report with four additional diagnostic fields. The corrected audit reran the complete recovery in another empty repository and compares every standalone ledger field, all registrations and all 829 pairs."
+    }
+  ],
+  "claim_limit": "This verifies bundle recovery and replay of committed, bounded test evidence. It is not a new Blender execution, full upstream test pass, or application feature parity proof."
+}

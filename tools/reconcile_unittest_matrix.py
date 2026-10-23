@@ -24,11 +24,13 @@ try:
     from .unittest_cohort import (CMAKE_SOURCES, NATIVE_ARCHIVE_BYTES, NATIVE_ARCHIVE_SHA256,
                                   UPSTREAM_SHA, case_id, validate_manifest, validate_native_discovery)
     from .upstream_invocations import load_catalog, validate_declaration
+    from .browser_package_overlay import PLAN_PATH as OVERLAY_PLAN_PATH, load_plan as load_overlay_plan
 except ImportError:
     from test_parity_ledger import assess, canonical_sha256, digest, load_json, require, strings
     from unittest_cohort import (CMAKE_SOURCES, NATIVE_ARCHIVE_BYTES, NATIVE_ARCHIVE_SHA256,
                                  UPSTREAM_SHA, case_id, validate_manifest, validate_native_discovery)
     from upstream_invocations import load_catalog, validate_declaration
+    from browser_package_overlay import PLAN_PATH as OVERLAY_PLAN_PATH, load_plan as load_overlay_plan
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = {"repository": "blender/blender", "commit": UPSTREAM_SHA}
@@ -172,6 +174,124 @@ def check_execution_log(captured: Captured, raw: dict, native: bool) -> None:
             "raw execution differs from the single original log observation")
 
 
+def engine_files(entries: Any) -> dict:
+    require(isinstance(entries, list) and bool(entries), "engine file identity list is missing")
+    pairs = []
+    for row in entries:
+        require(isinstance(row, dict) and isinstance(row.get("path"), str) and row["path"],
+                "engine file path is missing")
+        pairs.append((PurePosixPath(row["path"]).name, identity(row, "engine file")))
+    require(len({name for name, _ in pairs}) == len(pairs), "ambiguous engine file identity")
+    require({name for name, _ in pairs} == {"blender_browser." + suffix for suffix in ("data", "js", "wasm")},
+            "engine identity must retain data, JavaScript and Wasm")
+    return dict(pairs)
+
+
+def package_context(evidence: Evidence, context_file: Captured, browser: dict,
+                    source: Captured, cache: Captured) -> tuple[dict | None, dict, list]:
+    """Bind a separately measured resource package without relabeling its build.
+
+    Archive paths are historical runtime identities, not replay dependencies.
+    The independent measurement and the original verifier bytes are preserved;
+    this consumer does not claim to re-read or re-verify the external archives.
+    """
+    markers = {"package_overlay_receipt", "package_base_asset", "package_overlay_measurement"}
+    present = markers & browser.keys()
+    build = source.json()
+    base_engine = identity(build.get("artifact"), "source build artifact")
+    selected_engine = identity(browser.get("engine_archive"), "browser engine archive")
+    original_members = engine_files(build.get("engine_files"))
+    if not present:
+        require(base_engine == selected_engine,
+                "browser context, source build and observed CMake cache do not agree")
+        return None, original_members, []
+    require(present == markers, "package overlay context requires receipt, base asset and independent measurement")
+    receipt_file = evidence.reference(browser["package_overlay_receipt"], context_file.path.parent)
+    measured_file = evidence.reference(browser["package_overlay_measurement"], context_file.path.parent)
+    receipt, measured = receipt_file.json(), measured_file.json()
+    plan, plan_pin = load_overlay_plan()
+    require(type(receipt.get("schema")) is int and receipt["schema"] == 1
+            and receipt.get("kind") == "blender-browser-package-overlay" and receipt.get("status") == "assembled"
+            and receipt.get("upstream_commit") == UPSTREAM_SHA and receipt.get("overlay_id") == plan["id"]
+            and identity(receipt.get("manifest"), "overlay plan") == identity(plan_pin, "reviewed overlay plan")
+            and receipt.get("additions") == plan["files"]
+            and receipt.get("engine_recompiled") is False and receipt.get("full_parity") is False
+            and type(receipt.get("tests_executed")) is int and receipt["tests_executed"] == 0,
+            "package overlay receipt differs from the independently reviewed resource plan")
+    require(identity(receipt.get("source_build_receipt"), "overlay base source receipt") == identity(source.ref, "source receipt")
+            and identity(receipt.get("base_artifact"), "overlay base archive") == base_engine
+            and identity(browser["package_base_asset"], "context base archive") == base_engine
+            and identity(receipt.get("artifact"), "overlay artifact") == selected_engine
+            and selected_engine != base_engine,
+            "package overlay must preserve its base source identity and select a distinct artifact")
+    require(type(measured.get("schema")) is int and measured["schema"] == 1
+            and measured.get("kind") == "verified-browser-package-measurement"
+            and type(measured.get("tests_executed")) is int and measured["tests_executed"] == 0,
+            "independent package measurement is missing or claims test execution")
+    require(timestamp(measured.get("started_utc"), "package measurement start")
+            <= timestamp(measured.get("finished_utc"), "package measurement finish"),
+            "package measurement did not complete in order")
+    require(identity(measured.get("artifact"), "measured overlay archive") == selected_engine
+            and identity(measured.get("base_artifact"), "measured base archive") == base_engine,
+            "independent package measurement identifies another archive")
+    raw = [receipt_file.ref, measured_file.ref]
+    for field, expected in (("source_build_receipt", source), ("package_overlay_receipt", receipt_file)):
+        captured = evidence.reference(measured.get(field), measured_file.path.parent)
+        require(identity(captured.ref, "measured " + field) == identity(expected.ref, field),
+                "independent package measurement substituted its " + field)
+        raw.append(captured.ref)
+    original_context_file = evidence.reference(measured.get("base_context"), measured_file.path.parent)
+    original_context = original_context_file.json()
+    check_target(original_context.get("upstream"), "package base context")
+    require(original_context.get("schema") == 1 and original_context.get("kind") == "artifact-bound-browser-context"
+            and not (markers & original_context.keys())
+            and identity(original_context.get("engine_archive"), "original context engine") == base_engine
+            and identity(original_context.get("browser"), "original browser") == identity(browser.get("browser"), "selected browser")
+            and original_context["browser"].get("version") == browser["browser"].get("version")
+            and original_context.get("requested_flags") == browser.get("requested_flags"),
+            "package overlay changed its independently bound base browser context")
+    raw.append(original_context_file.ref)
+    for field, expected in (("source_build_receipt", source), ("build_configuration", cache)):
+        captured = evidence.reference(original_context.get(field), original_context_file.path.parent)
+        require(identity(captured.ref, "base context " + field) == identity(expected.ref, field),
+                "package base context differs from the selected original build")
+        raw.append(captured.ref)
+    measurement_tool = evidence.reference(measured.get("measurement_tool"), measured_file.path.parent)
+    # The receipt records the original tools/ path. An adjacent exact snapshot
+    # preserves those bytes after checkout relocation or later tool changes.
+    identity(measured.get("verification_tool"), "package verification tool")
+    verifier = evidence.capture(measured_file.path.parent / "browser_package_overlay.py", measured.get("verification_tool"))
+    require(verifier.data == Path(__file__).with_name("browser_package_overlay.py").read_bytes(),
+            "package measurement used an unreviewed verifier")
+    raw.extend([measurement_tool.ref, verifier.ref])
+    verified = measured.get("package_overlay")
+    require(isinstance(verified, dict) and verified == {**receipt, "receipt_sha256": receipt_file.ref["sha256"]},
+            "independent package verification differs from its bound overlay receipt")
+    verification = verified.get("verification", {})
+    require(isinstance(verification, dict) and all(verification.get(field) is True for field in
+            ("base_archive_verified", "added_resource_bytes_verified", "existing_preload_bytes_unchanged", "wasm_unchanged"))
+            and type(verification.get("unchanged_files")) is int and verification["unchanged_files"] >= 1
+            and type(verification.get("added_files")) is int and verification["added_files"] == 1
+            and verification.get("mount_timing") == "Emscripten preload before application main",
+            "package measurement did not verify the unchanged engine and original resources")
+    members = engine_files(measured.get("engine_files"))
+    member_paths = [PurePosixPath(row["path"]) for row in measured["engine_files"]]
+    require(all(not path.is_absolute() and ".." not in path.parts for path in member_paths)
+            and len({path.parent for path in member_paths}) == 1,
+            "measured package engine members have unsafe or inconsistent paths")
+    require(verification.get("modified_files") == sorted(str(path) for path in member_paths if path.suffix in {".data", ".js"}),
+            "package verification changed unexpected engine members")
+    require(members["blender_browser.wasm"] == original_members["blender_browser.wasm"]
+            and members["blender_browser.js"] != original_members["blender_browser.js"]
+            and members["blender_browser.data"][0] != original_members["blender_browser.data"][0]
+            and members["blender_browser.data"][1] == original_members["blender_browser.data"][1]
+                + sum(row["bytes"] for row in plan["files"]),
+            "measured package must retain Wasm and account for changed JavaScript and preload data")
+    return {"receipt": receipt_file, "measurement": measured_file, "verified": verified,
+            "base_asset": browser["package_base_asset"], "verifier": verifier,
+            "plan_identity": plan_pin}, members, raw
+
+
 def read_contexts(evidence: Evidence, native_path: Path, browser_path: Path, adapter_sha: str) -> dict:
     nc, bc = evidence.capture(native_path), evidence.capture(browser_path)
     native, browser = nc.json(), bc.json()
@@ -204,9 +324,9 @@ def read_contexts(evidence: Evidence, native_path: Path, browser_path: Path, ada
     require(build.get("schema") == 1 and build.get("artifact_kind") == "blender-source-development"
             and build.get("status") == "built" and build.get("upstream_commit") == UPSTREAM_SHA,
             "browser source build does not identify the selected artifact")
-    require(identity(build.get("artifact"), "source build artifact") == engine
-            and identity(build.get("configuration"), "source build configuration") == identity(cache.ref, "CMake cache"),
+    require(identity(build.get("configuration"), "source build configuration") == identity(cache.ref, "CMake cache"),
             "browser context, source build and observed CMake cache do not agree")
+    overlay, members, package_raw = package_context(evidence, bc, browser, source, cache)
     require(isinstance(browser.get("requested_flags"), list) and browser["requested_flags"],
             "browser flags are not independently recorded")
     contexts = {
@@ -216,7 +336,8 @@ def read_contexts(evidence: Evidence, native_path: Path, browser_path: Path, ada
                   "runtime_sha256": browser_executable[0], "adapter_sha256": adapter_sha},
     }
     return {"native": native, "browser": browser, "contexts": contexts, "build": build,
-            "source": source, "raw": unique_refs([nc.ref, bc.ref, source.ref, cache.ref, *[row.ref for row in native_raw]])}
+            "source": source, "overlay": overlay, "engine_files": members,
+            "raw": unique_refs([nc.ref, bc.ref, source.ref, cache.ref, *package_raw, *[row.ref for row in native_raw]])}
 
 
 def declaration_rows(plan: dict) -> dict[int, dict]:
@@ -293,20 +414,40 @@ def read_matrices(evidence: Evidence, paths: list[Path], plans: dict, context: d
                 "matrix executable or engine differs from independently measured context")
         build = evidence.reference(matrix.get("source_build_receipt"))
         require(build.ref["sha256"] == context["source"].ref["sha256"], "matrix source build receipt differs from context")
+        package_refs = []
+        overlay = context["overlay"]
+        if overlay:
+            selected_overlay = evidence.reference(matrix.get("package_overlay_receipt"))
+            require(identity(selected_overlay.ref, "matrix overlay") == identity(overlay["receipt"].ref, "context overlay")
+                    and identity(matrix.get("package_base_asset"), "matrix base asset") == identity(overlay["base_asset"], "context base asset"),
+                    "matrix package overlay or base archive differs from independent context")
+            package_refs.append(selected_overlay.ref)
+        else:
+            require(not {"package_overlay_receipt", "package_base_asset"} & matrix.keys(),
+                    "matrix package overlay lacks an independent package context")
         harness = evidence.reference(matrix.get("harness_manifest"))
-        files, names, harness_refs = harness.json().get("files"), set(), []
+        files, names, harness_refs, harness_by_name = harness.json().get("files"), set(), [], {}
         require(isinstance(files, list) and files, "browser harness snapshot is missing")
         for row in files:
             require(row["path"] not in names and not Path(row["path"]).is_absolute()
                     and ".." not in PurePosixPath(row["path"]).parts, "duplicate or unsafe harness path")
             names.add(row["path"])
-            harness_refs.append(evidence.reference(row, harness.path.parent / "harness").ref)
+            captured_tool = evidence.reference(row, harness.path.parent / "harness")
+            harness_refs.append(captured_tool.ref)
+            harness_by_name[row["path"]] = captured_tool
         require({"tools/probe_browser_port.py", "tools/unittest_cohort.py"} <= names,
                 "browser harness omits the actual original-main producer")
+        if overlay:
+            required_package_files = {"tools/browser_package_overlay.py", "compatibility/package-overlays/essentials-brushes-5.2.json"}
+            require(required_package_files <= names, "browser harness omits the reviewed package verifier or plan")
+            require(harness_by_name["tools/browser_package_overlay.py"].data == overlay["verifier"].data
+                    and identity(harness_by_name["compatibility/package-overlays/essentials-brushes-5.2.json"].ref, "harness plan")
+                        == identity(overlay["plan_identity"], "reviewed plan"),
+                    "browser harness substituted its package verifier or resource plan")
         rows = matrix.get("registrations")
         require(isinstance(rows, list), "matrix registration list is missing")
         seen = set()
-        raw = unique_refs([captured.ref, native_plan.ref, build.ref, harness.ref, *harness_refs])
+        raw = unique_refs([captured.ref, native_plan.ref, build.ref, harness.ref, *harness_refs, *package_refs])
         for row in rows:
             index = row.get("source_declaration_index")
             require(index in plan_rows and index not in seen, "duplicate or unknown matrix source declaration")
@@ -583,13 +724,21 @@ def check_browser(raw: dict, host: dict, observation: dict, manifest_file: Captu
     require(raw.get("source_build_receipt_verified") is True
             and raw.get("source_build", {}).get("receipt_sha256") == context["source"].ref["sha256"],
             "browser receipt does not bind the independently supplied source build")
-    def engine_files(entries):
-        require(isinstance(entries, list) and bool(entries), "engine file identity list is missing")
-        pairs = [(PurePosixPath(row["path"]).name, identity(row, "engine file")) for row in entries]
-        require(len({name for name, _ in pairs}) == len(pairs), "ambiguous engine file identity")
-        return dict(pairs)
-    require(engine_files(raw.get("engine_files")) == engine_files(context["build"].get("engine_files")),
+    require(engine_files(raw.get("engine_files")) == context["engine_files"],
             "browser extracted engine files differ from independently bound build artifact")
+    overlay = context["overlay"]
+    if overlay:
+        require(raw.get("package_overlay") == overlay["verified"]
+                and raw.get("candidate", {}).get("kind") == "blender-source-development-package-overlay"
+                and raw["candidate"].get("package_overlay_id") == overlay["verified"]["overlay_id"]
+                and identity(raw.get("source_build", {}).get("base_artifact"), "observed base archive")
+                    == identity(overlay["base_asset"], "context base archive"),
+                "browser receipt did not independently verify the selected package overlay")
+    else:
+        require(raw.get("package_overlay") is None
+                and raw.get("candidate", {}).get("kind") != "blender-source-development-package-overlay"
+                and "base_artifact" not in raw.get("source_build", {}),
+                "browser receipt package overlay lacks an independent package context")
     browser = raw.get("browser", {})
     require(browser.get("flags") == context["browser"]["requested_flags"] and
             str(context["browser"]["browser"].get("version", "")).endswith(" " + str(browser.get("version"))),
@@ -606,6 +755,8 @@ def check_browser(raw: dict, host: dict, observation: dict, manifest_file: Captu
             "browser host command is not the bound harness")
     permitted = {"--asset", "--source-build-receipt", "--suite-manifest", "--suite-manifest-sha256",
                  "--browser-executable", "--output", "--timeout", "--suite", "--fixture-root", "--resource-root"}
+    if overlay:
+        permitted.update({"--package-overlay-receipt", "--package-base-asset"})
     require(len(command[2:]) % 2 == 0 and all(command[index] in permitted for index in range(2, len(command), 2)),
             "browser host command has an unreviewed argument or selection filter")
     require(all(command[2::2].count(name) <= 1 for name in permitted - {"--suite"}),
@@ -619,6 +770,10 @@ def check_browser(raw: dict, host: dict, observation: dict, manifest_file: Captu
             and flag("--browser-executable") == matrix["browser_executable"]["path"]
             and flag("--source-build-receipt") == matrix["source_build_receipt"]["path"],
             "browser host command does not bind the selected manifest and artifact context")
+    if overlay:
+        require(flag("--package-overlay-receipt") == matrix["package_overlay_receipt"]["path"]
+                and flag("--package-base-asset") == matrix["package_base_asset"]["path"],
+                "browser host command substituted the package overlay or base archive")
     expected_sources = [manifest["suites"][0], *manifest["suites"][0].get("support_files", [])]
     supplied_sources = [command[index + 1] for index in range(2, len(command), 2) if command[index] == "--suite"]
     require(len(supplied_sources) == len(expected_sources) and all(
@@ -682,9 +837,11 @@ def reconcile(repo_root: Path, source_plan: Path, browser_matrices: list[Path], 
     evidence = Evidence(repo_root, output)
     program = []
     for name in ("reconcile_unittest_matrix.py", "test_parity_ledger.py", "unittest_cohort.py", "upstream_resources.py",
-                 "probe_blender_fixtures.py", "upstream_invocations.py", "upstream_invocations_5_2.json"):
+                 "probe_blender_fixtures.py", "upstream_invocations.py", "upstream_invocations_5_2.json",
+                 "browser_package_overlay.py"):
         path = Path(__file__).with_name(name)
         program.append(evidence.write("normalizer/" + name, path.read_bytes()))
+    program.append(evidence.write("compatibility/package-overlays/essentials-brushes-5.2.json", OVERLAY_PLAN_PATH.read_bytes()))
     context = read_contexts(evidence, native_context, browser_context, program[0]["sha256"])
     rows, plans, superseded, plan_refs = original_rows(evidence, source_plan, list(retry_plans))
     browser_rows, matrix_refs = read_matrices(evidence, browser_matrices, plans, context)

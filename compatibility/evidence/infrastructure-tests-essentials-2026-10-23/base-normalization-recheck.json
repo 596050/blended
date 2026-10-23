@@ -1,0 +1,92 @@
+{
+  "all_pair_assessments_match": true,
+  "all_registration_assessments_match": true,
+  "claim_limit": "Current converter replay of immutable original base-package observations, not a new Blender execution. Temporary normalized outputs are reproducible from the retained raw inputs and the versioned converter.",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/reconcile_unittest_matrix.py",
+    "--source-plan",
+    "compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json",
+    "--native-retry-plan",
+    "compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json",
+    "--browser-matrix",
+    "compatibility/evidence/unittest-browser-matrix-5.2-2026-10-23/matrix.json",
+    "--browser-matrix",
+    "compatibility/evidence/unittest-browser-resources-5.2-2026-10-23/matrix.json",
+    "--native-context",
+    "compatibility/evidence/runtime-context-2026-10-23/native-context.json",
+    "--browser-context",
+    "compatibility/evidence/runtime-context-2026-10-23/browser-context.json",
+    "--output",
+    "/tmp/blended-base-recheck-sw5gy1p2/normalized",
+    "--report-only"
+  ],
+  "converter": {
+    "bytes": 69346,
+    "path": "tools/reconcile_unittest_matrix.py",
+    "sha256": "91a4b61e2559d5e22c20a00d717daf03dda916f01fdb946946022fd4f9e53d5e"
+  },
+  "cwd": "/workspace/scratch/d63596d831b2/blended",
+  "duration_seconds": 6.515534975998889,
+  "finished_utc": "2026-10-23T14:03:39.131858+00:00",
+  "generated_outputs": [
+    {
+      "bytes": 133864,
+      "path": "contract.json",
+      "sha256": "ef1a359b0c8ba855f74f6b0c99e71e39b7d36ea5d59328825e1f5e6e37089a35"
+    },
+    {
+      "bytes": 126130,
+      "path": "inventory.json",
+      "sha256": "4268ffb6c8af6d5bbe743a1729e955c181e708e1c717e0ffbc1cf2c6dea370c6"
+    },
+    {
+      "bytes": 29328,
+      "path": "executions.json",
+      "sha256": "787696f6e0eb78c0c8564c138e6927a7a679b6b0d956f2d8de5bcd1c1b05ad80"
+    },
+    {
+      "bytes": 753305,
+      "path": "report.json",
+      "sha256": "069a0712664b3a1d51f0c1d935473350cdc7e2cb95ba78f4eed3c480bcea0b13"
+    },
+    {
+      "bytes": 358183,
+      "path": "conversion.json",
+      "sha256": "d1123aac89109ec453ea6bacaf3ccbbeffe7f849eb26e57fb0ddbbe041bce01c"
+    }
+  ],
+  "kind": "base-package-normalization-regression",
+  "observation_diagnostics_match": true,
+  "original_report": {
+    "bytes": 753305,
+    "path": "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/report.json",
+    "sha256": "7aef2c48b4d1e3ae7a561ac70b068e75c86cadadfeee89e539a28abc574d5aa6"
+  },
+  "result": {
+    "all_upstream_test_parity": false,
+    "declared_scope_test_parity": false,
+    "full_feature_parity": false,
+    "gate": "blocked",
+    "outcome_agreement_count": 597,
+    "paired_obligation_count": 829,
+    "required_registration_count": 132,
+    "successful_execution_pair_count": 512,
+    "unresolved_registration_count": 101
+  },
+  "returncode": 0,
+  "schema": 1,
+  "started_utc": "2026-10-23T14:03:32.616326+00:00",
+  "status": "verified",
+  "stderr": {
+    "bytes": 0,
+    "path": "base-normalization-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 2006,
+    "path": "base-normalization-stdout.log",
+    "sha256": "e11611e7b8b1633abfa5e238c0c6453835cc43386eec87716dd0ca2f7825c9a7"
+  },
+  "timed_out": false
+}

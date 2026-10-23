@@ -1,0 +1,626 @@
+{
+  "schema": 1,
+  "kind": "git-bundle-recovery-audit",
+  "status": "failed",
+  "started_at": "2026-10-23T13:45:11.524773+00:00",
+  "source_repository": "/workspace/scratch/d63596d831b2/blended",
+  "independent_checkout": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+  "expected_base": "b2fa1b96db519d86adb7809ad5f881c26124ac70",
+  "expected_head": "0d09949783ffd696edc575359a62a662580a8964",
+  "public_origin": "https://github.com/596050/blended.git",
+  "base_origin": "Fetched the exact public base commit from the public HTTPS remote into an empty Git repository; no clone, local object alternate, or fetch from the working repository was used.",
+  "bundle": {
+    "path": "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle",
+    "bytes": 9759413,
+    "sha256": "cd2aabcfbfa6a155c7bc14aa10fe0b5bcbaa9714f459e752d50d6bfc756c9c22"
+  },
+  "audit_runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/checkpoint-recovery-2026-10-23/verify_recovery.py",
+    "bytes": 9896,
+    "sha256": "c194d8edd83f8f7865e0206ce63a58429a1e384cec536a50595f42343e107d06"
+  },
+  "commands": [
+    {
+      "label": "source-identity",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_at": "2026-10-23T13:45:11.540303+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:11.543481+00:00",
+      "duration_seconds": 0.002784,
+      "stdout": {
+        "path": "commands/01-source-identity.stdout.log",
+        "bytes": 82,
+        "sha256": "c3247ad156a845ce5710b0e6984cc3ca926ca09a1fe5c3f3d93e9157a5f1510d"
+      },
+      "stderr": {
+        "path": "commands/01-source-identity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "source-commit",
+      "command": [
+        "git",
+        "cat-file",
+        "commit",
+        "0d09949783ffd696edc575359a62a662580a8964"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_at": "2026-10-23T13:45:11.548492+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:11.560722+00:00",
+      "duration_seconds": 0.002572,
+      "stdout": {
+        "path": "commands/02-source-commit.stdout.log",
+        "bytes": 261,
+        "sha256": "5170f6ce7b9dfec55b160ad0356b3328e6c4151648d703d9408dfbedfa3a4c94"
+      },
+      "stderr": {
+        "path": "commands/02-source-commit.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "bundle-heads",
+      "command": [
+        "git",
+        "bundle",
+        "list-heads",
+        "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_at": "2026-10-23T13:45:11.561298+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:11.567778+00:00",
+      "duration_seconds": 0.001847,
+      "stdout": {
+        "path": "commands/03-bundle-heads.stdout.log",
+        "bytes": 46,
+        "sha256": "12f19f5f56a652cb67b16367f1e698c7c04064fd5cb528cd67517d41dd634d57"
+      },
+      "stderr": {
+        "path": "commands/03-bundle-heads.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "init-empty",
+      "command": [
+        "git",
+        "init",
+        "--initial-branch=recovery"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:11.576061+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:11.585717+00:00",
+      "duration_seconds": 0.008623,
+      "stdout": {
+        "path": "commands/04-init-empty.stdout.log",
+        "bytes": 112,
+        "sha256": "410e283e9c18571fafe705043279309395bdeee0e0109b1371f63f4521e721fb"
+      },
+      "stderr": {
+        "path": "commands/04-init-empty.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "bundle-prerequisite-absent",
+      "command": [
+        "git",
+        "bundle",
+        "verify",
+        "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:11.586434+00:00",
+      "returncode": 1,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:11.589506+00:00",
+      "duration_seconds": 0.002385,
+      "stdout": {
+        "path": "commands/05-bundle-prerequisite-absent.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/05-bundle-prerequisite-absent.stderr.log",
+        "bytes": 101,
+        "sha256": "1b5d512238b81897484fcf5b9cf392edf7176a532372e0c5966e61c4aca74096"
+      },
+      "expected_returncodes": [
+        1
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "add-public-origin",
+      "command": [
+        "git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/596050/blended.git"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:11.590142+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:11.603160+00:00",
+      "duration_seconds": 0.007058,
+      "stdout": {
+        "path": "commands/06-add-public-origin.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/06-add-public-origin.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "fetch-public-base",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--no-progress",
+        "origin",
+        "b2fa1b96db519d86adb7809ad5f881c26124ac70"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:11.603884+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:12.617566+00:00",
+      "duration_seconds": 1.011424,
+      "stdout": {
+        "path": "commands/07-fetch-public-base.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/07-fetch-public-base.stderr.log",
+        "bytes": 115,
+        "sha256": "098c72581d98a7a3cbc8d70e27d56a84e2a02604adf4bae63c61cdfc8bbf5463"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "checkout-public-base",
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "b2fa1b96db519d86adb7809ad5f881c26124ac70"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:12.618397+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:12.643649+00:00",
+      "duration_seconds": 0.024857,
+      "stdout": {
+        "path": "commands/08-checkout-public-base.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/08-checkout-public-base.stderr.log",
+        "bytes": 96,
+        "sha256": "a133c401fac4edb6988d1fb80d6ccd9b6fa4902c0eabed188ea073ddc4d1d4f8"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "base-identity",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:12.644628+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:12.647474+00:00",
+      "duration_seconds": 0.002489,
+      "stdout": {
+        "path": "commands/09-base-identity.stdout.log",
+        "bytes": 82,
+        "sha256": "76775413b1cf4ed1e7a8d68c33a1aeabf1c6231b86db1941f0a5ebd8c4e520d3"
+      },
+      "stderr": {
+        "path": "commands/09-base-identity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "target-absent-before-bundle",
+      "command": [
+        "git",
+        "cat-file",
+        "-e",
+        "0d09949783ffd696edc575359a62a662580a8964^{commit}"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:12.648181+00:00",
+      "returncode": 128,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:12.654868+00:00",
+      "duration_seconds": 0.00632,
+      "stdout": {
+        "path": "commands/10-target-absent-before-bundle.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/10-target-absent-before-bundle.stderr.log",
+        "bytes": 81,
+        "sha256": "64615a329cf3ac3609467d095c0e983b0e7063b547223e5c75e289a7ec472986"
+      },
+      "expected_returncodes": [
+        128
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "verify-bundle-prerequisite",
+      "command": [
+        "git",
+        "bundle",
+        "verify",
+        "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:12.655597+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:12.669115+00:00",
+      "duration_seconds": 0.005736,
+      "stdout": {
+        "path": "commands/11-verify-bundle-prerequisite.stdout.log",
+        "bytes": 190,
+        "sha256": "2e9e6f14132a2f812fbffdf98d554a50152dd1e55d6d9ea1da21744135730500"
+      },
+      "stderr": {
+        "path": "commands/11-verify-bundle-prerequisite.stderr.log",
+        "bytes": 81,
+        "sha256": "05e98ce6b832d9a1a4f4bf21e58dfb71d6aaa4fd33af208aa4f67063393f7900"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "fetch-bundle",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "/workspace/scratch/d63596d831b2/deliverables/blended-0d09949783ff.bundle",
+        "HEAD:refs/heads/recovered-checkpoint"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:12.669979+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.020369+00:00",
+      "duration_seconds": 0.349812,
+      "stdout": {
+        "path": "commands/12-fetch-bundle.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/12-fetch-bundle.stderr.log",
+        "bytes": 134,
+        "sha256": "4a80398c3c2e904df90efd3c28df52d09fdc8b4c3d1f8cbb629dafd01dfecf71"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "checkout-recovered",
+      "command": [
+        "git",
+        "checkout",
+        "recovered-checkpoint"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.021287+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.367790+00:00",
+      "duration_seconds": 0.346202,
+      "stdout": {
+        "path": "commands/13-checkout-recovered.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/13-checkout-recovered.stderr.log",
+        "bytes": 150,
+        "sha256": "683d36a4af7a365a340c726c3e26f6b3785ab54d3193f004cfe75ccd7946f535"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "recovered-identity",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.368559+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.371140+00:00",
+      "duration_seconds": 0.002145,
+      "stdout": {
+        "path": "commands/14-recovered-identity.stdout.log",
+        "bytes": 82,
+        "sha256": "c3247ad156a845ce5710b0e6984cc3ca926ca09a1fe5c3f3d93e9157a5f1510d"
+      },
+      "stderr": {
+        "path": "commands/14-recovered-identity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "recovered-commit",
+      "command": [
+        "git",
+        "cat-file",
+        "commit",
+        "0d09949783ffd696edc575359a62a662580a8964"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.372441+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.374824+00:00",
+      "duration_seconds": 0.002059,
+      "stdout": {
+        "path": "commands/15-recovered-commit.stdout.log",
+        "bytes": 261,
+        "sha256": "5170f6ce7b9dfec55b160ad0356b3328e6c4151648d703d9408dfbedfa3a4c94"
+      },
+      "stderr": {
+        "path": "commands/15-recovered-commit.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "recovered-parent",
+      "command": [
+        "git",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "0d09949783ffd696edc575359a62a662580a8964"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.376001+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.379107+00:00",
+      "duration_seconds": 0.002643,
+      "stdout": {
+        "path": "commands/16-recovered-parent.stdout.log",
+        "bytes": 82,
+        "sha256": "09418bb388121f45b4eb839fe95330e930b7198e16053f8747023fbcc90781ae"
+      },
+      "stderr": {
+        "path": "commands/16-recovered-parent.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "object-integrity",
+      "command": [
+        "git",
+        "fsck",
+        "--full",
+        "--no-reflogs"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.379785+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.648511+00:00",
+      "duration_seconds": 0.268406,
+      "stdout": {
+        "path": "commands/17-object-integrity.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/17-object-integrity.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "working-tree-diff",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "--"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.649593+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:13.946998+00:00",
+      "duration_seconds": 0.296905,
+      "stdout": {
+        "path": "commands/18-working-tree-diff.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/18-working-tree-diff.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "working-tree-status",
+      "command": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:13.947866+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:14.196096+00:00",
+      "duration_seconds": 0.247728,
+      "stdout": {
+        "path": "commands/19-working-tree-status.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/19-working-tree-status.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        0
+      ],
+      "expected_result_observed": true
+    },
+    {
+      "label": "strict-ledger-replay",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/normalizer/test_parity_ledger.py",
+        "--contract",
+        "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/contract.json",
+        "--inventory",
+        "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/inventory.json",
+        "--executions",
+        "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/executions.json",
+        "--evidence-root",
+        "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2",
+        "--output",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/checkpoint-recovery-2026-10-23/public-fetch-retry/replayed-ledger-report.json"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/recovery-public-checkout-0d09949783ff",
+      "started_at": "2026-10-23T13:45:14.197664+00:00",
+      "returncode": 1,
+      "timed_out": false,
+      "completed_at": "2026-10-23T13:45:14.901748+00:00",
+      "duration_seconds": 0.703138,
+      "stdout": {
+        "path": "commands/20-strict-ledger-replay.stdout.log",
+        "bytes": 1243,
+        "sha256": "15caa83099c94fe4c578502b540a84b5a6fa4f98a27090389d448e74ed826bf8"
+      },
+      "stderr": {
+        "path": "commands/20-strict-ledger-replay.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "expected_returncodes": [
+        1
+      ],
+      "expected_result_observed": true
+    }
+  ],
+  "verification": {},
+  "claim_limit": "This verifies bundle recovery and replay of committed, bounded test evidence. It is not a new Blender execution, full upstream test pass, or application feature parity proof.",
+  "bundle_header": [
+    "# v2 git bundle",
+    "-b2fa1b96db519d86adb7809ad5f881c26124ac70 Run the original 17-method Blender library cohort with verified fixtures",
+    "0d09949783ffd696edc575359a62a662580a8964 HEAD"
+  ],
+  "error": "replayed report differs from the committed report",
+  "completed_at": "2026-10-23T13:45:14.906635+00:00"
+}

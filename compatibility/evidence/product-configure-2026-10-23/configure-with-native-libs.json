@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "-S",
+    "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "-B",
+    "/workspace/scratch/d63596d831b2/runtime/product-native-configure-full",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON",
+    "-DCMAKE_C_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14",
+    "-DCMAKE_CXX_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14",
+    "-DLIBDIR=/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64"
+  ],
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu"
+  },
+  "prior_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-gcc14.json",
+    "bytes": 2062,
+    "sha256": "920333040d27878c997cde7c19002ab07d691cd6b71bb39d3b848dd73a966e7a"
+  },
+  "library_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/native-library-hydration.json",
+    "bytes": 131419,
+    "sha256": "04f2eea821f51f59a47f276fa4bde41de2a49ba6553def8fbad674c12e1de339"
+  },
+  "test_flags_preserved": [
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON"
+  ],
+  "feature_flags_disabled_for_configuration": [],
+  "started_utc": "2026-10-23T13:33:30.223787+00:00",
+  "finished_utc": "2026-10-23T13:33:31.375869+00:00",
+  "returncode": 1,
+  "configured": false,
+  "tests_executed": 0,
+  "runtime_enumeration_complete": false,
+  "log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-native-libs.log",
+    "bytes": 10471,
+    "sha256": "031303936f1535c35a6aa94c24971a754baf2c9aafb933d6b34c2dfac786a3f9"
+  },
+  "generated_configuration_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/native-libs-CMakeCache.txt",
+      "bytes": 99589,
+      "sha256": "0e981061ee00f4d1abc4921a6aac9158a0e8a25d692002dde66d94b06a9cd068"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/native-libs-CMakeConfigureLog.yaml",
+      "bytes": 14441045,
+      "sha256": "3ae41d0ec3e4c767e924b1faad7eead901fbc2cb7a72446b05c37f1abac17334"
+    }
+  ]
+}

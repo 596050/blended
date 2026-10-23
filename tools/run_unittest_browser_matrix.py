@@ -53,6 +53,18 @@ def resolve_manifest_record(record, repo_root):
     return path
 
 
+def overlay_inputs(receipt, base_asset):
+    """Require both augmentation inputs without replacing base build provenance."""
+    if bool(receipt) != bool(base_asset):
+        raise ValueError("package overlay requires both its receipt and the original base archive")
+    if receipt is None:
+        return None
+    for path in (receipt, base_asset):
+        if not Path(path).is_file() or Path(path).is_symlink():
+            raise ValueError("package overlay inputs must be regular files: " + str(path))
+    return {"receipt": Path(receipt).resolve(), "base_asset": Path(base_asset).resolve()}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--native-inventory", required=True, type=Path)
@@ -64,6 +76,10 @@ def main(argv=None):
     parser.add_argument("--resource-root", type=Path, help="Verified original non-test source resource tree")
     parser.add_argument("--asset", required=True, type=Path)
     parser.add_argument("--source-build-receipt", required=True, type=Path)
+    parser.add_argument("--package-overlay-receipt", type=Path,
+                        help="Explicit augmentation receipt; every probe verifies the actual archive transformation")
+    parser.add_argument("--package-base-asset", type=Path,
+                        help="Original source-built archive required to verify a package augmentation")
     parser.add_argument("--browser-executable", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--jobs", type=int, default=1)
@@ -71,6 +87,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if not 1 <= args.jobs <= 4 or not 1 <= args.timeout <= 600:
         parser.error("jobs must be 1 to 4 and timeout must be 1 to 600 seconds")
+    try:
+        overlay = overlay_inputs(args.package_overlay_receipt, args.package_base_asset)
+    except ValueError as error:
+        parser.error(str(error))
     inventory = read_bound_json(args.native_inventory, args.native_inventory_sha256)
     if inventory.get("upstream_commit") != UPSTREAM_SHA or not isinstance(inventory.get("registrations"), list):
         parser.error("native source plan does not identify the selected upstream revision")
@@ -101,10 +121,13 @@ def main(argv=None):
     output.mkdir(parents=True)
     shutil.copyfile(args.native_inventory, output / "native-discovery-inventory.json")
     shutil.copyfile(args.source_build_receipt, output / "source-build.json")
+    if overlay:
+        shutil.copyfile(overlay["receipt"], output / "package-overlay.json")
     snapshot = output / "harness"
     files = []
     for source in [*sorted((ROOT / "tools").glob("*.py")),
                    ROOT / "tools/upstream_invocations_5_2.json",
+                   *sorted((ROOT / "compatibility/package-overlays").glob("*.json")),
                    *sorted((ROOT / "patches/browser-numerics").rglob("*"))]:
         if not source.is_file() or source.is_symlink():
             continue
@@ -123,6 +146,9 @@ def main(argv=None):
               "python_executable": file_record(sys.executable), "jobs": args.jobs,
               "configured_ctest_inventory": False, "all_upstream_test_parity": False,
               "full_feature_parity": False, "registrations": rows}
+    if overlay:
+        matrix["package_overlay_receipt"] = file_record(output / "package-overlay.json")
+        matrix["package_base_asset"] = file_record(overlay["base_asset"])
     def save():
         states = {}
         for row in rows:
@@ -147,6 +173,9 @@ def main(argv=None):
             command.extend(["--fixture-root", str(args.fixture_root.resolve())])
         if args.resource_root:
             command.extend(["--resource-root", str(args.resource_root.resolve())])
+        if overlay:
+            command.extend(["--package-overlay-receipt", str(output / "package-overlay.json"),
+                            "--package-base-asset", str(overlay["base_asset"])])
         process = {"started_utc": now(), "command": command, "timed_out": False,
                    "timeout_seconds": args.timeout + 120, "returncode": None}
         with (destination / "host-process.log").open("wb") as log:

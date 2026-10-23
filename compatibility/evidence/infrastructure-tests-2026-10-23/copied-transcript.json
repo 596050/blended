@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "copied-execution-transcript",
+  "scope": "Repository infrastructure unit tests, not Blender feature tests.",
+  "source_notice": "Copied from the exec_command/write_stdin tool results in this conversation. The text file is a UTF-8 transcription of the decoded merged tool output, not a retained original subprocess byte log. No process start/end timestamps or exact workspace-tree snapshot were retained.",
+  "command": "env BLENDED_INVENTORY_CMAKE=/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake python3 -m unittest discover -s tests -q",
+  "working_directory": "/workspace/scratch/d63596d831b2/blended",
+  "tool_session_id": 60429,
+  "tool_completion_chunk_id": "31beb9",
+  "reported_exit_code": 0,
+  "unittest_summary": {
+    "tests": 271,
+    "duration_seconds": 76.019,
+    "result": "OK",
+    "skips_reported": 0,
+    "skip_count_basis": "The complete unittest summary reports OK with no skipped count."
+  },
+  "copied_output": {
+    "path": "copied-output.txt",
+    "encoding": "UTF-8",
+    "bytes": 491,
+    "sha256": "d317b875ca3fa86432efbc637217ad2697e05e58177bbf2d7212fc3ff29a9744"
+  },
+  "original_process_byte_log_retained": false,
+  "original_process_timestamps_retained": false,
+  "exact_tested_workspace_tree_retained": false,
+  "trailing_output_note": "The failed and blocked JSON lines are expected outputs exercised by negative infrastructure tests; the unittest summary and tool exit status report success.",
+  "all_upstream_test_parity": false,
+  "full_feature_parity": false
+}

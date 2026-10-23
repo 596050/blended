@@ -1,0 +1,69 @@
+UpdateCTestConfiguration  from :/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/DartConfiguration.tcl
+Test project /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 2
+    Start 2: guardedalloc
+
+2: Test command: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/guardedalloc_test "--gtest_filter=LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*" "--test-assets-dir" "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files" "--test-release-dir" "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+2: Working Directory: /workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin
+2: Environment variables: 
+2:  LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/
+2:  $$LD_LIBRARY_PATH
+2: Test timeout computed to be: 600
+2: Note: Google Test filter = LockFreeAllocatorTest.*:GuardedAllocatorTest.*:safe_multiply.*
+2: [==========] Running 6 tests from 3 test suites.
+2: [----------] Global test environment set-up.
+2: [----------] 2 tests from LockFreeAllocatorTest
+2: [ RUN      ] LockFreeAllocatorTest.MEM_new_uninitialized_aligned
+2: [       OK ] LockFreeAllocatorTest.MEM_new_uninitialized_aligned (0 ms)
+2: [ RUN      ] LockFreeAllocatorTest.LockfreeIntegerOverflow
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: [       OK ] LockFreeAllocatorTest.LockfreeIntegerOverflow (1 ms)
+2: [----------] 2 tests from LockFreeAllocatorTest (1 ms total)
+2: 
+2: [----------] 2 tests from GuardedAllocatorTest
+2: [ RUN      ] GuardedAllocatorTest.MEM_new_uninitialized_aligned
+2: [       OK ] GuardedAllocatorTest.MEM_new_uninitialized_aligned (0 ms)
+2: [ RUN      ] GuardedAllocatorTest.GuardedIntegerOverflow
+2: Calloc returns null: len=18446744073708971224 in CallocArray, total 0
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: 
+2: [WARNING] extern/gtest/src/gtest-death-test.cc:1104:: Death tests use fork(), which is unsafe particularly in a threaded context. For this test, Google Test couldn't detect the number of threads. See https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads for more explanation and suggested solutions, especially if this is the last message you see before your test times out.
+2: [       OK ] GuardedAllocatorTest.GuardedIntegerOverflow (1 ms)
+2: [----------] 2 tests from GuardedAllocatorTest (1 ms total)
+2: 
+2: [----------] 2 tests from safe_multiply
+2: [ RUN      ] safe_multiply.SizeT
+2: [       OK ] safe_multiply.SizeT (0 ms)
+2: [ RUN      ] safe_multiply.Int64
+2: [       OK ] safe_multiply.Int64 (0 ms)
+2: [----------] 2 tests from safe_multiply (0 ms total)
+2: 
+2: [----------] Global test environment tear-down
+2: [==========] 6 tests from 3 test suites ran. (3 ms total)
+2: [  PASSED  ] 6 tests.
+1/1 Test #2: guardedalloc .....................   Passed    0.01 sec
+
+The following tests passed:
+	guardedalloc
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.06 sec

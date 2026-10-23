@@ -1,0 +1,660 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_configuration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector_test-build.json",
+    "bytes": 3286,
+    "sha256": "fa008e85430ed929c68782f2c3f030597e5062765745875bd05e5e99b796e4b7"
+  },
+  "build_config_sha256": "c5fe942acda64953fd24c9a14ac20fe0a6b1a9df8dcb7e4a875da1ea5364b121",
+  "artifact": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+    "bytes": 1094608,
+    "sha256": "3be8a9bfc5ce0534d56f3fca86cba6f21ba9aac9f3bfa9ac4de73ea7ca711e1d"
+  },
+  "original_registration": {
+    "id": "ctest:9ed0dfad8c1a7a16ed49f3a42721cdadc41375fbda1752d8a4ad29e31fa7d3dc",
+    "identity": "libmv_vector",
+    "kind": "ctest_registration",
+    "command": [
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+      "--test-assets-dir",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+      "--test-release-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+    ],
+    "command_status": "present_unvalidated",
+    "config": "Release",
+    "configuration_status": "captured",
+    "properties": [
+      {
+        "name": "ENVIRONMENT",
+        "value": [
+          "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+          "$$LD_LIBRARY_PATH"
+        ]
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+      }
+    ],
+    "labels": [],
+    "fixtures": {
+      "setup": [],
+      "required": [],
+      "cleanup": []
+    },
+    "disabled": false,
+    "backtrace": [
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 164,
+        "command": "add_test"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 273,
+        "command": "blender_add_ctests"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+        "line": 381,
+        "command": "blender_add_test_executable_impl"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt",
+        "line": 211,
+        "command": "blender_add_test_executable"
+      },
+      {
+        "file": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/intern/libmv/CMakeLists.txt"
+      }
+    ],
+    "raw_registration": {
+      "backtrace": 4,
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config": "Release",
+      "name": "libmv_vector",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    },
+    "diagnostics": [],
+    "execution": "not_run",
+    "expansion_obligation": {
+      "status": "required",
+      "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+      "children": []
+    }
+  },
+  "inventories": {
+    "registered": {
+      "capture": {
+        "name": "registered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:13:02.339760+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:13:02.348099+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-listing.stdout.txt",
+          "bytes": 258,
+          "sha256": "5b58c8b59c7c0e082a65c4eb5c9cb386aa32a47de0c9417c44ba765530e391b1"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-gtest-inventory.json",
+        "bytes": 10569,
+        "sha256": "bdc49faba999014c809c41e63cc10cd0688d167477b42147dc2320835e57bd5b"
+      },
+      "counts": {
+        "cases": 10,
+        "disabled": 0,
+        "not_run": 10
+      }
+    },
+    "unfiltered": {
+      "capture": {
+        "name": "unfiltered-listing",
+        "argv": [
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+          "--test-assets-dir",
+          "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+          "--test-release-dir",
+          "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+          "--gtest_filter=*",
+          "--gtest_list_tests"
+        ],
+        "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+        "started_utc": "2026-10-23T14:13:02.348174+00:00",
+        "timeout_seconds": 600,
+        "timed_out": false,
+        "returncode": 0,
+        "finished_utc": "2026-10-23T14:13:02.351778+00:00",
+        "stdout": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/unfiltered-listing.stdout.txt",
+          "bytes": 258,
+          "sha256": "5b58c8b59c7c0e082a65c4eb5c9cb386aa32a47de0c9417c44ba765530e391b1"
+        },
+        "stderr": {
+          "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/unfiltered-listing.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/unfiltered-gtest-inventory.json",
+        "bytes": 10595,
+        "sha256": "ea181e3e0f5d197a0851ec4e65f575cd0b91c8aa448cb372e775937c1ef2cca8"
+      },
+      "counts": {
+        "cases": 10,
+        "disabled": 0,
+        "not_run": 10
+      }
+    }
+  },
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "removed_inherited_gtest_environment_keys": [],
+  "original_environment_properties": [
+    "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+    "$$LD_LIBRARY_PATH"
+  ],
+  "additional_execution_environment": {
+    "GTEST_OUTPUT": "xml:/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/gtest-results.xml"
+  },
+  "execution": {
+    "name": "ctest-execution",
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+      "--build-config",
+      "Release",
+      "--tests-regex",
+      "^libmv_vector$",
+      "--verbose",
+      "--no-tests=error",
+      "--timeout",
+      "600",
+      "--output-junit",
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-results.xml"
+    ],
+    "cwd": "/workspace/scratch/d63596d831b2/blended",
+    "started_utc": "2026-10-23T14:13:02.437809+00:00",
+    "timeout_seconds": 630,
+    "timed_out": false,
+    "returncode": 0,
+    "finished_utc": "2026-10-23T14:13:02.652978+00:00",
+    "stdout": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-execution.stdout.txt",
+      "bytes": 2817,
+      "sha256": "b0aca575d4dc4fa74762608652b97dfef547ca180618aef452c2712b52cbc903"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-execution.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "stages": [
+    {
+      "name": "ctest-registration",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_vector$",
+        "--show-only=json-v1"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:13:02.172602+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:13:02.337256+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-registration.stdout.txt",
+        "bytes": 2037,
+        "sha256": "1af60120cd7641671bbd051ec3a1495d8b4ea69734ca3e196710728201074f34"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-registration.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "registered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:13:02.339760+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:13:02.348099+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-listing.stdout.txt",
+        "bytes": 258,
+        "sha256": "5b58c8b59c7c0e082a65c4eb5c9cb386aa32a47de0c9417c44ba765530e391b1"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/registered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unfiltered-listing",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/libmv_vector_test",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4",
+        "--gtest_filter=*",
+        "--gtest_list_tests"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin",
+      "started_utc": "2026-10-23T14:13:02.348174+00:00",
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:13:02.351778+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/unfiltered-listing.stdout.txt",
+        "bytes": 258,
+        "sha256": "5b58c8b59c7c0e082a65c4eb5c9cb386aa32a47de0c9417c44ba765530e391b1"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/unfiltered-listing.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "ctest-execution",
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix",
+        "--build-config",
+        "Release",
+        "--tests-regex",
+        "^libmv_vector$",
+        "--verbose",
+        "--no-tests=error",
+        "--timeout",
+        "600",
+        "--output-junit",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-results.xml"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/blended",
+      "started_utc": "2026-10-23T14:13:02.437809+00:00",
+      "timeout_seconds": 630,
+      "timed_out": false,
+      "returncode": 0,
+      "finished_utc": "2026-10-23T14:13:02.652978+00:00",
+      "stdout": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-execution.stdout.txt",
+        "bytes": 2817,
+        "sha256": "b0aca575d4dc4fa74762608652b97dfef547ca180618aef452c2712b52cbc903"
+      },
+      "stderr": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-execution.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "xml_counters": {
+    "tests": "10",
+    "failures": "0",
+    "disabled": "0",
+    "errors": "0",
+    "time": "0.",
+    "timestamp": "2026-10-23T19:13:02.610",
+    "name": "AllTests"
+  },
+  "cases": [
+    {
+      "identity": "VectorAlignmentTest.PushBack",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PushBack",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "32",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorAlignmentTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:b64c4ed8e6a9ef46721d1de84c886a4dd7776c20711a1a345b432972810f49b3",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 32,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.EmptyVectorDoesNotConstruct",
+      "outcome": "passed",
+      "attributes": {
+        "name": "EmptyVectorDoesNotConstruct",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "76",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:31aa7d2616f58e30575c9eaf24206fe3666727122f89e775276a39e223f3a3e2",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 76,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.DestructorGetsCalled",
+      "outcome": "passed",
+      "attributes": {
+        "name": "DestructorGetsCalled",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "85",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:3e9184ee0fa4a9e9beb9d4397371b1024996f4146346e6cea797d749e1b3e87a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 85,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.ReserveDoesNotCallConstructorsOrDestructors",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ReserveDoesNotCallConstructorsOrDestructors",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "94",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:60109093a81bd11cedb3e8bf2f6060c11b2efef9450c2acb6702471fcff2ddfa",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 94,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.ResizeConstructsAndDestructsAsExpected",
+      "outcome": "passed",
+      "attributes": {
+        "name": "ResizeConstructsAndDestructsAsExpected",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "106",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:fa5ddddc5c9fd58b3f767388218439fac468d3904dc5fea6c30da58f2cb9095d",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 106,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.PushPopBack",
+      "outcome": "passed",
+      "attributes": {
+        "name": "PushPopBack",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "131",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:30abdff57578f4ac1731f23f9161da100d4474f817671e7a4f19334416dc2f80",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 131,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.CopyConstructor",
+      "outcome": "passed",
+      "attributes": {
+        "name": "CopyConstructor",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "146",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:e9696ef62ef972fe6e87d738f972bd3c25736c6f776fc9a2163c0d6aafb73f42",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 146,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.OperatorEquals",
+      "outcome": "passed",
+      "attributes": {
+        "name": "OperatorEquals",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "159",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:57836750bb92dab711b2d35511e0fa965535a6a4b40fb1672a0fea4bb2f25fac",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 159,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "VectorTest.STLFind",
+      "outcome": "passed",
+      "attributes": {
+        "name": "STLFind",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "173",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "VectorTest"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:d8fd77662b2c304b50c81fe21e5f3d7a7aefc736c3c3719e71a67adb5aed374a",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 173,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    },
+    {
+      "identity": "Vector.swap",
+      "outcome": "passed",
+      "attributes": {
+        "name": "swap",
+        "file": "intern/libmv/libmv/base/vector_test.cc",
+        "line": "194",
+        "status": "run",
+        "result": "completed",
+        "time": "0.",
+        "timestamp": "2026-10-23T19:13:02.610",
+        "classname": "Vector"
+      },
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "case_id": "gtest-source:20a5feb49c21989c2da7ff50f82bf8bf59a7f40fac65d06e19ca516940fe9558",
+      "identity_status": "source_qualified",
+      "source_location": {
+        "path": "intern/libmv/libmv/base/vector_test.cc",
+        "line": 194,
+        "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3"
+      }
+    }
+  ],
+  "capture_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/capture-native-gtest.py",
+    "bytes": 13941,
+    "sha256": "9046bbf0970c84752a3cac07738cdfff08b0445273008b2e933240d3a42d4372"
+  },
+  "inventory_adapter": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/test_registration_inventory.py",
+    "bytes": 21367,
+    "sha256": "a4d2b5ce6661848466bc44d8e5aa37ee0ce5f58a077903bbd3ffe2eaf32661be"
+  },
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/blender-product-94363991.tar.gz",
+    "bytes": 80900636,
+    "sha256": "e2c8bc5911c178f96ff747763a980c68f54929ffd1cced31b2fd79e32bc80cb7"
+  },
+  "verified_original_declaration_files": {
+    "intern/libmv/libmv/base/vector_test.cc": {
+      "path": "intern/libmv/libmv/base/vector_test.cc",
+      "bytes": 5285,
+      "sha256": "25455ee86b59192fb2f5f23b05283de07383599fcdcb3770a262b49aa3ce58b3",
+      "line_count": 207,
+      "verified_against_archive": true
+    }
+  },
+  "name_multiplicities_match": true,
+  "source_identity_blockers": [],
+  "all_observed_source_identities_resolved": true,
+  "observed_outcome_counts": {
+    "passed": 10
+  },
+  "gtest_xml": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/gtest-results.xml",
+    "bytes": 2655,
+    "sha256": "1074aaea76564bbe8ad758fda87c4293983af302a3ea5f9d419a335b2cf01aca"
+  },
+  "ctest_junit": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-native-gtest-2026-10-23/libmv_vector/ctest-results.xml",
+    "bytes": 1451,
+    "sha256": "8de06fcef7e19df728b1a366104cea888af70e0184323482ebd806d0307129f2"
+  },
+  "browser_cases_executed": 0,
+  "browser_parity": false,
+  "all_upstream_tests_enumerated": false,
+  "runtime_enumeration_complete": false,
+  "fixture_candidate_hydration_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-fixture-hydration-2026-10-23/report.json",
+    "bytes": 3095278,
+    "sha256": "55fd3f2bba7150cf73055d1f44b3f4c391694214d8b06f8a2c207b5b03d891ad"
+  }
+}

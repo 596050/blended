@@ -1,0 +1,93 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test",
+      "gtest_add_tests",
+      "blender_add_ctests",
+      "blender_add_test_executable_impl",
+      "blender_add_test_suite_executable"
+    ],
+    "files" : 
+    [
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+      "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/source/blender/blenlib/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 2
+      },
+      {
+        "command" : 4,
+        "file" : 2,
+        "line" : 617,
+        "parent" : 0
+      },
+      {
+        "command" : 3,
+        "file" : 1,
+        "line" : 315,
+        "parent" : 1
+      },
+      {
+        "command" : 2,
+        "file" : 1,
+        "line" : 273,
+        "parent" : 2
+      },
+      {
+        "command" : 1,
+        "file" : 1,
+        "line" : 154,
+        "parent" : 3
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 394,
+        "parent" : 4
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/tests/BLI_test",
+        "--gtest_filter=any_virtual.*:any.*:array_state.*:array_store.*:array.*:array_utils.*:TEST(data_cmp, data_a, data_b, data_combine, length).*:data.*:binary_search.*:bit_group_vector.*:bit_ref.*:bit_span.*:bit_vector.*:bitmap.*:bounds.*:BLI_build_config.*:color.*:compression.*:convexhull_2d.*:CPPTypeTest.*:csv_parse.*:delaunay_d.*:delaunay_m.*:disjoint_set.*:expr_pylike.*:FileOpsTest.*:fileops.*:ChangeWorkingDirectoryTest.*:fixed_width_int.*:function_ref.*:GenericArrayTest.*:GenericSpanTest.*:GenericVectorArrayTest.*:ghash.*:hash_mm2a.*:heap.*:implicit_sharing.*:index_mask_expression.*:index_mask.*:index_range.*:index_ranges_builder.*:inplace_priority_queue.*:kdopbvh.*:kdtree.*:length_parameterize.*:LinearAllocator_ChunkedList.*:linear_allocator.*:LockfreeLinkList.*:listbase.*:map.*:math_base.*:math_bits.*:math_color.*:math_geom_hh.*:math_geom.*:math_half.*:math_half_perf.*:math_interp.*:math_matrix.*:math_matrix_types.*:math_rotation.*:math_axis_angle.*:math_rotation_types.*:math_solvers.*:math_time.*:math_vector.*:math_vec_types.*:memory_cache.*:memory_counter.*:memory_utils.*:boolean_trimesh.*:boolean_polymesh.*:mesh_intersect.*:mesh_intersect_perf.*:multi_value_map.*:normalized_int.*:offset_indices.*:path_utils.*:path_util.*:polyfill2d.*:pool.*:random_access_iterator_mixin.*:serialize.*:SessionUID.*:set.*:span.*:mutable_span.*:stack.*:string_ref_null.*:string_ref.*:string_search.*:string.*:StringFindSplitWords.*:StringCasecmpNatural.*:StringEscape.*:BLI_string.*:BLI_string_utils.*:task.*:BLI_tempfile.*:unique_sorted_indices.*:ustring.*:BLI_utildefines.*:BLI_uuid.*:vectorlist.*:vector_set.*:vector.*:VirtualArrayExecTest.*:VirtualArrayTest.*",
+        "--test-assets-dir",
+        "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files",
+        "--test-release-dir",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/5.4"
+      ],
+      "config" : "Release",
+      "name" : "BLI",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "LD_LIBRARY_PATH=/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin/lib/",
+            "$$LD_LIBRARY_PATH"
+          ]
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/d63596d831b2/runtime/product-native-configure-optix/bin"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

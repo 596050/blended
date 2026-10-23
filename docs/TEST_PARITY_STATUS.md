@@ -1,6 +1,6 @@
 # Original Blender test parity status
 
-Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The implemented ledger currently qualifies 512 successful native/browser pairs in a selected 829-obligation candidate scope. Unexpanded declarations, failed cases, missing cases, missing subtests, expected failures and unavailable host tools remain visible.
+Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The latest separately qualified browser package has 516 successful native/browser pairs in a selected 829-obligation candidate scope. Unexpanded declarations, failed cases, missing cases, missing subtests, expected failures and unavailable host tools remain visible. The complete selected matrix was rerun after the original brush asset was restored.
 
 ## Exact scope and references
 
@@ -10,28 +10,31 @@ Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The impleme
 | Browser port source | gessa-ai/blender-web, `0e02e84b2bc5d9b27a6dc6e275443292f781fbad` | Source-derived development build with recorded numerical patches and source/build provenance. |
 | Native executable | Official 5.2.0 Linux x64 release, archive SHA-256 `96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48` | Independent native discovery and execution of complete original invocations. |
 | Base browser artifact | Archive SHA-256 `5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991` | Local Chrome 155.0.8059.39 qualification with software GPU flags; no deployed or hardware profile qualification. |
-| Product target | Blender 5.4 alpha, `94363991e7dcf39e2d70614aa002ab6f67764a5d` | Separate source/fixture inventory and actual configuration attempts; no transfer of candidate passes. |
+| Current augmented browser package | Archive SHA-256 `3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910` | Same Wasm, exact original Essentials brush asset added before application startup, independent package measurement and full selected matrix rerun. |
+| Product target | Blender 5.4 alpha, `94363991e7dcf39e2d70614aa002ab6f67764a5d` | Separate source/fixture inventory, successful native configurations and original C++ execution; no transfer of candidate passes. |
 
-The normalized [report](../compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/report.json) contains every known case pair and its blockers. The [conversion record](../compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/conversion.json) binds the original reports, manifests, context measurements, process logs and superseded attempts. The [contract](../compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/contract.json), inventory and typed receipts are independently replayable after relocating the checkout.
+The normalized [current report](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/report.json) contains every known case pair and its blockers. The [conversion record](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/conversion.json) binds the original reports, manifests, context measurements, process logs and superseded attempts. The [contract](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/contract.json), inventory and typed receipts are independently replayable after relocating the checkout. The unchanged [base-package report](../compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/report.json) remains available with its 512 strict successful pairs.
 
 ## Current selected matrix
 
 Native resource-complete discovery identifies 31 original invocations from 30 distinct Python source files. Their different invocation and fixture requirements produce 829 obligations and 827 distinct source-qualified case IDs. Two IDs occur in both original font modes and retain both obligations.
 
-| Observation | Native | Base browser artifact |
+| Observation | Native | Current augmented browser package |
 |---|---:|---:|
 | Required case obligations | 829 | 829 |
 | Cases discovered and executed | 829 | 817 |
-| Observed passes | 828 | 601 |
-| Assertion failures | 0 | 210 |
-| Errors | 0 | 5 |
+| Observed passes | 828 | 605 |
+| Assertion failures | 0 | 207 |
+| Errors | 0 | 4 |
 | Original expected failures | 1 | 1 |
 | Missing outcomes | 0 | 12 |
 | Observed subtest events | 71 | 57 |
 
 Fourteen native subtests are missing in the browser. There are no unexpected browser subtests. These subtests are events within parent cases, not 14 additional parent cases.
 
-The strict ledger qualifies **512 successful pairs**. It separately records **597 outcome agreements**, including the original expected failure. Outcome agreement does not prove successful whole-invocation execution. In particular, matching pass callbacks inside a failing invocation, or without required host-tool evidence, do not become strict passes.
+The strict ledger qualifies **516 successful pairs**. It separately records **601 outcome agreements**, including the original expected failure. Outcome agreement does not prove successful whole-invocation execution. In particular, matching pass callbacks inside a failing invocation, or without required host-tool evidence, do not become strict passes.
+
+The new package has four more passing cases, all from the original brush invocation. The latest producer also distinguishes non-assertion subtest exceptions as errors. Consequently the historical base report's 210 recorded failures and five errors become 207 assertion failures and four errors after that classification correction and the four brush repairs. Earlier raw observations are retained without rewriting them.
 
 The bounded source plan retains all 132 original declaration entries, including 101 not expanded by this adapter. These entries include conditional/generated declarations and function bodies. They are not 101 known leaf tests or a configured CTest denominator. The declared-scope gate, all-upstream gate and full-feature gate all remain false.
 
@@ -70,7 +73,7 @@ Browser pass and failure columns below are observed parent outcomes, not strict 
 | bl_animation_rename | 4 | 4 | 4 | 0 | 0 | 0 | 4 |
 | bl_animation_nla_strip | 7 | 6 | 6 | 0 | 1 | 0 | 6 |
 | bl_animation_pose_slide | 11 | 11 | 11 | 0 | 0 | 0 | 11 |
-| bl_brush | 4 | 4 | 0 | 4 | 0 | 0 | 0 |
+| bl_brush | 4 | 4 | 4 | 0 | 0 | 0 | 4 |
 | compositing_node_group | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
 
 ## Repairs and separate diagnostic evidence
@@ -79,7 +82,7 @@ Browser pass and failure columns below are observed parent outcomes, not strict 
 
 The base browser package omitted the Essentials brush library required by the original `bl_brush` invocation. A separately identified package augmentation appends the exact original `essentials_brushes-mesh_sculpt.blend` bytes and the required preload metadata before Blender starts. The verifier checks the base archive, every unchanged file, unchanged Wasm, existing data prefix, added LFS object, and the only permitted loader edits. It does not rewrite the source-build receipt to claim the base build contained the asset.
 
-On the augmented archive `3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910`, **all four original brush cases pass**, with zero failures or skips. The [new qualification](../compatibility/evidence/brush-package-overlay-5.2-2026-10-23/bl_brush-local-server/qualification.json) remains separate from the four failures in the original base matrix. The other 825 obligations have not been transferred to this different package. A sandbox-denied server-start attempt is retained separately and executed zero Blender cases.
+On the augmented archive `3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910`, **all four original brush cases pass**, with zero failures or skips. The [first repaired qualification](../compatibility/evidence/brush-package-overlay-5.2-2026-10-23/bl_brush-local-server/qualification.json) remains separate from the four failures in the original base matrix. The complete selected source plan and explicit resource retries were then executed again on this package. Its current 516 strict pairs come from those new observations. A sandbox-denied server-start attempt is retained separately and executed zero Blender cases.
 
 ### Font rendering and the original image comparator
 
@@ -87,7 +90,7 @@ Both complete browser font modes now receive the exact original fonts and refere
 
 A separate host-assisted diagnostic executes the exact source-derived OpenImageIO `idiff` command, arguments and tolerances against those browser PNGs and original references. **All 207 images satisfy the original acceptance predicate:** 80 BUFFER and 127 VFONT. All 80 BUFFER outputs are byte-identical to their reference PNGs. VFONT has 56 comparator exits of 0 and 71 exits of 1; the pinned original test explicitly accepts both. Exit 2, other exits and timeouts cannot pass.
 
-This establishes the selected image comparisons under that host-assisted diagnostic. It does not make the original browser invocations pass, implement general browser subprocess support, qualify unrelated rendering features, or change the 512 strict base-artifact pairs. See the [per-case oracle evidence](../compatibility/evidence/unittest-font-host-oracle-5.2-2026-10-23/summary.json).
+This establishes the selected image comparisons under that host-assisted diagnostic on the base browser artifact. It does not make the original browser invocations pass, implement general browser subprocess support, qualify unrelated rendering features, or transfer a successful image comparison to a different package. The current augmented package still records all 207 original font assertion failures. See the [per-case oracle evidence](../compatibility/evidence/unittest-font-host-oracle-5.2-2026-10-23/summary.json).
 
 ## Remaining demonstrated gaps
 
@@ -112,13 +115,40 @@ Raw reports are retained before normalization. The normalizer validates their ha
 
 The old facet gate's hash-only evidence acceptance was replaced with typed case-execution receipts that must match the independently selected case, target, profile, run and context. Hash-valid arbitrary or failed JSON is no longer accepted as a feature pass. Both the facet gate and the new test ledger keep `full_feature_parity` false; satisfying a declared test contract would still leave whole-application coverage to be established.
 
-The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
+The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate and independently checks both base and augmented packages. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
+
+The final local infrastructure run passes **294 tests with zero skips** in 106.474 seconds, including real CMake configuration. Its prospectively recorded [execution receipt](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm that tools, tests, patches and package plans were unchanged during that run. This count validates the project's testing machinery; it is not added to Blender feature passes.
 
 ## Product target inventory and configuration
 
 The separate [5.4 source inventory](../compatibility/evidence/source-inventory-2026-10-23/source-inventory-summary.json) retains 10,848 source files, 5,637 heuristic declaration candidates, five unresolved source parses/encodings, and 7,353 candidate fixture paths. The declaration count includes 801 compile-time `static_assert` occurrences and is not a runtime test count. All 30 facet scopes remain incomplete.
 
-Product configuration uses the original source with GTest, GPU render, headed render, GPU backend, GPU draw, GPU compositor and UI test flags enabled, plus strict build options. The first attempt stopped at the unhydrated original startup file. Its exact LFS object was restored and verified; the second then reached the actual GCC minimum check. A local GCC 14.2 toolchain now passes that check. The next actual configuration stopped at missing native dependency libraries. These attempts and the exact dependency submodule pin are retained in [product configuration evidence](../compatibility/evidence/product-configure-2026-10-23/). No test or feature was disabled to make configuration appear complete.
+Product configuration uses the original source with GTest, GPU render, headed render, GPU backend, GPU draw, GPU compositor and UI test flags enabled, plus strict build options. The startup file, actual GCC minimum, pinned native dependencies, host development packages and required OptiX headers are now resolved. The successful configuration uses GCC 14.2, all 716 original native-library LFS paths, 64 verified Ubuntu packages in an isolated prefix and exact official OptiX 8.0 headers. The original failed attempts and successful configuration remain in [product configuration evidence](../compatibility/evidence/product-configure-2026-10-23/). No feature was disabled to make configuration appear complete.
+
+The first unfiltered CTest capture contains **1,140 registrations** in 212 generated registration files. A separate broader Linux configuration additionally enables mesh-paint tests, Vulkan rendering, Vulkan Storm, Cycles OSL, experimental tests, official Linux release tests and system-Python tests. Its unfiltered capture contains **1,416 registrations**. It shares 1,139 names with the first profile and adds 277 names. One earlier name, `cycles_osl_cpu`, is replaced by the original CMake code's expanded OSL naming; both profiles remain preserved. These counts are commands in two specific configurations, not unique leaf cases or a complete cross-platform denominator. See the [first configured inventory](../compatibility/evidence/product-ctest-configured-2026-10-23/summary.json), [expanded inventory](../compatibility/evidence/product-expanded-config-2026-10-23/summary.json) and [exact name comparison](../compatibility/evidence/product-expanded-config-2026-10-23/configuration-comparison.json).
+
+All **7,353 candidate fixture paths** now pass exact SHA-256 and size verification. This includes 6,715 LFS-backed paths, representing 6,543 unique objects and 880,195,119 unique content bytes, plus 638 regular source-archive files. The downloader retained the original pointer bytes, downloaded duplicate content once, and verified the final files after hydration. The [fixture report](../compatibility/evidence/product-fixture-hydration-2026-10-23/report.json) reports zero unresolved files and zero failed transfers. The [initial source-preservation audit](../compatibility/evidence/product-fixture-hydration-2026-10-23/preserved-source.json) records the unchanged files outside that candidate set before the separately documented asset hydration below.
+
+A [whole-source pointer audit](../compatibility/evidence/product-runtime-asset-audit-2026-10-23/report.json) identified 338 additional original LFS paths outside the fixture candidates, including application datafiles, platform packaging art and the documentation favicon. Those exact paths were subsequently materialized from 297 official LFS objects totaling 8,710,555 unique bytes, with zero failed transfers or replacements. The final [asset and source verification](../compatibility/evidence/product-runtime-asset-hydration-2026-10-23/report.json) rehashes **all 7,053 original source-archive LFS paths** and confirms that **all 13,842 original non-LFS files and the original symlink remain unchanged**. This establishes the original archive's payload availability; dependencies outside that archive and per-invocation runtime resource closure still require verification. No tests, builds or browser passes are inferred from hydration.
+
+The original executables were built through unchanged upstream CMake targets and run through their registered CTest commands, with original GoogleTest entrypoints and leak checks preserved. Across **37 original invocations**, the registered and unfiltered listings and XML agree on **2,016 source-qualified observations: 2,015 passed and one skipped**. No failed, errored, disabled or unexecuted XML cases were observed in this selected batch. These are native reference results, with zero browser cases executed in this product-version batch. The [consolidated native report](../compatibility/evidence/product-native-gtest-2026-10-23/summary.json) binds each listing, original command, executable, source identity and outcome.
+
+| Original target group | CTest invocations | Case observations | Passed | Skipped |
+|---|---:|---:|---:|---:|
+| `atomic_test` | 1 | 56 | 56 | 0 |
+| `guardedalloc_test` | 1 | 6 | 6 | 0 |
+| `BLI_test` | 1 | 1,742 | 1,742 | 0 |
+| `makesdna_test` | 1 | 5 | 5 | 0 |
+| `shader_tool_test` | 1 | 62 | 61 | 1 |
+| Original LibMV targets | 32 | 145 | 145 | 0 |
+
+`shader_tool.MatrixConstructors` retains its original non-Apple platform skip and is not counted as a passing assertion. One of the 32 LibMV invocations, `libmv_resect`, has empty registered and unfiltered listings and zero XML cases because the pinned upstream test body is inside `#if 0`. Its process exit is zero, its empty-listing blocker remains visible, and it contributes zero case passes.
+
+The BLI runtime list contains two different original tests named `stack.Peek`. The inventory now preserves both as ambiguous observations until original GoogleTest XML source locations resolve them. Both file/line identities were checked against the pinned source archive, producing separate source-qualified case IDs. Two original LibMV tests named `KltRegionTracker.Track` are likewise kept distinct by their declaration files. The earlier BLI adapter rejection is retained with zero executed cases. Neither listing order nor a deduplicated name is accepted as a one-to-one case identity.
+
+Independent reviews reconcile the [first five native suites](../compatibility/evidence/product-native-independent-review-2026-10-23/report.json) and [all LibMV captures plus the combined totals](../compatibility/evidence/product-native-libmv-independent-review-2026-10-23/report.json). The combined review checks 707 bound input files and 147 original source files, independently recomputes all 2,016 source-qualified identities and finds no repeated identity or count discrepancy. The reviews execute no additional original tests and add no passes.
+
+The expanded configuration's original `script_validate_on_system_python` driver also passes after its missing `setuptools` dependency was supplied through a verified private package prefix. Its original interpreter, command and test source were retained, as was the first failed attempt. This is [one native CTest driver result](../compatibility/evidence/product-system-python-retry-2026-10-23/system-python-execution.json), with no inferred leaf count and no browser pass; it is not added to the 2,016 C++ observations.
 
 ## Reproduce the evidence checks
 
@@ -128,10 +158,10 @@ From the repository root, with Python and CMake installed:
 python3 tools/prepare_site.py
 python3 -m unittest discover -s tests -q
 python3 tools/test_parity_ledger.py \
-  --contract compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/contract.json \
-  --inventory compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/inventory.json \
-  --executions compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/executions.json \
-  --evidence-root compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23 \
+  --contract compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/contract.json \
+  --inventory compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/inventory.json \
+  --executions compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/executions.json \
+  --evidence-root compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23 \
   --output /tmp/blended-strict-parity-report.json
 ```
 

@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "-S",
+    "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "-B",
+    "/workspace/scratch/d63596d831b2/runtime/product-native-configure-expanded-tests",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON",
+    "-DCMAKE_C_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14",
+    "-DCMAKE_CXX_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14",
+    "-DLIBDIR=/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+    "-DCMAKE_FIND_ROOT_PATH=/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER",
+    "-DPKG_CONFIG_EXECUTABLE=/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/bin/pkgconf",
+    "-DOPTIX_ROOT_DIR=/workspace/scratch/d63596d831b2/runtime/product-optix-8.0.0",
+    "-DWITH_GPU_MESH_PAINT_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_VULKAN=ON",
+    "-DWITH_STORM_TESTS_VULKAN=ON",
+    "-DWITH_CYCLES_TEST_OSL=ON",
+    "-DWITH_TESTS_EXPERIMENTAL=ON",
+    "-DWITH_LINUX_OFFICIAL_RELEASE_TESTS=ON",
+    "-DWITH_SYSTEM_PYTHON_TESTS=ON",
+    "-DTEST_SYSTEM_PYTHON_EXE=/usr/bin/python3.12"
+  ],
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu",
+    "PKG_CONFIG_SYSROOT_DIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root",
+    "PKG_CONFIG_LIBDIR": "/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/lib/x86_64-linux-gnu/pkgconfig:/workspace/scratch/d63596d831b2/runtime/product-host-deps/root/usr/share/pkgconfig"
+  },
+  "base_configuration": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-configure-2026-10-23/configure-with-optix.json",
+    "bytes": 3786,
+    "sha256": "930cfd1cfecd20f4e091cb1585224615d4b721370e8a4253eb34b9203c6cf508"
+  },
+  "tool": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/configure.py",
+    "bytes": 6079,
+    "sha256": "5a9b60943b258e78164559c5d7e89d0a851232c56ba6862daddf9112b31322bd"
+  },
+  "additional_test_flags": [
+    "WITH_GPU_MESH_PAINT_TESTS",
+    "WITH_GPU_RENDER_TESTS_VULKAN",
+    "WITH_STORM_TESTS_VULKAN",
+    "WITH_CYCLES_TEST_OSL",
+    "WITH_TESTS_EXPERIMENTAL",
+    "WITH_LINUX_OFFICIAL_RELEASE_TESTS",
+    "WITH_SYSTEM_PYTHON_TESTS"
+  ],
+  "system_python": {
+    "path": "/usr/bin/python3.12",
+    "bytes": 8025024,
+    "sha256": "a92f0f95e883390c7256b2e441484aac06b1002dbe1d924141a77c8d82f96223"
+  },
+  "feature_flags_disabled": [],
+  "started_utc": "2026-10-23T13:53:49.111210+00:00",
+  "finished_utc": "2026-10-23T13:54:07.525989+00:00",
+  "configured": true,
+  "returncode": 0,
+  "tests_executed": 0,
+  "runtime_enumeration_complete": false,
+  "full_feature_parity": false,
+  "scope": "Additional Linux Release test registration profile; other platforms, build modes, GPU devices and runtime leaves remain unqualified.",
+  "log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/configure.log",
+    "bytes": 22827,
+    "sha256": "63f8c21c6658651e4d0bdde64e5d972e9a844ff73196dd48371b5a730d5b4452"
+  },
+  "generated_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/CMakeCache.txt",
+      "bytes": 134757,
+      "sha256": "b800fccfb652ddb6fc92c03f85a4c9e0d28457795f9f11a1118a3acc9ad8e3e0"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/product-expanded-config-2026-10-23/CMakeConfigureLog.yaml",
+      "bytes": 42588779,
+      "sha256": "3985046ff1dde13d86a59a1a95ef204ed135e903d8243ac75ffc188d2ea4bae4"
+    }
+  ]
+}
