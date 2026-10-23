@@ -1,17 +1,17 @@
 {
-  "url": "https://rawcdn.githack.com/596050/blended/025e6a72838d65c38c1b4ae41a2df369962034a1/index.html",
-  "expected_case_count": 338,
-  "expected_source_commit": "b992957474c5979a145d2ef32452925250f3f6dd",
-  "started_utc": "2026-10-23T20:18:39.475131+00:00",
+  "url": "https://rawcdn.githack.com/596050/blended/19abc219cd1ccb7e2dd4090c23710638f30959d8/index.html",
+  "expected_case_count": 367,
+  "expected_source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
+  "started_utc": "2026-10-23T20:33:23.077558+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "b992957474c5979a145d2ef32452925250f3f6dd",
+    "source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 338,
+    "passed": 367,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -2382,6 +2382,209 @@
         "passed": true,
         "code": 1,
         "assertions": 24
+      },
+      {
+        "id": "heap.Empty",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "heap.One",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "heap.Range",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.RangeReverse",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.RangeRemove",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 513
+      },
+      {
+        "id": "heap.Duplicates",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.Rand1",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "heap.Rand2",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "heap.Rand100",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 101
+      },
+      {
+        "id": "heap.ReInsertSimple",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.ReInsertRandom1",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "heap.ReInsertRandom2",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "heap.ReInsertRandom100",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 202
+      },
+      {
+        "id": "heap.ReInsertRandom1024",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 2050
+      },
+      {
+        "id": "heap.ReInsertRandom2048",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 4098
+      },
+      {
+        "id": "heap.SimpleEmpty",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "heap.SimpleOne",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "heap.SimpleRange",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.SimpleRangeReverse",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.SimpleDuplicates",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1025
+      },
+      {
+        "id": "heap.SimpleRand1",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "heap.SimpleRand2",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "heap.SimpleRand100",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 101
+      },
+      {
+        "id": "inplace_priority_queue.BuildSmall",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "inplace_priority_queue.DecreasePriority",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "inplace_priority_queue.IncreasePriority",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "inplace_priority_queue.PopAll",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1000
+      },
+      {
+        "id": "inplace_priority_queue.ManyPriorityChanges",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 1000
+      },
+      {
+        "id": "inplace_priority_queue.IndicesAccess",
+        "group": "heaps",
+        "passed": true,
+        "code": 1,
+        "assertions": 13
       }
     ],
     "errors": [],
@@ -2392,9 +2595,10 @@
     "geometry_math_assertions": 154,
     "sampling_assertions": 180,
     "curve_assertions": 222,
-    "wasm_sha256": "2480612838fa88c7546bcc2a3cdb419ba70a9b75132e525cc26763730ea0b30a",
+    "heap_assertions": 16300,
+    "wasm_sha256": "84df0edd44417e833803d4344ee3a04b16eefbc9110ad52f14b9660de1d335f9",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-23T20:18:51.857058+00:00"
+  "finished_utc": "2026-10-23T20:33:29.467953+00:00"
 }
