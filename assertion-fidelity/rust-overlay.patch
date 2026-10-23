@@ -115,6 +115,27 @@
  
  // source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:14
  pub fn math_matrix_types__DefaultConstructor()->Report{let mut r=Report::default();
+--- geometry_math_cases.rs
++++ shadow/geometry_math_cases.rs
+@@ -8,12 +8,12 @@
+  pub fn check(&mut self,p:bool,expression:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {expression}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)==($b),stringify!($a == $b),line!());}};}
+-macro_rules! numeq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a as f64)==($b as f64),stringify!($a == $b),line!());}};}
+-macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check((($a as f64)-($b as f64)).abs()<=($e as f64),stringify!($a ~= $b within $e),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
+-macro_rules! fatal_yes {($r:expr,$a:expr)=>{{let p=$a;$r.check(p,stringify!($a),line!());if !p{return $r;}}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! numeq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a as f64,$b as f64),stringify!($a == $b),line!());}};}
++macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
++macro_rules! fatal_yes {($r:expr,$a:expr)=>{{let p=crate::fidelity_trace::boolean("ASSERT_TRUE",$a);$r.check(p,stringify!($a),line!());if !p{return $r;}}};}
+ 
+ // source/blender/blenlib/tests/BLI_math_geom_test.cc:12
+ pub fn math_geom__DistToLine2DSimple()->Report{let mut report=Report::default();
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@

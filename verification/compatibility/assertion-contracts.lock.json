@@ -477,6 +477,52 @@
         "math_matrix_types.ViewMatrixNormalize"
       ],
       "review": "All 21 runtime cases, original expected operands and matrix macro scalar checks preserved. Shared Cell storage retains mutable view aliasing and copy-on-conversion. Original non-running comments are not tests; no SIMD or ABI equivalence asserted."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_geom_test.cc",
+      "source_sha256": "9d03dac9a1a797eade844f588276c114b3dc79241a52830bfbc7323fdc8dc07d",
+      "target_path": "crates/blended-core/src/geometry_math_cases.rs",
+      "target_sha256": "2333ef82a58d7efd859a9499f4d5be113ea48c1e0e9fe436799a0acbbad96afd",
+      "case_ids": [
+        "math_geom.DistToLine2DSimple",
+        "math_geom.DistToLineSegment2DSimple",
+        "math_geom.IsectPointTri2D",
+        "math_geom.IsectPointQuad2D",
+        "math_geom.CrossPoly"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_geom_hh_test.cc",
+      "source_sha256": "6450b2a9c1ac4f54bc1f73f1c9478f77c6b88388438b2e8b384342711ed0f6a4",
+      "target_path": "crates/blended-core/src/geometry_math_cases.rs",
+      "target_sha256": "2333ef82a58d7efd859a9499f4d5be113ea48c1e0e9fe436799a0acbbad96afd",
+      "case_ids": [
+        "math_geom_hh.NormalQuad",
+        "math_geom_hh.AreaTri",
+        "math_geom_hh.CotangentTriWeight",
+        "math_geom_hh.PlaneFromPointNormal",
+        "math_geom_hh.PlanePointSide",
+        "math_geom_hh.DistSquaredToLineSegment2D",
+        "math_geom_hh.DistSquaredToLineSegment3D",
+        "math_geom_hh.ClosestToLineSegment3D",
+        "math_geom_hh.ClosestToPlaneNormalized",
+        "math_geom_hh.ClosestToPlane",
+        "math_geom_hh.DistSquaredToPlane",
+        "math_geom_hh.LinePointFactor3D",
+        "math_geom_hh.LinePointFactor2D",
+        "math_geom_hh.AxisDominantToM3",
+        "math_geom_hh.IsectLineLine3D",
+        "math_geom_hh.IsectLinePlane",
+        "math_geom_hh.IsectPointTri2D",
+        "math_geom_hh.IsectPointQuad2D",
+        "math_geom_hh.IsectPointPoly",
+        "math_geom_hh.BarycentricWeights",
+        "math_geom_hh.PolyToTriCount",
+        "math_geom_hh.AreaPoly",
+        "math_geom_hh.InterpWeightsPoly",
+        "math_geom_hh.InterpBilinearQuad",
+        "math_geom_hh.MapToSphere"
+      ]
     }
   ]
 }
