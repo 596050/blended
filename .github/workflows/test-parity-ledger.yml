@@ -50,6 +50,9 @@ jobs:
     name: Require declared native/browser obligations (${{ matrix.package }})
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: parity-evidence-checkout
     strategy:
       fail-fast: false
       matrix:
@@ -73,6 +76,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          path: parity-evidence-checkout
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -107,6 +111,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: original-test-ledger-${{ matrix.package }}-${{ github.run_id }}
-          path: evidence/reconciled-original-tests/
+          path: parity-evidence-checkout/evidence/reconciled-original-tests/
           retention-days: 14
           if-no-files-found: error
