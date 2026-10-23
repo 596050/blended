@@ -1,0 +1,35 @@
+name: Test-port working environment
+on:
+  push:
+    branches: [compat/strings-spans]
+    paths: ['.github/workflows/port-workspace.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Export immutable checkout and toolchain without credentials
+        run: |
+          set -euo pipefail
+          mkdir export
+          git archive --format=tar.gz HEAD > export/source.tar.gz
+          ROOT=$(rustc --print sysroot)
+          tar -C "$ROOT" -cJf export/rust-1.92.0.tar.xz bin/cargo bin/rustc lib share/doc/rust/COPYRIGHT share/doc/rust/LICENSE-APACHE share/doc/rust/LICENSE-MIT
+          rustc --version --verbose > export/toolchain.txt
+          sha256sum export/*.tar.* > export/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: temporary-test-port-environment
+          path: export
+          retention-days: 1
+          compression-level: 0
