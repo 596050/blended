@@ -1,22 +1,23 @@
 {
-  "url": "https://rawcdn.githack.com/596050/blended/d6a8d60cccf0dc403d4bd2c8c0853ad0893935a1/index.html",
-  "expected_case_count": 224,
-  "expected_source_commit": "f7a68890a62502de5a8a770e9a8c5823e15d78dd",
-  "started_utc": "2026-10-23T09:12:36.738912+00:00",
+  "url": "https://rawcdn.githack.com/596050/blended/3f744c6ac906498defdbe7ebbc9a9a9b5e053d84/index.html",
+  "expected_case_count": 245,
+  "expected_source_commit": "3b5a0852950984fb7e026e7da21e89e201792b22",
+  "started_utc": "2026-10-23T09:45:17.690526+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "f7a68890a62502de5a8a770e9a8c5823e15d78dd",
+    "source_commit": "3b5a0852950984fb7e026e7da21e89e201792b22",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 224,
+    "passed": 245,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
     "collection_assertions": 521,
     "numerics_text_assertions": 450,
+    "matrix_type_assertions": 289,
     "cases": [
       {
         "id": "math_vector.ClampVecWithFloats",
@@ -1585,12 +1586,159 @@
         "passed": true,
         "code": 1,
         "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.DefaultConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.StaticConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "math_matrix_types.VectorConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_matrix_types.SmallerMatrixConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "math_matrix_types.ComponentMasking",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.PointerConversion",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.TypeConversion",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "math_matrix_types.PointerArrayConversion",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.ComponentAccess",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.AddOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 20
+      },
+      {
+        "id": "math_matrix_types.SubtractOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 20
+      },
+      {
+        "id": "math_matrix_types.MultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_matrix_types.MatrixMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 22
+      },
+      {
+        "id": "math_matrix_types.VectorMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "math_matrix_types.ViewConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_matrix_types.ViewFromCstyleMatrix",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 32
+      },
+      {
+        "id": "math_matrix_types.ViewAssignment",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 48
+      },
+      {
+        "id": "math_matrix_types.ViewScalarOperators",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 36
+      },
+      {
+        "id": "math_matrix_types.ViewMatrixMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_matrix_types.ViewVectorMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "math_matrix_types.ViewMatrixNormalize",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
       }
     ],
     "errors": [],
-    "wasm_sha256": "1cb972b32fabc7237eca819b54c480211126a714845fef99c65426f55f602e69",
+    "wasm_sha256": "455514d955e097f5910c90babb8b7d626a9c04dd091c146753236862498ae219",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-23T09:12:43.949835+00:00"
+  "finished_utc": "2026-10-23T09:45:22.081749+00:00"
 }
