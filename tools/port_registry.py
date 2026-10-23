@@ -26,6 +26,8 @@ GROUPS=(
     Group('numeric_types','numeric-type-ports.json','numeric_type_cases','upstream_numeric_types','port_numeric_type_tests.py','numeric_type_assertions',('blended_numeric_types_case_count','blended_numeric_types_run_case','blended_numeric_types_assertion_count')),
     Group('matrix_types','matrix-type-ports.json','matrix_type_cases','upstream_matrix_types','port_matrix_type_tests.py','matrix_type_assertions',('blended_matrix_types_case_count','blended_matrix_types_run_case','blended_matrix_types_assertion_count')),
     Group('geometry_math','geometry-math-ports.json','geometry_math_cases','upstream_geometry_math','port_geometry_math_tests.py','geometry_math_assertions',('blended_geometry_math_case_count','blended_geometry_math_run_case','blended_geometry_math_assertion_count')),
+    Group('sampling','sampling-ports.json','sampling_cases','upstream_sampling','port_sampling_tests.py','sampling_assertions',('blended_sampling_case_count','blended_sampling_run_case','blended_sampling_assertion_count')),
+    Group('curves','curve-ports.json','curve_cases','upstream_curves','port_sampling_tests.py','curve_assertions',('blended_curves_case_count','blended_curves_run_case','blended_curves_assertion_count')),
 )
 TOTAL_KEYS={'legacy':'vector_assertions',**{g.name:g.total_key for g in GROUPS}}
 ABI={'legacy':('blended_case_count','blended_run_case','blended_case_assertion_count'),**{g.name:g.abi for g in GROUPS}}

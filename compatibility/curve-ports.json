@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_files": {
+    "BLI_length_parameterize_test.cc": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3"
+  },
+  "cases": [
+    {
+      "id": "length_parameterize.FloatSimple",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 31,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__FloatSimple",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 7,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.Float",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 53,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__Float",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 39,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.Float2",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 74,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__Float2",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 24,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.Float2Cyclic",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 104,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__Float2Cyclic",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 24,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.LineMany",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 134,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__LineMany",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 20,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.CyclicMany",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 153,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__CyclicMany",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 40,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.InterpolateColor",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 175,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__InterpolateColor",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 40,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.ArbitraryFloatSimple",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 207,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__ArbitraryFloatSimple",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 4,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "length_parameterize.ArbitraryFloat2",
+      "path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "line": 229,
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "rust_function": "length_parameterize__ArbitraryFloat2",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 24,
+      "index": 8,
+      "status": "ported_unexecuted"
+    }
+  ],
+  "complete_blender_test_port": false,
+  "helper_assertion_sites": 1,
+  "notes": "All original runtime cases. Original expectations, sample images, loop sizes, helper assertions and wrap/infinity smoke operation retained. EXPECT_V4_NEAR expands to four original nonfatal scalar comparisons. Curve loops retain 5007 samples. Array/colour storage uses safe Rust slices; no thread-performance equivalence asserted."
+}

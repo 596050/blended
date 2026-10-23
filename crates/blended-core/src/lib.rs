@@ -135,3 +135,15 @@ pub extern "C" fn blended_geometry_math_run_case(index:u32)->i32 {
 pub extern "C" fn blended_geometry_math_assertion_count(index:u32)->u32 {
     geometry_math_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
 }
+
+pub mod image_sampling;
+pub mod sampling_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_sampling_case_count()->u32{sampling_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_sampling_run_case(index:u32)->i32{sampling_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_sampling_assertion_count(index:u32)->u32{sampling_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod curve_sampling;
+pub mod curve_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_curves_case_count()->u32{curve_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_curves_run_case(index:u32)->i32{curve_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_curves_assertion_count(index:u32)->u32{curve_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
