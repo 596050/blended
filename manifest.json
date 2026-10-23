@@ -1,6 +1,6 @@
 {
   "schema": 3,
-  "source_commit": "b992957474c5979a145d2ef32452925250f3f6dd",
+  "source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
   "groups": [
     "legacy",
@@ -13,7 +13,8 @@
     "matrix_types",
     "geometry_math",
     "sampling",
-    "curves"
+    "curves",
+    "heaps"
   ],
   "abi": {
     "legacy": [
@@ -70,6 +71,11 @@
       "blended_curves_case_count",
       "blended_curves_run_case",
       "blended_curves_assertion_count"
+    ],
+    "heaps": [
+      "blended_heaps_case_count",
+      "blended_heaps_run_case",
+      "blended_heaps_assertion_count"
     ]
   },
   "total_keys": {
@@ -83,7 +89,8 @@
     "matrix_types": "matrix_type_assertions",
     "geometry_math": "geometry_math_assertions",
     "sampling": "sampling_assertions",
-    "curves": "curve_assertions"
+    "curves": "curve_assertions",
+    "heaps": "heap_assertions"
   },
   "legacy": [
     {
@@ -224,7 +231,7 @@
     }
   ],
   "complete_test_port": false,
-  "wasm_sha256": "2480612838fa88c7546bcc2a3cdb419ba70a9b75132e525cc26763730ea0b30a",
+  "wasm_sha256": "84df0edd44417e833803d4344ee3a04b16eefbc9110ad52f14b9660de1d335f9",
   "additional": [
     {
       "id": "math_base.CompareFFRelativeValid",
@@ -4101,6 +4108,327 @@
       "assertion_count": 2,
       "expected_runtime_assertions": 24,
       "index": 8,
+      "status": "ported_unexecuted"
+    }
+  ],
+  "heaps": [
+    {
+      "id": "heap.Empty",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 28,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__Empty",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.One",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 38,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__One",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.Range",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 54,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__Range",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.RangeReverse",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 68,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__RangeReverse",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.RangeRemove",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 82,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__RangeRemove",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 513,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.Duplicates",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 102,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__Duplicates",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.Rand1",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 133,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__Rand1",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 2,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.Rand2",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 137,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__Rand2",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 3,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.Rand100",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 141,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__Rand100",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 101,
+      "index": 8,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.ReInsertSimple",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 146,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__ReInsertSimple",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 9,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.ReInsertRandom1",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 192,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__ReInsertRandom1",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 4,
+      "index": 10,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.ReInsertRandom2",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 196,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__ReInsertRandom2",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 6,
+      "index": 11,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.ReInsertRandom100",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 200,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__ReInsertRandom100",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 202,
+      "index": 12,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.ReInsertRandom1024",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 204,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__ReInsertRandom1024",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 2050,
+      "index": 13,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.ReInsertRandom2048",
+      "path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "line": 208,
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "rust_function": "heap__ReInsertRandom2048",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 4098,
+      "index": 14,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleEmpty",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 29,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleEmpty",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 15,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleOne",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 39,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleOne",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 16,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleRange",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 55,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleRange",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 17,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleRangeReverse",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 69,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleRangeReverse",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 18,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleDuplicates",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 83,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleDuplicates",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 1025,
+      "index": 19,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleRand1",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 114,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleRand1",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 2,
+      "index": 20,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleRand2",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 118,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleRand2",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 3,
+      "index": 21,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "heap.SimpleRand100",
+      "path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "line": 122,
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "rust_function": "heap__SimpleRand100",
+      "assertion_count": 0,
+      "expected_runtime_assertions": 101,
+      "index": 22,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "inplace_priority_queue.BuildSmall",
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "line": 12,
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "rust_function": "inplace_priority_queue__BuildSmall",
+      "assertion_count": 7,
+      "expected_runtime_assertions": 7,
+      "index": 23,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "inplace_priority_queue.DecreasePriority",
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "line": 26,
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "rust_function": "inplace_priority_queue__DecreasePriority",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 24,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "inplace_priority_queue.IncreasePriority",
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "line": 38,
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "rust_function": "inplace_priority_queue__IncreasePriority",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 25,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "inplace_priority_queue.PopAll",
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "line": 50,
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "rust_function": "inplace_priority_queue__PopAll",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1000,
+      "index": 26,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "inplace_priority_queue.ManyPriorityChanges",
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "line": 69,
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "rust_function": "inplace_priority_queue__ManyPriorityChanges",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1000,
+      "index": 27,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "inplace_priority_queue.IndicesAccess",
+      "path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "line": 95,
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "rust_function": "inplace_priority_queue__IndicesAccess",
+      "assertion_count": 13,
+      "expected_runtime_assertions": 13,
+      "index": 28,
       "status": "ported_unexecuted"
     }
   ]

@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "negative implementation controls, not new upstream cases",
+  "source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
+  "original_implementation_sha256": "cfd73c994233647c001edef2582b87cbf626e2f03f32bbbcf14157d48db785f3",
+  "unchanged_original_test_port_sha256": "57fff46834aad33a25246236d373035c844f530572387cc9f0ebcb8fcf78bf87",
+  "checks": [
+    {
+      "mutation": "remove_noop",
+      "case": "heap.RangeRemove",
+      "control": "heap.One",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 29,
+        "target": 0,
+        "target_assertions": 513,
+        "control": 1,
+        "control_assertions": 5,
+        "invalid": -1
+      },
+      "mutation_sha256": "b56a1b98bf092282a49010fb1d908e7d312295dd7e712e99b1abde7bd5b7c6f9",
+      "wasm_sha256": "01d7785530a02908290fa7dbc50b0901905e5aa5f041e209ab80c745f204a134"
+    },
+    {
+      "mutation": "priority_increase_noop",
+      "case": "inplace_priority_queue.IncreasePriority",
+      "control": "inplace_priority_queue.BuildSmall",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 29,
+        "target": 0,
+        "target_assertions": 3,
+        "control": 1,
+        "control_assertions": 7,
+        "invalid": -1
+      },
+      "mutation_sha256": "827ff7fd8b3dd4db2643552ac64a0d126e0cda00cbd8dedfd203f324c39428f1",
+      "wasm_sha256": "df5946536e49c5b7a0d3931e82abbb10b982f6d78a2e55ae0540ef54e96010d4"
+    }
+  ],
+  "browser_version": "155.0.8059.39"
+}

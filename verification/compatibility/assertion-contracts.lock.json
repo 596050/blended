@@ -575,6 +575,59 @@
         "length_parameterize.ArbitraryFloatSimple",
         "length_parameterize.ArbitraryFloat2"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_heap_test.cc",
+      "source_sha256": "3e555368400a5d1e1d061a88213e602a0140a72094344bb05f0527b89c6dee47",
+      "target_path": "crates/blended-core/src/heap_cases.rs",
+      "target_sha256": "57fff46834aad33a25246236d373035c844f530572387cc9f0ebcb8fcf78bf87",
+      "case_ids": [
+        "heap.Empty",
+        "heap.One",
+        "heap.Range",
+        "heap.RangeReverse",
+        "heap.RangeRemove",
+        "heap.Duplicates",
+        "heap.Rand1",
+        "heap.Rand2",
+        "heap.Rand100",
+        "heap.ReInsertSimple",
+        "heap.ReInsertRandom1",
+        "heap.ReInsertRandom2",
+        "heap.ReInsertRandom100",
+        "heap.ReInsertRandom1024",
+        "heap.ReInsertRandom2048"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_heap_simple_test.cc",
+      "source_sha256": "283d525ab32473e7fa147d6a3cc292ce392cb23d701f84beb16fce42c8dea21b",
+      "target_path": "crates/blended-core/src/heap_cases.rs",
+      "target_sha256": "57fff46834aad33a25246236d373035c844f530572387cc9f0ebcb8fcf78bf87",
+      "case_ids": [
+        "heap.SimpleEmpty",
+        "heap.SimpleOne",
+        "heap.SimpleRange",
+        "heap.SimpleRangeReverse",
+        "heap.SimpleDuplicates",
+        "heap.SimpleRand1",
+        "heap.SimpleRand2",
+        "heap.SimpleRand100"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_inplace_priority_queue_test.cc",
+      "source_sha256": "98dd7e546e3c90ea7d06de4fdc20330af925c1651832e9150c5333e6a069b7d4",
+      "target_path": "crates/blended-core/src/heap_cases.rs",
+      "target_sha256": "57fff46834aad33a25246236d373035c844f530572387cc9f0ebcb8fcf78bf87",
+      "case_ids": [
+        "inplace_priority_queue.BuildSmall",
+        "inplace_priority_queue.DecreasePriority",
+        "inplace_priority_queue.IncreasePriority",
+        "inplace_priority_queue.PopAll",
+        "inplace_priority_queue.ManyPriorityChanges",
+        "inplace_priority_queue.IndicesAccess"
+      ]
     }
   ]
 }
