@@ -38,6 +38,7 @@ pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
 pub fn eq<T:PartialEq+Value>(a:T,b:T)->bool {let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p}
+pub fn le<T:PartialOrd+Value>(a:T,b:T)->bool{let p=a<=b;record("LE",p,&[a.encode(),b.encode()]);p}
 pub fn gt<T:PartialOrd+Value>(a:T,b:T)->bool {let p=a>b;record("GT",p,&[a.encode(),b.encode()]);p}
 pub fn boolean(kind:&str,v:bool)->bool {let p=if kind=="FALSE"{!v}else{v};record(kind,p,&[v.encode()]);p}
 // These predicates reproduce the helpers in the pinned tests, including the older
@@ -63,6 +64,7 @@ pub fn run_all()->String {
  for (id,run,count) in crate::geometry_math_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  for (id,run,count) in crate::sampling_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  for (id,run,count) in crate::curve_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
+ for (id,run,count) in crate::heap_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

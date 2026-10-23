@@ -94,6 +94,7 @@ inline void bytes_value(std::ostream &out,const char *v,size_t n) {
  for(size_t i=0;i<n;++i)encoded<<std::setw(2)<<static_cast<unsigned int>(static_cast<unsigned char>(v[i]));
  out<<"\"s:"<<encoded.str()<<"\"";
 }
+template<> struct Encoder<void*> {static void write(std::ostream &out,void *v){byte_pointer_value(out,static_cast<const char*>(v));}};
 template<> struct Encoder<char*> {static void write(std::ostream &out,char *v){byte_pointer_value(out,v);}};
 template<> struct Encoder<const char*> {static void write(std::ostream &out,const char *v){byte_pointer_value(out,v);}};
 template<size_t N> struct Encoder<char[N]> {static void write(std::ostream &out,const char(&v)[N]){size_t n=0;while(n<N&&v[n])++n;bytes_value(out,v,n);}};
@@ -131,6 +132,7 @@ template<class T> void span_eq(const blender::Span<T> expected,const blender::Sp
  ::EXPECT_EQ_SPAN<T>(expected,actual);
 }
 template<class A,class B> void eq(const A &a,const B &b) {record("EQ",bool(::testing::internal::EqHelper::Compare("a","b",a,b)),nullptr,nullptr,a,b);EXPECT_EQ(a,b);}
+template<class A,class B> void le(const A &a,const B &b){record("LE",a<=b,nullptr,nullptr,a,b);EXPECT_LE(a,b);}
 template<class A,class B> void gt(const A &a,const B &b) {record("GT",a>b,nullptr,nullptr,a,b);EXPECT_GT(a,b);}
 inline void feq(float a,float b,const char *ea,const char *eb) {record("FLOAT_EQ",bool(::testing::internal::CmpHelperFloatingPointEQ<float>("a","b",a,b)),ea,eb,a,b);EXPECT_FLOAT_EQ(a,b);}
 inline void near(double a,double b,double e,const char *ea,const char *eb) {record("NEAR",bool(::testing::internal::DoubleNearPredFormat("a","b","e",a,b,e)),ea,eb,a,b,e);EXPECT_NEAR(a,b,e);}
@@ -156,3 +158,6 @@ inline bool fatal_true(bool v){record("ASSERT_TRUE",v,nullptr,nullptr,v);return 
 // Keep the fatal assertion at the test call site, not inside a returning wrapper.
 #undef ASSERT_TRUE
 #define ASSERT_TRUE(v) GTEST_ASSERT_TRUE(::blended_fidelity::fatal_true(bool(v)))
+
+#undef EXPECT_LE
+#define EXPECT_LE(a,b) ::blended_fidelity::le((a),(b))
