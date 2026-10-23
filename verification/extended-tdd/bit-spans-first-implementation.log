@@ -1,0 +1,44 @@
+   Compiling blended-core v0.1.0 (/mnt/data/blended-dev/crates/blended-core)
+warning: unused variable: `bit_index`
+  --> crates/blended-core/src/bit_span_cases.rs:84:9
+   |
+84 |     for bit_index in m::iter_1_indices(data2.get()) {
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_bit_index`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: `blended-core` (lib) generated 1 warning (run `cargo fix --lib -p blended-core` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.03s
+     Running tests/upstream_bit_spans.rs (target/debug/deps/upstream_bit_spans-9ffee3d13cb9f69e)
+
+running 27 tests
+test bit_group_vector__DefaultConstruct ... ok
+test bit_group_vector__CopyConstruct ... ok
+test bit_group_vector__Construct ... ok
+test bit_group_vector__foreachAnd ... ok
+test bit_span__CopyFrom ... ok
+test bit_span__DefaultConstructor ... ok
+test bit_span__ForEach1 ... ok
+test bit_span__FindFirst0Index ... ok
+test bit_span__ForEach1Cancel ... ok
+test bit_span__FindFirst1Index ... ok
+test bit_span__IsBounded ... ok
+test bit_span__MutableIteration ... ok
+test bit_span__RangeConstructor ... ok
+test bit_span__Set ... ok
+test bit_span__SetEmpty ... ok
+test bit_span__SetSliced ... ok
+test bit_span__InPlaceOr ... ok
+test bit_span__InPlaceAnd ... ok
+test bit_span__SubscriptOperator ... ok
+test bit_span__or_bools_into_bits ... ok
+test bit_span__to_index_ranges_small ... ok
+test bitmap__empty_is_all_unset ... ok
+test bitmap__find_first_unset_empty ... ok
+test bitmap__find_first_unset_full ... ok
+test bit_span__to_index_ranges_all_ones ... ok
+test bitmap__find_first_unset_middle ... ok
+test bit_span__Iteration ... ok
+
+test result: ok. 27 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
