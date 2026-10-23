@@ -1,20 +1,21 @@
 {
-  "url": "https://rawcdn.githack.com/596050/blended/c9dbb3291b4db5a980199cc9da055c1943821bb7/index.html",
-  "expected_case_count": 99,
-  "expected_source_commit": "16178e1a9d2ad5c6d7318ace9807024f2203b230",
-  "started_utc": "2026-10-22T22:38:24.076414+00:00",
+  "url": "https://rawcdn.githack.com/596050/blended/1626026a494137359a986d957efe31d01bae7e67/index.html",
+  "expected_case_count": 131,
+  "expected_source_commit": "ecb00cf1b5ab2efa8ce31acf308c143aeffb1398",
+  "started_utc": "2026-10-23T07:25:16.869803+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "16178e1a9d2ad5c6d7318ace9807024f2203b230",
+    "source_commit": "ecb00cf1b5ab2efa8ce31acf308c143aeffb1398",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 99,
+    "passed": 131,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
+    "collection_assertions": 521,
     "cases": [
       {
         "id": "math_vector.ClampVecWithFloats",
@@ -708,12 +709,236 @@
         "passed": true,
         "code": 1,
         "assertions": 16
+      },
+      {
+        "id": "bit_ref.MaskFirstNBits",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "bit_ref.MaskLastNBits",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "bit_ref.MaskSingleBit",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "bit_ref.IntContainingBit",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "bit_ref.Test",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "bit_ref.Set",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bit_ref.Reset",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "bit_ref.SetBranchless",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "bit_ref.Cast",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "bit_ref.MaskRangeBits",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "bit_vector.DefaultConstructor",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "bit_vector.CopyConstructorInline",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "bit_vector.CopyConstructorLarge",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "bit_vector.MoveConstructorInline",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "bit_vector.MoveConstructorLarge",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "bit_vector.SizeConstructor",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 131
+      },
+      {
+        "id": "bit_vector.SizeFillConstructor",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 128
+      },
+      {
+        "id": "bit_vector.IndexAccess",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "bit_vector.Iterator",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 100
+      },
+      {
+        "id": "bit_vector.Append",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "bit_vector.AppendMany",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "index_ranges_builder.Empty",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "index_ranges_builder.Single",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "index_ranges_builder.Multiple",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "index_ranges_builder.Full",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "unique_sorted_indices.FindRangeEnd",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "unique_sorted_indices.NonEmptyIsRange",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "unique_sorted_indices.NonEmptyAsRange",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "unique_sorted_indices.FindSizeOfNextRange",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "unique_sorted_indices.FindStartOfNextRange",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "unique_sorted_indices.SplitToRangesAndSpans",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "unique_sorted_indices.FindContentRange",
+        "group": "collections",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
       }
     ],
     "errors": [],
-    "wasm_sha256": "cc62d5ae90476ee25d9df5d91adef0476803eafa03df80e208b305bae0470dd7",
+    "wasm_sha256": "73f85c7f9ca0268802f2d864ff4e218028563e3a9f8a2f4648dcfceecbdde424",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-22T22:38:28.172069+00:00"
+  "finished_utc": "2026-10-23T07:25:28.234069+00:00"
 }
