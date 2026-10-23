@@ -1,0 +1,9 @@
+{
+  "problem": "C++ digit separators were consumed as character-literal delimiters, hiding real TEST declarations such as bit_ref.MaskSingleBit.",
+  "observed_before_fix": {"local_regression_cases": 5, "failed": 3, "passed": 2, "actual_bit_ref_declarations_discovered": 9, "expected": 10},
+  "observed_after_fix": {"same_local_regression_cases": 5, "failed": 0, "passed": 5, "actual_bit_ref_declarations_discovered": 10},
+  "additional_guard": "Every translated scalar, structure, collection and standalone compile-time case must be discovered in its exact frozen upstream source with the original identity and line.",
+  "execution": "Local Python unit tests; subsequent CI independently runs the full infrastructure suite.",
+  "complete_runtime_inventory": false,
+  "complete_blender_test_port": false
+}
