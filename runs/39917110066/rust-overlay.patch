@@ -34,6 +34,21 @@
  
  // source/blender/blenlib/tests/BLI_index_range_test.cc:14
  pub fn index_range__DefaultConstructor() -> Report {
+--- collection_cases.rs
++++ shadow/collection_cases.rs
+@@ -14,9 +14,9 @@
+     }
+     pub fn passed(&self)->bool {self.assertions>0 && self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ 
+ // source/blender/blenlib/tests/BLI_bit_ref_test.cc:13
+ pub fn bit_ref__MaskFirstNBits()->Report {
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
