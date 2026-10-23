@@ -1,8 +1,8 @@
 name: Blender test-port conformance
 on:
   push:
-    branches: [compat/complete-test-port, compat/ranges-bounds, quality/assertion-fidelity, compat/collections-fidelity, main]
-    paths: ['crates/**', 'compatibility/**', 'tools/port_scalar_tests.py', 'tools/port_structure_tests.py', 'tools/port_collection_tests.py', 'tools/verify_static_port.py', 'tools/test_port_audit.py', 'tools/port_workbench.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/test_assertion_fidelity.py', 'tests/test_test_port_audit.py', 'tests/test_structure_port.py', 'tests/test_collection_port.py', 'tests/test_port_workbench.py', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
+    branches: [main, 'compat/**', 'quality/**']
+    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/assertion-fidelity.yml
   native-and-wasm:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,37 +22,48 @@ jobs:
         with:
           toolchain: '1.92.0'
           targets: wasm32-unknown-unknown
-      - name: Verify committed ports reproduce from pinned upstream files
+      - name: Reproduce every registered test from its pinned original source
         run: |
+          set -euo pipefail
           python3 tools/fetch_upstreams.py blender
-          python3 tools/port_scalar_tests.py
-          python3 tools/port_structure_tests.py
-          python3 tools/port_collection_tests.py
-          git diff --exit-code -- crates/blended-core/src/additional_cases.rs crates/blended-core/tests/upstream_additional.rs compatibility/additional-ports.json crates/blended-core/src/structure_cases.rs crates/blended-core/tests/upstream_structures.rs compatibility/structure-ports.json crates/blended-core/src/collection_cases.rs crates/blended-core/tests/upstream_collections.rs compatibility/collection-ports.json tests/upstream
-      - name: Run native tests without ignoring missing implementations
+          python3 - <<'PY'
+          import subprocess,sys
+          sys.path.insert(0,'tools')
+          from port_registry import GROUPS
+          for generator in dict.fromkeys(g.generator for g in GROUPS):
+              subprocess.run([sys.executable,'tools/'+generator],check=True)
+          PY
+          git diff --exit-code -- crates/blended-core/src crates/blended-core/tests compatibility tests/upstream
+      - name: Run the unmodified native tests
         run: |
           mkdir -p evidence
           set -o pipefail
           cargo test --locked --workspace --all-targets 2>&1 | tee evidence/native.txt
-      - name: Build and test the same cases for actual browser execution
+      - name: Build production WebAssembly and verify the exact case universe
         run: |
+          set -euo pipefail
           cargo build --locked --release --target wasm32-unknown-unknown -p blended-core
           python3 tools/port_workbench.py build --commit "${{ github.sha }}"
           python3 - <<'PY'
           import json,sys
+          from pathlib import Path
           sys.path.insert(0,'tools')
           from test_port_audit import load_ports
           from port_workbench import expected_cases
+          from port_registry import verify_runtime_contract_bijection
           ports=load_ports(json.load(open('build/blender-inventory.json')))
           expected,_=expected_cases()
+          verify_runtime_contract_bijection(Path.cwd(),expected)
           runtime_ports=[p for p in ports if p.get('kind')!='static_assert']
           static_ports=[p for p in ports if p.get('kind')=='static_assert']
-          assert len(runtime_ports)==len(expected)==131 and len(static_ports)==1 and all(p['semantics_reviewed'] for p in ports), 'Reviewed assertion contract changed; do not publish'
+          assert expected and len(runtime_ports)==len(expected) and len(static_ports)==1
+          assert all(p['semantics_reviewed'] for p in ports), 'Reviewed assertion contract changed'
           assert {p['id'] for p in runtime_ports}=={p['id'] for p in expected}, 'Audit and executable registries diverged'
           PY
           python3 -m unittest discover -s tests -v
           python3 tools/verify_static_port.py --output evidence/static-port.json
           python3 -m pip install playwright==1.57.0
+          python3 tools/verify_zero_assertion_case.py --output evidence/zero-assertion-probe.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
       - uses: actions/upload-artifact@v4
@@ -61,23 +72,16 @@ jobs:
           name: blender-test-port-evidence
           path: |
             evidence/
-            compatibility/additional-ports.json
-            compatibility/structure-ports.json
-            compatibility/collection-ports.json
-            compatibility/compile-time-ports.json
-            crates/blended-core/src/additional_cases.rs
-            crates/blended-core/src/structure_cases.rs
-            crates/blended-core/src/collection_cases.rs
-            crates/blended-core/tests/upstream_additional.rs
-            crates/blended-core/tests/upstream_structures.rs
-            crates/blended-core/tests/upstream_collections.rs
+            compatibility/
+            crates/blended-core/src/*cases.rs
+            crates/blended-core/tests/upstream*.rs
             tests/upstream/
-          retention-days: 3
+          retention-days: 1
       - uses: actions/upload-artifact@v4
         with:
           name: conformance-site
           path: build/conformance/
-          retention-days: 3
+          retention-days: 1
   full-test-port-completeness:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -85,12 +89,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Inventory all pinned Blender source tests and retain unported cases
+      - name: Retain the complete source universe, including every unported case
         run: |
+          set -euo pipefail
           python3 tools/fetch_upstreams.py blender
-          python3 tools/port_scalar_tests.py
-          python3 tools/port_structure_tests.py
-          python3 tools/port_collection_tests.py
           python3 tools/inventory.py --root .upstream/blender --name blender --commit 94363991e7dcf39e2d70614aa002ab6f67764a5d --output build/blender-inventory.json
           python3 tools/test_port_audit.py --inventory build/blender-inventory.json --output evidence/complete-test-port.json --require-complete
       - uses: actions/upload-artifact@v4
@@ -100,7 +102,7 @@ jobs:
           path: |
             evidence/complete-test-port.json
             build/blender-inventory.json
-          retention-days: 3
+          retention-days: 1
   publish-subset-workbench:
     needs: [native-and-wasm, assertion-fidelity]
     runs-on: ubuntu-24.04
@@ -122,7 +124,7 @@ jobs:
         with:
           name: assertion-fidelity-comparisons
           path: site/assertion-fidelity
-      - name: Read immutable verified fixture metadata, not an expiring Actions artifact
+      - name: Read immutable verified fixture metadata
         uses: actions/checkout@v4
         with:
           ref: 950ea85b0f4438bc5e082a0f9a402973f01d4de3
@@ -130,13 +132,14 @@ jobs:
           sparse-checkout: fixture-evidence
           persist-credentials: false
       - run: cp -a fixture-store/fixture-evidence site/
-      - name: Publish only the verified subset, explicitly not full completion
+      - name: Publish the verified subset without declaring whole-suite completion
         id: publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           SOURCE_SHA: ${{ github.sha }}
         run: |
+          set -euo pipefail
           git init --initial-branch=test-port-build published
           git -C published remote add origin "https://github.com/${REPO}.git"
           gh auth setup-git
@@ -146,7 +149,7 @@ jobs:
           fi
           cp -a site/. published/
           git -C published add -A
-          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Publish 131-case Blender conformance subset ${SOURCE_SHA}; full test port incomplete"
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m "Publish independently verified Blender conformance subset ${SOURCE_SHA}; full port incomplete"
           git -C published push origin HEAD:refs/heads/test-port-build
           SHA=$(git -C published rev-parse HEAD)
           echo "url=https://rawcdn.githack.com/${REPO}/${SHA}/index.html" >> "$GITHUB_OUTPUT"
@@ -168,7 +171,7 @@ jobs:
         with:
           name: deployed-test-port-evidence
           path: evidence/deployed-port/
-          retention-days: 3
+          retention-days: 1
       - name: Preserve public test evidence beyond artifact expiry
         if: always()
         env:
@@ -176,6 +179,7 @@ jobs:
           REPO: ${{ github.repository }}
           URL: ${{ needs.publish-subset-workbench.outputs.url }}
         run: |
+          set -euo pipefail
           test -f evidence/deployed-port/result.json
           printf '%s\n' "$URL" > evidence/deployed-port/deployment-url.txt
           git init --initial-branch=test-port-evidence published
@@ -187,5 +191,5 @@ jobs:
           fi
           cp -a evidence/deployed-port/. published/
           git -C published add -A
-          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve deployed Blender test-port subset results'
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve actual deployed Blender test-port subset results'
           git -C published push origin HEAD:refs/heads/test-port-evidence
