@@ -1,0 +1,29 @@
+name: Geometry fatal-assertion execution semantics
+on:
+  push:
+    branches: [main, 'compat/**', 'quality/**']
+    paths: ['crates/blended-core/src/geometry_math.rs', 'crates/blended-core/src/geometry_math_cases.rs', 'tools/verify_geometry_fatal.py', 'tests/test_geometry_fatal_contract.py', '.github/workflows/geometry-fatal-assertion.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - run: python3 -m pip install playwright==1.57.0
+      - name: Observe the original case pass, then a single fatal failure without a panic or trap
+        run: python3 tools/verify_geometry_fatal.py --output evidence/geometry-fatal/probe.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-fatal-evidence
+          path: evidence/geometry-fatal/
+          retention-days: 1
