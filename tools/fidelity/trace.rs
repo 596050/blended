@@ -14,6 +14,15 @@ impl<T:Value,const N:usize> Value for VecN<T,N> {fn encode(&self)->String{self.0
 impl<T:Value> Value for Bounds<T> {fn encode(&self)->String{format!("{{\"min\":{},\"max\":{}}}",self.min.encode(),self.max.encode())}}
 impl<T:Value> Value for Option<T> {fn encode(&self)->String {self.as_ref().map(Value::encode).unwrap_or_else(||"\"none\"".into())}}
 impl Value for IndexRange {fn encode(&self)->String{format!("{{\"start\":{},\"size\":{}}}",if self.is_empty(){0_i64.encode()}else{self.start().encode()},self.size().encode())}}
+thread_local! {static POINTER_ORIGIN:RefCell<Option<usize>>=const{RefCell::new(None)};}
+impl Value for *const core::cell::Cell<u64> {
+ fn encode(&self)->String {POINTER_ORIGIN.with(|origin|{
+  let address=*self as usize;let mut origin=origin.borrow_mut();let base=*origin.get_or_insert(address);
+  let delta=address as i128-base as i128;let size=core::mem::size_of::<core::cell::Cell<u64>>() as i128;
+  assert_eq!(delta%size,0);format!("\"p64:{}\"",delta/size)
+ })}
+}
+impl<T:Value> Value for &[T] {fn encode(&self)->String{format!("[{}]",self.iter().map(Value::encode).collect::<Vec<_>>().join(","))}}
 pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
@@ -28,12 +37,13 @@ pub fn float_eq(a:f32,b:f32)->bool {
  record("FLOAT_EQ",p,&[a.encode(),b.encode()]);p
 }
 pub fn near(a:f64,b:f64,e:f64)->bool {let p=(a-b).abs()<=e;record("NEAR",p,&[a.encode(),b.encode(),e.encode()]);p}
-fn start(id:&str){TAPE.with(|t|t.borrow_mut().0=id.into());}
+fn start(id:&str){TAPE.with(|t|t.borrow_mut().0=id.into());POINTER_ORIGIN.with(|p|*p.borrow_mut()=None);}
 pub fn run_all()->String {
  TAPE.with(|t|*t.borrow_mut()=(String::new(),String::new()));
  for ((id,_),run) in crate::compat_cases::CASES.iter().zip(crate::compat_cases::REPORTS){start(id);assert!(run().passed(),"Vector port failed");}
  for (id,run) in crate::additional_cases::CASES{start(id);assert!(run().passed(),"Scalar port failed");}
  for (id,run,count) in crate::structure_cases::CASES{start(id);let r=run();assert!(r.passed(),"Structure port failed");assert_eq!(r.assertions,*count);}
+ for (id,run,count) in crate::collection_cases::CASES{start(id);let r=run();assert!(r.passed(),"Collection port failed");assert_eq!(r.assertions,*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

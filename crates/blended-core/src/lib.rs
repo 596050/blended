@@ -58,3 +58,6 @@ pub extern "C" fn blended_collections_run_case(index:u32)->i32 {
 pub extern "C" fn blended_collections_assertion_count(index:u32)->u32 {
     collection_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
 }
+
+pub mod hashing;
+pub mod compile_time_cases;

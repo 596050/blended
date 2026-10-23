@@ -59,6 +59,8 @@ def load_ports(inventory):
     for manifest,target_path,module in (
         ('additional-ports.json','crates/blended-core/src/additional_cases.rs','upstream_additional'),
         ('structure-ports.json','crates/blended-core/src/structure_cases.rs','upstream_structures'),
+        ('collection-ports.json','crates/blended-core/src/collection_cases.rs','upstream_collections'),
+        ('compile-time-ports.json','crates/blended-core/src/compile_time_cases.rs','compile_time_cases'),
     ):
         generated=ROOT/'compatibility'/manifest
         if not generated.exists():continue

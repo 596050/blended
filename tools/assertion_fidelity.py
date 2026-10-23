@@ -26,8 +26,10 @@ def contracts(root:Path):
     return data
 
 def cpp(root:Path,upstream:Path):
-    data=contracts(root);records=[]
+    data=contracts(root);records=[];seen=set()
     for c in data['contracts']:
+        if c['source_path'] in seen:continue
+        seen.add(c['source_path'])
         p=upstream/c['source_path'];before=p.read_text()
         if digest(p)!=c['source_sha256']:raise ValueError('Actual upstream source differs from reviewed snapshot')
         header=(root/'tools/fidelity/trace.hh').resolve().as_posix()
@@ -70,7 +72,7 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs']:
         p=src/name;before=p.read_text();after=before
         changes={
           'macro_rules! eq ': 'macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};} ',
@@ -113,6 +115,7 @@ def normal(value):
     if isinstance(value,list):return tuple(normal(v) for v in value)
     if isinstance(value,dict):return tuple((k,normal(v)) for k,v in sorted(value.items()))
     if not isinstance(value,str):raise ValueError('Malformed tagged trace value')
+    if value.startswith('p64:'):return ('word_pointer',int(value[4:]))
     if value.startswith('i:'):return Fraction(int(value[2:]))
     if value.startswith('f:'):
         n=struct.unpack('>d',bytes.fromhex(value[2:]))[0]

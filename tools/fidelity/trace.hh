@@ -6,6 +6,9 @@
 #include "BLI_bounds.hh"
 #include "BLI_index_range.hh"
 #include "BLI_math_vector_types.hh"
+#include "BLI_bit_ref.hh"
+#include "BLI_span.hh"
+#include <cstdint>
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
@@ -46,6 +49,24 @@ template<> struct Encoder<blender::IndexRange> {
   // Upstream equality ignores the start of an empty range. Preserve that contract.
   out<<"{\"start\":";value(out,v.is_empty()?int64_t(0):v.start());out<<",\"size\":";value(out,v.size());out<<'}';
  }
+};
+// Address values are compared as word offsets within this pointer-only test.
+inline void pointer_value(std::ostream &out,const uint64_t *v) {
+ static const ::testing::TestInfo *last=nullptr;static std::uintptr_t base=0;
+ const auto *test=::testing::UnitTest::GetInstance()->current_test_info();
+ const auto address=reinterpret_cast<std::uintptr_t>(v);
+ if(last!=test){last=test;base=address;}
+ const auto difference=static_cast<int64_t>(address)-static_cast<int64_t>(base);
+ if(difference%int64_t(sizeof(uint64_t)))std::abort();
+ out<<"\"p64:"<<difference/int64_t(sizeof(uint64_t))<<"\"";
+}
+template<> struct Encoder<uint64_t*> {static void write(std::ostream &out,uint64_t *v){pointer_value(out,v);}};
+template<> struct Encoder<const uint64_t*> {static void write(std::ostream &out,const uint64_t *v){pointer_value(out,v);}};
+template<> struct Encoder<blender::bits::BitRef> {
+ static void write(std::ostream &out,const blender::bits::BitRef &v){value(out,bool(v));}
+};
+template<class T> struct Encoder<blender::Span<T>> {
+ static void write(std::ostream &out,const blender::Span<T> &v){out<<'[';for(int64_t i=0;i<v.size();++i){if(i)out<<',';value(out,v[i]);}out<<']';}
 };
 inline std::ofstream &stream() {
  static std::ofstream out([](){const char *p=std::getenv("BLENDED_ASSERTION_TRACE");if(!p)std::abort();return p;}());
