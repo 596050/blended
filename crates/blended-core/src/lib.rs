@@ -82,3 +82,15 @@ pub extern "C" fn blended_numerics_text_assertion_count(index:u32)->u32 {
 }
 
 pub mod matrix_type_cases;
+
+pub mod matrix_types;
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_matrix_types_case_count()->u32 {matrix_type_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_matrix_types_run_case(index:u32)->i32 {
+ matrix_type_cases::CASES.get(index as usize).map(|(_,run,count)|{let r=run();i32::from(r.passed()&&r.assertions==*count)}).unwrap_or(-1)
+}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_matrix_types_assertion_count(index:u32)->u32 {
+ matrix_type_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
+}

@@ -6,6 +6,7 @@
 #include "BLI_bounds.hh"
 #include "BLI_index_range.hh"
 #include "BLI_math_vector_types.hh"
+#include "BLI_math_matrix_types.hh"
 #include "BLI_bit_ref.hh"
 #include "BLI_span.hh"
 #include "BLI_string_ref.hh"
@@ -38,6 +39,9 @@ template<class T> struct Encoder {
 template<class T> void value(std::ostream &out,const T &v) {Encoder<T>::write(out,v);}
 template<class T,int N> struct Encoder<blender::VecBase<T,N>> {
  static void write(std::ostream &out,const blender::VecBase<T,N> &v) {out << '[';for(int i=0;i<N;i++){if(i)out<<',';value(out,v[i]);}out<<']';}
+};
+template<class T,int C,int R,int A>struct Encoder<blender::MatBase<T,C,R,A>>{
+ static void write(std::ostream &out,const blender::MatBase<T,C,R,A> &v){out<<'[';for(int c=0;c<C;c++){if(c)out<<',';value(out,v[c]);}out<<']';}
 };
 template<class T> struct Encoder<blender::Bounds<T>> {
  static void write(std::ostream &out,const blender::Bounds<T> &v) {out<<"{\"min\":";value(out,v.min);out<<",\"max\":";value(out,v.max);out<<'}';}

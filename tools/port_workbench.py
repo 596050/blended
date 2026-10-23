@@ -12,13 +12,13 @@ if(!response.ok)throw Error('Manifest fetch failed');
 const manifest=await response.json();
 const tbody=document.querySelector('#cases');
 document.querySelector('#provenance').textContent=`Source ${manifest.source_commit}; Blender reference ${manifest.reference_commit}.`;
-const groups=['legacy','additional','structures','collections','numerics_text'];
+const groups=['legacy','additional','structures','collections','numerics_text','matrix_types'];
 const all=groups.flatMap(group=>manifest[group].map((c,index)=>({...c,index,group})));
 if(new Set(all.map(c=>c.id)).size!==all.length)throw Error('Duplicate case identity');
 for(const c of all){const tr=document.createElement('tr');for(const text of [c.id,c.expected_runtime_assertions??c.assertion_count??'Original case','Not run']){const td=document.createElement('td');td.textContent=text;tr.append(td);}tbody.append(tr);}
 document.querySelector('#status').textContent=`${all.length} translated cases ready. Full-suite completeness remains unverified.`;
 document.querySelector('#run').addEventListener('click',async()=>{
- const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,vector_assertions:0,additional_assertions:0,structure_assertions:0,collection_assertions:0,numerics_text_assertions:0,cases:[],errors:[]};
+ const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,vector_assertions:0,additional_assertions:0,structure_assertions:0,collection_assertions:0,numerics_text_assertions:0,matrix_type_assertions:0,cases:[],errors:[]};
  const button=document.querySelector('#run');button.disabled=true;
  try{
   const response=await fetch('./blended_core.wasm');if(!response.ok)throw Error('WASM fetch failed');
@@ -27,7 +27,7 @@ document.querySelector('#run').addEventListener('click',async()=>{
   if(digest!==manifest.wasm_sha256)throw Error('WASM hash/manifest mismatch');
   result.wasm_sha256=digest;
   const {instance}=await WebAssembly.instantiate(bytes,{});const w=instance.exports;
-  const registries={legacy:[w.blended_case_count,w.blended_run_case,w.blended_case_assertion_count],additional:[w.blended_additional_case_count,w.blended_additional_run_case,w.blended_additional_assertion_count],structures:[w.blended_structures_case_count,w.blended_structures_run_case,w.blended_structures_assertion_count],collections:[w.blended_collections_case_count,w.blended_collections_run_case,w.blended_collections_assertion_count],numerics_text:[w.blended_numerics_text_case_count,w.blended_numerics_text_run_case,w.blended_numerics_text_assertion_count]};
+  const registries={legacy:[w.blended_case_count,w.blended_run_case,w.blended_case_assertion_count],additional:[w.blended_additional_case_count,w.blended_additional_run_case,w.blended_additional_assertion_count],structures:[w.blended_structures_case_count,w.blended_structures_run_case,w.blended_structures_assertion_count],collections:[w.blended_collections_case_count,w.blended_collections_run_case,w.blended_collections_assertion_count],numerics_text:[w.blended_numerics_text_case_count,w.blended_numerics_text_run_case,w.blended_numerics_text_assertion_count],matrix_types:[w.blended_matrix_types_case_count,w.blended_matrix_types_run_case,w.blended_matrix_types_assertion_count]};
   for(const group of groups){if(registries[group][0]()!==manifest[group].length)throw Error(`Registry/manifest count mismatch: ${group}`);}
   for(const [i,c] of all.entries()){
    const [,run,count]=registries[c.group];const code=run(c.index);const assertions=count?count(c.index):null;
@@ -36,6 +36,7 @@ document.querySelector('#run').addEventListener('click',async()=>{
    if(c.group==='structures')result.structure_assertions+=assertions;
    if(c.group==='collections')result.collection_assertions+=assertions;
    if(c.group==='numerics_text')result.numerics_text_assertions+=assertions;
+   if(c.group==='matrix_types')result.matrix_type_assertions+=assertions;
    const expected=c.expected_runtime_assertions??c.assertion_count;
    const passed=code===1&&assertions===expected;
    result.cases.push({id:c.id,group:c.group,passed,code,assertions});if(passed)result.passed++;
@@ -56,7 +57,7 @@ def expected_cases(root=ROOT):
     if vector['reference_commit']!=lock or vector['target_sha256']!=hashlib.sha256((root/'crates/blended-core/src/compat_cases.rs').read_bytes()).hexdigest():raise ValueError('Vector assertion contract changed')
     if [c['id'] for c in vector['cases']]!=ids:raise ValueError('Vector registry mismatch')
     result=[{'id':c['id'],'group':'legacy','expected_runtime_assertions':c['assertion_count']} for c in vector['cases']]
-    for filename,group in [('additional-ports.json','additional'),('structure-ports.json','structures'),('collection-ports.json','collections'),('numerics-text-ports.json','numerics_text')]:
+    for filename,group in [('additional-ports.json','additional'),('structure-ports.json','structures'),('collection-ports.json','collections'),('numerics-text-ports.json','numerics_text'),('matrix-type-ports.json','matrix_types')]:
         data=json.loads((root/'compatibility'/filename).read_text())
         if data['upstream_commit']!=lock:raise ValueError('Reference revision mismatch: '+filename)
         for case in data['cases']:
@@ -74,7 +75,7 @@ def validate_result(data,expected,commit,reference):
     for actual,contract in zip(cases,expected):
         if actual.get('passed') is not True or actual.get('code')!=1:raise ValueError('WASM assertion failure: '+contract['id'])
         if actual.get('assertions')!=contract['expected_runtime_assertions']:raise ValueError('Assertion execution changed: '+contract['id'])
-    for group,key in [('legacy','vector_assertions'),('additional','additional_assertions'),('structures','structure_assertions'),('collections','collection_assertions'),('numerics_text','numerics_text_assertions')]:
+    for group,key in [('legacy','vector_assertions'),('additional','additional_assertions'),('structures','structure_assertions'),('collections','collection_assertions'),('numerics_text','numerics_text_assertions'),('matrix_types','matrix_type_assertions')]:
         total=sum(c['expected_runtime_assertions'] or 0 for c in expected if c['group']==group)
         if data.get(key)!=total:raise ValueError('Missing assertion execution: '+group)
     if not re.fullmatch('[0-9a-f]{64}',data.get('wasm_sha256','')):raise ValueError('Missing verified WASM hash')
@@ -91,7 +92,7 @@ def build(commit):
     structures=json.loads((ROOT/'compatibility/structure-ports.json').read_text())
     expected,reference=expected_cases()
     if reference!=added['upstream_commit']:raise ValueError('Reference mismatch')
-    manifest={'schema':2,'source_commit':commit,'reference_commit':added['upstream_commit'],'legacy':legacy['cases'],'additional':added['cases'],'structures':structures['cases'],'collections':json.loads((ROOT/'compatibility/collection-ports.json').read_text())['cases'],'numerics_text':json.loads((ROOT/'compatibility/numerics-text-ports.json').read_text())['cases'],'complete_test_port':False,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest()}
+    manifest={'schema':2,'source_commit':commit,'reference_commit':added['upstream_commit'],'legacy':legacy['cases'],'additional':added['cases'],'structures':structures['cases'],'collections':json.loads((ROOT/'compatibility/collection-ports.json').read_text())['cases'],'numerics_text':json.loads((ROOT/'compatibility/numerics-text-ports.json').read_text())['cases'],'matrix_types':json.loads((ROOT/'compatibility/matrix-type-ports.json').read_text())['cases'],'complete_test_port':False,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest()}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (out/'index.html').write_text(HTML);(out/'run.mjs').write_text(JS)
     subprocess.run([sys.executable,str(ROOT/'tools/inventory.py'),'--root',str(ROOT/'.upstream/blender'),'--name','blender','--commit',added['upstream_commit'],'--output',str(ROOT/'build/blender-inventory.json')],check=True)

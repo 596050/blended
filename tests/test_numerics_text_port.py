@@ -26,9 +26,9 @@ class NumericTextPortTests(unittest.TestCase):
     self.assertIn(translated,combined)
     self.assertEqual(len(re.findall(r'\bEXPECT_(?:EQ|FLOAT_EQ|NEAR|TRUE|FALSE)\s*\(',comments(body))),len(re.findall(r'\b(?:eq|numeq|feq|near|yes|no)!',translated)))
  def test_reviewed_target_hashes_and_full_case_registry(self):
-  self.assertEqual(len(contracts(ROOT)['contracts']),17)
-  cases,_=expected_cases();self.assertEqual(len(cases),224)
-  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1499)
+  self.assertEqual(len(contracts(ROOT)['contracts']),18)
+  cases,_=expected_cases();self.assertEqual(len(cases),245)
+  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1788)
  def test_named_std_string_preserves_length_and_borrow(self):
   code=(ROOT/'crates/blended-core/src/numerics_text_cases.rs').read_text()
   self.assertIn('s::StringRef::with_length(str.as_bytes(),str.len())',code)

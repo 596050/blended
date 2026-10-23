@@ -323,7 +323,7 @@ r
 // source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:307
 pub fn math_matrix_types__ViewFromCstyleMatrix()->Report{let mut r=Report::default();
 let c_style_mat=m::cell_storage([[1.0_f32,2.0,3.0,4.0],[5.0,6.0,7.0,8.0],[9.0,10.0,11.0,12.0],[13.0,14.0,15.0,16.0]]);
-  let c_mat_view=m::View::<f32,4,4,4,4>::new(&c_style_mat,0,0);
+  let c_mat_view=m::ReadView::<f32,4,4,4,4>::new(&c_style_mat,0,0);
 
   let c_mat_mutable_view=m::View::<f32,4,4,4,4>::new(&c_style_mat,0,0);
 

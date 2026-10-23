@@ -135,7 +135,8 @@
         "index_range.TakeBackLargeN",
         "index_range.constexpr_",
         "index_range.GenericAlgorithms",
-        "index_range.SplitByAlignment"
+        "index_range.SplitByAlignment",
+        "static_assert@310"
       ],
       "assertion_sites": 120,
       "runtime_assertions": 123,
@@ -369,7 +370,11 @@
         "string_ref.CopyBytesTruncated",
         "string_ref.FromStringView",
         "string_ref.ToStringView",
-        "string_ref.Constexpr"
+        "string_ref.Constexpr",
+        "static_assert@106",
+        "static_assert@107",
+        "static_assert@594",
+        "static_assert@595"
       ],
       "review": "Runtime assertions, literal inputs, typed constructors and explicit swizzle writeback reviewed. Standalone vector type traits/layout assertions remain unported; string constexpr assertions are retained in the executable cases."
     },
@@ -392,6 +397,36 @@
         "color.SceneLinearByteDecoding"
       ],
       "review": "Runtime assertions, literal inputs, typed constructors and explicit swizzle writeback reviewed. Standalone vector type traits/layout assertions remain unported; string constexpr assertions are retained in the executable cases."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "target_path": "crates/blended-core/src/matrix_type_cases.rs",
+      "target_sha256": "3ae78026afdc5ba7cfd5cbb646cb5a504e5b7c0874f9391b39269177e8b15176",
+      "case_ids": [
+        "math_matrix_types.DefaultConstructor",
+        "math_matrix_types.StaticConstructor",
+        "math_matrix_types.VectorConstructor",
+        "math_matrix_types.SmallerMatrixConstructor",
+        "math_matrix_types.ComponentMasking",
+        "math_matrix_types.PointerConversion",
+        "math_matrix_types.TypeConversion",
+        "math_matrix_types.PointerArrayConversion",
+        "math_matrix_types.ComponentAccess",
+        "math_matrix_types.AddOperator",
+        "math_matrix_types.SubtractOperator",
+        "math_matrix_types.MultiplyOperator",
+        "math_matrix_types.MatrixMultiplyOperator",
+        "math_matrix_types.VectorMultiplyOperator",
+        "math_matrix_types.ViewConstructor",
+        "math_matrix_types.ViewFromCstyleMatrix",
+        "math_matrix_types.ViewAssignment",
+        "math_matrix_types.ViewScalarOperators",
+        "math_matrix_types.ViewMatrixMultiplyOperator",
+        "math_matrix_types.ViewVectorMultiplyOperator",
+        "math_matrix_types.ViewMatrixNormalize"
+      ],
+      "review": "All 21 runtime cases, original expected operands and matrix macro scalar checks preserved. Shared Cell storage retains mutable view aliasing and copy-on-conversion. Original non-running comments are not tests; no SIMD or ABI equivalence asserted."
     }
   ]
 }

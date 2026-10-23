@@ -37,6 +37,7 @@ impl Value for *const u8{fn encode(&self)->String{POINTER_ORIGIN.with(|origin|{
 pub fn eq_ref<A:PartialEq<B>+Value+?Sized,B:Value+?Sized>(a:&A,b:&B)->bool{
  let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p
 }
+impl<T:Value,const C:usize,const R:usize>Value for crate::matrix_types::M<T,C,R>{fn encode(&self)->String{self.0.encode()}}
 pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
@@ -59,6 +60,7 @@ pub fn run_all()->String {
  for (id,run,count) in crate::structure_cases::CASES{start(id);let r=run();assert!(r.passed(),"Structure port failed");assert_eq!(r.assertions,*count);}
  for (id,run,count) in crate::collection_cases::CASES{start(id);let r=run();assert!(r.passed(),"Collection port failed");assert_eq!(r.assertions,*count);}
  for (id,run,count) in crate::numerics_text_cases::CASES{start(id);let r=run();assert!(r.passed(),"Numeric/text port failed");assert_eq!(r.assertions,*count);}
+ for (id,run,count) in crate::matrix_type_cases::CASES{start(id);let r=run();assert!(r.passed(),"Matrix port failed");assert_eq!(r.assertions,*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

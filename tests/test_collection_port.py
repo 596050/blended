@@ -16,9 +16,9 @@ class CollectionPortTests(unittest.TestCase):
    raw=(ROOT/'tests/upstream/blender'/name).read_bytes();self.assertEqual(hashlib.sha256(raw).hexdigest(),sha)
    ids.extend(i for i,b,l in extract(raw.decode()))
   self.assertEqual(ids,[c['id'] for c in m['cases']])
- def test_reviewed_hashes_match(self):self.assertEqual(len(contracts(ROOT)['contracts']),17)
+ def test_reviewed_hashes_match(self):self.assertEqual(len(contracts(ROOT)['contracts']),18)
  def test_full_runtime_registry(self):
-  c,_=expected_cases();self.assertEqual(len(c),224);self.assertEqual(sum(x['expected_runtime_assertions'] for x in c),1499)
+  c,_=expected_cases();self.assertEqual(len(c),245);self.assertEqual(sum(x['expected_runtime_assertions'] for x in c),1788)
  def test_shared_reference_not_boolean_snapshot(self):
   s=(ROOT/'crates/blended-core/src/collection_cases.rs').read_text();self.assertIn('let read_ref = mutable_ref.as_read();',s);self.assertIn('yes!(r, read_ref.test());',s)
  def test_move_keeps_observable_source_empty(self):
@@ -49,7 +49,7 @@ class CppNumericInventoryTests(unittest.TestCase):
   self.assertEqual(len(found),10)
   self.assertIn(('bit_ref.MaskSingleBit',40),[(c['identity'],c['line']) for c in found])
  def test_all_frozen_runtime_and_static_mappings_are_discovered(self):
-  for name in ['additional-ports.json','structure-ports.json','collection-ports.json','numerics-text-ports.json','compile-time-ports.json']:
+  for name in ['additional-ports.json','structure-ports.json','collection-ports.json','numerics-text-ports.json','matrix-type-ports.json','compile-time-ports.json']:
    manifest=json.loads((ROOT/'compatibility'/name).read_text())
    for case in manifest['cases']:
     text=(ROOT/'tests/upstream/blender'/Path(case['path']).name).read_text()

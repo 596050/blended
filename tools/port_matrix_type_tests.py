@@ -70,7 +70,7 @@ def translate(body,identity):
  code=code.replace('float array[2][2] = {{1.0f, 2.0f}, {3.0f, 4.0f}};','let array=[[1.0_f32,2.0_f32],[3.0_f32,4.0_f32]];')
  code=code.replace('float (*ptr)[2] = array;','let ptr=&array;')
  code=code.replace('float c_style_mat[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};','let c_style_mat=m::cell_storage([[1.0_f32,2.0,3.0,4.0],[5.0,6.0,7.0,8.0],[9.0,10.0,11.0,12.0],[13.0,14.0,15.0,16.0]]);')
- code=code.replace('float4x4_view c_mat_view = float4x4_view(c_style_mat);','let c_mat_view=m::View::<f32,4,4,4,4>::new(&c_style_mat,0,0);')
+ code=code.replace('float4x4_view c_mat_view = float4x4_view(c_style_mat);','let c_mat_view=m::ReadView::<f32,4,4,4,4>::new(&c_style_mat,0,0);')
  code=code.replace('float4x4_mutableview c_mat_mutable_view = float4x4_mutableview(c_style_mat);','let c_mat_mutable_view=m::View::<f32,4,4,4,4>::new(&c_style_mat,0,0);')
  def declaration(h):
   typename,name,value=h.groups();value=value.strip()
