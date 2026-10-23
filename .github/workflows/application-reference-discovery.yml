@@ -7,21 +7,6 @@ on:
 permissions:
   contents: read
 jobs:
-  remove-temporary-kit:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 3
-    permissions:
-      actions: write
-    steps:
-      - name: Remove the downloaded temporary compiler artifact to avoid retaining large storage
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-          NAME=$(gh api "repos/${REPO}/actions/artifacts/12500415280" --jq .name)
-          test "$NAME" = offline-port-development-kit
-          gh api --method DELETE "repos/${REPO}/actions/artifacts/12500415280"
   application-reference:
     runs-on: ubuntu-24.04
     timeout-minutes: 100
@@ -32,6 +17,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Install required headless graphics development headers
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl-dev libgl-dev libx11-dev libxi-dev libxxf86vm-dev libxfixes-dev libxrender-dev libxrandr-dev libxkbcommon-dev
       - name: Fetch original pinned sources, test assets and application libraries
         run: |
           set -euo pipefail
