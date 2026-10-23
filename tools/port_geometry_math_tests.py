@@ -12,7 +12,7 @@ from port_collection_tests import extract,split_args,rewrite_calls
 from port_numeric_type_tests import numbers,comments
 ROOT=Path(__file__).resolve().parents[1]
 PIN='94363991e7dcf39e2d70614aa002ab6f67764a5d'
-FILES={'BLI_math_geom_test.cc': 'SOURCE_LEGACY_SHA', 'BLI_math_geom_hh_test.cc': 'SOURCE_MODERN_SHA'}
+FILES={'BLI_math_geom_test.cc': '9d03dac9a1a797eade844f588276c114b3dc79241a52830bfbc7323fdc8dc07d', 'BLI_math_geom_hh_test.cc': '6450b2a9c1ac4f54bc1f73f1c9478f77c6b88388438b2e8b384342711ed0f6a4'}
 HEAD='''// SPDX-FileCopyrightText: 2024 Blender Authors
 // SPDX-License-Identifier: Apache-2.0
 // Generated from unmodified, hash-locked original test bodies.
@@ -112,9 +112,9 @@ def translate(body,identity):
   def assertion(a,kind=kind,macro=macro):
    parts=[expr(x) for x in split_args(a)]
    if kind=='EQ' and (parts[0] in ('v0','v1','v2','v3') or 'isect_point_poly' in a):macro='eq'
-   return macro+'!(r, '+', '.join(parts)+')'
+   return macro+'!(report, '+', '.join(parts)+')'
   s=rewrite_calls(s,'EXPECT_'+kind+'(',assertion)
- s=rewrite_calls(s,'ASSERT_TRUE(',lambda a:'fatal_yes!(r, '+expr(a)+')')
+ s=rewrite_calls(s,'ASSERT_TRUE(',lambda a:'fatal_yes!(report, '+expr(a)+')')
  s=re.sub(r'(?m)^\s*(?:normal_quad_v3|plane_from_point_normal_v3|closest_to_line_segment_v3|closest_to_plane_normalized_v3|closest_to_plane_v3|axis_dominant_v3_to_m3|barycentric_weights_v2|interp_weights_poly|interp_weights_poly_v2|interp_bilinear_quad_v3|blender::map_to_sphere|cross_tri_v3|cross_poly_v3)\([^;]+;',lambda m:expr(m[0]),s)
  s=re.sub(r'return float3\([^;]+;',lambda m:expr(m[0]),s)
  s=s.replace('reinterpret_cast<float (*)[2]>(verts.data())','&verts').replace('int(verts.size())','verts.len()').replace('float2(0.5f, 0.5f)','[0.5_f32,0.5_f32]')
@@ -131,7 +131,7 @@ def generate(root=ROOT):
    translated=translate(body,identity);sites=len(re.findall(r'\b(?:EXPECT|ASSERT)_(?:EQ|NEAR|TRUE|FALSE)\s*\(',comments(body)))
    if sites!=len(re.findall(r'\b(?:eq|numeq|near|yes|no|fatal_yes)!',translated)):raise ValueError('Dropped or duplicated assertion '+identity)
    count=LOOP_COUNTS.get(identity,sites);fn=identity.replace('.','__')
-   out+=f'\n// {source}:{line}\npub fn {fn}()->Report{{let mut r=Report::default();\n{translated}\nr\n}}\n'
+   out+=f'\n// {source}:{line}\npub fn {fn}()->Report{{let mut report=Report::default();\n{translated}\nreport\n}}\n'
    native+=f'#[test]\n#[allow(non_snake_case)]\nfn {fn}(){{let r=blended_core::geometry_math_cases::{fn}();assert!(r.passed(),"{{:?}}",r.failures);assert_eq!(r.assertions,{count});}}\n'
    cases.append(dict(id=identity,path=source,line=line,source_sha256=digest,rust_function=fn,assertion_count=sites,expected_runtime_assertions=count,index=len(cases),status='ported_unexecuted'))
   (root/'tests/upstream/blender'/name).write_bytes(raw)
