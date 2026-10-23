@@ -70,6 +70,21 @@
  
  // source/blender/blenlib/tests/BLI_math_vector_types_test.cc:13
  pub fn math_vec_types__ScalarConstructorUnsigned()->Report{
+--- matrix_type_cases.rs
++++ shadow/matrix_type_cases.rs
+@@ -9,9 +9,9 @@
+  pub fn check(&mut self,p:bool,expression:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {expression}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)==($b),stringify!($a == $b),line!());}};}
+-macro_rules! numeq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a as f64)==($b as f64),stringify!($a == $b),line!());}};}
+-macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check((($a as f64)-($b as f64)).abs()<=($e as f64),stringify!($a ~= $b within $e),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_ref(&($a),&($b)),stringify!($a == $b),line!());}};}
++macro_rules! numeq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a as f64,$b as f64),stringify!($a == $b),line!());}};}
++macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};}
+ 
+ // source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:14
+ pub fn math_matrix_types__DefaultConstructor()->Report{let mut r=Report::default();
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
