@@ -115,6 +115,32 @@
  
  // source/blender/blenlib/tests/BLI_math_matrix_types_test.cc:14
  pub fn math_matrix_types__DefaultConstructor()->Report{let mut r=Report::default();
+--- sampling_cases.rs
++++ shadow/sampling_cases.rs
+@@ -7,8 +7,8 @@
+  pub fn check(&mut self,p:bool,expression:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {expression}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)==($b),stringify!($a == $b),line!());}};}
+-macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check((($a as f64)-($b as f64)).abs()<=($e as f64),stringify!($a ~= $b within $e),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};}
+ macro_rules! near4 {($r:expr,$a:expr,$b:expr,$e:expr)=>{{let a=$a;let b=$b;for i in 0..4 {near!($r,a[i],b[i],$e);}}};}
+ use crate::image_sampling::*;
+ const float_tolerance:f32=(0.00005_f32) as f32;
+--- curve_cases.rs
++++ shadow/curve_cases.rs
+@@ -7,8 +7,8 @@
+  pub fn check(&mut self,p:bool,expression:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {expression}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)==($b),stringify!($a == $b),line!());}};}
+-macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check((($a as f64)-($b as f64)).abs()<=($e as f64),stringify!($a ~= $b within $e),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};}
+ macro_rules! near4 {($r:expr,$a:expr,$b:expr,$e:expr)=>{{let a=$a;let b=$b;for i in 0..4 {near!($r,a[i],b[i],$e);}}};}
+ use crate::curve_sampling::*;
+ // Translated upstream helpers, including every EXPECT_NEAR in test_uniform_lengths.
 --- geometry_math_cases.rs
 +++ shadow/geometry_math_cases.rs
 @@ -8,12 +8,12 @@

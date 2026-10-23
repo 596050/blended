@@ -523,6 +523,58 @@
         "math_geom_hh.InterpBilinearQuad",
         "math_geom_hh.MapToSphere"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_interp_test.cc",
+      "source_sha256": "1057f15ff1a473a157e4fbf81fdaed258b1105a0f54e860c4b6df43d228be28e",
+      "target_path": "crates/blended-core/src/sampling_cases.rs",
+      "target_sha256": "f8f7332a4310354a5c8ae5b66b87b1a885bf7794f87080aac0d7383bd37722c5",
+      "case_ids": [
+        "math_interp.NearestCharExactSamples",
+        "math_interp.NearestCharHalfwaySamples",
+        "math_interp.NearestFloatExactSamples",
+        "math_interp.NearestFloatHalfwaySamples",
+        "math_interp.BilinearCharExactSamples",
+        "math_interp.BilinearCharHalfwayUSamples",
+        "math_interp.BilinearCharHalfwayVSamples",
+        "math_interp.BilinearCharSamples",
+        "math_interp.BilinearFloatSamples",
+        "math_interp.BilinearCharPartiallyOutsideImageBorder",
+        "math_interp.BilinearCharPartiallyOutsideImage",
+        "math_interp.BilinearCharPartiallyOutsideImageWrap",
+        "math_interp.BilinearFloatPartiallyOutsideImageBorder",
+        "math_interp.BilinearFloatPartiallyOutsideImage",
+        "math_interp.BilinearFloatPartiallyOutsideImageWrap",
+        "math_interp.BilinearCharFullyOutsideImage",
+        "math_interp.BilinearFloatFullyOutsideImage",
+        "math_interp.CubicBSplineCharExactSamples",
+        "math_interp.CubicBSplineCharSamples",
+        "math_interp.CubicBSplineFloatSamples",
+        "math_interp.CubicBSplineCharPartiallyOutsideImage",
+        "math_interp.CubicBSplineFloatPartiallyOutsideImage",
+        "math_interp.CubicMitchellCharExactSamples",
+        "math_interp.CubicMitchellCharSamples",
+        "math_interp.CubicMitchellFloatSamples",
+        "math_interp.CubicMitchellCharPartiallyOutsideImage",
+        "math_interp.CubicMitchellFloatPartiallyOutsideImage"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_length_parameterize_test.cc",
+      "source_sha256": "4c7aa638696fccf0e794e0a5d0d949796ee57f6863d7444774ea18ad926cf0a3",
+      "target_path": "crates/blended-core/src/curve_cases.rs",
+      "target_sha256": "e9e98b4818d3ccd4e2f3dd6f700a18151816ef0bcdaca55c24f33d9d7fea98aa",
+      "case_ids": [
+        "length_parameterize.FloatSimple",
+        "length_parameterize.Float",
+        "length_parameterize.Float2",
+        "length_parameterize.Float2Cyclic",
+        "length_parameterize.LineMany",
+        "length_parameterize.CyclicMany",
+        "length_parameterize.InterpolateColor",
+        "length_parameterize.ArbitraryFloatSimple",
+        "length_parameterize.ArbitraryFloat2"
+      ]
     }
   ]
 }
