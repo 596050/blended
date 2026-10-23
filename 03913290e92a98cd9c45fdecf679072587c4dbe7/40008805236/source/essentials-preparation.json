@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "kind": "original-resource-package-preparation",
+  "started_utc": "2026-10-23T19:52:59.319217+00:00",
+  "status": "assembled_and_verified",
+  "tests_executed": 0,
+  "full_feature_parity": false,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+        "-c",
+        "lfs.url=https://projects.blender.org/blender/blender.git/info/lfs",
+        "lfs",
+        "pull",
+        "--include=assets/brushes/essentials_brushes-mesh_sculpt.blend"
+      ],
+      "started_utc": "2026-10-23T19:52:59.319317+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "essentials-preparation-0.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "tools/browser_package_overlay.py",
+        "--base-archive",
+        "/home/runner/work/blended/blended/evidence/browser-source-build/blender-source-development.tar.gz",
+        "--source-build-receipt",
+        "/home/runner/work/blended/blended/evidence/browser-source-build/source-build.json",
+        "--asset-root",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+        "--output",
+        "/home/runner/work/blended/blended/evidence/browser-source-build/essentials"
+      ],
+      "started_utc": "2026-10-23T19:53:03.694106+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "essentials-preparation-1.log",
+        "bytes": 155,
+        "sha256": "74142b14b2e82520ce51c3f55b9c0072ea0c9623c5d97016cb4a97ed1d9c3fce"
+      }
+    }
+  ],
+  "finished_utc": "2026-10-23T19:53:46.013178+00:00"
+}

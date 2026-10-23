@@ -1,0 +1,4371 @@
+{
+  "schema": 1,
+  "artifact_kind": "blender-source-development",
+  "status": "built",
+  "started_utc": "2026-10-23T19:07:48.234974+00:00",
+  "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "canonical_patch_sha256": "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c",
+  "build_mode": "OFF",
+  "with_buildinfo": true,
+  "deployed": false,
+  "shipping_profile": false,
+  "hardware_verified": false,
+  "full_feature_parity": false,
+  "tests_executed": false,
+  "reproduces_published_release": false,
+  "bitwise_reproducibility_verified": false,
+  "build_tool_differences": [
+    "Ninja 1.13.0 from a verified PyPI wheel; the port runbook names 1.13.1."
+  ],
+  "jobs": 2,
+  "entry_point": {
+    "path": "/home/runner/work/blended/blended/tools/rebuild_browser_port.py",
+    "bytes": 53250,
+    "sha256": "293327e63f69f44e83013f7bc2c9106ae5ed695ac4b3031c9a2f3316f1d2b647"
+  },
+  "source_checkouts": [
+    {
+      "name": "port",
+      "url": "https://github.com/gessa-ai/blender-web.git",
+      "commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa"
+    },
+    {
+      "name": "blender",
+      "url": "https://github.com/blender/blender.git",
+      "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream"
+    },
+    {
+      "name": "emsdk",
+      "url": "https://github.com/emscripten-core/emsdk.git",
+      "commit": "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk"
+    },
+    {
+      "name": "dawn",
+      "url": "https://github.com/google/dawn.git",
+      "commit": "36cf1fae0cd8a81a4fb4580751648b80b2e6255c",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn"
+    },
+    {
+      "name": "dawn-third_party-abseil-cpp",
+      "url": "https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp",
+      "commit": "63f52bfdb2ebc0ef3add13b98af45778d0040278",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/abseil-cpp"
+    },
+    {
+      "name": "dawn-third_party-jinja2",
+      "url": "https://chromium.googlesource.com/chromium/src/third_party/jinja2",
+      "commit": "c3027d884967773057bf74b957e3fea87e5df4d7",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/jinja2"
+    },
+    {
+      "name": "dawn-third_party-markupsafe",
+      "url": "https://chromium.googlesource.com/chromium/src/third_party/markupsafe",
+      "commit": "4256084ae14175d38a3ff7d739dca83ae49ccec6",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/markupsafe"
+    },
+    {
+      "name": "dawn-third_party-spirv-headers-src",
+      "url": "https://chromium.googlesource.com/external/github.com/KhronosGroup/SPIRV-Headers",
+      "commit": "4015a331f5ffd6fc5c6fa7b03e08fb4a692491d7",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-headers/src"
+    },
+    {
+      "name": "dawn-third_party-spirv-tools-src",
+      "url": "https://chromium.googlesource.com/external/github.com/KhronosGroup/SPIRV-Tools",
+      "commit": "a9cdf5bdd25d516294b5c25502b67e6116ed7eb5",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-tools/src"
+    },
+    {
+      "name": "dawn-third_party-glslang-src",
+      "url": "https://chromium.googlesource.com/external/github.com/KhronosGroup/glslang",
+      "commit": "8d6dd0e41424c25806ca20523430f2e4c3aeb1a1",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/glslang/src"
+    },
+    {
+      "name": "dawn-third_party-webgpu-headers-src",
+      "url": "https://chromium.googlesource.com/external/github.com/webgpu-native/webgpu-headers",
+      "commit": "01addc4ba8a2915a061b7095a6768b512071ab96",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/webgpu-headers/src"
+    },
+    {
+      "name": "dawn-third_party-googletest",
+      "url": "https://chromium.googlesource.com/external/github.com/google/googletest",
+      "commit": "4fe3307fb2d9f86d19777c7eb0e4809e9694dde7",
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/googletest"
+    }
+  ],
+  "stages": [
+    {
+      "name": "build-driver-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended",
+      "started_utc": "2026-10-23T19:07:48.235756+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/000-build-driver-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:48.239994+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/000-build-driver-identity.log",
+        "bytes": 41,
+        "sha256": "217d3974607306cb3ecabfcfa3fc03329eb1b532cf6d8ce7ccec11345bba9dfc"
+      }
+    },
+    {
+      "name": "port-init",
+      "argv": [
+        "git",
+        "init",
+        "--initial-branch=source-input"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:48.240607+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/001-port-init.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:48.248854+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/001-port-init.log",
+        "bytes": 104,
+        "sha256": "f1f80e6f91a7e3c4d4950df814633067ec8604b3a07c00e8954673bf44764c27"
+      }
+    },
+    {
+      "name": "port-remote",
+      "argv": [
+        "git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/gessa-ai/blender-web.git"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:48.249287+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/002-port-remote.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:48.253420+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/002-port-remote.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "port-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:48.253810+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/003-port-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:48.257906+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/003-port-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "port-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:48.258303+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/004-port-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:48.262408+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/004-port-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "port-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "0e02e84b2bc5d9b27a6dc6e275443292f781fbad"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:48.262813+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/005-port-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:48.678187+00:00",
+      "duration_seconds": 0.415,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/005-port-fetch.log",
+        "bytes": 121,
+        "sha256": "7fdd65792a9f86dbbb42d30211c41c74cfe2e8ece9b7a4c5745729d76a6d8e36"
+      }
+    },
+    {
+      "name": "port-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "0e02e84b2bc5d9b27a6dc6e275443292f781fbad"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:48.678765+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/006-port-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:51.600441+00:00",
+      "duration_seconds": 2.921,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/006-port-checkout.log",
+        "bytes": 103,
+        "sha256": "2b438b530924163fd076d9367055d1d07789046fdad2108633c53be5f9f8729e"
+      }
+    },
+    {
+      "name": "port-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:07:51.601051+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/007-port-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:51.605343+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/007-port-identity.log",
+        "bytes": 41,
+        "sha256": "e306d74d504c954826f37e04b720aac9191d7f22984da06d414ff17f95f14a31"
+      }
+    },
+    {
+      "name": "blender-init",
+      "argv": [
+        "git",
+        "init",
+        "--initial-branch=source-input"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:07:51.609330+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/008-blender-init.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:51.613409+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/008-blender-init.log",
+        "bytes": 113,
+        "sha256": "717d4bdaad6c45b6722b79dca32a620ba42542f793b68bf059d20d6822d55587"
+      }
+    },
+    {
+      "name": "blender-remote",
+      "argv": [
+        "git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/blender/blender.git"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:07:51.613834+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/009-blender-remote.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:51.617899+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/009-blender-remote.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "blender-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:07:51.618330+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/010-blender-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:51.622342+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/010-blender-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "blender-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:07:51.622783+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/011-blender-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:51.626853+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/011-blender-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "blender-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "fbe6228777e7d9afefcd61a413844e790ae75db7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:07:51.627827+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/012-blender-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:07:52.143344+00:00",
+      "duration_seconds": 0.515,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/012-blender-fetch.log",
+        "bytes": 116,
+        "sha256": "2aa94ff8422c15c36e1c49cb9335f4aa3ffec4bff6adf0b0104da65606269e96"
+      }
+    },
+    {
+      "name": "blender-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "fbe6228777e7d9afefcd61a413844e790ae75db7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:07:52.143975+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/013-blender-checkout.log",
+      "elapsed_seconds": 30.001,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:23.312013+00:00",
+      "duration_seconds": 31.168,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/013-blender-checkout.log",
+        "bytes": 55,
+        "sha256": "9ce13324e41ebe8586e2b820dfd657c1ac6971fa5bce141d58e0ba72fef80459"
+      }
+    },
+    {
+      "name": "blender-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:23.312728+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/014-blender-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:23.317032+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/014-blender-identity.log",
+        "bytes": 41,
+        "sha256": "9803e14d7b2fc83126cc1d624b4891e776f545cf0ad534e25f984a67469af3b3"
+      }
+    },
+    {
+      "name": "source-status",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:23.317933+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/015-source-status.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:23.634534+00:00",
+      "duration_seconds": 0.316,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/015-source-status.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "canonical-check",
+      "argv": [
+        "git",
+        "apply",
+        "--check",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/patches/PREVIEW_SNAPSHOT.patch"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:23.635182+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/016-canonical-check.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:23.699887+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/016-canonical-check.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "canonical-apply",
+      "argv": [
+        "git",
+        "apply",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/patches/PREVIEW_SNAPSHOT.patch"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:23.700575+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/017-canonical-apply.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:23.815379+00:00",
+      "duration_seconds": 0.114,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/017-canonical-apply.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "source-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--stat"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:23.816245+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/018-source-diff.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:24.184379+00:00",
+      "duration_seconds": 0.368,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/018-source-diff.log",
+        "bytes": 14805,
+        "sha256": "b34d2c74da8f03e532d16d3c3b869151d972fbd9fe2abd509f758c34e64b7752"
+      }
+    },
+    {
+      "name": "source-epoch",
+      "argv": [
+        "git",
+        "show",
+        "-s",
+        "--format=%ct",
+        "fbe6228777e7d9afefcd61a413844e790ae75db7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:24.185062+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/019-source-epoch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:24.218312+00:00",
+      "duration_seconds": 0.032,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/019-source-epoch.log",
+        "bytes": 11,
+        "sha256": "2b696e829b51b8eef6a47f22a44c7da5d81bcca0a07a0a25b5a5806c228f9913"
+      }
+    },
+    {
+      "name": "host-python-tools",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--only-binary=:all:",
+        "--require-hashes",
+        "--no-deps",
+        "-r",
+        "/home/runner/work/blended/blended/.cache/browser-source/host-requirements.txt"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:24.227733+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/020-host-python-tools.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.354151+00:00",
+      "duration_seconds": 5.126,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/020-host-python-tools.log",
+        "bytes": 2595,
+        "sha256": "800aa80d7514eadb23d9513721d7bb548b41ae2e3693afdc2909a80f749d3887"
+      }
+    },
+    {
+      "name": "host-packages",
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package}\t${Version}\n"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:29.355534+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/021-host-packages.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.372310+00:00",
+      "duration_seconds": 0.016,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/021-host-packages.log",
+        "bytes": 37540,
+        "sha256": "2aab1b0e249b45e98ea934d3b933fe7a359f534d1b17e27888894348867b60cc"
+      }
+    },
+    {
+      "name": "host-python-freeze",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:29.372909+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/022-host-python-freeze.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.637903+00:00",
+      "duration_seconds": 0.265,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/022-host-python-freeze.log",
+        "bytes": 127,
+        "sha256": "40267595e424295f74258123bab9755bfbfea1ba54d6a0f30d30997f718e78fe"
+      }
+    },
+    {
+      "name": "host-platform",
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:29.638728+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/023-host-platform.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.640993+00:00",
+      "duration_seconds": 0.002,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/023-host-platform.log",
+        "bytes": 113,
+        "sha256": "cd8e31ad3f05d597238a1403bb5c2d25c975d53959c3d48af034216515712dc5"
+      }
+    },
+    {
+      "name": "host-storage",
+      "argv": [
+        "df",
+        "-h",
+        "/home/runner/work/blended/blended/.cache/browser-source"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:29.641528+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/024-host-storage.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.646050+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/024-host-storage.log",
+        "bytes": 89,
+        "sha256": "92621c68e96dd2021c564923f76da562bb8ab74a64218e772aee6ee2ed0d0775"
+      }
+    },
+    {
+      "name": "emsdk-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:29.646743+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/025-emsdk-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.650903+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/025-emsdk-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "emsdk-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:29.651419+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/026-emsdk-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.655611+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/026-emsdk-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "emsdk-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:29.656131+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/027-emsdk-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.921209+00:00",
+      "duration_seconds": 0.265,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/027-emsdk-fetch.log",
+        "bytes": 122,
+        "sha256": "003ce0826901316b0b39b74c23383fcba0f2e57a62da4a23636cb179b458f642"
+      }
+    },
+    {
+      "name": "emsdk-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:29.922071+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/028-emsdk-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.930504+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/028-emsdk-checkout.log",
+        "bytes": 59,
+        "sha256": "53ba68f223bb1ebb7691a05d6f706ab170cbc5f4824cc44b95d7a90cf6fe4c19"
+      }
+    },
+    {
+      "name": "emsdk-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:29.931132+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/029-emsdk-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:29.935416+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/029-emsdk-identity.log",
+        "bytes": 41,
+        "sha256": "f3ae4566613796e1ed474eb40cf45a2783f91eade8d925c5999787dc66f5d1ed"
+      }
+    },
+    {
+      "name": "emsdk-install",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/emsdk.py",
+        "install",
+        "6.0.5"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:29.936632+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/030-emsdk-install.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:30.101436+00:00",
+      "duration_seconds": 0.164,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/030-emsdk-install.log",
+        "bytes": 428,
+        "sha256": "af36bcd0be48b844b364f3cbc67c4f503f55fc5d3bd643621c9c58d1f4ffbf3c"
+      }
+    },
+    {
+      "name": "emsdk-activate",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/emsdk.py",
+        "activate",
+        "6.0.5"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk",
+      "started_utc": "2026-10-23T19:08:30.102333+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/031-emsdk-activate.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:30.267401+00:00",
+      "duration_seconds": 0.165,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/031-emsdk-activate.log",
+        "bytes": 865,
+        "sha256": "d4def6858d995e7d091e49c79a04ea5822768c1213d2f8ac37323bc31250de34"
+      }
+    },
+    {
+      "name": "compiler-identity",
+      "argv": [
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/emcc",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:08:30.268249+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/032-compiler-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:30.438552+00:00",
+      "duration_seconds": 0.165,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/032-compiler-identity.log",
+        "bytes": 330,
+        "sha256": "e84a291d7aea75b67a36ee9ce3ef004c7b76c8e1bfc6f922bb5b91e95d31edd2"
+      }
+    },
+    {
+      "name": "node-identity",
+      "argv": [
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/node/22.16.0_64bit/bin/node",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:08:30.439364+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/033-node-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:30.447803+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/033-node-identity.log",
+        "bytes": 9,
+        "sha256": "256a8e08ee35cb8ad36ae16385257192c3dbe7d80cfdeff9eaa886531b2f83bc"
+      }
+    },
+    {
+      "name": "numerics-check-eigen-matrix-wasm-sse2",
+      "argv": [
+        "patch",
+        "--batch",
+        "--forward",
+        "--fuzz=0",
+        "--strip=1",
+        "--input=/home/runner/work/blended/blended/patches/browser-numerics/0002-eigen-matrix-wasm-sse2.patch",
+        "--dry-run"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:30.565522+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/034-numerics-check-eigen-matrix-wasm-sse2.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:30.630652+00:00",
+      "duration_seconds": 0.065,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/034-numerics-check-eigen-matrix-wasm-sse2.log",
+        "bytes": 42,
+        "sha256": "3a0186f6f7aaf60666365cc425b4e93e88f404183f97f6c070e6e95c0f681381"
+      }
+    },
+    {
+      "name": "numerics-apply-eigen-matrix-wasm-sse2",
+      "argv": [
+        "patch",
+        "--batch",
+        "--forward",
+        "--fuzz=0",
+        "--strip=1",
+        "--input=/home/runner/work/blended/blended/patches/browser-numerics/0002-eigen-matrix-wasm-sse2.patch"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:08:30.631397+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/035-numerics-apply-eigen-matrix-wasm-sse2.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:30.633752+00:00",
+      "duration_seconds": 0.002,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/035-numerics-apply-eigen-matrix-wasm-sse2.log",
+        "bytes": 42,
+        "sha256": "0d69ef74b28b5993ce235c3205e18d58f3a6f0b5ddfcab15966fef9a3e1766f0"
+      }
+    },
+    {
+      "name": "numerics-rebuild-system-libraries",
+      "argv": [
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/embuilder",
+        "--force",
+        "build",
+        "libc",
+        "libc-mt"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:08:30.634869+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/036-numerics-rebuild-system-libraries.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:56.060637+00:00",
+      "duration_seconds": 25.425,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/036-numerics-rebuild-system-libraries.log",
+        "bytes": 1358,
+        "sha256": "af47d6c4fca4b8a467d237421b1b9dd4acf4531324512e850d325361b2065c8a"
+      }
+    },
+    {
+      "name": "host-tool-cmake",
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:56.077587+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/037-host-tool-cmake.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:56.242551+00:00",
+      "duration_seconds": 0.164,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/037-host-tool-cmake.log",
+        "bytes": 90,
+        "sha256": "f05fe86b5001ce00292a42883a46ecdeee3a88e96401f2d833aa0a1cb4f223ee"
+      }
+    },
+    {
+      "name": "host-tool-ninja",
+      "argv": [
+        "ninja",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:56.243453+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/038-host-tool-ninja.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:56.308222+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/038-host-tool-ninja.log",
+        "bytes": 36,
+        "sha256": "9c46b773819ff3ae8b121720c79fb91cde59f3159650bc30e67537dca71a542c"
+      }
+    },
+    {
+      "name": "host-tool-clang++-17",
+      "argv": [
+        "clang++-17",
+        "--version"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:56.309228+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/039-host-tool-clang++-17.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:59.904969+00:00",
+      "duration_seconds": 3.595,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/039-host-tool-clang++-17.log",
+        "bytes": 110,
+        "sha256": "5ad465a26920f53e5a5dc1c0f9d02d47986dcda91a982e203036b70a20a1beec"
+      }
+    },
+    {
+      "name": "host-tool-python3",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "-VV"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source",
+      "started_utc": "2026-10-23T19:08:59.907527+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/040-host-tool-python3.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:08:59.912288+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/040-host-tool-python3.log",
+        "bytes": 58,
+        "sha256": "e8aeb57d0443dec35aabd2507f772922fff8b62098a65e7f16a540d1ecc44040"
+      }
+    },
+    {
+      "name": "dawn-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn",
+      "started_utc": "2026-10-23T19:09:00.473390+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/041-dawn-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:00.477892+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/041-dawn-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn",
+      "started_utc": "2026-10-23T19:09:00.478523+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/042-dawn-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:00.482810+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/042-dawn-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "36cf1fae0cd8a81a4fb4580751648b80b2e6255c"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn",
+      "started_utc": "2026-10-23T19:09:00.483414+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/043-dawn-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:01.049372+00:00",
+      "duration_seconds": 0.565,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/043-dawn-fetch.log",
+        "bytes": 116,
+        "sha256": "1f64e7c91e51e7f99e6bf75d5c799ce3ecd027d76acb805d9840e0019b748cbc"
+      }
+    },
+    {
+      "name": "dawn-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "36cf1fae0cd8a81a4fb4580751648b80b2e6255c"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn",
+      "started_utc": "2026-10-23T19:09:01.050325+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/044-dawn-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.650206+00:00",
+      "duration_seconds": 3.599,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/044-dawn-checkout.log",
+        "bytes": 70,
+        "sha256": "ebaa95b3c2a731f32f1d2d8fcef1bc000e3a3e1c592f429b24549e6865a1ba47"
+      }
+    },
+    {
+      "name": "dawn-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn",
+      "started_utc": "2026-10-23T19:09:04.651187+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/045-dawn-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.655803+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/045-dawn-identity.log",
+        "bytes": 41,
+        "sha256": "eedcb57c28043b1c93abb2f9bb98c050574d175c12fed26392ffdbbeff3a439f"
+      }
+    },
+    {
+      "name": "dawn-third_party-abseil-cpp-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/abseil-cpp",
+      "started_utc": "2026-10-23T19:09:04.657402+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/046-dawn-third_party-abseil-cpp-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.661661+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/046-dawn-third_party-abseil-cpp-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-abseil-cpp-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/abseil-cpp",
+      "started_utc": "2026-10-23T19:09:04.662264+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/047-dawn-third_party-abseil-cpp-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.666549+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/047-dawn-third_party-abseil-cpp-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-abseil-cpp-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "63f52bfdb2ebc0ef3add13b98af45778d0040278"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/abseil-cpp",
+      "started_utc": "2026-10-23T19:09:04.667205+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/048-dawn-third_party-abseil-cpp-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.932262+00:00",
+      "duration_seconds": 0.265,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/048-dawn-third_party-abseil-cpp-fetch.log",
+        "bytes": 151,
+        "sha256": "5c50411b07ddacd4b1cac395faf919147ac8541c429e3569f7254218e138da96"
+      }
+    },
+    {
+      "name": "dawn-third_party-abseil-cpp-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "63f52bfdb2ebc0ef3add13b98af45778d0040278"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/abseil-cpp",
+      "started_utc": "2026-10-23T19:09:04.933399+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/049-dawn-third_party-abseil-cpp-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.942373+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/049-dawn-third_party-abseil-cpp-checkout.log",
+        "bytes": 63,
+        "sha256": "488cfa79564bb982462fe0c16b66c51041b7e85dd3fa415dbdc74cfd5acf430c"
+      }
+    },
+    {
+      "name": "dawn-third_party-abseil-cpp-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/abseil-cpp",
+      "started_utc": "2026-10-23T19:09:04.943059+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/050-dawn-third_party-abseil-cpp-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.947416+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/050-dawn-third_party-abseil-cpp-identity.log",
+        "bytes": 41,
+        "sha256": "f199dab2acdfbf9308691b6bf476f0c94d1716381a6350adc64e5d6ef482afcc"
+      }
+    },
+    {
+      "name": "dawn-third_party-jinja2-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/jinja2",
+      "started_utc": "2026-10-23T19:09:04.948944+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/051-dawn-third_party-jinja2-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.953205+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/051-dawn-third_party-jinja2-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-jinja2-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/jinja2",
+      "started_utc": "2026-10-23T19:09:04.953928+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/052-dawn-third_party-jinja2-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:04.958259+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/052-dawn-third_party-jinja2-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-jinja2-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "c3027d884967773057bf74b957e3fea87e5df4d7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/jinja2",
+      "started_utc": "2026-10-23T19:09:04.958934+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/053-dawn-third_party-jinja2-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.224260+00:00",
+      "duration_seconds": 0.265,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/053-dawn-third_party-jinja2-fetch.log",
+        "bytes": 147,
+        "sha256": "af1ce6394eeb2a1b1506756550cd40fa789ee4bed171b4772a7d6bc7d951f011"
+      }
+    },
+    {
+      "name": "dawn-third_party-jinja2-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "c3027d884967773057bf74b957e3fea87e5df4d7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/jinja2",
+      "started_utc": "2026-10-23T19:09:05.225262+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/054-dawn-third_party-jinja2-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.229881+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/054-dawn-third_party-jinja2-checkout.log",
+        "bytes": 70,
+        "sha256": "6352ffdb54d45fb9a7ced6c58979f9f0ed04204749a443732559496d27be418f"
+      }
+    },
+    {
+      "name": "dawn-third_party-jinja2-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/jinja2",
+      "started_utc": "2026-10-23T19:09:05.230624+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/055-dawn-third_party-jinja2-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.235024+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/055-dawn-third_party-jinja2-identity.log",
+        "bytes": 41,
+        "sha256": "c7ceb107bc2729e3c8af2160f8b62e033d89ed96188743e5050038c6937303e6"
+      }
+    },
+    {
+      "name": "dawn-third_party-markupsafe-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/markupsafe",
+      "started_utc": "2026-10-23T19:09:05.236574+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/056-dawn-third_party-markupsafe-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.240949+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/056-dawn-third_party-markupsafe-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-markupsafe-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/markupsafe",
+      "started_utc": "2026-10-23T19:09:05.241669+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/057-dawn-third_party-markupsafe-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.246064+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/057-dawn-third_party-markupsafe-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-markupsafe-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "4256084ae14175d38a3ff7d739dca83ae49ccec6"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/markupsafe",
+      "started_utc": "2026-10-23T19:09:05.246759+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/058-dawn-third_party-markupsafe-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.461971+00:00",
+      "duration_seconds": 0.215,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/058-dawn-third_party-markupsafe-fetch.log",
+        "bytes": 151,
+        "sha256": "837390e3af9785966d8e69f33b35f8a2595d4079c53ea7825f8523db7db2c7d2"
+      }
+    },
+    {
+      "name": "dawn-third_party-markupsafe-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "4256084ae14175d38a3ff7d739dca83ae49ccec6"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/markupsafe",
+      "started_utc": "2026-10-23T19:09:05.462928+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/059-dawn-third_party-markupsafe-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.467362+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/059-dawn-third_party-markupsafe-checkout.log",
+        "bytes": 70,
+        "sha256": "1b6f17fefa23ad365c2365af0ea9d8a89584efd834fed60c732255e03f49920e"
+      }
+    },
+    {
+      "name": "dawn-third_party-markupsafe-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/markupsafe",
+      "started_utc": "2026-10-23T19:09:05.468056+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/060-dawn-third_party-markupsafe-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.472342+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/060-dawn-third_party-markupsafe-identity.log",
+        "bytes": 41,
+        "sha256": "35fdee9b7e595b599dedd8e11b285d40cc849422eb2f416a4a463f0b98f38aa1"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-headers-src-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-headers/src",
+      "started_utc": "2026-10-23T19:09:05.473932+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/061-dawn-third_party-spirv-headers-src-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.478239+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/061-dawn-third_party-spirv-headers-src-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-headers-src-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-headers/src",
+      "started_utc": "2026-10-23T19:09:05.478950+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/062-dawn-third_party-spirv-headers-src-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.483251+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/062-dawn-third_party-spirv-headers-src-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-headers-src-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "4015a331f5ffd6fc5c6fa7b03e08fb4a692491d7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-headers/src",
+      "started_utc": "2026-10-23T19:09:05.483958+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/063-dawn-third_party-spirv-headers-src-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.749246+00:00",
+      "duration_seconds": 0.265,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/063-dawn-third_party-spirv-headers-src-fetch.log",
+        "bytes": 162,
+        "sha256": "6d5d53de507dd26740864245f86c6daec5cf53da2d4924b2654f77a4b6df0a2a"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-headers-src-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "4015a331f5ffd6fc5c6fa7b03e08fb4a692491d7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-headers/src",
+      "started_utc": "2026-10-23T19:09:05.750314+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/064-dawn-third_party-spirv-headers-src-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.754906+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/064-dawn-third_party-spirv-headers-src-checkout.log",
+        "bytes": 77,
+        "sha256": "bfa9eea51e01a01be505e30c98801d35580fd8dde726349dcd0b2205cf7f933a"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-headers-src-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-headers/src",
+      "started_utc": "2026-10-23T19:09:05.755654+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/065-dawn-third_party-spirv-headers-src-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.760082+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/065-dawn-third_party-spirv-headers-src-identity.log",
+        "bytes": 41,
+        "sha256": "bbc9b42d7a0e892560c703ff2ec10fb8a9496fdbdc66abde59ff5eec3d5711fc"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-tools-src-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-tools/src",
+      "started_utc": "2026-10-23T19:09:05.761984+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/066-dawn-third_party-spirv-tools-src-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.766435+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/066-dawn-third_party-spirv-tools-src-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-tools-src-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-tools/src",
+      "started_utc": "2026-10-23T19:09:05.767181+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/067-dawn-third_party-spirv-tools-src-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:05.771654+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/067-dawn-third_party-spirv-tools-src-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-tools-src-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "a9cdf5bdd25d516294b5c25502b67e6116ed7eb5"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-tools/src",
+      "started_utc": "2026-10-23T19:09:05.772372+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/068-dawn-third_party-spirv-tools-src-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.037716+00:00",
+      "duration_seconds": 0.265,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/068-dawn-third_party-spirv-tools-src-fetch.log",
+        "bytes": 160,
+        "sha256": "6610fdefd93fbe5e1d3eba902bedc0c37cc890a0a741b8315b938d8f709c1a1c"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-tools-src-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "a9cdf5bdd25d516294b5c25502b67e6116ed7eb5"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-tools/src",
+      "started_utc": "2026-10-23T19:09:06.038743+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/069-dawn-third_party-spirv-tools-src-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.047401+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/069-dawn-third_party-spirv-tools-src-checkout.log",
+        "bytes": 65,
+        "sha256": "fe73d6eaf420d221bb812e7f474686119bb75c2dcc01ca92bd647cf04d10f1a4"
+      }
+    },
+    {
+      "name": "dawn-third_party-spirv-tools-src-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/spirv-tools/src",
+      "started_utc": "2026-10-23T19:09:06.048226+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/070-dawn-third_party-spirv-tools-src-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.052746+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/070-dawn-third_party-spirv-tools-src-identity.log",
+        "bytes": 41,
+        "sha256": "7fa7403112d6523f59ed4c0169b459745a86b6cf382d09e5d37b7809fadab95d"
+      }
+    },
+    {
+      "name": "dawn-third_party-glslang-src-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/glslang/src",
+      "started_utc": "2026-10-23T19:09:06.054460+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/071-dawn-third_party-glslang-src-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.058918+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/071-dawn-third_party-glslang-src-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-glslang-src-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/glslang/src",
+      "started_utc": "2026-10-23T19:09:06.059701+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/072-dawn-third_party-glslang-src-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.064145+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/072-dawn-third_party-glslang-src-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-glslang-src-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "8d6dd0e41424c25806ca20523430f2e4c3aeb1a1"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/glslang/src",
+      "started_utc": "2026-10-23T19:09:06.064907+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/073-dawn-third_party-glslang-src-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.631202+00:00",
+      "duration_seconds": 0.566,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/073-dawn-third_party-glslang-src-fetch.log",
+        "bytes": 156,
+        "sha256": "629f21f2ba2cc7d328748fad91d6e3967203c7361b78372b9a24a0289dca0f58"
+      }
+    },
+    {
+      "name": "dawn-third_party-glslang-src-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "8d6dd0e41424c25806ca20523430f2e4c3aeb1a1"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/glslang/src",
+      "started_utc": "2026-10-23T19:09:06.632365+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/074-dawn-third_party-glslang-src-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.649591+00:00",
+      "duration_seconds": 0.017,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/074-dawn-third_party-glslang-src-checkout.log",
+        "bytes": 88,
+        "sha256": "c8e26992582e23bed1970bff94d6352f4d2d8d015499b16e5efadd6f10d76dc6"
+      }
+    },
+    {
+      "name": "dawn-third_party-glslang-src-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/glslang/src",
+      "started_utc": "2026-10-23T19:09:06.650617+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/075-dawn-third_party-glslang-src-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.655217+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/075-dawn-third_party-glslang-src-identity.log",
+        "bytes": 41,
+        "sha256": "141005dde3b16063eb394d447dabc43bfc13f5cf50101aa7a1d14293860b677b"
+      }
+    },
+    {
+      "name": "dawn-third_party-webgpu-headers-src-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/webgpu-headers/src",
+      "started_utc": "2026-10-23T19:09:06.657039+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/076-dawn-third_party-webgpu-headers-src-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.661562+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/076-dawn-third_party-webgpu-headers-src-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-webgpu-headers-src-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/webgpu-headers/src",
+      "started_utc": "2026-10-23T19:09:06.662345+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/077-dawn-third_party-webgpu-headers-src-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:06.666807+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/077-dawn-third_party-webgpu-headers-src-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-webgpu-headers-src-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "01addc4ba8a2915a061b7095a6768b512071ab96"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/webgpu-headers/src",
+      "started_utc": "2026-10-23T19:09:06.667617+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/078-dawn-third_party-webgpu-headers-src-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.334441+00:00",
+      "duration_seconds": 0.666,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/078-dawn-third_party-webgpu-headers-src-fetch.log",
+        "bytes": 164,
+        "sha256": "1a35a410e79a9ce824ce21dab1f93c1838e62b1b8bfe7e8ebd812ba6e4fc381e"
+      }
+    },
+    {
+      "name": "dawn-third_party-webgpu-headers-src-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "01addc4ba8a2915a061b7095a6768b512071ab96"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/webgpu-headers/src",
+      "started_utc": "2026-10-23T19:09:07.335591+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/079-dawn-third_party-webgpu-headers-src-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.340342+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/079-dawn-third_party-webgpu-headers-src-checkout.log",
+        "bytes": 61,
+        "sha256": "76befc0aaec30d31699ce24f8d4e36735b5bff47c50554e76d68de33bf1d16c3"
+      }
+    },
+    {
+      "name": "dawn-third_party-webgpu-headers-src-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/webgpu-headers/src",
+      "started_utc": "2026-10-23T19:09:07.341177+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/080-dawn-third_party-webgpu-headers-src-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.345710+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/080-dawn-third_party-webgpu-headers-src-identity.log",
+        "bytes": 41,
+        "sha256": "e652182bc21f61957fa795b9637936e34d80039604be17610c3c6a4a99339999"
+      }
+    },
+    {
+      "name": "dawn-third_party-googletest-promisor",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.promisor",
+        "true"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/googletest",
+      "started_utc": "2026-10-23T19:09:07.347498+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/081-dawn-third_party-googletest-promisor.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.352025+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/081-dawn-third_party-googletest-promisor.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-googletest-filter",
+      "argv": [
+        "git",
+        "config",
+        "remote.origin.partialclonefilter",
+        "blob:none"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/googletest",
+      "started_utc": "2026-10-23T19:09:07.352842+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/082-dawn-third_party-googletest-filter.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.357302+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/082-dawn-third_party-googletest-filter.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "dawn-third_party-googletest-fetch",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "fetch",
+        "--depth=1",
+        "--filter=blob:none",
+        "origin",
+        "4fe3307fb2d9f86d19777c7eb0e4809e9694dde7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/googletest",
+      "started_utc": "2026-10-23T19:09:07.358079+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/083-dawn-third_party-googletest-fetch.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.573291+00:00",
+      "duration_seconds": 0.214,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/083-dawn-third_party-googletest-fetch.log",
+        "bytes": 153,
+        "sha256": "10c235a2e416f18d0e7b79dba1524ba2d46c3b88d40b20a4af44e9ebda58f904"
+      }
+    },
+    {
+      "name": "dawn-third_party-googletest-checkout",
+      "argv": [
+        "git",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "checkout",
+        "--detach",
+        "4fe3307fb2d9f86d19777c7eb0e4809e9694dde7"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/googletest",
+      "started_utc": "2026-10-23T19:09:07.574370+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/084-dawn-third_party-googletest-checkout.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.578908+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/084-dawn-third_party-googletest-checkout.log",
+        "bytes": 224,
+        "sha256": "fba3f9601419022ff6448ae1c0622a6085140d775f322c6869549f02d7a05d64"
+      }
+    },
+    {
+      "name": "dawn-third_party-googletest-identity",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/third_party/googletest",
+      "started_utc": "2026-10-23T19:09:07.579720+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/085-dawn-third_party-googletest-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.584152+00:00",
+      "duration_seconds": 0.004,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/085-dawn-third_party-googletest-identity.log",
+        "bytes": 41,
+        "sha256": "930ea980bc2a6020354a1a646a90d8923dd065bcb5eeef0136532c595f656245"
+      }
+    },
+    {
+      "name": "blender-preload-lfs-index",
+      "argv": [
+        "git",
+        "lfs",
+        "ls-files",
+        "--json",
+        "--include=release/datafiles/*"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:09:07.585822+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/086-blender-preload-lfs-index.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:07.953268+00:00",
+      "duration_seconds": 0.367,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/086-blender-preload-lfs-index.log",
+        "bytes": 57537,
+        "sha256": "abb454ffb48afcfb4e9133dc4cf36eeeda9568ac3f5b0ea6ba667eb2a4a2bfb0"
+      }
+    },
+    {
+      "name": "blender-preload-lfs",
+      "argv": [
+        "git",
+        "-c",
+        "lfs.url=https://projects.blender.org/blender/blender.git/info/lfs",
+        "lfs",
+        "pull",
+        "--include=release/datafiles/*"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:09:07.954765+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/087-blender-preload-lfs.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:12.686439+00:00",
+      "duration_seconds": 4.731,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/087-blender-preload-lfs.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "blender-lfs-check",
+      "argv": [
+        "git",
+        "lfs",
+        "fsck",
+        "--pointers"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+      "started_utc": "2026-10-23T19:09:12.710453+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/088-blender-lfs-check.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.778826+00:00",
+      "duration_seconds": 1.068,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/088-blender-lfs-check.log",
+        "bytes": 16,
+        "sha256": "81f6819612dfaf9af7854c05c501e2a69e3852e47f0bfb0a82dfce8f3f6c5db9"
+      }
+    },
+    {
+      "name": "prepare-sqlite-patchset",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "/home/runner/work/blended/blended/tools/prepare_browser_sqlite.py",
+        "--port-root",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+        "--manifest",
+        "/home/runner/work/blended/blended/patches/browser-sqlite/manifest.json",
+        "--manifest-sha256",
+        "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d",
+        "--receipt",
+        "/home/runner/work/blended/blended/evidence/browser-source-build/sqlite-patch-application.json"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.783010+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/089-prepare-sqlite-patchset.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.847961+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/089-prepare-sqlite-patchset.log",
+        "bytes": 1943,
+        "sha256": "4df1e95a3c55971468c624097abad9976bd462be032042185867cb518142adcc"
+      }
+    },
+    {
+      "name": "prepare-codec-patchset",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "/home/runner/work/blended/blended/patches/browser-codecs/apply.py",
+        "--port-root",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+        "--receipt",
+        "/home/runner/work/blended/blended/evidence/browser-source-build/codec-patch-application.json",
+        "--expected-manifest-sha256",
+        "1c98842c68dc7706630ce31132cdab20649ea61b860dd05b88722dc1a79b0bcf"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.850515+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/090-prepare-codec-patchset.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.915407+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/090-prepare-codec-patchset.log",
+        "bytes": 98,
+        "sha256": "073bf3b05471b5330560bc22b60bb1af1e704f97e49c118fe8f91c003c0edb24"
+      }
+    },
+    {
+      "name": "dependency-zlib",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/zlib.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.921383+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/091-dependency-zlib.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.930199+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/091-dependency-zlib.log",
+        "bytes": 117,
+        "sha256": "35d39e409e4684958200dde034309c932ca34093867f18fb6de12b785e8dbadb"
+      }
+    },
+    {
+      "name": "dependency-zstd",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/zstd.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.932802+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/092-dependency-zstd.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.941487+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/092-dependency-zstd.log",
+        "bytes": 117,
+        "sha256": "d4e55d1d40d0c7a634695dc234feb110a59a6727badc13425a9cd9deb04f3c10"
+      }
+    },
+    {
+      "name": "dependency-fmt",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/fmt.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.944210+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/093-dependency-fmt.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.952934+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/093-dependency-fmt.log",
+        "bytes": 117,
+        "sha256": "6d61856af5a7c63bb18075ed69761ca624e6de3ed801d2da369fe1d9c66565fb"
+      }
+    },
+    {
+      "name": "dependency-eigen",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/eigen.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.955663+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/094-dependency-eigen.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:13.964422+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/094-dependency-eigen.log",
+        "bytes": 145,
+        "sha256": "f5873e510b385df96bec9148be319417524f74e31ee34fe4f1e75db22aa91366"
+      }
+    },
+    {
+      "name": "dependency-robinmap",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/robinmap.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:13.967070+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/095-dependency-robinmap.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.032161+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/095-dependency-robinmap.log",
+        "bytes": 162,
+        "sha256": "74f4a070580faa88937e0b83ddb14e182bd7630673385639a5bdb583471489d3"
+      }
+    },
+    {
+      "name": "dependency-imath",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/imath.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.035386+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/096-dependency-imath.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.044360+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/096-dependency-imath.log",
+        "bytes": 141,
+        "sha256": "f2d05c74a21a88e9b21c560992c0954c0c04559cf3cf857a05022c1d64c9fb3e"
+      }
+    },
+    {
+      "name": "dependency-libdeflate",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libdeflate.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.047073+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/097-dependency-libdeflate.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.055888+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/097-dependency-libdeflate.log",
+        "bytes": 157,
+        "sha256": "b37dd0b84615e27010ded89cec40399492484775fd9e42ee66d95392d444b181"
+      }
+    },
+    {
+      "name": "dependency-openjph",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openjph.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.058795+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/098-dependency-openjph.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.067624+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/098-dependency-openjph.log",
+        "bytes": 148,
+        "sha256": "04684ac71110518f53b6f33cf89151454b13cf079c53fafe3fff5098cbb220da"
+      }
+    },
+    {
+      "name": "dependency-openexr",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openexr.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.070438+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/099-dependency-openexr.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.135512+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/099-dependency-openexr.log",
+        "bytes": 147,
+        "sha256": "b0af7a0d0562931a411dd1d2ecfb1fa33f42007997b2e00ae850d9be7cdca258"
+      }
+    },
+    {
+      "name": "dependency-libjpeg",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libjpeg.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.138696+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/100-dependency-libjpeg.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.147617+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/100-dependency-libjpeg.log",
+        "bytes": 114,
+        "sha256": "0eac1360bb5133a6ace85e1292fd5c740a3b38f2e1e03c2a5675647ffbc5fa2f"
+      }
+    },
+    {
+      "name": "dependency-libpng",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libpng.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.150425+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/101-dependency-libpng.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.159203+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/101-dependency-libpng.log",
+        "bytes": 114,
+        "sha256": "274342e14ce46aab7339d61652e2bb594678630ab448557dcfb0c5c45ad2c4a6"
+      }
+    },
+    {
+      "name": "dependency-libtiff",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libtiff.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.162895+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/102-dependency-libtiff.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.195970+00:00",
+      "duration_seconds": 0.032,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/102-dependency-libtiff.log",
+        "bytes": 123,
+        "sha256": "f3366f4d2b8e290e3d11ffd26ad862694826df26ddf11175fb031ffde572cd27"
+      }
+    },
+    {
+      "name": "dependency-expat",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/expat.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.199168+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/103-dependency-expat.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.232254+00:00",
+      "duration_seconds": 0.032,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/103-dependency-expat.log",
+        "bytes": 34,
+        "sha256": "8a1fde0af0a42adc8ffef3d05e5e7e2b05a75e7c5bd2ffa96d36a1b16480fb37"
+      }
+    },
+    {
+      "name": "dependency-yamlcpp",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/yamlcpp.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.235463+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/104-dependency-yamlcpp.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.300694+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/104-dependency-yamlcpp.log",
+        "bytes": 36,
+        "sha256": "5ed280894e0abf662f6d691076501f181e1c137aadd4231ce09d86e1200b0535"
+      }
+    },
+    {
+      "name": "dependency-pystring",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/pystring.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.303999+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/105-dependency-pystring.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.337177+00:00",
+      "duration_seconds": 0.032,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/105-dependency-pystring.log",
+        "bytes": 37,
+        "sha256": "cdc2d29f2f06ad7646ada8d18aab537799256e7715c0626ab8fdf4dd54856665"
+      }
+    },
+    {
+      "name": "dependency-minizipng",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/minizipng.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.340444+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/106-dependency-minizipng.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.405624+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/106-dependency-minizipng.log",
+        "bytes": 38,
+        "sha256": "516574c650af881c2187c22e85b653f5160b8358a9f5367b0839da535eaf76fa"
+      }
+    },
+    {
+      "name": "dependency-opencolorio",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/opencolorio.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.408956+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/107-dependency-opencolorio.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.442127+00:00",
+      "duration_seconds": 0.032,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/107-dependency-opencolorio.log",
+        "bytes": 40,
+        "sha256": "aa5ac46e80158584b0dead0e236abf41ff4e7e5de4da194cae3bbe57ce29a22f"
+      }
+    },
+    {
+      "name": "dependency-brotli",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/brotli.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.445382+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/108-dependency-brotli.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.510630+00:00",
+      "duration_seconds": 0.064,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/108-dependency-brotli.log",
+        "bytes": 35,
+        "sha256": "16e5592946e1d3a665f0f528841c9accbd84928959e7895698b4d72456a9445a"
+      }
+    },
+    {
+      "name": "dependency-freetype",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/freetype.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.514001+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/109-dependency-freetype.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.547184+00:00",
+      "duration_seconds": 0.032,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/109-dependency-freetype.log",
+        "bytes": 37,
+        "sha256": "29c06783f255095724200a64c3284165b919305e077d5254df78f5a017a0f307"
+      }
+    },
+    {
+      "name": "dependency-tbb",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/tbb.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.550440+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/110-dependency-tbb.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:14.715799+00:00",
+      "duration_seconds": 0.164,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/110-dependency-tbb.log",
+        "bytes": 137,
+        "sha256": "e8a9d2f5f5539ce7704a96731a4d6c193ab32dd7ff7cc9780622a36f0f5e9b9d"
+      }
+    },
+    {
+      "name": "dependency-webp",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/webp.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:14.719176+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/111-dependency-webp.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:09:41.745436+00:00",
+      "duration_seconds": 27.025,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/111-dependency-webp.log",
+        "bytes": 21974,
+        "sha256": "04ab25467eee5a87634aafdc0bc27f830d209313e9e6319a580af294ba9dbf4c"
+      }
+    },
+    {
+      "name": "dependency-openjpeg",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openjpeg.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:09:41.748702+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/112-dependency-openjpeg.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:10:09.174563+00:00",
+      "duration_seconds": 27.425,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/112-dependency-openjpeg.log",
+        "bytes": 7504,
+        "sha256": "9320bac89ef6fa0ae05bdcdc8dfb9593c2b2d09687c36ca1899a6dc4a8fa43e4"
+      }
+    },
+    {
+      "name": "dependency-aom",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/aom.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:10:09.177824+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/113-dependency-aom.log",
+      "elapsed_seconds": 90.005,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:11:51.029415+00:00",
+      "duration_seconds": 101.851,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/113-dependency-aom.log",
+        "bytes": 36541,
+        "sha256": "c5b7c9a6b82b384d6ef4faf514a73d7828f5d88e51268b8227742fe426605ec5"
+      }
+    },
+    {
+      "name": "dependency-libheif",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libheif.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:11:51.032995+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/114-dependency-libheif.log",
+      "elapsed_seconds": 90.005,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:13:34.190456+00:00",
+      "duration_seconds": 103.156,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/114-dependency-libheif.log",
+        "bytes": 30367,
+        "sha256": "58000457397ddd37a0bce7b95b08d4b43b262747ec8252dcd0d4fe14706b180e"
+      }
+    },
+    {
+      "name": "dependency-openimageio",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openimageio.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:13:34.193933+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/115-dependency-openimageio.log",
+      "elapsed_seconds": 180.012,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:17:03.157183+00:00",
+      "duration_seconds": 208.962,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/115-dependency-openimageio.log",
+        "bytes": 35380,
+        "sha256": "7740ae62204330c02ae4f853c79481690b3720813cbda841ef073b226936f324"
+      }
+    },
+    {
+      "name": "dependency-tint",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/tint.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:17:03.162309+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/116-dependency-tint.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:17:03.171326+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/116-dependency-tint.log",
+        "bytes": 143,
+        "sha256": "729f1957911eccf30bedce548071befbafdc6d1aaf2080344656415caecabfa3"
+      }
+    },
+    {
+      "name": "dependency-shaderc",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/shaderc.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:17:03.174362+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/117-dependency-shaderc.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:17:03.183236+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/117-dependency-shaderc.log",
+        "bytes": 134,
+        "sha256": "cdf0a4978fda794865f7557547d0b9078c18ca72fa1544f0e904c7a81d43141f"
+      }
+    },
+    {
+      "name": "dependency-sqlite",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/sqlite.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:17:03.186386+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/118-dependency-sqlite.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:17:24.708797+00:00",
+      "duration_seconds": 21.521,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/118-dependency-sqlite.log",
+        "bytes": 1740,
+        "sha256": "251ae10b2de6089d2a877db1b370e80d74947a818f4401d68c1dc5ee015d9bb9"
+      }
+    },
+    {
+      "name": "verify-sqlite-sqlite-cache",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/sqlite-cache.py",
+        "verify",
+        "sqlite",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:17:24.710307+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/119-verify-sqlite-sqlite-cache.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:17:24.875708+00:00",
+      "duration_seconds": 0.164,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/119-verify-sqlite-sqlite-cache.log",
+        "bytes": 37,
+        "sha256": "d39bf01cb15a994628c100084479dcf3426b3aa91df57aa0360526ac07d59219"
+      }
+    },
+    {
+      "name": "dependency-python",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/python.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:17:24.879486+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/120-dependency-python.log",
+      "elapsed_seconds": 360.022,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:23:25.019649+00:00",
+      "duration_seconds": 360.139,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/120-dependency-python.log",
+        "bytes": 808871,
+        "sha256": "c57b11c48c0b034b8c458695e385e566cd935066cf3770fd365b244c623d9ce1"
+      }
+    },
+    {
+      "name": "verify-python-sqlite-cache",
+      "argv": [
+        "/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/sqlite-cache.py",
+        "verify",
+        "python",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:23:25.021958+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/121-verify-python-sqlite-cache.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:23:25.237556+00:00",
+      "duration_seconds": 0.215,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/121-verify-python-sqlite-cache.log",
+        "bytes": 37,
+        "sha256": "e9ca17cce199e9b1ca2779c5c10b43d7d385be4f0def2e6997a55aa44c916385"
+      }
+    },
+    {
+      "name": "dependency-wheels",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/wheels.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:23:25.241299+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/122-dependency-wheels.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:23:25.250324+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/122-dependency-wheels.log",
+        "bytes": 176,
+        "sha256": "1ac8c73dbc84e5dc710487acfdb0a60843f0d8efc488f8021bdc5676bcb37d6c"
+      }
+    },
+    {
+      "name": "dependency-numpy",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/numpy.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:23:25.253544+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/123-dependency-numpy.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:23:25.262449+00:00",
+      "duration_seconds": 0.008,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/123-dependency-numpy.log",
+        "bytes": 71,
+        "sha256": "07945115852aab400cf6ec192c89b7f6205ce8af78076a760a147a5dc37d60df"
+      }
+    },
+    {
+      "name": "dependency-opensubdiv",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/opensubdiv.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:23:25.265725+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/124-dependency-opensubdiv.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:23:25.681760+00:00",
+      "duration_seconds": 0.415,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/124-dependency-opensubdiv.log",
+        "bytes": 372,
+        "sha256": "8d9eeb0b8a0d9e8f128b1aa97c756167155c3842dca4ee11ca8102395ad0b7b4"
+      }
+    },
+    {
+      "name": "dependency-openusd",
+      "argv": [
+        "bash",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openusd.sh",
+        "--jobs=2"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:23:25.685343+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/125-dependency-openusd.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:23:25.901006+00:00",
+      "duration_seconds": 0.215,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/125-dependency-openusd.log",
+        "bytes": 128,
+        "sha256": "fcbb86915520f4ac2e71e4fe3a290610084e439a198d6d56f81d88143c7e3377"
+      }
+    },
+    {
+      "name": "native-code-generators",
+      "argv": [
+        "bash",
+        "scripts/build-hosttools.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:23:26.593706+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/126-native-code-generators.log",
+      "elapsed_seconds": 60.003,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:24:47.318528+00:00",
+      "duration_seconds": 80.724,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/126-native-code-generators.log",
+        "bytes": 3158,
+        "sha256": "7433c808a0bdf692d2f7718c7f2bbc0a8b2fae8c9775decea2dc6df26e80cd2d"
+      }
+    },
+    {
+      "name": "locale-catalogs",
+      "argv": [
+        "bash",
+        "scripts/build-locale-datafiles.sh"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:24:47.320031+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/127-locale-catalogs.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:24:49.089026+00:00",
+      "duration_seconds": 1.768,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/127-locale-catalogs.log",
+        "bytes": 257,
+        "sha256": "8a7655bd7d746a6ae2af2ddbcb00f733bafc3b785b05bb8c12429e6506165b88"
+      }
+    },
+    {
+      "name": "configure-engine",
+      "argv": [
+        "cmake",
+        "-S",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream",
+        "-B",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-wasm-development-off",
+        "-G",
+        "Ninja",
+        "-C",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/patches/blender_web.cmake",
+        "-DCMAKE_TOOLCHAIN_FILE=/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DWITH_BLENDER_WEB_BROWSER=ON",
+        "-DWITH_BUILDINFO=ON",
+        "-DBLENDER_WEB_WASM_SPLIT_MODE=OFF",
+        "-DCMAKE_EXE_LINKER_FLAGS=-g0",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+        "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+        "-DPYTHON_EXECUTABLE=/opt/hostedtoolcache/Python/3.13.13/x64/bin/python3"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:24:49.090602+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/128-configure-engine.log",
+      "elapsed_seconds": 60.002,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:26:08.258817+00:00",
+      "duration_seconds": 79.167,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/128-configure-engine.log",
+        "bytes": 15451,
+        "sha256": "26154646a97e264803484fe0bc99402d4f7f3bec4cc2adf3399d26403a450673"
+      }
+    },
+    {
+      "name": "generate-build-identity",
+      "argv": [
+        "ninja",
+        "-C",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-wasm-development-off",
+        "buildinfo"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:26:08.284134+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/129-generate-build-identity.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:26:08.600798+00:00",
+      "duration_seconds": 0.316,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/129-generate-build-identity.log",
+        "bytes": 164,
+        "sha256": "334b03e69c4a3a4f55ba53557e3b82bcc080e8bc191d01b62c1498d4c4b2a1a4"
+      }
+    },
+    {
+      "name": "compile-engine",
+      "argv": [
+        "ninja",
+        "-C",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-wasm-development-off",
+        "-j2",
+        "blender_browser"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:26:08.602494+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/130-compile-engine.log",
+      "elapsed_seconds": 1560.143,
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:52:28.989650+00:00",
+      "duration_seconds": 1580.386,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/130-compile-engine.log",
+        "bytes": 3119579,
+        "sha256": "76a3aca9e30513c5decc9844491358a0a7ba8fa4e4fd2d879d70a2ce3fc03cd4"
+      }
+    },
+    {
+      "name": "link-command-receipt",
+      "argv": [
+        "ninja",
+        "-C",
+        "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-wasm-development-off",
+        "-t",
+        "commands",
+        "blender_browser"
+      ],
+      "cwd": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "started_utc": "2026-10-23T19:52:28.994119+00:00",
+      "status": "passed",
+      "log": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/131-link-command-receipt.log",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T19:52:29.217823+00:00",
+      "duration_seconds": 0.223,
+      "log_original_bytes": 19558289,
+      "log_truncated": true,
+      "log_identity": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/logs/131-link-command-receipt.log",
+        "bytes": 15728681,
+        "sha256": "c0c79285e70ae3015a61c1af12f4749e7fff45f196a50e30c53256d6084ae743"
+      }
+    }
+  ],
+  "dependency_receipts": [
+    {
+      "name": "zlib",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/zlib.sh",
+        "bytes": 2416,
+        "sha256": "9bbe25301f8d63715025399763bddc11c2236e955279c4efd2559da44512c2e5"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "zstd",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/zstd.sh",
+        "bytes": 1766,
+        "sha256": "86849119ae094e6e3a66ec3763726a9fcc243430d808dac64afc5bad6837ebfe"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "fmt",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/fmt.sh",
+        "bytes": 1566,
+        "sha256": "b80efce661fbc0f712c1983702dd43f9441ad3792b65ecf9d79c9cb1c522d5ea"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "eigen",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/eigen.sh",
+        "bytes": 2834,
+        "sha256": "b6b652b0b12612bff878fb7582b8ae3c7b974e5d3b02423a842334e126d0db60"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "robinmap",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/robinmap.sh",
+        "bytes": 2052,
+        "sha256": "27e30cdfeac669a36f87649eeeae1a8cb7200125e9495f71b668862dc96b32b2"
+      },
+      "duration_seconds": 0.067
+    },
+    {
+      "name": "imath",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/imath.sh",
+        "bytes": 2877,
+        "sha256": "f93efa3ac6e07c9dbb662966d7cfc3080b61a629913b09b2d1dcf671cd6623a3"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "libdeflate",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libdeflate.sh",
+        "bytes": 2250,
+        "sha256": "bc05aa0b2a65029d4324aaec65ed5f39c436eff5303d63034cc6cf4f182ca6fe"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "openjph",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openjph.sh",
+        "bytes": 2799,
+        "sha256": "ce546ffeb81f1893b05181be5dd9ee1b32c6944ae8bd17f00f62ad0b34531ae1"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "openexr",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openexr.sh",
+        "bytes": 4351,
+        "sha256": "6c254527809997b7ea1e47b7470c7f7f3dfd4d40a87c72e64622e8c2a23f6073"
+      },
+      "duration_seconds": 0.067
+    },
+    {
+      "name": "libjpeg",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libjpeg.sh",
+        "bytes": 3313,
+        "sha256": "4e239bde7321b19537f8bd7b934d9eb8a9274d217c266e0f5036d1ad7cd00e6f"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "libpng",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libpng.sh",
+        "bytes": 2952,
+        "sha256": "1b807dc8a6866ccafb0589854cd9d33b774692e02972228232be72b9ca0439ce"
+      },
+      "duration_seconds": 0.012
+    },
+    {
+      "name": "libtiff",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libtiff.sh",
+        "bytes": 3391,
+        "sha256": "7c7d9421c77538643bbd5e002e19828f05b7efd266dc56937c95697ef8e20c34"
+      },
+      "duration_seconds": 0.035
+    },
+    {
+      "name": "expat",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/expat.sh",
+        "bytes": 2022,
+        "sha256": "e2084ee7e9d51fbca4ffe3e113a2796dcc67a17e49da9a68bc5be06591cdd016"
+      },
+      "duration_seconds": 0.035
+    },
+    {
+      "name": "yamlcpp",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/yamlcpp.sh",
+        "bytes": 1914,
+        "sha256": "fc8f0821fe80fe35b198036eb180320f6297d45351b0eb57e4c9c8c87816b3af"
+      },
+      "duration_seconds": 0.068
+    },
+    {
+      "name": "pystring",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/pystring.sh",
+        "bytes": 2113,
+        "sha256": "7071aaebd1102cbe379911f726c9ae5ad9787d71dde2137f83a26e8d72b4c740"
+      },
+      "duration_seconds": 0.036
+    },
+    {
+      "name": "minizipng",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/minizipng.sh",
+        "bytes": 2673,
+        "sha256": "1a7e2a440b2c61ee61d37c9acd64208bda1ecc0d7448425c09088e9c08cf8358"
+      },
+      "duration_seconds": 0.068
+    },
+    {
+      "name": "opencolorio",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/opencolorio.sh",
+        "bytes": 4224,
+        "sha256": "27aee41615dda67090fa0ecc6908cc217379926062a8292f041b513c894b8994"
+      },
+      "duration_seconds": 0.035
+    },
+    {
+      "name": "brotli",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/brotli.sh",
+        "bytes": 2497,
+        "sha256": "89fd34a497e9c74d109972c3f7361b189bcaf6f7efa2c4180bf1a44c6e1bcc5a"
+      },
+      "duration_seconds": 0.068
+    },
+    {
+      "name": "freetype",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/freetype.sh",
+        "bytes": 2832,
+        "sha256": "78132779b3ec3077ac647d3f67c90a1fbd38805c7139c683f15f4fd17d38899d"
+      },
+      "duration_seconds": 0.036
+    },
+    {
+      "name": "tbb",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/tbb.sh",
+        "bytes": 3438,
+        "sha256": "a2c60fe8d6d1d04d27ec386fec7da04f2a799911243440a662542fa7f7417a6a"
+      },
+      "duration_seconds": 0.168
+    },
+    {
+      "name": "webp",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/webp.sh",
+        "bytes": 1072,
+        "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+      },
+      "duration_seconds": 27.029
+    },
+    {
+      "name": "openjpeg",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openjpeg.sh",
+        "bytes": 617,
+        "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+      },
+      "duration_seconds": 27.428
+    },
+    {
+      "name": "aom",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/aom.sh",
+        "bytes": 1241,
+        "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+      },
+      "duration_seconds": 101.854
+    },
+    {
+      "name": "libheif",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/libheif.sh",
+        "bytes": 2251,
+        "sha256": "3e6cfbda9059644e94cc0045d3c3056ef744f5105c97bea4b7660dcb2e0d5aa5"
+      },
+      "duration_seconds": 103.16
+    },
+    {
+      "name": "openimageio",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openimageio.sh",
+        "bytes": 15890,
+        "sha256": "86d5e0c38066dca337c30128b586e3173b4ea547d0a1067685d710e03a6c9a01"
+      },
+      "duration_seconds": 208.967
+    },
+    {
+      "name": "tint",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/tint.sh",
+        "bytes": 8490,
+        "sha256": "985baa7e1dd2c447c654b92ff8bda04a04399480ba41dec6946c22c18a34e3d6"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "shaderc",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/shaderc.sh",
+        "bytes": 7145,
+        "sha256": "7b1575962b1abd8d9ea36b5a5c0a7d383a15fee23444ded5c58013b9112104ab"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "sqlite",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/sqlite.sh",
+        "bytes": 3284,
+        "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+      },
+      "duration_seconds": 21.692
+    },
+    {
+      "name": "python",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/python.sh",
+        "bytes": 16318,
+        "sha256": "2c258d6162341518b0051d8e93c3dd10c3ece7dd57d1406a78339f3726767564"
+      },
+      "duration_seconds": 360.361
+    },
+    {
+      "name": "wheels",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/wheels.sh",
+        "bytes": 12012,
+        "sha256": "a5e0fc317f93e6fd976709ac96fc7f3938b8a24bb9b71c62713ed370a54a3268"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "numpy",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/numpy.sh",
+        "bytes": 12247,
+        "sha256": "af19f574ebe86a83cbb82c91fef44e1697d2930adedb465e91470d9b1bd6f779"
+      },
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "opensubdiv",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/opensubdiv.sh",
+        "bytes": 9524,
+        "sha256": "8dd253476ab9dc1432588f5fc8178e042f15093b8f0e1e7bca19c429c8e1a5d9"
+      },
+      "duration_seconds": 0.419
+    },
+    {
+      "name": "openusd",
+      "status": "recipe_completed",
+      "recipe": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/openusd.sh",
+        "bytes": 6787,
+        "sha256": "2ff5e92343e389211e7f0ed0f9b747e11c3b0b70a56d06f302f5b407e12a288a"
+      },
+      "duration_seconds": 0.218
+    }
+  ],
+  "recipe_overlays": [
+    {
+      "path": "scripts/deps/numpy.sh",
+      "purpose": "Pin host build tools only",
+      "original_sha256": "3a7777567dd6f499a75538326b4ead24cbfb505ed45bead59b86d80e8000dad2",
+      "executed": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/scripts/deps/numpy.sh",
+        "bytes": 12247,
+        "sha256": "af19f574ebe86a83cbb82c91fef44e1697d2930adedb465e91470d9b1bd6f779"
+      },
+      "host_requirements": {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/host-requirements.txt",
+        "bytes": 838,
+        "sha256": "f72565ef33be3f7ccc4f8fd10df2d32e6a31a1cce85a60ebe08061e33ed1875c"
+      }
+    }
+  ],
+  "limits": [
+    "A new OFF-mode artifact at the inspected port HEAD; not the v0.1.1 release source.",
+    "Source commits and recipe bytes are pinned; some upstream archives declare MD5. New SHA256 observations are receipts, not independently prevalidated locks.",
+    "Ubuntu package revisions are inventoried, not a hermetic pinned operating-system image.",
+    "Shipping CAPTURE/APPLY requires hardware profiles and is not attempted."
+  ],
+  "restored_dependency_cache": {
+    "receipt": {
+      "path": "/home/runner/work/blended/blended/evidence/browser-source-build/dependency-cache-reuse.json",
+      "bytes": 2740,
+      "sha256": "cddb85f79a4a2b5f4406add93c63576c803be4da3ea1840acb49d6bc7cb9856b"
+    },
+    "status": "verified",
+    "cache_key": "blender-source-ubuntu24-x64-ebd6a49b6f17d26d0800c172eb40348041eb5fb37f5c7d4c67e5857f6dc8abd6-39841653080",
+    "verified_files": 4103,
+    "scope": "Prior output identity only. Selected changed recipes run and verify their own outputs."
+  },
+  "blended_checkout_commit": "03913290e92a98cd9c45fdecf679072587c4dbe7",
+  "canonical_patch": {
+    "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/patches/PREVIEW_SNAPSHOT.patch",
+    "bytes": 2447156,
+    "sha256": "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c"
+  },
+  "source_date_epoch": 1783956011,
+  "source_reconstructed": true,
+  "declared_feature_configuration": {
+    "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/patches/blender_web.cmake",
+    "bytes": 15529,
+    "sha256": "85d640a5605a111a1980915f3e5e6ae6bd4b200ecf38e4b5250dd9ea6082e8f8"
+  },
+  "declared_disabled_features": [
+    "WITH_ALEMBIC",
+    "WITH_AUDASPACE",
+    "WITH_BLENDER_THUMBNAILER",
+    "WITH_BUILDINFO",
+    "WITH_BULLET",
+    "WITH_CODEC_FFMPEG",
+    "WITH_CODEC_SNDFILE",
+    "WITH_COREAUDIO",
+    "WITH_CYCLES_CUDA_BINARIES",
+    "WITH_CYCLES_DEVICE_CUDA",
+    "WITH_CYCLES_DEVICE_HIP",
+    "WITH_CYCLES_DEVICE_HIPRT",
+    "WITH_CYCLES_DEVICE_METAL",
+    "WITH_CYCLES_DEVICE_ONEAPI",
+    "WITH_CYCLES_DEVICE_OPTIX",
+    "WITH_CYCLES_EMBREE",
+    "WITH_CYCLES_HIP_BINARIES",
+    "WITH_CYCLES_HYDRA_RENDER_DELEGATE",
+    "WITH_CYCLES_NATIVE_ONLY",
+    "WITH_CYCLES_ONEAPI_BINARIES",
+    "WITH_CYCLES_OSL",
+    "WITH_CYCLES_PATH_GUIDING",
+    "WITH_CYCLES_PRECOMPUTE",
+    "WITH_CYCLES_STANDALONE",
+    "WITH_CYCLES_STANDALONE_GUI",
+    "WITH_DRACO",
+    "WITH_FFTW3",
+    "WITH_FREESTYLE",
+    "WITH_GHOST_SDL",
+    "WITH_GHOST_WAYLAND",
+    "WITH_GHOST_WEB",
+    "WITH_GHOST_X11",
+    "WITH_GHOST_XDND",
+    "WITH_GMP",
+    "WITH_HARU",
+    "WITH_HEADLESS",
+    "WITH_HYDRA",
+    "WITH_IK_ITASC",
+    "WITH_IK_SOLVER",
+    "WITH_IMAGE_CINEON",
+    "WITH_IMAGE_OPENJPEG",
+    "WITH_IMAGE_WEBP",
+    "WITH_INPUT_IME",
+    "WITH_INPUT_NDOF",
+    "WITH_IO_FBX",
+    "WITH_IO_GREASE_PENCIL",
+    "WITH_JACK",
+    "WITH_LIBMV",
+    "WITH_LLVM",
+    "WITH_MANIFOLD",
+    "WITH_MATERIALX",
+    "WITH_MESHOPTIMIZER",
+    "WITH_MOD_FLUID",
+    "WITH_MOD_OCEANSIM",
+    "WITH_MOD_REMESH",
+    "WITH_NANOVDB",
+    "WITH_OPENAL",
+    "WITH_OPENIMAGEDENOISE",
+    "WITH_OPENVDB",
+    "WITH_OPENVDB_BLOSC",
+    "WITH_PIPEWIRE",
+    "WITH_POTRACE",
+    "WITH_PUGIXML",
+    "WITH_PULSEAUDIO",
+    "WITH_PYTHON_INSTALL",
+    "WITH_PYTHON_INSTALL_NUMPY",
+    "WITH_PYTHON_INSTALL_REQUESTS",
+    "WITH_PYTHON_INSTALL_ZSTANDARD",
+    "WITH_PYTHON_MODULE",
+    "WITH_QUADRIFLOW",
+    "WITH_RUBBERBAND",
+    "WITH_SDL_AUDIO",
+    "WITH_TBB_MALLOC_PROXY",
+    "WITH_UV_SLIM",
+    "WITH_WASAPI",
+    "WITH_X11_XINPUT",
+    "WITH_XR_OPENXR"
+  ],
+  "numeric_patchset": {
+    "id": "blender-5.2.0-web-numerics-v1",
+    "manifest": {
+      "path": "/home/runner/work/blended/blended/patches/browser-numerics/manifest.json",
+      "bytes": 2231,
+      "sha256": "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147"
+    },
+    "manifest_sha256": "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147",
+    "status": "applied_and_system_libraries_rebuilt",
+    "applied": true,
+    "scope": "Candidate 5.2 baseline against the named official x86-64-v2 oracle only. Kernel regressions do not constitute full-engine acceptance or product-target parity.",
+    "cache_namespace": "/home/runner/work/blended/blended/.cache/browser-source/emscripten-cache/de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147",
+    "unqualified_variants": [
+      "libc_optz",
+      "libc_optz-mt",
+      "LTO",
+      "wasm64",
+      "sanitizer"
+    ],
+    "patches": [
+      {
+        "id": "emscripten-acosf-small-angle",
+        "component": "emscripten",
+        "path": "system/lib/libc/musl/src/math/acosf.c",
+        "before_sha256": "b20b3dcb58ce7cc55963945f8cb83efbf064b29d2da3011f2cec5d08459f2aa7",
+        "after_sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da",
+        "patch_sha256": "4c3d45d779891d979d1836076aafaecc326e616df1f805bdad0bb5b796e73b3d",
+        "patch_file": "0001-emscripten-acosf-small-angle.patch",
+        "status": "already_applied_verified",
+        "input_observation": {
+          "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/math/acosf.c",
+          "bytes": 1583,
+          "sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da"
+        },
+        "output_observation": {
+          "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/system/lib/libc/musl/src/math/acosf.c",
+          "bytes": 1583,
+          "sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da"
+        },
+        "patch": {
+          "path": "/home/runner/work/blended/blended/patches/browser-numerics/0001-emscripten-acosf-small-angle.patch",
+          "bytes": 388,
+          "sha256": "4c3d45d779891d979d1836076aafaecc326e616df1f805bdad0bb5b796e73b3d"
+        }
+      },
+      {
+        "id": "eigen-matrix-wasm-sse2",
+        "component": "blender",
+        "path": "intern/eigen/CMakeLists.txt",
+        "before_sha256": "2cf96c73f436aab27c54328957ef6fd243ef4a03d1d0a83f5b21d7951e3595b3",
+        "after_sha256": "a585eb495b0898e99db86cdbf26168a1c8fd696d138cbcc58044ddcf940558ad",
+        "patch_sha256": "a1839f064e2dd5948cf98640749ab221e549b9e64fd6bb0468639b0b329edd8b",
+        "patch_file": "0002-eigen-matrix-wasm-sse2.patch",
+        "status": "applied_verified",
+        "input_observation": {
+          "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream/intern/eigen/CMakeLists.txt",
+          "bytes": 436,
+          "sha256": "2cf96c73f436aab27c54328957ef6fd243ef4a03d1d0a83f5b21d7951e3595b3"
+        },
+        "output_observation": {
+          "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/upstream/intern/eigen/CMakeLists.txt",
+          "bytes": 832,
+          "sha256": "a585eb495b0898e99db86cdbf26168a1c8fd696d138cbcc58044ddcf940558ad"
+        },
+        "patch": {
+          "path": "/home/runner/work/blended/blended/patches/browser-numerics/0002-eigen-matrix-wasm-sse2.patch",
+          "bytes": 572,
+          "sha256": "a1839f064e2dd5948cf98640749ab221e549b9e64fd6bb0468639b0b329edd8b"
+        }
+      }
+    ],
+    "system_libraries": [
+      {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/emscripten-cache/de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147/sysroot/lib/wasm32-emscripten/libc.a",
+        "bytes": 3303310,
+        "sha256": "ce41bcb2412a1f2f2a722039d9dc8393b730a53877a1137965dc31b8c41d86a9"
+      },
+      {
+        "path": "/home/runner/work/blended/blended/.cache/browser-source/emscripten-cache/de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147/sysroot/lib/wasm32-emscripten/libc-mt.a",
+        "bytes": 3624530,
+        "sha256": "dd71739d04514cafada3d83311e4e7c12bd1b496095e1cb38879f75c3cace7c8"
+      }
+    ]
+  },
+  "sqlite_patchset": {
+    "id": "blended-browser-sqlite-cpython-3.13.13-5.2-v1",
+    "manifest": {
+      "path": "/home/runner/work/blended/blended/patches/browser-sqlite/manifest.json",
+      "bytes": 3104,
+      "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+    },
+    "manifest_sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d",
+    "status": "applied_and_verified",
+    "applied": true,
+    "application_helper": {
+      "path": "/home/runner/work/blended/blended/tools/prepare_browser_sqlite.py",
+      "bytes": 12896,
+      "sha256": "42d465403a55f4dc21918f5839abda4b9a045a52cbffc6d760a1798aa048ea61"
+    },
+    "outputs": [
+      {
+        "path": "scripts/deps/python.sh",
+        "bytes": 16318,
+        "sha256": "2c258d6162341518b0051d8e93c3dd10c3ece7dd57d1406a78339f3726767564"
+      },
+      {
+        "path": "scripts/deps/sqlite.sh",
+        "bytes": 3284,
+        "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+      },
+      {
+        "path": "scripts/deps/sqlite-cache.py",
+        "bytes": 5843,
+        "sha256": "cc64c3575f8ab328c4e920b2c77a48f97efb7d4931315cb626cc8c2ce277be1a"
+      },
+      {
+        "path": "scripts/deps/sqlite-patchset.json",
+        "bytes": 3104,
+        "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+      }
+    ],
+    "application_receipt": {
+      "path": "/home/runner/work/blended/blended/evidence/browser-source-build/sqlite-patch-application.json",
+      "bytes": 1943,
+      "sha256": "4df1e95a3c55971468c624097abad9976bd462be032042185867cb518142adcc"
+    },
+    "application": {
+      "browser_tests_executed": false,
+      "dependency_insertion": {
+        "before": "python",
+        "name": "sqlite"
+      },
+      "environment": {
+        "BLENDED_SQLITE_PATCHSET_SHA256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+      },
+      "full_feature_parity": false,
+      "inputs": [
+        {
+          "bytes": 3284,
+          "file": "sqlite.sh",
+          "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+        },
+        {
+          "bytes": 5843,
+          "file": "sqlite-cache.py",
+          "sha256": "cc64c3575f8ab328c4e920b2c77a48f97efb7d4931315cb626cc8c2ce277be1a"
+        },
+        {
+          "bytes": 4693,
+          "file": "0001-enable-cpython-sqlite.patch",
+          "sha256": "dc16b9529656ffb7fadd90fd83829de16de8fa2c9860c95c6887001d592ea875"
+        }
+      ],
+      "manifest": {
+        "bytes": 3104,
+        "path": "/home/runner/work/blended/blended/patches/browser-sqlite/manifest.json",
+        "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+      },
+      "original_python_recipe": {
+        "bytes": 15266,
+        "sha256": "61db51f778a95d9f8cdd6c5fd07128284a92c898785b1ce45d6e944ae3411622"
+      },
+      "outputs": [
+        {
+          "bytes": 16318,
+          "path": "scripts/deps/python.sh",
+          "sha256": "2c258d6162341518b0051d8e93c3dd10c3ece7dd57d1406a78339f3726767564"
+        },
+        {
+          "bytes": 3284,
+          "path": "scripts/deps/sqlite.sh",
+          "sha256": "6d9b72b6fd5654e0eb611f5c72de21ed8ce05a10062a70c92e217ae6b50463e2"
+        },
+        {
+          "bytes": 5843,
+          "path": "scripts/deps/sqlite-cache.py",
+          "sha256": "cc64c3575f8ab328c4e920b2c77a48f97efb7d4931315cb626cc8c2ce277be1a"
+        },
+        {
+          "bytes": 3104,
+          "path": "scripts/deps/sqlite-patchset.json",
+          "sha256": "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
+        }
+      ],
+      "patchset_id": "blended-browser-sqlite-cpython-3.13.13-5.2-v1",
+      "requires_enclosing_driver_source_commit_verification": true,
+      "schema": 1,
+      "source_tests_modified": false
+    },
+    "dependency_insertion": {
+      "name": "sqlite",
+      "before": "python"
+    },
+    "dependency_cache_receipts": {
+      "sqlite": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/sqlite-sqlite-cache.json",
+        "bytes": 2040,
+        "sha256": "ac133768c6cc93aac4defc2534989068166e19af949ef406029f2ac7130c7a20"
+      },
+      "python": {
+        "path": "/home/runner/work/blended/blended/evidence/browser-source-build/python-sqlite-cache.json",
+        "bytes": 3416,
+        "sha256": "4c22ddf1643a3684d603e8f6bc891d9b6ae102e1cbc285bec9b1e748538679aa"
+      }
+    }
+  },
+  "codec_patchset": {
+    "id": "blender-5.2.0-web-codecs-v1",
+    "manifest": {
+      "path": "/home/runner/work/blended/blended/patches/browser-codecs/manifest.json",
+      "bytes": 7897,
+      "sha256": "1c98842c68dc7706630ce31132cdab20649ea61b860dd05b88722dc1a79b0bcf"
+    },
+    "manifest_sha256": "1c98842c68dc7706630ce31132cdab20649ea61b860dd05b88722dc1a79b0bcf",
+    "status": "applied_and_verified",
+    "applied": true,
+    "application_helper": {
+      "path": "/home/runner/work/blended/blended/patches/browser-codecs/apply.py",
+      "bytes": 7118,
+      "sha256": "c9daeef50564141b1e1ae295b99017ce0dd8b0cf18dc47a3b4a486161548045f"
+    },
+    "outputs": [
+      {
+        "path": "patches/blender_web.cmake",
+        "bytes": 15538,
+        "sha256": "cafeec9d76b7b160b2e4a0542c676c01c5e27174bc39ef105683573db21a2c39"
+      },
+      {
+        "path": "patches/image_codecs.cmake",
+        "bytes": 2447,
+        "sha256": "b02dde59e88e2fa72b148a75c085748e148fe294e14dde26b6d63acd79e53aab"
+      },
+      {
+        "path": "patches/platform_wasm.cmake",
+        "bytes": 64676,
+        "sha256": "d805a6437057bfca4b018557dad7cdc91aa93bf2785e9c50d723199b1ff14ac6"
+      },
+      {
+        "path": "scripts/deps/aom.sh",
+        "bytes": 1241,
+        "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+      },
+      {
+        "path": "scripts/deps/codec-common.sh",
+        "bytes": 2878,
+        "sha256": "ed5fe723c0795716c70e0c9c0415542dbee935440bf623834baeef9ee4b3e7ce"
+      },
+      {
+        "path": "scripts/deps/libheif-static-c-api.patch",
+        "bytes": 264,
+        "sha256": "a0d9e21fd68ed1777e27be37a412c07ac89ac04975542630eb08a34dee7f3ada"
+      },
+      {
+        "path": "scripts/deps/libheif.sh",
+        "bytes": 2251,
+        "sha256": "3e6cfbda9059644e94cc0045d3c3056ef744f5105c97bea4b7660dcb2e0d5aa5"
+      },
+      {
+        "path": "scripts/deps/openimageio-dpx-signed-buffer.patch",
+        "bytes": 302,
+        "sha256": "c61f210fae985bd4119b84aa0b81915c9a4b704cd270734256aa1ba2f42eb185"
+      },
+      {
+        "path": "scripts/deps/openimageio.sh",
+        "bytes": 15890,
+        "sha256": "86d5e0c38066dca337c30128b586e3173b4ea547d0a1067685d710e03a6c9a01"
+      },
+      {
+        "path": "scripts/deps/openjpeg.sh",
+        "bytes": 617,
+        "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+      },
+      {
+        "path": "scripts/deps/webp.sh",
+        "bytes": 1072,
+        "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+      }
+    ],
+    "application_receipt": {
+      "path": "/home/runner/work/blended/blended/evidence/browser-source-build/codec-patch-application.json",
+      "bytes": 6525,
+      "sha256": "52192031e71eb461c742f0aa7cf70032270b9578a8a713d4200765d69098b520"
+    },
+    "application": {
+      "schema": 1,
+      "kind": "browser-codec-patch-application",
+      "status": "applied_and_verified",
+      "started_at": "2026-10-23T19:09:13.890726+00:00",
+      "port_root": "/home/runner/work/blended/blended/.cache/browser-source/gessa",
+      "id": "blender-5.2.0-web-codecs-v1",
+      "manifest_sha256": "1c98842c68dc7706630ce31132cdab20649ea61b860dd05b88722dc1a79b0bcf",
+      "patch_sha256": "0a129c4d827048faff088b95b446e86df7f116739b09b9aa67deaf887d3872f2",
+      "files": [
+        {
+          "path": "patches/blender_web.cmake",
+          "before_sha256": "85d640a5605a111a1980915f3e5e6ae6bd4b200ecf38e4b5250dd9ea6082e8f8",
+          "after_sha256": "cafeec9d76b7b160b2e4a0542c676c01c5e27174bc39ef105683573db21a2c39",
+          "after_bytes": 15538,
+          "observed_before_sha256": "85d640a5605a111a1980915f3e5e6ae6bd4b200ecf38e4b5250dd9ea6082e8f8",
+          "observed_after_sha256": "cafeec9d76b7b160b2e4a0542c676c01c5e27174bc39ef105683573db21a2c39"
+        },
+        {
+          "path": "patches/image_codecs.cmake",
+          "before_sha256": null,
+          "after_sha256": "b02dde59e88e2fa72b148a75c085748e148fe294e14dde26b6d63acd79e53aab",
+          "after_bytes": 2447,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "b02dde59e88e2fa72b148a75c085748e148fe294e14dde26b6d63acd79e53aab"
+        },
+        {
+          "path": "patches/platform_wasm.cmake",
+          "before_sha256": "6649659df4412a16d472fc09eeae19a05c6541babb2acd465e22f0cc1d79f368",
+          "after_sha256": "d805a6437057bfca4b018557dad7cdc91aa93bf2785e9c50d723199b1ff14ac6",
+          "after_bytes": 64676,
+          "observed_before_sha256": "6649659df4412a16d472fc09eeae19a05c6541babb2acd465e22f0cc1d79f368",
+          "observed_after_sha256": "d805a6437057bfca4b018557dad7cdc91aa93bf2785e9c50d723199b1ff14ac6"
+        },
+        {
+          "path": "scripts/deps/aom.sh",
+          "before_sha256": null,
+          "after_sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1",
+          "after_bytes": 1241,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+        },
+        {
+          "path": "scripts/deps/codec-common.sh",
+          "before_sha256": null,
+          "after_sha256": "ed5fe723c0795716c70e0c9c0415542dbee935440bf623834baeef9ee4b3e7ce",
+          "after_bytes": 2878,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "ed5fe723c0795716c70e0c9c0415542dbee935440bf623834baeef9ee4b3e7ce"
+        },
+        {
+          "path": "scripts/deps/libheif-static-c-api.patch",
+          "before_sha256": null,
+          "after_sha256": "a0d9e21fd68ed1777e27be37a412c07ac89ac04975542630eb08a34dee7f3ada",
+          "after_bytes": 264,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "a0d9e21fd68ed1777e27be37a412c07ac89ac04975542630eb08a34dee7f3ada"
+        },
+        {
+          "path": "scripts/deps/libheif.sh",
+          "before_sha256": null,
+          "after_sha256": "3e6cfbda9059644e94cc0045d3c3056ef744f5105c97bea4b7660dcb2e0d5aa5",
+          "after_bytes": 2251,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "3e6cfbda9059644e94cc0045d3c3056ef744f5105c97bea4b7660dcb2e0d5aa5"
+        },
+        {
+          "path": "scripts/deps/openimageio-dpx-signed-buffer.patch",
+          "before_sha256": null,
+          "after_sha256": "c61f210fae985bd4119b84aa0b81915c9a4b704cd270734256aa1ba2f42eb185",
+          "after_bytes": 302,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "c61f210fae985bd4119b84aa0b81915c9a4b704cd270734256aa1ba2f42eb185"
+        },
+        {
+          "path": "scripts/deps/openimageio.sh",
+          "before_sha256": "a17f3434f60d1914d61c03d10a91b7bafc562b411a4d215dc5b78a77ff681e5f",
+          "after_sha256": "86d5e0c38066dca337c30128b586e3173b4ea547d0a1067685d710e03a6c9a01",
+          "after_bytes": 15890,
+          "observed_before_sha256": "a17f3434f60d1914d61c03d10a91b7bafc562b411a4d215dc5b78a77ff681e5f",
+          "observed_after_sha256": "86d5e0c38066dca337c30128b586e3173b4ea547d0a1067685d710e03a6c9a01"
+        },
+        {
+          "path": "scripts/deps/openjpeg.sh",
+          "before_sha256": null,
+          "after_sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3",
+          "after_bytes": 617,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+        },
+        {
+          "path": "scripts/deps/webp.sh",
+          "before_sha256": null,
+          "after_sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b",
+          "after_bytes": 1072,
+          "observed_before_sha256": null,
+          "observed_after_sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+        }
+      ],
+      "commands": [
+        {
+          "argv": [
+            "git",
+            "apply",
+            "--numstat",
+            "/home/runner/work/blended/blended/patches/browser-codecs/0001-enable-original-image-codecs.patch"
+          ],
+          "started_at": "2026-10-23T19:09:13.891548+00:00",
+          "completed_at": "2026-10-23T19:09:13.893539+00:00",
+          "returncode": 0,
+          "stdout": "4\t4\tpatches/blender_web.cmake\n55\t0\tpatches/image_codecs.cmake\n1\t0\tpatches/platform_wasm.cmake\n29\t0\tscripts/deps/aom.sh\n84\t0\tscripts/deps/codec-common.sh\n5\t0\tscripts/deps/libheif-static-c-api.patch\n54\t0\tscripts/deps/libheif.sh\n69\t14\tscripts/deps/openimageio.sh\n17\t0\tscripts/deps/openjpeg.sh\n28\t0\tscripts/deps/webp.sh\n8\t0\tscripts/deps/openimageio-dpx-signed-buffer.patch\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "apply",
+            "--check",
+            "--whitespace=error-all",
+            "/home/runner/work/blended/blended/patches/browser-codecs/0001-enable-original-image-codecs.patch"
+          ],
+          "started_at": "2026-10-23T19:09:13.893729+00:00",
+          "completed_at": "2026-10-23T19:09:13.895924+00:00",
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "git",
+            "apply",
+            "--whitespace=error-all",
+            "/home/runner/work/blended/blended/patches/browser-codecs/0001-enable-original-image-codecs.patch"
+          ],
+          "started_at": "2026-10-23T19:09:13.896882+00:00",
+          "completed_at": "2026-10-23T19:09:13.899715+00:00",
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "dependency_build_verified": false,
+      "blender_tests_executed": false,
+      "full_feature_parity": false,
+      "limit": "Affected source-file identities and patch application only; source checkout commits and toolchain identity are verified separately by the build driver.",
+      "application": "applied",
+      "completed_at": "2026-10-23T19:09:13.900918+00:00"
+    },
+    "dependency_insertion": {
+      "before": "openimageio",
+      "recipes": [
+        "webp",
+        "openjpeg",
+        "aom",
+        "libheif"
+      ]
+    },
+    "oiio_configuration": {
+      "path": "/home/runner/work/blended/blended/evidence/browser-source-build/openimageio-CMakeCache.txt",
+      "bytes": 38108,
+      "sha256": "69f6b42d0a942f2ecee9ce2c0bb4cbe1017ac77a9ea752e8322e5a8c50563df2"
+    },
+    "configured_oiio_features": {
+      "USE_WEBP": "ON",
+      "USE_OPENJPEG": "ON",
+      "USE_LIBHEIF": "ON",
+      "EMBEDPLUGINS": "ON",
+      "BUILD_SHARED_LIBS": "OFF"
+    }
+  },
+  "host_requirements": {
+    "path": "/home/runner/work/blended/blended/.cache/browser-source/host-requirements.txt",
+    "bytes": 838,
+    "sha256": "f72565ef33be3f7ccc4f8fd10df2d32e6a31a1cce85a60ebe08061e33ed1875c"
+  },
+  "compiler": {
+    "emsdk_commit": "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de",
+    "release": "dbd755b5da399329c2576f6e3dfa7f419f5d8409",
+    "version": "6.0.5",
+    "commit": "1db513782be24469589d7cb8a1f1834e9a33f271",
+    "node_version": "v22.16.0",
+    "emcc": {
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/emcc",
+      "bytes": 1045,
+      "sha256": "498eba9b6aacffca1c358ba340fc7b37015d7867cb211c7f2d45784ee9310f03"
+    },
+    "clang": {
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/bin/clang",
+      "bytes": 146590784,
+      "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d"
+    }
+  },
+  "toolchain_download_receipt": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/toolchain-downloads.json",
+    "bytes": 1122,
+    "sha256": "d50fef9447d91739e5dbb8eaeb5e50e8c82ea0479b13b49c3fe61209de4d3e45"
+  },
+  "dawn_deps_manifest": {
+    "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/build-dawn/dawn/DEPS",
+    "bytes": 37644,
+    "sha256": "5497ea86e838e27ddf32eadaf04e7f8bff7a5e7cbababebda5e2f2186ddccd79"
+  },
+  "preload_data_receipt": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/blender-preload-lfs.json",
+    "bytes": 86201,
+    "sha256": "c34ef8c2fae5b2ef522ab120ef190d73368de725eb5939dc9b38e91a29c38b39"
+  },
+  "dependency_order": [
+    "zlib",
+    "zstd",
+    "fmt",
+    "eigen",
+    "robinmap",
+    "imath",
+    "libdeflate",
+    "openjph",
+    "openexr",
+    "libjpeg",
+    "libpng",
+    "libtiff",
+    "expat",
+    "yamlcpp",
+    "pystring",
+    "minizipng",
+    "opencolorio",
+    "brotli",
+    "freetype",
+    "tbb",
+    "webp",
+    "openjpeg",
+    "aom",
+    "libheif",
+    "openimageio",
+    "tint",
+    "shaderc",
+    "sqlite",
+    "python",
+    "wheels",
+    "numpy",
+    "opensubdiv",
+    "openusd"
+  ],
+  "effective_feature_configuration": {
+    "path": "/home/runner/work/blended/blended/.cache/browser-source/gessa/patches/blender_web.cmake",
+    "bytes": 15538,
+    "sha256": "cafeec9d76b7b160b2e4a0542c676c01c5e27174bc39ef105683573db21a2c39"
+  },
+  "effective_declared_disabled_features": [
+    "WITH_ALEMBIC",
+    "WITH_AUDASPACE",
+    "WITH_BLENDER_THUMBNAILER",
+    "WITH_BUILDINFO",
+    "WITH_BULLET",
+    "WITH_CODEC_FFMPEG",
+    "WITH_CODEC_SNDFILE",
+    "WITH_COREAUDIO",
+    "WITH_CYCLES_CUDA_BINARIES",
+    "WITH_CYCLES_DEVICE_CUDA",
+    "WITH_CYCLES_DEVICE_HIP",
+    "WITH_CYCLES_DEVICE_HIPRT",
+    "WITH_CYCLES_DEVICE_METAL",
+    "WITH_CYCLES_DEVICE_ONEAPI",
+    "WITH_CYCLES_DEVICE_OPTIX",
+    "WITH_CYCLES_EMBREE",
+    "WITH_CYCLES_HIP_BINARIES",
+    "WITH_CYCLES_HYDRA_RENDER_DELEGATE",
+    "WITH_CYCLES_NATIVE_ONLY",
+    "WITH_CYCLES_ONEAPI_BINARIES",
+    "WITH_CYCLES_OSL",
+    "WITH_CYCLES_PATH_GUIDING",
+    "WITH_CYCLES_PRECOMPUTE",
+    "WITH_CYCLES_STANDALONE",
+    "WITH_CYCLES_STANDALONE_GUI",
+    "WITH_DRACO",
+    "WITH_FFTW3",
+    "WITH_FREESTYLE",
+    "WITH_GHOST_SDL",
+    "WITH_GHOST_WAYLAND",
+    "WITH_GHOST_WEB",
+    "WITH_GHOST_X11",
+    "WITH_GHOST_XDND",
+    "WITH_GMP",
+    "WITH_HARU",
+    "WITH_HEADLESS",
+    "WITH_HYDRA",
+    "WITH_IK_ITASC",
+    "WITH_IK_SOLVER",
+    "WITH_INPUT_IME",
+    "WITH_INPUT_NDOF",
+    "WITH_IO_FBX",
+    "WITH_IO_GREASE_PENCIL",
+    "WITH_JACK",
+    "WITH_LIBMV",
+    "WITH_LLVM",
+    "WITH_MANIFOLD",
+    "WITH_MATERIALX",
+    "WITH_MESHOPTIMIZER",
+    "WITH_MOD_FLUID",
+    "WITH_MOD_OCEANSIM",
+    "WITH_MOD_REMESH",
+    "WITH_NANOVDB",
+    "WITH_OPENAL",
+    "WITH_OPENIMAGEDENOISE",
+    "WITH_OPENVDB",
+    "WITH_OPENVDB_BLOSC",
+    "WITH_PIPEWIRE",
+    "WITH_POTRACE",
+    "WITH_PUGIXML",
+    "WITH_PULSEAUDIO",
+    "WITH_PYTHON_INSTALL",
+    "WITH_PYTHON_INSTALL_NUMPY",
+    "WITH_PYTHON_INSTALL_REQUESTS",
+    "WITH_PYTHON_INSTALL_ZSTANDARD",
+    "WITH_PYTHON_MODULE",
+    "WITH_QUADRIFLOW",
+    "WITH_RUBBERBAND",
+    "WITH_SDL_AUDIO",
+    "WITH_TBB_MALLOC_PROXY",
+    "WITH_UV_SLIM",
+    "WITH_WASAPI",
+    "WITH_X11_XINPUT",
+    "WITH_XR_OPENXR"
+  ],
+  "dependency_recipe_manifest": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/dependency-recipe-inputs.json",
+    "bytes": 7265,
+    "sha256": "9be8201251893e4c0d8cd690f9a8a3266e8a4e51069af68f9cc0572b45a12194"
+  },
+  "dependency_harvest_manifest": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/dependency-harvest.jsonl",
+    "bytes": 621285,
+    "sha256": "7ff1e1381194b1d43b9a40cb50736084444eb351c6001de043c05d3f71024af6"
+  },
+  "configured_features": {
+    "WITH_ALEMBIC": "OFF",
+    "WITH_ASSERT_ABORT": "ON",
+    "WITH_ASSERT_RELEASE": "ON",
+    "WITH_AUDASPACE": "OFF",
+    "WITH_BLENDER": "ON",
+    "WITH_BLENDER_THUMBNAILER": "OFF",
+    "WITH_BLENDER_WEB_BROWSER": "ON",
+    "WITH_BLENDER_WEB_WINDOWED": "ON",
+    "WITH_BUILDINFO": "ON",
+    "WITH_BULLET": "OFF",
+    "WITH_CLANG": "OFF",
+    "WITH_CLANG_TIDY": "OFF",
+    "WITH_CODEC_FFMPEG": "OFF",
+    "WITH_CODEC_SNDFILE": "OFF",
+    "WITH_COMPILER_ASAN": "OFF",
+    "WITH_COMPILER_ASAN_EXTERN": "OFF",
+    "WITH_COMPILER_CCACHE": "OFF",
+    "WITH_COMPILER_CODE_COVERAGE": "OFF",
+    "WITH_COMPILER_LTO": "OFF",
+    "WITH_COMPILER_PRECOMPILED_HEADERS": "ON",
+    "WITH_COMPILER_SHORT_FILE_MACRO": "ON",
+    "WITH_COMPILER_SIMD": "ON",
+    "WITH_COREAUDIO": "OFF",
+    "WITH_CUDA_DYNLOAD": "ON",
+    "WITH_CYCLES": "ON",
+    "WITH_CYCLES_CUDA_BINARIES": "OFF",
+    "WITH_CYCLES_CUDA_BUILD_SERIAL": "OFF",
+    "WITH_CYCLES_DEBUG": "OFF",
+    "WITH_CYCLES_DEBUG_NAN": "OFF",
+    "WITH_CYCLES_DEVICE_CUDA": "OFF",
+    "WITH_CYCLES_DEVICE_HIP": "OFF",
+    "WITH_CYCLES_DEVICE_HIPRT": "OFF",
+    "WITH_CYCLES_DEVICE_METAL": "OFF",
+    "WITH_CYCLES_DEVICE_ONEAPI": "OFF",
+    "WITH_CYCLES_DEVICE_OPTIX": "OFF",
+    "WITH_CYCLES_EMBREE": "OFF",
+    "WITH_CYCLES_HIP_BINARIES": "OFF",
+    "WITH_CYCLES_HYDRA_RENDER_DELEGATE": "OFF",
+    "WITH_CYCLES_KERNEL_ASAN": "OFF",
+    "WITH_CYCLES_NATIVE_ONLY": "OFF",
+    "WITH_CYCLES_ONEAPI_BINARIES": "OFF",
+    "WITH_CYCLES_OSL": "OFF",
+    "WITH_CYCLES_PARALLEL_DEVICE_KERNEL_BUILD": "OFF",
+    "WITH_CYCLES_PATH_GUIDING": "OFF",
+    "WITH_CYCLES_PRECOMPUTE": "OFF",
+    "WITH_CYCLES_STANDALONE": "OFF",
+    "WITH_CYCLES_STANDALONE_GUI": "OFF",
+    "WITH_CYCLES_TEST_OSL": "OFF",
+    "WITH_DOC_MANPAGE": "OFF",
+    "WITH_DRACO": "OFF",
+    "WITH_DRAW_DEBUG": "OFF",
+    "WITH_EXPERIMENTAL_FEATURES": "ON",
+    "WITH_FFTW3": "OFF",
+    "WITH_FREESTYLE": "OFF",
+    "WITH_FRIBIDI": "OFF",
+    "WITH_GHOST_DEBUG": "OFF",
+    "WITH_GHOST_SDL": "OFF",
+    "WITH_GHOST_WAYLAND": "OFF",
+    "WITH_GHOST_WEB": "ON",
+    "WITH_GHOST_X11": "OFF",
+    "WITH_GHOST_XDND": "OFF",
+    "WITH_GMP": "OFF",
+    "WITH_GPU_BACKEND_TESTS": "OFF",
+    "WITH_GPU_COMPOSITOR_TESTS": "OFF",
+    "WITH_GPU_DRAW_TESTS": "OFF",
+    "WITH_GPU_MESH_PAINT_TESTS": "OFF",
+    "WITH_GPU_RENDER_TESTS": "OFF",
+    "WITH_GPU_RENDER_TESTS_HEADED": "OFF",
+    "WITH_GPU_RENDER_TESTS_VULKAN": "OFF",
+    "WITH_GPU_SHADER_ASSERT": "OFF",
+    "WITH_GPU_SHADER_CPP_COMPILATION": "ON",
+    "WITH_GTESTS": "ON",
+    "WITH_HARFBUZZ": "OFF",
+    "WITH_HARU": "OFF",
+    "WITH_HEADLESS": "OFF",
+    "WITH_HYDRA": "OFF",
+    "WITH_IK_ITASC": "OFF",
+    "WITH_IK_SOLVER": "OFF",
+    "WITH_IMAGE_CINEON": "ON",
+    "WITH_IMAGE_OPENJPEG": "ON",
+    "WITH_IMAGE_WEBP": "ON",
+    "WITH_INPUT_IME": "ON",
+    "WITH_INPUT_NDOF": "OFF",
+    "WITH_INSTALL_COPYRIGHT": "OFF",
+    "WITH_INSTALL_PORTABLE": "ON",
+    "WITH_INTERNATIONAL": "ON",
+    "WITH_IO_FBX": "OFF",
+    "WITH_IO_GREASE_PENCIL": "OFF",
+    "WITH_IO_PLY": "ON",
+    "WITH_IO_STL": "ON",
+    "WITH_IO_WAVEFRONT_OBJ": "ON",
+    "WITH_JACK": "OFF",
+    "WITH_JACK_DYNLOAD": "OFF",
+    "WITH_LIBMV": "OFF",
+    "WITH_LIBMV_SCHUR_SPECIALIZATIONS": "ON",
+    "WITH_LIBS_PRECOMPILED": "ON",
+    "WITH_LINKER_LLD": "ON",
+    "WITH_LINKER_MOLD": "ON",
+    "WITH_LINUX_OFFICIAL_RELEASE_TESTS": "OFF",
+    "WITH_LLVM": "OFF",
+    "WITH_MANIFOLD": "OFF",
+    "WITH_MATERIALX": "OFF",
+    "WITH_MEM_VALGRIND": "OFF",
+    "WITH_MESHOPTIMIZER": "OFF",
+    "WITH_MOD_FLUID": "OFF",
+    "WITH_MOD_OCEANSIM": "OFF",
+    "WITH_MOD_REMESH": "OFF",
+    "WITH_NANOVDB": "OFF",
+    "WITH_NINJA_POOL_JOBS": "ON",
+    "WITH_OPENAL": "OFF",
+    "WITH_OPENGL_BACKEND": "OFF",
+    "WITH_OPENIMAGEDENOISE": "OFF",
+    "WITH_OPENSUBDIV": "ON",
+    "WITH_OPENVDB": "OFF",
+    "WITH_OPENVDB_3_ABI_COMPATIBLE": "OFF",
+    "WITH_OPENVDB_BLOSC": "OFF",
+    "WITH_OPTIMIZED_BUILD_TOOLS": "ON",
+    "WITH_PIPEWIRE": "OFF",
+    "WITH_PIPEWIRE_DYNLOAD": "OFF",
+    "WITH_POTRACE": "OFF",
+    "WITH_PUGIXML": "OFF",
+    "WITH_PULSEAUDIO": "OFF",
+    "WITH_PULSEAUDIO_DYNLOAD": "OFF",
+    "WITH_PYTHON": "ON",
+    "WITH_PYTHON_INSTALL": "OFF",
+    "WITH_PYTHON_INSTALL_NUMPY": "OFF",
+    "WITH_PYTHON_INSTALL_REQUESTS": "OFF",
+    "WITH_PYTHON_INSTALL_ZSTANDARD": "OFF",
+    "WITH_PYTHON_MODULE": "OFF",
+    "WITH_PYTHON_SAFETY": "OFF",
+    "WITH_PYTHON_SECURITY": "ON",
+    "WITH_QUADRIFLOW": "OFF",
+    "WITH_RENDERDOC": "OFF",
+    "WITH_RUBBERBAND": "OFF",
+    "WITH_SDL_AUDIO": "OFF",
+    "WITH_STATIC_LIBS": "OFF",
+    "WITH_STORM_TESTS_VULKAN": "OFF",
+    "WITH_STRICT_BUILD_OPTIONS": "OFF",
+    "WITH_STRSIZE_DEBUG": "OFF",
+    "WITH_SYSTEM_AUDASPACE": "OFF",
+    "WITH_SYSTEM_BULLET": "OFF",
+    "WITH_SYSTEM_FREETYPE": "OFF",
+    "WITH_SYSTEM_GFLAGS": "OFF",
+    "WITH_SYSTEM_GLOG": "OFF",
+    "WITH_SYSTEM_PYTHON_TESTS": "OFF",
+    "WITH_TBB": "ON",
+    "WITH_TBB_MALLOC_PROXY": "OFF",
+    "WITH_TESTS_BATCHED": "ON",
+    "WITH_TESTS_BMESH_CORE_PARITY": "OFF",
+    "WITH_TESTS_EXPERIMENTAL": "OFF",
+    "WITH_TESTS_SINGLE_BINARY": "ON",
+    "WITH_TRACY": "OFF",
+    "WITH_UI_TESTS": "OFF",
+    "WITH_UI_TESTS_HEADLESS": "OFF",
+    "WITH_UI_TESTS_VULKAN": "ON",
+    "WITH_UNITY_BUILD": "ON",
+    "WITH_USD": "ON",
+    "WITH_UV_SLIM": "OFF",
+    "WITH_VULKAN_BACKEND": "OFF",
+    "WITH_WASAPI": "OFF",
+    "WITH_WEBGPU_BACKEND": "ON",
+    "WITH_X11_XINPUT": "OFF",
+    "WITH_XR_OPENXR": "OFF",
+    "WITH_ASSERT_ABORT-ADVANCED": "1",
+    "WITH_ASSERT_RELEASE-ADVANCED": "1",
+    "WITH_AUDASPACE-ADVANCED": "1",
+    "WITH_BLENDER-ADVANCED": "1",
+    "WITH_CLANG_TIDY-ADVANCED": "1",
+    "WITH_COMPILER_ASAN-ADVANCED": "1",
+    "WITH_COMPILER_ASAN_EXTERN-ADVANCED": "1",
+    "WITH_COMPILER_CCACHE-ADVANCED": "1",
+    "WITH_COMPILER_CODE_COVERAGE-ADVANCED": "1",
+    "WITH_COMPILER_PRECOMPILED_HEADERS-ADVANCED": "1",
+    "WITH_COMPILER_SHORT_FILE_MACRO-ADVANCED": "1",
+    "WITH_COMPILER_SIMD-ADVANCED": "1",
+    "WITH_CUDA_DYNLOAD-ADVANCED": "1",
+    "WITH_CYCLES_CUDA_BUILD_SERIAL-ADVANCED": "1",
+    "WITH_CYCLES_DEBUG_NAN-ADVANCED": "1",
+    "WITH_CYCLES_DEVICE_CUDA-ADVANCED": "1",
+    "WITH_CYCLES_DEVICE_HIP-ADVANCED": "1",
+    "WITH_CYCLES_DEVICE_HIPRT-ADVANCED": "1",
+    "WITH_CYCLES_KERNEL_ASAN-ADVANCED": "1",
+    "WITH_CYCLES_NATIVE_ONLY-ADVANCED": "1",
+    "WITH_CYCLES_PARALLEL_DEVICE_KERNEL_BUILD-ADVANCED": "1",
+    "WITH_CYCLES_PRECOMPUTE-ADVANCED": "1",
+    "WITH_CYCLES_TEST_OSL-ADVANCED": "1",
+    "WITH_DRAW_DEBUG-ADVANCED": "1",
+    "WITH_GHOST_DEBUG-ADVANCED": "1",
+    "WITH_GHOST_SDL-ADVANCED": "1",
+    "WITH_GHOST_WAYLAND-ADVANCED": "1",
+    "WITH_GHOST_X11-ADVANCED": "1",
+    "WITH_GPU_RENDER_TESTS_HEADED-ADVANCED": "1",
+    "WITH_GPU_RENDER_TESTS_VULKAN-ADVANCED": "1",
+    "WITH_GPU_SHADER_ASSERT-ADVANCED": "1",
+    "WITH_GPU_SHADER_CPP_COMPILATION-ADVANCED": "1",
+    "WITH_HEADLESS-ADVANCED": "1",
+    "WITH_INSTALL_COPYRIGHT-ADVANCED": "1",
+    "WITH_LIBMV_SCHUR_SPECIALIZATIONS-ADVANCED": "1",
+    "WITH_LIBS_PRECOMPILED-ADVANCED": "1",
+    "WITH_LINKER_LLD-ADVANCED": "1",
+    "WITH_LINKER_MOLD-ADVANCED": "1",
+    "WITH_MEM_VALGRIND-ADVANCED": "1",
+    "WITH_NINJA_POOL_JOBS-ADVANCED": "1",
+    "WITH_OPENGL_BACKEND-ADVANCED": "1",
+    "WITH_OPENVDB_3_ABI_COMPATIBLE-ADVANCED": "1",
+    "WITH_OPTIMIZED_BUILD_TOOLS-ADVANCED": "1",
+    "WITH_PYTHON-ADVANCED": "1",
+    "WITH_PYTHON_SAFETY-ADVANCED": "1",
+    "WITH_PYTHON_SECURITY-ADVANCED": "1",
+    "WITH_RENDERDOC-ADVANCED": "1",
+    "WITH_RUBBERBAND-ADVANCED": "1",
+    "WITH_STORM_TESTS_VULKAN-ADVANCED": "1",
+    "WITH_STRSIZE_DEBUG-ADVANCED": "1",
+    "WITH_SYSTEM_AUDASPACE-ADVANCED": "1",
+    "WITH_SYSTEM_BULLET-ADVANCED": "1",
+    "WITH_SYSTEM_GFLAGS-ADVANCED": "1",
+    "WITH_SYSTEM_GLOG-ADVANCED": "1",
+    "WITH_SYSTEM_PYTHON_TESTS-ADVANCED": "1",
+    "WITH_TESTS_BATCHED-ADVANCED": "1",
+    "WITH_TESTS_BMESH_CORE_PARITY-ADVANCED": "1",
+    "WITH_TESTS_EXPERIMENTAL-ADVANCED": "1",
+    "WITH_TESTS_SINGLE_BINARY-ADVANCED": "1",
+    "WITH_TRACY-ADVANCED": "1",
+    "WITH_UI_TESTS_VULKAN-ADVANCED": "1",
+    "WITH_UNITY_BUILD-ADVANCED": "1",
+    "WITH_VULKAN_BACKEND-ADVANCED": "1",
+    "WITH_WEBGPU_BACKEND-ADVANCED": "1"
+  },
+  "disabled_features": [
+    "WITH_ALEMBIC",
+    "WITH_AUDASPACE",
+    "WITH_BLENDER_THUMBNAILER",
+    "WITH_BULLET",
+    "WITH_CLANG",
+    "WITH_CLANG_TIDY",
+    "WITH_CODEC_FFMPEG",
+    "WITH_CODEC_SNDFILE",
+    "WITH_COMPILER_ASAN",
+    "WITH_COMPILER_ASAN_EXTERN",
+    "WITH_COMPILER_CCACHE",
+    "WITH_COMPILER_CODE_COVERAGE",
+    "WITH_COMPILER_LTO",
+    "WITH_COREAUDIO",
+    "WITH_CYCLES_CUDA_BINARIES",
+    "WITH_CYCLES_CUDA_BUILD_SERIAL",
+    "WITH_CYCLES_DEBUG",
+    "WITH_CYCLES_DEBUG_NAN",
+    "WITH_CYCLES_DEVICE_CUDA",
+    "WITH_CYCLES_DEVICE_HIP",
+    "WITH_CYCLES_DEVICE_HIPRT",
+    "WITH_CYCLES_DEVICE_METAL",
+    "WITH_CYCLES_DEVICE_ONEAPI",
+    "WITH_CYCLES_DEVICE_OPTIX",
+    "WITH_CYCLES_EMBREE",
+    "WITH_CYCLES_HIP_BINARIES",
+    "WITH_CYCLES_HYDRA_RENDER_DELEGATE",
+    "WITH_CYCLES_KERNEL_ASAN",
+    "WITH_CYCLES_NATIVE_ONLY",
+    "WITH_CYCLES_ONEAPI_BINARIES",
+    "WITH_CYCLES_OSL",
+    "WITH_CYCLES_PARALLEL_DEVICE_KERNEL_BUILD",
+    "WITH_CYCLES_PATH_GUIDING",
+    "WITH_CYCLES_PRECOMPUTE",
+    "WITH_CYCLES_STANDALONE",
+    "WITH_CYCLES_STANDALONE_GUI",
+    "WITH_CYCLES_TEST_OSL",
+    "WITH_DOC_MANPAGE",
+    "WITH_DRACO",
+    "WITH_DRAW_DEBUG",
+    "WITH_FFTW3",
+    "WITH_FREESTYLE",
+    "WITH_FRIBIDI",
+    "WITH_GHOST_DEBUG",
+    "WITH_GHOST_SDL",
+    "WITH_GHOST_WAYLAND",
+    "WITH_GHOST_X11",
+    "WITH_GHOST_XDND",
+    "WITH_GMP",
+    "WITH_GPU_BACKEND_TESTS",
+    "WITH_GPU_COMPOSITOR_TESTS",
+    "WITH_GPU_DRAW_TESTS",
+    "WITH_GPU_MESH_PAINT_TESTS",
+    "WITH_GPU_RENDER_TESTS",
+    "WITH_GPU_RENDER_TESTS_HEADED",
+    "WITH_GPU_RENDER_TESTS_VULKAN",
+    "WITH_GPU_SHADER_ASSERT",
+    "WITH_HARFBUZZ",
+    "WITH_HARU",
+    "WITH_HEADLESS",
+    "WITH_HYDRA",
+    "WITH_IK_ITASC",
+    "WITH_IK_SOLVER",
+    "WITH_INPUT_NDOF",
+    "WITH_INSTALL_COPYRIGHT",
+    "WITH_IO_FBX",
+    "WITH_IO_GREASE_PENCIL",
+    "WITH_JACK",
+    "WITH_JACK_DYNLOAD",
+    "WITH_LIBMV",
+    "WITH_LINUX_OFFICIAL_RELEASE_TESTS",
+    "WITH_LLVM",
+    "WITH_MANIFOLD",
+    "WITH_MATERIALX",
+    "WITH_MEM_VALGRIND",
+    "WITH_MESHOPTIMIZER",
+    "WITH_MOD_FLUID",
+    "WITH_MOD_OCEANSIM",
+    "WITH_MOD_REMESH",
+    "WITH_NANOVDB",
+    "WITH_OPENAL",
+    "WITH_OPENGL_BACKEND",
+    "WITH_OPENIMAGEDENOISE",
+    "WITH_OPENVDB",
+    "WITH_OPENVDB_3_ABI_COMPATIBLE",
+    "WITH_OPENVDB_BLOSC",
+    "WITH_PIPEWIRE",
+    "WITH_PIPEWIRE_DYNLOAD",
+    "WITH_POTRACE",
+    "WITH_PUGIXML",
+    "WITH_PULSEAUDIO",
+    "WITH_PULSEAUDIO_DYNLOAD",
+    "WITH_PYTHON_INSTALL",
+    "WITH_PYTHON_INSTALL_NUMPY",
+    "WITH_PYTHON_INSTALL_REQUESTS",
+    "WITH_PYTHON_INSTALL_ZSTANDARD",
+    "WITH_PYTHON_MODULE",
+    "WITH_PYTHON_SAFETY",
+    "WITH_QUADRIFLOW",
+    "WITH_RENDERDOC",
+    "WITH_RUBBERBAND",
+    "WITH_SDL_AUDIO",
+    "WITH_STATIC_LIBS",
+    "WITH_STORM_TESTS_VULKAN",
+    "WITH_STRICT_BUILD_OPTIONS",
+    "WITH_STRSIZE_DEBUG",
+    "WITH_SYSTEM_AUDASPACE",
+    "WITH_SYSTEM_BULLET",
+    "WITH_SYSTEM_FREETYPE",
+    "WITH_SYSTEM_GFLAGS",
+    "WITH_SYSTEM_GLOG",
+    "WITH_SYSTEM_PYTHON_TESTS",
+    "WITH_TBB_MALLOC_PROXY",
+    "WITH_TESTS_BMESH_CORE_PARITY",
+    "WITH_TESTS_EXPERIMENTAL",
+    "WITH_TRACY",
+    "WITH_UI_TESTS",
+    "WITH_UI_TESTS_HEADLESS",
+    "WITH_UV_SLIM",
+    "WITH_VULKAN_BACKEND",
+    "WITH_WASAPI",
+    "WITH_X11_XINPUT",
+    "WITH_XR_OPENXR"
+  ],
+  "configuration": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/CMakeCache.txt",
+    "bytes": 64787,
+    "sha256": "e5e7f83a6ba3b0b3dc9de8f4ad361686d9efc602581f20335cd2ec265c9dc932"
+  },
+  "compile_commands": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/compile_commands.json",
+    "bytes": 17952789,
+    "sha256": "c0d33673e38ae739fbcfe6c46c706f0d0c16ac456623d96bc17eb3d3fd450a3e"
+  },
+  "artifact": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/blender-source-development.tar.gz",
+    "bytes": 109565556,
+    "sha256": "cd3aac10bf50c24af4003a63b2851bc02f62502377575b73441cd9aebcc2809a"
+  },
+  "engine_files": [
+    {
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/development-bundle/bin/blender_browser.data",
+      "bytes": 168833661,
+      "sha256": "b0755e39571d1d35469e9ea8418d270d5d1c68b5b09ad482087787525e4bc02d"
+    },
+    {
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/development-bundle/bin/blender_browser.js",
+      "bytes": 694799,
+      "sha256": "5cbf0e0efa68fdc253fccd465fde63366cf49d538b0d7f1418d052c22141ea6d"
+    },
+    {
+      "path": "/home/runner/work/blended/blended/.cache/browser-source/development-bundle/bin/blender_browser.wasm",
+      "bytes": 126035500,
+      "sha256": "e17adf8691050328023216107b74ff3da11d9e436f263e27af2113ba08c11c39"
+    }
+  ],
+  "reason": "Pinned port source and explicitly selected numerical, SQLite and codec extensions built with verified feature requirements, build metadata enabled, and OFF development packaging. Runtime tests remain required.",
+  "finished_utc": "2026-10-23T19:52:59.247913+00:00",
+  "download_receipt": {
+    "path": "/home/runner/work/blended/blended/evidence/browser-source-build/downloads.jsonl",
+    "bytes": 1903,
+    "sha256": "b7103a6821a94e638aa3fadb206cee37f54259a65043d735ec41235ff1c13c00"
+  }
+}
