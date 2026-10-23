@@ -1,0 +1,36 @@
+name: Pinned offline test-port development kit
+on:
+  push:
+    branches: [compat/complete-families]
+    paths: ['.github/workflows/port-development-kit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Package compiler and standard libraries only, without credentials or caches
+        run: |
+          set -euo pipefail
+          mkdir -p kit
+          rustc --version --verbose > kit/toolchain.txt
+          git archive --format=tar.gz HEAD > kit/project-source.tar.gz
+          SYSROOT=$(rustc --print sysroot)
+          tar -C "$SYSROOT" --exclude='share/doc' --exclude='share/man' --exclude='lib/rustlib/src' -czf kit/rust-1.92.0-linux-wasm.tar.gz bin lib
+          (cd kit && sha256sum *.tar.gz > SHA256SUMS)
+          du -h kit/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: offline-port-development-kit
+          path: kit/
+          retention-days: 1
+          compression-level: 0
