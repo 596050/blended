@@ -1,0 +1,767 @@
+{
+  "schema": 1,
+  "kind": "proposed-browser-worker-ipc-source-contract",
+  "created_utc": "2026-10-23T16:50:55.531143+00:00",
+  "proposal_driver": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/freeze-proposal.py",
+    "bytes": 17604,
+    "sha256": "e2675c2abd6d981317175882c78148f08427ea75c44c2883706a524dad7ca332"
+  },
+  "source_bindings": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source-bindings.json",
+    "bytes": 25461,
+    "sha256": "258e2d0b34b55c15e46f352be21094375a287001e5fe4406abdd778ed0507b24"
+  },
+  "existing_observations": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/existing-observations.json",
+    "bytes": 9103,
+    "sha256": "6339f630807d7a08f8266c77fa805b6d633de4a90c7907aae6f65cf2bd44b9c3"
+  },
+  "status": "read-only-analysis-not-implemented",
+  "source_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "python_version": "3.13.13",
+  "emscripten_version": "6.0.5",
+  "current_original_http_invocation": {
+    "source": {
+      "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/tests/python/bl_http_downloader.py",
+      "bytes": 11488,
+      "sha256": "c0e9ff0c18aef5209c2903e6a9c24066d4ab64311ec0b2b47de8d67273a33fe1"
+    },
+    "registration": {
+      "entrypoint": "original __main__",
+      "process_isolation": "one-upstream-script",
+      "background": true,
+      "blender_args": [
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+      ],
+      "script_args": [],
+      "ctest_name": "script_http_downloader",
+      "cmake_sources": [
+        {
+          "upstream_path": "tests/CMakeLists.txt",
+          "bytes": 5871,
+          "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+        },
+        {
+          "upstream_path": "tests/python/CMakeLists.txt",
+          "bytes": 50161,
+          "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+        }
+      ],
+      "registration": "add_blender_test(\n  script_http_downloader\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_http_downloader.py\n)"
+    },
+    "expected_exact_case_ids": [
+      "BackgroundDownloaderProcessTest.test_start_stop",
+      "BasicImportTest.test_background_downloader",
+      "BasicImportTest.test_downloader",
+      "ConditionalDownloaderTest.test_request_cancel",
+      "HumanizeSizeTest.test_humanize_size",
+      "MaxDownloadSizeTest.test_max_size",
+      "RequestDescriptionTest.test_comparison",
+      "RequestDescriptionTest.test_hash"
+    ],
+    "existing_native_passes": 8,
+    "existing_browser_passes": 7,
+    "existing_browser_errors": 1,
+    "new_execution_in_this_analysis": false
+  },
+  "blockers": [
+    {
+      "id": "duplex-pipe",
+      "evidence_kind": "observed-runtime-failure",
+      "finding": "The original start/stop case fails at Pipe(duplex=True), through socket.socketpair fallback, with OSError errno 52 ENOSYS. The original driver and browser both exit 1.",
+      "sources": [
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/scripts/modules/_bpy_internal/http/downloader.py",
+            "bytes": 63436,
+            "sha256": "e9efc3bb66709f0f857d7d5a44e40d230764e4aa801e5f148d763f5b35c00a37"
+          },
+          "matching_lines": [
+            622
+          ],
+          "needle": "my_side, subprocess_side = _mp_context.Pipe(duplex=True)"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/connection.py",
+            "bytes": 42974,
+            "sha256": "059d1d94c3286ae427c7f262812cf73af0419963a0cf6ce59f99450e1015d9f6"
+          },
+          "matching_lines": [
+            551
+          ],
+          "needle": "s1, s2 = socket.socketpair()"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Tools/wasm/config.site-wasm32-emscripten",
+            "bytes": 2868,
+            "sha256": "a11e0cb8a6d318f87c21066463411d0f44d3268a1ba3854593a0c43bb445b969"
+          },
+          "matching_lines": [
+            33
+          ],
+          "needle": "ac_cv_func_socketpair=no"
+        }
+      ]
+    },
+    {
+      "id": "spawn-resource-tracker",
+      "evidence_kind": "source-inferred-later-blocker",
+      "finding": "The application explicitly selects spawn. Its current POSIX launcher imports resource_tracker, which unconditionally imports _posixshmem on posix. The actual packaged configuration marks _posixshmem n/a. This path was not reached by the failing original invocation.",
+      "sources": [
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/scripts/modules/_bpy_internal/http/downloader.py",
+            "bytes": 63436,
+            "sha256": "e9efc3bb66709f0f857d7d5a44e40d230764e4aa801e5f148d763f5b35c00a37"
+          },
+          "matching_lines": [
+            417
+          ],
+          "needle": "multiprocessing.get_context(method='spawn')"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/popen_spawn_posix.py",
+            "bytes": 2143,
+            "sha256": "3738d2da3f5f57c83149232120a389a3b03cb4ed6f275957b884b18eb227628a"
+          },
+          "matching_lines": [
+            39
+          ],
+          "needle": "from . import resource_tracker"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/resource_tracker.py",
+            "bytes": 15247,
+            "sha256": "d616e432c09051719a5b5d28f11a2548c2edef1af488e48361da31c736948dd5"
+          },
+          "matching_lines": [
+            46
+          ],
+          "needle": "import _posixshmem"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/configure.ac",
+            "bytes": 256122,
+            "sha256": "d3fd7e3cc497d5b9148de714ba1303bb1adf5475b30c1a95bf9b186307d0f656"
+          },
+          "matching_lines": [
+            7612,
+            7639,
+            7777
+          ],
+          "needle": "[_posixshmem],"
+        }
+      ]
+    },
+    {
+      "id": "spawn-exec-and-reap",
+      "evidence_kind": "source-inferred-later-blocker",
+      "finding": "The current spawn launcher needs descriptor inheritance, os.pipe, util.spawnv_passfds, _posixsubprocess.fork_exec, and inherited popen_fork polling via os.waitpid. _posixsubprocess is n/a in the packaged configuration; Emscripten's inspected libc includes unavailable exec/fork/wait implementations. HAVE_FORK=1 and HAVE_VFORK=1 in cross-build config do not establish functional processes.",
+      "sources": [
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/util.py",
+            "bytes": 17468,
+            "sha256": "da2518dcfe99306a49bc6eca3d639aa5ac6ccfe22cbb86c8796a72b80cd18aa0"
+          },
+          "matching_lines": [
+            519
+          ],
+          "needle": "import _posixsubprocess"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/popen_spawn_posix.py",
+            "bytes": 2143,
+            "sha256": "3738d2da3f5f57c83149232120a389a3b03cb4ed6f275957b884b18eb227628a"
+          },
+          "matching_lines": [
+            58
+          ],
+          "needle": "util.spawnv_passfds"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/popen_fork.py",
+            "bytes": 2516,
+            "sha256": "eaf8069a8c934395d19ab9cd218b3dd96714b5e6b79ffd5f2234b9c20a62dae2"
+          },
+          "matching_lines": [
+            28
+          ],
+          "needle": "os.waitpid(self.pid, flag)"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/emscripten-6.0.5/system/lib/libc/emscripten_libc_stubs.c",
+            "bytes": 6695,
+            "sha256": "c4e4a71fbe0d36e200cae5587b9b89c4e3e4635eb6bb1c089d1d80c62e58fbbc"
+          },
+          "matching_lines": [
+            164
+          ],
+          "needle": "weak int execve"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/emscripten-6.0.5/system/lib/libc/emscripten_libc_stubs.c",
+            "bytes": 6695,
+            "sha256": "c4e4a71fbe0d36e200cae5587b9b89c4e3e4635eb6bb1c089d1d80c62e58fbbc"
+          },
+          "matching_lines": [
+            174
+          ],
+          "needle": "weak pid_t fork"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/emscripten-6.0.5/system/lib/libc/emscripten_syscall_stubs.c",
+            "bytes": 5065,
+            "sha256": "d8c72d693625453052734fd6705287e32745135852ec095599facbcd01cc33d3"
+          },
+          "matching_lines": [
+            209
+          ],
+          "needle": "weak pid_t __syscall_wait4"
+        }
+      ]
+    },
+    {
+      "id": "interpreter-identity",
+      "evidence_kind": "observed-warning-and-source-inferred-launch-gap",
+      "finding": "Existing browser logs warn that the Python executable is unavailable. The original embedding code sets sys.executable to None in that condition. Worker launch must provide a real Python execution target, preparation metadata, import paths and child result/exit status; a path placeholder alone supplies none of those capabilities.",
+      "sources": [
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/source/blender/python/intern/bpy_interface.cc",
+            "bytes": 38568,
+            "sha256": "f8f1f47b6c6a5b7369a4ef48d68d3ec6070cda98ab15e66a0349302d6d04fdce"
+          },
+          "matching_lines": [
+            537
+          ],
+          "needle": "Unable to find the Python binary"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/source/blender/python/intern/bpy_interface.cc",
+            "bytes": 38568,
+            "sha256": "f8f1f47b6c6a5b7369a4ef48d68d3ec6070cda98ab15e66a0349302d6d04fdce"
+          },
+          "matching_lines": [
+            591
+          ],
+          "needle": "PySys_SetObject(\"executable\", Py_None)"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/multiprocessing/spawn.py",
+            "bytes": 9659,
+            "sha256": "e38307ad8d7a6107ca90a943e2d7a01c9a16fbe4cbac6d0f5087a8bfef4ebf2a"
+          },
+          "matching_lines": [
+            51
+          ],
+          "needle": "set_executable(sys.executable)"
+        }
+      ]
+    },
+    {
+      "id": "semaphores-and-child-threads",
+      "evidence_kind": "source-inferred-capability-gap-and-required-validation",
+      "finding": "The base artifact installs the port's single-process SemLock shim. It has no shared handle/name and _rebuild creates a fresh semaphore, so it is not transferable worker synchronization. CPython explicitly marks _multiprocessing n/a even if pthread flags change. The unchanged downloader child starts real RX and TX Python threads. Its two multiprocessing Events remain in the parent for this test, so this invocation alone does not establish cross-process Event/SemLock parity. The current recipe lacks --enable-wasm-pthreads; actual child thread behavior must be measured, since the final Blender host itself is threaded.",
+      "sources": [
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/port/scripts/deps/python-shims/_multiprocessing.py",
+            "bytes": 6231,
+            "sha256": "aec9e7cd6d2783fb9f1c3c932a3d7abe96a90f6a008f926e44386aeb43dd7be0"
+          },
+          "matching_lines": [
+            65
+          ],
+          "needle": "self.handle = None"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/port/scripts/deps/python-shims/_multiprocessing.py",
+            "bytes": 6231,
+            "sha256": "aec9e7cd6d2783fb9f1c3c932a3d7abe96a90f6a008f926e44386aeb43dd7be0"
+          },
+          "matching_lines": [
+            145
+          ],
+          "needle": "return SemLock(kind, 1, maxvalue, name, False)"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/configure.ac",
+            "bytes": 256122,
+            "sha256": "d3fd7e3cc497d5b9148de714ba1303bb1adf5475b30c1a95bf9b186307d0f656"
+          },
+          "matching_lines": [
+            7611,
+            7638,
+            7774
+          ],
+          "needle": "[_multiprocessing],"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/scripts/modules/_bpy_internal/http/downloader.py",
+            "bytes": 63436,
+            "sha256": "e9efc3bb66709f0f857d7d5a44e40d230764e4aa801e5f148d763f5b35c00a37"
+          },
+          "matching_lines": [
+            962
+          ],
+          "needle": "rx_thread.start()"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/scripts/modules/_bpy_internal/http/downloader.py",
+            "bytes": 63436,
+            "sha256": "e9efc3bb66709f0f857d7d5a44e40d230764e4aa801e5f148d763f5b35c00a37"
+          },
+          "matching_lines": [
+            963
+          ],
+          "needle": "tx_thread.start()"
+        },
+        {
+          "file": {
+            "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/configure.ac",
+            "bytes": 256122,
+            "sha256": "d3fd7e3cc497d5b9148de714ba1303bb1adf5475b30c1a95bf9b186307d0f656"
+          },
+          "matching_lines": [
+            1309
+          ],
+          "needle": "AC_ARG_ENABLE([wasm-pthreads]"
+        }
+      ]
+    }
+  ],
+  "minimum_general_implementation_boundaries": [
+    {
+      "id": "browser-spawn-context",
+      "seam": "CPython multiprocessing context and new browser Popen backend, plus a packaged Python Worker launcher",
+      "required": [
+        "Keep get_context('spawn') and the original public Process API. Launch an isolated fresh CPython instance with its own heap and module state; do not map Process to a thread in the existing interpreter.",
+        "Preserve spawn preparation data, argv, cwd, environment, sys.path and __main__ reconstruction. Use the original target and ForkingPickler reduction semantics; execute the real _download_queued_items function with original options.",
+        "Package the original _bpy_internal modules and the exact required pure-Python dependency closure, including requests, urllib3 and cattrs. Expose the unchanged staged original main script when spawn preparation needs it.",
+        "Track real child startup, running, exit code, death, sentinel/readiness and daemon cleanup. Process.is_alive() must read actual child state, including during synchronous parent shutdown."
+      ]
+    },
+    {
+      "id": "worker-duplex-connections",
+      "seam": "multiprocessing Pipe/Connection browser transport and handle reduction",
+      "required": [
+        "Implement a real bidirectional ordered byte channel usable by arbitrary Python targets. Keep actual pickle payloads, framing, partial transfer, bounded buffering/backpressure, nonblocking poll(0), blocking receive and timeouts.",
+        "Serialize the child endpoint as a real channel capability. Preserve close ownership, EOFError/BrokenPipeError behavior, wakeups and cancellation when an endpoint or worker dies.",
+        "Support the existing child RX and TX threads concurrently; do not hard-code SHUTDOWN, return synthetic report values, or schedule the target in the parent's Python heap.",
+        "Choose a synchronous-capable Worker transport, such as bounded SharedArrayBuffer channels with atomic state and a host broker. A postMessage-only implementation whose callbacks require a blocked Python event loop cannot satisfy the current busy poll loops without an explicit suspension mechanism.",
+        "Run blocking Python away from the browser UI thread. Bind cross-origin-isolation prerequisites and worker startup/pthread pool readiness to the artifact rather than extending the original five-second shutdown limit."
+      ]
+    },
+    {
+      "id": "real-thread-and-synchronization-support",
+      "seam": "CPython dependency recipe, _thread runtime and a genuine browser synchronization backend",
+      "required": [
+        "Build and execute the child interpreter with working threading.Thread, Event, Queue, sleep and joins. The original function must start both RX and TX threads and exit normally after SHUTDOWN.",
+        "The recommended separately packaged child build enables CPython wasm pthreads and uses consistent -pthread compile/link flags. Verify TLS, GIL and wakeup behavior in Chrome; a threaded final host does not prove an independently launched child works.",
+        "Provide actual inter-worker synchronization for any advertised transferable multiprocessing Event/SemLock. Replace the existing local-only shim before claiming that broader API. Resource lifecycle must be tracked by the browser backend; importing a fake _posixshmem or returning fake fork/wait results is insufficient."
+      ]
+    },
+    {
+      "id": "shared-interpreter-launch-service",
+      "seam": "reusable browser Python launch, filesystem and process-result service",
+      "required": [
+        "Make the worker launch/liveness service reusable by subprocess for Python commands, with actual argv, environment, cwd, standard streams, return code, wait and cancellation semantics.",
+        "Define coherent file visibility for parent-generated inputs and child-created outputs. A snapshot without synchronized writes cannot satisfy documentation stub output checks or real downloads.",
+        "Keep arbitrary native executables and shell support explicitly unsupported until implemented. This proposal does not provide idiff or arbitrary operating-system process execution."
+      ]
+    }
+  ],
+  "original_source_bound_acceptance": {
+    "unchanged_full_invocation": "Run the frozen original script_http_downloader manifest on a new measured browser artifact, with all eight exact native IDs, no additional filters or skips, and successful original driver plus browser process completion.",
+    "exact_original_case_sources": [
+      {
+        "id": "BackgroundDownloaderProcessTest.test_start_stop",
+        "line": 172,
+        "method_sha256": "8f0daa9d76127e52107061aff10e13049d7b6831d6159e72df27e4070f06c3e3",
+        "assertion_calls": [
+          {
+            "line": 185,
+            "source": "self.fail(f\"unexpected call to on_error({req_desc}, {local_path}, {ex})\")"
+          },
+          {
+            "line": 193,
+            "source": "self.assertRaises(RuntimeError)"
+          },
+          {
+            "line": 199,
+            "source": "self.assertFalse(downloader.is_shutdown_requested)"
+          },
+          {
+            "line": 200,
+            "source": "self.assertFalse(downloader.is_shutdown_complete)"
+          },
+          {
+            "line": 201,
+            "source": "self.assertTrue(downloader.is_subprocess_alive)"
+          },
+          {
+            "line": 217,
+            "source": "self.assertTrue(downloader.is_shutdown_requested)"
+          },
+          {
+            "line": 218,
+            "source": "self.assertTrue(downloader.is_shutdown_complete)"
+          },
+          {
+            "line": 219,
+            "source": "self.assertFalse(downloader.is_subprocess_alive)"
+          }
+        ]
+      },
+      {
+        "id": "BasicImportTest.test_background_downloader",
+        "line": 39,
+        "method_sha256": "8ec96057e623bdc301678059def4d44281fb793f1842794503da2d2e85bcff81",
+        "assertion_calls": [
+          {
+            "line": 52,
+            "source": "self.fail(f\"unexpected call to on_error({req_desc}, {local_path}, {ex})\")"
+          },
+          {
+            "line": 60,
+            "source": "self.assertTrue(downloader.all_downloads_done)"
+          },
+          {
+            "line": 61,
+            "source": "self.assertEqual(0, downloader.num_pending_downloads)"
+          },
+          {
+            "line": 62,
+            "source": "self.assertFalse(downloader.is_shutdown_requested)"
+          },
+          {
+            "line": 63,
+            "source": "self.assertFalse(downloader.is_shutdown_complete)"
+          },
+          {
+            "line": 64,
+            "source": "self.assertFalse(downloader.is_subprocess_alive)"
+          }
+        ]
+      },
+      {
+        "id": "BasicImportTest.test_downloader",
+        "line": 30,
+        "method_sha256": "809f62c2775b0ff504bc7299993c8d37c57432bc9e51e935731a9b1feb5a7b20",
+        "assertion_calls": [
+          {
+            "line": 37,
+            "source": "self.assertIsNotNone(downloader)"
+          }
+        ]
+      },
+      {
+        "id": "ConditionalDownloaderTest.test_request_cancel",
+        "line": 224,
+        "method_sha256": "47ff1c527894925d366e40cc395dc43d4027de06df6531db2d45a8b3e1418b4f",
+        "assertion_calls": [
+          {
+            "line": 249,
+            "source": "self.assertEqual(expected_http_descr, http_req_descr)"
+          },
+          {
+            "line": 259,
+            "source": "self.assertRaises(http_dl.DownloadCancelled)"
+          },
+          {
+            "line": 263,
+            "source": "self.assertFalse(download_path.exists())"
+          },
+          {
+            "line": 264,
+            "source": "self.assertTrue(periodic_check_called)"
+          },
+          {
+            "line": 265,
+            "source": "self.assertEqual(\n            [\n                ('download_starts', (expected_http_descr, )),\n                ('download_error', (expected_http_descr, download_path, cancel_ex.exception)),\n            ],\n            list(reporter._queue)  # pyright: ignore[reportPrivateUsage]\n        )"
+          }
+        ]
+      },
+      {
+        "id": "HumanizeSizeTest.test_humanize_size",
+        "line": 275,
+        "method_sha256": "864fe474eddd4af3d6ee7829ecd069ba6e30bb56a50e2c4eabf69d7f3b10f158",
+        "assertion_calls": [
+          {
+            "line": 278,
+            "source": "self.assertEqual(humanize_size(0), \"0 B\")"
+          },
+          {
+            "line": 279,
+            "source": "self.assertEqual(humanize_size(1), \"1 B\")"
+          },
+          {
+            "line": 280,
+            "source": "self.assertEqual(humanize_size(1023), \"1023 B\")"
+          },
+          {
+            "line": 282,
+            "source": "self.assertEqual(humanize_size(1024), \"1 KiB\")"
+          },
+          {
+            "line": 283,
+            "source": "self.assertEqual(humanize_size(1024**2), \"1 MiB\")"
+          },
+          {
+            "line": 284,
+            "source": "self.assertEqual(humanize_size(1024**3), \"1 GiB\")"
+          },
+          {
+            "line": 285,
+            "source": "self.assertEqual(humanize_size(1024**4), \"1 TiB\")"
+          },
+          {
+            "line": 287,
+            "source": "self.assertEqual(humanize_size(1536), \"1.5 KiB\")"
+          },
+          {
+            "line": 288,
+            "source": "self.assertEqual(humanize_size(5046586573), \"4.7 GiB\")"
+          },
+          {
+            "line": 291,
+            "source": "self.assertEqual(humanize_size(50465865728), \"47 GiB\")"
+          },
+          {
+            "line": 294,
+            "source": "self.assertEqual(humanize_size(1024**7), \"1024 EiB\")"
+          },
+          {
+            "line": 295,
+            "source": "self.assertEqual(humanize_size(1024**8), \"1048576 EiB\")"
+          },
+          {
+            "line": 298,
+            "source": "self.assertEqual(humanize_size(-1), \"-1 B\")"
+          },
+          {
+            "line": 299,
+            "source": "self.assertEqual(humanize_size(-2 * 1024**2), \"-2 MiB\")"
+          }
+        ]
+      },
+      {
+        "id": "MaxDownloadSizeTest.test_max_size",
+        "line": 140,
+        "method_sha256": "74e27c437680ffdd85d895319004beeaf5fff422bb1e9ffac624fc653462f167",
+        "assertion_calls": [
+          {
+            "line": 161,
+            "source": "self.assertRaises(http_dl.ContentLengthTooBigError)"
+          }
+        ]
+      },
+      {
+        "id": "RequestDescriptionTest.test_comparison",
+        "line": 68,
+        "method_sha256": "f5d86707a376e9a5f98e4b5dfe6ceef40e484a776f83bd4fa00d9457297f615f",
+        "assertion_calls": [
+          {
+            "line": 75,
+            "source": "self.assertEqual(http_descr, http_descr, \"Same instance\")"
+          },
+          {
+            "line": 76,
+            "source": "self.assertEqual(\n            http_descr,\n            http_dl.RequestDescription(\"GET\", url),\n            \"Same HTTP method & URL, different instance\",\n        )"
+          },
+          {
+            "line": 81,
+            "source": "self.assertEqual(\n            http_descr,\n            http_dl.RequestDescription(\"GET\", url, response_headers={\"a\": \"b\"}),\n            \"Same HTTP method & URL, different response headers\",\n        )"
+          },
+          {
+            "line": 88,
+            "source": "self.assertNotEqual(\n            http_descr,\n            http_dl.RequestDescription(\"DELETE\", url),\n            \"Different HTTP method, same URL\",\n        )"
+          },
+          {
+            "line": 93,
+            "source": "self.assertNotEqual(\n            http_descr,\n            http_dl.RequestDescription(\"GET\", \"http://example.com/another-file.md\"),\n            \"Same HTTP method, different URL\",\n        )"
+          },
+          {
+            "line": 100,
+            "source": "self.assertNotEqual(http_descr, None, \"comparison should be None-safe\")"
+          },
+          {
+            "line": 101,
+            "source": "self.assertNotEqual(http_descr, \"some other type\", \"comparison should be safe for other types\")"
+          }
+        ]
+      },
+      {
+        "id": "RequestDescriptionTest.test_hash",
+        "line": 103,
+        "method_sha256": "2df231c9fd33725c55a6cd16597580c1b639f8057a868b4968e16aab18ed84c1",
+        "assertion_calls": [
+          {
+            "line": 110,
+            "source": "self.assertEqual(hash(http_descr), hash(http_descr), \"Same instance\")"
+          },
+          {
+            "line": 111,
+            "source": "self.assertEqual(\n            hash(http_descr),\n            hash(http_dl.RequestDescription(\"GET\", url)),\n            \"Same HTTP method & URL, different instance\",\n        )"
+          },
+          {
+            "line": 116,
+            "source": "self.assertEqual(\n            hash(http_descr),\n            hash(http_dl.RequestDescription(\"GET\", url, response_headers={\"a\": \"b\"})),\n            \"Same HTTP method & URL, different response headers\",\n        )"
+          },
+          {
+            "line": 123,
+            "source": "self.assertNotEqual(\n            hash(http_descr),\n            hash(http_dl.RequestDescription(\"DELETE\", url)),\n            \"Different HTTP method, same URL\",\n        )"
+          },
+          {
+            "line": 128,
+            "source": "self.assertNotEqual(\n            hash(http_descr),\n            hash(http_dl.RequestDescription(\"GET\", \"http://example.com/another-file.md\")),\n            \"Same HTTP method, different URL\",\n        )"
+          },
+          {
+            "line": 135,
+            "source": "self.assertNotEqual(hash(http_descr), hash(None))"
+          },
+          {
+            "line": 136,
+            "source": "self.assertNotEqual(hash(RequestDescription(\"\", \"\")), hash(None))"
+          }
+        ]
+      }
+    ],
+    "start_stop_sequence": [
+      "queue_download before start must raise RuntimeError.",
+      "After the real start: shutdown_requested=False, shutdown_complete=False, subprocess_alive=True.",
+      "Three original update() calls must complete without unexpected callback/error.",
+      "The original finally block shuts down the living child; the subsequent second shutdown() call must remain safe.",
+      "After shutdown: shutdown_requested=True, shutdown_complete=True, subprocess_alive=False.",
+      "The real child must receive the original SHUTDOWN message, run the unchanged target's exit path and terminate. The original loop's five-second bound and one-second thread joins remain unchanged."
+    ],
+    "additional_general_backend_checks_not_blender_test_credit": [
+      "A child executes arbitrary importable Python targets in an isolated interpreter; parent globals are not shared or silently modified.",
+      "Duplex transfer preserves arbitrary picklable values, multiple messages, payloads larger than the transport buffer and both directions under backpressure.",
+      "poll(0) is genuinely nonblocking; receive, timed waits, EOF, broken-pipe and abrupt child death report real state.",
+      "Two real child threads run concurrently with child main, use Event/Queue and join without deadlock while the parent remains inside its synchronous shutdown loop.",
+      "Repeated spawn/stop and failed startup leave no live worker, transport handle or synchronization resource behind.",
+      "Advertised cross-worker Event/SemLock state survives reduction/rebuild and is shared, unlike the current local-only shim."
+    ],
+    "not_established_by_the_eight_original_cases": [
+      "actual HTTP transfers",
+      "browser Fetch/CORS integration",
+      "TLS behavior",
+      "download cancellation during real network I/O",
+      "arbitrary subprocess executables",
+      "complete multiprocessing API parity"
+    ]
+  },
+  "documentation_overlap": {
+    "observed": "With original documentation resources mounted, sphinx_doc_gen passes its subtest. The original sphinx_stub_gen subprocess call fails with OSError errno 138 ENOTSUP because subprocess.Popen rejects Emscripten.",
+    "sources": [
+      {
+        "file": {
+          "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/tests/python/bl_pyapi_doc_gen.py",
+          "bytes": 5330,
+          "sha256": "658ffbbb8dd5a7c9c9510139b788b3749e39fe4b2c3249154a6e13a1dc3e23ab"
+        },
+        "matching_lines": [
+          106
+        ],
+        "needle": "result = subprocess.run("
+      },
+      {
+        "file": {
+          "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/subprocess.py",
+          "bytes": 90827,
+          "sha256": "e4049ed91ed101b09b0dc96bbf234f646c1728090d643a474b024276cc2a028c"
+        },
+        "matching_lines": [
+          78
+        ],
+        "needle": "_can_fork_exec = sys.platform not in"
+      },
+      {
+        "file": {
+          "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/cpython-3.13.13/Lib/subprocess.py",
+          "bytes": 90827,
+          "sha256": "e4049ed91ed101b09b0dc96bbf234f646c1728090d643a474b024276cc2a028c"
+        },
+        "matching_lines": [
+          827
+        ],
+        "needle": "if not _can_fork_exec:"
+      },
+      {
+        "file": {
+          "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source/blender/doc/python_api/sphinx_stub_gen.py",
+          "bytes": 68937,
+          "sha256": "ec36984c45e278abfd9a5dee89afc2b78ffe04218f798b18145a8cab0e100417"
+        },
+        "matching_lines": [
+          28
+        ],
+        "needle": "from docutils import nodes"
+      }
+    ],
+    "original_argv": [
+      "PYTHON_BIN or sys.executable",
+      "original sphinx_stub_gen.py",
+      "generated rst_dir",
+      "-o",
+      "stubs_dir",
+      "--strict-docs"
+    ],
+    "acceptance": "Run that real child, retain --strict-docs, require actual returncode 0, the original stubs directory and at least one generated .pyi. Keep both original subtests and full parent outcome; never use --skip-stubs.",
+    "extra_prerequisites": [
+      "A real child interpreter identity; the browser receipt reports PYTHON_BIN unavailable.",
+      "Exact docutils dependency closure in the child. The frozen preload contains zero docutils package paths; source inspection alone is not a runtime import test.",
+      "Coherent parent RST input and child .pyi output visibility before the original temporary-directory cleanup."
+    ],
+    "not_solved_by_a_pipe_only_fix": true
+  },
+  "design_references": [
+    {
+      "url": "https://docs.python.org/3.13/library/multiprocessing.html",
+      "role": "General spawn/isolation contract; inspected 3.13.13 source, not moving documentation, is the implementation authority."
+    },
+    {
+      "url": "https://emscripten.org/docs/porting/pthreads.html",
+      "role": "Thread compile/link flags, worker pool readiness and main-thread blocking constraints."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics/wait",
+      "role": "SharedArrayBuffer waiting is unavailable on the browser main thread."
+    }
+  ],
+  "implementation_completed": false,
+  "new_tests_executed": 0,
+  "new_browser_passes": 0,
+  "production_code_modified": false,
+  "original_tests_or_assertions_modified": false,
+  "historical_receipts_modified": false,
+  "full_feature_parity": false
+}

@@ -1,6 +1,6 @@
 # Original Blender test parity status
 
-Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The latest separately qualified browser package has 516 successful native/browser pairs in a selected 829-obligation candidate scope. Unexpanded declarations, failed cases, missing cases, missing subtests, expected failures and unavailable host tools remain visible. The complete selected matrix was rerun after the original brush asset was restored.
+Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The latest separately qualified browser package has 516 successful native/browser pairs in a selected 829-obligation candidate scope. A separate original mesh-driver profile now qualifies all 88 bevel cases. These profiles retain separate denominators. Unexpanded declarations, failed cases, missing cases, missing subtests, expected failures and unavailable host tools remain visible. The complete selected unittest matrix was rerun after the original brush asset was restored.
 
 ## Exact scope and references
 
@@ -76,6 +76,68 @@ Browser pass and failure columns below are observed parent outcomes, not strict 
 | bl_brush | 4 | 4 | 4 | 0 | 0 | 0 | 4 |
 | compositing_node_group | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
 
+## Original mesh drivers outside the frozen unittest matrix
+
+The next source-derived original driver is `bmesh_bevel`, declaration 49 in
+the pinned 5.2 inventory. Its complete unchanged `--run-all-tests` invocation
+passes all **88 original cases** natively and in Chromium using the measured
+Essentials package. Every case has the original `PASSED`, `Mesh Comparison :
+Same` and `Mesh Validation : Valid` observations. The case identities,
+specification hashes, source locations, original arguments, working directory,
+fixture and helper bytes agree. No cases are missing, duplicated or unexpected.
+Blender's actual Wasm runtime exit, Chromium process exit and capture process
+exit are all zero. See the [paired bevel summary](../compatibility/evidence/bmesh-bevel-browser-essentials-5.2-2026-10-23/summary.json).
+
+This uses the explicit
+`original-bmesh-bevel-essentials-chromium-custom-launcher-v2` profile, which
+mounts the exact original inputs and runs the original automatic application
+main. It preserves the original comparison-enabling full-suite argument;
+the upstream single-case debugging argument disables comparison and is not
+used for qualification. `BLENDER_TEST_UPDATE` is absent by key presence,
+because even an empty or zero-valued variable would enable upstream reference
+mutation. The file-preservation observer reads bytes at the original
+`Blender quit` output boundary before WasmFS teardown, then separately requires
+the actual runtime exit. All earlier sandbox, shutdown and observer failures
+remain recorded with their original qualification status.
+
+These 88 pairs are outside the frozen 829-obligation unittest ledger. They
+establish the selected original CPU mesh comparisons under this new launcher
+and software-adapter profile. They do not establish configured CTest execution,
+the package's original UI shell, GPU behavior, complete native/browser build
+correspondence or whole-application parity. Neither the 829-obligation ledger
+nor its 516 strict successful pairs is rewritten to incorporate this result.
+
+The complete original `operators` driver adds a separately recorded
+105-case native/browser comparison on the same package. Native passes all
+105; the browser observes **103 passes and two failures**. Both
+`IcosphereFill` and `IcosphereFillUseBeautyFalse` report the original
+`The edge topology is different` result while retaining `Mesh Validation :
+Valid`. Their source, helper, fixture, original full-suite arguments and
+working directory are unchanged, and all 105 names execute exactly once.
+Blender's actual runtime exit is 1, Chromium exits 0, and the capture process
+correctly returns 1. The whole-invocation gate therefore qualifies zero
+successful pairs for this driver. The [operators summary](../compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/summary.json)
+retains all individual outcomes and exact case identities.
+
+The [bounded failure triage](../compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/FAILURE_TRIAGE.md)
+binds the original fill, triangle-fill, scanfill, sorting and mesh-comparison
+source paths to the exact 5.2 archive. Both beauty settings fail, so the shared
+initial triangulation and comparison paths are candidates for diagnosis.
+No runtime geometry arrays or internal sort decisions were captured in this
+qualification, and no numerical, ordering or comparator cause is claimed.
+The original tests and reference meshes remain unchanged.
+
+The [independent mesh-driver review](../compatibility/evidence/original-mesh-browser-independent-review-5.2-2026-10-23/report.json)
+checks both complete invocations, 78 evidence identities, launcher derivations,
+original case/specification mappings, event order, actual process exits and
+the retained source triage. It adds zero executions or case passes.
+
+The [next-invocation audit](../compatibility/evidence/original-next-invocations-5.2-2026-10-23/proposed-next-invocations.json)
+retains all 101 declarations previously unexpanded by the unittest adapter
+and details eight candidates with their original source and fixture
+requirements. Static declarations and proposed case counts do not count as
+runtime execution or successful cases.
+
 ## Repairs and separate diagnostic evidence
 
 ### Original brush assets
@@ -118,10 +180,16 @@ The optional [codec build extension](../patches/browser-codecs/manifest.json)
 compiles the original pinned WebP, OpenJPEG, AOM and libheif libraries. Its
 standalone WebAssembly roundtrip diagnostic observes maximum channel errors of
 0 for WebP, 0 for JPEG2000 and 1 for AVIF. These diagnostic criteria are separate
-from the original Blender assertions. Full OIIO, Blender's CINEON/DPX paths,
-the 80 original ImBuf parent cases and all 57 native ImBuf subtest identities
-still require a newly built Blender artifact. The [codec evidence](../compatibility/evidence/browser-codecs-5.2-2026-10-23/)
-retains failed attempts and successful component observations separately.
+from the original Blender assertions. The complete OIIO dependency recipe also
+passes: all 21 dependency recipes exit 0, and its linked Node/Wasm smoke constructs
+WebP, JPEG2000, HEIF and DPX readers and writers and confirms AV1 encoder/decoder
+availability. OIIO's actual build took 466.232883 seconds at one compile job.
+Its [completion evidence](../compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/completion-summary.json)
+preserves the generated cache and required options. Blender's own CINEON/DPX
+paths, the 80 original ImBuf parent cases and all 57 native ImBuf subtest identities
+still require the newly built Blender artifact. Failed attempts and successful
+component observations remain separate, with zero additional original Blender
+browser case credit from dependency validation.
 
 The source workflow now selects both byte-bound extensions, preserves the
 original brush overlay, and reruns the frozen initial invocation matrix plus
@@ -130,16 +198,35 @@ resource retries. None of this implementation progress changes the current
 
 | Gap | Exact evidence | Required implementation or qualification |
 |---|---|---|
-| SQLite | 12 native disk-file hash cases cannot be discovered; browser import fails on `_sqlite3`. The original Python dependency build explicitly disables that module. | Build the embedded Python SQLite extension and its database dependency for the browser, then rerun the complete original 12-case invocation. |
+| SQLite | 12 native disk-file hash cases cannot be discovered on the current qualified package; browser import fails on `_sqlite3`. | The new real extension and dependency pass component validation. Rerun the complete original 12-case invocation on the rebuilt Blender engine. |
 | Background process and socket support | `BackgroundDownloaderProcessTest.test_start_stop` fails through `multiprocessing.Pipe`, `socketpair`, and the unsupported socket syscall. | Implement the needed browser worker/IPC behavior and preserve the original lifecycle assertions. The seven other pass callbacks do not qualify a failing invocation. |
-| AVIF | Two imbuf parent cases fail in three AVIF subtests; original OIIO was built with `USE_LIBHEIF=OFF`. | Add the actual required codec/backend and verify original read/write comparisons. |
-| Missing image formats | Fourteen CINEON, DPX, JPEG2000 and WEBP subtest events are absent because the original source branches on the browser's reduced format list. | Enable and implement the corresponding compiled features; require the native event identities and outcomes. A passing parent alone is insufficient. |
+| AVIF | Two imbuf parent cases fail in three AVIF subtests; the current qualified package's OIIO was built with `USE_LIBHEIF=OFF`. | The new libheif/AOM/OIIO dependency integration passes. Verify the original Blender read/write comparisons on the rebuilt engine. |
+| Missing image formats | Fourteen CINEON, DPX, JPEG2000 and WEBP subtest events are absent because the current package exposes a reduced format list. | The new recipes enable the corresponding compiled features. Require all native event identities and original outcomes on the rebuilt artifact. A passing parent alone is insufficient. |
 | Image-comparator execution | 207 font-image assertions fail at the original missing-tool guard, despite the separate successful host image oracle. | Supply a faithful browser-compatible comparator or a clearly declared supported test-helper execution profile; retain exact original command and acceptance semantics. |
 | Documentation subprocess | The first original documentation subtest succeeds; `sphinx_stub_gen` fails when spawning the required Python process. | Implement the required execution facility and dependency closure before claiming the full original invocation passes. |
+| Mesh fill topology | Two of 105 original operator cases fail the exact edge-topology comparison on the current package, while all 105 pass natively. | Capture actual evaluated/reference geometry and isolate the divergence in the shared fill or comparator path. Preserve the original topology criterion and rerun the full invocation on any repaired engine. |
 | Native expected failure | One NLA case is already marked expected failure upstream and behaves that way in both environments. | Keep it as expected-failure agreement. It cannot count as a demonstrated working feature. |
 | Test denominator | Conditional registrations, C++/GTest binaries, UI, render, simulation and custom test drivers are not fully expanded. | Capture actual configured CTest registrations, native runtime leaf identities, fixtures and each applicable browser profile. |
 
 The [full failure triage](ORIGINAL_TEST_FAILURE_TRIAGE.md) preserves exact case IDs, traceback locations, subtest IDs, source hashes, build configuration evidence and original dependency logs. Assertions, thresholds and references were not relaxed to obtain passes.
+
+The [browser worker and IPC contract](../compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/README.md)
+now traces the downloader's observed first failure against the actual packaged
+Python and original source. Its Pipe/socketpair fallback raises ENOSYS before
+any child starts. Later source-inferred blockers include the unavailable
+`_posixshmem` and `_posixsubprocess` extensions, the POSIX process launch/reap
+path, the missing Python executable, transferable connection handles and real
+RX/TX threads in the child. The current semaphore shim recreates local objects
+and does not provide shared worker synchronization.
+
+The proposed implementation has three reusable boundaries: an isolated Python
+worker spawn backend, ordered synchronous-capable duplex IPC, and actual
+child threading/lifecycle handling. The acceptance gate remains the complete
+original eight-case downloader invocation, including its unchanged shutdown
+limits. The same launch service could support documentation generation only
+with the real docutils dependency and coherent RST input and `.pyi` output
+visibility. This is a source-bound proposal, with zero new executions or
+passes; no process support is claimed as implemented.
 
 ## How the implementation prevents false parity
 
@@ -152,6 +239,26 @@ The old facet gate's hash-only evidence acceptance was replaced with typed case-
 The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate and independently checks both base and augmented packages. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
 
 The latest local infrastructure run passes **346 tests with zero skips** in 121.485 seconds, including real CMake configuration, dependency integration, patch application, qualification validation and the cache failure regressions. Its prospectively captured [execution receipt](../compatibility/evidence/infrastructure-tests-cache-verified-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm all 156 selected implementation, workflow and original-preimage files were unchanged during the run. The preceding [337-test run](../compatibility/evidence/infrastructure-tests-codecs-sqlite-2026-10-23/execution.json) and [294-test run](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) remain unchanged. These counts validate the project's testing machinery; they are not added to Blender feature passes.
+
+The published implementation checkpoint is
+[`f25e69ed72fed2d31d7d65e657fd6515da4bd792`](https://github.com/596050/blended/commit/f25e69ed72fed2d31d7d65e657fd6515da4bd792).
+Its [publication receipt](../compatibility/evidence/checkpoint-publication-f25e69ed72fe-2026-10-23/summary.json)
+records independent verification of the exact commit and tree before the
+authorized parity branch was advanced. GitHub CI independently passes the
+same **346 infrastructure tests with zero skips** in 109.674 seconds.
+Both strict original-test gates remain blocked as expected. The Essentials
+report has exactly the same bytes and SHA256 as the prior 829-obligation
+report, retaining 516 successful pairs and 601 outcome agreements. This
+[CI evidence replay](../compatibility/evidence/ci-ledger-f25e69ed72fe-2026-10-23/summary.json)
+reexecutes zero original Blender cases.
+
+The new [source-build run](https://github.com/596050/blended/actions/runs/39986612484)
+has restored the explicitly selected historical dependency cache and passed
+the complete installed-file and source-derived alias verification. Its
+reconstruct/build/package step was still running at the last observation on
+2026-10-23. The workflow subsequently requires the original brush overlay and
+fresh execution of both frozen browser matrices. No completed new engine or
+new original-case result is inferred from this running build.
 
 ## Product target inventory and configuration
 

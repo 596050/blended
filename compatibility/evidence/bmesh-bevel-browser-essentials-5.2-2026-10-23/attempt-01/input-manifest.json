@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/native/blender-5.2.0-linux-x64/blender",
+    "--background",
+    "--console-crash-handler",
+    "--factory-startup",
+    "--debug-memory",
+    "--debug-exit-on-error",
+    "--python-exit-code",
+    "1",
+    "--python-expr",
+    "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+    "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/source/tests/files/modeling/bevel_regression.blend",
+    "--python",
+    "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/source/tests/python/bevel_operator.py",
+    "--",
+    "--run-all-tests"
+  ],
+  "cwd": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23",
+  "environment": {
+    "BLENDER_SYSTEM_RESOURCES": "/bw",
+    "BLENDER_SYSTEM_PYTHON": "/bw/python",
+    "BLENDER_SYSTEM_SCRIPTS": "/bw/scripts",
+    "BLENDER_SYSTEM_DATAFILES": "/bw/datafiles",
+    "BLENDER_USER_RESOURCES": "/projects",
+    "TMPDIR": "/projects/.recovery",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "files": [
+    {
+      "virtual_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/source/tests/python/bevel_operator.py",
+      "url": "/original-input-3",
+      "bytes": 20590,
+      "sha256": "f6643470ca03ebe4b6517f5f2151a6699b66557cb80828f0f6f8ebfa22c3fd9a"
+    },
+    {
+      "virtual_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/source/tests/python/modules/mesh_test.py",
+      "url": "/original-input-4",
+      "bytes": 40007,
+      "sha256": "fd764b05f86479f45eb52731eb2009b7321dfa74a258c4886c4c73083bf3ee5e"
+    },
+    {
+      "virtual_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-source-native-5.2-2026-10-23/source/tests/files/modeling/bevel_regression.blend",
+      "url": "/original-input-5",
+      "bytes": 2387547,
+      "sha256": "dad2aa2c02cb6ceb9e025b729e1886a95b3d744c10dce56503adbd15ec312771"
+    }
+  ],
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+}

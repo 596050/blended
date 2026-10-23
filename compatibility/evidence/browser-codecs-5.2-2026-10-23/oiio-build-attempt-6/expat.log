@@ -1,0 +1,114 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1296k    0 1296k    0     0  1192k      0 --:--:--  0:00:01 --:--:-- 1192k100 5152k    0 5152k    0     0  2493k      0 --:--:--  0:00:02 --:--:-- 3934k100 8251k    0 8251k    0     0  3340k      0 --:--:--  0:00:02 --:--:-- 5025k
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/expat/libexpat-R_2_7_5/expat -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/expat/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DBUILD_SHARED_LIBS=OFF -DEXPAT_SHARED_LIBS=OFF -DEXPAT_BUILD_TOOLS=OFF -DEXPAT_BUILD_EXAMPLES=OFF -DEXPAT_BUILD_TESTS=OFF -DEXPAT_BUILD_DOCS=OFF -DEXPAT_BUILD_PKGCONFIG=ON -DCMAKE_C_FLAGS=-pthread -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port
+-- Looking for dlfcn.h
+-- Looking for dlfcn.h - found
+-- Looking for fcntl.h
+-- Looking for fcntl.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for getpagesize
+-- Looking for getpagesize - not found
+-- Looking for mmap
+-- Looking for mmap - found
+-- Looking for getrandom
+-- Looking for getrandom - not found
+-- Looking for arc4random_buf
+-- Looking for arc4random_buf - not found
+-- Looking for arc4random
+-- Looking for arc4random - not found
+-- Looking for 4 include files stdlib.h, ..., float.h
+-- Looking for 4 include files stdlib.h, ..., float.h - found
+-- Performing Test HAVE_OFF_T
+-- Performing Test HAVE_OFF_T - Success
+-- Performing Test HAVE_SYSCALL_GETRANDOM
+-- Performing Test HAVE_SYSCALL_GETRANDOM - Failed
+-- Performing Test _FLAG_DETECTION_UNUSABLE
+-- Performing Test _FLAG_DETECTION_UNUSABLE - Failed
+-- Performing Test FLAG_WSTRICT_ALIASING
+-- Performing Test FLAG_WSTRICT_ALIASING - Failed
+-- Performing Test FLAG_VISIBILITY
+-- Performing Test FLAG_VISIBILITY - Success
+-- Looking for cos in m
+-- Looking for cos in m - found
+-- ===========================================================================
+-- 
+-- CMake version in use ......... 4.0.3
+-- 
+-- Configuration
+--   Generator .................. Unix Makefiles
+--   Build type ................. Release
+--   Prefix ..................... /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm
+--   Shared libraries ........... OFF
+--   Character type ............. char (UTF-8)
+--   Library name postfix ....... 
+-- 
+--   Build documentation ........ OFF
+--   Build examples ............. OFF
+--   Build fuzzers .............. OFF
+--   Build tests ................ OFF
+--   Build tools (xmlwf) ........ OFF
+--   Build pkg-config file ...... ON
+--   Install files .............. ON
+-- 
+--   Features
+--     // Advanced options, changes not advised
+--     Attributes info .......... OFF
+--     Context bytes ............ 1024
+--     DTD support .............. ON
+--     General entities ......... ON
+--     Large size ............... OFF
+--     Minimum size ............. OFF
+--     Namespace support ........ ON
+-- 
+--   Entropy sources
+--     getrandom ................ 
+--     syscall SYS_getrandom .... 
+--     /dev/random .............. ON
+-- 
+-- Continue with
+--   make
+--   sudo make install
+-- 
+-- ===========================================================================
+-- Configuring done (18.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/expat/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/expat/build --target install -j1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port"
+[ 25%] Building C object CMakeFiles/expat.dir/lib/xmlparse.c.o
+[ 50%] Building C object CMakeFiles/expat.dir/lib/xmlrole.c.o
+[ 75%] Building C object CMakeFiles/expat.dir/lib/xmltok.c.o
+[100%] Linking C static library libexpat.a
+[100%] Built target expat
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/expat_config.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libexpat.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/expat.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/expat_external.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/pkgconfig/expat.pc
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/share/doc/expat/AUTHORS
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/share/doc/expat/changelog
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/expat-2.7.5/expat-config.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/expat-2.7.5/expat-config-version.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/expat-2.7.5/expat.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/expat-2.7.5/expat-release.cmake
+expat 2.7.5: installed (/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/expat-2.7.5/expat-config.cmake)

@@ -1,0 +1,10 @@
+#!/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3
+import subprocess,sys
+args=[]
+skip=False
+for value in sys.argv[1:]:
+ if skip: skip=False; continue
+ if value=='-j': skip=True; continue
+ if value.startswith('-j') and value[2:].isdigit(): continue
+ args.append(value)
+sys.exit(subprocess.call(['/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja','-j1',*args]))

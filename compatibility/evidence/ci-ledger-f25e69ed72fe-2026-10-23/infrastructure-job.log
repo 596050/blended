@@ -1,0 +1,209 @@
+﻿2026-10-23T16:25:18.9638683Z Current runner version: '2.338.0'
+2026-10-23T16:25:18.9664004Z ##[group]Runner Image Provisioner
+2026-10-23T16:25:18.9664806Z Hosted Compute Agent
+2026-10-23T16:25:18.9665537Z Version: 20261012.601
+2026-10-23T16:25:18.9666167Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-23T16:25:18.9666924Z Build Date: 2026-10-12T17:48:21Z
+2026-10-23T16:25:18.9667621Z Worker ID: {40860083-07a7-40c8-ac09-df03b71a00c6}
+2026-10-23T16:25:18.9668337Z Region: eastus
+2026-10-23T16:25:18.9668962Z Cloud: Azure
+2026-10-23T16:25:18.9669497Z ##[endgroup]
+2026-10-23T16:25:18.9671065Z ##[group]Operating System
+2026-10-23T16:25:18.9671924Z Ubuntu
+2026-10-23T16:25:18.9672443Z 24.04.5
+2026-10-23T16:25:18.9673059Z LTS
+2026-10-23T16:25:18.9673579Z ##[endgroup]
+2026-10-23T16:25:18.9674148Z ##[group]Runner Image
+2026-10-23T16:25:18.9674752Z Image: ubuntu-24.04
+2026-10-23T16:25:18.9675313Z Version: 20261012.334.1
+2026-10-23T16:25:18.9677276Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-23T16:25:18.9678938Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-23T16:25:18.9679967Z ##[endgroup]
+2026-10-23T16:25:18.9681761Z ##[group]GITHUB_TOKEN Permissions
+2026-10-23T16:25:18.9684142Z Contents: read
+2026-10-23T16:25:18.9684740Z Metadata: read
+2026-10-23T16:25:18.9685397Z ##[endgroup]
+2026-10-23T16:25:18.9687941Z Secret source: Actions
+2026-10-23T16:25:18.9688980Z Cache mode: write
+2026-10-23T16:25:18.9689668Z Prepare workflow directory
+2026-10-23T16:25:19.0019567Z Prepare all required actions
+2026-10-23T16:25:19.0067751Z Getting action download info
+2026-10-23T16:25:19.2375354Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-23T16:25:19.3327974Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-23T16:25:19.5148367Z Complete job name: Test inventory, observer and receipt validation
+2026-10-23T16:25:19.6018225Z ##[group]Run actions/checkout@v4
+2026-10-23T16:25:19.6019098Z with:
+2026-10-23T16:25:19.6019552Z   persist-credentials: false
+2026-10-23T16:25:19.6020065Z   repository: 596050/blended
+2026-10-23T16:25:19.6023936Z   token: ***
+2026-10-23T16:25:19.6024371Z   ssh-strict: true
+2026-10-23T16:25:19.6024804Z   ssh-user: git
+2026-10-23T16:25:19.6025213Z   clean: true
+2026-10-23T16:25:19.6025648Z   sparse-checkout-cone-mode: true
+2026-10-23T16:25:19.6026159Z   fetch-depth: 1
+2026-10-23T16:25:19.6026579Z   fetch-tags: false
+2026-10-23T16:25:19.6027040Z   show-progress: true
+2026-10-23T16:25:19.6027485Z   lfs: false
+2026-10-23T16:25:19.6027899Z   submodules: false
+2026-10-23T16:25:19.6028335Z   set-safe-directory: true
+2026-10-23T16:25:19.6028828Z   allow-unsafe-pr-checkout: false
+2026-10-23T16:25:19.6029609Z ##[endgroup]
+2026-10-23T16:25:19.7050655Z Syncing repository: 596050/blended
+2026-10-23T16:25:19.7053271Z ##[group]Getting Git version info
+2026-10-23T16:25:19.7054416Z Working directory is '/home/runner/work/blended/blended'
+2026-10-23T16:25:19.7055998Z [command]/usr/bin/git version
+2026-10-23T16:25:19.7192069Z git version 2.55.0
+2026-10-23T16:25:19.7216146Z ##[endgroup]
+2026-10-23T16:25:19.7236274Z Temporarily overriding HOME='/home/runner/work/_temp/fd669c36-fe40-49e3-adde-3b45a873d663' before making global git config changes
+2026-10-23T16:25:19.7239069Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T16:25:19.7243074Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/blended/blended
+2026-10-23T16:25:19.7316726Z Deleting the contents of '/home/runner/work/blended/blended'
+2026-10-23T16:25:19.7323116Z ##[group]Initializing the repository
+2026-10-23T16:25:19.7331159Z [command]/usr/bin/git init /home/runner/work/blended/blended
+2026-10-23T16:25:19.7466433Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-23T16:25:19.7467916Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-23T16:25:19.7469311Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-23T16:25:19.7470109Z hint: call:
+2026-10-23T16:25:19.7470534Z hint:
+2026-10-23T16:25:19.7471085Z hint: 	git config --global init.defaultBranch <name>
+2026-10-23T16:25:19.7471925Z hint:
+2026-10-23T16:25:19.7472560Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-23T16:25:19.7473561Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-23T16:25:19.7474356Z hint:
+2026-10-23T16:25:19.7474791Z hint: 	git branch -m <name>
+2026-10-23T16:25:19.7475292Z hint:
+2026-10-23T16:25:19.7475961Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-23T16:25:19.7482509Z Initialized empty Git repository in /home/runner/work/blended/blended/.git/
+2026-10-23T16:25:19.7495141Z [command]/usr/bin/git remote add origin https://github.com/596050/blended
+2026-10-23T16:25:19.7563033Z ##[endgroup]
+2026-10-23T16:25:19.7564536Z ##[group]Disabling automatic garbage collection
+2026-10-23T16:25:19.7567037Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-23T16:25:19.7607864Z ##[endgroup]
+2026-10-23T16:25:19.7609280Z ##[group]Setting up auth
+2026-10-23T16:25:19.7617730Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T16:25:19.7658985Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T16:25:19.8070070Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T16:25:19.8108048Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T16:25:19.8341559Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T16:25:19.8383891Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T16:25:19.8622096Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-23T16:25:19.8670194Z ##[endgroup]
+2026-10-23T16:25:19.8680327Z ##[group]Fetching the repository
+2026-10-23T16:25:19.8682589Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f25e69ed72fed2d31d7d65e657fd6515da4bd792:refs/remotes/origin/parity/upstream-browser-ports
+2026-10-23T16:25:21.7407440Z From https://github.com/596050/blended
+2026-10-23T16:25:21.7410791Z  * [new ref]         f25e69ed72fed2d31d7d65e657fd6515da4bd792 -> origin/parity/upstream-browser-ports
+2026-10-23T16:25:21.7418173Z ##[endgroup]
+2026-10-23T16:25:21.7420965Z ##[group]Determining the checkout info
+2026-10-23T16:25:21.7424302Z ##[endgroup]
+2026-10-23T16:25:21.7426263Z [command]/usr/bin/git sparse-checkout disable
+2026-10-23T16:25:21.7496087Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-23T16:25:21.7531903Z ##[group]Checking out the ref
+2026-10-23T16:25:21.7536983Z [command]/usr/bin/git checkout --progress --force -B parity/upstream-browser-ports refs/remotes/origin/parity/upstream-browser-ports
+2026-10-23T16:25:22.6104507Z Switched to a new branch 'parity/upstream-browser-ports'
+2026-10-23T16:25:22.6112120Z branch 'parity/upstream-browser-ports' set up to track 'origin/parity/upstream-browser-ports'.
+2026-10-23T16:25:22.6142510Z ##[endgroup]
+2026-10-23T16:25:22.6194448Z [command]/usr/bin/git log -1 --format=%H
+2026-10-23T16:25:22.6223664Z f25e69ed72fed2d31d7d65e657fd6515da4bd792
+2026-10-23T16:25:22.6233524Z ##[group]Removing auth
+2026-10-23T16:25:22.6237397Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T16:25:22.6275374Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T16:25:22.6527537Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T16:25:22.6561032Z http.https://github.com/.extraheader
+2026-10-23T16:25:22.6569439Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-23T16:25:22.6609102Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T16:25:22.6857630Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T16:25:22.6894995Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T16:25:22.7139684Z ##[endgroup]
+2026-10-23T16:25:22.7403013Z ##[group]Run actions/setup-python@v5
+2026-10-23T16:25:22.7403430Z with:
+2026-10-23T16:25:22.7403686Z   python-version: 3.12
+2026-10-23T16:25:22.7403959Z   check-latest: false
+2026-10-23T16:25:22.7406432Z   token: ***
+2026-10-23T16:25:22.7406729Z   update-environment: true
+2026-10-23T16:25:22.7407047Z   allow-prereleases: false
+2026-10-23T16:25:22.7407325Z   freethreaded: false
+2026-10-23T16:25:22.7407580Z ##[endgroup]
+2026-10-23T16:25:22.8837615Z ##[group]Installed versions
+2026-10-23T16:25:23.2148582Z (node:2396) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T16:25:23.2150175Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T16:25:23.2150917Z Successfully set up CPython (3.12.15)
+2026-10-23T16:25:23.2151989Z ##[endgroup]
+2026-10-23T16:25:23.2406013Z ##[group]Run python3 -m pip install cmake==4.4.4
+2026-10-23T16:25:23.2406777Z [36;1mpython3 -m pip install cmake==4.4.4[0m
+2026-10-23T16:25:23.2748371Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:25:23.2748778Z env:
+2026-10-23T16:25:23.2749119Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:23.2749677Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-23T16:25:23.2750223Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:23.2750693Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:23.2751175Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:23.2751858Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-23T16:25:23.2752275Z ##[endgroup]
+2026-10-23T16:25:24.6796850Z Collecting cmake==4.4.4
+2026-10-23T16:25:24.7492693Z   Downloading cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (7.0 kB)
+2026-10-23T16:25:24.7648144Z Downloading cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (30.2 MB)
+2026-10-23T16:25:25.2383108Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 30.2/30.2 MB 67.9 MB/s  0:00:00
+2026-10-23T16:25:25.3586149Z Installing collected packages: cmake
+2026-10-23T16:25:26.2812512Z Successfully installed cmake-4.4.4
+2026-10-23T16:25:26.2820921Z 
+2026-10-23T16:25:26.2821360Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-23T16:25:26.2822549Z [notice] To update, run: pip install --upgrade pip
+2026-10-23T16:25:26.3478343Z ##[group]Run python3 tools/prepare_site.py
+2026-10-23T16:25:26.3478735Z [36;1mpython3 tools/prepare_site.py[0m
+2026-10-23T16:25:26.3545189Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:25:26.3545449Z env:
+2026-10-23T16:25:26.3545713Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.3546165Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-23T16:25:26.3546594Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.3546980Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.3547353Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.3547994Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-23T16:25:26.3548323Z ##[endgroup]
+2026-10-23T16:25:26.3954663Z ##[group]Run python3 -m unittest discover -s tests -q
+2026-10-23T16:25:26.3955105Z [36;1mpython3 -m unittest discover -s tests -q[0m
+2026-10-23T16:25:26.4022116Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:25:26.4022396Z env:
+2026-10-23T16:25:26.4022668Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.4023119Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-23T16:25:26.4023567Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.4023956Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.4024351Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T16:25:26.4024781Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-23T16:25:26.4025115Z ##[endgroup]
+2026-10-23T16:25:28.6672652Z {"status": "failed", "summary": {"expected_files": 4, "compared": 0, "matched": 0, "different_or_failed": 0, "missing_or_blocked": 4}, "evidence": "/tmp/tmpcfbrgq5c/failed-method-report/exchange.json"}
+2026-10-23T16:25:28.6675453Z {"status": "blocked", "summary": {"expected_files": 4, "compared": 0, "matched": 0, "different_or_failed": 0, "missing_or_blocked": 4}, "evidence": "/tmp/tmp3zhnbxj8/report/exchange.json"}
+2026-10-23T16:25:28.6679204Z {"status": "verified_candidate_closure", "counts": {"verified_download_objects": 0, "verified_cache_objects": 1, "verified_existing_payload_objects": 0, "download_failed_attempts": 0, "batch_failed_attempts": 0, "hydrated_paths": 2, "already_verified_payload_paths": 0, "candidate_paths": 3, "verified_paths": 3, "regular_paths": 1, "lfs_paths": 2, "unique_lfs_objects": 1, "unique_lfs_bytes": 24}, "report": {"path": "/tmp/tmp_5msrb47/evidence/report.json", "bytes": 3217, "sha256": "c6c0dc82dcaf1bc15f4a40ee14185c911a80328a7b67c68f5141534f7d8a4838"}}
+2026-10-23T16:25:28.6681959Z SOURCE BUILD: prepare-sqlite-patchset
+2026-10-23T16:25:28.7349132Z SOURCE BUILD: prepare-codec-patchset
+2026-10-23T16:25:28.8188676Z SOURCE BUILD: prepare-sqlite-patchset
+2026-10-23T16:25:28.8831968Z Traceback (most recent call last):
+2026-10-23T16:25:28.8842854Z   File "/home/runner/work/blended/blended/tools/prepare_browser_sqlite.py", line 253, in <module>
+2026-10-23T16:25:28.8843688Z     main()
+2026-10-23T16:25:28.8844234Z   File "/home/runner/work/blended/blended/tools/prepare_browser_sqlite.py", line 248, in main
+2026-10-23T16:25:28.8845058Z     result = apply_patchset(args.port_root, args.manifest, args.manifest_sha256, args.receipt)
+2026-10-23T16:25:28.8845673Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-23T16:25:28.8846506Z   File "/home/runner/work/blended/blended/tools/prepare_browser_sqlite.py", line 194, in apply_patchset
+2026-10-23T16:25:28.8847430Z     raise ValueError("CPython recipe is neither the pinned original nor the exact patched result")
+2026-10-23T16:25:28.8848221Z ValueError: CPython recipe is neither the pinned original nor the exact patched result
+2026-10-23T16:25:28.8848677Z 
+2026-10-23T16:27:16.6014795Z ----------------------------------------------------------------------
+2026-10-23T16:27:16.6015468Z Ran 346 tests in 109.674s
+2026-10-23T16:27:16.6015723Z 
+2026-10-23T16:27:16.6015842Z OK
+2026-10-23T16:27:16.6346168Z Post job cleanup.
+2026-10-23T16:27:16.7563095Z (node:2515) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T16:27:16.7563971Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T16:27:16.7776286Z Post job cleanup.
+2026-10-23T16:27:16.8671569Z [command]/usr/bin/git version
+2026-10-23T16:27:16.8714369Z git version 2.55.0
+2026-10-23T16:27:16.8755364Z Temporarily overriding HOME='/home/runner/work/_temp/6e43e05d-c2ff-47f0-87d0-27392518fae4' before making global git config changes
+2026-10-23T16:27:16.8756954Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T16:27:16.8761017Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/blended/blended
+2026-10-23T16:27:16.8806304Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T16:27:16.8843339Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T16:27:16.9175698Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T16:27:16.9216398Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T16:27:16.9524138Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T16:27:16.9565501Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T16:27:16.9998547Z Cleaning up orphan processes
+2026-10-23T16:27:17.0506718Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

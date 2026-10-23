@@ -1,0 +1,58 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  466k    0  466k    0     0  1073k      0 --:--:-- --:--:-- --:--:-- 1073k
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openjph/OpenJPH-0.25.2 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openjph/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DBUILD_SHARED_LIBS=OFF -DOJPH_DISABLE_SIMD=ON -DOJPH_BUILD_EXECUTABLES=OFF -DOJPH_BUILD_TESTS=OFF -DOJPH_ENABLE_TIFF_SUPPORT=OFF -DCMAKE_C_FLAGS=-pthread -DCMAKE_CXX_FLAGS=-pthread -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port
+-- OpenJPH library version: 0.25.2
+-- CPU Architecture is OJPH_ARCH_UNKNOWN
+-- Building Release
+-- C Standard is set to 11
+-- C++ Standard is set to 14
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openjph/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openjph/build --target install -j1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port"
+[  4%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_codeblock.cpp.o
+[  8%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_codeblock_fun.cpp.o
+[ 13%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_codestream.cpp.o
+[ 17%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_codestream_gen.cpp.o
+[ 21%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_codestream_local.cpp.o
+[ 26%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_params.cpp.o
+[ 30%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_precinct.cpp.o
+[ 34%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_resolution.cpp.o
+[ 39%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_subband.cpp.o
+[ 43%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_tile.cpp.o
+[ 47%] Building CXX object src/core/CMakeFiles/openjph.dir/codestream/ojph_tile_comp.cpp.o
+[ 52%] Building CXX object src/core/CMakeFiles/openjph.dir/coding/ojph_block_common.cpp.o
+[ 56%] Building CXX object src/core/CMakeFiles/openjph.dir/coding/ojph_block_decoder32.cpp.o
+[ 60%] Building CXX object src/core/CMakeFiles/openjph.dir/coding/ojph_block_decoder64.cpp.o
+[ 65%] Building CXX object src/core/CMakeFiles/openjph.dir/coding/ojph_block_encoder.cpp.o
+[ 69%] Building CXX object src/core/CMakeFiles/openjph.dir/others/ojph_arch.cpp.o
+[ 73%] Building CXX object src/core/CMakeFiles/openjph.dir/others/ojph_file.cpp.o
+[ 78%] Building C object src/core/CMakeFiles/openjph.dir/others/ojph_mem.c.o
+[ 82%] Building CXX object src/core/CMakeFiles/openjph.dir/others/ojph_mem.cpp.o
+[ 86%] Building CXX object src/core/CMakeFiles/openjph.dir/others/ojph_message.cpp.o
+[ 91%] Building CXX object src/core/CMakeFiles/openjph.dir/transform/ojph_colour.cpp.o
+[ 95%] Building CXX object src/core/CMakeFiles/openjph.dir/transform/ojph_transform.cpp.o
+[100%] Linking CXX static library libopenjph.a
+[100%] Built target openjph
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/openjph/openjph-targets.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/openjph/openjph-targets-release.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/openjph/openjph-config.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/openjph/openjph-config-version.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/pkgconfig/openjph.pc
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libopenjph.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_arch.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_defs.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_message.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_base.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_version.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_arg.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_params.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_file.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_codestream.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/openjph/ojph_mem.h
+openjph 0.25.2: installed to /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm (config: lib/cmake/openjph)

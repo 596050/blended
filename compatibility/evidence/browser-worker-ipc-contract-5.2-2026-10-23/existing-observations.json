@@ -1,0 +1,244 @@
+{
+  "native": {
+    "status": "passed",
+    "process": {
+      "flags": [
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+      ],
+      "timeout_seconds": 60,
+      "returncode": 0
+    },
+    "driver": {
+      "entrypoint": "original __main__",
+      "failfast": false,
+      "original_exit_code": 0,
+      "runner_invocations": 1,
+      "support_files": []
+    },
+    "suites": [
+      {
+        "discovered": 8,
+        "discovered_ids": [
+          "__main__.BackgroundDownloaderProcessTest.test_start_stop",
+          "__main__.BasicImportTest.test_background_downloader",
+          "__main__.BasicImportTest.test_downloader",
+          "__main__.ConditionalDownloaderTest.test_request_cancel",
+          "__main__.HumanizeSizeTest.test_humanize_size",
+          "__main__.MaxDownloadSizeTest.test_max_size",
+          "__main__.RequestDescriptionTest.test_comparison",
+          "__main__.RequestDescriptionTest.test_hash"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "__main__.BackgroundDownloaderProcessTest.test_start_stop",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.BasicImportTest.test_background_downloader",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.BasicImportTest.test_downloader",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ConditionalDownloaderTest.test_request_cancel",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.HumanizeSizeTest.test_humanize_size",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MaxDownloadSizeTest.test_max_size",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.RequestDescriptionTest.test_comparison",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.RequestDescriptionTest.test_hash",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "c0e9ff0c18aef5209c2903e6a9c24066d4ab64311ec0b2b47de8d67273a33fe1",
+        "skipped": 0,
+        "testsRun": 8,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_http_downloader.py"
+      }
+    ]
+  },
+  "browser": {
+    "status": "failed",
+    "driver": {
+      "entrypoint": "original __main__",
+      "failfast": false,
+      "original_exit_code": 1,
+      "runner_invocations": 1,
+      "support_files": []
+    },
+    "suites": [
+      {
+        "discovered": 8,
+        "discovered_ids": [
+          "__main__.BackgroundDownloaderProcessTest.test_start_stop",
+          "__main__.BasicImportTest.test_background_downloader",
+          "__main__.BasicImportTest.test_downloader",
+          "__main__.ConditionalDownloaderTest.test_request_cancel",
+          "__main__.HumanizeSizeTest.test_humanize_size",
+          "__main__.MaxDownloadSizeTest.test_max_size",
+          "__main__.RequestDescriptionTest.test_comparison",
+          "__main__.RequestDescriptionTest.test_hash"
+        ],
+        "errors": 1,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": "Traceback (most recent call last):\n  File \"/tmp/blended-original-unittest-hvw98541/tests/python/bl_http_downloader.py\", line 196, in test_start_stop\n    downloader.start()\n    ~~~~~~~~~~~~~~~~^^\n  File \"/bw/scripts/modules/_bpy_internal/http/downloader.py\", line 622, in start\n    my_side, subprocess_side = _mp_context.Pipe(duplex=True)\n                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File \"/bw/python/lib/python3.13/multiprocessing/context.py\", line 63, in Pipe\n    return Pipe(duplex)\n  File \"/bw/python/lib/python3.13/multiprocessing/connection.py\", line 551, in Pipe\n    s1, s2 = socket.socketpair()\n             ~~~~~~~~~~~~~~~~~^^\n  File \"/bw/python/lib/python3.13/socket.py\", line 613, in _fallback_socketpair\n    lsock = socket(family, type, proto)\n  File \"/bw/python/lib/python3.13/socket.py\", line 233, in __init__\n    _socket.socket.__init__(self, family, type, proto, fileno)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 52] Function not implemented\n",
+            "id": "__main__.BackgroundDownloaderProcessTest.test_start_stop",
+            "kind": "test",
+            "parent_id": null,
+            "status": "error"
+          },
+          {
+            "detail": null,
+            "id": "__main__.BasicImportTest.test_background_downloader",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.BasicImportTest.test_downloader",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ConditionalDownloaderTest.test_request_cancel",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.HumanizeSizeTest.test_humanize_size",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MaxDownloadSizeTest.test_max_size",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.RequestDescriptionTest.test_comparison",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.RequestDescriptionTest.test_hash",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "c0e9ff0c18aef5209c2903e6a9c24066d4ab64311ec0b2b47de8d67273a33fe1",
+        "skipped": 0,
+        "testsRun": 8,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_http_downloader.py"
+      }
+    ],
+    "browser_errors": [
+      "browser background runtime exited with code 1"
+    ]
+  },
+  "docgen_browser": {
+    "status": "failed",
+    "suites": [
+      {
+        "discovered": 1,
+        "discovered_ids": [
+          "__main__.DocGenTest.test_doc_gen_and_stubs"
+        ],
+        "errors": 1,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "__main__.DocGenTest.test_doc_gen_and_stubs [sphinx_doc_gen]",
+            "kind": "subtest",
+            "parent_id": "__main__.DocGenTest.test_doc_gen_and_stubs",
+            "status": "passed"
+          },
+          {
+            "detail": "Traceback (most recent call last):\n  File \"/tmp/blended-original-unittest-7viljivm/tests/python/bl_pyapi_doc_gen.py\", line 106, in test_doc_gen_and_stubs\n    result = subprocess.run(\n        [PYTHON_BIN, stub_gen_script, rst_dir, \"-o\", stubs_dir, \"--strict-docs\"],\n        check=False,\n    )\n  File \"/bw/python/lib/python3.13/subprocess.py\", line 554, in run\n    with Popen(*popenargs, **kwargs) as process:\n         ~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/bw/python/lib/python3.13/subprocess.py\", line 828, in __init__\n    raise OSError(\n        errno.ENOTSUP, f\"{sys.platform} does not support processes.\"\n    )\nOSError: [Errno 138] emscripten does not support processes.\n",
+            "id": "__main__.DocGenTest.test_doc_gen_and_stubs [sphinx_stub_gen]",
+            "kind": "subtest",
+            "parent_id": "__main__.DocGenTest.test_doc_gen_and_stubs",
+            "status": "failed"
+          }
+        ],
+        "sha256": "658ffbbb8dd5a7c9c9510139b788b3749e39fe4b2c3249154a6e13a1dc3e23ab",
+        "skipped": 0,
+        "testsRun": 1,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_doc_gen.py"
+      }
+    ],
+    "host_tools": [
+      {
+        "available": false,
+        "environment": "PYTHON_BIN",
+        "path": null
+      }
+    ]
+  }
+}

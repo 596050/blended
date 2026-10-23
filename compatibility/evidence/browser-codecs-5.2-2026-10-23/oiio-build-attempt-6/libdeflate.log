@@ -1,0 +1,65 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  180k    0  180k    0     0   580k      0 --:--:-- --:--:-- --:--:--  580k
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/libdeflate/libdeflate-1.18 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/libdeflate/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DLIBDEFLATE_BUILD_STATIC_LIB=ON -DLIBDEFLATE_BUILD_SHARED_LIB=OFF -DLIBDEFLATE_BUILD_GZIP=OFF -DLIBDEFLATE_BUILD_TESTS=OFF -DCMAKE_C_FLAGS=-pthread -DCMAKE_CXX_FLAGS=-pthread -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Performing Test HAVE_WDECLARATION_AFTER_STATEMENT
+-- Performing Test HAVE_WDECLARATION_AFTER_STATEMENT - Success
+-- Performing Test HAVE_WIMPLICIT_FALLTHROUGH
+-- Performing Test HAVE_WIMPLICIT_FALLTHROUGH - Success
+-- Performing Test HAVE_WMISSING_FIELD_INITIALIZERS
+-- Performing Test HAVE_WMISSING_FIELD_INITIALIZERS - Success
+-- Performing Test HAVE_WMISSING_PROTOTYPES
+-- Performing Test HAVE_WMISSING_PROTOTYPES - Success
+-- Performing Test HAVE_WPEDANTIC
+-- Performing Test HAVE_WPEDANTIC - Success
+-- Performing Test HAVE_WSHADOW
+-- Performing Test HAVE_WSHADOW - Success
+-- Performing Test HAVE_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_WSTRICT_PROTOTYPES - Success
+-- Performing Test HAVE_WUNDEF
+-- Performing Test HAVE_WUNDEF - Success
+-- Performing Test HAVE_WVLA
+-- Performing Test HAVE_WVLA - Success
+-- Configuring done (8.8s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_FLAGS
+
+
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/libdeflate/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/libdeflate/build --target install -j1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port"
+[  8%] Building C object CMakeFiles/libdeflate_static.dir/lib/arm/cpu_features.c.o
+[ 16%] Building C object CMakeFiles/libdeflate_static.dir/lib/utils.c.o
+[ 25%] Building C object CMakeFiles/libdeflate_static.dir/lib/x86/cpu_features.c.o
+[ 33%] Building C object CMakeFiles/libdeflate_static.dir/lib/deflate_compress.c.o
+[ 41%] Building C object CMakeFiles/libdeflate_static.dir/lib/deflate_decompress.c.o
+[ 50%] Building C object CMakeFiles/libdeflate_static.dir/lib/adler32.c.o
+[ 58%] Building C object CMakeFiles/libdeflate_static.dir/lib/zlib_compress.c.o
+[ 66%] Building C object CMakeFiles/libdeflate_static.dir/lib/zlib_decompress.c.o
+[ 75%] Building C object CMakeFiles/libdeflate_static.dir/lib/crc32.c.o
+[ 83%] Building C object CMakeFiles/libdeflate_static.dir/lib/gzip_compress.c.o
+[ 91%] Building C object CMakeFiles/libdeflate_static.dir/lib/gzip_decompress.c.o
+[100%] Linking C static library libdeflate.a
+[100%] Built target libdeflate_static
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libdeflate.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/libdeflate.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/pkgconfig/libdeflate.pc
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/libdeflate/libdeflate-targets.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/libdeflate/libdeflate-targets-release.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/libdeflate/libdeflate-config.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/libdeflate/libdeflate-config-version.cmake
+libdeflate 1.18: installed to /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm (config: lib/cmake/libdeflate)

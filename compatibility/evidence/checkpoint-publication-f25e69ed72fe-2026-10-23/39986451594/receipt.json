@@ -1,0 +1,652 @@
+{
+  "schema": 1,
+  "started_utc": "2026-10-23T16:24:14.640600+00:00",
+  "status": "published",
+  "entry_point_sha256": "7a3250d5dc3df004a96d9e7cedd48aebc2d5b93f2727339d738b7f7e3504f5f9",
+  "github_sha": "ddc86e8486fcc2431b02c5e55de765901907c618",
+  "github_run_id": "39986451594",
+  "expected": {
+    "repository": "596050/blended",
+    "target_branch": "checkpoint/verified-f25e69ed72fe",
+    "base_commit": "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+    "target_commit": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+    "target_tree": "8742e392746107bacbeb73e39256ab3781816410"
+  },
+  "push_requested": true,
+  "published": true,
+  "publication_outcome": "verified",
+  "all_upstream_test_parity": false,
+  "full_feature_parity": false,
+  "blender_tests_executed": 0,
+  "commands": [
+    {
+      "name": "init",
+      "argv": [
+        "git",
+        "init",
+        "--bare",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git"
+      ],
+      "started_utc": "2026-10-23T16:24:14.668760+00:00",
+      "stdout": {
+        "path": "commands/01-init.stdout.log",
+        "bytes": 100,
+        "sha256": "d6ae35efedf9094744263e80d55699209c872fb2bdae06e79072197763e37fde"
+      },
+      "stderr": {
+        "path": "commands/01-init.stderr.log",
+        "bytes": 586,
+        "sha256": "3e70934f1909b0f5a846d62237fcc1509d733b9fb0321187024723dfc67176d3"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:14.672570+00:00"
+    },
+    {
+      "name": "remote",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/596050/blended.git"
+      ],
+      "started_utc": "2026-10-23T16:24:14.672800+00:00",
+      "stdout": {
+        "path": "commands/02-remote.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/02-remote.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:14.675565+00:00"
+    },
+    {
+      "name": "fetch-base",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "88f5a032ca4fcd26f75ca5f72de27373c27af4db"
+      ],
+      "started_utc": "2026-10-23T16:24:14.675897+00:00",
+      "stdout": {
+        "path": "commands/03-fetch-base.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/03-fetch-base.stderr.log",
+        "bytes": 115,
+        "sha256": "65c772d2e7576137a08697c55b7c49a4a84211b2747e2b37801eae760306b274"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 300,
+      "finished_utc": "2026-10-23T16:24:15.908553+00:00"
+    },
+    {
+      "name": "verify-bundle",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "bundle",
+        "verify",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/verified.bundle"
+      ],
+      "started_utc": "2026-10-23T16:24:15.909019+00:00",
+      "stdout": {
+        "path": "commands/04-verify-bundle.stdout.log",
+        "bytes": 229,
+        "sha256": "13b871e7bb1c2df41187ebd3e3942b4864703e4b3aed47103bcc8dafcc9d1e0c"
+      },
+      "stderr": {
+        "path": "commands/04-verify-bundle.stderr.log",
+        "bytes": 72,
+        "sha256": "28e6c0a9d49c842c0362ce563eb6f6ced492512f70476b5aa91bcb4430b4ac4d"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:15.920710+00:00"
+    },
+    {
+      "name": "import-bundle",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "fetch",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/verified.bundle",
+        "refs/heads/checkpoint/verified-f25e69ed72fe:refs/heads/imported"
+      ],
+      "started_utc": "2026-10-23T16:24:15.921134+00:00",
+      "stdout": {
+        "path": "commands/05-import-bundle.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/05-import-bundle.stderr.log",
+        "bytes": 135,
+        "sha256": "7b2606e2cef7410a9250130b2403b256eedcf8164147715e3094990b07b04fa2"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 300,
+      "finished_utc": "2026-10-23T16:24:16.148243+00:00"
+    },
+    {
+      "name": "commit",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "rev-parse",
+        "refs/heads/imported"
+      ],
+      "started_utc": "2026-10-23T16:24:16.148795+00:00",
+      "stdout": {
+        "path": "commands/06-commit.stdout.log",
+        "bytes": 41,
+        "sha256": "7821c0cde6f7bb98912c8a30fd134e385576d483ad6550952b1ceae0b8ceaca9"
+      },
+      "stderr": {
+        "path": "commands/06-commit.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:16.150685+00:00"
+    },
+    {
+      "name": "tree",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "rev-parse",
+        "f25e69ed72fed2d31d7d65e657fd6515da4bd792^{tree}"
+      ],
+      "started_utc": "2026-10-23T16:24:16.151063+00:00",
+      "stdout": {
+        "path": "commands/07-tree.stdout.log",
+        "bytes": 41,
+        "sha256": "316767ef926cace617101ede12a6a105fd19908672468bc66ec3d2cc17e2e6f4"
+      },
+      "stderr": {
+        "path": "commands/07-tree.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:16.152903+00:00"
+    },
+    {
+      "name": "ancestry",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "merge-base",
+        "--is-ancestor",
+        "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+        "f25e69ed72fed2d31d7d65e657fd6515da4bd792"
+      ],
+      "started_utc": "2026-10-23T16:24:16.153298+00:00",
+      "stdout": {
+        "path": "commands/08-ancestry.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/08-ancestry.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:16.155273+00:00"
+    },
+    {
+      "name": "fsck",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "fsck",
+        "--full",
+        "--strict"
+      ],
+      "started_utc": "2026-10-23T16:24:16.155616+00:00",
+      "stdout": {
+        "path": "commands/09-fsck.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/09-fsck.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 300,
+      "finished_utc": "2026-10-23T16:24:16.948501+00:00"
+    },
+    {
+      "name": "ledger",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "show",
+        "f25e69ed72fed2d31d7d65e657fd6515da4bd792:compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/report.json"
+      ],
+      "started_utc": "2026-10-23T16:24:16.949064+00:00",
+      "stdout": {
+        "path": "commands/10-ledger.stdout.log",
+        "bytes": 752770,
+        "sha256": "d1b6df970fd0be756b374eba9ca2c662372106c9e3ec1fe6df9ea80bff553e81"
+      },
+      "stderr": {
+        "path": "commands/10-ledger.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:16.953409+00:00"
+    },
+    {
+      "name": "lfs-version",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "lfs",
+        "version"
+      ],
+      "started_utc": "2026-10-23T16:24:16.955810+00:00",
+      "stdout": {
+        "path": "commands/11-lfs-version.stdout.log",
+        "bytes": 47,
+        "sha256": "da76ddd804103c39550ae6a6463a08f2bd4c2822d5b790a0781cacc8242925c5"
+      },
+      "stderr": {
+        "path": "commands/11-lfs-version.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:17.526004+00:00"
+    },
+    {
+      "name": "lfs-clean",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "lfs",
+        "clean"
+      ],
+      "started_utc": "2026-10-23T16:24:17.526571+00:00",
+      "stdin": {
+        "bytes": 121384,
+        "sha256": "1335899143c7e77bcb0f6e3680fd99078c0af481a1238e4ed7d4eb1ddd7dd353"
+      },
+      "stdout": {
+        "path": "commands/12-lfs-clean.stdout.log",
+        "bytes": 131,
+        "sha256": "87a1b83f787948f51d150dff80c550f382b58150e5d609297cb5acaf8ad89762"
+      },
+      "stderr": {
+        "path": "commands/12-lfs-clean.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:17.554528+00:00"
+    },
+    {
+      "name": "original-lfs-pointer",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "show",
+        "f25e69ed72fed2d31d7d65e657fd6515da4bd792:compatibility/evidence/product-configure-2026-10-23/startup.blend.pointer"
+      ],
+      "started_utc": "2026-10-23T16:24:17.555037+00:00",
+      "stdout": {
+        "path": "commands/13-original-lfs-pointer.stdout.log",
+        "bytes": 131,
+        "sha256": "87a1b83f787948f51d150dff80c550f382b58150e5d609297cb5acaf8ad89762"
+      },
+      "stderr": {
+        "path": "commands/13-original-lfs-pointer.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:17.557286+00:00"
+    },
+    {
+      "name": "remote-before",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "ls-remote",
+        "--exit-code",
+        "--heads",
+        "origin",
+        "refs/heads/checkpoint/verified-f25e69ed72fe"
+      ],
+      "started_utc": "2026-10-23T16:24:17.557686+00:00",
+      "stdout": {
+        "path": "commands/14-remote-before.stdout.log",
+        "bytes": 85,
+        "sha256": "cd71744817b4c548a9eb473542b4f6fe468802246399d7ba31908fc5614d94fd"
+      },
+      "stderr": {
+        "path": "commands/14-remote-before.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:17.738687+00:00"
+    },
+    {
+      "name": "lfs-push",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "lfs",
+        "push",
+        "--object-id",
+        "origin",
+        "1335899143c7e77bcb0f6e3680fd99078c0af481a1238e4ed7d4eb1ddd7dd353"
+      ],
+      "started_utc": "2026-10-23T16:24:17.739670+00:00",
+      "stdout": {
+        "path": "commands/15-lfs-push.stdout.log",
+        "bytes": 57,
+        "sha256": "8fceab8a3b39add91003c43133d0229f4606b9397c84c6b2253e0011586a1917"
+      },
+      "stderr": {
+        "path": "commands/15-lfs-push.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:18.499424+00:00"
+    },
+    {
+      "name": "push",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "push",
+        "--porcelain",
+        "--force-with-lease=refs/heads/checkpoint/verified-f25e69ed72fe:88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+        "origin",
+        "f25e69ed72fed2d31d7d65e657fd6515da4bd792:refs/heads/checkpoint/verified-f25e69ed72fe"
+      ],
+      "started_utc": "2026-10-23T16:24:18.531030+00:00",
+      "stdout": {
+        "path": "commands/16-push.stdout.log",
+        "bytes": 150,
+        "sha256": "bbdd08ee72b64e8a49c28df0b23ee7a6d89f065d217871813015655275ab4901"
+      },
+      "stderr": {
+        "path": "commands/16-push.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 300,
+      "finished_utc": "2026-10-23T16:24:24.202566+00:00"
+    },
+    {
+      "name": "remote-after",
+      "argv": [
+        "git",
+        "--git-dir",
+        "/home/runner/work/_temp/checkpoint-f25e69ed72fe/repository.git",
+        "ls-remote",
+        "--exit-code",
+        "--heads",
+        "origin",
+        "refs/heads/checkpoint/verified-f25e69ed72fe"
+      ],
+      "started_utc": "2026-10-23T16:24:24.203197+00:00",
+      "stdout": {
+        "path": "commands/17-remote-after.stdout.log",
+        "bytes": 85,
+        "sha256": "ffa8e51739a32365108af57e127c5c749d9ae6cdb7e27834a35be11741aff37b"
+      },
+      "stderr": {
+        "path": "commands/17-remote-after.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "returncode": 0,
+      "timed_out": false,
+      "timeout_seconds": 180,
+      "finished_utc": "2026-10-23T16:24:24.418677+00:00"
+    }
+  ],
+  "chunks": [
+    {
+      "index": 0,
+      "path": "checkpoint-f25e69ed72fe/bundle-000.bin",
+      "bytes": 524286,
+      "sha256": "467194bc7d5414db726f10c08e04d0d7b0f21a7ae94331ee7a2fe5051a6cac6d",
+      "git_blob_sha1": "626e36847d8a48801b6bdb3b86468ddf9da7712f"
+    },
+    {
+      "index": 1,
+      "path": "checkpoint-f25e69ed72fe/bundle-001.bin",
+      "bytes": 524286,
+      "sha256": "ef05fee216449fb49f00de3f072e7ed897d6914e9b3c819ff05efa37bef30253",
+      "git_blob_sha1": "4ee38215d482a0c098e30d97973e5d812f3d0424"
+    },
+    {
+      "index": 2,
+      "path": "checkpoint-f25e69ed72fe/bundle-002.bin",
+      "bytes": 524286,
+      "sha256": "0ed5988430cf436a3c7356649681c6045cbef23ec4c8b20ab231d9f5455d3300",
+      "git_blob_sha1": "d288db8e430e9da2f0209e475ef4b110c1888f58"
+    },
+    {
+      "index": 3,
+      "path": "checkpoint-f25e69ed72fe/bundle-003.bin",
+      "bytes": 524286,
+      "sha256": "bb32a6a16b82f8a3935b226d3baf7bebb5a89797d7b883981b17d5277a9962f8",
+      "git_blob_sha1": "a01676643a49acb7488a29542eb0a450d439566c"
+    },
+    {
+      "index": 4,
+      "path": "checkpoint-f25e69ed72fe/bundle-004.bin",
+      "bytes": 524286,
+      "sha256": "d3aa00ab811ae6ef9ccdd5936f28d3987f7c41dfd40e1f1bd4e7432fc2ffa5f1",
+      "git_blob_sha1": "d03c270cfabf31146199818d1c67859139f73a52"
+    },
+    {
+      "index": 5,
+      "path": "checkpoint-f25e69ed72fe/bundle-005.bin",
+      "bytes": 524286,
+      "sha256": "7dc5c4fd2650af796522957147b66ebda219e3c2e28be6de915c1372e8518af4",
+      "git_blob_sha1": "73aa7be0acc56dceb9a31065fa058aba7c838e53"
+    },
+    {
+      "index": 6,
+      "path": "checkpoint-f25e69ed72fe/bundle-006.bin",
+      "bytes": 524286,
+      "sha256": "49ef5630d3235a7143c3c80c7c190d79ce6b36f0e1b79b1d936d818843244d2b",
+      "git_blob_sha1": "373701ac959fa902d378f521f99cd669dd95b855"
+    },
+    {
+      "index": 7,
+      "path": "checkpoint-f25e69ed72fe/bundle-007.bin",
+      "bytes": 524286,
+      "sha256": "667a2ed3f405d9621d2da15e2ad83678acd66d72a4e81eae1ddf06a28949465f",
+      "git_blob_sha1": "389eacf8d206db604f8ce8deff7949ccac0e1c2d"
+    },
+    {
+      "index": 8,
+      "path": "checkpoint-f25e69ed72fe/bundle-008.bin",
+      "bytes": 524286,
+      "sha256": "bafce7ea9e008f2fc901734381162ad32a119d4b66dfdf1bdc3ccb51a654a379",
+      "git_blob_sha1": "16000e4402caf801b880d5291e9c51f2c62b4205"
+    },
+    {
+      "index": 9,
+      "path": "checkpoint-f25e69ed72fe/bundle-009.bin",
+      "bytes": 524286,
+      "sha256": "1fa97fccd89126b8f7ac2b3677c1d9489163629d01e2e6877d627692dc1946f5",
+      "git_blob_sha1": "1123ef8f3abd4f5b2bcfb1abe6791b41faa1f7ea"
+    },
+    {
+      "index": 10,
+      "path": "checkpoint-f25e69ed72fe/bundle-010.bin",
+      "bytes": 524286,
+      "sha256": "82c225b7abd8cd37271ed7e8b8ea783af5b71a77d98ca28cd98cb3f93400ad76",
+      "git_blob_sha1": "f3d14746c53fe0d079afb1047056786b837f3058"
+    },
+    {
+      "index": 11,
+      "path": "checkpoint-f25e69ed72fe/bundle-011.bin",
+      "bytes": 524286,
+      "sha256": "d0c76d511734c7a45406ba410effe25d2cee2d9141cc5e6813f59d032a10470f",
+      "git_blob_sha1": "a972a9b54ad5150ec76af8b2b1e5953de5ccb573"
+    },
+    {
+      "index": 12,
+      "path": "checkpoint-f25e69ed72fe/bundle-012.bin",
+      "bytes": 524286,
+      "sha256": "f3ad3cee251568545203b1552042bd11718e0ff4cff841bf4c320e02f898b932",
+      "git_blob_sha1": "cac3be0249f57f7b882b024e174dc746fa22bffa"
+    },
+    {
+      "index": 13,
+      "path": "checkpoint-f25e69ed72fe/bundle-013.bin",
+      "bytes": 524286,
+      "sha256": "3696b0cca94eb2b79d73bf0020778ffbd8bf4fea2d31ae9407e230adeb2f23ba",
+      "git_blob_sha1": "039a95b010fa52097512e8c3f00d47aff6a488d2"
+    },
+    {
+      "index": 14,
+      "path": "checkpoint-f25e69ed72fe/bundle-014.bin",
+      "bytes": 524286,
+      "sha256": "d19a4e84a93e1559b9ab7073e65f54263a9953aa8919f001f3de71d9ce3cbc12",
+      "git_blob_sha1": "dde8e8242ffdd00627fcf1b57be8df11d1d2bf23"
+    },
+    {
+      "index": 15,
+      "path": "checkpoint-f25e69ed72fe/bundle-015.bin",
+      "bytes": 524286,
+      "sha256": "27d5305607a19fca2b382d6762373d7520d23e3569949623fd6c6c1cbcf25645",
+      "git_blob_sha1": "126317a2f9c77824c79fbdb9fd93f3938ca040a5"
+    },
+    {
+      "index": 16,
+      "path": "checkpoint-f25e69ed72fe/bundle-016.bin",
+      "bytes": 524286,
+      "sha256": "39b3c8db06e6e8ab977461fcdcd189d09f255553aed32e7ce957e955005b0112",
+      "git_blob_sha1": "cb5f6227b5039dd4eacfaef368c8033b524a18a1"
+    },
+    {
+      "index": 17,
+      "path": "checkpoint-f25e69ed72fe/bundle-017.bin",
+      "bytes": 524286,
+      "sha256": "0a9989fc8dcd9d1288ce4590410bd8ebbdf5986c3b6b25d61d1d12e391737401",
+      "git_blob_sha1": "7ea2d30a52dd44edf428b739f5ab0c7e6493db8a"
+    },
+    {
+      "index": 18,
+      "path": "checkpoint-f25e69ed72fe/bundle-018.bin",
+      "bytes": 524286,
+      "sha256": "7c8f7897c639d30a8569af1e17fecd11566a177a55fcd51a9f5767551ebd1b03",
+      "git_blob_sha1": "4308fb047b60a81d463ac81c4dec4887271d441a"
+    },
+    {
+      "index": 19,
+      "path": "checkpoint-f25e69ed72fe/bundle-019.bin",
+      "bytes": 524286,
+      "sha256": "c26aea40088e14f1da8808dce5d498e96fa0025507eb0c94222a8a8255651128",
+      "git_blob_sha1": "d110fd8ba8dc8f0176718cb10eb8d7725189f59c"
+    },
+    {
+      "index": 20,
+      "path": "checkpoint-f25e69ed72fe/bundle-020.bin",
+      "bytes": 524286,
+      "sha256": "a3109e1f547a08f782376b819e3a7b7423d122094552f4cd64ba00798593c839",
+      "git_blob_sha1": "f3bb61213bd0bd18fa2d8e8165061794fa1c1ab1"
+    },
+    {
+      "index": 21,
+      "path": "checkpoint-f25e69ed72fe/bundle-021.bin",
+      "bytes": 524286,
+      "sha256": "10d91120bef75f880af456c8dbd87a850d378639ddc89cf3adf6ad81ec7b9d41",
+      "git_blob_sha1": "ca343cdd5d9c0af4f2a1d6d38e0b8de9ee6b926f"
+    },
+    {
+      "index": 22,
+      "path": "checkpoint-f25e69ed72fe/bundle-022.bin",
+      "bytes": 133629,
+      "sha256": "152707c0a9e9c0744ebbe072912d163b19f9d7d2402a174279ee70b51aba3228",
+      "git_blob_sha1": "33fcfa1e247a73cb40996d49647eb22f1d9817b9"
+    }
+  ],
+  "manifest_sha256": "a0e5d7ce8ea3bec5f744fe65c5b77087811a7b117516dffc80308f6977879b90",
+  "lfs_objects": [
+    {
+      "path": "checkpoint-f25e69ed72fe/lfs/startup.blend",
+      "bytes": 121384,
+      "sha256": "1335899143c7e77bcb0f6e3680fd99078c0af481a1238e4ed7d4eb1ddd7dd353"
+    }
+  ],
+  "lfs_upload_outcome": "completed",
+  "bundle": {
+    "bytes": 11667921,
+    "sha256": "d1578ddb35ae559a900da8f1949809b589669dcef9460026e4e9541f6ee95946"
+  },
+  "verified_ledger_sha256": "d1b6df970fd0be756b374eba9ca2c662372106c9e3ec1fe6df9ea80bff553e81",
+  "remote_before": "88f5a032ca4fcd26f75ca5f72de27373c27af4db",
+  "remote_after": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+  "finished_utc": "2026-10-23T16:24:24.419291+00:00"
+}

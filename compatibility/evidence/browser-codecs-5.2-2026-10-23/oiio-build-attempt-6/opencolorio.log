@@ -1,0 +1,309 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  320k    0  320k    0     0  1044k      0 --:--:-- --:--:-- --:--:-- 1044k100 10.2M    0 10.2M    0     0  8053k      0 --:--:--  0:00:01 --:--:--  9.9M100 13.4M    0 13.4M    0     0  7505k      0 --:--:--  0:00:01 --:--:-- 8799k
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DCMAKE_PREFIX_PATH=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DCMAKE_FIND_ROOT_PATH=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DBUILD_SHARED_LIBS=OFF -DOCIO_BUILD_APPS=OFF -DOCIO_BUILD_PYTHON=OFF -DOCIO_BUILD_NUKE=OFF -DOCIO_BUILD_JAVA=OFF -DOCIO_BUILD_DOCS=OFF -DOCIO_BUILD_FROZEN_DOCS=OFF -DOCIO_BUILD_TESTS=OFF -DOCIO_BUILD_GPU_TESTS=OFF -DOCIO_USE_SIMD=OFF -DOCIO_USE_SSE=OFF -DOCIO_INSTALL_EXT_PACKAGES=NONE -DImath_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/Imath -Dexpat_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/expat-2.7.5 -Dexpat_ROOT=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -Dyaml-cpp_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/yaml-cpp -Dyaml-cpp_VERSION=0.8.0 -Dpystring_ROOT=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -Dpystring_INCLUDE_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include -Dpystring_LIBRARY=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libpystring.a -Dminizip-ng_ROOT=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -Dminizip-ng_INCLUDE_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip -Dminizip-ng_LIBRARY=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libminizip.a -Dminizip_LIBRARY=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libminizip.a -DZLIB_ROOT=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DZLIB_INCLUDE_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include -DZLIB_LIBRARY=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libz.a '-DCMAKE_C_FLAGS=-pthread -fexceptions' '-DCMAKE_CXX_FLAGS=-pthread -fexceptions' -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port
+-- Setting C++ version to '17' as none was specified.
+-- Performing Test COMPILER_SUPPORTS_CXX17
+-- Performing Test COMPILER_SUPPORTS_CXX17 - Success
+-- 
+-- Checking for GPU configuration...
+-- Disabling SIMD optimizations, as the target doesn't support them
+-- Setting SOVERSION to '2.5' as none was specified.
+-- 
+-- Missing a dependency? Try the following possibilities:
+-- If the package provides CMake's configuration file, use -D<pkg>_DIR=<path to folder>.
+-- If it doesn't provide it, try -D<pkg>_ROOT=<path to folder with lib and includes>.
+-- Alternatively, try -D<pkg>_LIBRARY=<path to lib file> and/or -D<pkg>_INCLUDE_DIR=<path to folder>.
+-- 
+-- Please refer to the find module under share/cmake/modules for extra information.
+-- 
+-- Checking for mandatory dependencies...
+-- [32mFound expat (no version information)[m
+-- [32mFound yaml-cpp (version "0.8.0")[m
+-- [32mFound pystring (no version information)[m
+-- [32mFound Imath (version "3.2.2")[m
+-- [32mFound ZLIB (version "1.3.1")[m
+-- [32mFound minizip-ng (version "4.0.10")[m
+-- 
+-- Checking for optional dependencies...
+CMake Warning at tests/CMakeLists.txt:24 (message):
+  Skipping the library unit tests.
+
+
+CMake Warning at src/apps/CMakeLists.txt:23 (message):
+  Skipping build of all apps.
+
+
+-- Configuring done (47.0s)
+-- Generating done (0.1s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    OCIO_BUILD_FROZEN_DOCS
+    OCIO_USE_SSE
+    expat_DIR
+    minizip_LIBRARY
+
+
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/build --target install -j1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port"
+[  0%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/CategoryHelpers.cpp.o
+[  1%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/ColorSpaceHelpers.cpp.o
+[  1%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/DisplayViewHelpers.cpp.o
+[  2%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/LegacyViewingPipeline.cpp.o
+[  2%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/mergeconfigs/MergeConfigsHelpers.cpp.o
+[  3%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/mergeconfigs/OCIOMYaml.cpp.o
+[  3%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/mergeconfigs/SectionMerger.cpp.o
+[  4%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/apphelpers/MixingHelpers.cpp.o
+[  4%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Baker.cpp.o
+[  5%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/BakingUtils.cpp.o
+[  5%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/BitDepthUtils.cpp.o
+[  6%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/builtinconfigs/BuiltinConfigRegistry.cpp.o
+[  6%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/builtinconfigs/CGConfig.cpp.o
+[  7%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/builtinconfigs/StudioConfig.cpp.o
+[  7%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Caching.cpp.o
+[  8%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ColorSpace.cpp.o
+[  8%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ColorSpaceSet.cpp.o
+[  9%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Config.cpp.o
+[  9%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ConfigUtils.cpp.o
+[ 10%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Context.cpp.o
+[ 10%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ContextVariableUtils.cpp.o
+[ 11%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/CPUInfo.cpp.o
+[ 11%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/CPUProcessor.cpp.o
+[ 12%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Display.cpp.o
+[ 12%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/DynamicProperty.cpp.o
+[ 13%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Exception.cpp.o
+[ 13%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/cdl/CDLParser.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/cdl/CDLParser.cpp:8:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/cdl/CDLReaderHelper.h:7:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderHelper.h:12:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 14%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/cdl/CDLReaderHelper.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/cdl/CDLReaderHelper.cpp:4:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/cdl/CDLReaderHelper.h:7:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderHelper.h:12:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 14%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/cdl/CDLWriter.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/cdl/CDLWriter.cpp:7:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 15%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/ctf/CTFReaderHelper.cpp.o
+[ 15%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/ctf/CTFReaderUtils.cpp.o
+[ 16%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/ctf/CTFTransform.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/ctf/CTFTransform.cpp:9:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/ctf/CTFTransform.cpp:542:72: warning: unused function template 'WriteValue' [-Wunused-template]
+  542 | typename std::enable_if<!std::is_floating_point<T>::value, void>::type WriteValue(T value, std::ostream& stream)
+      |                                                                        ^~~~~~~~~~
+2 warnings generated.
+[ 16%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/ctf/IndexMapping.cpp.o
+[ 17%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormat3DL.cpp.o
+[ 17%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatCCC.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/FileFormatCCC.cpp:10:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 18%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatCC.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/FileFormatCC.cpp:8:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 18%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatCDL.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/FileFormatCDL.cpp:35:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 19%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatCSP.cpp.o
+[ 19%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatCTF.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/FileFormatCTF.cpp:15:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/ctf/CTFReaderHelper.h:7:
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderHelper.h:12:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 20%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatDiscreet1DL.cpp.o
+[ 20%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatHDL.cpp.o
+[ 21%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatICC.cpp.o
+[ 21%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatIridasCube.cpp.o
+[ 22%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatIridasItx.cpp.o
+[ 22%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatIridasLook.cpp.o
+[ 23%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatPandora.cpp.o
+[ 23%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatResolveCube.cpp.o
+[ 24%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatSpi1D.cpp.o
+[ 25%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatSpi3D.cpp.o
+[ 25%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatSpiMtx.cpp.o
+[ 26%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatTruelight.cpp.o
+[ 26%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatUtils.cpp.o
+[ 27%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FileFormatVF.cpp.o
+[ 27%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/FormatMetadata.cpp.o
+[ 28%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/xmlutils/XMLReaderHelper.cpp.o
+[ 28%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/xmlutils/XMLReaderUtils.cpp.o
+In file included from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.cpp:6:
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/fileformats/xmlutils/XMLReaderUtils.h:133:6: warning: unused function template 'IsValid' [-Wunused-template]
+  133 | bool IsValid(T value, double val)
+      |      ^~~~~~~
+1 warning generated.
+[ 29%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/fileformats/xmlutils/XMLWriterUtils.cpp.o
+[ 29%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/FileRules.cpp.o
+[ 30%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/GPUProcessor.cpp.o
+[ 30%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/GpuShader.cpp.o
+[ 31%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/GpuShaderDesc.cpp.o
+[ 31%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/GpuShaderClassWrapper.cpp.o
+[ 32%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/GpuShaderUtils.cpp.o
+[ 32%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/HashUtils.cpp.o
+[ 33%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ImageDesc.cpp.o
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/opencolorio/OpenColorIO-2.5.0/src/OpenColorIO/ImageDesc.cpp:293:41: warning: comparison of integers of different signs: 'long' and 'unsigned int' [-Wsign-compare]
+  293 |         if (std::abs(m_chanStrideBytes) < GetChannelSizeInBytes(m_bitDepth)
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+[ 33%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ImagePacking.cpp.o
+[ 34%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Logging.cpp.o
+[ 34%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Look.cpp.o
+[ 35%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/LookParse.cpp.o
+[ 35%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/MathUtils.cpp.o
+[ 36%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/NamedTransform.cpp.o
+[ 36%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/OCIOYaml.cpp.o
+[ 37%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/OCIOZArchive.cpp.o
+[ 37%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Op.cpp.o
+[ 38%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/OpOptimizers.cpp.o
+[ 38%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/allocation/AllocationOp.cpp.o
+[ 39%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/cdl/CDLOpCPU.cpp.o
+[ 39%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/cdl/CDLOpData.cpp.o
+[ 40%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/cdl/CDLOpGPU.cpp.o
+[ 40%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/cdl/CDLOp.cpp.o
+[ 41%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/exponent/ExponentOp.cpp.o
+[ 41%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/exposurecontrast/ExposureContrastOpCPU.cpp.o
+[ 42%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/exposurecontrast/ExposureContrastOpData.cpp.o
+[ 42%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/exposurecontrast/ExposureContrastOpGPU.cpp.o
+[ 43%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/exposurecontrast/ExposureContrastOp.cpp.o
+[ 43%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/fixedfunction/ACES2/Transform.cpp.o
+[ 44%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/fixedfunction/FixedFunctionOpCPU.cpp.o
+[ 44%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/fixedfunction/FixedFunctionOpData.cpp.o
+[ 45%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/fixedfunction/FixedFunctionOpGPU.cpp.o
+[ 45%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/fixedfunction/FixedFunctionOp.cpp.o
+[ 46%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gamma/GammaOpCPU.cpp.o
+[ 46%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gamma/GammaOpData.cpp.o
+[ 47%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gamma/GammaOpGPU.cpp.o
+[ 47%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gamma/GammaOpUtils.cpp.o
+[ 48%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gamma/GammaOp.cpp.o
+[ 48%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradinghuecurve/GradingHueCurve.cpp.o
+[ 49%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradinghuecurve/GradingHueCurveOpCPU.cpp.o
+[ 50%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradinghuecurve/GradingHueCurveOpData.cpp.o
+[ 50%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradinghuecurve/GradingHueCurveOpGPU.cpp.o
+[ 51%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradinghuecurve/GradingHueCurveOp.cpp.o
+[ 51%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingprimary/GradingPrimary.cpp.o
+[ 52%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingprimary/GradingPrimaryOpCPU.cpp.o
+[ 52%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingprimary/GradingPrimaryOpData.cpp.o
+[ 53%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingprimary/GradingPrimaryOpGPU.cpp.o
+[ 53%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingprimary/GradingPrimaryOp.cpp.o
+[ 54%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingrgbcurve/GradingBSplineCurve.cpp.o
+[ 54%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingrgbcurve/GradingRGBCurveOpCPU.cpp.o
+[ 55%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingrgbcurve/GradingRGBCurveOpData.cpp.o
+[ 55%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingrgbcurve/GradingRGBCurveOpGPU.cpp.o
+[ 56%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingrgbcurve/GradingRGBCurveOp.cpp.o
+[ 56%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingrgbcurve/GradingRGBCurve.cpp.o
+[ 57%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingtone/GradingTone.cpp.o
+[ 57%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingtone/GradingToneOpCPU.cpp.o
+[ 58%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingtone/GradingToneOpData.cpp.o
+[ 58%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingtone/GradingToneOpGPU.cpp.o
+[ 59%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/gradingtone/GradingToneOp.cpp.o
+[ 59%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/log/LogOpCPU.cpp.o
+[ 60%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/log/LogOpData.cpp.o
+[ 60%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/log/LogOpGPU.cpp.o
+[ 61%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/log/LogOp.cpp.o
+[ 61%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/log/LogUtils.cpp.o
+[ 62%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOp.cpp.o
+[ 62%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpCPU.cpp.o
+[ 63%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpCPU_SSE2.cpp.o
+[ 63%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpCPU_AVX.cpp.o
+[ 64%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpCPU_AVX2.cpp.o
+[ 64%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpCPU_AVX512.cpp.o
+[ 65%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpData.cpp.o
+[ 65%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut1d/Lut1DOpGPU.cpp.o
+[ 66%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOp.cpp.o
+[ 66%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpCPU.cpp.o
+[ 67%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpCPU_SSE2.cpp.o
+[ 67%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpCPU_AVX.cpp.o
+[ 68%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpCPU_AVX2.cpp.o
+[ 68%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpCPU_AVX512.cpp.o
+[ 69%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpData.cpp.o
+[ 69%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/lut3d/Lut3DOpGPU.cpp.o
+[ 70%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/matrix/MatrixOpCPU.cpp.o
+[ 70%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/matrix/MatrixOpData.cpp.o
+[ 71%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/matrix/MatrixOpGPU.cpp.o
+[ 71%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/matrix/MatrixOp.cpp.o
+[ 72%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/noop/NoOps.cpp.o
+[ 72%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/OpTools.cpp.o
+[ 73%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/range/RangeOpCPU.cpp.o
+[ 73%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/range/RangeOpData.cpp.o
+[ 74%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/range/RangeOpGPU.cpp.o
+[ 75%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/range/RangeOp.cpp.o
+[ 75%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ops/reference/ReferenceOpData.cpp.o
+[ 76%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ParseUtils.cpp.o
+[ 76%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/PathUtils.cpp.o
+[ 77%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Platform.cpp.o
+[ 77%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Processor.cpp.o
+[ 78%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ScanlineHelper.cpp.o
+[ 78%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/Transform.cpp.o
+[ 79%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/AllocationTransform.cpp.o
+[ 79%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/ACES.cpp.o
+[ 80%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/BuiltinTransformRegistry.cpp.o
+[ 80%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/ColorMatrixHelpers.cpp.o
+[ 81%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/OpHelpers.cpp.o
+[ 81%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/AppleCameras.cpp.o
+[ 82%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/ArriCameras.cpp.o
+[ 82%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/CanonCameras.cpp.o
+[ 83%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/Displays.cpp.o
+[ 83%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/PanasonicCameras.cpp.o
+[ 84%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/RedCameras.cpp.o
+[ 84%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/builtins/SonyCameras.cpp.o
+[ 85%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/BuiltinTransform.cpp.o
+[ 85%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/CDLTransform.cpp.o
+[ 86%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/ColorSpaceTransform.cpp.o
+[ 86%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/DisplayViewTransform.cpp.o
+[ 87%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/ExponentTransform.cpp.o
+[ 87%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/ExponentWithLinearTransform.cpp.o
+[ 88%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/ExposureContrastTransform.cpp.o
+[ 88%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/FileTransform.cpp.o
+[ 89%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/FixedFunctionTransform.cpp.o
+[ 89%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/GradingHueCurveTransform.cpp.o
+[ 90%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/GradingPrimaryTransform.cpp.o
+[ 90%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/GradingRGBCurveTransform.cpp.o
+[ 91%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/GradingToneTransform.cpp.o
+[ 91%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/GroupTransform.cpp.o
+[ 92%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/LogAffineTransform.cpp.o
+[ 92%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/LogCameraTransform.cpp.o
+[ 93%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/LogTransform.cpp.o
+[ 93%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/LookTransform.cpp.o
+[ 94%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/Lut1DTransform.cpp.o
+[ 94%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/Lut3DTransform.cpp.o
+[ 95%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/MatrixTransform.cpp.o
+[ 95%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/transforms/RangeTransform.cpp.o
+[ 96%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ViewingRules.cpp.o
+[ 96%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/ViewTransform.cpp.o
+[ 97%] Building CXX object src/OpenColorIO/CMakeFiles/OpenColorIO.dir/SystemMonitor.cpp.o
+[ 97%] Linking CXX static library libOpenColorIO.a
+[ 97%] Built target OpenColorIO
+[ 98%] Building CXX object src/apputils/CMakeFiles/apputils.dir/argparse.cpp.o
+[ 98%] Building CXX object src/apputils/CMakeFiles/apputils.dir/strutil.cpp.o
+[ 99%] Building CXX object src/apputils/CMakeFiles/apputils.dir/logGuard.cpp.o
+[100%] Linking CXX static library libapputils.a
+[100%] Built target apputils
+Install the project...
+-- Install configuration: "Release"
+opencolorio 2.5.0: installed (/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenColorIO/OpenColorIOConfig.cmake)

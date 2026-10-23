@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/native/blender-5.2.0-linux-x64/blender",
+    "--background",
+    "--console-crash-handler",
+    "--factory-startup",
+    "--debug-memory",
+    "--debug-exit-on-error",
+    "--python-exit-code",
+    "1",
+    "--python-expr",
+    "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+    "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/files/modeling/operators.blend",
+    "--python",
+    "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/operators.py",
+    "--",
+    "--run-all-tests"
+  ],
+  "cwd": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23",
+  "environment": {
+    "BLENDER_SYSTEM_RESOURCES": "/bw",
+    "BLENDER_SYSTEM_PYTHON": "/bw/python",
+    "BLENDER_SYSTEM_SCRIPTS": "/bw/scripts",
+    "BLENDER_SYSTEM_DATAFILES": "/bw/datafiles",
+    "BLENDER_USER_RESOURCES": "/projects",
+    "TMPDIR": "/projects/.recovery",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "files": [
+    {
+      "virtual_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/operators.py",
+      "url": "/original-input-3",
+      "bytes": 39415,
+      "sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f"
+    },
+    {
+      "virtual_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/modules/mesh_test.py",
+      "url": "/original-input-4",
+      "bytes": 40007,
+      "sha256": "fd764b05f86479f45eb52731eb2009b7321dfa74a258c4886c4c73083bf3ee5e"
+    },
+    {
+      "virtual_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/files/modeling/operators.blend",
+      "url": "/original-input-5",
+      "bytes": 4028858,
+      "sha256": "345857f0185fc38799d26e671e88ed06bf7754163c0ea58b4b8475c57908f9cc"
+    }
+  ],
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+}

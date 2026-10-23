@@ -1,4 +1,27 @@
-# Implementation status, 22 October 2026
+# Implementation status, 23 October 2026
+
+## Current original-Blender work
+
+The active parity branch now builds the pinned Blender 5.2 browser port and
+runs unchanged original Blender invocations. The selected unittest scope has
+829 obligations and 516 strict successful native/browser pairs on the
+separately qualified Essentials package. A separate original mesh-driver
+profile qualifies all 88 bevel cases. These counts have distinct scopes and
+are not combined into a whole-application percentage. The complete results,
+remaining failures, exact source/package identities and ongoing source build
+are recorded in [original test parity status](TEST_PARITY_STATUS.md).
+
+The new implementation integrates real SQLite with CPython `_sqlite3` and the
+WebP, OpenJPEG, AOM, libheif and OIIO dependency closure. Actual component
+builds and diagnostics pass; original application qualification on the new
+complete engine is still pending. The published implementation is
+`f25e69ed72fed2d31d7d65e657fd6515da4bd792`, with 346 infrastructure tests passing
+both locally and in GitHub CI. Infrastructure checks do not count as original
+Blender feature passes.
+
+The following limited modeller and Solarxy results are historical,
+separately scoped experiments from 22 October. They remain available and do
+not supply parity evidence for the pinned original-Blender engine.
 
 ## Verified limited release
 
@@ -20,9 +43,9 @@ The diagnostic publication is clearly labelled as failing rendering acceptance. 
 
 ## Full-parity work is not done
 
-The source scanner identified 5,637 Blender candidate declarations, but this includes compile-time assertions and unexpanded parameterised tests. It is not the complete set of runtime tests. Blender reference fixtures include 2,169 unresolved `.blend` LFS pointers. The full native reference build, complete fixture collection and complete runtime enumeration remain unfinished.
+The separate Blender 5.4 product-source scanner identified 5,637 candidate declarations, including compile-time assertions and unexpanded parameterised tests. It is not the complete set of runtime tests. All 7,353 candidate fixture paths and all 7,053 original source-archive LFS paths are now verified and hydrated. Two native configurations expose 1,140 and 1,416 original CTest registrations. Selected original C++ executions provide 2,258 distinct native observations, comprising 2,257 passes and one original platform skip. The complete native build, cross-platform runtime enumeration and product-version browser qualification remain unfinished. These product-source results do not transfer passes to the separate 5.2 browser candidate.
 
-Only 17 Blender and 3 Cycles cases have been faithfully ported so far. There is no completed clone of Blender's mesh editing, BMesh, modifiers, sculpting, geometry-node suite, animation, rigging, physics, compositor, video editor, Python API, .blend serialization or Cycles/EEVEE engines. No percentage of full parity is claimed.
+The historical Rust modeller has 17 ported Blender and 3 ported Cycles cases. The active browser-port work runs additional unchanged original Blender cases as described above. Neither experiment establishes complete Blender mesh editing, BMesh, modifiers, sculpting, geometry nodes, animation, rigging, physics, compositor, video editor, Python API, `.blend` serialization or Cycles/EEVEE parity. No percentage of full parity is claimed.
 
 ## Next test-driven milestones
 

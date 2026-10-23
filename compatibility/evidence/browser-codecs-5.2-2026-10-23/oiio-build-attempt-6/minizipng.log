@@ -1,0 +1,95 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  755k    0  755k    0     0  1374k      0 --:--:-- --:--:-- --:--:-- 1374k
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/minizipng/minizip-ng-4.0.10 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/minizipng/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DBUILD_SHARED_LIBS=OFF -DMZ_FETCH_LIBS=OFF -DMZ_LIBCOMP=OFF -DMZ_PKCRYPT=OFF -DMZ_WZAES=OFF -DMZ_OPENSSL=OFF -DMZ_SIGNING=OFF -DMZ_LZMA=OFF -DMZ_ZSTD=OFF -DMZ_BZIP2=OFF -DMZ_ICONV=OFF -DMZ_ZLIB=ON -DMZ_COMPAT=ON -DZLIB_LIBRARY=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libz.a -DZLIB_INCLUDE_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include -DZLIB_ROOT=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DCMAKE_INSTALL_INCLUDEDIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng -DCMAKE_C_FLAGS=-pthread -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port
+-- Using CMake version 4.0.3
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of off64_t
+-- Check size of off64_t - failed
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Using ZLIB 1.3.1
+-- Character encoding support requires iconv
+-- The following features have been enabled:
+
+ * MZ_COMPAT, Enables compatibility layer
+ * MZ_ZLIB, Enables ZLIB compression
+ * MZ_LIBBSD, Builds with libbsd crypto random
+
+-- The following features have been disabled:
+
+ * MZ_BZIP2, Enables BZIP2 compression
+ * MZ_LZMA, Enables LZMA & XZ compression
+ * MZ_ZSTD, Enables ZSTD compression
+ * MZ_LIBCOMP, Enables Apple compression
+ * MZ_FETCH_LIBS, Enables fetching third-party libraries if not found
+ * MZ_FORCE_FETCH_LIBS, Enables fetching third-party libraries always
+ * MZ_PKCRYPT, Enables PKWARE traditional encryption
+ * MZ_WZAES, Enables WinZIP AES encryption
+ * MZ_OPENSSL, Enables OpenSSL for encryption
+ * MZ_ICONV, Enables iconv string encoding conversion library
+ * MZ_COMPRESS_ONLY, Only support compression
+ * MZ_DECOMPRESS_ONLY, Only support decompression
+ * MZ_FILE32_API, Builds using posix 32-bit file api
+ * MZ_BUILD_TESTS, Builds minizip test executable
+ * MZ_BUILD_UNIT_TESTS, Builds minizip unit test project
+ * MZ_BUILD_FUZZ_TESTS, Builds minizip fuzzer executables
+ * MZ_CODE_COVERAGE, Builds with code coverage flags
+
+-- Configuring done (5.9s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    MZ_SIGNING
+
+
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/minizipng/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/minizipng/build --target install -j1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port"
+[  6%] Building C object CMakeFiles/minizip.dir/mz_crypt.c.o
+[ 13%] Building C object CMakeFiles/minizip.dir/mz_os.c.o
+[ 20%] Building C object CMakeFiles/minizip.dir/mz_strm.c.o
+[ 26%] Building C object CMakeFiles/minizip.dir/mz_strm_buf.c.o
+[ 33%] Building C object CMakeFiles/minizip.dir/mz_strm_mem.c.o
+[ 40%] Building C object CMakeFiles/minizip.dir/mz_strm_split.c.o
+[ 46%] Building C object CMakeFiles/minizip.dir/mz_zip.c.o
+[ 53%] Building C object CMakeFiles/minizip.dir/mz_zip_rw.c.o
+[ 60%] Building C object CMakeFiles/minizip.dir/mz_strm_zlib.c.o
+[ 66%] Building C object CMakeFiles/minizip.dir/mz_os_posix.c.o
+[ 73%] Building C object CMakeFiles/minizip.dir/mz_strm_os_posix.c.o
+[ 80%] Building C object CMakeFiles/minizip.dir/compat/ioapi.c.o
+[ 86%] Building C object CMakeFiles/minizip.dir/compat/unzip.c.o
+[ 93%] Building C object CMakeFiles/minizip.dir/compat/zip.c.o
+[100%] Linking C static library libminizip.a
+[100%] Built target minizip
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libminizip.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/minizip/minizip.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/minizip/minizip-release.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/minizip/minizip-config-version.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/minizip/minizip-config.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_os.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_crypt.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_strm.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_strm_buf.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_strm_mem.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_strm_split.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_strm_os.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_zip.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_zip_rw.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/mz_strm_zlib.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/ioapi.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/unzip.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/minizip-ng/minizip/zip.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/pkgconfig/minizip.pc
+minizipng 4.0.10: installed (/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libminizip.a)

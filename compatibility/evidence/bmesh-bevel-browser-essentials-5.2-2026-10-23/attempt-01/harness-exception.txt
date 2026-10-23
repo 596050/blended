@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-browser-essentials-5.2-2026-10-23/run-browser.py", line 168, in run
+    server = serve(shell, binary, "launcher.html", output)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d63596d831b2/blended/tools/probe_browser_port.py", line 975, in serve
+    server = Server(("127.0.0.1", 0), Handler)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 453, in __init__
+    self.socket = socket.socket(self.address_family,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted

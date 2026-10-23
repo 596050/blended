@@ -1,0 +1,106 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0 2377k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 2377k  100 2377k    0     0  6294k      0 --:--:-- --:--:-- --:--:-- 39.3M
+emcmake: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DZSTD_BUILD_STATIC=ON -DZSTD_BUILD_SHARED=OFF -DZSTD_BUILD_PROGRAMS=OFF -DZSTD_BUILD_TESTS=OFF -DZSTD_BUILD_CONTRIB=OFF -DZSTD_MULTITHREAD_SUPPORT=OFF '-DCMAKE_C_FLAGS=-pthread -O2' -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/build/cmake
+-- The ASM compiler identification is unknown
+-- Found assembler: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/emcc
+-- Warning: Did not find file Compiler/-ASM
+-- ZSTD VERSION: 1.5.7
+-- Performing Test C_FLAG_WALL
+-- Performing Test C_FLAG_WALL - Success
+-- Performing Test CXX_FLAG_WALL
+-- Performing Test CXX_FLAG_WALL - Success
+-- Performing Test C_FLAG_WEXTRA
+-- Performing Test C_FLAG_WEXTRA - Success
+-- Performing Test CXX_FLAG_WEXTRA
+-- Performing Test CXX_FLAG_WEXTRA - Success
+-- Performing Test C_FLAG_WUNDEF
+-- Performing Test C_FLAG_WUNDEF - Success
+-- Performing Test CXX_FLAG_WUNDEF
+-- Performing Test CXX_FLAG_WUNDEF - Success
+-- Performing Test C_FLAG_WSHADOW
+-- Performing Test C_FLAG_WSHADOW - Success
+-- Performing Test CXX_FLAG_WSHADOW
+-- Performing Test CXX_FLAG_WSHADOW - Success
+-- Performing Test C_FLAG_WCAST_ALIGN
+-- Performing Test C_FLAG_WCAST_ALIGN - Success
+-- Performing Test CXX_FLAG_WCAST_ALIGN
+-- Performing Test CXX_FLAG_WCAST_ALIGN - Success
+-- Performing Test C_FLAG_WCAST_QUAL
+-- Performing Test C_FLAG_WCAST_QUAL - Success
+-- Performing Test CXX_FLAG_WCAST_QUAL
+-- Performing Test CXX_FLAG_WCAST_QUAL - Success
+-- Performing Test C_FLAG_WSTRICT_PROTOTYPES
+-- Performing Test C_FLAG_WSTRICT_PROTOTYPES - Success
+-- Performing Test LD_FLAG_WL_Z_NOEXECSTACK
+-- Performing Test LD_FLAG_WL_Z_NOEXECSTACK - Success
+-- Performing Test C_FLAG_QUNUSED_ARGUMENTS
+-- Performing Test C_FLAG_QUNUSED_ARGUMENTS - Success
+-- Performing Test CXX_FLAG_QUNUSED_ARGUMENTS
+-- Performing Test CXX_FLAG_QUNUSED_ARGUMENTS - Success
+-- Performing Test C_FLAG_WA_NOEXECSTACK
+-- Performing Test C_FLAG_WA_NOEXECSTACK - Success
+-- Performing Test CXX_FLAG_WA_NOEXECSTACK
+-- Performing Test CXX_FLAG_WA_NOEXECSTACK - Success
+-- CMAKE_INSTALL_PREFIX: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm
+-- CMAKE_INSTALL_LIBDIR: lib
+-- ZSTD_LEGACY_SUPPORT defined!
+-- ZSTD_MULTITHREAD_SUPPORT is disabled
+-- Configuring done (104.9s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/build/cmake/build
+emmake: "ninja -C build" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/build/cmake"
+ninja: Entering directory `build'
+[1/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/debug.c.o
+[2/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/entropy_common.c.o
+[3/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/error_private.c.o
+[4/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/fse_decompress.c.o
+[5/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/pool.c.o
+[6/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/threading.c.o
+[7/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/xxhash.c.o
+[8/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/common/zstd_common.c.o
+[9/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/fse_compress.c.o
+[10/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/hist.c.o
+[11/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/huf_compress.c.o
+[12/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_compress.c.o
+[13/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_compress_literals.c.o
+[14/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_compress_sequences.c.o
+[15/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_compress_superblock.c.o
+[16/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_double_fast.c.o
+[17/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_fast.c.o
+[18/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_lazy.c.o
+[19/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_ldm.c.o
+[20/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_opt.c.o
+[21/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstd_preSplit.c.o
+[22/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/compress/zstdmt_compress.c.o
+[23/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/decompress/huf_decompress.c.o
+[24/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/decompress/zstd_ddict.c.o
+[25/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/decompress/zstd_decompress.c.o
+[26/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/decompress/zstd_decompress_block.c.o
+[27/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/dictBuilder/cover.c.o
+[28/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/dictBuilder/divsufsort.c.o
+[29/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/dictBuilder/fastcover.c.o
+[30/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/dictBuilder/zdict.c.o
+[31/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v01.c.o
+[32/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v02.c.o
+[33/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v03.c.o
+[34/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v04.c.o
+[35/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v05.c.o
+[36/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v06.c.o
+[37/38] Building C object lib/CMakeFiles/libzstd_static.dir/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/lib/legacy/zstd_v07.c.o
+[38/38] Linking C static library lib/libzstd.a
+emmake: "ninja -C build install" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/zstd/zstd-1.5.7/build/cmake"
+ninja: Entering directory `build'
+[0/1] Install the project...
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/zstd/zstdTargets.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/zstd/zstdTargets-release.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/zstd/zstdConfig.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/zstd/zstdConfigVersion.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/pkgconfig/libzstd.pc
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/zdict.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/zstd.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/zstd_errors.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libzstd.a
+zstd 1.5.7 installed: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libzstd.a

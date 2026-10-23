@@ -1,0 +1,720 @@
+{
+  "schema": 1,
+  "kind": "pinned-openimageio-wasm-build-validation",
+  "status": "openimageio_dependency_build_passed",
+  "started_at": "2026-10-23T15:57:33.905556+00:00",
+  "runner": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/run_oiio_build.py",
+    "bytes": 11018,
+    "sha256": "fbca2730964d6d49da331bc679f9c9dc4c9d70aececdf4fa4b8d831d31b7a4ef"
+  },
+  "manifest": {
+    "path": "/workspace/scratch/d63596d831b2/blended/patches/browser-codecs/manifest.json",
+    "bytes": 6447,
+    "sha256": "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
+  },
+  "compiler": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk/upstream/bin/clang",
+    "bytes": 146590784,
+    "sha256": "5f46543b5574cb152d33f37c324837f5468dc4c1ce95b166c6cd04343d7b6d2d"
+  },
+  "sdk_source": "/workspace/scratch/d63596d831b2/runtime/browser-sqlite-work/gessa/tools/emsdk",
+  "sdk_view": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk",
+  "jobs": 1,
+  "source_materialization": "Selected immutable source files verified against the pinned Git blob inventory; not a complete Blender source checkout.",
+  "commands": [
+    {
+      "name": "apply-codecs",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/d63596d831b2/blended/patches/browser-codecs/apply.py",
+        "--port-root",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+        "--receipt",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/patch-application.json",
+        "--expected-manifest-sha256",
+        "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T15:57:34.182823+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:57:34.247413+00:00",
+      "duration_seconds": 0.064224,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/apply-codecs.log",
+        "bytes": 118,
+        "sha256": "c0ac00ebe2e8cfffacd5940914443d1cffbc08342bee0cdc0e7ee661ba4b257e"
+      }
+    },
+    {
+      "name": "zlib",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zlib.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T15:57:34.251406+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T15:59:04.670077+00:00",
+      "duration_seconds": 90.41797,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/zlib.log",
+        "bytes": 5225,
+        "sha256": "c6b84a6e4aa7f0043b06739f4b1c7e47319a55e3a1fcbbf4acbab5f1df1d5fca"
+      }
+    },
+    {
+      "name": "zstd",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zstd.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T15:59:04.670656+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:01:07.500504+00:00",
+      "duration_seconds": 122.829092,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/zstd.log",
+        "bytes": 11977,
+        "sha256": "53a64e944b108e62b77d8b8676ebc12c8b983afc106bc5337eeaf67382e2abdd"
+      }
+    },
+    {
+      "name": "fmt",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/fmt.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:01:07.501287+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:01:14.147345+00:00",
+      "duration_seconds": 6.645629,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/fmt.log",
+        "bytes": 4443,
+        "sha256": "f2b9af74924fb82a3ac74c2e38d66273e3f11e322143bcfe13d41795e635c615"
+      }
+    },
+    {
+      "name": "robinmap",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/robinmap.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:01:14.148082+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:01:15.322745+00:00",
+      "duration_seconds": 1.173988,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/robinmap.log",
+        "bytes": 3204,
+        "sha256": "48449451b70fafe7c95d91c40da050869da8a25963d3a72d247415f145575ad7"
+      }
+    },
+    {
+      "name": "imath",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/imath.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:01:15.324357+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:02:37.524702+00:00",
+      "duration_seconds": 82.19488,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/imath.log",
+        "bytes": 7758,
+        "sha256": "f5077bd1a4cd9637df360ea7097e8764e7cc60f2f26a2ce787bc8df1413bf34b"
+      }
+    },
+    {
+      "name": "libdeflate",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libdeflate.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:02:37.525382+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:02:49.271557+00:00",
+      "duration_seconds": 11.745804,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/libdeflate.log",
+        "bytes": 5112,
+        "sha256": "5f882be5ab8972578c9b1bfee9fcb3d658619209eca4e1c11aae5d790799c453"
+      }
+    },
+    {
+      "name": "openjph",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openjph.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:02:49.272336+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:02:58.890314+00:00",
+      "duration_seconds": 9.61759,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/openjph.log",
+        "bytes": 6241,
+        "sha256": "31740c340254ba22e2e8874230fa164d5f0037d77304ca282eed33745915c36f"
+      }
+    },
+    {
+      "name": "openexr",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openexr.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:02:58.891652+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:05:25.865715+00:00",
+      "duration_seconds": 146.973775,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/openexr.log",
+        "bytes": 42060,
+        "sha256": "7bb5f65f1e4cde915d042c4ceb2a0e6e2161219af022799132d7cd6630d2301e"
+      }
+    },
+    {
+      "name": "libjpeg",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libjpeg.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:05:25.866636+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:06:09.654366+00:00",
+      "duration_seconds": 43.787271,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/libjpeg.log",
+        "bytes": 13862,
+        "sha256": "6dc99954fe9367cf471194c61a0dfaa248f976ba976bf1d0879921b51c52554f"
+      }
+    },
+    {
+      "name": "libpng",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libpng.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:06:09.655381+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:06:25.488400+00:00",
+      "duration_seconds": 15.831511,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/libpng.log",
+        "bytes": 7461,
+        "sha256": "5893e284e133a80ce625271877a0cf7cf9aa588641ce81e3aecd8834fdf4977b"
+      }
+    },
+    {
+      "name": "libtiff",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libtiff.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:06:25.489353+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:07:01.878214+00:00",
+      "duration_seconds": 36.388588,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/libtiff.log",
+        "bytes": 12536,
+        "sha256": "62d0f0d5b1076ab6c1d566f1a68704992921b40e87342f1e73ba7025f5f6c330"
+      }
+    },
+    {
+      "name": "expat",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/expat.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:07:01.879012+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:07:25.666488+00:00",
+      "duration_seconds": 23.786903,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/expat.log",
+        "bytes": 6716,
+        "sha256": "4bce62379c20b12301d53a5be495be2a4d56dd8a2212a0c0384c8c512a63ab38"
+      }
+    },
+    {
+      "name": "yamlcpp",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/yamlcpp.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:07:25.667357+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:07:56.485622+00:00",
+      "duration_seconds": 30.817592,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/yamlcpp.log",
+        "bytes": 10562,
+        "sha256": "fa8462f763867aba34f17886a9c8544a48262c9b499969222de63d828f89bb39"
+      }
+    },
+    {
+      "name": "pystring",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/pystring.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:07:56.486448+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:07:59.267228+00:00",
+      "duration_seconds": 2.780409,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/pystring.log",
+        "bytes": 2094,
+        "sha256": "96ccaa19b0469b470ee8283485787a0b466c7397b263e75d34cf1401ed3f1e5f"
+      }
+    },
+    {
+      "name": "minizipng",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/minizipng.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:07:59.268006+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:08:08.641903+00:00",
+      "duration_seconds": 9.372923,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/minizipng.log",
+        "bytes": 7641,
+        "sha256": "374ce0802c0ff439e22e399e5d2e60a4a703c3b2f411f1f35b298897f290d20b"
+      }
+    },
+    {
+      "name": "opencolorio",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/opencolorio.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:08:08.642711+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:13:57.278261+00:00",
+      "duration_seconds": 348.634961,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/opencolorio.log",
+        "bytes": 31821,
+        "sha256": "9abf6565591997a51a2b4b0dea6737133174a10aba016a9316646e6521deef9b"
+      }
+    },
+    {
+      "name": "webp",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/webp.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:13:57.279435+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:14:37.030827+00:00",
+      "duration_seconds": 39.750971,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/webp.log",
+        "bytes": 20918,
+        "sha256": "2dbe82120d77d895cdb7a148742eecc630e0ef6adb63f1b748a42cd56203fb91"
+      }
+    },
+    {
+      "name": "openjpeg",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openjpeg.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:14:37.031941+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:15:06.534271+00:00",
+      "duration_seconds": 29.50185,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/openjpeg.log",
+        "bytes": 6208,
+        "sha256": "956c835ff62c95b5b30fee5216d6fda4ee51eeecd7f7a8b9b644f3cd511c7530"
+      }
+    },
+    {
+      "name": "aom",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/aom.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:15:06.535426+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:17:12.123467+00:00",
+      "duration_seconds": 125.587215,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/aom.log",
+        "bytes": 35540,
+        "sha256": "3f18dd816ee4faba463794c741e48bb5f7340f860fd350f3648ee9f0fea060ab"
+      }
+    },
+    {
+      "name": "libheif",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libheif.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:17:12.124278+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:20:20.189433+00:00",
+      "duration_seconds": 188.064731,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/libheif.log",
+        "bytes": 29503,
+        "sha256": "ee0a50feb8e8126270cead3da786068cc6a673d967569ec5924ca9b3143501d8"
+      }
+    },
+    {
+      "name": "openimageio",
+      "argv": [
+        "bash",
+        "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openimageio.sh"
+      ],
+      "cwd": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port",
+      "started_at": "2026-10-23T16:20:20.190478+00:00",
+      "returncode": 0,
+      "timed_out": false,
+      "completed_at": "2026-10-23T16:28:06.423904+00:00",
+      "duration_seconds": 466.232883,
+      "log": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/openimageio.log",
+        "bytes": 34755,
+        "sha256": "8715624ba0e89f2eeef81c4111fee576463b58654c7d650d4b42ce7270c6312b"
+      }
+    }
+  ],
+  "blender_cases_executed": 0,
+  "full_feature_parity": false,
+  "limit": "Original port dependency recipes and selected codec/OIIO integration build only. No Blender executable or upstream Blender test execution.",
+  "prior_dependency_prefix": [],
+  "resume_start_at": "zlib",
+  "replaced_cache_symlink": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/emscripten-cache",
+  "cache_storage": "private_real_directory",
+  "host_tools": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/cmake/data/bin/cmake",
+      "bytes": 18830880,
+      "sha256": "e866d33ff610e9eedf0b68b3ebc1236ec819c9b6498fa1a2e95205fa89c5f409"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-host-tools/bin/ninja",
+      "bytes": 372384,
+      "sha256": "696f9628a79d9ce50314cf9556d7cd1a1d1ec52b8fd52828f6f9db1719565b67"
+    }
+  ],
+  "environment": {
+    "EM_CACHE": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache",
+    "EMCC_CORES": "1",
+    "CMAKE_BUILD_PARALLEL_LEVEL": "1",
+    "MAKEFLAGS": "-j1",
+    "BLENDED_BUILD_JOBS": "1"
+  },
+  "recipes": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zlib.sh",
+      "bytes": 2416,
+      "sha256": "9bbe25301f8d63715025399763bddc11c2236e955279c4efd2559da44512c2e5"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/zstd.sh",
+      "bytes": 1766,
+      "sha256": "86849119ae094e6e3a66ec3763726a9fcc243430d808dac64afc5bad6837ebfe"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/fmt.sh",
+      "bytes": 1566,
+      "sha256": "b80efce661fbc0f712c1983702dd43f9441ad3792b65ecf9d79c9cb1c522d5ea"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/robinmap.sh",
+      "bytes": 2052,
+      "sha256": "27e30cdfeac669a36f87649eeeae1a8cb7200125e9495f71b668862dc96b32b2"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/imath.sh",
+      "bytes": 2877,
+      "sha256": "f93efa3ac6e07c9dbb662966d7cfc3080b61a629913b09b2d1dcf671cd6623a3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libdeflate.sh",
+      "bytes": 2250,
+      "sha256": "bc05aa0b2a65029d4324aaec65ed5f39c436eff5303d63034cc6cf4f182ca6fe"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openjph.sh",
+      "bytes": 2799,
+      "sha256": "ce546ffeb81f1893b05181be5dd9ee1b32c6944ae8bd17f00f62ad0b34531ae1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openexr.sh",
+      "bytes": 4351,
+      "sha256": "6c254527809997b7ea1e47b7470c7f7f3dfd4d40a87c72e64622e8c2a23f6073"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libjpeg.sh",
+      "bytes": 3313,
+      "sha256": "4e239bde7321b19537f8bd7b934d9eb8a9274d217c266e0f5036d1ad7cd00e6f"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libpng.sh",
+      "bytes": 2952,
+      "sha256": "1b807dc8a6866ccafb0589854cd9d33b774692e02972228232be72b9ca0439ce"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libtiff.sh",
+      "bytes": 3391,
+      "sha256": "7c7d9421c77538643bbd5e002e19828f05b7efd266dc56937c95697ef8e20c34"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/expat.sh",
+      "bytes": 2022,
+      "sha256": "e2084ee7e9d51fbca4ffe3e113a2796dcc67a17e49da9a68bc5be06591cdd016"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/yamlcpp.sh",
+      "bytes": 1914,
+      "sha256": "fc8f0821fe80fe35b198036eb180320f6297d45351b0eb57e4c9c8c87816b3af"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/pystring.sh",
+      "bytes": 2113,
+      "sha256": "7071aaebd1102cbe379911f726c9ae5ad9787d71dde2137f83a26e8d72b4c740"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/minizipng.sh",
+      "bytes": 2673,
+      "sha256": "1a7e2a440b2c61ee61d37c9acd64208bda1ecc0d7448425c09088e9c08cf8358"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/opencolorio.sh",
+      "bytes": 4224,
+      "sha256": "27aee41615dda67090fa0ecc6908cc217379926062a8292f041b513c894b8994"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/webp.sh",
+      "bytes": 1072,
+      "sha256": "ce768e468bc37afacf4c39f575d2b90950a81b55f206ea671759c35924ea1f5b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openjpeg.sh",
+      "bytes": 617,
+      "sha256": "b073790328a6583eecdf579e14326f19be96eba12c340b10c1d8b00077498de3"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/aom.sh",
+      "bytes": 1241,
+      "sha256": "d4f0b99edf8654cc4aa305b9671701533e6968cbcc9d334530b9b9680f4899e1"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/libheif.sh",
+      "bytes": 2251,
+      "sha256": "3e6cfbda9059644e94cc0045d3c3056ef744f5105c97bea4b7660dcb2e0d5aa5"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/scripts/deps/openimageio.sh",
+      "bytes": 15256,
+      "sha256": "25094118fcc8f047d5f6dfd507c727e333717913e3a664776b8a4c3a0380a180"
+    }
+  ],
+  "libraries": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libIex-3_4.a",
+      "bytes": 722770,
+      "sha256": "c56818fdaec725879ab8d98cceb664f39ac99c7297b3e112da63d4d730dddd0f"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libIlmThread-3_4.a",
+      "bytes": 34726,
+      "sha256": "a959bd46b0f0dcba30776300096c03846c0d268fb1e7b3e9cfa89bd92c72f5f2"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libImath-3_2.a",
+      "bytes": 313546,
+      "sha256": "02ac35e7318b0373c601a275e00150d4c94e66f2b876180a0320a261b4e0f0fe"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenColorIO.a",
+      "bytes": 14075028,
+      "sha256": "ae778d329a89f800401cba493ef5840ff0a28ad3af13425e5e5e3d1bde548669"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenEXR-3_4.a",
+      "bytes": 1604342,
+      "sha256": "38ac1701b8a0653d6ba712140149329fdb39b3510429e927d685ed915071719b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenEXRCore-3_4.a",
+      "bytes": 951658,
+      "sha256": "3373d9b01898b2bfd7c1cb3d595aef4b3c9f58728de0f2ee3b665a5fc0022d4b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenEXRUtil-3_4.a",
+      "bytes": 248946,
+      "sha256": "8e27f4c05318903715d3e1c220d740bf22c91802e189bd697ec0c6fb9a6e11e9"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenImageIO.a",
+      "bytes": 28089398,
+      "sha256": "d1b24434bf1fa660e5ee68f5b65ba064e806328c72b40403b5a9543adda9af87"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenImageIO_Util.a",
+      "bytes": 3050818,
+      "sha256": "d7a60d4ce027a56baf5a3d5fa4de82c3f3c7cadaca3e60b90c4aae91158f58ae"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libaom.a",
+      "bytes": 4776436,
+      "sha256": "2fc99f82ecccd5d474bc3db53f7e7fa6d9206074d4259a53919ccff02153beec"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libdeflate.a",
+      "bytes": 67034,
+      "sha256": "5c61473568648f69a46323702ba3a31e075b624cd69dbb979ee8bbf5d3c4e8f6"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libexpat.a",
+      "bytes": 189754,
+      "sha256": "be170b66336c05422a3c13bd7d83761a05c1b2b3424cb4a47497c1e4e63b32e9"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libfmt.a",
+      "bytes": 202848,
+      "sha256": "ec2a664f586400a6d5dbb67124b9ef7f7f5498b2f4ecde7778427867dea8b783"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libheif.a",
+      "bytes": 3593022,
+      "sha256": "8b10291fd3b88c0d3978e1f806af21085d1371c4172a6cb631e2d253c3e3d17c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libjpeg.a",
+      "bytes": 482128,
+      "sha256": "59917206cde2fc7b5c2ec3bd67432de8db3b19eaaa3c16e7e8114d7df4b19a6b"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libminizip.a",
+      "bytes": 97646,
+      "sha256": "25c04d3946984820d44e869e869ce1332910b1e5d9b0f56b39bf3941a1ee1180"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libopenjp2.a",
+      "bytes": 426898,
+      "sha256": "097406c11b9fe6fb926a510cf75b3530385acc4c1ff1f05eea475a45e76f1e3d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libopenjph.a",
+      "bytes": 381180,
+      "sha256": "6723e2cbc1a5095b3efcfa70a9d9472d7f6501813225fd2808c94e552254bf30"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libpng.a",
+      "bytes": 247222,
+      "sha256": "74b0b7016ed5db93a9c333ea29efdee640507b828e529e694a513e931f30a6c6"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libpng16.a",
+      "bytes": 247222,
+      "sha256": "74b0b7016ed5db93a9c333ea29efdee640507b828e529e694a513e931f30a6c6"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libpystring.a",
+      "bytes": 57364,
+      "sha256": "b3dc28361872d914afa717fdf48a675d15bb0b26a561af4cfd5425db3cf58fe6"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libsharpyuv.a",
+      "bytes": 22244,
+      "sha256": "612ac5609fa42593653f1fb1cfa1faf0c4afdf4c58277c565ee072eefb313464"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libtiff.a",
+      "bytes": 628930,
+      "sha256": "71baba3c3394b23e0d859fac0967cad0880e8ccae92cb5194af8c8826c44ff53"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libtiffxx.a",
+      "bytes": 8530,
+      "sha256": "516badeef6324a1eabbb12b5e399ce0c2778f201878908cda04238728966d9c7"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libwebp.a",
+      "bytes": 511440,
+      "sha256": "e168505d4ccc0d211d66fc222a67cb6b2c75dfdd6651d8cf72b7b77fe477606d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libwebpdecoder.a",
+      "bytes": 219242,
+      "sha256": "22e3285f150c6ad42dff9cd4547197fdf54b861bc9a03be964f21ec0b58d3c41"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libwebpdemux.a",
+      "bytes": 11492,
+      "sha256": "42349a592eeeb9376c63c1c124dc81a8a38581f78c6cda5099ecd1d561d00bc7"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libwebpmux.a",
+      "bytes": 41820,
+      "sha256": "cc81b5e3ac3d4058bd5c8d35ad8fb3cc6601774a13e0f0094e67e7337de36ce8"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libyaml-cpp.a",
+      "bytes": 514256,
+      "sha256": "372b4cefe9d699e6716518c9e13e3621f96c137715eccdc9c6e2080a3a7d033d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libz.a",
+      "bytes": 102732,
+      "sha256": "e62136fb0f3d1e9915198ef757faba593f48b136001bc13a59359640e04a3d8d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libzstd.a",
+      "bytes": 849712,
+      "sha256": "743e38dc68f6ab435e5589ddf9bfee5c78971c80fe79e47c094caaca11c44607"
+    }
+  ],
+  "completed_at": "2026-10-23T16:28:06.496380+00:00"
+}

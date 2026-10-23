@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "kind": "read-only-browser-worker-ipc-analysis-summary",
+  "created_utc": "2026-10-23T16:52:39.792703+00:00",
+  "status": "proposal-only-not-implemented",
+  "source_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "readme": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/README.md",
+    "bytes": 8198,
+    "sha256": "4f231c66e789f0af6f13f031e77f4f6f6d64ebff4eb39afea2124c838aa657aa"
+  },
+  "proposal": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/proposal.json",
+    "bytes": 34542,
+    "sha256": "45c37c860566d8f8afe3a597756b313815e478ebce401d4bb6f0ce13a9064413"
+  },
+  "source_bindings": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/source-bindings.json",
+    "bytes": 25461,
+    "sha256": "258e2d0b34b55c15e46f352be21094375a287001e5fe4406abdd778ed0507b24"
+  },
+  "existing_observations": {
+    "path": "compatibility/evidence/browser-worker-ipc-contract-5.2-2026-10-23/existing-observations.json",
+    "bytes": 9103,
+    "sha256": "6339f630807d7a08f8266c77fa805b6d633de4a90c7907aae6f65cf2bd44b9c3"
+  },
+  "observed_first_failure": "Original BackgroundDownloaderProcessTest.test_start_stop: Pipe -> socketpair fallback -> socket creation raises ENOSYS errno 52; original driver and browser exit 1.",
+  "existing_result_context_only": {
+    "native_exact_cases": 8,
+    "native_passes": 8,
+    "browser_exact_cases": 8,
+    "browser_passes": 7,
+    "browser_errors": 1
+  },
+  "source_inferred_later_boundaries": [
+    "Missing _posixshmem resource tracker import",
+    "Missing _posixsubprocess launch and nonfunctional native process/reap path",
+    "Absent Python executable identity",
+    "Real worker duplex transfer and lifecycle",
+    "Child RX/TX thread capability; current local-only semaphore shim does not provide transferable synchronization"
+  ],
+  "minimum_general_work": [
+    "Browser spawn context and real isolated Python Worker",
+    "Ordered synchronous-capable duplex Connection transport",
+    "Real child threads and lifecycle/resource cleanup"
+  ],
+  "next_acceptance": "Unchanged full eight-case original invocation on the new measured artifact, with exact native identities and successful driver/runtime exits. Separate general backend checks receive no Blender test credit.",
+  "documentation_overlap": "Reuse real Python launch and completion with coherent RST/pyi filesystem access, actual docutils dependency closure, unchanged --strict-docs and original output assertions.",
+  "implementation_completed": false,
+  "new_test_invocations": 0,
+  "new_test_cases": 0,
+  "new_browser_passes": 0,
+  "production_code_modified": false,
+  "original_tests_or_assertions_modified": false,
+  "frozen_plans_modified": false,
+  "historical_receipts_modified": false,
+  "full_feature_parity": false
+}

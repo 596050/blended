@@ -1,0 +1,2365 @@
+{
+  "schema": 1,
+  "kind": "source-derived-original-mesh-operators-native-summary",
+  "created_utc": "2026-10-23T16:34:40.513213+00:00",
+  "summary_driver": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/summarize.py",
+    "bytes": 8388,
+    "sha256": "088e60df2cdffae9be922dfd809973ed50852fbbc5632c4d172c04ffdcaf2c7e"
+  },
+  "source_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "source_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/upstream-5.2.tar.gz",
+    "bytes": 78785728,
+    "sha256": "de0fdadf28015805370d1815facaf9139fbb1e161d8c540d1765484beabb3a99"
+  },
+  "source_declaration_index": 74,
+  "ctest_name_from_source": "operators",
+  "original_declaration": {
+    "source_declaration_index": 74,
+    "source_path": "tests/python/CMakeLists.txt",
+    "name": "add_blender_test",
+    "arguments": "\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  ",
+    "text": "add_blender_test(\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  )",
+    "line": 703,
+    "context": [
+      {
+        "opener": "if(TEST_SRC_DIR_EXISTS)",
+        "line": 702
+      }
+    ]
+  },
+  "declaration_catalog": {
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/upstream_invocations_5_2.json",
+    "bytes": 140627,
+    "sha256": "c326f9a99e665b15901dda134afd0c074c5c150441ed2971d977ce134a1fe7f2"
+  },
+  "original_invocation_kind": "source-derived original Blender command",
+  "configured_ctest_execution": false,
+  "execution_environment": "Authorized elevated local execution, retaining the exact original command and inputs.",
+  "native_executable": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/native/blender-5.2.0-linux-x64/blender",
+    "bytes": 174666336,
+    "sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27"
+  },
+  "prior_native_release_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bmesh/native_reference.json",
+    "bytes": 13897,
+    "sha256": "960f88aa664d347ec1414ca0a1093a16282da30751dfc28201d3ab6386610c2a"
+  },
+  "native_source_build_correspondence_verified": false,
+  "prospective_command": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/prospective-command.json",
+    "bytes": 38548,
+    "sha256": "c64b5f9e1b4ef9d6eabad71b854b4861baef5fdc7bd185cb8c16b9d993a82600"
+  },
+  "execution_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/execution.json",
+    "bytes": 76950,
+    "sha256": "8c6928062436813530f7b02865e828b549170841094606cac6074f63f6a70461"
+  },
+  "raw_log": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/original-driver.log",
+    "bytes": 15224,
+    "sha256": "98bff9b22856dbd2f41f19bd127fc783e820174ed92997ecbf0fa93e3413e8cb"
+  },
+  "actual_process_returncode": 0,
+  "elapsed_seconds": 3.82125,
+  "timed_out": false,
+  "termination_reason": null,
+  "timeout_seconds": 180,
+  "completed_native_original_invocations": 1,
+  "unique_observed_original_cases": 105,
+  "observed_original_native_passes_in_completed_invocation": 105,
+  "observed_original_native_failures": 0,
+  "observed_ambiguous_or_incomplete_cases": 0,
+  "missing_declared_names": [],
+  "unexpected_names": [],
+  "duplicate_names": [],
+  "case_evidence": [
+    {
+      "name": "CubeBisect",
+      "status": "passed",
+      "start_log_line": 3,
+      "terminal_log_lines": [
+        "PASSED CubeBisect test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeBisect",
+        "line": 29,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "782b7744c9ae7bc367d69a70a80d36d379cdcf6da80ad97bbedc75fe1fb5a3a2"
+      }
+    },
+    {
+      "name": "CubeBlendFromShape",
+      "status": "passed",
+      "start_log_line": 10,
+      "terminal_log_lines": [
+        "PASSED CubeBlendFromShape test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeBlendFromShape",
+        "line": 43,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "0e69a6edadaf1ea5a41c8fa8a594e9c62c204e67f9978b2c21c13c305d4a0823"
+      }
+    },
+    {
+      "name": "CubeBridgeEdgeLoop",
+      "status": "passed",
+      "start_log_line": 17,
+      "terminal_log_lines": [
+        "PASSED CubeBridgeEdgeLoop test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeBridgeEdgeLoop",
+        "line": 50,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "fbb5272120a48b04ae81c1e3267923702711c9c8ee243ff5a2333a5bdfd0fba4"
+      }
+    },
+    {
+      "name": "MonkeyDecimate",
+      "status": "passed",
+      "start_log_line": 24,
+      "terminal_log_lines": [
+        "PASSED MonkeyDecimate test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "MonkeyDecimate",
+        "line": 57,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "2a2ac5c695a91ab056d212128ba29c630aa32dfae453b12da8e8598b7cc46a4f"
+      }
+    },
+    {
+      "name": "CubeDeleteVertices",
+      "status": "passed",
+      "start_log_line": 31,
+      "terminal_log_lines": [
+        "PASSED CubeDeleteVertices test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDeleteVertices",
+        "line": 64,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "5c7691847be2a70ea467ecd6718692bfc2e1a3cd36dab5ab5fbfef78e62c1592"
+      }
+    },
+    {
+      "name": "CubeDeleteFaces",
+      "status": "passed",
+      "start_log_line": 38,
+      "terminal_log_lines": [
+        "PASSED CubeDeleteFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDeleteFaces",
+        "line": 70,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "73db6cea2bb5c12fd244e2ef346b155395fafcae2a88ab3669847bc5f2aca8dd"
+      }
+    },
+    {
+      "name": "CubeDeleteEdges",
+      "status": "passed",
+      "start_log_line": 45,
+      "terminal_log_lines": [
+        "PASSED CubeDeleteEdges test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDeleteEdges",
+        "line": 76,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "3b9e4843d026f4e874e5e71dca4aee96ce790b9cec1c103c0576df22a7aa2065"
+      }
+    },
+    {
+      "name": "MonkeyDeleteEdgeLoopVertices",
+      "status": "passed",
+      "start_log_line": 52,
+      "terminal_log_lines": [
+        "PASSED MonkeyDeleteEdgeLoopVertices test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "MonkeyDeleteEdgeLoopVertices",
+        "line": 83,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "0b33496dd11b47f15d1708d40bb5cee6fdc6b9ac268f7a1d556d097828d465ee"
+      }
+    },
+    {
+      "name": "MonkeyDeleteEdgeLoopEdges",
+      "status": "passed",
+      "start_log_line": 59,
+      "terminal_log_lines": [
+        "PASSED MonkeyDeleteEdgeLoopEdges test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "MonkeyDeleteEdgeLoopEdges",
+        "line": 89,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "eccb7a8a8400743fde9ffa5aaa253e89bc2318daebe0355e240fdef4297917fb"
+      }
+    },
+    {
+      "name": "CubeDeleteLooseVertices",
+      "status": "passed",
+      "start_log_line": 66,
+      "terminal_log_lines": [
+        "PASSED CubeDeleteLooseVertices test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDeleteLooseVertices",
+        "line": 96,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ced2765a0cdb08f456242c27536ee125597d44f84090c3a0e0b88496c19250df"
+      }
+    },
+    {
+      "name": "CubeDeleteLooseEdges",
+      "status": "passed",
+      "start_log_line": 74,
+      "terminal_log_lines": [
+        "PASSED CubeDeleteLooseEdges test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDeleteLooseEdges",
+        "line": 109,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "bfb550c46d3c4c33edc0169773a7d591c0a294582fdb80080f32e8210fb3d00f"
+      }
+    },
+    {
+      "name": "CubeDeleteLooseFaces",
+      "status": "passed",
+      "start_log_line": 82,
+      "terminal_log_lines": [
+        "PASSED CubeDeleteLooseFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDeleteLooseFaces",
+        "line": 122,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ebab2236ec46afe27424d0d1d8c066388002671337e18e9208af1286b0712160"
+      }
+    },
+    {
+      "name": "CubeDissolveDegenerate",
+      "status": "passed",
+      "start_log_line": 90,
+      "terminal_log_lines": [
+        "PASSED CubeDissolveDegenerate test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDissolveDegenerate",
+        "line": 136,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "dd3ed950b4bafd1114c0b7dbd31c485fab7ecd1f2958e014bb8818594510de74"
+      }
+    },
+    {
+      "name": "CylinderDissolveEdges.UseVertsFalse",
+      "status": "passed",
+      "start_log_line": 98,
+      "terminal_log_lines": [
+        "PASSED CylinderDissolveEdges.UseVertsFalse test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CylinderDissolveEdges.UseVertsFalse",
+        "line": 143,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "aa3ae07922d4ab7b13d3f484d24311ce98266ac80abe6b3143b8dd528f3d7315"
+      }
+    },
+    {
+      "name": "CylinderDissolveEdges.AngleThrehsoldNoDissolve",
+      "status": "passed",
+      "start_log_line": 105,
+      "terminal_log_lines": [
+        "PASSED CylinderDissolveEdges.AngleThrehsoldNoDissolve test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CylinderDissolveEdges.AngleThrehsoldNoDissolve",
+        "line": 149,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a4468fdba56b3b2fff49b5c08b169accb393e18814d4550755a03c89decbaa76"
+      }
+    },
+    {
+      "name": "CylinderDissolveEdges.AngleThresholdSomeDissolve",
+      "status": "passed",
+      "start_log_line": 112,
+      "terminal_log_lines": [
+        "PASSED CylinderDissolveEdges.AngleThresholdSomeDissolve test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CylinderDissolveEdges.AngleThresholdSomeDissolve",
+        "line": 155,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a4b5f603021ea682ece86408857f2080cfa9f07842c198d1ff5d36f8cf7cebde"
+      }
+    },
+    {
+      "name": "CylinderDissolveEdges.AngleThresholdAllDissolve",
+      "status": "passed",
+      "start_log_line": 119,
+      "terminal_log_lines": [
+        "PASSED CylinderDissolveEdges.AngleThresholdAllDissolve test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CylinderDissolveEdges.AngleThresholdAllDissolve",
+        "line": 165,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "e44994122ed413634ccd8bcf0809ca82bde795caf0b337d3d2e3c2971293763c"
+      }
+    },
+    {
+      "name": "CubeDissolveFaces",
+      "status": "passed",
+      "start_log_line": 126,
+      "terminal_log_lines": [
+        "PASSED CubeDissolveFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDissolveFaces",
+        "line": 176,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "c86cec405c5dc32b58512484557f219e2ac61581fa79e6cf14b7dcb0ff3d5466"
+      }
+    },
+    {
+      "name": "SphereDissolveLimited",
+      "status": "passed",
+      "start_log_line": 133,
+      "terminal_log_lines": [
+        "PASSED SphereDissolveLimited test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "SphereDissolveLimited",
+        "line": 183,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "348b3338600314e3d0e13f007268f49da94583a3b08b03cf437c5a9f5c3d0dfd"
+      }
+    },
+    {
+      "name": "PlaneDissolveMode",
+      "status": "passed",
+      "start_log_line": 140,
+      "terminal_log_lines": [
+        "PASSED PlaneDissolveMode test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneDissolveMode",
+        "line": 190,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "0f804bbf76c0fe15cc63666e0c11c2a1d3d5bb439f53d9cdbbab2cf37bc1aff2"
+      }
+    },
+    {
+      "name": "CubeDissolveVerts",
+      "status": "passed",
+      "start_log_line": 147,
+      "terminal_log_lines": [
+        "PASSED CubeDissolveVerts test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeDissolveVerts",
+        "line": 197,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "bdc1da75b366f844ed202299b934c915367f1ccc6b6519d251df2562935a756b"
+      }
+    },
+    {
+      "name": "ConeDuplicateVertices",
+      "status": "passed",
+      "start_log_line": 154,
+      "terminal_log_lines": [
+        "PASSED ConeDuplicateVertices test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "ConeDuplicateVertices",
+        "line": 204,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "de93ec04cd67134cbebdb16d1124690512ea657b4403686b2fbc9a7dbdda0584"
+      }
+    },
+    {
+      "name": "ConeDuplicateOneVertex",
+      "status": "passed",
+      "start_log_line": 161,
+      "terminal_log_lines": [
+        "PASSED ConeDuplicateOneVertex test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "ConeDuplicateOneVertex",
+        "line": 210,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "0e1453e835251118db05bb928e740fd913e3a3c71dc45baad8a2a6a69c801c6a"
+      }
+    },
+    {
+      "name": "ConeDuplicateFaces",
+      "status": "passed",
+      "start_log_line": 168,
+      "terminal_log_lines": [
+        "PASSED ConeDuplicateFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "ConeDuplicateFaces",
+        "line": 216,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ce7826ac456be569ff428db9e960c0eee3457c6dfa7fc8700e99aa50cc46ba99"
+      }
+    },
+    {
+      "name": "ConeDuplicateEdges",
+      "status": "passed",
+      "start_log_line": 175,
+      "terminal_log_lines": [
+        "PASSED ConeDuplicateEdges test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "ConeDuplicateEdges",
+        "line": 222,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "7c8108b18a05349b03fdaccae3da442794f546e371933a5dbfbf69767a9ff7eb"
+      }
+    },
+    {
+      "name": "CylinderEdgeCollapse",
+      "status": "passed",
+      "start_log_line": 182,
+      "terminal_log_lines": [
+        "PASSED CylinderEdgeCollapse test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CylinderEdgeCollapse",
+        "line": 229,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "5b11a96133618a6caf8dced150ca68136d3e016b956e6f5dbdf12ff5a63ce9e7"
+      }
+    },
+    {
+      "name": "CubeEdgeFaceAddFace",
+      "status": "passed",
+      "start_log_line": 189,
+      "terminal_log_lines": [
+        "PASSED CubeEdgeFaceAddFace test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeEdgeFaceAddFace",
+        "line": 236,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "e726f74393ae4a825fdbd8ec7b917c4c2612ffc31a35d504b10d34edb079a436"
+      }
+    },
+    {
+      "name": "CubeEdgeFaceAddEdge",
+      "status": "passed",
+      "start_log_line": 196,
+      "terminal_log_lines": [
+        "PASSED CubeEdgeFaceAddEdge test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeEdgeFaceAddEdge",
+        "line": 242,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "7d059654931a8d33d88d379c28e757b142805b17c01ddd5e21ab8fea41060bb1"
+      }
+    },
+    {
+      "name": "CubeEdgeRotate",
+      "status": "passed",
+      "start_log_line": 203,
+      "terminal_log_lines": [
+        "PASSED CubeEdgeRotate test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeEdgeRotate",
+        "line": 249,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "f02b76ea1b58ad5b4bffae965df2ef763621ce28e0c8cd51e5e345ade5a78eb8"
+      }
+    },
+    {
+      "name": "CubeEdgeSplit",
+      "status": "passed",
+      "start_log_line": 210,
+      "terminal_log_lines": [
+        "PASSED CubeEdgeSplit test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeEdgeSplit",
+        "line": 256,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "54d97ed96fae205894b69a05e493c1c7617b19778985bb574ca41d07e2a50919"
+      }
+    },
+    {
+      "name": "CubeEdgesSelectSharp",
+      "status": "passed",
+      "start_log_line": 217,
+      "terminal_log_lines": [
+        "PASSED CubeEdgesSelectSharp test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeEdgesSelectSharp",
+        "line": 282,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ef5a9470484968a3075d74fa84fa9b4b9d01242ae4d02f4c4d84062e176248c9"
+      }
+    },
+    {
+      "name": "SphereEdgesSelectSharp",
+      "status": "passed",
+      "start_log_line": 224,
+      "terminal_log_lines": [
+        "PASSED SphereEdgesSelectSharp test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "SphereEdgesSelectSharp",
+        "line": 288,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "1543ef0791c7df4828da7d10279e00b5af71ebc843f2b47b18fccb11dc73f8f5"
+      }
+    },
+    {
+      "name": "HoledSphereEdgesSelectSharp",
+      "status": "passed",
+      "start_log_line": 231,
+      "terminal_log_lines": [
+        "PASSED HoledSphereEdgesSelectSharp test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HoledSphereEdgesSelectSharp",
+        "line": 294,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "8e21cea0403db7198a5ba2a1e70ab31dd28f483a0c08a9fad35616f971e35daf"
+      }
+    },
+    {
+      "name": "EmptyMeshEdgesSelectSharp",
+      "status": "passed",
+      "start_log_line": 238,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshEdgesSelectSharp test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshEdgesSelectSharp",
+        "line": 300,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "6fd7178bc929c0589f92ba3248202295010bcf5deefc2f9c5b3118811813c567"
+      }
+    },
+    {
+      "name": "MonkeyFaceMakePlanar",
+      "status": "passed",
+      "start_log_line": 245,
+      "terminal_log_lines": [
+        "PASSED MonkeyFaceMakePlanar test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "MonkeyFaceMakePlanar",
+        "line": 307,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "6fc2a8b6830b3a621b40ad27cd6e290dceffb716cecabf1fdce0e28f7a3abdd6"
+      }
+    },
+    {
+      "name": "PlaneFaceSplitByEdges",
+      "status": "passed",
+      "start_log_line": 252,
+      "terminal_log_lines": [
+        "PASSED PlaneFaceSplitByEdges test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneFaceSplitByEdges",
+        "line": 314,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "c3d33dde3892826692712ef00d1a86338d9e11033304431a8a2bb6ef9d1793cb"
+      }
+    },
+    {
+      "name": "CubeFacesSelectLinkedFlat",
+      "status": "passed",
+      "start_log_line": 259,
+      "terminal_log_lines": [
+        "PASSED CubeFacesSelectLinkedFlat test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeFacesSelectLinkedFlat",
+        "line": 321,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "b0ae2c7619fde7f0e53b028e3256fe4864e1f9de7880f673a859d6a6adbc4710"
+      }
+    },
+    {
+      "name": "PlaneFacesSelectLinkedFlat",
+      "status": "passed",
+      "start_log_line": 266,
+      "terminal_log_lines": [
+        "PASSED PlaneFacesSelectLinkedFlat test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneFacesSelectLinkedFlat",
+        "line": 327,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "fcd99c7e68e33e52a236a6ae7d34bb3c01fbd49646a17b4813c41726fbeefcc3"
+      }
+    },
+    {
+      "name": "EmptyMeshFacesSelectLinkedFlat",
+      "status": "passed",
+      "start_log_line": 273,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshFacesSelectLinkedFlat test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshFacesSelectLinkedFlat",
+        "line": 333,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a2e4619d71d007b2ebc5a7c4a158d85152aab4bef662c884425f41ed00af7eb6"
+      }
+    },
+    {
+      "name": "IcosphereFill",
+      "status": "passed",
+      "start_log_line": 280,
+      "terminal_log_lines": [
+        "PASSED IcosphereFill test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "IcosphereFill",
+        "line": 340,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "5adc13c13120437f0fe82a62b2b0c284ecad1e4e2e03502cd99c305466c9189b"
+      }
+    },
+    {
+      "name": "IcosphereFillUseBeautyFalse",
+      "status": "passed",
+      "start_log_line": 287,
+      "terminal_log_lines": [
+        "PASSED IcosphereFillUseBeautyFalse test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "IcosphereFillUseBeautyFalse",
+        "line": 346,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "072df7999e91e0abe50cdf8c5ae17f695287440fb34f0ff502327d21d52b5eaa"
+      }
+    },
+    {
+      "name": "PlaneFillGrid",
+      "status": "passed",
+      "start_log_line": 294,
+      "terminal_log_lines": [
+        "PASSED PlaneFillGrid test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneFillGrid",
+        "line": 353,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "893fb269ea315fce8c1fd8cdc485e65608e69e68691a86a3ec19b8d490a70872"
+      }
+    },
+    {
+      "name": "PlaneFillGridSimpleBlending",
+      "status": "passed",
+      "start_log_line": 301,
+      "terminal_log_lines": [
+        "PASSED PlaneFillGridSimpleBlending test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneFillGridSimpleBlending",
+        "line": 359,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "095ac7756b0cfe82bdbb388c68c0f5a61a5c3bd307a34a424248360b558f6923"
+      }
+    },
+    {
+      "name": "PlaneFillGridReplaceExistingTris",
+      "status": "passed",
+      "start_log_line": 308,
+      "terminal_log_lines": [
+        "PASSED PlaneFillGridReplaceExistingTris test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneFillGridReplaceExistingTris",
+        "line": 369,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "b950398aabf8fb4be477b19d26e63143a2333f49342dab3cab02745b38435ee1"
+      }
+    },
+    {
+      "name": "PlaneFillGridReplaceExistingQuads",
+      "status": "passed",
+      "start_log_line": 315,
+      "terminal_log_lines": [
+        "PASSED PlaneFillGridReplaceExistingQuads test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneFillGridReplaceExistingQuads",
+        "line": 375,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "8e5006ec2d5a8c25a1aa58d39aab3399d2be3032047177618d68cbb5f03fef41"
+      }
+    },
+    {
+      "name": "SphereFillHoles",
+      "status": "passed",
+      "start_log_line": 322,
+      "terminal_log_lines": [
+        "PASSED SphereFillHoles test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "SphereFillHoles",
+        "line": 382,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "2e628c9b9c77ccd225036bec0fa2f1b929544d6828219fbf79bdb3d30e0489c3"
+      }
+    },
+    {
+      "name": "CubeShadeSmooth",
+      "status": "passed",
+      "start_log_line": 329,
+      "terminal_log_lines": [
+        "PASSED CubeShadeSmooth test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeShadeSmooth",
+        "line": 389,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "b0974ed259f4d5121d0ec80ac47ae7751781198bfc287e29a42ffc94904dae23"
+      }
+    },
+    {
+      "name": "CubeShadeFlat",
+      "status": "passed",
+      "start_log_line": 336,
+      "terminal_log_lines": [
+        "PASSED CubeShadeFlat test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeShadeFlat",
+        "line": 396,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "3c9d13328d144c0cd75d6f8285d2b6c7c16ee0b69920245e40ff6ccaf0e136a2"
+      }
+    },
+    {
+      "name": "HideFace",
+      "status": "passed",
+      "start_log_line": 343,
+      "terminal_log_lines": [
+        "PASSED HideFace test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HideFace",
+        "line": 403,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "d98116ee33f401899b8214fc7b17c2518f8f26238751f5f88eae601ca75d9ed4"
+      }
+    },
+    {
+      "name": "HideEdge",
+      "status": "passed",
+      "start_log_line": 350,
+      "terminal_log_lines": [
+        "PASSED HideEdge test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HideEdge",
+        "line": 409,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "bd71d7bdbd0ae0d2fc2fbe6ba3109c4c2ef561f63ac019a2468c71712f899676"
+      }
+    },
+    {
+      "name": "HideVertex",
+      "status": "passed",
+      "start_log_line": 357,
+      "terminal_log_lines": [
+        "PASSED HideVertex test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HideVertex",
+        "line": 415,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "8b233d7996c131b7a7ce2267e67e0beadbee755b2c32f69530eb80178181ebef"
+      }
+    },
+    {
+      "name": "CubeInset",
+      "status": "passed",
+      "start_log_line": 364,
+      "terminal_log_lines": [
+        "PASSED CubeInset test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeInset",
+        "line": 422,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "5bfaa632a142d29c5b1ad954d198d0d5e7093ecccee00aaf154a94fd6b3873ed"
+      }
+    },
+    {
+      "name": "CubeInsetEvenOffsetFalse",
+      "status": "passed",
+      "start_log_line": 371,
+      "terminal_log_lines": [
+        "PASSED CubeInsetEvenOffsetFalse test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeInsetEvenOffsetFalse",
+        "line": 435,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ee97137ae27ffee73088259e5647def2d0155daa40527128508a1779029778ae"
+      }
+    },
+    {
+      "name": "CubeInsetDepth",
+      "status": "passed",
+      "start_log_line": 378,
+      "terminal_log_lines": [
+        "PASSED CubeInsetDepth test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeInsetDepth",
+        "line": 448,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "cf70468fa02317748501834c6227cf77c6e90e1a5d388c3efe9ba59bbffb9119"
+      }
+    },
+    {
+      "name": "GridInsetRelativeOffset",
+      "status": "passed",
+      "start_log_line": 385,
+      "terminal_log_lines": [
+        "PASSED GridInsetRelativeOffset test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "GridInsetRelativeOffset",
+        "line": 461,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "c9ffef5b3debd3d23b61245bc06324cef9b5880771fdc2a826e3ee5eb6bebfbb"
+      }
+    },
+    {
+      "name": "MokeyLoopMultiSelect",
+      "status": "passed",
+      "start_log_line": 392,
+      "terminal_log_lines": [
+        "PASSED MokeyLoopMultiSelect test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "MokeyLoopMultiSelect",
+        "line": 475,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "d7b3f0d02910f44c6eca73913c72755135c11309f9a071438507f9f2e5b51cf0"
+      }
+    },
+    {
+      "name": "HoledGridLoopMultiSelect",
+      "status": "passed",
+      "start_log_line": 399,
+      "terminal_log_lines": [
+        "PASSED HoledGridLoopMultiSelect test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HoledGridLoopMultiSelect",
+        "line": 481,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a902c2f9bb92f758a79084332141490e1c9e603da2d3d3b553945dc8f648f515"
+      }
+    },
+    {
+      "name": "EmptyMeshLoopMultiSelect",
+      "status": "passed",
+      "start_log_line": 406,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshLoopMultiSelect test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshLoopMultiSelect",
+        "line": 487,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "842d64dacebbc3ab196c8ce3cba4334b0c70c1cf7f460076e0ac596054a8ac47"
+      }
+    },
+    {
+      "name": "CubeMarkSeam",
+      "status": "passed",
+      "start_log_line": 413,
+      "terminal_log_lines": [
+        "PASSED CubeMarkSeam test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeMarkSeam",
+        "line": 494,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "6564880c28c45bfbb16d76a84bbd16cc21ccbc0960235adb1b076954cca416c3"
+      }
+    },
+    {
+      "name": "CubeMergeNormals",
+      "status": "passed",
+      "start_log_line": 420,
+      "terminal_log_lines": [
+        "PASSED CubeMergeNormals test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeMergeNormals",
+        "line": 501,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "fa3a810258a43866db81a1805aa90b67381cea2d54d76fc0e077f401a6567a43"
+      }
+    },
+    {
+      "name": "CubeQuadsConvertToTris",
+      "status": "passed",
+      "start_log_line": 427,
+      "terminal_log_lines": [
+        "PASSED CubeQuadsConvertToTris test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeQuadsConvertToTris",
+        "line": 508,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "dd4614c37d1b2f4e8172ba1f19e697c67429cde0e1344b6d5df8393951c2a6e4"
+      }
+    },
+    {
+      "name": "CircleSelectAll",
+      "status": "passed",
+      "start_log_line": 434,
+      "terminal_log_lines": [
+        "PASSED CircleSelectAll test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CircleSelectAll",
+        "line": 522,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "3f26268301f3e1d08c480e38ab53182e2f2eb4220c243e8c025552ac29530e92"
+      }
+    },
+    {
+      "name": "IsolatedVertsSelectAll",
+      "status": "passed",
+      "start_log_line": 441,
+      "terminal_log_lines": [
+        "PASSED IsolatedVertsSelectAll test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "IsolatedVertsSelectAll",
+        "line": 528,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "494764a70d53e4ab878ea3397986c3f6786115096f161fbc120c1fdcc203ff11"
+      }
+    },
+    {
+      "name": "EmptyMeshSelectAll",
+      "status": "passed",
+      "start_log_line": 448,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshSelectAll test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshSelectAll",
+        "line": 534,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "8bd05364a7fcd486d6418ec85ef8cb359002975129795e38ff117c55211b19f9"
+      }
+    },
+    {
+      "name": "CubeSelectFacesBySide",
+      "status": "passed",
+      "start_log_line": 455,
+      "terminal_log_lines": [
+        "PASSED CubeSelectFacesBySide test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeSelectFacesBySide",
+        "line": 550,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "1a398933d5721e0b3f837b2e0bd23cbcacf71ac3c123e26283b245c07f111e9c"
+      }
+    },
+    {
+      "name": "CubeSelectFacesBySideGreater",
+      "status": "passed",
+      "start_log_line": 462,
+      "terminal_log_lines": [
+        "PASSED CubeSelectFacesBySideGreater test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeSelectFacesBySideGreater",
+        "line": 556,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a8dc3b47fec0a9a90d1faf950a0bf9fce68c52e52dd17c6ef37a7bd7571e41a0"
+      }
+    },
+    {
+      "name": "CubeSelectFacesBySideLess",
+      "status": "passed",
+      "start_log_line": 469,
+      "terminal_log_lines": [
+        "PASSED CubeSelectFacesBySideLess test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeSelectFacesBySideLess",
+        "line": 566,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "73916cae46a17ce79654f83e77a1ac22fc7dc44304c8417a39d57d8b8c919269"
+      }
+    },
+    {
+      "name": "CubeSelectInteriorFaces",
+      "status": "passed",
+      "start_log_line": 476,
+      "terminal_log_lines": [
+        "PASSED CubeSelectInteriorFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeSelectInteriorFaces",
+        "line": 577,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "f69372f24a5d6f48e21d8a8f413b79209f7123e43fd34ba57c728dee5a1f8367"
+      }
+    },
+    {
+      "name": "HoledCubeSelectInteriorFaces",
+      "status": "passed",
+      "start_log_line": 483,
+      "terminal_log_lines": [
+        "PASSED HoledCubeSelectInteriorFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HoledCubeSelectInteriorFaces",
+        "line": 583,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "cee85a0064c982536b69fc3c32e7cff04201875c5fa5b71841fcd4bc98e94077"
+      }
+    },
+    {
+      "name": "EmptyMeshSelectInteriorFaces",
+      "status": "passed",
+      "start_log_line": 490,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshSelectInteriorFaces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshSelectInteriorFaces",
+        "line": 589,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "bae1715121717d467ca269ac8e12802da59feffc290d5c7ac29d1713e09db48d"
+      }
+    },
+    {
+      "name": "MonkeySelectLess",
+      "status": "passed",
+      "start_log_line": 497,
+      "terminal_log_lines": [
+        "PASSED MonkeySelectLess test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "MonkeySelectLess",
+        "line": 596,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "e02339c539e8cf88c7489d20deaa30ba682277d150afcbb215c4644a9d394870"
+      }
+    },
+    {
+      "name": "HoledCubeSelectLess",
+      "status": "passed",
+      "start_log_line": 504,
+      "terminal_log_lines": [
+        "PASSED HoledCubeSelectLess test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "HoledCubeSelectLess",
+        "line": 631,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "89a5fc4df45f76e0f18ae8707cdddaed7ec1592c773fa7b5cf4b5c4ca3740f58"
+      }
+    },
+    {
+      "name": "EmptyMeshSelectLess",
+      "status": "passed",
+      "start_log_line": 511,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshSelectLess test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshSelectLess",
+        "line": 637,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "aabed4623be467e2b50a735b024b9fd0be4652d2e4139b9bc6787def3b540059"
+      }
+    },
+    {
+      "name": "PlanesSelectLinked",
+      "status": "passed",
+      "start_log_line": 518,
+      "terminal_log_lines": [
+        "PASSED PlanesSelectLinked test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlanesSelectLinked",
+        "line": 644,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "5c45d30ef2d613eb099d825fda7312e99af5a63d893cfdadc10928806af15661"
+      }
+    },
+    {
+      "name": "CubesSelectLinked",
+      "status": "passed",
+      "start_log_line": 525,
+      "terminal_log_lines": [
+        "PASSED CubesSelectLinked test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubesSelectLinked",
+        "line": 650,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "1a2139d383c6270196e28dd5d73acdb0da75072fe7cec65882c9c5a556f7a87b"
+      }
+    },
+    {
+      "name": "EmptyMeshSelectLinked",
+      "status": "passed",
+      "start_log_line": 532,
+      "terminal_log_lines": [
+        "PASSED EmptyMeshSelectLinked test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "EmptyMeshSelectLinked",
+        "line": 656,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "d9b48e4e305b3300847a1ebdc0ebb0287d06858cd233438d7df39b3a8e132666"
+      }
+    },
+    {
+      "name": "CircleSelect2nd",
+      "status": "passed",
+      "start_log_line": 539,
+      "terminal_log_lines": [
+        "PASSED CircleSelect2nd test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CircleSelect2nd",
+        "line": 663,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "9cd203cd81c710a2deab64cb6b1b6a554f57c204e47e0a0f4b340d41fb6ec2bc"
+      }
+    },
+    {
+      "name": "SymmetrySnap",
+      "status": "passed",
+      "start_log_line": 546,
+      "terminal_log_lines": [
+        "PASSED SymmetrySnap test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "SymmetrySnap",
+        "line": 711,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "f2f7104281e9f00b9ec77076a89b6f2ac39024a5286d8eb8a98f1224823956c7"
+      }
+    },
+    {
+      "name": "SymmetrySnapCenter",
+      "status": "passed",
+      "start_log_line": 554,
+      "terminal_log_lines": [
+        "PASSED SymmetrySnapCenter test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "SymmetrySnapCenter",
+        "line": 724,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "c2843e167679aa569bbbab9073386b340d8dbb7cad55a884a64ac5dcf0ed748b"
+      }
+    },
+    {
+      "name": "Triangulate Faces",
+      "status": "passed",
+      "start_log_line": 562,
+      "terminal_log_lines": [
+        "PASSED Triangulate Faces test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "Triangulate Faces",
+        "line": 738,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "c64bcdc12c67daf9bdc2dc211d830ee7fb018b9d08fa3e964b45831d53cdcc0e"
+      }
+    },
+    {
+      "name": "TrisToQuads 10 deg no topo",
+      "status": "passed",
+      "start_log_line": 569,
+      "terminal_log_lines": [
+        "PASSED TrisToQuads 10 deg no topo test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "TrisToQuads 10 deg no topo",
+        "line": 745,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "dbf65f5081b91068fc95998fed6b7cbe066c179cd683cc7b58e6100a4b01efa4"
+      }
+    },
+    {
+      "name": "TrisToQuads 10 deg negligible topo",
+      "status": "passed",
+      "start_log_line": 576,
+      "terminal_log_lines": [
+        "PASSED TrisToQuads 10 deg negligible topo test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "TrisToQuads 10 deg negligible topo",
+        "line": 768,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "4a126b6c586cc1701c8501c1f885e5c8f96e414f852ddf247cdfda12646db652"
+      }
+    },
+    {
+      "name": "TrisToQuads 180 deg no topo",
+      "status": "passed",
+      "start_log_line": 583,
+      "terminal_log_lines": [
+        "PASSED TrisToQuads 180 deg no topo test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "TrisToQuads 180 deg no topo",
+        "line": 791,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "38d429e7292f798a4c4838043b72926d5fd113dec43f8ca80473f9f1f44d3457"
+      }
+    },
+    {
+      "name": "TrisToQuads 180 deg topo",
+      "status": "passed",
+      "start_log_line": 590,
+      "terminal_log_lines": [
+        "PASSED TrisToQuads 180 deg topo test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "TrisToQuads 180 deg topo",
+        "line": 814,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "d0e3286b2e438d4ff70284fe6787e37418da8f71f9c9d052416e2840b9372dbf"
+      }
+    },
+    {
+      "name": "CubeFaceUnsubdivide",
+      "status": "passed",
+      "start_log_line": 597,
+      "terminal_log_lines": [
+        "PASSED CubeFaceUnsubdivide test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeFaceUnsubdivide",
+        "line": 839,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "41e385a6ffa009242e0e229663a6bb3f58a4f918c12612b8ab09475795f630c4"
+      }
+    },
+    {
+      "name": "UVRotate",
+      "status": "passed",
+      "start_log_line": 604,
+      "terminal_log_lines": [
+        "PASSED UVRotate test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "UVRotate",
+        "line": 846,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "8a652dcaf5433acb020bf6c868c639f5d980fc959a9b1c4c94a81520377272dd"
+      }
+    },
+    {
+      "name": "UVRotateCCW",
+      "status": "passed",
+      "start_log_line": 611,
+      "terminal_log_lines": [
+        "PASSED UVRotateCCW test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "UVRotateCCW",
+        "line": 852,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "5f1705603e48a3e0c596d6d185c89e57fa809a7f2160883492914580bb39cb41"
+      }
+    },
+    {
+      "name": "UVReverse",
+      "status": "passed",
+      "start_log_line": 618,
+      "terminal_log_lines": [
+        "PASSED UVReverse test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "UVReverse",
+        "line": 858,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "29029c6688ce9810ac6949f283f07577ecc6978cbaa950e38362e60ad8e35ab3"
+      }
+    },
+    {
+      "name": "UVAdd",
+      "status": "passed",
+      "start_log_line": 625,
+      "terminal_log_lines": [
+        "PASSED UVAdd test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "UVAdd",
+        "line": 864,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "bf30a7c8c5eb40d6b864a87ec943843d1c3867dffbb236b3252aa93b3f8f6601"
+      }
+    },
+    {
+      "name": "UVRemove",
+      "status": "passed",
+      "start_log_line": 632,
+      "terminal_log_lines": [
+        "PASSED UVRemove test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "UVRemove",
+        "line": 870,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "20dd42c10ab68f427b5f427ff3e0304820e6e3ccdf8fa700ffd88e126f36983e"
+      }
+    },
+    {
+      "name": "VertexConnectConcave",
+      "status": "passed",
+      "start_log_line": 639,
+      "terminal_log_lines": [
+        "PASSED VertexConnectConcave test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "VertexConnectConcave",
+        "line": 877,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ea76b83990fa8f5bfedd7ebdd682524f4afab0b44d1ff38ab5e6a47384740109"
+      }
+    },
+    {
+      "name": "VertexConnectConcaveConvexPentagon",
+      "status": "passed",
+      "start_log_line": 646,
+      "terminal_log_lines": [
+        "PASSED VertexConnectConcaveConvexPentagon test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "VertexConnectConcaveConvexPentagon",
+        "line": 883,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "ad5556159b253e8bced69dec0720ab90b39b4a601b1fd09d6fc99e35be1fab8e"
+      }
+    },
+    {
+      "name": "VertexConnectConcaveQuad",
+      "status": "passed",
+      "start_log_line": 653,
+      "terminal_log_lines": [
+        "PASSED VertexConnectConcaveQuad test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "VertexConnectConcaveQuad",
+        "line": 889,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "7cec51e8417b74d122372ec0ebf82c97b451feeeaf12fef58580fe63f949331d"
+      }
+    },
+    {
+      "name": "VertexConnectNonplanar",
+      "status": "passed",
+      "start_log_line": 660,
+      "terminal_log_lines": [
+        "PASSED VertexConnectNonplanar test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "VertexConnectNonplanar",
+        "line": 896,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "8527aa947e41ab9514f27ec45bc4752a73196d3695b8a2e9cff6140058145dac"
+      }
+    },
+    {
+      "name": "VertexConnectNonplanarNgon",
+      "status": "passed",
+      "start_log_line": 667,
+      "terminal_log_lines": [
+        "PASSED VertexConnectNonplanarNgon test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "VertexConnectNonplanarNgon",
+        "line": 906,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "f49558cdb5e02537d65d5d3f88c478104f8b8f5b7885140eca4527934fdaada0"
+      }
+    },
+    {
+      "name": "CubeEdgeUnsubdivide",
+      "status": "passed",
+      "start_log_line": 674,
+      "terminal_log_lines": [
+        "PASSED CubeEdgeUnsubdivide test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "CubeEdgeUnsubdivide",
+        "line": 913,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "b1f35412e8370e0f48e3f9e88463afe73af7d39e9f64e2fb3f7280608ea1948b"
+      }
+    },
+    {
+      "name": "UVSphereUnsubdivide",
+      "status": "passed",
+      "start_log_line": 681,
+      "terminal_log_lines": [
+        "PASSED UVSphereUnsubdivide test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "UVSphereUnsubdivide",
+        "line": 919,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "9009c995a4dacc54ca1f8762a02fbfa2df4cdb8038d77c47737158f41fffe9a1"
+      }
+    },
+    {
+      "name": "PlaneVertConnectPath",
+      "status": "passed",
+      "start_log_line": 688,
+      "terminal_log_lines": [
+        "PASSED PlaneVertConnectPath test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "PlaneVertConnectPath",
+        "line": 927,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "2c1f9eb0d7930d1b8d97c1bf0cec97044c7e0a2fc29b9839d1ca4a44bef700f8"
+      }
+    },
+    {
+      "name": "LaplacianSmoothDefault",
+      "status": "passed",
+      "start_log_line": 695,
+      "terminal_log_lines": [
+        "PASSED LaplacianSmoothDefault test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "LaplacianSmoothDefault",
+        "line": 942,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "e85037a981c8fc67b3c5f128f6d8576d37fb19a95f94dc242071dcb4dbb2ec8d"
+      }
+    },
+    {
+      "name": "LaplacianSmoothHighValues",
+      "status": "passed",
+      "start_log_line": 702,
+      "terminal_log_lines": [
+        "PASSED LaplacianSmoothHighValues test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "LaplacianSmoothHighValues",
+        "line": 952,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "f312f547dd6b06b56418d65f0de8dc24efe11e65fb6946473e38f146a3cba3ad"
+      }
+    },
+    {
+      "name": "LaplacianSmoothBorder",
+      "status": "passed",
+      "start_log_line": 709,
+      "terminal_log_lines": [
+        "PASSED LaplacianSmoothBorder test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "LaplacianSmoothBorder",
+        "line": 965,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "3529bc27f1daab38d36ee5802aa4b6467f2f15da893c1618906c91de7de90efe"
+      }
+    },
+    {
+      "name": "LaplacianSmoothHighBorder",
+      "status": "passed",
+      "start_log_line": 716,
+      "terminal_log_lines": [
+        "PASSED LaplacianSmoothHighBorder test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "LaplacianSmoothHighBorder",
+        "line": 978,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a0f251eadca03a7161de982e8bce7ff3258f821c375d0499885933764a0136ea"
+      }
+    },
+    {
+      "name": "LaplacianSmoothPreserveVolume",
+      "status": "passed",
+      "start_log_line": 723,
+      "terminal_log_lines": [
+        "PASSED LaplacianSmoothPreserveVolume test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "LaplacianSmoothPreserveVolume",
+        "line": 991,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a202433e160d64668a98b6f9941bb49b830029b38e6097f2312a2e1faaa1ce54"
+      }
+    },
+    {
+      "name": "WireFrameDefault",
+      "status": "passed",
+      "start_log_line": 730,
+      "terminal_log_lines": [
+        "PASSED WireFrameDefault test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "WireFrameDefault",
+        "line": 1002,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "92dcd528d56ea688f007dd4715732e43eea017395cb0088942961778a0931cea"
+      }
+    },
+    {
+      "name": "WireFrameAlt",
+      "status": "passed",
+      "start_log_line": 737,
+      "terminal_log_lines": [
+        "PASSED WireFrameAlt test successfully."
+      ],
+      "mesh_comparison": [
+        "Same"
+      ],
+      "mesh_validation": [
+        "Valid"
+      ],
+      "original_source_declaration": {
+        "name": "WireFrameAlt",
+        "line": 1008,
+        "upstream_path": "tests/python/operators.py",
+        "source_sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f",
+        "spec_sha256": "a366af59424e20c2dd3c53b1a907ede2d473b0212f4af1905f7b4a869129e93d"
+      }
+    }
+  ],
+  "counting_rule": "Case credit comes only from the actual original START/PASSED/Results output and successful process exit. Static declarations identify cases and detect omissions; they never create passes.",
+  "exact_original_source_helper_fixture_preserved": true,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/CMakeLists.txt",
+      "bytes": 5871,
+      "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/CMakeLists.txt",
+      "bytes": 50161,
+      "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/build_files/cmake/testing.cmake",
+      "bytes": 14453,
+      "sha256": "87f69e23584842dad3f4942754f6e9891543c718ee16d8f4db774d524487c8c8"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/operators.py",
+      "bytes": 39415,
+      "sha256": "a9e934a9281b8a7746d414e868b42a9dd93bf163b99b8add98ace8bd1fa4983f"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/modules/mesh_test.py",
+      "bytes": 40007,
+      "sha256": "fd764b05f86479f45eb52731eb2009b7321dfa74a258c4886c4c73083bf3ee5e"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/files/modeling/operators.blend",
+      "bytes": 4028858,
+      "sha256": "345857f0185fc38799d26e671e88ed06bf7754163c0ea58b4b8475c57908f9cc"
+    }
+  ],
+  "fixture_identity": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/files/modeling/operators.blend",
+    "bytes": 4028858,
+    "sha256": "345857f0185fc38799d26e671e88ed06bf7754163c0ea58b4b8475c57908f9cc"
+  },
+  "fixture_original_pointer": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/original-fixture-pointer.txt",
+    "bytes": 132,
+    "sha256": "f5a299db834634256beaeda0fe97a1154f14c3094365d72d15922bf79542e793"
+  },
+  "fixture_payload_source": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/tests/files/modeling/operators.blend",
+    "bytes": 4028858,
+    "sha256": "345857f0185fc38799d26e671e88ed06bf7754163c0ea58b4b8475c57908f9cc"
+  },
+  "fixture_reuse_reason": "Payload is byte-identical to the original 5.2 archive's LFS pointer, independently of the newer source tree holding that payload.",
+  "test_selection": {
+    "full_original_run_all_tests": true,
+    "case_filter": null,
+    "failfast": false,
+    "shard": null,
+    "random_seed": "Original operators.py calls seed(0), unchanged."
+  },
+  "environment_overrides": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "original_assertions_or_tolerances_modified": false,
+  "original_full_suite_comparison_preserved": true,
+  "oracle_update_environment_absent": true,
+  "measurements": {
+    "sampled_procfs_identity_verified": true,
+    "sampled_peak_rss_kib": 379876,
+    "sampled_peak_threads": 18,
+    "kernel_child_max_rss_kib": 379624,
+    "environment_thread_requests_limit_all_blender_pools": false
+  },
+  "selected_829_browser_ledger_modified": false,
+  "product_5_4_native_counts_modified": false,
+  "browser_tests_executed": false,
+  "browser_test_passes": 0,
+  "complete_test_denominator": false,
+  "full_feature_parity": false
+}

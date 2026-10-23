@@ -1,0 +1,402 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  9.7M    0  9.7M    0     0  9466k      0 --:--:--  0:00:01 --:--:-- 9466k100 24.5M    0 24.5M    0     0  13.0M      0 --:--:--  0:00:01 --:--:-- 17.9M
+emcmake: cmake -S /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openexr/openexr-3.4.10 -B /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openexr/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DCMAKE_PREFIX_PATH=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm -DBUILD_SHARED_LIBS=OFF -DOPENEXR_BUILD_BOTH_STATIC_SHARED=OFF -DBUILD_TESTING=OFF -DOPENEXR_BUILD_TOOLS=OFF -DOPENEXR_INSTALL_TOOLS=OFF -DOPENEXR_BUILD_EXAMPLES=OFF -DOPENEXR_BUILD_PYTHON=OFF -DOPENEXR_FORCE_INTERNAL_IMATH=OFF -DOPENEXR_FORCE_INTERNAL_DEFLATE=OFF -DOPENEXR_FORCE_INTERNAL_OPENJPH=OFF -DImath_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/Imath -Dlibdeflate_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/libdeflate -Dopenjph_DIR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/openjph -DCMAKE_C_FLAGS=-pthread -DCMAKE_CXX_FLAGS=-pthread -DCMAKE_TOOLCHAIN_FILE=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/node/22.16.0_64bit/bin/node in directory /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port
+-- Building against C++ Standard: 17
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Using libdeflate from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/libdeflate
+-- Using externally provided libdeflate: 1.18
+-- Using OpenJPH 0.25.2 from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/openjph
+-- Using Imath 3.2.2 from /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/Imath
+-- Performing Test HAS_SSE2_FLAG
+-- Performing Test HAS_SSE2_FLAG - Failed
+-- Performing Test OPENEXR_IMF_HAVE_SYSCONF_NPROCESSORS_ONLN
+-- Performing Test OPENEXR_IMF_HAVE_SYSCONF_NPROCESSORS_ONLN - Success
+-- Performing Test OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX
+-- Performing Test OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX - Failed
+-- Looking for include file ucontext.h
+-- Looking for include file ucontext.h - found
+-- Performing Test IEX_HAVE_CONTROL_REGISTER_SUPPORT
+-- Performing Test IEX_HAVE_CONTROL_REGISTER_SUPPORT - Failed
+-- Looking for include file asm/sigcontext.h
+-- Looking for include file asm/sigcontext.h - not found
+-- Looking for include file semaphore.h
+-- Looking for include file semaphore.h - found
+-- OpenEXR pkg-config generation enabled
+-- Configure OpenEXR 3.4.10, library API version: 33.3.4.10
+-- Building OpenEXR libraries
+-- clang-format not found.
+-- Configuring done (6.4s)
+-- Generating done (0.1s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    OPENEXR_BUILD_BOTH_STATIC_SHARED
+
+
+-- Build files have been written to: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openexr/build
+emmake: "cmake --build /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openexr/build --target install -j1" in "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port"
+[  0%] Building CXX object src/lib/Iex/CMakeFiles/Iex.dir/IexBaseExc.cpp.o
+[  1%] Building CXX object src/lib/Iex/CMakeFiles/Iex.dir/IexMathFloatExc.cpp.o
+[  1%] Building CXX object src/lib/Iex/CMakeFiles/Iex.dir/IexMathFpu.cpp.o
+[  2%] Building CXX object src/lib/Iex/CMakeFiles/Iex.dir/IexThrowErrnoExc.cpp.o
+[  2%] Linking CXX static library libIex-3_4.a
+[  2%] Built target Iex
+[  3%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThread.cpp.o
+[  4%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThreadPool.cpp.o
+[  4%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThreadSemaphore.cpp.o
+[  5%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThreadSemaphoreOSX.cpp.o
+[  5%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThreadSemaphorePosix.cpp.o
+[  6%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThreadSemaphorePosixCompat.cpp.o
+[  7%] Building CXX object src/lib/IlmThread/CMakeFiles/IlmThread.dir/IlmThreadSemaphoreWin32.cpp.o
+[  7%] Linking CXX static library libIlmThread-3_4.a
+[  7%] Built target IlmThread
+[  8%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_rle.c.o
+[  8%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_zip.c.o
+[  9%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_pxr24.c.o
+[  9%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_b44.c.o
+[ 10%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_b44_table.c.o
+[ 11%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_b44_table_init.c.o
+[ 11%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_piz.c.o
+[ 12%] Building CXX object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_ht.cpp.o
+[ 12%] Building CXX object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_ht_common.cpp.o
+[ 13%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_dwa.c.o
+[ 14%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_dwa_table.c.o
+[ 14%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_dwa_table_init.c.o
+[ 15%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_huf.c.o
+[ 15%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/attributes.c.o
+[ 16%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/string.c.o
+[ 17%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/string_vector.c.o
+[ 17%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/float_vector.c.o
+[ 18%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/channel_list.c.o
+[ 18%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/opaque.c.o
+[ 19%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/bytes.c.o
+[ 19%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/preview.c.o
+[ 20%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/base.c.o
+[ 21%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/context.c.o
+[ 21%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/memory.c.o
+[ 22%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/internal_structs.c.o
+[ 22%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/part.c.o
+[ 23%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/part_attr.c.o
+[ 24%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/std_attr.c.o
+[ 24%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/parse_header.c.o
+[ 25%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/write_header.c.o
+[ 25%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/chunk.c.o
+[ 26%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/coding.c.o
+[ 27%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/compression.c.o
+[ 27%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/decoding.c.o
+[ 28%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/encoding.c.o
+[ 28%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/pack.c.o
+[ 29%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/unpack.c.o
+[ 30%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/validation.c.o
+[ 30%] Building C object src/lib/OpenEXRCore/CMakeFiles/OpenEXRCore.dir/debug.c.o
+[ 31%] Linking CXX static library libOpenEXRCore-3_4.a
+[ 31%] Built target OpenEXRCore
+[ 32%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfAcesFile.cpp.o
+[ 32%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfAttribute.cpp.o
+[ 33%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfB44Compressor.cpp.o
+[ 34%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfBoxAttribute.cpp.o
+[ 34%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfBytesAttribute.cpp.o
+[ 35%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfCRgbaFile.cpp.o
+[ 35%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfChannelList.cpp.o
+[ 36%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfChannelListAttribute.cpp.o
+[ 37%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfChromaticities.cpp.o
+[ 37%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfChromaticitiesAttribute.cpp.o
+[ 38%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfCompositeDeepScanLine.cpp.o
+[ 38%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfCompression.cpp.o
+[ 39%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfCompressionAttribute.cpp.o
+[ 40%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfCompressor.cpp.o
+[ 40%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfContext.cpp.o
+[ 41%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfContextInit.cpp.o
+[ 41%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfConvert.cpp.o
+[ 42%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepCompositing.cpp.o
+[ 43%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepFrameBuffer.cpp.o
+[ 43%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepImageStateAttribute.cpp.o
+[ 44%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepScanLineInputFile.cpp.o
+[ 44%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepScanLineInputPart.cpp.o
+[ 45%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepScanLineOutputFile.cpp.o
+[ 46%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepScanLineOutputPart.cpp.o
+[ 46%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepTiledInputFile.cpp.o
+[ 47%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepTiledInputPart.cpp.o
+[ 47%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepTiledOutputFile.cpp.o
+[ 48%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDeepTiledOutputPart.cpp.o
+[ 49%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDoubleAttribute.cpp.o
+[ 49%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfDwaCompressor.cpp.o
+[ 50%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfEnvmap.cpp.o
+[ 50%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfEnvmapAttribute.cpp.o
+[ 51%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfFastHuf.cpp.o
+[ 51%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfFloatAttribute.cpp.o
+[ 52%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfFloatVectorAttribute.cpp.o
+[ 53%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfFrameBuffer.cpp.o
+[ 53%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfFramesPerSecond.cpp.o
+[ 54%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfGenericInputFile.cpp.o
+[ 54%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfGenericOutputFile.cpp.o
+[ 55%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfHeader.cpp.o
+[ 56%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfHTCompressor.cpp.o
+[ 56%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfHuf.cpp.o
+[ 57%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfIDManifest.cpp.o
+[ 57%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfIDManifestAttribute.cpp.o
+[ 58%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfIO.cpp.o
+[ 59%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfInputFile.cpp.o
+[ 59%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfInputPart.cpp.o
+[ 60%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfInputPartData.cpp.o
+[ 60%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfIntAttribute.cpp.o
+[ 61%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfKeyCode.cpp.o
+[ 62%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfKeyCodeAttribute.cpp.o
+[ 62%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfLineOrderAttribute.cpp.o
+[ 63%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfLut.cpp.o
+[ 63%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfMatrixAttribute.cpp.o
+[ 64%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfMisc.cpp.o
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openexr/openexr-3.4.10/src/lib/OpenEXR/ImfMisc.cpp:2002:31: warning: 'codecvt_utf8<wchar_t>' is deprecated [-Wdeprecated-declarations]
+ 2002 |     std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+      |                               ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/codecvt:199:7: note: 'codecvt_utf8<wchar_t>' has been explicitly marked deprecated here
+  199 | class _LIBCPP_DEPRECATED_IN_CXX17 codecvt_utf8 : public __codecvt_utf8<_Elem> {
+      |       ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config:740:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX17'
+  740 | #    define _LIBCPP_DEPRECATED_IN_CXX17 _LIBCPP_DEPRECATED
+      |                                         ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config:713:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+  713 | #      define _LIBCPP_DEPRECATED __attribute__((__deprecated__))
+      |                                                 ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/build-deps/openexr/openexr-3.4.10/src/lib/OpenEXR/ImfMisc.cpp:2002:10: warning: 'wstring_convert<std::codecvt_utf8<wchar_t>>' is deprecated [-Wdeprecated-declarations]
+ 2002 |     std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+      |          ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__locale_dir/wstring_convert.h:34:7: note: 'wstring_convert<std::codecvt_utf8<wchar_t>>' has been explicitly marked deprecated here
+   34 | class _LIBCPP_DEPRECATED_IN_CXX17 wstring_convert {
+      |       ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config:740:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX17'
+  740 | #    define _LIBCPP_DEPRECATED_IN_CXX17 _LIBCPP_DEPRECATED
+      |                                         ^
+/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/tools/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config:713:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+  713 | #      define _LIBCPP_DEPRECATED __attribute__((__deprecated__))
+      |                                                 ^
+2 warnings generated.
+[ 65%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfMultiPartInputFile.cpp.o
+[ 65%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfMultiPartOutputFile.cpp.o
+[ 66%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfMultiView.cpp.o
+[ 66%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfOpaqueAttribute.cpp.o
+[ 67%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfOutputFile.cpp.o
+[ 68%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfOutputPart.cpp.o
+[ 68%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfOutputPartData.cpp.o
+[ 69%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfPartType.cpp.o
+[ 69%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfPizCompressor.cpp.o
+[ 70%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfPreviewImage.cpp.o
+[ 71%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfPreviewImageAttribute.cpp.o
+[ 71%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfPxr24Compressor.cpp.o
+[ 72%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfRational.cpp.o
+[ 72%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfRationalAttribute.cpp.o
+[ 73%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfRgbaFile.cpp.o
+[ 74%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfRgbaYca.cpp.o
+[ 74%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfRle.cpp.o
+[ 75%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfRleCompressor.cpp.o
+[ 75%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfScanLineInputFile.cpp.o
+[ 76%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfStandardAttributes.cpp.o
+[ 76%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfStdIO.cpp.o
+[ 77%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfStringAttribute.cpp.o
+[ 78%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfStringVectorAttribute.cpp.o
+[ 78%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfSystemSpecific.cpp.o
+[ 79%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTestFile.cpp.o
+[ 79%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfThreading.cpp.o
+[ 80%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTileDescriptionAttribute.cpp.o
+[ 81%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTileOffsets.cpp.o
+[ 81%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTiledInputFile.cpp.o
+[ 82%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTiledInputPart.cpp.o
+[ 82%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTiledMisc.cpp.o
+[ 83%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTiledOutputFile.cpp.o
+[ 84%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTiledOutputPart.cpp.o
+[ 84%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTiledRgbaFile.cpp.o
+[ 85%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTimeCode.cpp.o
+[ 85%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfTimeCodeAttribute.cpp.o
+[ 86%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfVecAttribute.cpp.o
+[ 87%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfVersion.cpp.o
+[ 87%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfWav.cpp.o
+[ 88%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfZip.cpp.o
+[ 88%] Building CXX object src/lib/OpenEXR/CMakeFiles/OpenEXR.dir/ImfZipCompressor.cpp.o
+[ 89%] Linking CXX static library libOpenEXR-3_4.a
+[ 89%] Built target OpenEXR
+[ 89%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfCheckFile.cpp.o
+[ 90%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfDeepImage.cpp.o
+[ 91%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfDeepImageChannel.cpp.o
+[ 91%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfDeepImageIO.cpp.o
+[ 92%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfDeepImageLevel.cpp.o
+[ 92%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfFlatImage.cpp.o
+[ 93%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfFlatImageChannel.cpp.o
+[ 94%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfFlatImageIO.cpp.o
+[ 94%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfFlatImageLevel.cpp.o
+[ 95%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfImage.cpp.o
+[ 95%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfImageChannel.cpp.o
+[ 96%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfImageDataWindow.cpp.o
+[ 97%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfImageIO.cpp.o
+[ 97%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfImageLevel.cpp.o
+[ 98%] Building CXX object src/lib/OpenEXRUtil/CMakeFiles/OpenEXRUtil.dir/ImfSampleCountChannel.cpp.o
+[ 98%] Linking CXX static library libOpenEXRUtil-3_4.a
+[ 98%] Built target OpenEXRUtil
+[ 99%] Building CXX object website/src/CMakeFiles/website_src.dir/all.cpp.o
+[100%] Linking CXX executable ../../bin/website_src.js
+[100%] Built target website_src
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/OpenEXRConfig.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexConfig.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadConfig.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/pkgconfig/OpenEXR.pc
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenEXR/OpenEXRConfig.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenEXR/OpenEXRConfigVersion.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenEXR/OpenEXRTargets.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenEXR/OpenEXRTargets-release.cmake
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libIex-3_4.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/Iex.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexBaseExc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexErrnoExc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexExport.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexForward.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexMacros.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexMathExc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexMathFloatExc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexMathIeeeExc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexNamespace.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IexThrowErrnoExc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libIlmThread-3_4.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThread.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadExport.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadForward.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadMutex.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadNamespace.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadPool.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadProcessGroup.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/IlmThreadSemaphore.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenEXRCore-3_4.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_attr.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_base.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_chunkio.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_coding.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_compression.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_config.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_context.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_decode.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_debug.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_encode.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_errors.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_part.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_std_attr.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/openexr_version.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenEXR-3_4.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfAcesFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfArray.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfBoxAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfBytesAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfCRgbaFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfChannelList.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfChannelListAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfChromaticities.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfChromaticitiesAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfCompositeDeepScanLine.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfCompression.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfCompressionAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfCompressor.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfContext.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfContextInit.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfConvert.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepCompositing.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepFrameBuffer.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepImageState.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepImageStateAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepScanLineInputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepScanLineInputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepScanLineOutputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepScanLineOutputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepTiledInputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepTiledInputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepTiledOutputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepTiledOutputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDoubleAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfEnvmap.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfEnvmapAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfExport.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFloatAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFloatVectorAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfForward.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFrameBuffer.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFramesPerSecond.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfGenericInputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfGenericOutputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfHeader.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfHTCompressor.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfHuf.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfIDManifest.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfIDManifestAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfIO.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfInputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfInputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfInt64.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfIntAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfKeyCode.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfKeyCodeAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfLineOrder.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfLineOrderAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfLut.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfMatrixAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfMisc.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfMultiPartInputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfMultiPartOutputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfMultiView.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfName.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfNamespace.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfOpaqueAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfOutputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfOutputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfPartHelper.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfPartType.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfPixelType.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfPreviewImage.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfPreviewImageAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfRational.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfRationalAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfRgba.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfRgbaFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfRgbaYca.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfStandardAttributes.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfStdIO.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfStringAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfStringVectorAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTestFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfThreading.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTileDescription.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTileDescriptionAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTiledInputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTiledInputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTiledOutputFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTiledOutputPart.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTiledRgbaFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTimeCode.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfTimeCodeAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfVecAttribute.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfVersion.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfWav.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfXdr.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/libOpenEXRUtil-3_4.a
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfCheckFile.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepImage.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepImageChannel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepImageIO.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfDeepImageLevel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFlatImage.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFlatImageChannel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFlatImageIO.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfFlatImageLevel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfImage.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfImageChannel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfImageChannelRenaming.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfImageDataWindow.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfImageIO.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfImageLevel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfSampleCountChannel.h
+-- Installing: /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/include/OpenEXR/ImfUtilExport.h
+openexr: verify link OK
+openexr 3.4.10: installed to /workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm (config: lib/cmake/OpenEXR)

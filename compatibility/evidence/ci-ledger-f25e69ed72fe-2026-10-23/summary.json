@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "kind": "published-checkpoint-ci-validation",
+  "recorded_utc": "2026-10-23T16:31:32.999080+00:00",
+  "source_commit": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+  "run_id": 39986612398,
+  "run_url": "https://github.com/596050/blended/actions/runs/39986612398",
+  "infrastructure": {
+    "job_id": 120527318190,
+    "status": "passed",
+    "tests": 346,
+    "duration_seconds": 109.674,
+    "log": "infrastructure-job.log"
+  },
+  "essentials_gate": {
+    "job_id": 120527318504,
+    "status": "blocked",
+    "exit_code": 1,
+    "successful_pairs": 516,
+    "outcome_agreements": 601,
+    "obligations": 829,
+    "log": "essentials-job.log"
+  },
+  "artifact": {
+    "id": 12515028829,
+    "name": "original-test-ledger-essentials-39986612398",
+    "size_in_bytes": 3947260,
+    "url": "https://api.github.com/repos/596050/blended/actions/artifacts/12515028829",
+    "archive_download_url": "https://api.github.com/repos/596050/blended/actions/artifacts/12515028829/zip",
+    "expired": false,
+    "created_at": "2026-10-23T16:25:33Z",
+    "expires_at": "2026-11-06T16:25:31Z",
+    "updated_at": "2026-10-23T16:25:33Z",
+    "digest": "sha256:08611a4fafaaa2608924362f596a89aed35c6fb5b6a12c3a743d380eb4f6b360",
+    "workflow_run": {
+      "id": 39986612398,
+      "repository_id": 1429904193,
+      "head_repository_id": 1429904193,
+      "head_branch": "parity/upstream-browser-ports",
+      "head_sha": "f25e69ed72fed2d31d7d65e657fd6515da4bd792"
+    }
+  },
+  "preserved_reports": [
+    {
+      "path": "report.json",
+      "bytes": 752770,
+      "sha256": "d1b6df970fd0be756b374eba9ca2c662372106c9e3ec1fe6df9ea80bff553e81"
+    },
+    {
+      "path": "strict-gate.json",
+      "bytes": 751831,
+      "sha256": "aa828c29bb685e671082dd34776200adadc7f5c6506c0094642a2fcb06d8c9ec"
+    }
+  ],
+  "original_blender_tests_reexecuted": 0,
+  "full_feature_parity": false,
+  "scope": "Actual CI infrastructure execution and replay of existing original-test evidence. The separately running new engine build has not yet contributed observations."
+}

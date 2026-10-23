@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "kind": "completed-pinned-openimageio-wasm-integration",
+  "created_utc": "2026-10-23T16:29:29.172434+00:00",
+  "summary_is_new_execution_evidence": false,
+  "summary_generator": {
+    "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/freeze-completion.py",
+    "bytes": 6517,
+    "sha256": "37cba530dd1a416e89afd0fac449c242cc6734142abf17014a1b876e0b5cf2c4"
+  },
+  "actual_execution": {
+    "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/execution.json",
+    "bytes": 31333,
+    "sha256": "1a4adab80f87c154c2446c25120886c6dea381eb1229d391ab04d438acaeca4e"
+  },
+  "selected_manifest": {
+    "path": "patches/browser-codecs/manifest.json",
+    "bytes": 6447,
+    "sha256": "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
+  },
+  "patch_application": {
+    "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/patch-application.json",
+    "bytes": 5056,
+    "sha256": "3881ce8c53722fa1087ea8c8324230c14ca032a243309dc8a2d103e8c4171a5f"
+  },
+  "raw_oiio_log": {
+    "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/openimageio.log",
+    "bytes": 34755,
+    "sha256": "8715624ba0e89f2eeef81c4111fee576463b58654c7d650d4b42ce7270c6312b"
+  },
+  "successful_dependency_recipes": [
+    "zlib",
+    "zstd",
+    "fmt",
+    "robinmap",
+    "imath",
+    "libdeflate",
+    "openjph",
+    "openexr",
+    "libjpeg",
+    "libpng",
+    "libtiff",
+    "expat",
+    "yamlcpp",
+    "pystring",
+    "minizipng",
+    "opencolorio",
+    "webp",
+    "openjpeg",
+    "aom",
+    "libheif",
+    "openimageio"
+  ],
+  "all_21_dependency_recipes_completed_successfully": true,
+  "all_child_recipe_returncodes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "sum_of_recorded_command_durations_seconds": 1832.20076,
+  "oiio_recipe_duration_seconds": 466.232883,
+  "oiio_recipe_returncode": 0,
+  "runtime_smoke_scope": "Real linked Node/Wasm OIIO dependency executable, with the selected Emscripten compiler. No Blender application.",
+  "runtime_completion_evidence": "The preserved set-e shell recipe runs node, observes its exit status, emits the success marker, validates the cache and completes with exit 0. The outer runner does not claim a separately instrumented Node process receipt.",
+  "runtime_smoke_success_marker_observed": true,
+  "readers_and_writers_required_by_executed_smoke": [
+    "webp",
+    "jpeg2000",
+    "heif",
+    "dpx"
+  ],
+  "av1_encoder_and_decoder_required_by_executed_smoke": true,
+  "observed_memory_bytes": {
+    "physical_memory": 2147483648,
+    "heap_size": 33554432,
+    "heap_max": 2147483648
+  },
+  "required_generated_configuration": {
+    "USE_WEBP": "ON",
+    "USE_OPENJPEG": "ON",
+    "USE_LIBHEIF": "ON",
+    "EMBEDPLUGINS": "ON",
+    "BUILD_SHARED_LIBS": "OFF"
+  },
+  "preserved_installed_configuration": [
+    {
+      "original": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/share/blended/openimageio-codecs-CMakeCache.txt",
+        "bytes": 38421,
+        "sha256": "fb61e9fcbe52833cc22ca08a788f08b262828ee6ea51ac94b94f51762975a53c"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/openimageio-CMakeCache.txt",
+        "bytes": 38421,
+        "sha256": "fb61e9fcbe52833cc22ca08a788f08b262828ee6ea51ac94b94f51762975a53c"
+      }
+    },
+    {
+      "original": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenImageIO/OpenImageIOConfig.cmake",
+        "bytes": 3711,
+        "sha256": "aee1d19374c7d08d61883e874ddcef5305ce33239b4652b27557c78d5846a5e2"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/OpenImageIOConfig.cmake",
+        "bytes": 3711,
+        "sha256": "aee1d19374c7d08d61883e874ddcef5305ce33239b4652b27557c78d5846a5e2"
+      }
+    },
+    {
+      "original": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenImageIO/OpenImageIOConfigVersion.cmake",
+        "bytes": 2771,
+        "sha256": "52656a8c022c71a4044d6bfce98e71e22e7feb6bbb4442416c1eea61399b0c25"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/OpenImageIOConfigVersion.cmake",
+        "bytes": 2771,
+        "sha256": "52656a8c022c71a4044d6bfce98e71e22e7feb6bbb4442416c1eea61399b0c25"
+      }
+    },
+    {
+      "original": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenImageIO/OpenImageIOTargets-release.cmake",
+        "bytes": 1463,
+        "sha256": "3431176d5f001f67e991dd3ce4da0fdf6f3e325d281ac7e187e2d187031979dd"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/OpenImageIOTargets-release.cmake",
+        "bytes": 1463,
+        "sha256": "3431176d5f001f67e991dd3ce4da0fdf6f3e325d281ac7e187e2d187031979dd"
+      }
+    },
+    {
+      "original": {
+        "path": "/workspace/scratch/d63596d831b2/runtime/browser-codecs-work/oiio-port/lib/wasm/lib/cmake/OpenImageIO/OpenImageIOTargets.cmake",
+        "bytes": 6386,
+        "sha256": "befdae639c79c80d68c18004557fa9662c77079481dff6b29b030053a324594c"
+      },
+      "preserved": {
+        "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/oiio-build-attempt-6/OpenImageIOTargets.cmake",
+        "bytes": 6386,
+        "sha256": "befdae639c79c80d68c18004557fa9662c77079481dff6b29b030053a324594c"
+      }
+    }
+  ],
+  "previous_completed_summary_unchanged": {
+    "path": "compatibility/evidence/browser-codecs-5.2-2026-10-23/completed-summary.json",
+    "bytes": 9535,
+    "sha256": "e046a7b22a50d00b70c2a6533e5944eec59d1da4c4af1834b47652207dab5723"
+  },
+  "new_blender_cases_executed": 0,
+  "new_browser_application_passes": 0,
+  "full_feature_parity": false,
+  "remaining_application_gate": "Run the unchanged original ImBuf invocation on the rebuilt browser: all 80 parent IDs, all 57 native subtest IDs, original zero WebP/JPEG2000 tolerance and AVIF tolerance 1."
+}
