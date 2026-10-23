@@ -1,17 +1,17 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "expected_case_count": 211,
-  "expected_source_commit": "7e6411a031203a4976517575b23ca8e889e9a408",
-  "started_utc": "2026-10-23T13:04:29.811095+00:00",
+  "expected_case_count": 272,
+  "expected_source_commit": "4a0634aa12e000551084a353a8da972a62bd14ff",
+  "started_utc": "2026-10-23T15:34:21.082768+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "7e6411a031203a4976517575b23ca8e889e9a408",
+    "source_commit": "4a0634aa12e000551084a353a8da972a62bd14ff",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 211,
+    "passed": 272,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -1493,14 +1493,443 @@
         "passed": true,
         "code": 1,
         "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorUnsigned",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorInt",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorFloat",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.ScalarConstructorDouble",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.MultiScalarConstructorVec2",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.MultiScalarConstructorVec3",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vec_types.MultiScalarConstructorVec4",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_vec_types.MixedScalarVectorConstructorVec3",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.MixedScalarVectorConstructorVec4",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 24
+      },
+      {
+        "id": "math_vec_types.ComponentMasking",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.PointerConversion",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vec_types.PointerArrayConversion",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "math_vec_types.VectorTypeConversion",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.Add",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_vec_types.AddFloatByVector",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.Sub",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.SubFloatByVector",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.Mul",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_vec_types.MulFloatByVector",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_vec_types.Divide",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.DivideFloatByVector",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.DivideFloatByVectorSmall",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "math_vec_types.SwizzleReinterpret",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_vec_types.SwizzleFloat2",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 10
+      },
+      {
+        "id": "math_vec_types.SwizzleFloat3",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 30
+      },
+      {
+        "id": "math_vec_types.SwizzleFloat4",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "math_vec_types.SwizzleAssignment",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_vec_types.SwizzleOperators",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 44
+      },
+      {
+        "id": "math_vec_types.SwizzleComparison",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "color.ThemeByteToFloat",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SrgbStraightFloatToByte",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SrgbStraightToSceneLinearPremultiplied",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearStraightToPremultiplied",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearPremultipliedToStraight",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearStraightSrgbFloat",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearPremultipliedToSrgbFloat",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearStraightSrgbByte",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearPremultipliedToSrgbByte",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearByteEncoding",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "color.SceneLinearByteDecoding",
+        "group": "numeric_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.DefaultConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.StaticConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "math_matrix_types.VectorConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_matrix_types.SmallerMatrixConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "math_matrix_types.ComponentMasking",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.PointerConversion",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.TypeConversion",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "math_matrix_types.PointerArrayConversion",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.ComponentAccess",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "math_matrix_types.AddOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 20
+      },
+      {
+        "id": "math_matrix_types.SubtractOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 20
+      },
+      {
+        "id": "math_matrix_types.MultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "math_matrix_types.MatrixMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 22
+      },
+      {
+        "id": "math_matrix_types.VectorMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "math_matrix_types.ViewConstructor",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_matrix_types.ViewFromCstyleMatrix",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 32
+      },
+      {
+        "id": "math_matrix_types.ViewAssignment",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 48
+      },
+      {
+        "id": "math_matrix_types.ViewScalarOperators",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 36
+      },
+      {
+        "id": "math_matrix_types.ViewMatrixMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_matrix_types.ViewVectorMultiplyOperator",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "math_matrix_types.ViewMatrixNormalize",
+        "group": "matrix_types",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
       }
     ],
     "errors": [],
     "string_assertions": 191,
     "bit_span_assertions": 14460,
-    "wasm_sha256": "dee47c30994754f4052f85fe73b5fcb7a471ddb51ef862ef5bfe2dc4b49f7ca5",
+    "numeric_type_assertions": 259,
+    "matrix_type_assertions": 289,
+    "wasm_sha256": "07ee592080931e619f5f52a63e0b8340a4d872987728e4f3062f4f05d872a1e9",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-23T13:04:31.735766+00:00"
+  "finished_utc": "2026-10-23T15:34:23.245515+00:00"
 }

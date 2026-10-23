@@ -1,6 +1,6 @@
 {
   "schema": 3,
-  "source_commit": "7e6411a031203a4976517575b23ca8e889e9a408",
+  "source_commit": "4a0634aa12e000551084a353a8da972a62bd14ff",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
   "groups": [
     "legacy",
@@ -8,7 +8,9 @@
     "structures",
     "collections",
     "strings",
-    "bit_spans"
+    "bit_spans",
+    "numeric_types",
+    "matrix_types"
   ],
   "abi": {
     "legacy": [
@@ -40,6 +42,16 @@
       "blended_bit_spans_case_count",
       "blended_bit_spans_run_case",
       "blended_bit_spans_assertion_count"
+    ],
+    "numeric_types": [
+      "blended_numeric_types_case_count",
+      "blended_numeric_types_run_case",
+      "blended_numeric_types_assertion_count"
+    ],
+    "matrix_types": [
+      "blended_matrix_types_case_count",
+      "blended_matrix_types_run_case",
+      "blended_matrix_types_assertion_count"
     ]
   },
   "total_keys": {
@@ -48,7 +60,9 @@
     "structures": "structure_assertions",
     "collections": "collection_assertions",
     "strings": "string_assertions",
-    "bit_spans": "bit_span_assertions"
+    "bit_spans": "bit_span_assertions",
+    "numeric_types": "numeric_type_assertions",
+    "matrix_types": "matrix_type_assertions"
   },
   "legacy": [
     {
@@ -189,7 +203,7 @@
     }
   ],
   "complete_test_port": false,
-  "wasm_sha256": "dee47c30994754f4052f85fe73b5fcb7a471ddb51ef862ef5bfe2dc4b49f7ca5",
+  "wasm_sha256": "07ee592080931e619f5f52a63e0b8340a4d872987728e4f3062f4f05d872a1e9",
   "additional": [
     {
       "id": "math_base.CompareFFRelativeValid",
@@ -2660,6 +2674,681 @@
       "assertion_free_smoke": false,
       "port_status": "translated",
       "execution": "not_run"
+    }
+  ],
+  "numeric_types": [
+    {
+      "id": "math_vec_types.ScalarConstructorUnsigned",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 13,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__ScalarConstructorUnsigned",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.ScalarConstructorInt",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 20,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__ScalarConstructorInt",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.ScalarConstructorFloat",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 27,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__ScalarConstructorFloat",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.ScalarConstructorDouble",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 34,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__ScalarConstructorDouble",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.MultiScalarConstructorVec2",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 41,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__MultiScalarConstructorVec2",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.MultiScalarConstructorVec3",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 48,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__MultiScalarConstructorVec3",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.MultiScalarConstructorVec4",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 56,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__MultiScalarConstructorVec4",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.MixedScalarVectorConstructorVec3",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 65,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__MixedScalarVectorConstructorVec3",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.MixedScalarVectorConstructorVec4",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 78,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__MixedScalarVectorConstructorVec4",
+      "assertion_count": 24,
+      "expected_runtime_assertions": 24,
+      "index": 8,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.ComponentMasking",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 117,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__ComponentMasking",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 9,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.PointerConversion",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 125,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__PointerConversion",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 10,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.PointerArrayConversion",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 134,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__PointerArrayConversion",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 11,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.VectorTypeConversion",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 144,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__VectorTypeConversion",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 12,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.Add",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 151,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__Add",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 13,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.AddFloatByVector",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 163,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__AddFloatByVector",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 14,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.Sub",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 179,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__Sub",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 15,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SubFloatByVector",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 195,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SubFloatByVector",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 16,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.Mul",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 211,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__Mul",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 17,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.MulFloatByVector",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 223,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__MulFloatByVector",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 18,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.Divide",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 239,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__Divide",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 19,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.DivideFloatByVector",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 248,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__DivideFloatByVector",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 20,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.DivideFloatByVectorSmall",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 257,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__DivideFloatByVectorSmall",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 21,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleReinterpret",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 264,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleReinterpret",
+      "assertion_count": 8,
+      "expected_runtime_assertions": 8,
+      "index": 22,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleFloat2",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 285,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleFloat2",
+      "assertion_count": 10,
+      "expected_runtime_assertions": 10,
+      "index": 23,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleFloat3",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 309,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleFloat3",
+      "assertion_count": 30,
+      "expected_runtime_assertions": 30,
+      "index": 24,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleFloat4",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 362,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleFloat4",
+      "assertion_count": 12,
+      "expected_runtime_assertions": 12,
+      "index": 25,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleAssignment",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 383,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleAssignment",
+      "assertion_count": 8,
+      "expected_runtime_assertions": 8,
+      "index": 26,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleOperators",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 402,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleOperators",
+      "assertion_count": 44,
+      "expected_runtime_assertions": 44,
+      "index": 27,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_vec_types.SwizzleComparison",
+      "path": "source/blender/blenlib/tests/BLI_math_vector_types_test.cc",
+      "line": 466,
+      "source_sha256": "5512ce0a3879cb0dd25930c276e71fe1145349dbd2cb3fe4f5e71240f2842bd6",
+      "rust_function": "math_vec_types__SwizzleComparison",
+      "assertion_count": 8,
+      "expected_runtime_assertions": 8,
+      "index": 28,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.ThemeByteToFloat",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 15,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__ThemeByteToFloat",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 29,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SrgbStraightFloatToByte",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 25,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SrgbStraightFloatToByte",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 30,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SrgbStraightToSceneLinearPremultiplied",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 35,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SrgbStraightToSceneLinearPremultiplied",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 31,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearStraightToPremultiplied",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 48,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearStraightToPremultiplied",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 32,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearPremultipliedToStraight",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 58,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearPremultipliedToStraight",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 33,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearStraightSrgbFloat",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 68,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearStraightSrgbFloat",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 34,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearPremultipliedToSrgbFloat",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 79,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearPremultipliedToSrgbFloat",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 35,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearStraightSrgbByte",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 91,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearStraightSrgbByte",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 36,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearPremultipliedToSrgbByte",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 102,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearPremultipliedToSrgbByte",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 37,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearByteEncoding",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 113,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearByteEncoding",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 38,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "color.SceneLinearByteDecoding",
+      "path": "source/blender/blenlib/tests/BLI_color_test.cc",
+      "line": 123,
+      "source_sha256": "e3f3bf2d178dcf038004e175f4de8096dbd73ccc2681b2291c33de5013f7c107",
+      "rust_function": "color__SceneLinearByteDecoding",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 39,
+      "status": "ported_unexecuted"
+    }
+  ],
+  "matrix_types": [
+    {
+      "id": "math_matrix_types.DefaultConstructor",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 14,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__DefaultConstructor",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.StaticConstructor",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 23,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__StaticConstructor",
+      "assertion_count": 16,
+      "expected_runtime_assertions": 16,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.VectorConstructor",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 50,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__VectorConstructor",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.SmallerMatrixConstructor",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 61,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__SmallerMatrixConstructor",
+      "assertion_count": 9,
+      "expected_runtime_assertions": 9,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ComponentMasking",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 76,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ComponentMasking",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.PointerConversion",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 86,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__PointerConversion",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.TypeConversion",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 96,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__TypeConversion",
+      "assertion_count": 12,
+      "expected_runtime_assertions": 12,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.PointerArrayConversion",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 115,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__PointerArrayConversion",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ComponentAccess",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 126,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ComponentAccess",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 8,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.AddOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 135,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__AddOperator",
+      "assertion_count": 20,
+      "expected_runtime_assertions": 20,
+      "index": 9,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.SubtractOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 170,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__SubtractOperator",
+      "assertion_count": 20,
+      "expected_runtime_assertions": 20,
+      "index": 10,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.MultiplyOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 205,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__MultiplyOperator",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 11,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.MatrixMultiplyOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 222,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__MatrixMultiplyOperator",
+      "assertion_count": 22,
+      "expected_runtime_assertions": 22,
+      "index": 12,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.VectorMultiplyOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 275,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__VectorMultiplyOperator",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 13,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewConstructor",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 289,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewConstructor",
+      "assertion_count": 8,
+      "expected_runtime_assertions": 8,
+      "index": 14,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewFromCstyleMatrix",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 307,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewFromCstyleMatrix",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 32,
+      "index": 15,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewAssignment",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 323,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewAssignment",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 48,
+      "index": 16,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewScalarOperators",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 350,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewScalarOperators",
+      "assertion_count": 21,
+      "expected_runtime_assertions": 36,
+      "index": 17,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewMatrixMultiplyOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 389,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewMatrixMultiplyOperator",
+      "assertion_count": 8,
+      "expected_runtime_assertions": 8,
+      "index": 18,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewVectorMultiplyOperator",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 408,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewVectorMultiplyOperator",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 19,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_matrix_types.ViewMatrixNormalize",
+      "path": "source/blender/blenlib/tests/BLI_math_matrix_types_test.cc",
+      "line": 423,
+      "source_sha256": "faaef43e1af1b54f8034dc083825edb9cc9c5f49b644b83681b91ccf9e12a345",
+      "rust_function": "math_matrix_types__ViewMatrixNormalize",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 16,
+      "index": 20,
+      "status": "ported_unexecuted"
     }
   ]
 }

@@ -1,0 +1,135 @@
+{
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "project_commit": "4a0634aa12e000551084a353a8da972a62bd14ff",
+  "scope": "five embedded constant assertions; not runtime tests",
+  "complete_blender_test_port": false,
+  "status": "passed",
+  "positive_builds": [
+    {
+      "target": "native",
+      "returncode": 0,
+      "log": "embedded-native-positive.log",
+      "log_sha256": "d7e5ab34c36547dbb40b1c30a68e0e277ea1f887381357c561fd022fc7f305a7",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 0,
+      "log": "embedded-wasm32-unknown-unknown-positive.log",
+      "log_sha256": "fbe61fec367c1f184db25ae6a1095ede683bdabf4770af00f34607dd31c48db2",
+      "passed": true
+    }
+  ],
+  "negative_checks": [
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "embedded-0-native-negative.log",
+      "log_sha256": "1dc5c75376636a41b1f0ea34a2eada116c8272bcdf929bd2c552826ecb1be41c",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@106",
+      "enclosing_function": "string_ref_null__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "embedded-0-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "1dc5c75376636a41b1f0ea34a2eada116c8272bcdf929bd2c552826ecb1be41c",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@106",
+      "enclosing_function": "string_ref_null__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "embedded-1-native-negative.log",
+      "log_sha256": "1e0f488449d12fdeaa319c89e4bdf5183a383fb466174e6c585515744bcc0e56",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@107",
+      "enclosing_function": "string_ref_null__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "embedded-1-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "1e0f488449d12fdeaa319c89e4bdf5183a383fb466174e6c585515744bcc0e56",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@107",
+      "enclosing_function": "string_ref_null__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "embedded-2-native-negative.log",
+      "log_sha256": "0ef3be96afd4fde0b88934ed3cd8509880bb99243d08b5d40327a591aebf553b",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@594",
+      "enclosing_function": "string_ref__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "embedded-2-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "0ef3be96afd4fde0b88934ed3cd8509880bb99243d08b5d40327a591aebf553b",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@594",
+      "enclosing_function": "string_ref__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "embedded-3-native-negative.log",
+      "log_sha256": "e4dc26cae2eca36df41157007dabe8d2942158dd00cc929519dbe5ca135d7558",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@595",
+      "enclosing_function": "string_ref__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "embedded-3-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "e4dc26cae2eca36df41157007dabe8d2942158dd00cc929519dbe5ca135d7558",
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_assertion": "static_assert@595",
+      "enclosing_function": "string_ref__Constexpr",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "embedded-4-native-negative.log",
+      "log_sha256": "ae08ee617b109a77fea62cfcb1c7d72243004ee070225d114a14f0cb97f8c108",
+      "source_path": "source/blender/blenlib/tests/BLI_index_range_test.cc",
+      "source_assertion": "static_assert@310",
+      "enclosing_function": "index_range__constexpr_",
+      "target_path": "crates/blended-core/src/structure_cases.rs",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "embedded-4-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "ae08ee617b109a77fea62cfcb1c7d72243004ee070225d114a14f0cb97f8c108",
+      "source_path": "source/blender/blenlib/tests/BLI_index_range_test.cc",
+      "source_assertion": "static_assert@310",
+      "enclosing_function": "index_range__constexpr_",
+      "target_path": "crates/blended-core/src/structure_cases.rs",
+      "passed": true
+    }
+  ]
+}
