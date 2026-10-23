@@ -1,0 +1,34 @@
+name: Prepare pinned porting inputs
+on:
+  push:
+    branches: [compat/numerics-and-text]
+    paths: ['.github/workflows/portable-port-inputs.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Package only public source and redistributable compiler files
+        run: |
+          set -euo pipefail
+          mkdir -p portable
+          git archive --format=tar.gz HEAD > portable/project.tar.gz
+          rustc --version --verbose > portable/rust-version.txt
+          SYSROOT=$(rustc --print sysroot)
+          tar -C "$SYSROOT" -czf portable/rust-toolchain.tar.gz bin/rustc bin/cargo lib
+          sha256sum portable/*.tar.gz > portable/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pinned-offline-port-inputs
+          path: portable/
+          retention-days: 1
