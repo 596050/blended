@@ -48,7 +48,7 @@ def image_header(text):
 
 def image_expr(s):
  s=numbers(s.strip()).replace('image_char[0][0]','&image_char').replace('image_fl[0][0]','&image_fl').replace('INFINITY','f32::INFINITY')
- for name,ty in [('int4','i32'),('uint4','u32')]:s=rewrite_calls(s,name+'(',lambda a,ty=ty:'('+a+').map(|v|v as '+ty+')')
+ for name,ty in [('uint4','u32'),('int4','i32')]:s=rewrite_calls(s,name+'(',lambda a,ty=ty:'('+a+').map(|v|v as '+ty+')')
  return s
 
 def image_translate(body):

@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib,json
 from port_sampling_tests import generate,FILES,PIN
 ROOT=Path(__file__).resolve().parents[1]
-REVIEWED={'sampling_cases':'d9ece2c730c3bc7915a8100db556ff155d3130a1725bbec5253222710c056e16','curve_cases':'e9e98b4818d3ccd4e2f3dd6f700a18151816ef0bcdaca55c24f33d9d7fea98aa'}
+REVIEWED={'sampling_cases':'f8f7332a4310354a5c8ae5b66b87b1a885bf7794f87080aac0d7383bd37722c5','curve_cases':'e9e98b4818d3ccd4e2f3dd6f700a18151816ef0bcdaca55c24f33d9d7fea98aa'}
 BATCH=[('sampling','sampling-ports.json','sampling_cases','upstream_sampling','sampling_assertions','image_sampling'),('curves','curve-ports.json','curve_cases','upstream_curves','curve_assertions','curve_sampling')]
 def edit(name,before,after):
  p=ROOT/name;s=p.read_text()
