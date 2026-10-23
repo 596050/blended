@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "kind": "recovery-note-from-retained-tool-transcript",
+  "written_utc": "2026-10-23T18:44:10.473980+00:00",
+  "original_receipt_bytes_recovered": false,
+  "original_raw_runtime_log_bytes_recovered": false,
+  "runtime_qualification_credit": 0,
+  "not_a_replacement_execution_receipt": true,
+  "baseline": {
+    "observed_status": "all_four_standalone_operations_captured",
+    "original_receipt_path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/dpx-memory-io-standalone-diagnostic-5.2-2026-10-23/baseline-attempt-01/execution.json",
+    "reported_original_receipt_bytes": 2048978,
+    "reported_original_receipt_sha256": "c7d69f18506349baa47888cd687d8d33af514d32b3877e771fa1c91544cabeaa",
+    "receipt_currently_available": false,
+    "completed_tool_session": 76884,
+    "final_tool_chunk_id": "63fb1a",
+    "commands": [
+      {
+        "name": "native-input-regeneration",
+        "actual_returncode": 0,
+        "elapsed_seconds": 0.6660623569987365
+      },
+      {
+        "name": "compile",
+        "actual_returncode": 0,
+        "elapsed_seconds": 1.9702259580008104
+      },
+      {
+        "name": "link",
+        "actual_returncode": 0,
+        "elapsed_seconds": 51.44015654699615
+      },
+      {
+        "name": "file-created-memory",
+        "actual_returncode": 3,
+        "elapsed_seconds": 0.31773368500580546
+      },
+      {
+        "name": "file-created-file",
+        "actual_returncode": 3,
+        "elapsed_seconds": 0.2711911830047029
+      },
+      {
+        "name": "memory-created-memory",
+        "actual_returncode": 3,
+        "elapsed_seconds": 0.3180945359999896
+      },
+      {
+        "name": "memory-created-file",
+        "actual_returncode": 3,
+        "elapsed_seconds": 0.3150460250035394
+      }
+    ],
+    "all_commands_no_timeout_or_capture_error": true,
+    "observed_original_closure_preserved": true,
+    "observed_regenerated_inputs_preserved": true,
+    "all_four_final_runtime_events": {
+      "kind": "caught_std_exception",
+      "stage": "read_image_before",
+      "detail": {
+        "typeid_name": "St12length_error",
+        "what": "vector"
+      },
+      "qualification_credit": 0
+    },
+    "observed_DPX_header_all_four": {
+      "magic": "XPDS",
+      "user_size": 0,
+      "orientation": 0,
+      "element_count": 1,
+      "width": 32,
+      "height": 32,
+      "descriptor": 51,
+      "transfer": 2,
+      "bit_depth": 8,
+      "packing": 0,
+      "encoding": 0,
+      "data_offset": 8192,
+      "end_line_padding": 0
+    },
+    "observed_opened_specification_all_four": {
+      "width": 32,
+      "height": 32,
+      "depth": 1,
+      "channels": 4,
+      "read_channels": 4,
+      "base_type": 2,
+      "base_size": 1,
+      "alpha_channel": 3
+    },
+    "observed_read_parameters_all_four": {
+      "subimage": 0,
+      "miplevel": 0,
+      "channel_begin": 0,
+      "channel_end": 4,
+      "is_float": false,
+      "xstride": 4,
+      "ystride": -128,
+      "zstride": "AutoStride",
+      "destination_offset": 3968,
+      "storage_bytes": 4096
+    },
+    "regenerated_inputs_reported": [
+      {
+        "name": "file-created.dpx",
+        "bytes": 12288,
+        "sha256": "e5ba95fa39c2808bfeecc68bfb7abe5b30d1d8a5a757923580cc0bbb3f269966"
+      },
+      {
+        "name": "memory-created.dpx",
+        "bytes": 12288,
+        "sha256": "2e83637ef45f5dd3096d2a71aafa58f7aff519ab152c9a4fb906b52447a131c7"
+      }
+    ]
+  },
+  "controlled_comparison": {
+    "tool_session": 29200,
+    "actually_launched": true,
+    "last_observed_tool_chunks": [
+      "985630",
+      "fe7985"
+    ],
+    "commands_observed_completed": [
+      {
+        "name": "compile-one-object",
+        "actual_returncode": 0,
+        "timeout_occurred": false
+      },
+      {
+        "name": "replace-one-archive-object",
+        "actual_returncode": 0,
+        "timeout_occurred": false
+      }
+    ],
+    "link_was_running_at_last_read": true,
+    "link_returncode": null,
+    "runtime_operations_observed": [],
+    "completion_after_last_observation": "unknown",
+    "observed_ordered_archive_rows": 103,
+    "observed_object_members": 101,
+    "observed_exactly_one_object_changed": true,
+    "observed_changed_payloads": [
+      {
+        "kind": "symbol_index",
+        "name": "/",
+        "before_bytes": 2099690,
+        "after_bytes": 2099690
+      },
+      {
+        "kind": "object",
+        "name": "DPXColorConverter.cpp.o",
+        "before_bytes": 9919,
+        "after_bytes": 9929
+      }
+    ],
+    "unchanged_other_object_payloads_observed": 100,
+    "final_receipt_available": false,
+    "preprune_script_bytes": 20007,
+    "preprune_script_sha256": "d4971368a0d0fd90ac30b86fe6f158e669a25eca6925e86f336da28502edb90e"
+  },
+  "recovery_process_check": {
+    "matching_live_DPX_processes_observed": 0,
+    "matching_open_file_descriptors_observed": 0,
+    "write_stdin_result": "Unknown process id 29200"
+  },
+  "scope_limits": [
+    "These are observations transcribed from retained tool outputs, not recovered raw process logs or original receipts.",
+    "The baseline local static OIIO archive differed from the crashing CI artifact.",
+    "No successful controlled decode was observed before loss of the workspace.",
+    "No original Blender test-case credit is awarded."
+  ]
+}

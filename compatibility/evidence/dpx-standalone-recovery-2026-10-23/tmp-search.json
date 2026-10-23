@@ -1,0 +1,32 @@
+{
+  "command": [
+    "rg",
+    "--files",
+    "/tmp"
+  ],
+  "actual_exit": 2,
+  "matching_path_terms": [
+    "dpx",
+    "one-object",
+    "run-baseline",
+    "regenerate-native-input"
+  ],
+  "matching_paths": [
+    "/tmp/blended-dpx-recovery/retained-tool-observations.json",
+    "/tmp/blended-dpx-patch-authoring/baseline-application.stdout.log",
+    "/tmp/blended-dpx-patch-authoring/baseline-application.json",
+    "/tmp/blended-dpx-patch-authoring/baseline-application.stderr.log",
+    "/tmp/blended-dpx-patch-authoring/port/patches/platform_wasm.cmake",
+    "/tmp/blended-dpx-patch-authoring/port/patches/image_codecs.cmake",
+    "/tmp/blended-dpx-patch-authoring/port/patches/blender_web.cmake",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/webp.sh",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/libheif.sh",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/openjpeg.sh",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/openimageio.sh",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/libheif-static-c-api.patch",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/aom.sh",
+    "/tmp/blended-dpx-patch-authoring/port/scripts/deps/codec-common.sh"
+  ],
+  "stderr": "rg: /tmp/codex-daemon-0: Permission denied (os error 13)\n",
+  "known_scope": "Readable /tmp paths only; this is a recovery inventory, not evidence of prior absence."
+}

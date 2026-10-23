@@ -1,0 +1,8 @@
+--- a/src/dpx.imageio/libdpx/DPXColorConverter.cpp
++++ b/src/dpx.imageio/libdpx/DPXColorConverter.cpp
+@@ -301 +301 @@
+-				return pixels * -3 * bytes;
++				return -int64_t(pixels) * 3 * int64_t(bytes);
+@@ -309 +309 @@
+-				return pixels * -4 * bytes;
++				return -int64_t(pixels) * 4 * int64_t(bytes);

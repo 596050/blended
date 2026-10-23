@@ -1,0 +1,112 @@
+Setting up EMSDK environment (suppress these messages with EMSDK_QUIET=1)
+Adding directories to PATH:
+PATH += /home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk
+
+Setting environment variables:
+PATH = /home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk:/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten:/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/node/22.16.0_64bit/bin:/home/runner/work/blended/blended/.cache/browser-source/build-shims:/opt/hostedtoolcache/Python/3.13.13/x64/bin:/opt/hostedtoolcache/Python/3.13.13/x64:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+Clearing existing environment variable: EM_CACHE
+Clearing existing environment variable: EMSDK_PYTHON
+Clearing existing environment variable: EM_CONFIG
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  512k    0  512k    0     0  1200k      0 --:--:-- --:--:-- --:--:-- 1200k100 2104k    0 2104k    0     0  3192k      0 --:--:-- --:--:-- --:--:-- 6864k
+emcmake: cmake -S /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/openjpeg/openjpeg-2.5.3 -B /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/openjpeg/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_PREFIX_PATH=/home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm -DBUILD_SHARED_LIBS=OFF '-DCMAKE_C_FLAGS=-pthread -fexceptions' '-DCMAKE_CXX_FLAGS=-pthread -fexceptions' -DBUILD_STATIC_LIBS=ON -DBUILD_CODEC=OFF -DBUILD_TESTING=OFF -DBUILD_UNIT_TESTS=OFF -DBUILD_DOC=OFF -DOPJ_USE_THREAD=ON -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/node/22.16.0_64bit/bin/node in directory /home/runner/work/blended/blended/.cache/browser-source/gessa
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for stdio.h
+-- Looking for stdio.h - found
+-- Looking for math.h
+-- Looking for math.h - found
+-- Looking for float.h
+-- Looking for float.h - found
+-- Looking for time.h
+-- Looking for time.h - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
+-- Looking for ctype.h
+-- Looking for ctype.h - found
+-- Looking for assert.h
+-- Looking for assert.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Checking for 64-bit off_t
+-- Checking for 64-bit off_t - present
+-- Checking for fseeko/ftello
+-- Checking for fseeko/ftello - present
+-- Large File support - found
+-- Looking for include file malloc.h
+-- Looking for include file malloc.h - found
+-- Looking for _aligned_malloc
+-- Looking for _aligned_malloc - not found
+-- Looking for posix_memalign
+-- Looking for posix_memalign - found
+-- Looking for memalign
+-- Looking for memalign - found
+-- Configuring done (21.9s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_FLAGS
+
+
+-- Build files have been written to: /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/openjpeg/build
+emmake: "cmake --build /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/openjpeg/build --target install --parallel 2" in "/home/runner/work/blended/blended/.cache/browser-source/gessa"
+[  4%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/thread.c.o
+[  8%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/bio.c.o
+[ 13%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/cio.c.o
+[ 17%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/dwt.c.o
+[ 21%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/event.c.o
+[ 26%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/ht_dec.c.o
+[ 30%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/image.c.o
+[ 34%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/invert.c.o
+[ 39%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/j2k.c.o
+[ 43%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/jp2.c.o
+[ 47%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/mct.c.o
+[ 52%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/mqc.c.o
+[ 56%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/openjpeg.c.o
+[ 60%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/opj_clock.c.o
+[ 65%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/pi.c.o
+[ 69%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/t1.c.o
+[ 73%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/t2.c.o
+[ 78%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/tcd.c.o
+[ 82%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/tgt.c.o
+[ 86%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/function_list.c.o
+[ 91%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/opj_malloc.c.o
+[ 95%] Building C object src/lib/openjp2/CMakeFiles/openjp2.dir/sparse_array.c.o
+[100%] Linking C static library ../../../bin/libopenjp2.a
+[100%] Built target openjp2
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/cmake/openjpeg-2.5/OpenJPEGTargets.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/cmake/openjpeg-2.5/OpenJPEGTargets-release.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/cmake/openjpeg-2.5/OpenJPEGConfig.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/cmake/openjpeg-2.5/OpenJPEGConfigVersion.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/pkgconfig/libopenjp2.pc
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/openjpeg-2.5/opj_config.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/libopenjp2.a
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/openjpeg-2.5/openjpeg.h

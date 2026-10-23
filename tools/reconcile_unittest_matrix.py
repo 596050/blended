@@ -48,6 +48,19 @@ POLICY = {
     "expected_failure": "May establish outcome agreement; never a successful functional test.",
     "completion": "An original test callback is distinct from an independently observed whole-process exit.",
 }
+CI_PRODUCER_RULE = "original-unittest-downloaded-sources-f25e69ed72fe-v1"
+CI_PRODUCER_COMMIT = "f25e69ed72fed2d31d7d65e657fd6515da4bd792"
+CI_PRODUCER_FILES = {
+    "workflow": (".github/workflows/browser-source-build.yml", 16666,
+                 "cf330f75ff2ea44c7cf9090950269033ca19de9b0c281e64a87caabfab29fcff"),
+    "matrix_driver": ("tools/run_unittest_browser_matrix.py", 12682,
+                      "7e9830db4f6bb378c8bf0d5ea36e13e0ac164c609633fe368026b8a75e10c0e3"),
+    "probe": ("tools/probe_browser_port.py", 75480,
+              "2dd05ff937337d861972e224c63639f90c471002eab496a1f2595853303672cd"),
+}
+CI_ARTIFACT_PATH = "source-build/essentials/blender-source-development-essentials.tar.gz"
+CI_CWD_BASIS = "Source-derived from the exact workflow entrypoint and producer ROOT; not an OS-observed cwd."
+CI_SOURCE_MODE = "Complete frozen suite and helper downloads, each checked against original SHA256 and byte count before execution."
 
 
 def sha(data: bytes) -> str:
@@ -73,7 +86,7 @@ class Captured:
 class Evidence:
     """Read confined, hash-bound input bytes once and retain reproducible copies."""
 
-    def __init__(self, root: Path, output: Path):
+    def __init__(self, root: Path, output: Path, path_map: Path | None = None):
         require(not root.is_symlink() and root.is_dir(), "repository root must be a real directory")
         self.root, self.output = root.resolve(), output.absolute()
         require(not self.output.exists(), "choose a new output directory; previous evidence is immutable")
@@ -81,12 +94,63 @@ class Evidence:
                 "output path contains a symlink")
         self.output.mkdir(parents=True)
         self.origins: dict[str, dict] = {}
+        self.path_mappings: dict[str, dict] = {}
+        self.mapped_targets: dict[str, dict] = {}
+        self.used_path_mappings: dict[str, dict] = {}
+        self.path_map_ref: dict | None = None
+        if path_map is not None:
+            self.load_path_map(path_map)
+
+    @staticmethod
+    def canonical_path(name: Any, *, absolute: bool) -> PurePosixPath:
+        require(isinstance(name, str) and bool(name) and "\\" not in name
+                and not name.startswith("//")
+                and all(ord(char) >= 32 and ord(char) != 127 for char in name),
+                "invalid exact evidence map path")
+        path = PurePosixPath(name)
+        require(path.is_absolute() is absolute and path.as_posix() == name
+                and ".." not in path.parts and "." not in path.parts and name != "/",
+                "exact evidence map paths must be canonical and confined")
+        return path
+
+    @staticmethod
+    def check_mapping_data(row: dict, data: bytes) -> None:
+        require(len(data) == row["bytes"] and sha(data) == row["sha256"],
+                "exact evidence map identity mismatch: " + row["path"])
+
+    def load_path_map(self, path: Path) -> None:
+        captured = self.capture(path)
+        value = captured.json()
+        require(type(value.get("schema")) is int and value["schema"] == 1
+                and value.get("kind") == "exact-evidence-path-map"
+                and isinstance(value.get("entries"), list) and bool(value["entries"]),
+                "invalid exact evidence path map")
+        originals, targets = {}, {}
+        for row in value["entries"]:
+            require(isinstance(row, dict), "invalid exact evidence map entry")
+            original = self.canonical_path(row.get("original_path"), absolute=True)
+            retained = self.canonical_path(row.get("path"), absolute=False)
+            require(not Path(str(original)).is_relative_to(self.root),
+                    "exact evidence map cannot shadow a current repository path")
+            require(str(original) not in originals and str(retained) not in targets,
+                    "duplicate or ambiguous exact evidence path mapping")
+            require(type(row.get("bytes")) is int and row["bytes"] >= 0,
+                    "invalid exact evidence map byte count")
+            digest(row.get("sha256"), "exact evidence map sha256")
+            resolved = self.resolve(str(retained))
+            self.check_mapping_data(row, resolved.read_bytes())
+            originals[str(original)] = dict(row)
+            targets[str(retained)] = dict(row)
+        self.path_mappings, self.mapped_targets = originals, targets
+        self.path_map_ref = captured.ref
 
     def resolve(self, name: str | Path, base: Path | None = None) -> Path:
         name = str(name)
         require(name and "\\" not in name, "invalid evidence path")
         path = Path(name)
-        if path.is_absolute() and not path.is_relative_to(self.root):
+        if name in self.path_mappings:
+            path = self.root / self.path_mappings[name]["path"]
+        elif path.is_absolute() and not path.is_relative_to(self.root):
             # Archived receipts name their historical checkout. Only versioned
             # compatibility paths may be relocated; external runtime binaries
             # are described by context measurements and are never followed.
@@ -124,6 +188,10 @@ class Evidence:
     def capture(self, path: str | Path, pin: dict | None = None, base: Path | None = None) -> Captured:
         resolved = self.resolve(path, base)
         data = resolved.read_bytes()
+        origin = resolved.relative_to(self.root).as_posix()
+        mapping = self.mapped_targets.get(origin)
+        if mapping is not None:
+            self.check_mapping_data(mapping, data)
         if pin is not None:
             require(sha(data) == digest(pin.get("sha256"), "input sha256"),
                     "input hash mismatch: " + resolved.name)
@@ -131,8 +199,10 @@ class Evidence:
                     "input byte count mismatch: " + resolved.name)
         suffix = resolved.suffix if resolved.suffix in {".json", ".log", ".txt", ".py", ".png", ".ttf", ".otf"} else ".bin"
         ref = self.write("raw/" + sha(data) + suffix, data)
-        origin = resolved.relative_to(self.root).as_posix()
         self.origins[origin] = ref
+        if mapping is not None:
+            self.used_path_mappings[mapping["original_path"]] = {
+                **mapping, "raw_evidence": ref}
         return Captured(resolved, data, ref)
 
     def reference(self, pin: dict, base: Path | None = None) -> Captured:
@@ -170,6 +240,11 @@ def check_execution_log(captured: Captured, raw: dict, native: bool) -> None:
         match = expression.match(line)
         if match:
             observations.append(load_json(line[match.end():]))
+    if not native and "execution" in raw and raw["execution"] is None:
+        require(raw.get("status") == "failed" and raw.get("selected_suites_passed") is False
+                and raw.get("summary") is None and not observations,
+                "missing execution observation contradicts status, summary or original payload log")
+        return
     require(len(observations) == 1 and observations[0] == raw.get("execution"),
             "raw execution differs from the single original log observation")
 
@@ -292,6 +367,82 @@ def package_context(evidence: Evidence, context_file: Captured, browser: dict,
             "plan_identity": plan_pin}, members, raw
 
 
+def read_producer_compatibility(evidence: Evidence, context_file: Captured, browser: dict) -> tuple[dict | None, list]:
+    """Accept only the reviewed workflow and source pair, never an inferred root."""
+    pin = browser.get("source_derived_producer_context")
+    if pin is None:
+        return None, []
+    captured = evidence.reference(pin, context_file.path.parent)
+    value = captured.json()
+    require(type(value.get("schema")) is int and value["schema"] == 1
+            and value.get("kind") == "source-derived-frozen-producer-context"
+            and value.get("rule") == CI_PRODUCER_RULE and value.get("source_commit") == CI_PRODUCER_COMMIT
+            and value.get("cwd_basis") == CI_CWD_BASIS and value.get("source_mode") == CI_SOURCE_MODE
+            and value.get("os_cwd_observed") is False,
+            "unreviewed source-derived producer compatibility context")
+    root = Evidence.canonical_path(value.get("checkout_root"), absolute=True)
+    require(value.get("original_entrypoint") == str(root / "tools/run_unittest_browser_matrix.py"),
+            "source-derived producer entrypoint is outside its exact checkout")
+    refs, files = [captured.ref], {}
+    for field, (upstream_path, size, digest_value) in CI_PRODUCER_FILES.items():
+        require(isinstance(value.get(field), dict) and value[field].get("upstream_path") == upstream_path,
+                "source-derived producer omits its original source path: " + field)
+        source = evidence.reference(value[field], captured.path.parent)
+        require(identity(source.ref, "source-derived producer " + field) == (digest_value, size),
+                "source-derived producer differs from the reviewed exact workflow and source pair")
+        refs.append(source.ref)
+        files[field] = source
+    run_file = evidence.reference(value.get("ci_run"), captured.path.parent)
+    run = run_file.json()
+    require(type(value.get("run_id")) is int and value["run_id"] > 0 and run.get("id") == value["run_id"]
+            and run.get("head_sha") == CI_PRODUCER_COMMIT
+            and run.get("path") == CI_PRODUCER_FILES["workflow"][0] and run.get("status") == "completed",
+            "source-derived producer context is not bound to its completed exact workflow run")
+    refs.append(run_file.ref)
+    require(isinstance(value.get("matrices"), list) and bool(value["matrices"]),
+            "source-derived producer has no bound matrices")
+    matrices, plans = {}, set()
+    for row in value["matrices"]:
+        require(isinstance(row, dict) and row.get("plan") in {"main", "resources"}
+                and row["plan"] not in plans, "duplicate or unknown source-derived producer plan")
+        matrix = evidence.reference(row.get("matrix"), captured.path.parent)
+        require(matrix.ref["sha256"] not in matrices, "ambiguous source-derived producer matrix")
+        plans.add(row["plan"])
+        matrices[matrix.ref["sha256"]] = row["plan"]
+        refs.append(matrix.ref)
+    return {"receipt": captured.ref, "checkout_root": root, "files": files, "matrices": matrices, "run": run,
+            "rule": CI_PRODUCER_RULE, "cwd_basis": CI_CWD_BASIS, "source_mode": CI_SOURCE_MODE}, refs
+
+
+def check_producer_matrix(producer: dict, captured: Captured, matrix: dict, harness: dict) -> dict:
+    require(captured.ref["sha256"] in producer["matrices"], "matrix lacks an exact source-derived producer binding")
+    plan = producer["matrices"][captured.ref["sha256"]]
+    root = producer["checkout_root"]
+    output = root / ("evidence/source-development-qualification-" + plan)
+    for field, name in (("native_inventory", "native-discovery-inventory.json"),
+                        ("harness_manifest", "harness-manifest.json"), ("source_build_receipt", "source-build.json"),
+                        ("package_overlay_receipt", "package-overlay.json")):
+        require(matrix.get(field, {}).get("path") == str(output / name),
+                "source-derived producer matrix path differs from its exact checkout: " + field)
+    require(matrix.get("asset", {}).get("path") == CI_ARTIFACT_PATH
+            and matrix.get("package_base_asset", {}).get("path") == str(root / "source-build/blender-source-development.tar.gz")
+            and matrix.get("browser_executable", {}).get("path") == "/opt/google/chrome/chrome"
+            and type(matrix.get("jobs")) is int and matrix["jobs"] == 1,
+            "source-derived producer artifact, browser or concurrency differs from its exact workflow")
+    require(timestamp(producer["run"].get("run_started_at"), "workflow run start")
+            <= timestamp(matrix.get("started_utc"), "source-derived matrix start")
+            <= timestamp(matrix.get("finished_utc"), "source-derived matrix finish")
+            <= timestamp(producer["run"].get("updated_at"), "completed workflow observation"),
+            "source-derived matrix is outside its bound workflow run interval")
+    Evidence.canonical_path(matrix.get("python_executable", {}).get("path"), absolute=True)
+    for field in ("matrix_driver", "probe"):
+        name, _, _ = CI_PRODUCER_FILES[field]
+        require(name in harness and harness[name].data == producer["files"][field].data,
+                "matrix harness differs from the reviewed exact producer pair")
+    return {"rule": CI_PRODUCER_RULE, "checkout_root": str(root), "original_output_root": str(output),
+            "cwd_basis": CI_CWD_BASIS, "source_mode": CI_SOURCE_MODE, "context_receipt": producer["receipt"]}
+
+
 def read_contexts(evidence: Evidence, native_path: Path, browser_path: Path, adapter_sha: str) -> dict:
     nc, bc = evidence.capture(native_path), evidence.capture(browser_path)
     native, browser = nc.json(), bc.json()
@@ -327,6 +478,8 @@ def read_contexts(evidence: Evidence, native_path: Path, browser_path: Path, ada
     require(identity(build.get("configuration"), "source build configuration") == identity(cache.ref, "CMake cache"),
             "browser context, source build and observed CMake cache do not agree")
     overlay, members, package_raw = package_context(evidence, bc, browser, source, cache)
+    producer, producer_raw = read_producer_compatibility(evidence, bc, browser)
+    browser_raw = [evidence.reference(row, bc.path.parent).ref for row in browser.get("raw_evidence", [])]
     require(isinstance(browser.get("requested_flags"), list) and browser["requested_flags"],
             "browser flags are not independently recorded")
     contexts = {
@@ -336,8 +489,9 @@ def read_contexts(evidence: Evidence, native_path: Path, browser_path: Path, ada
                   "runtime_sha256": browser_executable[0], "adapter_sha256": adapter_sha},
     }
     return {"native": native, "browser": browser, "contexts": contexts, "build": build,
-            "source": source, "overlay": overlay, "engine_files": members,
-            "raw": unique_refs([nc.ref, bc.ref, source.ref, cache.ref, *package_raw, *[row.ref for row in native_raw]])}
+            "source": source, "overlay": overlay, "engine_files": members, "producer": producer,
+            "raw": unique_refs([nc.ref, bc.ref, source.ref, cache.ref, *package_raw, *producer_raw,
+                                *browser_raw, *[row.ref for row in native_raw]])}
 
 
 def declaration_rows(plan: dict) -> dict[int, dict]:
@@ -444,6 +598,7 @@ def read_matrices(evidence: Evidence, paths: list[Path], plans: dict, context: d
                     and identity(harness_by_name["compatibility/package-overlays/essentials-brushes-5.2.json"].ref, "harness plan")
                         == identity(overlay["plan_identity"], "reviewed plan"),
                     "browser harness substituted its package verifier or resource plan")
+        producer_mode = check_producer_matrix(context["producer"], captured, matrix, harness_by_name) if context["producer"] else None
         rows = matrix.get("registrations")
         require(isinstance(rows, list), "matrix registration list is missing")
         seen = set()
@@ -461,7 +616,8 @@ def read_matrices(evidence: Evidence, paths: list[Path], plans: dict, context: d
                 key = (index, pin["sha256"])
                 require(key not in observations, "multiple executions for the same selected invocation need an explicit selection")
                 observations[key] = {"row": row, "matrix": matrix, "raw": raw, "path": captured.path,
-                                     "harness": harness.ref, "harness_names": names}
+                                     "harness": harness.ref, "harness_names": names, "producer_mode": producer_mode,
+                                     "manifest_retained_path": evidence.resolve(pin["path"]).relative_to(evidence.root).as_posix()}
         require(seen == set(plan_rows), "browser matrix dropped source declarations from its native plan")
         references.append(captured.ref)
     return observations, references
@@ -764,9 +920,27 @@ def check_browser(raw: dict, host: dict, observation: dict, manifest_file: Captu
     def flag(name):
         require(command.count(name) == 1 and command.index(name) + 1 < len(command), "missing or repeated host flag: " + name)
         return command[command.index(name) + 1]
+    producer_mode = observation.get("producer_mode")
+    expected_asset = matrix["asset"]["path"]
+    if producer_mode:
+        root = PurePosixPath(producer_mode["checkout_root"])
+        output = PurePosixPath(producer_mode["original_output_root"])
+        expected_asset = str(root / CI_ARTIFACT_PATH)
+        # This command is the complete literal expansion of the pinned workflow
+        # and producer. Its cwd is source-derived, never represented as observed.
+        expected_command = [matrix["python_executable"]["path"], str(output / "harness/tools/probe_browser_port.py"),
+            "--asset", expected_asset, "--source-build-receipt", str(output / "source-build.json"),
+            "--suite-manifest", str(root / observation["manifest_retained_path"]),
+            "--suite-manifest-sha256", manifest_file.ref["sha256"],
+            "--browser-executable", "/opt/google/chrome/chrome",
+            "--output", str(output / observation["row"]["ctest_name"]), "--timeout", "240",
+            "--package-overlay-receipt", str(output / "package-overlay.json"),
+            "--package-base-asset", str(root / "source-build/blender-source-development.tar.gz")]
+        require(command == expected_command,
+                "source-derived producer command differs from the exact workflow, checkout or complete downloaded-source mode")
     require(flag("--suite-manifest-sha256") == manifest_file.ref["sha256"]
             and flag("--suite-manifest") == observation["row"]["manifest"]["path"]
-            and flag("--asset") == matrix["asset"]["path"]
+            and flag("--asset") == expected_asset
             and flag("--browser-executable") == matrix["browser_executable"]["path"]
             and flag("--source-build-receipt") == matrix["source_build_receipt"]["path"],
             "browser host command does not bind the selected manifest and artifact context")
@@ -776,7 +950,7 @@ def check_browser(raw: dict, host: dict, observation: dict, manifest_file: Captu
                 "browser host command substituted the package overlay or base archive")
     expected_sources = [manifest["suites"][0], *manifest["suites"][0].get("support_files", [])]
     supplied_sources = [command[index + 1] for index in range(2, len(command), 2) if command[index] == "--suite"]
-    require(len(supplied_sources) == len(expected_sources) and all(
+    require(bool(producer_mode) and not supplied_sources or len(supplied_sources) == len(expected_sources) and all(
         actual.endswith("/" + expected["upstream_path"]) for actual, expected in zip(supplied_sources, expected_sources)),
         "browser host command omits or substitutes an original source file")
     require(flag("--output") == str(PurePosixPath(observation["row"]["browser_receipt"]["path"]).parent),
@@ -789,7 +963,14 @@ def check_browser(raw: dict, host: dict, observation: dict, manifest_file: Captu
     if matrix.get("finished_utc") is not None:
         require(timestamp(host.get("finished_utc"), "host end") <= timestamp(matrix["finished_utc"], "matrix end"),
                 "host execution follows its completed matrix")
-    argv = raw.get("execution", {}).get("execution_context", {}).get("runtime_argv", [])
+    result = raw.get("execution")
+    if "execution" in raw and result is None:
+        require(raw.get("status") == "failed" and raw.get("selected_suites_passed") is False
+                and raw.get("summary") is None and observation["row"].get("browser_state") == "failed",
+                "missing execution observation contradicts a successful producer observation")
+        return
+    require(isinstance(result, dict), "original driver execution observation is malformed")
+    argv = result.get("execution_context", {}).get("runtime_argv", [])
     runner_pins = [item.get("injected_runner_sha256") for item in argv if isinstance(item, dict) and "injected_runner_sha256" in item]
     require(runner_pins == [raw["runner_sha256"]], "browser observed argv does not bind its actual injected producer")
 
@@ -833,8 +1014,9 @@ def main_contract(rows: dict, manifests: dict, context: dict, program: list, inp
 
 
 def reconcile(repo_root: Path, source_plan: Path, browser_matrices: list[Path], native_context: Path,
-              browser_context: Path, output: Path, retry_plans: list[Path] = ()) -> dict:
-    evidence = Evidence(repo_root, output)
+              browser_context: Path, output: Path, retry_plans: list[Path] = (),
+              path_map: Path | None = None) -> dict:
+    evidence = Evidence(repo_root, output, path_map)
     program = []
     for name in ("reconcile_unittest_matrix.py", "test_parity_ledger.py", "unittest_cohort.py", "upstream_resources.py",
                  "probe_blender_fixtures.py", "upstream_invocations.py", "upstream_invocations_5_2.json",
@@ -891,7 +1073,8 @@ def reconcile(repo_root: Path, source_plan: Path, browser_matrices: list[Path], 
             for source in manifest["suites"][0].get(field, []):
                 raw.append(evidence.capture(native.path.parent / directory / source[key], source).ref)
         manifests[index], frozen[index], natives[index], raw_by_index[index] = manifest, captured, value, raw
-    contract = main_contract(rows, manifests, context, program, unique_refs(plan_refs + matrix_refs))
+    input_refs = plan_refs + matrix_refs + ([evidence.path_map_ref] if evidence.path_map_ref else [])
+    contract = main_contract(rows, manifests, context, program, unique_refs(input_refs))
     evidence.json("contract.json", contract)
     contract_sha = canonical_sha256(contract)
     required = {int(row["id"].split(":")[1]): row for row in contract["configurations"][0]["registrations"]}
@@ -948,6 +1131,23 @@ def reconcile(repo_root: Path, source_plan: Path, browser_matrices: list[Path], 
             else:
                 raw_receipt = raw[1]
             result = value.get("execution")
+            if profile == BROWSER and "execution" in value and result is None:
+                blockers = ["missing_execution_observation", *raw_blockers(value)]
+                process = process_observation(value, host)
+                if not process["completed"]:
+                    blockers.append("actual_runtime_process_completion_not_observed")
+                diag["browser"] = {"state": "missing_execution_observation", "missing_outcomes": len(cases),
+                    "process": process, "validation_blockers": sorted(set(blockers)),
+                    "raw_receipt": raw_receipt, "original_reason": value.get("reason"),
+                    "original_browser_errors": value.get("browser_errors", [])}
+                receipt = {**base_receipt(index, profile), "kind": "blender-test-execution", "process": process,
+                    "run_id": profile + ":" + raw_receipt["sha256"], "cases": [],
+                    "validation_blockers": sorted(set(blockers)), "raw_evidence": unique_refs(refs + context["raw"]),
+                    "producer": {"runner_sha256": value["runner_sha256"], "raw_receipt": raw_receipt,
+                                 "harness_manifest": observation["harness"]},
+                    "case_started_meaning": "No original result payload was observed; no test start or terminal outcome is inferred."}
+                receipts.append((index, profile, receipt))
+                continue
             require(isinstance(result, dict), "original driver execution observation is missing")
             normalized, counts, blockers = normalize_outcomes(result, manifest, required[index]["comparison_policy_sha256"])
             blockers += driver_blockers(result, manifest) + raw_blockers(value)
@@ -993,10 +1193,18 @@ def reconcile(repo_root: Path, source_plan: Path, browser_matrices: list[Path], 
     report["unexpected_browser_subtest_count"] = sum(len(row["unexpected_browser_subtest_ids"]) for row in diagnostics)
     report["observation_count_limit"] = "Original callback counts are diagnostic; they do not imply one-to-one outcome agreement or successful process execution."
     evidence.json("report.json", report)
-    evidence.json("conversion.json", {"schema": 1, "normalization_program": program, "inputs": unique_refs(plan_refs + matrix_refs),
+    conversion = {"schema": 1, "normalization_program": program, "inputs": unique_refs(input_refs),
                                        "context_evidence": context["raw"], "superseded_attempts": superseded,
                                        "registrations": diagnostics, "raw_origins": evidence.origins,
-                                       "all_upstream_test_parity": False, "full_feature_parity": False})
+                                       "all_upstream_test_parity": False, "full_feature_parity": False}
+    if context["producer"]:
+        conversion["producer_compatibility"] = {
+            key: context["producer"][key] for key in ("receipt", "rule", "cwd_basis", "source_mode")}
+    if evidence.path_map_ref:
+        conversion["path_mapping"] = {"map": evidence.path_map_ref,
+            "mode": "Exact original absolute path to independently hash-checked retained file; no prefix inference.",
+            "used_entries": [evidence.used_path_mappings[name] for name in sorted(evidence.used_path_mappings)]}
+    evidence.json("conversion.json", conversion)
     return report
 
 
@@ -1009,11 +1217,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--native-context", required=True, type=Path)
     parser.add_argument("--browser-context", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--path-map", type=Path,
+                        help="Exact historical path-to-file map with mandatory SHA256 and byte-count bindings")
     parser.add_argument("--report-only", action="store_true")
     args = parser.parse_args(argv)
     try:
         report = reconcile(args.repo_root, args.source_plan, args.browser_matrix, args.native_context,
-                           args.browser_context, args.output, args.native_retry_plan)
+                           args.browser_context, args.output, args.native_retry_plan, args.path_map)
     except (OSError, ValueError, TypeError, KeyError) as exc:
         print(json.dumps({"gate": "invalid", "declared_scope_test_parity": False, "all_upstream_test_parity": False,
                           "full_feature_parity": False, "error": str(exc)}))

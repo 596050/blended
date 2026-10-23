@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "kind": "infrastructure-test-execution",
+  "status": "passed",
+  "started_utc": "2026-10-23T18:51:12.195085+00:00",
+  "cwd": "/workspace/scratch/d63596d831b2/blended",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-q"
+  ],
+  "python": {
+    "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "executable": {
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "bytes": 30894944,
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    }
+  },
+  "cmake": {
+    "path": "/workspace/scratch/d63596d831b2/blended/runtime/cmake-host/cmake/data/bin/cmake",
+    "bytes": 21251640,
+    "sha256": "d03a52669f3c9c7ee2718d733f61a05d9e768f5a2120b7c71a166c0b22e2f8cd"
+  },
+  "cxx": {
+    "path": "/usr/bin/x86_64-linux-gnu-g++-13",
+    "bytes": 1027128,
+    "sha256": "52f1ddb33fe78b9441e0f42e9cd22c571f1101938e046c8a26582494e041cc73"
+  },
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "environment_overrides": {
+    "BLENDED_INVENTORY_CMAKE": "/workspace/scratch/d63596d831b2/blended/runtime/cmake-host/cmake/data/bin/cmake"
+  },
+  "source_inputs": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/source-inputs.json",
+    "bytes": 25070,
+    "sha256": "c1f5f1baf5005b6ecc23849ebf65f8fc9f7d4ae49709b6656eed5ce8a290d2dc"
+  },
+  "blender_cases_executed": 0,
+  "original_blender_cases_qualified": 0,
+  "full_feature_parity": false,
+  "recovery_scope": "New execution over restored and newly authored code; not a recreation of the lost 369-test receipt.",
+  "finished_utc": "2026-10-23T18:53:48.131488+00:00",
+  "elapsed_seconds": 155.8735908710005,
+  "returncode": 0,
+  "timed_out": false,
+  "source_inputs_after": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/source-inputs-after.json",
+    "bytes": 25070,
+    "sha256": "c1f5f1baf5005b6ecc23849ebf65f8fc9f7d4ae49709b6656eed5ce8a290d2dc"
+  },
+  "source_inputs_unchanged": true,
+  "source_file_count": 145,
+  "stdout": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/stdout.log",
+    "bytes": 1794,
+    "sha256": "ecaf8e0c618538c9c8514d29666a21e1d5e65304831377773fb529dca0dfc1e0"
+  },
+  "stderr": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/stderr.log",
+    "bytes": 101,
+    "sha256": "15f65d436353ad255289031fd4e6516fb2bb3601006d634e0fe86dad497797ce"
+  },
+  "unittest_summary": {
+    "tests": 383,
+    "seconds": 155.557,
+    "result": "OK"
+  }
+}

@@ -1,0 +1,1167 @@
+{
+  "schema": 2,
+  "stage": "native-discovery",
+  "cohort_id": "script_pyapi_doc_gen-5.2-resources",
+  "suite_kind": "unittest-main",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+  },
+  "execution": {
+    "entrypoint": "original __main__",
+    "process_isolation": "one-upstream-script",
+    "background": true,
+    "blender_args": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "script_args": [],
+    "ctest_name": "script_pyapi_doc_gen",
+    "cmake_sources": [
+      {
+        "upstream_path": "tests/CMakeLists.txt",
+        "bytes": 5871,
+        "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+      },
+      {
+        "upstream_path": "tests/python/CMakeLists.txt",
+        "bytes": 50161,
+        "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+      }
+    ],
+    "registration": "add_blender_test(\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n)",
+    "host_tools": [
+      {
+        "environment": "PYTHON_BIN",
+        "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+        "bytes": 30894944
+      }
+    ]
+  },
+  "suites": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_doc_gen.py",
+      "bytes": 5330,
+      "sha256": "658ffbbb8dd5a7c9c9510139b788b3749e39fe4b2c3249154a6e13a1dc3e23ab",
+      "support_files": [],
+      "fixture_files": [],
+      "resource_files": [
+        {
+          "upstream_path": "doc/python_api/check_stubs.py",
+          "sha256": "2a09b6439ffd023348d32bf1d657de7990b8f48a265936d9167fd50811803d6d",
+          "bytes": 3742,
+          "git_blob_sha1": "0922706bbba9fa6543e89608e5fbb0983608c827",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/check_stubs.py"
+        },
+        {
+          "upstream_path": "doc/python_api/conf.py",
+          "sha256": "3feb28af43df24cb7e044c3fdc7e78aae3d8e130dafffadd6fdc6b29cbfa83d4",
+          "bytes": 6045,
+          "git_blob_sha1": "78dcf33a5b69ad65f5d3070b5dd9237e43ad5432",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/conf.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/aud.0.py",
+          "sha256": "ecc485f6c823ecccb0b1965a9f20fed8c892e4d31fcd481a414c776e915745a8",
+          "bytes": 611,
+          "git_blob_sha1": "ed8cff18bf462001918c60523e8bfc2b3387430b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/aud.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/blf.0.py",
+          "sha256": "f71f528bfed5642a15a55dcdfd566b0b7e89806d073018d0c678ca0bec11daa7",
+          "bytes": 1098,
+          "git_blob_sha1": "f2402db3289cbb56e9f1a57c57cf7674bca9d99e",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/blf.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/blf.1.py",
+          "sha256": "9c87e7d68f08709059da682fd6962cdc44df327b05cc34d30ea5ff9ede0bf7e1",
+          "bytes": 689,
+          "git_blob_sha1": "ad7fd3778b0dfd2a2d5e2c982b170241cef62598",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/blf.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bmesh.ops.1.py",
+          "sha256": "0e41e932f9eb3e4193a4d01a0439fc382a7cba9bb17f841af34a45e4e8e1a43c",
+          "bytes": 2608,
+          "git_blob_sha1": "1576f676d2ca688cb0b6a2815c17592cff8d84b0",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bmesh.ops.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.driver_namespace.0.py",
+          "sha256": "368e5d7e993becdfa93e6fa4c99f9a802072c54ae18123971c467717c5b1d56e",
+          "bytes": 1836,
+          "git_blob_sha1": "31c854b09a48086751fd2e7cc16be4c505bf3364",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.driver_namespace.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.handlers.0.py",
+          "sha256": "7ce13dd5adf7d0db2443f32a4ce18adc2235996f302622846dc8b44f2724dceb",
+          "bytes": 255,
+          "git_blob_sha1": "808115119b999a247f8aa4097d60f3a58add0b84",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.handlers.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.handlers.1.py",
+          "sha256": "990cb25ccdd6c5f385438df7fcf30618002dd0e68c5c300a42ecd8550b380455",
+          "bytes": 509,
+          "git_blob_sha1": "cd24873fcbc51bc399ea4d940e85af1e6350fa1a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.handlers.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.handlers.2.py",
+          "sha256": "ef4a7365f299b80635bcd462cfd682901db9599c485d439165f2f3ba3326f47a",
+          "bytes": 908,
+          "git_blob_sha1": "cbaf7c48cadb444a8609331847d0e7d62552b28d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.handlers.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.timers.1.py",
+          "sha256": "84a4d1d6142303e425918de8928abdfe976dd03a7ae3160775ad3979d429dbae",
+          "bytes": 180,
+          "git_blob_sha1": "a8ce7fde552e0d30630bd43d9e55e7290323a99f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.timers.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.timers.2.py",
+          "sha256": "54e4962deda4c96ed51b309e13857d6512ec8e992fbf22101f13bbb38b1e17c6",
+          "bytes": 189,
+          "git_blob_sha1": "e17d43cccd8d3ebdd5558e6b79d0c9e91cbc890c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.timers.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.timers.3.py",
+          "sha256": "8544c8b7d1a217e4ce3aff0b14c7653c7e3f7e151360578a4fde5f2498cf872d",
+          "bytes": 284,
+          "git_blob_sha1": "a738f9ca01ca14708dbdf7ae5c69d1750f134c3f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.timers.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.timers.4.py",
+          "sha256": "de90634a1f1e514f7ebc9752990f9194aebf1f3f1069d12e549c9356f47a7ffb",
+          "bytes": 335,
+          "git_blob_sha1": "c14bc15166c058c9277fb03401b0fb4ae81b69d3",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.timers.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.app.translations.0.py",
+          "sha256": "6163ef2ca083a8b2b9929b2ed12b38bd784f02675f3902e881f4568898605b30",
+          "bytes": 4055,
+          "git_blob_sha1": "9e672fb0cfd9f2c889ced34c108da2807a3cec45",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.app.translations.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.context.property.0.py",
+          "sha256": "206d29d3ff1f0d8a439277b6190f815573bd0fa3b859f8133a8f0bcaa9729f85",
+          "bytes": 581,
+          "git_blob_sha1": "dc4b7f070777dd2cb54c488d7f8e7217dc6c2631",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.context.property.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.data.0.py",
+          "sha256": "271829533e56f509650963814f08d719f20fe76b90f8e50ed9dc01764810aa2d",
+          "bytes": 558,
+          "git_blob_sha1": "c672b9f13c0540f0f4ca421b1f6923d3675e46a7",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.data.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.msgbus.1.py",
+          "sha256": "9dd65022b22ad2eb4b039fed3fd161cb433a95e13ffcf1197c9cc7cf16aebafd",
+          "bytes": 1531,
+          "git_blob_sha1": "0314491ade237e7a2ade166da5f2fbc758c42804",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.msgbus.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.msgbus.2.py",
+          "sha256": "944da6af2b5301c225de4a95cf92d6c110152d92463c28a5810a1f4c606c147f",
+          "bytes": 277,
+          "git_blob_sha1": "a4056722a53fc09a1392b59160c0360ab286457e",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.msgbus.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.msgbus.3.py",
+          "sha256": "484805ac67865f440c8c3587bc1b5ccba0abb6cbef8865e2291b4933a17ff7ba",
+          "bytes": 160,
+          "git_blob_sha1": "2694d9319e0942068a4b68d0f23900c8c3411e12",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.msgbus.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.ops.0.py",
+          "sha256": "7d82c251f29a08821d17342f963ac34ea906307548d39e0f1152ad1af062df10",
+          "bytes": 1884,
+          "git_blob_sha1": "fb5a549ba497c75525250328d221a4dd1d93b3d9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.ops.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.ops.1.py",
+          "sha256": "112afae6467856ce7a7c7c0a8d4c532a425410ff4e712d2d2fbcb0eba7f681b7",
+          "bytes": 1130,
+          "git_blob_sha1": "0b39e4e121627ad47b38bb2dcafeb518a657f89f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.ops.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.ops.2.py",
+          "sha256": "f7c4facaacb552ec901f4c7ac8b2d090185ee271ace70c5dea5ed4dbdbf45be7",
+          "bytes": 863,
+          "git_blob_sha1": "b123823b39544402ff00378aea6366c26687654f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.ops.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.ops.3.py",
+          "sha256": "74d96297c918122e500c6fc5cf2168fd8ad76b4f754510966890cfb90d59629d",
+          "bytes": 501,
+          "git_blob_sha1": "e068ab0c0cf17a5a08d79fe9cb98e7a47157fbcd",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.ops.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.props.0.py",
+          "sha256": "d9948383df2962beaf4a08b9ff7829b78bcb964adc57a33690f8a82a2167c728",
+          "bytes": 882,
+          "git_blob_sha1": "f70eb6f1713ac604271a29702989ecdcca4045c6",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.props.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.props.1.py",
+          "sha256": "9f4871d769189e460449bf7df9f0bf26a3619d45298eaa1aa34ddfd10d8ff83f",
+          "bytes": 1989,
+          "git_blob_sha1": "94d861568923fafd2c05d63b23c6a5552041ac3a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.props.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.props.2.py",
+          "sha256": "434ffcf6572cea73e03497973b717a3320f85654d9abcbfa750f862c8b86a083",
+          "bytes": 660,
+          "git_blob_sha1": "46097c283232257787eabec88addfd3909c29fbb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.props.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.props.3.py",
+          "sha256": "143b7bb1211fa1b53d6fbbe3f4ed1f555269f9b3752993fd353acb5eed1924a0",
+          "bytes": 836,
+          "git_blob_sha1": "b8e0045fe582a01491213ef378fc5869a8a0d301",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.props.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.props.4.py",
+          "sha256": "5fe594394248280444b36bbd4cc26494d81de28c46435957a50906631f326223",
+          "bytes": 872,
+          "git_blob_sha1": "c451e54c9deab7b777974239a684dc123ad7badb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.props.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.props.5.py",
+          "sha256": "029520cef812f8ec44a2a950079fc33a3534b12136a53b260d301d257c57bf1c",
+          "bytes": 6765,
+          "git_blob_sha1": "9b660cc6a5cddecb84b5e090cdd6e78892c145ad",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.props.5.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.ActionSlot.1.py",
+          "sha256": "ce7c28f9bf905bf31363b4d97f12732fcc160dfa1e6989551e9ccd547b8424ca",
+          "bytes": 1227,
+          "git_blob_sha1": "a6f719518dacd3cdaa651c5a9551f2c7bcfd3168",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.ActionSlot.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.ActionSlot.2.py",
+          "sha256": "d7e9336d896f8c859cd5d8f013d4cf14a43634bf805690e44d49c8168d2dd9c0",
+          "bytes": 877,
+          "git_blob_sha1": "357309a21a6f37ef23a93c6659d2a8838e27bc57",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.ActionSlot.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.ActionSlot.3.py",
+          "sha256": "d5aa1b4f038ab48eb2c0ead85a99b1212fdf3f52ad143a6504fa596c6d27d59b",
+          "bytes": 1073,
+          "git_blob_sha1": "0e8bd76d7a9a81bc07e101be00fc683bc1a89037",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.ActionSlot.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.ActionSlot.4.py",
+          "sha256": "0866dd75fb306d01caf89add8a766851dbc0b2ca3e8ec7c18396b66e81652154",
+          "bytes": 535,
+          "git_blob_sha1": "8f07d246419bc985a2f6b070dd0c8436b1db9d99",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.ActionSlot.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.AddonPreferences.1.py",
+          "sha256": "267a77a3c4210908e6d33ef96110f915e5d79865e2d8a92ab34020ae5af28d84",
+          "bytes": 2052,
+          "git_blob_sha1": "3760a904c6357515d6ffa32d2668d7f1b13c929f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.AddonPreferences.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Attribute.0.py",
+          "sha256": "bc9cd7380aaa0987bfeccfc1daaf7f45aab4e52268903f853e8cfdd0cd29b844",
+          "bytes": 4266,
+          "git_blob_sha1": "6d52f15d028f056d414fcdb10d2d1a016215427c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Attribute.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.BlendDataLibraries.load.0.py",
+          "sha256": "7a86c7a967d0f7ce2a6bd0449030a76cbdbecc2d7e305300af5ffe262128b9e1",
+          "bytes": 1099,
+          "git_blob_sha1": "96f3b0f915ad04ba5d17735d2e07766cf3290031",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.BlendDataLibraries.load.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.BlendDataLibraries.write.0.py",
+          "sha256": "51b8cec9386fe8371437e272135557dcc7e90e1669d454f95fa56eb5fb0d66cd",
+          "bytes": 654,
+          "git_blob_sha1": "1641d2b7054b421d3d6a93cb28b726f76d4fb0fa",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.BlendDataLibraries.write.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Bone.convert_local_to_pose.0.py",
+          "sha256": "02d71c346d0cfcff3d12aa59c0a6ce6cc9c94f9273b4546b7bc5474e4fa149a5",
+          "bytes": 2077,
+          "git_blob_sha1": "955677619426159b370d4bf914c061707475ff4a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Bone.convert_local_to_pose.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Context.temp_override.1.py",
+          "sha256": "25e65d83c3b00af6e608d17d686f2df9c8a33855e5594d4dc2d0e56791a2b001",
+          "bytes": 993,
+          "git_blob_sha1": "6213db30e00325667e84f61cb7408a28f1abb9f8",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Context.temp_override.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Context.temp_override.2.py",
+          "sha256": "7b5004a877e5166d1d6218d1bd76cd83393e8ef160933165fef2337039f22773",
+          "bytes": 504,
+          "git_blob_sha1": "4149ccd54e0c8e1ddd990b93c8a1e62f82a93d8a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Context.temp_override.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Context.temp_override.3.py",
+          "sha256": "a40fe455896352f4c6d93680fba1d5f49b51efe7a9fb078856152f49cb18a59d",
+          "bytes": 414,
+          "git_blob_sha1": "e670bb7bafaff26d258d135ac3dbefb94ecf1518",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Context.temp_override.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Context.temp_override.4.py",
+          "sha256": "6e5d40498974f93aac32205d7ecf27a4addeba5f22058bdbbdacf22c1dc07c8a",
+          "bytes": 1053,
+          "git_blob_sha1": "7930f633a6623f970bab13a49d574b775f5f29a6",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Context.temp_override.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.1.py",
+          "sha256": "e2db5e823fb1e22f97231c0a23079e46fa70f62b9c9d83e8ed81bd2cd2ccaed7",
+          "bytes": 2378,
+          "git_blob_sha1": "ba7b5cf7d7be9d6fa92b36fd54202bfce4e134fc",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.2.py",
+          "sha256": "795c5937095e513a5d290c1b0562a1852acacbfea92121248f79a685d6452d56",
+          "bytes": 1632,
+          "git_blob_sha1": "cad149873a366d1d918a7441bde0ebaf69e596bf",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.3.py",
+          "sha256": "9a0a97e0afd843c99a0ff095978cba6bb6dfc3aa65a29e01206304df5700ae90",
+          "bytes": 1570,
+          "git_blob_sha1": "dc542c1b2f4dca34c4674fbd8885cee5cf8ef6fb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.4.py",
+          "sha256": "f121b1e8ae46ca8218867759e1b51bfc43eb5ed6e1c671fbdb816429cc906480",
+          "bytes": 2791,
+          "git_blob_sha1": "78670628fa23447710b1112eefb98fc08f7d7a92",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.5.py",
+          "sha256": "7fcd6019fccc66ec1c9d6429045c43b667db6bec6de443e0b57f1f5ed4373b31",
+          "bytes": 2164,
+          "git_blob_sha1": "523145968fe05cec73c85526b5627a62c3162694",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.5.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.6.py",
+          "sha256": "ff8c4dd0e3c381d019592d46d006f2f731e0455e1946c101cc4c3ea34da9ce2a",
+          "bytes": 2573,
+          "git_blob_sha1": "1342b3d3216cf4f65e71714fb60a25485b43070a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.6.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Depsgraph.7.py",
+          "sha256": "9ac0be0a1fea7d08ffcf4fdaa84638c5f46a05e776c7eb719c883a36a823d5cd",
+          "bytes": 2691,
+          "git_blob_sha1": "e49ed69fb7ff23fab69667efcd63803ad71f4cbb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Depsgraph.7.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.FileHandler.1.py",
+          "sha256": "34044e21bbe5718830141214bedf559884f5194421c1d714cfa5609cb09b5c96",
+          "bytes": 3251,
+          "git_blob_sha1": "4b50c426eddeb026f15470e0124e051bfde4280d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.FileHandler.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.FileHandler.2.py",
+          "sha256": "0acd74dbe7cdc53fd9631fefb4d04dc2c8a60e2064c6b6e274a1f4a4a927d3ff",
+          "bytes": 4179,
+          "git_blob_sha1": "21b98cf8d87f30e8a12e052196338cd2932dcd1a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.FileHandler.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.GeometrySet.0.py",
+          "sha256": "d2ee5d9b03d32be63fc360ecbd8b2558db5f265cbdb86ad27a04e536e98cd599",
+          "bytes": 2055,
+          "git_blob_sha1": "2668e36cac12e884a9d7c5ab408de6760698d464",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.GeometrySet.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.HydraRenderEngine.0.py",
+          "sha256": "d1c58e0192d2459a32ba0c820028c48adb8bd1cb48b70a0a70fe03b658aad38c",
+          "bytes": 1683,
+          "git_blob_sha1": "be5146d9c494eb1862cba1698a295c910df51d81",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.HydraRenderEngine.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.ID.user_clear.1.py",
+          "sha256": "86035433f79471cfbe46ba79136ffd14c9a3bc545edec21a570f505b14bb9188",
+          "bytes": 436,
+          "git_blob_sha1": "487493ce9954b0def541ed48002fd1a116c4efea",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.ID.user_clear.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Image.0.py",
+          "sha256": "572eecf8f6ae9c12b03c6da09964cef4f368c22fe58c0810abd16d41cd132bb3",
+          "bytes": 1472,
+          "git_blob_sha1": "f0c1a780e2426b162f5cd94f0176dccbda94e71d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Image.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.InlineShaderNodes.0.py",
+          "sha256": "51fa8234a6914d29548c0b57c484d6876510dbc0306cf62a95a8c21a7d300730",
+          "bytes": 730,
+          "git_blob_sha1": "584073b97fcea70f92757026b7b4cc0a7e318ec5",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.InlineShaderNodes.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.KeyMaps.1.py",
+          "sha256": "3bd4fa1c28279d6da17b00548f927ad7d64cae32942b4f531aec70c317a71329",
+          "bytes": 2089,
+          "git_blob_sha1": "3684a72c8ab83dae528975a659b3fcf5b05dd220",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.KeyMaps.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Macro.0.py",
+          "sha256": "080b7dc6255089b905b8ae4ab2a1dd309ee403a87c36f17fecad6b4eab760033",
+          "bytes": 1216,
+          "git_blob_sha1": "d375cd5de05af77df97df72583fb5455f4083a3d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Macro.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Menu.0.py",
+          "sha256": "f82912341f0498355967b93418698f1195b05b0d32d746b1245af99b93f68b4c",
+          "bytes": 1360,
+          "git_blob_sha1": "a4d2962d3b122002172ef7bc2dbe8720a4603bc9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Menu.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Menu.1.py",
+          "sha256": "58098be32f926d4c5a685728df8ed3ce9fc14726307223269038b158a00ed225",
+          "bytes": 989,
+          "git_blob_sha1": "c1ef5e433103ac534ae2fa3d4938d527ac289b66",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Menu.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Menu.2.py",
+          "sha256": "67c9271fa2522abe673c8d09a12d0ca86f6f8823de6718b45d769b6cb7aaba42",
+          "bytes": 374,
+          "git_blob_sha1": "fbdf747d472cf81727352cce419b4b96c38a7ba9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Menu.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Menu.3.py",
+          "sha256": "3b5b73763a62e62d89e43391860baf423931e3d3e8d36fcc513a54b58a0c3d02",
+          "bytes": 2022,
+          "git_blob_sha1": "77f19f297029572cd0539142e73a5bcb660fe4f2",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Menu.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Menu.4.py",
+          "sha256": "01db025a3ae98dd8b75973c1ca1d14d12bf5cd22df54596513f240af77906770",
+          "bytes": 1786,
+          "git_blob_sha1": "cffea6cf0099946387bd09c800bdfdd29440c6d4",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Menu.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Mesh.0.py",
+          "sha256": "30d5ed4c739a94e1a119fdbaa83f56cdad153f4a70629554414f361829927d49",
+          "bytes": 1545,
+          "git_blob_sha1": "eb19451e44f68445f9eb273613b8074cf4098306",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Mesh.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.NodeTree.0.py",
+          "sha256": "ed5f56aabc11b24bd5c584b55a9bf768595d001991a5e39ce75dfb70421aceef",
+          "bytes": 785,
+          "git_blob_sha1": "fc926cc47afe0902310342deca68a373fd94c5ed",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.NodeTree.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Object.0.py",
+          "sha256": "142786650430812aebbb7b037d0d956ce66e02470add1d08293484a5276ec0da",
+          "bytes": 871,
+          "git_blob_sha1": "3df426ae59a1c02458ad401ce361e8512756cce0",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Object.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.0.py",
+          "sha256": "8eba49806bd55f54577bb110597ba8268dc0e65a8ee0d2cf37156d39f0452a10",
+          "bytes": 1180,
+          "git_blob_sha1": "f7124c0f1256be2fc892dfbb1ed7470d2f7d7a2d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.1.py",
+          "sha256": "e260a89ca53ed306127e8f191b8c4007d7b6c25c593ff73cf92c75e9fe8faba0",
+          "bytes": 2295,
+          "git_blob_sha1": "d02562e5089b9f084ff3a61a4a18ddf1953d4fe1",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.2.py",
+          "sha256": "fe0c9eba64c9ca1df36ec16c90823d275a90c166e71c6a0b016f37954d832966",
+          "bytes": 2577,
+          "git_blob_sha1": "868e8e2fb4fcf855af20bace04dc4f4bc02ed8cd",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.3.py",
+          "sha256": "0151ad478d5b7b5d74b72fa5a597bfde0d203b265d4263c5984c8afd0efbc6ff",
+          "bytes": 1594,
+          "git_blob_sha1": "c0a1e2dc1417ad41c14a0450d52f1341a73a4b45",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.4.py",
+          "sha256": "3cbed987223ca5c4009e7fa37cf85262ff53824832cd16f73d9c6a81bd2492ed",
+          "bytes": 1193,
+          "git_blob_sha1": "f4a7d26ff0c83bca7be934bfb25392fe085877e0",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.5.py",
+          "sha256": "d70f6f201a3232accc5a00c2cb31af8aa84804ccaf894a98a88bd0352372969f",
+          "bytes": 1590,
+          "git_blob_sha1": "92876c86aab5f9a2b00a4b20205ad1170a66d8bc",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.5.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.6.py",
+          "sha256": "388838fb0df7e051b74d54fc638a1fd29a90204a3fd6324944f9c92d27754f3d",
+          "bytes": 2669,
+          "git_blob_sha1": "2e9c4c55b5b3aecef8855c6edc319ac0689dba45",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.6.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Operator.7.py",
+          "sha256": "484419bc3741b373e10076b7e58db6aa9ff2bec672d577b75e93bd45c0993d9f",
+          "bytes": 1290,
+          "git_blob_sha1": "cc6dbc95a3639645e0343d598295989dda4357ae",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Operator.7.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Panel.0.py",
+          "sha256": "2e9e15f95f80a9db21386b77e1d1c8086729cce7f38865e8860e09097cb2e9e5",
+          "bytes": 635,
+          "git_blob_sha1": "879d47ee5aa669853252e29854ef442f5ca6dc9b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Panel.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Panel.1.py",
+          "sha256": "420992f4c50134a68f59c54d1e8917fb2147366338ab8e150e39299947f3edff",
+          "bytes": 1005,
+          "git_blob_sha1": "911ece7ade0d646ddca224564a04b2c960aacb4b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Panel.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Panel.2.py",
+          "sha256": "11db8a48df32d22ef2a50c6d67c524c6e40a231243c2cec7dfb94b8fa1d41507",
+          "bytes": 784,
+          "git_blob_sha1": "ee7dae5f186f41f6e9777f89e76a1fa8e4f2b13c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Panel.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.PoseBone.bbone_segment_matrix.0.py",
+          "sha256": "7949e97b50743293a5a906fad545d609680ec25f7af2684b1da4c027510b0291",
+          "bytes": 1344,
+          "git_blob_sha1": "206a12c694df23854c691067b7fc62182f52ff4e",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.PoseBone.bbone_segment_matrix.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.PropertyGroup.0.py",
+          "sha256": "c10f905b90d3f1e4ac8fe5445f27ab830fd5dd6705d39ed9d932c7cc1bceaef8",
+          "bytes": 1089,
+          "git_blob_sha1": "e0920c8338af2720c4cf9e07f53b76be0cb30227",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.PropertyGroup.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.RenderEngine.1.py",
+          "sha256": "e23d5e1552a09b0fa360a4fcad003c54bd414fcfa2f7fbdbaaffe0c13de7c556",
+          "bytes": 6440,
+          "git_blob_sha1": "5e05e00b1a38fe4d6594e488b969025460422c0c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.RenderEngine.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.RenderEngine.2.py",
+          "sha256": "ebced4fc6d35721c087ac9f94b6eee9c7275df1633a5f053fc89e235ec96ed57",
+          "bytes": 834,
+          "git_blob_sha1": "e2bf261b261b2ad88f92a3043a2ddba7e6ba33ea",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.RenderEngine.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.UIList.1.py",
+          "sha256": "8717ccaa4703d4503215360c801203cfc357b63c3505cac0b847a9eb6ef9f34a",
+          "bytes": 3477,
+          "git_blob_sha1": "09e0bc6e320c70592d39e9a3d74b6b87d90f22d9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.UIList.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.UIList.2.py",
+          "sha256": "86e4b18e2ec5df9f3fe20c34eef9d1aa5b04a85df6d31c6547ec6a57a2eacd4e",
+          "bytes": 9444,
+          "git_blob_sha1": "b3a09bc50da38a6934a103f403c05a7e97665a0b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.UIList.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.USDHook.0.py",
+          "sha256": "2abbfed6c1964caf42fce0ae896379b42b2a912bc025150597351b3dead50949",
+          "bytes": 11992,
+          "git_blob_sha1": "cd7530a6b960f9e75c377c32ae1628ed8b818ab9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.USDHook.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.Window.screenshot.0.py",
+          "sha256": "524cbfa1426b5c9d1f21936e88c4fb16f49206771a599500be4cdd17e9b461e3",
+          "bytes": 1122,
+          "git_blob_sha1": "7b4335d60c021cff8c31a695971c99c9847719c2",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.Window.screenshot.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.WindowManager.fileselect_add.0.py",
+          "sha256": "e1f2d88c013917d2ffb44a173c55a3bf30069770689b117ebb5fd9bc9bb2bb43",
+          "bytes": 1918,
+          "git_blob_sha1": "64ba1fd4e9be95979653d743ac8f3125001ecb67",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.WindowManager.fileselect_add.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.WindowManager.popup_menu.0.py",
+          "sha256": "0b4269a73d208cca8b1679dca08f143dba629e01b587957803d24d9c257ca766",
+          "bytes": 347,
+          "git_blob_sha1": "670444b8283d63fb7cd29f06860650cff171cf2e",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.WindowManager.popup_menu.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.bpy_prop_collection.foreach_get.0.py",
+          "sha256": "353f6962bfa557b109d5a5f816e2acb3ee80bbfc50f745bc4a542a47d7daf1e5",
+          "bytes": 540,
+          "git_blob_sha1": "5a4a34fe0354d64bf7653ae17cf0d4a63c0d0989",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.bpy_prop_collection.foreach_get.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.bpy_prop_collection.foreach_set.0.py",
+          "sha256": "263bbb145165fbd25ec5f4170ae83be54e21bedc9e12d1bb05538097c6f9be9d",
+          "bytes": 658,
+          "git_blob_sha1": "b6b90906fe0fb58e229f58ef934b44ac1ad5693a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.bpy_prop_collection.foreach_set.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.bpy_struct.is_property_set.0.py",
+          "sha256": "42ba5e9d255195a2c1cb421e203687758064ee333469651a494e0055e03606f9",
+          "bytes": 1489,
+          "git_blob_sha1": "ed566fc3ea8181a76fc8ceb52504584ffe967db2",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.bpy_struct.is_property_set.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.bpy_struct.keyframe_insert.0.py",
+          "sha256": "10a532b7d9f98f4a5a68fc86c43753ad534c0c1cda06fbe7389289ccfe22772b",
+          "bytes": 230,
+          "git_blob_sha1": "b801a75276b2e04a2e49de0c66ec16622b810e31",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.bpy_struct.keyframe_insert.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.types.bpy_struct.keyframe_insert.1.py",
+          "sha256": "9fd9c9e5ef8ee779022179b63ea45ecdf4ede7d0c5dd6b1e5f62dd07df92c01e",
+          "bytes": 799,
+          "git_blob_sha1": "6a56683732dc2c4cd1dc036a06a77624991a0491",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.types.bpy_struct.keyframe_insert.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.utils.register_cli_command.0.py",
+          "sha256": "8ab24ab8b5f218ddddc0367ff2c4b10eaa4c74c3963b6836b433eb66d9490e6e",
+          "bytes": 2214,
+          "git_blob_sha1": "dcba8b34e5a16d8087d3060d3029e2190a2f7120",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.utils.register_cli_command.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/bpy.utils.register_cli_command.1.py",
+          "sha256": "33a77e9b10fdf9f2c88f1f31da2f88102d50c389198fd5fcddac0328a4d39afa",
+          "bytes": 1535,
+          "git_blob_sha1": "05227853a2a1bde0fbfa96e0ae80c905bc066c44",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/bpy.utils.register_cli_command.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.1.py",
+          "sha256": "01dafdb3a20be5bcef7aa6af4f6e78b9743048459b862025e3491cba2cad5c06",
+          "bytes": 7566,
+          "git_blob_sha1": "6ce3f4e60240bebec21378b6e6e8bd7cd63281d7",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.1.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.10.py",
+          "sha256": "60475e700837375dc1da2a662052f2de7656fd1d3025bb87bc1f15b0e2981101",
+          "bytes": 1989,
+          "git_blob_sha1": "0e7f87aa6b64296b9de1feeab0edaf8e511deb8c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.10.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.11.py",
+          "sha256": "97daa946e10079cf4d82b75b741fddd9e9f1b534651eb8cc81dc1d8705ba6665",
+          "bytes": 2943,
+          "git_blob_sha1": "5c1a56813c3fec357464916bcc663e6153dfccfa",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.11.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.2.py",
+          "sha256": "563a73ac654b5ac6fa50ca8dd5c276179b42e93845ef4cdc5f3911fea4dff201",
+          "bytes": 1232,
+          "git_blob_sha1": "e308ce7f78e33b8c1200fd6c6c4e5bbf8679cebf",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.2.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.3.py",
+          "sha256": "db342df7c0bdbd0024d760824c0eceb49c8d76f408270d3e680e3fc6b501bb38",
+          "bytes": 814,
+          "git_blob_sha1": "ce05cb9b4ac0102b583271b2568922a7252d0c49",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.3.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.4.py",
+          "sha256": "6aa987762256f78031ba11290261c02677644973b1aec7e47a402667a7e139b8",
+          "bytes": 1018,
+          "git_blob_sha1": "7c6b4b941440a553036edbae62292fdf74b778da",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.4.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.5.py",
+          "sha256": "ca283360aa24efeb00bdc104ae1c77d9963415243ce1f4c027528b83794ff7ad",
+          "bytes": 505,
+          "git_blob_sha1": "bc9d09afb923234f0484bfd9de7e8c7f2a5b980b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.5.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.6.py",
+          "sha256": "ffea68a0c28e5df5897e9a7e4195193c9756011c606ca4f4cf2abf1cd362f653",
+          "bytes": 1499,
+          "git_blob_sha1": "e62c61d2be5206d8dd47e7a84fdd3eb37e1ce48a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.6.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.7.py",
+          "sha256": "baa2bffa87edc7725d2a39fbd32f4a74f84aa7e566735694bd3246ddf2c0c752",
+          "bytes": 2494,
+          "git_blob_sha1": "5206c3b67595977555bdd64071f23eb293f9d89a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.7.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.8.py",
+          "sha256": "d8728a7a47764bb41d681eee9098e0e18f72a4135f6c28516b1ab76d90275aa2",
+          "bytes": 1562,
+          "git_blob_sha1": "cc8c5c9bb92b53451b03c9c88bacec434c2f2cde",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.8.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/gpu.9.py",
+          "sha256": "2dc932fc607e2d89bf8d1b01dd3cb9e4b59254f1b9f1fa6175231af9eeccb60b",
+          "bytes": 1061,
+          "git_blob_sha1": "318c0a74cebf8c847a2e3238914a722bbd2ee84a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/gpu.9.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.0.py",
+          "sha256": "7e1c6b4c14f274fb671ccea074320e25b70fa74c51a32c7b4875076b20a36c3f",
+          "bytes": 377,
+          "git_blob_sha1": "ccec8ed24242c9ac71f3ef2d35511ce117309231",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.Color.0.py",
+          "sha256": "66e03e8edebfab471d042cc0c99c7c6c6558981002d5916f3132b7bd149a2847",
+          "bytes": 1062,
+          "git_blob_sha1": "67bd151d89c4e545cd2d129a804279bd6f18051b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.Color.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.Euler.0.py",
+          "sha256": "7cad2e5577256f00a815393d352b61132535fc3e149f4ecd366b1f0c16e1125a",
+          "bytes": 989,
+          "git_blob_sha1": "ab60da249d0c285431a411bbdbba0f318aad5375",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.Euler.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.Matrix.0.py",
+          "sha256": "df1014a390e44d5eff205a99da9967230b0ff536a7256008d5c2376f6a755022",
+          "bytes": 963,
+          "git_blob_sha1": "7894e3b85b240cc01ce05db76efe6fa8962cd8a1",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.Matrix.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.Matrix.LocRotScale.0.py",
+          "sha256": "f6bcc39739b8a1917d43fbb5947f677ae92d64e1c445ee9fa2cb8abf26770b4c",
+          "bytes": 324,
+          "git_blob_sha1": "ebff518c08194cb57f844fb0fc4fa589a0093e23",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.Matrix.LocRotScale.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.Quaternion.0.py",
+          "sha256": "95d69140b194fde8f837d922320bd00561091ccb020223126f54107d1175bad3",
+          "bytes": 1336,
+          "git_blob_sha1": "406128eb6a10afe13e205799087b842e390ea3dc",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.Quaternion.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.Vector.0.py",
+          "sha256": "f41781691cc286c4ef6f530aad7da5d4c8c8d3dfe3640ccc4e56074cdaed0b02",
+          "bytes": 1172,
+          "git_blob_sha1": "a2af1c11ce42e3a7a9d0bd0f9edec299a30c88ab",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.Vector.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/examples/mathutils.kdtree.0.py",
+          "sha256": "e50d6347b4bd68b84b9f532b927a314bd0f75bf201d21286b44243ca892b169c",
+          "bytes": 845,
+          "git_blob_sha1": "5eef61e7cdb19b98a6be34fc1798bbf9a5f718ea",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/examples/mathutils.kdtree.0.py"
+        },
+        {
+          "upstream_path": "doc/python_api/requirements.txt",
+          "sha256": "99e1ebd578f67f592e6ed0c83b68106117ef829cba07fc582febea3fbe44da3d",
+          "bytes": 378,
+          "git_blob_sha1": "3aca58e8aa5111835e1350267f5ac5ad088205a8",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/requirements.txt"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/change_log.rst",
+          "sha256": "d38854c0b1b93d3205237031eee20ef395f79081d396ebaccb4d01eb91ecbb81",
+          "bytes": 13507,
+          "git_blob_sha1": "ef289cd0762c9aba4a878cc2a080d6cec3363e9f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/change_log.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/include__bmesh.rst",
+          "sha256": "818acfc68c9069232009f61bba170dbcf3edb05409fd6059960f59ad8b8b62f2",
+          "bytes": 5313,
+          "git_blob_sha1": "93b4cac21cef4a0dae42ae6b35bd9f9fb231450e",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/include__bmesh.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_advanced.rst",
+          "sha256": "fa04d4b67de7af82c215d90776cedee9dda18cf1175105dacb54f31b0cac66b1",
+          "bytes": 389,
+          "git_blob_sha1": "cae1e7117222397d0ff9f94dfe0f4c17e95c7d23",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_advanced.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_advanced_blender_as_bpy.rst",
+          "sha256": "b0650139575cd4cbcd9cb077b99cbe4f49db5b1a51cfbe5d538687e1490cbff0",
+          "bytes": 4665,
+          "git_blob_sha1": "d137edaa768588e96a205f289c4e6c65b1e16bd4",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_advanced_blender_as_bpy.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_api_reference.rst",
+          "sha256": "cd9fce4c4f0e3b16bfedc063f9f21f86df9c8014e7647bbb4b2a86d816e91836",
+          "bytes": 11337,
+          "git_blob_sha1": "9c6d53f450e42e13064bb41f363ac7c85515144b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_api_reference.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_best_practice.rst",
+          "sha256": "f4d46f34b57a63874f06ac6c796195fedaac45afe56adfbec51fed77d318153a",
+          "bytes": 10915,
+          "git_blob_sha1": "6fced46a813dcfac14af0d8bbae9498eed99acb9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_best_practice.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_contributing.rst",
+          "sha256": "9d892ed4057fbc16cfb666bf9411eccbf4b19c1f5d17759c9a49d48d36b86c6a",
+          "bytes": 5953,
+          "git_blob_sha1": "aa2d49ca22f29775ef6e57fd15d273d63529c831",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_contributing.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotcha.rst",
+          "sha256": "57fa6f8794142dfde259969ff9a2ddb97446f35005b8f856334071efe8ee5e0a",
+          "bytes": 461,
+          "git_blob_sha1": "84afb9f048eaa2d187bf6b12874299fae79dc644",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotcha.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_armatures_and_bones.rst",
+          "sha256": "e02da6d61c9eb3190dcb840223d07803c4fba07145293bc1f8458599beec55e4",
+          "bytes": 3251,
+          "git_blob_sha1": "7f4710ffd97ad59b9e399704571afcd69522475b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_armatures_and_bones.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_crashes.rst",
+          "sha256": "b77b631a966d5a02fb06448e46274b4eaf539d14db6dc2c36136e1dd6c13ed0d",
+          "bytes": 12003,
+          "git_blob_sha1": "ebb76132f8704517e6ec98a5146709862f55605b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_crashes.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_file_paths_and_encoding.rst",
+          "sha256": "8af0b4281ad3e904f9a1e21173b12e9203e09f778f2dfa9e06b8c8a10cca05ee",
+          "bytes": 3225,
+          "git_blob_sha1": "2539de0acea29fc09fa100fd5bc8a8a84ba68562",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_file_paths_and_encoding.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_internal_data_and_python_objects.rst",
+          "sha256": "cd97295f0ea4997f916d4ec90d7ee8c005385844b3c2bc8f1dc6f0e2e8eee6a7",
+          "bytes": 8708,
+          "git_blob_sha1": "a3f832287df81462c3b61959629d30f98bc5a397",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_internal_data_and_python_objects.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_meshes.rst",
+          "sha256": "ce97f9acd857f3b0f5b6fd1dd41732e034c6a8e2464b663fc3aa1b60a4560fbc",
+          "bytes": 4198,
+          "git_blob_sha1": "d92f3ef132eb85c9b4d57dd8bee4d300c9f83910",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_meshes.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_operators.rst",
+          "sha256": "047bf92610eaf5061d81cc64eb50213317f38f32e232c90faea82b6c4ca8c37d",
+          "bytes": 3338,
+          "git_blob_sha1": "82006541e6292f8b8de7e1d0d946863e734675b3",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_operators.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_gotchas_threading.rst",
+          "sha256": "f2a4964f20b5529e01003f1ec9be551f294764d4aa596752908a94470c63022b",
+          "bytes": 2760,
+          "git_blob_sha1": "e733fd0a4ded91a9c94730f88ad61a1d0e6ac1d9",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_gotchas_threading.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_overview.rst",
+          "sha256": "30a085b2329dd64a433713975bdd640bff5bad7dc855e37d98f5749738ba18a2",
+          "bytes": 17984,
+          "git_blob_sha1": "c9f7c02a96e0bcd00276212fec3be051af062883",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_overview.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_quickstart.rst",
+          "sha256": "ed66db78f0f8e383f9882e19439be596d415b9012b6c296df7d68cffea456c88",
+          "bytes": 15695,
+          "git_blob_sha1": "a87e4d55342c8b13d1534f8563d00718adc64fdc",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_quickstart.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst/info_tips_and_tricks.rst",
+          "sha256": "db64bcb1f91e86667149d5d1573fc06127a9960759c09ecb2574d46e81797e30",
+          "bytes": 10822,
+          "git_blob_sha1": "735b2cc2ff8885befd1cdc378d3278ce1e07deff",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst/info_tips_and_tricks.rst"
+        },
+        {
+          "upstream_path": "doc/python_api/rst_from_bmesh_opdefines.py",
+          "sha256": "9e5f80578bc079522c60226da6d8d43c069c3d0c634d30cb76226083fbd50eb6",
+          "bytes": 16210,
+          "git_blob_sha1": "9a66e3d568d346dada7e2636fbea020ac0cdb89a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/rst_from_bmesh_opdefines.py"
+        },
+        {
+          "upstream_path": "doc/python_api/sphinx_changelog_gen.py",
+          "sha256": "09370b0e349d8b6084d0b4ff3bea363104c1c6b7597ee98cdded3dea4741cc96",
+          "bytes": 17164,
+          "git_blob_sha1": "f2c8ff38e18246adaa893a4c9ba3854c60e1ec66",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/sphinx_changelog_gen.py"
+        },
+        {
+          "upstream_path": "doc/python_api/sphinx_doc_gen.py",
+          "sha256": "d9407280840183e6c2beedebabe333fa336be496044135ae8dbf3dec841b01f7",
+          "bytes": 138164,
+          "git_blob_sha1": "645aa6e8d14e655efa014321594c330d596eaad3",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/sphinx_doc_gen.py"
+        },
+        {
+          "upstream_path": "doc/python_api/sphinx_doc_gen_monkeypatch.py",
+          "sha256": "3314cee8f6e5e49ce98e456ba42dc7e471f37de8a1235f269ba171cd4bde3973",
+          "bytes": 729,
+          "git_blob_sha1": "7c372a7ec10c75aa252d639bd607575f03ca6a3a",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/sphinx_doc_gen_monkeypatch.py"
+        },
+        {
+          "upstream_path": "doc/python_api/sphinx_stub_gen.py",
+          "sha256": "ec36984c45e278abfd9a5dee89afc2b78ffe04218f798b18145a8cab0e100417",
+          "bytes": 68937,
+          "git_blob_sha1": "0115efb21419bfbd198c8a97ced99d1482a0c26f",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/sphinx_stub_gen.py"
+        },
+        {
+          "upstream_path": "doc/python_api/sphinx_stub_validate.py",
+          "sha256": "07047d0ebdc69adbd41e60b89a35dc710636c9a521a4935890e5adf1b3ec6e17",
+          "bytes": 7332,
+          "git_blob_sha1": "401f6d9178fc4327a13c57bbdc27272524f209d3",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/sphinx_stub_validate.py"
+        },
+        {
+          "upstream_path": "doc/python_api/static/blender_logo.svg",
+          "sha256": "96e7f9d1d729cc88a0147889e821c6d1f7da21e51fb3771f9811ed6d477a3b64",
+          "bytes": 10519,
+          "git_blob_sha1": "bbf446c9becb5c6c0b172ca94582f746abf1afdb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/static/blender_logo.svg"
+        },
+        {
+          "upstream_path": "doc/python_api/static/css/theme_overrides.css",
+          "sha256": "ee059f357b27ab5877d5dcd54506b84bb1f87c730bcc9702a0a81be2cb04679e",
+          "bytes": 6486,
+          "git_blob_sha1": "270082a813e3396023c98c1e717951160d0539d6",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/static/css/theme_overrides.css"
+        },
+        {
+          "upstream_path": "doc/python_api/static/css/version_switch.css",
+          "sha256": "aaa914304a66234708f153438da4e1d740897d72378c9ab3c0acea8e52e5ae50",
+          "bytes": 2182,
+          "git_blob_sha1": "b001a1a2ce72f5fbf326a93566d2d2a80aa188cf",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/static/css/version_switch.css"
+        },
+        {
+          "upstream_path": "doc/python_api/static/favicon.png",
+          "sha256": "938b8a8d4ab008d25ccf3cc77116eab43c49efc54f6248afce54520f8e85e2af",
+          "bytes": 5703,
+          "git_blob_sha1": "aaafdb87ed133f2a97a17ada88cbf8587f19b1fc",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/static/favicon.png",
+          "lfs_pointer": {
+            "text": "version https://git-lfs.github.com/spec/v1\noid sha256:938b8a8d4ab008d25ccf3cc77116eab43c49efc54f6248afce54520f8e85e2af\nsize 5703\n",
+            "bytes": 129,
+            "sha256": "8229983e9ca357339beb4467c43cff57e83d28e4cab67c945bbc2efa72d78d72",
+            "git_blob_sha1": "aaafdb87ed133f2a97a17ada88cbf8587f19b1fc"
+          },
+          "lfs_object": {
+            "oid": "sha256:938b8a8d4ab008d25ccf3cc77116eab43c49efc54f6248afce54520f8e85e2af",
+            "sha256": "938b8a8d4ab008d25ccf3cc77116eab43c49efc54f6248afce54520f8e85e2af",
+            "bytes": 5703
+          },
+          "lfs_batch_url": "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
+        },
+        {
+          "upstream_path": "doc/python_api/static/js/version_switch.js",
+          "sha256": "4369ae64813d560654ddab13d39c88f1f0b6420e0e5d1d970435c76680bb7285",
+          "bytes": 9384,
+          "git_blob_sha1": "c00253bfe733ddbfebb618fa7bdb0fad9d9a9c8d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/static/js/version_switch.js"
+        },
+        {
+          "upstream_path": "doc/python_api/templates/base.html",
+          "sha256": "fdc829eb259719f651409082bb795e68a489ca78d5502303de3d21e3aaad4486",
+          "bytes": 193,
+          "git_blob_sha1": "5fb72406236a2b3cf33b2a49d35d7c2e67f4649c",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/templates/base.html"
+        },
+        {
+          "upstream_path": "doc/python_api/templates/components/footer_contribute.html",
+          "sha256": "6497948f861a39372eac27506da027ad3bc298d58df45e0ec7322169f53caadd",
+          "bytes": 889,
+          "git_blob_sha1": "3f6ea8cb78feb921c3507f8bda6f1b3c9d7c67ca",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/templates/components/footer_contribute.html"
+        },
+        {
+          "upstream_path": "doc/python_api/templates/page.html",
+          "sha256": "798846adf9d5dbd9c271c8392dd2446a988ab853689d983e910c6b97ff74232f",
+          "bytes": 141,
+          "git_blob_sha1": "aeddec2f1c702bc3fdd95368be6dd8c823fbe382",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/templates/page.html"
+        },
+        {
+          "upstream_path": "doc/python_api/templates/sidebar/variant-selector.html",
+          "sha256": "bc9d5e0f5659262f0b1e99e99e77bb61250925a8d564a04ed651f090ab0ce98b",
+          "bytes": 1280,
+          "git_blob_sha1": "3bac5f9530662953e7dbe5f44441445cc022b2fc",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/doc/python_api/templates/sidebar/variant-selector.html"
+        },
+        {
+          "upstream_path": "scripts/templates_py/Gizmo/operator.py",
+          "sha256": "6dcaa5708a69b0d70a5f29170e30b10f31c121e041a444bae093a1c041503de4",
+          "bytes": 6364,
+          "git_blob_sha1": "75595b0c5eaccc17c31d1216025247a842272668",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/Gizmo/operator.py"
+        },
+        {
+          "upstream_path": "scripts/templates_py/Gizmo/operator_target.py",
+          "sha256": "1c6c1c7c9b4080ebfbfc27c164c1e84064808e6d5c583867817240f87786ae98",
+          "bytes": 1345,
+          "git_blob_sha1": "30126763daf0fbac4cd4f2c09b5534e29cab798b",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/Gizmo/operator_target.py"
+        },
+        {
+          "upstream_path": "scripts/templates_py/Gizmo/simple_3d.py",
+          "sha256": "f12045912cc5010168c7663411333fe80fab485ce12a4360b33f33bcafa8f21e",
+          "bytes": 1266,
+          "git_blob_sha1": "1608a7bcd0d139c2d189e9dab758767bcb688aeb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/Gizmo/simple_3d.py"
+        },
+        {
+          "upstream_path": "scripts/templates_py/Operator/simple.py",
+          "sha256": "1f1bc80d8cca197a53e084ef03a741c5514b7bb6be46e315c1fe3368d0a5f1ac",
+          "bytes": 964,
+          "git_blob_sha1": "fb1a19b41305892d3194f121747e1e1bffa8ab33",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/Operator/simple.py"
+        },
+        {
+          "upstream_path": "scripts/templates_py/UI/panel_simple.py",
+          "sha256": "1c0659c0259fe5e4301186edb35ca3b54271bbbac085d9367313d52d76020a3d",
+          "bytes": 837,
+          "git_blob_sha1": "9bcc750560fa902896e4e6b386742b29ab3d419d",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/UI/panel_simple.py"
+        },
+        {
+          "upstream_path": "scripts/templates_py/UI/previews_custom_icon.py",
+          "sha256": "aa44c1ff2fe6de9f449aa2743f4ebb1bf4c24dbe4b39c70d6b8bc0787fbca62f",
+          "bytes": 2354,
+          "git_blob_sha1": "b5a7a795fb7d21f64d5db375bbb2c1a31feda032",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/UI/previews_custom_icon.py"
+        },
+        {
+          "upstream_path": "scripts/templates_py/bmesh_simple.py",
+          "sha256": "82dd8e2bb9d687c0287fbb2afb25899ba5bc298146dee381b7161e8d71f3669f",
+          "bytes": 440,
+          "git_blob_sha1": "45e6b52d578bc6937e37331033963ca3cdb1da27",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/scripts/templates_py/bmesh_simple.py"
+        },
+        {
+          "upstream_path": "source/blender/bmesh/intern/bmesh_opdefines.cc",
+          "sha256": "6452b85accdb60ee4f3db1369970779cdc91a81f6ea7ce751289637c410023da",
+          "bytes": 89454,
+          "git_blob_sha1": "2b1e4cb1e1230a66add16d9784c8de4f8f0b8afb",
+          "upstream_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/source/blender/bmesh/intern/bmesh_opdefines.cc"
+        }
+      ]
+    }
+  ],
+  "resource_requirements": {
+    "docutils": "0.22.4",
+    "source": "doc/python_api/requirements.txt"
+  }
+}

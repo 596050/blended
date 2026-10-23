@@ -1,0 +1,281 @@
+Setting up EMSDK environment (suppress these messages with EMSDK_QUIET=1)
+Adding directories to PATH:
+PATH += /home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk
+
+Setting environment variables:
+PATH = /home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk:/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten:/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/node/22.16.0_64bit/bin:/home/runner/work/blended/blended/.cache/browser-source/build-shims:/opt/hostedtoolcache/Python/3.13.13/x64/bin:/opt/hostedtoolcache/Python/3.13.13/x64:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+Clearing existing environment variable: EM_CACHE
+Clearing existing environment variable: EMSDK_PYTHON
+Clearing existing environment variable: EM_CONFIG
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 4195k  100 4195k    0     0  41.3M      0 --:--:-- --:--:-- --:--:-- 41.3M
+emcmake: cmake -S /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/webp/libwebp-1.6.0 -B /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/webp/build -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_PREFIX_PATH=/home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm -DBUILD_SHARED_LIBS=OFF '-DCMAKE_C_FLAGS=-pthread -fexceptions' '-DCMAKE_CXX_FLAGS=-pthread -fexceptions' -DWEBP_ENABLE_SIMD=OFF -DWEBP_USE_THREAD=ON -DWEBP_BUILD_LIBWEBPMUX=ON -DWEBP_BUILD_WEBP_JS=OFF -DWEBP_BUILD_ANIM_UTILS=OFF -DWEBP_BUILD_CWEBP=OFF -DWEBP_BUILD_DWEBP=OFF -DWEBP_BUILD_GIF2WEBP=OFF -DWEBP_BUILD_IMG2WEBP=OFF -DWEBP_BUILD_VWEBP=OFF -DWEBP_BUILD_WEBPINFO=OFF -DWEBP_BUILD_WEBPMUX=OFF -DWEBP_BUILD_EXTRAS=OFF -DWEBP_BUILD_FUZZTEST=OFF -DCMAKE_TOOLCHAIN_FILE=/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/runner/work/blended/blended/.cache/browser-source/gessa/tools/emsdk/node/22.16.0_64bit/bin/node in directory /home/runner/work/blended/blended/.cache/browser-source/gessa
+-- Performing Test HAVE_BUILTIN_BSWAP16
+-- Performing Test HAVE_BUILTIN_BSWAP16 - Success
+-- Performing Test HAVE_BUILTIN_BSWAP32
+-- Performing Test HAVE_BUILTIN_BSWAP32 - Success
+-- Performing Test HAVE_BUILTIN_BSWAP64
+-- Performing Test HAVE_BUILTIN_BSWAP64 - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Performing Test HAVE_MATH_LIBRARY
+-- Performing Test HAVE_MATH_LIBRARY - Success
+-- Looking for include file GLUT/glut.h
+-- Looking for include file GLUT/glut.h - not found
+-- Looking for include file GL/glut.h
+-- Looking for include file GL/glut.h - found
+-- Looking for include file OpenGL/glut.h
+-- Looking for include file OpenGL/glut.h - not found
+-- Looking for include file shlwapi.h
+-- Looking for include file shlwapi.h - not found
+-- Looking for include file unistd.h
+-- Looking for include file unistd.h - found
+-- Looking for include file wincodec.h
+-- Looking for include file wincodec.h - not found
+-- Looking for include file windows.h
+-- Looking for include file windows.h - not found
+-- Disabling AVX2 optimization.
+-- Disabling AVX2 optimization.
+-- Performing Test HAS_COMPILE_FLAG
+-- Performing Test HAS_COMPILE_FLAG - Failed
+-- Disabling SSE41 optimization.
+-- Disabling SSE41 optimization.
+-- Performing Test HAS_COMPILE_FLAG
+-- Performing Test HAS_COMPILE_FLAG - Failed
+-- Configuring done (10.5s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_FLAGS
+
+
+-- Build files have been written to: /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/webp/build
+emmake: "cmake --build /home/runner/work/blended/blended/.cache/browser-source/gessa/build-deps/webp/build --target install --parallel 2" in "/home/runner/work/blended/blended/.cache/browser-source/gessa"
+[  1%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv_sse2.c.o
+[  2%] Building C object CMakeFiles/webpdecode.dir/src/dec/alpha_dec.c.o
+[  2%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv_neon.c.o
+[  2%] Building C object CMakeFiles/webpdecode.dir/src/dec/buffer_dec.c.o
+[  3%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv_cpu.c.o
+[  4%] Building C object CMakeFiles/webpdecode.dir/src/dec/frame_dec.c.o
+[  4%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv_csp.c.o
+[  5%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv_dsp.c.o
+[  5%] Building C object CMakeFiles/webpdecode.dir/src/dec/idec_dec.c.o
+[  5%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv_gamma.c.o
+[  6%] Building C object CMakeFiles/webpdecode.dir/src/dec/io_dec.c.o
+[  7%] Building C object CMakeFiles/sharpyuv.dir/sharpyuv/sharpyuv.c.o
+[  7%] Building C object CMakeFiles/webpdecode.dir/src/dec/quant_dec.c.o
+[  8%] Linking C static library libsharpyuv.a
+[  9%] Building C object CMakeFiles/webpdecode.dir/src/dec/tree_dec.c.o
+[  9%] Built target sharpyuv
+[  9%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/alpha_processing.c.o
+[ 10%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/cpu.c.o
+[ 10%] Building C object CMakeFiles/webpdecode.dir/src/dec/vp8_dec.c.o
+[ 10%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec.c.o
+[ 11%] Building C object CMakeFiles/webpdecode.dir/src/dec/vp8l_dec.c.o
+[ 12%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_clip_tables.c.o
+[ 12%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/filters.c.o
+[ 13%] Building C object CMakeFiles/webpdecode.dir/src/dec/webp_dec.c.o
+[ 14%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless.c.o
+[ 14%] Built target webpdecode
+[ 15%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/bit_reader_utils.c.o
+[ 15%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/color_cache_utils.c.o
+[ 15%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/rescaler.c.o
+[ 16%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/filters_utils.c.o
+[ 17%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/upsampling.c.o
+[ 17%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/huffman_utils.c.o
+[ 18%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/palette.c.o
+[ 18%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/yuv.c.o
+[ 18%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/quant_levels_dec_utils.c.o
+[ 19%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/rescaler_utils.c.o
+[ 20%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless_avx2.c.o
+[ 20%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/random_utils.c.o
+[ 21%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/alpha_processing_sse41.c.o
+[ 22%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/thread_utils.c.o
+[ 22%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_sse41.c.o
+[ 23%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless_sse41.c.o
+[ 24%] Building C object CMakeFiles/webputilsdecode.dir/src/utils/utils.c.o
+[ 24%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/upsampling_sse41.c.o
+[ 24%] Built target webputilsdecode
+[ 24%] Building C object CMakeFiles/webpencode.dir/src/enc/alpha_enc.c.o
+[ 25%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/yuv_sse41.c.o
+[ 26%] Building C object CMakeFiles/webpencode.dir/src/enc/analysis_enc.c.o
+[ 26%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/alpha_processing_sse2.c.o
+[ 27%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_sse2.c.o
+[ 27%] Building C object CMakeFiles/webpencode.dir/src/enc/backward_references_cost_enc.c.o
+[ 27%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/filters_sse2.c.o
+[ 28%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless_sse2.c.o
+[ 29%] Building C object CMakeFiles/webpencode.dir/src/enc/backward_references_enc.c.o
+[ 29%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/rescaler_sse2.c.o
+[ 30%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/upsampling_sse2.c.o
+[ 31%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/yuv_sse2.c.o
+[ 31%] Building C object CMakeFiles/webpencode.dir/src/enc/config_enc.c.o
+[ 31%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/alpha_processing_neon.c.o
+[ 32%] Building C object CMakeFiles/webpencode.dir/src/enc/cost_enc.c.o
+[ 33%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_neon.c.o
+[ 33%] Building C object CMakeFiles/webpencode.dir/src/enc/filter_enc.c.o
+[ 33%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/filters_neon.c.o
+[ 34%] Building C object CMakeFiles/webpencode.dir/src/enc/frame_enc.c.o
+[ 35%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless_neon.c.o
+[ 35%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/rescaler_neon.c.o
+[ 35%] Building C object CMakeFiles/webpencode.dir/src/enc/histogram_enc.c.o
+[ 36%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/upsampling_neon.c.o
+[ 36%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/yuv_neon.c.o
+[ 37%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_msa.c.o
+[ 38%] Building C object CMakeFiles/webpencode.dir/src/enc/iterator_enc.c.o
+[ 38%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/filters_msa.c.o
+[ 38%] Building C object CMakeFiles/webpencode.dir/src/enc/near_lossless_enc.c.o
+[ 39%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless_msa.c.o
+[ 40%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/rescaler_msa.c.o
+[ 41%] Building C object CMakeFiles/webpencode.dir/src/enc/picture_enc.c.o
+[ 41%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/upsampling_msa.c.o
+[ 42%] Building C object CMakeFiles/webpencode.dir/src/enc/picture_csp_enc.c.o
+[ 43%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_mips32.c.o
+[ 43%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/rescaler_mips32.c.o
+[ 43%] Building C object CMakeFiles/webpencode.dir/src/enc/picture_psnr_enc.c.o
+[ 44%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/yuv_mips32.c.o
+[ 45%] Building C object CMakeFiles/webpencode.dir/src/enc/picture_rescale_enc.c.o
+[ 45%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/alpha_processing_mips_dsp_r2.c.o
+[ 46%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/dec_mips_dsp_r2.c.o
+[ 46%] Building C object CMakeFiles/webpencode.dir/src/enc/picture_tools_enc.c.o
+[ 46%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/filters_mips_dsp_r2.c.o
+[ 47%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/lossless_mips_dsp_r2.c.o
+[ 48%] Building C object CMakeFiles/webpencode.dir/src/enc/predictor_enc.c.o
+[ 48%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/rescaler_mips_dsp_r2.c.o
+[ 49%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/upsampling_mips_dsp_r2.c.o
+[ 49%] Building C object CMakeFiles/webpencode.dir/src/enc/quant_enc.c.o
+[ 50%] Building C object CMakeFiles/webpdspdecode.dir/src/dsp/yuv_mips_dsp_r2.c.o
+[ 50%] Built target webpdspdecode
+[ 50%] Building C object CMakeFiles/webpdsp.dir/src/dsp/alpha_processing.c.o
+[ 51%] Building C object CMakeFiles/webpdsp.dir/src/dsp/cpu.c.o
+[ 51%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec.c.o
+[ 52%] Building C object CMakeFiles/webpencode.dir/src/enc/syntax_enc.c.o
+[ 53%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_clip_tables.c.o
+[ 53%] Building C object CMakeFiles/webpencode.dir/src/enc/token_enc.c.o
+[ 53%] Building C object CMakeFiles/webpdsp.dir/src/dsp/filters.c.o
+[ 54%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless.c.o
+[ 55%] Building C object CMakeFiles/webpencode.dir/src/enc/tree_enc.c.o
+[ 56%] Building C object CMakeFiles/webpdsp.dir/src/dsp/rescaler.c.o
+[ 56%] Building C object CMakeFiles/webpdsp.dir/src/dsp/upsampling.c.o
+[ 56%] Building C object CMakeFiles/webpencode.dir/src/enc/vp8l_enc.c.o
+[ 57%] Building C object CMakeFiles/webpdsp.dir/src/dsp/yuv.c.o
+[ 57%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_avx2.c.o
+[ 58%] Building C object CMakeFiles/webpdsp.dir/src/dsp/alpha_processing_sse41.c.o
+[ 58%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_sse41.c.o
+[ 59%] Building C object CMakeFiles/webpencode.dir/src/enc/webp_enc.c.o
+[ 60%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_sse41.c.o
+[ 60%] Built target webpencode
+[ 61%] Building C object CMakeFiles/webputils.dir/src/utils/bit_reader_utils.c.o
+[ 61%] Building C object CMakeFiles/webpdsp.dir/src/dsp/upsampling_sse41.c.o
+[ 61%] Building C object CMakeFiles/webputils.dir/src/utils/color_cache_utils.c.o
+[ 62%] Building C object CMakeFiles/webpdsp.dir/src/dsp/yuv_sse41.c.o
+[ 63%] Building C object CMakeFiles/webputils.dir/src/utils/filters_utils.c.o
+[ 63%] Building C object CMakeFiles/webpdsp.dir/src/dsp/alpha_processing_sse2.c.o
+[ 63%] Building C object CMakeFiles/webputils.dir/src/utils/huffman_utils.c.o
+[ 64%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_sse2.c.o
+[ 65%] Building C object CMakeFiles/webputils.dir/src/utils/palette.c.o
+[ 66%] Building C object CMakeFiles/webpdsp.dir/src/dsp/filters_sse2.c.o
+[ 66%] Building C object CMakeFiles/webputils.dir/src/utils/quant_levels_dec_utils.c.o
+[ 66%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_sse2.c.o
+[ 67%] Building C object CMakeFiles/webpdsp.dir/src/dsp/rescaler_sse2.c.o
+[ 68%] Building C object CMakeFiles/webputils.dir/src/utils/rescaler_utils.c.o
+[ 68%] Building C object CMakeFiles/webputils.dir/src/utils/random_utils.c.o
+[ 68%] Building C object CMakeFiles/webpdsp.dir/src/dsp/upsampling_sse2.c.o
+[ 70%] Building C object CMakeFiles/webputils.dir/src/utils/thread_utils.c.o
+[ 70%] Building C object CMakeFiles/webpdsp.dir/src/dsp/yuv_sse2.c.o
+[ 70%] Building C object CMakeFiles/webputils.dir/src/utils/utils.c.o
+[ 70%] Building C object CMakeFiles/webpdsp.dir/src/dsp/alpha_processing_neon.c.o
+[ 72%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_neon.c.o
+[ 72%] Building C object CMakeFiles/webputils.dir/src/utils/bit_writer_utils.c.o
+[ 72%] Building C object CMakeFiles/webpdsp.dir/src/dsp/filters_neon.c.o
+[ 73%] Building C object CMakeFiles/webputils.dir/src/utils/huffman_encode_utils.c.o
+[ 74%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_neon.c.o
+[ 74%] Building C object CMakeFiles/webpdsp.dir/src/dsp/rescaler_neon.c.o
+[ 74%] Building C object CMakeFiles/webputils.dir/src/utils/quant_levels_utils.c.o
+[ 75%] Building C object CMakeFiles/webpdsp.dir/src/dsp/upsampling_neon.c.o
+[ 75%] Building C object CMakeFiles/webpdsp.dir/src/dsp/yuv_neon.c.o
+[ 75%] Built target webputils
+[ 76%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_msa.c.o
+[ 77%] Building C object CMakeFiles/webpdsp.dir/src/dsp/filters_msa.c.o
+[ 77%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_msa.c.o
+[ 78%] Building C object CMakeFiles/webpdsp.dir/src/dsp/rescaler_msa.c.o
+[ 78%] Building C object CMakeFiles/webpdsp.dir/src/dsp/upsampling_msa.c.o
+[ 79%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_mips32.c.o
+[ 79%] Building C object CMakeFiles/webpdsp.dir/src/dsp/rescaler_mips32.c.o
+[ 80%] Building C object CMakeFiles/webpdsp.dir/src/dsp/yuv_mips32.c.o
+[ 80%] Building C object CMakeFiles/webpdsp.dir/src/dsp/alpha_processing_mips_dsp_r2.c.o
+[ 81%] Building C object CMakeFiles/webpdsp.dir/src/dsp/dec_mips_dsp_r2.c.o
+[ 81%] Building C object CMakeFiles/webpdsp.dir/src/dsp/filters_mips_dsp_r2.c.o
+[ 82%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_mips_dsp_r2.c.o
+[ 83%] Building C object CMakeFiles/webpdsp.dir/src/dsp/rescaler_mips_dsp_r2.c.o
+[ 83%] Building C object CMakeFiles/webpdsp.dir/src/dsp/upsampling_mips_dsp_r2.c.o
+[ 84%] Building C object CMakeFiles/webpdsp.dir/src/dsp/yuv_mips_dsp_r2.c.o
+[ 84%] Building C object CMakeFiles/webpdsp.dir/src/dsp/cost.c.o
+[ 85%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc.c.o
+[ 85%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc.c.o
+[ 86%] Building C object CMakeFiles/webpdsp.dir/src/dsp/ssim.c.o
+[ 86%] Linking C static library libwebpdecoder.a
+[ 86%] Building C object CMakeFiles/webpdsp.dir/src/dsp/cost_sse2.c.o
+[ 86%] Built target webpdecoder
+[ 87%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc_sse2.c.o
+[ 87%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_sse2.c.o
+[ 88%] Building C object CMakeFiles/webpdsp.dir/src/dsp/ssim_sse2.c.o
+[ 89%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc_sse41.c.o
+[ 89%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_sse41.c.o
+[ 90%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_avx2.c.o
+[ 90%] Building C object CMakeFiles/webpdsp.dir/src/dsp/cost_neon.c.o
+[ 91%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc_neon.c.o
+[ 91%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_neon.c.o
+[ 92%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc_msa.c.o
+[ 92%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_msa.c.o
+[ 93%] Building C object CMakeFiles/webpdsp.dir/src/dsp/cost_mips32.c.o
+[ 93%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc_mips32.c.o
+[ 94%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_mips32.c.o
+[ 95%] Building C object CMakeFiles/webpdsp.dir/src/dsp/cost_mips_dsp_r2.c.o
+[ 95%] Building C object CMakeFiles/webpdsp.dir/src/dsp/enc_mips_dsp_r2.c.o
+[ 96%] Building C object CMakeFiles/webpdsp.dir/src/dsp/lossless_enc_mips_dsp_r2.c.o
+[ 96%] Built target webpdsp
+[ 96%] Linking C static library libwebp.a
+[ 96%] Built target webp
+[ 97%] Building C object CMakeFiles/webpdemux.dir/src/demux/anim_decode.c.o
+[ 97%] Building C object CMakeFiles/libwebpmux.dir/src/mux/anim_encode.c.o
+[ 97%] Building C object CMakeFiles/webpdemux.dir/src/demux/demux.c.o
+[ 98%] Building C object CMakeFiles/libwebpmux.dir/src/mux/muxedit.c.o
+[ 99%] Linking C static library libwebpdemux.a
+[ 99%] Built target webpdemux
+[ 99%] Building C object CMakeFiles/libwebpmux.dir/src/mux/muxinternal.c.o
+[100%] Building C object CMakeFiles/libwebpmux.dir/src/mux/muxread.c.o
+[100%] Linking C static library libwebpmux.a
+[100%] Built target libwebpmux
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/pkgconfig/libsharpyuv.pc
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/libsharpyuv.a
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/sharpyuv/sharpyuv.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/sharpyuv/sharpyuv_csp.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/pkgconfig/libwebpdecoder.pc
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/pkgconfig/libwebp.pc
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/pkgconfig/libwebpdemux.pc
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/pkgconfig/libwebpmux.pc
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/libwebpdecoder.a
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/decode.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/types.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/libwebp.a
+-- Up-to-date: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/decode.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/encode.h
+-- Up-to-date: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/types.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/libwebpdemux.a
+-- Up-to-date: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/decode.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/demux.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/mux_types.h
+-- Up-to-date: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/types.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/lib/libwebpmux.a
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/mux.h
+-- Up-to-date: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/mux_types.h
+-- Up-to-date: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/include/webp/types.h
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/share/WebP/cmake/WebPTargets.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/share/WebP/cmake/WebPTargets-release.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/share/WebP/cmake/WebPConfigVersion.cmake
+-- Installing: /home/runner/work/blended/blended/.cache/browser-source/gessa/lib/wasm/share/WebP/cmake/WebPConfig.cmake

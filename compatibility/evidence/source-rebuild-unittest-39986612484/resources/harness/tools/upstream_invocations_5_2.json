@@ -1,0 +1,1736 @@
+{
+  "schema": 1,
+  "kind": "checksum-bound-original-cmake-declarations",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "configured_ctest_inventory": false,
+  "sources": [
+    {
+      "upstream_path": "tests/CMakeLists.txt",
+      "bytes": 5871,
+      "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c",
+      "text": "# SPDX-FileCopyrightText: 2014-2023 Blender Authors\n#\n# SPDX-License-Identifier: GPL-2.0-or-later\n\n# Always run tests from install path, so all required scripts and libraries\n# are available and we are testing the actual installation layout.\n#\n# Getting the install path of the executable is somewhat involved, as there are\n# no direct CMake generator expressions to get the install paths of executables.\nset(TEST_INSTALL_DIR ${CMAKE_INSTALL_PREFIX_WITH_CONFIG})\n\n# Path to Blender and Python executables for all platforms.\nif(MSVC)\n  set(TEST_BLENDER_EXE ${TEST_INSTALL_DIR}/blender.exe)\nelseif(APPLE)\n  set(TEST_BLENDER_EXE ${TEST_INSTALL_DIR}/Blender.app/Contents/MacOS/Blender)\nelse()\n  if(WITH_INSTALL_PORTABLE)\n    set(TEST_BLENDER_EXE ${TEST_INSTALL_DIR}/blender)\n  else()\n    set(TEST_BLENDER_EXE ${TEST_INSTALL_DIR}/bin/blender)\n  endif()\nendif()\n\n# The installation directory's Python is the best one to use. However, it can only be there\n# after the install step, which means that Python will never be there on a fresh system.\n# To suit different needs, the user can pass `-DTEST_PYTHON_EXE=/path/to/python` to CMake.\nif(NOT TEST_PYTHON_EXE)\n  set(TEST_PYTHON_EXE ${PYTHON_EXECUTABLE})\n  if(FIRST_RUN)\n    message(STATUS \"Tests: Using Python executable: ${TEST_PYTHON_EXE}\")\n  endif()\nelseif(NOT EXISTS ${TEST_PYTHON_EXE})\n  message(FATAL_ERROR \"Tests: TEST_PYTHON_EXE ${TEST_PYTHON_EXE} does not exist\")\nendif()\n\n\n# Include these arguments before all others, they must not interfere with Python execution.\nset(TEST_PYTHON_EXE_EXTRA_ARGS \"\")\n\n# Check if this a Blender managed Python installation, if so, don't add `*.pyc` files.\nif(DEFINED LIBDIR)\n  cmake_path(IS_PREFIX LIBDIR \"${TEST_PYTHON_EXE}\" NORMALIZE _is_prefix)\n  if(_is_prefix)\n    # Keep the Python in Blender's SVN LIBDIR pristine, to avoid conflicts on updating.\n    set(TEST_PYTHON_EXE_EXTRA_ARGS \"-B\")\n  endif()\n  unset(_is_prefix)\nendif()\n\n# For testing with Valgrind\n# set(TEST_BLENDER_EXE valgrind --track-origins=yes --error-limit=no ${TEST_BLENDER_EXE})\n\n# Standard Blender arguments for running tests.\n# Specify exit code so that if a Python script error happens, the test fails.\nset(TEST_BLENDER_EXE_PARAMS\n  --background\n  --console-crash-handler\n  --factory-startup\n  --debug-memory\n  --debug-exit-on-error\n  --python-exit-code 1\n)\n\n# The `TEST_BLENDER_EXE_PARAMS` list might be edited in some cases (see e.g. `add_blender_test_allow_error`).\n# This will break in case a parameter contains a `;` that should remain literal,\n# instead of being interpreted as a list item separator by CMake.\n# So this additional variable is always added after `TEST_BLENDER_EXE_PARAMS`, always as-is.\nset(TEST_BLENDER_EXE_PARAMS_NO_THUMB\n  # Python expression to disable thumbnails creation on blend-file saving.\n  --python-expr [=[import bpy\\;bpy.context.preferences.filepaths.file_preview_type='NONE']=]\n)\n\n# Python CTests\nif(WITH_BLENDER AND WITH_PYTHON AND NOT WITH_PYTHON_MODULE)\n  add_subdirectory(python)\nendif()\n\n# Blender as python module tests.\nif(WITH_PYTHON_MODULE)\n  add_subdirectory(blender_as_python_module)\nendif()\n\n# GTest\nadd_subdirectory(gtests)\n\nif(WITH_COMPILER_CODE_COVERAGE)\n  if(CMAKE_C_COMPILER_ID STREQUAL \"GNU\")\n    set(COVERAGE_SCRIPT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/coverage/coverage.py)\n\n    add_custom_target(coverage-report\n      ${PYTHON_EXECUTABLE} ${COVERAGE_SCRIPT_PATH} report --build-directory ${CMAKE_BINARY_DIR} --no-browser\n      USES_TERMINAL\n    )\n\n    add_custom_target(coverage-show\n      ${PYTHON_EXECUTABLE} ${COVERAGE_SCRIPT_PATH} report --build-directory ${CMAKE_BINARY_DIR}\n      USES_TERMINAL\n    )\n\n    add_custom_target(coverage-reset\n      ${PYTHON_EXECUTABLE} ${COVERAGE_SCRIPT_PATH} reset --build-directory ${CMAKE_BINARY_DIR}\n      USES_TERMINAL\n    )\n  elseif(CMAKE_C_COMPILER_ID MATCHES \"Clang\")\n    add_custom_target(coverage-reset\n      COMMAND ${CMAKE_COMMAND} -E\n        remove_directory ${COMPILER_CODE_COVERAGE_DATA_DIR}\n      USES_TERMINAL\n    )\n    add_custom_target(coverage-merge\n      COMMENT \"Merging code-coverage data.\"\n      BYPRODUCTS \"${COMPILER_CODE_COVERAGE_DATA_DIR}/blender.profdata\"\n      COMMAND \"${LLVM_PROFDATA}\"\n        merge\n        -sparse\n        ${COMPILER_CODE_COVERAGE_DATA_DIR}/raw/*.profraw\n        -o ${COMPILER_CODE_COVERAGE_DATA_DIR}/blender.profdata\n    )\n    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 18.1 OR\n       (CMAKE_C_COMPILER_ID MATCHES \"AppleClang\" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 17.0)\n      )\n      # Available clang on 18.1+ only, Apple's compiler doesn't map 1:1 to clang\n      # versions so on apple we check for version 17+ which maps to clang\n      # version 19.1.4, given this is somewhat unintuitive there is a handy table on\n      # https://en.wikipedia.org/wiki/Xcode#Xcode_15.0_-_(since_visionOS_support)_2\n      set(_cov_extra_args -show-directory-coverage)\n    endif()\n    add_custom_target(coverage-report\n      BYPRODUCTS \"${COMPILER_CODE_COVERAGE_DATA_DIR}/report/index.html\"\n      SOURCES \"${COMPILER_CODE_COVERAGE_DATA_DIR}/blender.profdata\"\n      COMMENT \"Generating code-coverage report.\"\n      COMMAND \"${LLVM_COV}\" show\n        -format=html\n        -show-instantiations=true\n        -show-line-counts-or-regions\n        ${_cov_extra_args}\n        -instr-profile=${COMPILER_CODE_COVERAGE_DATA_DIR}/blender.profdata\n        --output-dir=${COMPILER_CODE_COVERAGE_DATA_DIR}/report\n        $<TARGET_FILE:blender>\n      USES_TERMINAL\n    )\n    if(NOT WIN32)\n      set(_open_cmd \"open\")\n    endif()\n    add_custom_target(coverage-show\n      COMMENT \"Starting browser for ${COMPILER_CODE_COVERAGE_DATA_DIR}/report/index.html\"\n      COMMAND ${_open_cmd} \"${COMPILER_CODE_COVERAGE_DATA_DIR}/report/index.html\"\n      SOURCES \"${COMPILER_CODE_COVERAGE_DATA_DIR}/report/index.html\"\n    )\n    unset(_cov_extra_args)\n    unset(_open_cmd)\n  endif()\nendif()\n"
+    },
+    {
+      "upstream_path": "tests/python/CMakeLists.txt",
+      "bytes": 50161,
+      "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c",
+      "text": "# SPDX-FileCopyrightText: 2011-2023 Blender Authors\n#\n# SPDX-License-Identifier: GPL-2.0-or-later\n\n# Use '--write-blend=/tmp/test.blend' to view output\n\nset(TEST_SRC_DIR ${CMAKE_SOURCE_DIR}/tests/files)\nset(TEST_PYTHON_DIR ${CMAKE_SOURCE_DIR}/tests/python)\nset(TEST_OUT_DIR ${CMAKE_BINARY_DIR}/tests)\n\n# ugh, any better way to do this on testing only?\nfile(MAKE_DIRECTORY ${TEST_OUT_DIR})\nfile(MAKE_DIRECTORY ${TEST_OUT_DIR}/io_tests)\nfile(MAKE_DIRECTORY ${TEST_OUT_DIR}/blendfile_io)\n\n# Check which tests can be enabled.\nif(IS_DIRECTORY ${TEST_SRC_DIR}/render)\n  set(TEST_SRC_DIR_EXISTS TRUE)\n\n  if(OPENIMAGEIO_TOOL)\n    set(TEST_OPENIMAGEIO_TOOL_EXISTS TRUE)\n  else()\n    set(TEST_OPENIMAGEIO_TOOL_EXISTS FALSE)\n    message(STATUS \"Tests: Disabling render tests, missing oiiotool\")\n  endif()\nelse()\n  set(TEST_SRC_DIR_EXISTS FALSE)\n  message(STATUS \"Tests: Disabling most tests, no test data in ${TEST_SRC_DIR}\")\nendif()\n\nif(WITH_SYSTEM_PYTHON_TESTS)\n  if(NOT EXISTS \"${TEST_SYSTEM_PYTHON_EXE}\")\n    message(STATUS\n      \"Tests: Disabling 'System Python', no valid system python path, set TEST_SYSTEM_PYTHON_EXE.\"\n    )\n    set(WITH_SYSTEM_PYTHON_TESTS OFF)\n  endif()\nendif()\n\n# Run Blender command with parameters.\nfunction(add_blender_test_impl testname envvars_list exe)\n  add_test(\n    NAME ${testname}\n    COMMAND ${exe} ${ARGN}\n  )\n  blender_test_set_envvars(\"${testname}\" \"${envvars_list}\")\nendfunction()\n\nfunction(add_blender_test testname)\n  add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${TEST_BLENDER_EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )\nendfunction()\n\nfunction(add_blender_test_allow_error testname)\n  # Remove `--debug-exit-on-error` since errors are printed on e.g. meshes with\n  # invalid data or failed image loading, but sometimes we want to test those.\n  set(EXE_PARAMS ${TEST_BLENDER_EXE_PARAMS})\n  list(REMOVE_ITEM EXE_PARAMS --debug-exit-on-error)\n  add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )\nendfunction()\n\nif(WITH_UI_TESTS)\n  set(_blender_headless_env_vars \"BLENDER_BIN=${TEST_BLENDER_EXE}\")\n  if(WITH_UI_TESTS_HEADLESS)\n\n    # Currently only WAYLAND is supported, support for others may be added later.\n    # In this case none of the WESTON environment variables will be used.\n    if(WITH_GHOST_WAYLAND)\n      set(_weston_bin_in_libdir OFF)\n      if(DEFINED LIBDIR)\n        set(_weston_bin_default \"${LIBDIR}/wayland_weston/bin/weston\")\n      else()\n        set(_weston_bin_default \"weston\")\n      endif()\n      set(WESTON_BIN \"${_weston_bin_default}\" CACHE STRING \"\\\n  The location of weston, leave blank for the default location.\"\n      )\n      mark_as_advanced(WESTON_BIN)\n      if((DEFINED LIBDIR) AND (\"${WESTON_BIN}\" STREQUAL \"${_weston_bin_default}\"))\n        set(_weston_bin_in_libdir ON)\n      endif()\n\n      list(APPEND _blender_headless_env_vars\n        \"WESTON_BIN=${WESTON_BIN}\"\n      )\n\n      if(_weston_bin_in_libdir)\n        list(APPEND _blender_headless_env_vars\n          \"WAYLAND_ROOT_DIR=${LIBDIR}/wayland\"\n          \"WESTON_ROOT_DIR=${LIBDIR}/wayland_weston\"\n        )\n      endif()\n    endif()\n  else()\n    list(APPEND _blender_headless_env_vars\n      \"PASS_THROUGH=1\"\n    )\n  endif()\n  function(add_blender_test_ui_backend testname backend)\n    # Remove `--background`\n    set(EXE_PARAMS ${TEST_BLENDER_EXE_PARAMS})\n    list(REMOVE_ITEM EXE_PARAMS --background)\n    add_blender_test_impl(\n      \"${testname}\"\n      \"${_blender_headless_env_vars}\"\n      \"${TEST_PYTHON_EXE}\"\n      \"${CMAKE_SOURCE_DIR}/tests/utils/blender_headless.py\"\n      # NOTE: attempting to maximize the window causes problems with a headless `weston`,\n      # while this could be investigated, use windowed mode instead.\n      # Use a window size that balances software GPU rendering with enough room to use the UI.\n      --factory-startup\n      # Workaround for https://projects.blender.org/blender/blender/issues/154770.\n      --no-native-pixels\n      # No need for window frame with tests.\n      --no-window-frame\n      -p 0 0 800 600\n      --gpu-backend ${backend}\n      # Log operator calls at a debug level so it is easier to debug runs on the buildbot that fail\n      --log \"operator\" --log-level \"debug\"\n      \"${EXE_PARAMS}\"\n      \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n      \"${ARGN}\"\n    )\n  endfunction()\n  function(add_blender_test_ui testname)\n    if(WITH_OPENGL_BACKEND)\n      add_blender_test_ui_backend(\n        \"ui_opengl_${testname}\"\n        \"opengl\"\n        \"${ARGN}\"\n      )\n    endif()\n    if(WITH_METAL_BACKEND)\n      add_blender_test_ui_backend(\n        \"ui_metal_${testname}\"\n        \"metal\"\n        \"${ARGN}\"\n      )\n    endif()\n    if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN AND WITH_UI_TESTS_VULKAN)\n      add_blender_test_ui_backend(\n        \"ui_vulkan_${testname}\"\n        \"vulkan\"\n        \"${ARGN}\"\n      )\n    endif()\n  endfunction()\nendif()\n\n# Run Python script outside Blender.\nfunction(add_python_test testname testscript)\n  if(NOT TEST_PYTHON_EXE)\n    message(FATAL_ERROR \"No Python configured for running tests, set TEST_PYTHON_EXE.\")\n  endif()\n\n  add_test(\n    NAME ${testname}\n    COMMAND ${TEST_PYTHON_EXE} ${TEST_PYTHON_EXE_EXTRA_ARGS} ${testscript} ${ARGN}\n    WORKING_DIRECTORY $<TARGET_FILE_DIR:blender>\n  )\n  blender_test_set_envvars(\"${testname}\" \"\")\nendfunction()\n\n# Run Python render test.\nfunction(add_render_test testname testscript)\n  if(TEST_OPENIMAGEIO_TOOL_EXISTS)\n    set(_args ${ARGN} --blender \"${TEST_BLENDER_EXE}\" --oiiotool \"${OPENIMAGEIO_TOOL}\")\n    if(WITH_TESTS_BATCHED)\n      list(APPEND _args --batch)\n    endif()\n    add_python_test(${testname} ${testscript} ${_args})\n  endif()\nendfunction()\n\n# Run Python script outside Blender, using system default Python3 interpreter,\n# NOT the one specified in `TEST_PYTHON_EXE`.\nfunction(add_system_python_test testname testscript)\n  if(NOT WITH_SYSTEM_PYTHON_TESTS)\n    return()\n  endif()\n\n  add_test(\n    NAME ${testname}\n    COMMAND ${TEST_SYSTEM_PYTHON_EXE} ${testscript} ${ARGN}\n    WORKING_DIRECTORY $<TARGET_FILE_DIR:blender>\n  )\n  blender_test_set_envvars(\"${testname}\" \"\")\nendfunction()\n\n# ------------------------------------------------------------------------------\n# TESTS USING SYSTEM PYTHON\n# ------------------------------------------------------------------------------\n\nadd_system_python_test(\n  script_validate_on_system_python\n  ${CMAKE_CURRENT_LIST_DIR}/system_python/load_tool_scripts.py\n  --root-dir ${CMAKE_SOURCE_DIR}\n)\n\n# ------------------------------------------------------------------------------\n# GENERAL PYTHON CORRECTNESS TESTS\n# ------------------------------------------------------------------------------\n\nadd_blender_test(\n  script_load_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_completeness.py\n)\n\nadd_blender_test(\n  script_validate_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_validate.py\n  -- --relaxed  # Disable minor things that should not cause tests to break.\n)\n\nadd_blender_test(\n  script_load_addons\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_addons.py\n)\n\nadd_blender_test(\n  script_load_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_py_modules.py\n)\n\nadd_blender_test(\n  script_bundled_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_bundled_modules.py -- --inside-blender\n)\n\nadd_blender_test(\n  script_http_downloader\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_http_downloader.py\n)\n\nadd_blender_test(\n  script_disk_file_hash_service_test\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_disk_file_hash_service_test.py\n)\n\n# test running operators doesn't segfault under various conditions\nif(WITH_TESTS_EXPERIMENTAL)\n  add_blender_test(\n    script_run_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_run_operators.py\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# PY API TESTS\n# ------------------------------------------------------------------------------\n\nadd_blender_test(\n  script_pyapi_bpy_app\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app.py\n)\n\nif(WITH_GPU_BACKEND_TESTS)\n  if(WITH_OPENGL_BACKEND)\n    add_blender_test(\n      script_pyapi_gpu_opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend opengl\n    )\n  endif()\n\n  if(WITH_METAL_BACKEND)\n    add_blender_test(\n      script_pyapi_gpu_metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend metal\n    )\n  endif()\n\n  if(WITH_VULKAN_BACKEND)\n    add_blender_test(\n      script_pyapi_gpu_vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend vulkan\n    )\n  endif()\nendif()\n\nadd_blender_test(\n  script_pyapi_bpy_app_tempdir\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app_tempdir.py\n)\n\nadd_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)\n\nadd_blender_test(\n  script_pyapi_bpy_utils_units\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_utils_units.py\n)\n\nadd_blender_test(\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n)\n\nadd_blender_test(\n  script_pyapi_bpy_driver_secure_eval\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_driver_secure_eval.py\n)\n\nadd_blender_test(\n  script_pyapi_idprop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop.py\n)\n\nadd_blender_test(\n  script_pyapi_idprop_datablock\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop_datablock.py\n)\n\nadd_blender_test(\n  script_pyapi_prop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop.py\n)\n\nadd_blender_test(\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n)\n\nadd_blender_test(\n  script_pyapi_text\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_text.py\n)\n\nadd_blender_test(\n  script_pyapi_bmesh\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bmesh.py\n)\n\nadd_blender_test(\n  imbuf_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_py_api.py\n)\n\nadd_blender_test(\n  operator_function_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_function_py_api.py\n)\n\nadd_blender_test(\n  operator_wrap_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_wrap_py_api.py\n)\n\nadd_blender_test(\n  script_pyapi_grease_pencil\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_grease_pencil.py\n)\n\nadd_blender_test(\n  script_pyapi_annotations\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_annotations.py\n)\n\nadd_blender_test(\n  script_pyapi_blf_buffer\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=BUFFER\n)\n\n# TODO: investigate if this can be supported, as the GPU can be used for rendering.\n# Requires `gpu.init()`, not available for the build-bots for the default environment.\nif(FALSE)\n  add_blender_test(\n    script_pyapi_blf_gpu\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n    --\n    --mode=GPU\n  )\nendif()\n\nadd_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)\n\n\n# Build RST documentation & PYI stubs (without building the full HTML docs).\n# See the `bl_pyapi_doc_gen.py` doc-string for details.\nadd_blender_test(\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n)\n\n# ------------------------------------------------------------------------------\n# DATA MANAGEMENT TESTS\n# ------------------------------------------------------------------------------\n\nadd_blender_test(\n  id_management\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_id_management.py\n)\n\nadd_blender_test(\n  bl_rna_paths\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_paths.py\n)\n\nadd_blender_test(\n  bl_rna_accessors\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_accessors.py\n)\n\n# ------------------------------------------------------------------------------\n# BLEND IO & LINKING\n# ------------------------------------------------------------------------------\n\nadd_blender_test(\n  blendfile_io\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_io.py --\n  --output-dir ${TEST_OUT_DIR}/blendfile_io/\n)\n\nadd_blender_test(\n  blendfile_autosave\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_autosave.py --\n  --src-test-dir ${TEST_SRC_DIR}/io_tests/blend_autosave/\n  --output-dir ${TEST_OUT_DIR}/blendfile_autosave/\n)\n\n# This test can be extremely long, especially in debug builds.\n# Generate BLENDFILE_VERSIONING_SPLIT_RANGE instances of the test,\n# each processing their own subset of the whole set of blendfiles.\nif(TEST_SRC_DIR_EXISTS)\n  set(BLENDFILE_VERSIONING_SPLIT_RANGE 128)\n  math(EXPR BLENDFILE_VERSIONING_SPLIT_RANGE_CMAKE \"${BLENDFILE_VERSIONING_SPLIT_RANGE} - 1\")\n  foreach(idx RANGE ${BLENDFILE_VERSIONING_SPLIT_RANGE_CMAKE})\n    add_blender_test(\n      \"blendfile_versioning_${idx}_over_${BLENDFILE_VERSIONING_SPLIT_RANGE}\"\n      --log \"*blendfile*\"\n      --debug-memory\n      --debug\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_versioning.py --\n      --src-test-dir ${TEST_SRC_DIR}/\n      --output-dir ${TEST_OUT_DIR}/blendfile_io/\n      --slice-range ${BLENDFILE_VERSIONING_SPLIT_RANGE}\n      --slice-index ${idx}\n    )\n  endforeach()\n\n  add_blender_test(\n    blendfile_liblink\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_liblink.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )\n\n  add_blender_test(\n    blendfile_relationships\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_relationships.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )\n\n  add_blender_test(\n    blendfile_library_overrides\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_library_overrides.py --\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n    --test-dir \"${TEST_SRC_DIR}/libraries_and_linking\"\n  )\n\n  add_blender_test(\n    blendfile_header\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_header.py --\n    --testdir \"${TEST_SRC_DIR}/io_tests/blend_parsing\"\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# GLOBAL UNDO TESTS\n# ------------------------------------------------------------------------------\n\nadd_blender_test(\n  global_undo\n  --log \"*undo*\"\n  --log-level debug\n  --debug-memory\n  --debug\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_global_undo.py --\n  --src-test-dir ${TEST_SRC_DIR}/\n  --output-dir ${TEST_OUT_DIR}/global_undo/\n)\n\n# ------------------------------------------------------------------------------\n# MODELING TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    bmesh_bevel\n    ${TEST_SRC_DIR}/modeling/bevel_regression.blend\n    --python ${TEST_PYTHON_DIR}/bevel_operator.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    bmesh_boolean\n    ${TEST_SRC_DIR}/modeling/bool_regression.blend\n    --python ${TEST_PYTHON_DIR}/boolean_operator.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    bmesh_split_faces\n    ${TEST_SRC_DIR}/modeling/split_faces_test.blend\n    --python-text run_tests\n  )\n\n  add_blender_test(\n    curve_to_mesh\n    ${TEST_SRC_DIR}/modeling/curve_to_mesh.blend\n    --python ${TEST_PYTHON_DIR}/curve_to_mesh.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    curves_extrude\n    ${TEST_SRC_DIR}/modeling/curves_extrude.blend\n    --python ${TEST_PYTHON_DIR}/curves_extrude.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    mesh_join\n    --python ${TEST_PYTHON_DIR}/mesh_join.py\n  )\n\n  add_blender_test_allow_error(\n    mesh_validate\n    --python ${TEST_PYTHON_DIR}/mesh_validate.py\n    --\n    --testdir \"${TEST_SRC_DIR}\"\n  )\n\n  add_blender_test(\n    object_edit\n    --python ${TEST_PYTHON_DIR}/object_edit.py\n  )\n\n  add_blender_test(\n    object_conversion\n    ${TEST_SRC_DIR}/modeling/object_conversion.blend\n    --python ${TEST_PYTHON_DIR}/object_conversion.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    object_api\n    --python ${TEST_PYTHON_DIR}/bl_object.py\n  )\n\n  add_blender_test(\n    node_tools\n    --python ${TEST_PYTHON_DIR}/bl_node_tool.py\n  )\nendif()\n\nadd_blender_test(\n  geometry_attributes\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geometry_attributes.py\n)\n\nadd_blender_test(\n  geo_node_file_reporting\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geo_node_file_reporting.py\n  --\n  --testdir \"${TEST_SRC_DIR}\"\n)\n\n# ------------------------------------------------------------------------------\n# MODIFIERS TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    object_modifier_array\n    ${TEST_SRC_DIR}/modifier_stack/array_test.blend\n    --python-text run_tests.py\n  )\n\n  add_blender_test(\n    modifiers\n    ${TEST_SRC_DIR}/modeling/modifiers/modifiers.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/modifiers.py\n  )\n\n  add_blender_test(\n    modifiers_multires\n    ${TEST_SRC_DIR}/modeling/modifiers/multires_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/multires_modifier.py\n  )\n\n  add_blender_test(\n    modifiers_armature\n    ${TEST_SRC_DIR}/modeling/modifiers/armature_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/armature_modifier.py\n  )\n\n  add_blender_test(\n    physics_cloth\n    ${TEST_SRC_DIR}/physics/cloth_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_cloth.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    physics_softbody\n    ${TEST_SRC_DIR}/physics/softbody_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_softbody.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    physics_dynamic_paint\n    ${TEST_SRC_DIR}/physics/dynamic_paint_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_dynamic_paint.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    deform_modifiers\n    ${TEST_SRC_DIR}/modeling/deform_modifiers.blend\n    --python ${TEST_PYTHON_DIR}/deform_modifiers.py\n    --\n    --run-all-tests\n  )\n\n  if(WITH_MOD_OCEANSIM)\n    add_blender_test(\n      physics_ocean\n      ${TEST_SRC_DIR}/physics/ocean_test.blend\n      --python ${TEST_PYTHON_DIR}/physics_ocean.py\n      --\n      --run-all-tests\n    )\n  endif()\n\n  add_blender_test(\n    physics_particle_system\n    ${TEST_SRC_DIR}/physics/physics_particle_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_system.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    physics_particle_instance\n    ${TEST_SRC_DIR}/physics/physics_particle_instance.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_instance.py\n    --\n    --run-all-tests\n  )\n\n  add_blender_test(\n    constraints\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_constraints.py\n    --\n    --testdir \"${TEST_SRC_DIR}/constraints\"\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# OPERATORS TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# ANIMATION TESTS\n# ------------------------------------------------------------------------------\n\nadd_blender_test(\n  bl_animation_armature\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_armature.py\n  --\n  --testdir \"${TEST_SRC_DIR}/animation\"\n)\n\nadd_blender_test(\n  bl_animation_bake\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_bake.py\n)\n\nadd_blender_test(\n  bl_animation_rename\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_rename.py\n)\n\nadd_blender_test(\n  bl_animation_nla_strip\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_nla_strip.py\n)\n\nadd_blender_test(\n  bl_animation_pose_slide\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_pose_slide.py\n)\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    bl_animation_drivers\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_drivers.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    bl_animation_shapekey\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_shapekey.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    bl_animation_fcurves\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_fcurves.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    bl_animation_action\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_action.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n    --output-dir \"${TEST_OUT_DIR}/bl_animation_action\"\n  )\n\n  add_blender_test(\n    bl_animation_keyframing\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_keyframing.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    bl_animation_motion_path\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_motion_path.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    bl_pose_assets\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pose_assets.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    bl_rigging_symmetrize\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_rigging_symmetrize.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\n\n  add_blender_test(\n    vertex_group_painting\n    --python ${CMAKE_CURRENT_LIST_DIR}/vertex_group_painting.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# BRUSH TESTS\nadd_blender_test(\n  bl_brush\n  --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_asset_test.py\n)\n\n# ------------------------------------------------------------------------------\n# NODE GROUP TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    bl_node_structure_type_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_structure_type_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )\n\n  add_blender_test(\n    bl_node_socket_usage_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_socket_usage_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )\n\n  add_blender_test(\n    bl_node_group_compat\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_compat.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )\n\n  add_blender_test(\n    bl_node_group_interface\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_interface.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )\n\n  add_blender_test(\n    bl_node_copy_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_copy_operators.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )\n\n  add_blender_test(\n    bl_node_link_drag\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_link_drag.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# SVG TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  set(_svg_render_tests complex path)\n\n  foreach(render_test ${_svg_render_tests})\n    add_render_test(\n      io_curve_svg_${render_test}\n      ${CMAKE_CURRENT_LIST_DIR}/bl_io_curve_svg_test.py\n      --testdir \"${TEST_SRC_DIR}/io_tests/svg/${render_test}\"\n      --outdir \"${TEST_OUT_DIR}/io_curve_svg\"\n    )\n  endforeach()\n\n  unset(_svg_render_tests)\nendif()\n\n# ------------------------------------------------------------------------------\n# RENDER TESTS\n# ------------------------------------------------------------------------------\n\nif((WITH_CYCLES OR WITH_GPU_RENDER_TESTS) AND TEST_SRC_DIR_EXISTS)\n  set(render_tests\n    attributes\n    camera\n    colorspace\n    bsdf\n    hair\n    image_colorspace\n    image_data_types\n    image_mapping\n    image_texture_limit\n    integrator\n    light\n    light_group\n    light_linking\n    lightprobe\n    mesh\n    node_inlining\n    pointcloud\n    principled_bsdf\n    raycast\n    shader\n    shadow\n    shadow_catcher\n    sss\n    texture\n    transparency\n  )\n\n  set(workbench_tests\n    workbench\n    camera\n    colorspace\n    hair\n    image_colorspace\n    image_data_types\n    image_mapping\n    image_texture_limit\n    mesh\n    pointcloud\n    texture\n  )\n\n  if(WITH_OPENSUBDIV)\n    list(APPEND render_tests displacement)\n  endif()\n\n  if(WITH_FREESTYLE)\n    list(APPEND render_tests render_layer)\n    list(APPEND workbench_tests render_layer)\n  endif()\n\n  if(WITH_MOD_FLUID)\n    list(APPEND render_tests motion_blur reports volume)\n    list(APPEND workbench_tests volume)\n  endif()\n\n  if(WITH_OPENVDB AND WITH_MOD_FLUID)\n    # Some tests in the OpenVDB folder make use of fluid simulations to generate smoke\n    list(APPEND render_tests openvdb)\n    list(APPEND workbench_tests openvdb)\n    # Some tests in the instancing folder make use of OpenVDB volumes\n    list(APPEND render_tests instancing)\n    list(APPEND workbench_tests instancing)\n  endif()\n\n  if(WITH_OPENIMAGEDENOISE)\n    list(APPEND render_tests denoise denoise_animation)\n  endif()\n\n  # Disabled until new OpenPGL version with deterministic results.\n  # if(WITH_CYCLES_PATH_GUIDING)\n  #   list(APPEND render_tests guiding)\n  # endif()\n\n  if(WITH_GPU_RENDER_TESTS)\n    list(APPEND render_tests grease_pencil)\n    list(APPEND workbench_tests grease_pencil)\n  endif()\n\n  list(SORT render_tests)\n  list(SORT workbench_tests)\n\n  # Cycles\n  if(WITH_CYCLES)\n    set(_cycles_all_test_devices CPU CUDA OPTIX HIP HIP-RT METAL METAL-RT ONEAPI ONEAPI-RT)\n    set(_cycles_osl_test_devices CPU OPTIX)\n    foreach(_cycles_device ${CYCLES_TEST_DEVICES})\n      if(NOT ${_cycles_device} IN_LIST _cycles_all_test_devices)\n        message(FATAL_ERROR \"Unknown Cycles test device ${_cycles_device}.\"\n            \"Supported devices are: ${_cycles_all_test_devices}\")\n      endif()\n      string(TOLOWER \"${_cycles_device}\" _cycles_device_lower)\n      set(_cycles_render_tests bake;bake_raytrace;${render_tests};osl;image_mipmap;updates)\n\n      set(_cycles_osl_test_type none)\n      if(WITH_CYCLES_OSL)\n        # If the render device is CPU, or a GPU WITH_CYCLES_TEST_OSL enabled,\n        # then enable the limited OSL tests (Tests OSL camera with OSL shading turned off).\n        # This specific configuration is chosen to avoid long test times on the GPU due to\n        # OSL JIT compilation, unless the developer explicitly enables OSL tests.\n        if((\"${_cycles_device_lower}\" STREQUAL \"cpu\") OR (WITH_CYCLES_TEST_OSL AND ${_cycles_device} IN_LIST _cycles_osl_test_devices))\n          set(_cycles_osl_test_type limited)\n        endif()\n      endif()\n\n      foreach(render_test ${_cycles_render_tests})\n        set(_cycles_test_name \"cycles_${render_test}_${_cycles_device_lower}\")\n        if(NOT(WITH_CYCLES_TEST_OSL AND WITH_CYCLES_OSL AND (\"${render_test}\" STREQUAL \"osl\")))\n          # Only run OSL specific tests during this phase if WITH_CYCLES_TEST_OSL isn't enabled\n          add_render_test(\n            ${_cycles_test_name}\n            ${CMAKE_CURRENT_LIST_DIR}/cycles_render_tests.py\n            --testdir \"${TEST_SRC_DIR}/render/${render_test}\"\n            --outdir \"${TEST_OUT_DIR}/cycles\"\n            --device ${_cycles_device}\n            --osl \"${_cycles_osl_test_type}\"\n          )\n          if(NOT (\"${_cycles_device_lower}\" STREQUAL \"cpu\"))\n            set_tests_properties(${_cycles_test_name} PROPERTIES RUN_SERIAL TRUE)\n          endif()\n        endif()\n\n        # OSL variations of every test if WITH_CYCLES_TEST_OSL is set.\n        if(WITH_CYCLES_TEST_OSL AND NOT \"${_cycles_osl_test_type}\" STREQUAL \"none\")\n          add_render_test(\n            ${_cycles_test_name}_osl\n            ${CMAKE_CURRENT_LIST_DIR}/cycles_render_tests.py\n            --testdir \"${TEST_SRC_DIR}/render/${render_test}\"\n            --outdir \"${TEST_OUT_DIR}/cycles_osl\"\n            --device ${_cycles_device}\n            --osl \"all\"\n          )\n          if(NOT (\"${_cycles_device_lower}\" STREQUAL \"cpu\"))\n            set_tests_properties(${_cycles_test_name}_osl PROPERTIES RUN_SERIAL TRUE)\n          endif()\n        endif()\n\n        unset(_cycles_test_name)\n      endforeach()\n      unset(_cycles_osl_test_type)\n    endforeach()\n    unset(_cycles_osl_test_devices)\n    unset(_cycles_all_test_devices)\n  endif()\n\n  if(WITH_GPU_RENDER_TESTS)\n    list(APPEND gpu_render_tests ${render_tests})\n    list(FILTER gpu_render_tests EXCLUDE REGEX light_group|shadow_catcher|denoise|guiding|reports)\n\n    function(add_gpu_render_tests name script render_tests)\n      if(WITH_OPENGL_BACKEND)\n        foreach(render_test ${render_tests})\n          add_render_test(\n            ${name}_opengl_${render_test}\n            ${CMAKE_CURRENT_LIST_DIR}/${script}\n            --testdir \"${TEST_SRC_DIR}/render/${render_test}\"\n            --outdir \"${TEST_OUT_DIR}/${name}_opengl\"\n            --gpu-backend opengl\n            ${ARGN}\n          )\n        endforeach()\n      endif()\n\n      if(WITH_METAL_BACKEND)\n        foreach(render_test ${render_tests})\n          add_render_test(\n            ${name}_metal_${render_test}\n            ${CMAKE_CURRENT_LIST_DIR}/${script}\n            --testdir \"${TEST_SRC_DIR}/render/${render_test}\"\n            --outdir \"${TEST_OUT_DIR}/${name}_metal\"\n            --gpu-backend metal\n            ${ARGN}\n          )\n        endforeach()\n      endif()\n\n      if(WITH_VULKAN_BACKEND\n          AND (NOT (name STREQUAL \"storm_hydra\" OR name STREQUAL \"storm_usd\") OR WITH_STORM_TESTS_VULKAN))\n        foreach(render_test ${render_tests})\n          add_render_test(\n            ${name}_vulkan_${render_test}\n            ${CMAKE_CURRENT_LIST_DIR}/${script}\n            --testdir \"${TEST_SRC_DIR}/render/${render_test}\"\n            --outdir \"${TEST_OUT_DIR}/${name}_vulkan\"\n            --gpu-backend vulkan\n            ${ARGN}\n          )\n        endforeach()\n      endif()\n    endfunction()\n\n    add_gpu_render_tests(eevee \"eevee_render_tests.py\" \"${gpu_render_tests}\")\n    add_gpu_render_tests(workbench \"workbench_render_tests.py\" \"${workbench_tests}\")\n    if(WITH_GPU_RENDER_TESTS_HEADED)\n      add_gpu_render_tests(overlay \"overlay_render_tests.py\" \"overlay\")\n    endif()\n    if(WITH_HYDRA)\n      add_gpu_render_tests(storm_hydra \"storm_render_tests.py\" \"${gpu_render_tests}\" --export_method \"HYDRA\")\n    endif()\n    if(WITH_HYDRA)\n      add_gpu_render_tests(storm_usd \"storm_render_tests.py\" \"${gpu_render_tests}\" --export_method \"USD\")\n    endif()\n  endif()\nendif()\n\nif(WITH_CYCLES AND WITH_CYCLES_OSL)\n  add_blender_test(\n    cycles_osl_compile_test\n    --python ${CMAKE_CURRENT_LIST_DIR}/cycles_osl_compile_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/render\"\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# COMPOSITOR TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  set(compositor_tests\n    input\n    output\n    color\n    filter\n    texture\n    utilities\n    vector\n    group\n\n    pixel_nodes\n    multiple_node_setups\n  )\n\n  if(WITH_LIBMV)\n    list(APPEND compositor_tests keying mask tracking transform anisotropic_filtering)\n  endif()\n\n  foreach(comp_test ${compositor_tests})\n    add_render_test(\n      compositor_cpu_${comp_test}\n      ${CMAKE_CURRENT_LIST_DIR}/compositor_render_tests.py\n      --testdir \"${TEST_SRC_DIR}/compositor/${comp_test}\"\n      --outdir \"${TEST_OUT_DIR}/compositor_cpu\"\n    )\n  endforeach()\n\n  add_blender_test(\n    compositor_cpu_file_output\n    --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n    --\n    --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n    --outdir \"${TEST_OUT_DIR}/compositor_cpu/file_output\"\n    --device \"CPU\"\n  )\nendif()\n\nif(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)\n  set(compositor_tests\n    input\n    output\n    color\n    filter\n    texture\n    utilities\n    vector\n    group\n\n    pixel_nodes\n    multiple_node_setups\n  )\n\n  if(WITH_LIBMV)\n    list(APPEND compositor_tests keying mask tracking transform)\n  endif()\n\n  if(WITH_OPENGL_BACKEND)\n    foreach(comp_test ${compositor_tests})\n      add_render_test(\n        compositor_opengl_${comp_test}\n        ${CMAKE_CURRENT_LIST_DIR}/compositor_render_tests.py\n        --testdir \"${TEST_SRC_DIR}/compositor/${comp_test}\"\n        --outdir \"${TEST_OUT_DIR}/compositor_opengl\"\n        --gpu-backend opengl\n      )\n    endforeach()\n    add_blender_test(\n      compositor_opengl_file_output\n      --gpu-backend opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_opengl/file_output\"\n      --device \"GPU\"\n    )\n  endif()\n  if(WITH_METAL_BACKEND)\n    foreach(comp_test ${compositor_tests})\n      add_render_test(\n        compositor_metal_${comp_test}\n        ${CMAKE_CURRENT_LIST_DIR}/compositor_render_tests.py\n        --testdir \"${TEST_SRC_DIR}/compositor/${comp_test}\"\n        --outdir \"${TEST_OUT_DIR}/compositor_metal\"\n        --gpu-backend metal\n      )\n    endforeach()\n    add_blender_test(\n      compositor_metal_file_output\n      --gpu-backend metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_metal/file_output\"\n      --device \"GPU\"\n    )\n  endif()\n  if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN)\n    foreach(comp_test ${compositor_tests})\n      add_render_test(\n        compositor_vulkan_${comp_test}\n        ${CMAKE_CURRENT_LIST_DIR}/compositor_render_tests.py\n        --testdir \"${TEST_SRC_DIR}/compositor/${comp_test}\"\n        --outdir \"${TEST_OUT_DIR}/compositor_vulkan\"\n        --gpu-backend vulkan\n      )\n    endforeach()\n    add_blender_test(\n      compositor_vulkan_file_output\n      --gpu-backend vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_vulkan/file_output\"\n      --device \"GPU\"\n    )\n  endif()\nendif()\n\nadd_blender_test(\n  compositing_node_group\n  --python ${CMAKE_CURRENT_LIST_DIR}/compositing_node_group.py\n)\n\n# ------------------------------------------------------------------------------\n# GEOMETRY NODE TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  set(geo_node_tests\n    attributes\n    closure\n    curve_primitives\n    curves\n    curves/interpolate_curves\n    empty_object\n    essentials\n    foreach_geometry_element_zone\n    geometry\n    grease_pencil\n    import\n    instance\n    list\n    repeat_zone\n    mesh_primitives\n    mesh\n    mesh/bevel\n    mesh/extrude\n    mesh/split_edges\n    mesh/triangulate\n    points\n    texture\n    utilities\n    vector\n  )\n\n  if(WITH_GMP)\n    list(APPEND geo_node_tests mesh/boolean)\n  endif()\n\n  if(WITH_OPENVDB)\n    list(APPEND geo_node_tests volume)\n  endif()\n\n  if(WITH_OPENSUBDIV)\n    list(APPEND geo_node_tests mesh/subdivision)\n  endif()\n\n  foreach(geo_node_test ${geo_node_tests})\n    file(GLOB files \"${TEST_SRC_DIR}/modeling/geometry_nodes/${geo_node_test}/*.blend\")\n    foreach(file ${files})\n      get_filename_component(filename ${file} NAME_WE)\n      add_blender_test(\n        geo_node_${geo_node_test}_${filename}\n        ${file}\n        --python ${TEST_PYTHON_DIR}/geo_node_test.py\n      )\n    endforeach()\n  endforeach()\n\n  file(GLOB files \"${TEST_SRC_DIR}/modeling/geometry_nodes/simulation/*.blend\")\n  foreach(file ${files})\n    get_filename_component(filename ${file} NAME_WE)\n    add_blender_test(\n      geo_node_simulation_test_${filename}\n      ${file}\n      --python ${TEST_PYTHON_DIR}/geo_node_sim_test.py\n    )\n  endforeach()\nendif()\n\n# ------------------------------------------------------------------------------\n# SCREENSHOT TESTS\n# ------------------------------------------------------------------------------\n\nif(WITH_GPU_RENDER_TESTS AND TEST_SRC_DIR_EXISTS)\n  set(render_tests\n  )\n\n  if(WITH_TESTS_EXPERIMENTAL)\n    # The viewport tests are flaky and difficult to keep up to date for use\n    # in a CI environment due to constantly changing UI, but may still be helpful\n    # for local development.\n    #\n    # Additionally, they do not currently succeed in an ASAN build. (2025-01-29)\n    list(APPEND render_tests viewport)\n  endif()\n\n  foreach(render_test ${render_tests})\n    add_render_test(\n      screenshot_${render_test}\n      ${CMAKE_CURRENT_LIST_DIR}/ui_screenshot_tests.py\n      --testdir \"${TEST_SRC_DIR}/screenshot/${render_test}\"\n      --outdir \"${TEST_OUT_DIR}/screenshot\"\n    )\n  endforeach()\nendif()\n\n# ------------------------------------------------------------------------------\n# I/O TESTS\n# ------------------------------------------------------------------------------\n\nif(WITH_ALEMBIC AND TEST_SRC_DIR_EXISTS)\n  find_package_wrapper(Alembic)\n  if(NOT ALEMBIC_FOUND)\n    message(FATAL_ERROR \"Alembic is enabled but cannot be found\")\n  endif()\n  get_filename_component(real_include_dir ${ALEMBIC_INCLUDE_DIR} REALPATH)\n  get_filename_component(ALEMBIC_ROOT_DIR ${real_include_dir} DIRECTORY)\n\n  add_python_test(\n    io_alembic_export_tests\n    ${CMAKE_CURRENT_LIST_DIR}/alembic_export_tests.py\n    --blender \"${TEST_BLENDER_EXE}\"\n    --testdir \"${TEST_SRC_DIR}/alembic\"\n    --alembic-root \"${ALEMBIC_ROOT_DIR}\"\n  )\n\n  add_blender_test(\n    script_alembic_io\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_alembic_io_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/alembic\"\n    --outdir \"${TEST_OUT_DIR}/io_alembic\"\n  )\nendif()\n\nif(WITH_USD AND TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    io_usd_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n  )\n  add_blender_test(\n    io_usd_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n    --outdir \"${TEST_OUT_DIR}/io_usd\"\n  )\nendif()\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_fbx_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_fbx_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/fbx\"\n    --outdir \"${TEST_OUT_DIR}/io_fbx\"\n  )\nendif()\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_gltf_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/import\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_import\"\n  )\nendif()\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_gltf_roundtrip\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_roundtrip_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/roundtrip\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_roundtrip\"\n  )\nendif()\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_gltf_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/export\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_export\"\n  )\nendif()\n\nif(WITH_IO_WAVEFRONT_OBJ AND TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_obj_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_obj_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/obj\"\n    --outdir \"${TEST_OUT_DIR}/io_obj\"\n  )\nendif()\n\nif(WITH_IO_PLY AND TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_ply_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_ply_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/ply\"\n    --outdir \"${TEST_OUT_DIR}/io_ply\"\n  )\nendif()\n\nif(WITH_IO_STL AND TEST_SRC_DIR_EXISTS)\n  add_blender_test_allow_error(\n    io_stl_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_stl_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/stl\"\n    --outdir \"${TEST_OUT_DIR}/io_stl\"\n  )\nendif()\n\nif(WITH_CODEC_FFMPEG AND TEST_SRC_DIR_EXISTS)\n  add_python_test(\n    ffmpeg\n    ${CMAKE_CURRENT_LIST_DIR}/ffmpeg_tests.py\n    --blender \"${TEST_BLENDER_EXE}\"\n    --testdir \"${TEST_SRC_DIR}/ffmpeg\"\n  )\nendif()\n\nif(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)\n  set(OPTIONAL_FORMATS \"\")\n  if(WITH_IMAGE_CINEON)\n    set(OPTIONAL_FORMATS \"${OPTIONAL_FORMATS} CINEON\")\n  endif()\n  if(WITH_IMAGE_OPENJPEG)\n    set(OPTIONAL_FORMATS \"${OPTIONAL_FORMATS} OPENJPEG\")\n  endif()\n  if(WITH_IMAGE_WEBP)\n    set(OPTIONAL_FORMATS \"${OPTIONAL_FORMATS} WEBP\")\n  endif()\n\n  add_blender_test(\n    imbuf_save\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_save.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/save\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )\n\n  add_blender_test_allow_error(\n    imbuf_load\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_load.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/load\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )\nendif()\n\n# ------------------------------------------------------------------------------\n# SEQUENCER RENDER TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  set(render_tests\n    filter\n    transform\n    blend_modes_byte\n    blend_modes_float\n    colorspace\n  )\n  set(video_output_tests \"\")\n\n  if(WITH_LIBMV)\n    list(APPEND render_tests effects)\n  endif()\n\n  if(WITH_CODEC_FFMPEG)\n    list(APPEND render_tests ffmpeg)\n    list(APPEND video_output_tests video_output)\n  endif()\n\n  foreach(render_test ${render_tests})\n    add_render_test(\n      sequencer_cpu_${render_test}\n      ${CMAKE_CURRENT_LIST_DIR}/sequencer_render_tests.py\n      --testdir \"${TEST_SRC_DIR}/sequence_editing/${render_test}\"\n      --outdir \"${TEST_OUT_DIR}/sequencer_cpu\"\n    )\n  endforeach()\n\n  foreach(video_output_test ${video_output_tests})\n    add_render_test(\n      sequencer_cpu_${video_output_test}\n      ${CMAKE_CURRENT_LIST_DIR}/sequencer_video_output_tests.py\n      --testdir \"${TEST_SRC_DIR}/sequence_editing/${video_output_test}\"\n      --outdir \"${TEST_OUT_DIR}/sequencer_cpu\"\n    )\n  endforeach()\n\n  add_blender_test(\n    sequencer_input_colorspace\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_input_colorspace.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sequence_editing\"\n  )\n\n  add_blender_test(\n    sequencer_strip_naming\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_strip_naming.py\n  )\n\n  add_blender_test(\n    sequencer_load_meta_stack\n    ${TEST_SRC_DIR}/sequence_editing/vse_load_meta_stack.blend\n    --python ${TEST_PYTHON_DIR}/sequencer_load_meta_stack.py\n  )\n\n  if(WITH_GPU_COMPOSITOR_TESTS)\n    if(WITH_OPENGL_BACKEND)\n      foreach(render_test ${render_tests})\n        add_render_test(\n                sequencer_opengl_${render_test}\n                ${CMAKE_CURRENT_LIST_DIR}/sequencer_render_tests.py\n                --testdir \"${TEST_SRC_DIR}/sequence_editing/${render_test}\"\n                --outdir \"${TEST_OUT_DIR}/sequencer_opengl\"\n                --gpu-backend opengl\n        )\n      endforeach()\n    endif()\n    if(WITH_METAL_BACKEND)\n      foreach(render_test ${render_tests})\n        add_render_test(\n                sequencer_metal_${render_test}\n                ${CMAKE_CURRENT_LIST_DIR}/sequencer_render_tests.py\n                --testdir \"${TEST_SRC_DIR}/sequence_editing/${render_test}\"\n                --outdir \"${TEST_OUT_DIR}/sequencer_metal\"\n                --gpu-backend metal\n        )\n      endforeach()\n    endif()\n    if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN)\n      foreach(render_test ${render_tests})\n        add_render_test(\n                sequencer_vulkan_${render_test}\n                ${CMAKE_CURRENT_LIST_DIR}/sequencer_render_tests.py\n                --testdir \"${TEST_SRC_DIR}/sequence_editing/${render_test}\"\n                --outdir \"${TEST_OUT_DIR}/sequencer_vulkan\"\n                --gpu-backend vulkan\n        )\n      endforeach()\n    endif()\n  endif()\nendif()\n\n# ------------------------------------------------------------------------------\n# SCULPTING & PAINTING TESTS\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  add_blender_test(\n    bl_voxel_remesh\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_test.py\n  )\n\n  add_blender_test(\n    bl_voxel_remesh_compare\n    ${TEST_SRC_DIR}/sculpting/voxel_remesh_compare.blend\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_compare_test.py\n  )\n\n  add_blender_test(\n    bl_sculpt_mask\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )\n\n  add_blender_test(\n    bl_sculpt_face_set\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/face_set_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )\n\n  add_blender_test(\n    bl_multires\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/multires_operators_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )\n\n  add_blender_test(\n    bl_sculpt_mesh_filter\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mesh_filter_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )\n\n  add_blender_test(\n    bl_sculpt_automasking\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/automask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )\n\n  add_blender_test(\n    bl_sculpt_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/sculpt_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )\n\n  add_blender_test(\n    bl_vertex_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/vertex_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )\n\n  add_blender_test(\n    bl_weight_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/weight_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )\n\n  add_blender_test(\n    bl_texture_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/texture_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )\n\n  add_blender_test(\n    bl_sculpt_brush_curve_presets\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_strength_curves_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )\nendif()\n\nif(WITH_GPU_MESH_PAINT_TESTS AND TEST_SRC_DIR_EXISTS)\n  set(render_tests\n    brushes\n  )\n\n  foreach(render_test ${render_tests})\n    add_render_test(\n      sculpt_render_${render_test}\n      ${CMAKE_CURRENT_LIST_DIR}/sculpt_brush_render_tests.py\n      --testdir \"${TEST_SRC_DIR}/sculpting/${render_test}\"\n      --outdir \"${TEST_OUT_DIR}/sculpting\"\n    )\n  endforeach()\nendif()\n\n\n# ------------------------------------------------------------------------------\n# Headless GUI Tests\n# ------------------------------------------------------------------------------\n\nif(WITH_UI_TESTS)\n  # This could be generated with:\n  # `\"${TEST_PYTHON_EXE}\" \"${CMAKE_CURRENT_LIST_DIR}/ui_simulate/run.py\" --list-tests`\n  # list explicitly so changes bisecting/updated are sure to re-run CMake.\n  set(_ui_tests\n    test_sculpt.asset_shelf_brush_selection\n    test_sculpt.face_set_expand\n    test_sculpt.face_set_gestures\n    test_sculpt.hide_gestures\n    test_sculpt.mask_expand_and_invert\n    test_sculpt.mask_gestures\n    test_sculpt.trim_gestures\n    test_sculpt.primitive_tool_add\n    test_tools.sculpt_mode_toolbar\n    test_undo.compositor_make_group\n    test_undo.text_editor_edit_mode_mix\n    test_undo.text_editor_simple\n    test_undo.view3d_edit_mode_multi_window\n    test_undo.view3d_font_edit_mode_simple\n    test_undo.view3d_mesh_edit_separate\n    test_undo.view3d_mesh_particle_edit_mode_simple\n    test_undo.view3d_multi_mode_multi_window\n    test_undo.view3d_multi_mode_select\n    test_undo.view3d_sculpt_dyntopo_and_edit\n    test_undo.view3d_sculpt_dyntopo_simple\n    test_undo.view3d_sculpt_dyntopo_stroke_toggle\n    test_undo.view3d_sculpt_with_memfile_step\n    test_undo.view3d_sculpt_trim\n    test_undo.view3d_simple\n    test_undo.view3d_texture_paint_complex\n    test_undo.view3d_texture_paint_simple\n    test_workspace.sanity_check_general\n    test_workspace.sanity_check_2d_animation\n    test_workspace.sanity_check_sculpting\n    test_workspace.sanity_check_storyboarding\n    test_workspace.sanity_check_vfx\n    test_workspace.sanity_check_video_editing\n    test_fullscreen.wm_toggle_fullscreen\n    test_fullscreen.wm_toggle_stacked_fullscreen_file_browser\n    test_fullscreen.wm_toggle_stacked_fullscreens\n    test_quick_effects.add_quick_fur\n    test_quick_effects.add_quick_smoke\n    test_quick_effects.add_quick_liquid\n    test_quick_effects.add_quick_explode\n    test_render.interactive_rendering_cycles\n    test_render.interactive_rendering_eevee\n    test_render.animation_rendering_and_player\n    test_bpy_types.unregister_referenced_type\n  )\n  foreach(ui_test ${_ui_tests})\n    add_blender_test_ui(\n      \"${ui_test}\"\n      --enable-event-simulate\n      --python \"${CMAKE_CURRENT_LIST_DIR}/ui_simulate/run_blender_setup.py\"\n      --\n      --tests \"${ui_test}\"\n    )\n  endforeach()\n  unset(_ui_tests)\nendif()\n\n\n# ------------------------------------------------------------------------------\n# VIEW LAYER Tests\n# ------------------------------------------------------------------------------\n\nif(TEST_SRC_DIR_EXISTS)\n  # TODO: disabled for now after collection unification\n  # add_subdirectory(view_layer)\nendif()\n\n# ------------------------------------------------------------------------------\n# Remote Asset Library tests\n# ------------------------------------------------------------------------------\nif(TEST_SRC_DIR_EXISTS)\n  add_subdirectory(assets)\nendif()\n\n\n\n# ------------------------------------------------------------------------------\n# Linux Release sanity checks\n# ------------------------------------------------------------------------------\n\nif(WITH_LINUX_OFFICIAL_RELEASE_TESTS)\n  get_filename_component(release_root_folder ${TEST_BLENDER_EXE} DIRECTORY)\n  set(extra_args \"\")\n  if(WITH_COMPILER_ASAN)\n    set(extra_args\n      ${extra_args}\n      --sanitizer-build\n    )\n  endif()\n  add_python_test(\n    linux_release_sanity_checks\n    ${CMAKE_SOURCE_DIR}/tools/check_blender_release/check_release.py\n    -- --directory \"${release_root_folder}\" ${extra_args}\n  )\n  unset(extra_args)\n  unset(release_root_folder)\nendif()\n"
+    }
+  ],
+  "declarations": [
+    {
+      "source_declaration_index": 0,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_impl",
+      "arguments": "\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${TEST_BLENDER_EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  ",
+      "text": "add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${TEST_BLENDER_EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )",
+      "line": 50,
+      "context": [
+        {
+          "opener": "function(add_blender_test testname)",
+          "line": 49
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 1,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_impl",
+      "arguments": "\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  ",
+      "text": "add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )",
+      "line": 65,
+      "context": [
+        {
+          "opener": "function(add_blender_test_allow_error testname)",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 2,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_impl",
+      "arguments": "\n      \"${testname}\"\n      \"${_blender_headless_env_vars}\"\n      \"${TEST_PYTHON_EXE}\"\n      \"${CMAKE_SOURCE_DIR}/tests/utils/blender_headless.py\"\n      # NOTE: attempting to maximize the window causes problems with a headless `weston`,\n      # while this could be investigated, use windowed mode instead.\n      # Use a window size that balances software GPU rendering with enough room to use the UI.\n      --factory-startup\n      # Workaround for https://projects.blender.org/blender/blender/issues/154770.\n      --no-native-pixels\n      # No need for window frame with tests.\n      --no-window-frame\n      -p 0 0 800 600\n      --gpu-backend ${backend}\n      # Log operator calls at a debug level so it is easier to debug runs on the buildbot that fail\n      --log \"operator\" --log-level \"debug\"\n      \"${EXE_PARAMS}\"\n      \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n      \"${ARGN}\"\n    ",
+      "text": "add_blender_test_impl(\n      \"${testname}\"\n      \"${_blender_headless_env_vars}\"\n      \"${TEST_PYTHON_EXE}\"\n      \"${CMAKE_SOURCE_DIR}/tests/utils/blender_headless.py\"\n      # NOTE: attempting to maximize the window causes problems with a headless `weston`,\n      # while this could be investigated, use windowed mode instead.\n      # Use a window size that balances software GPU rendering with enough room to use the UI.\n      --factory-startup\n      # Workaround for https://projects.blender.org/blender/blender/issues/154770.\n      --no-native-pixels\n      # No need for window frame with tests.\n      --no-window-frame\n      -p 0 0 800 600\n      --gpu-backend ${backend}\n      # Log operator calls at a debug level so it is easier to debug runs on the buildbot that fail\n      --log \"operator\" --log-level \"debug\"\n      \"${EXE_PARAMS}\"\n      \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n      \"${ARGN}\"\n    )",
+      "line": 116,
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui_backend testname backend)",
+          "line": 112
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 3,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_ui_backend",
+      "arguments": "\n        \"ui_opengl_${testname}\"\n        \"opengl\"\n        \"${ARGN}\"\n      ",
+      "text": "add_blender_test_ui_backend(\n        \"ui_opengl_${testname}\"\n        \"opengl\"\n        \"${ARGN}\"\n      )",
+      "line": 140,
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui testname)",
+          "line": 138
+        },
+        {
+          "opener": "if(WITH_OPENGL_BACKEND)",
+          "line": 139
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 4,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_ui_backend",
+      "arguments": "\n        \"ui_metal_${testname}\"\n        \"metal\"\n        \"${ARGN}\"\n      ",
+      "text": "add_blender_test_ui_backend(\n        \"ui_metal_${testname}\"\n        \"metal\"\n        \"${ARGN}\"\n      )",
+      "line": 147,
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui testname)",
+          "line": 138
+        },
+        {
+          "opener": "if(WITH_METAL_BACKEND)",
+          "line": 146
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 5,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_ui_backend",
+      "arguments": "\n        \"ui_vulkan_${testname}\"\n        \"vulkan\"\n        \"${ARGN}\"\n      ",
+      "text": "add_blender_test_ui_backend(\n        \"ui_vulkan_${testname}\"\n        \"vulkan\"\n        \"${ARGN}\"\n      )",
+      "line": 154,
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui testname)",
+          "line": 138
+        },
+        {
+          "opener": "if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN AND WITH_UI_TESTS_VULKAN)",
+          "line": 153
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 6,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_load_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_completeness.py\n",
+      "text": "add_blender_test(\n  script_load_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_completeness.py\n)",
+      "line": 217,
+      "context": []
+    },
+    {
+      "source_declaration_index": 7,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_validate_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_validate.py\n  -- --relaxed  # Disable minor things that should not cause tests to break.\n",
+      "text": "add_blender_test(\n  script_validate_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_validate.py\n  -- --relaxed  # Disable minor things that should not cause tests to break.\n)",
+      "line": 222,
+      "context": []
+    },
+    {
+      "source_declaration_index": 8,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_load_addons\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_addons.py\n",
+      "text": "add_blender_test(\n  script_load_addons\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_addons.py\n)",
+      "line": 228,
+      "context": []
+    },
+    {
+      "source_declaration_index": 9,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_load_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_py_modules.py\n",
+      "text": "add_blender_test(\n  script_load_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_py_modules.py\n)",
+      "line": 233,
+      "context": []
+    },
+    {
+      "source_declaration_index": 10,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_bundled_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_bundled_modules.py -- --inside-blender\n",
+      "text": "add_blender_test(\n  script_bundled_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_bundled_modules.py -- --inside-blender\n)",
+      "line": 238,
+      "context": []
+    },
+    {
+      "source_declaration_index": 11,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_http_downloader\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_http_downloader.py\n",
+      "text": "add_blender_test(\n  script_http_downloader\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_http_downloader.py\n)",
+      "line": 243,
+      "context": []
+    },
+    {
+      "source_declaration_index": 12,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_disk_file_hash_service_test\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_disk_file_hash_service_test.py\n",
+      "text": "add_blender_test(\n  script_disk_file_hash_service_test\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_disk_file_hash_service_test.py\n)",
+      "line": 248,
+      "context": []
+    },
+    {
+      "source_declaration_index": 13,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    script_run_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_run_operators.py\n  ",
+      "text": "add_blender_test(\n    script_run_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_run_operators.py\n  )",
+      "line": 255,
+      "context": [
+        {
+          "opener": "if(WITH_TESTS_EXPERIMENTAL)",
+          "line": 254
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 14,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_bpy_app\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app.py\n",
+      "text": "add_blender_test(\n  script_pyapi_bpy_app\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app.py\n)",
+      "line": 265,
+      "context": []
+    },
+    {
+      "source_declaration_index": 15,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      script_pyapi_gpu_opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend opengl\n    ",
+      "text": "add_blender_test(\n      script_pyapi_gpu_opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend opengl\n    )",
+      "line": 272,
+      "context": [
+        {
+          "opener": "if(WITH_GPU_BACKEND_TESTS)",
+          "line": 270
+        },
+        {
+          "opener": "if(WITH_OPENGL_BACKEND)",
+          "line": 271
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 16,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      script_pyapi_gpu_metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend metal\n    ",
+      "text": "add_blender_test(\n      script_pyapi_gpu_metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend metal\n    )",
+      "line": 280,
+      "context": [
+        {
+          "opener": "if(WITH_GPU_BACKEND_TESTS)",
+          "line": 270
+        },
+        {
+          "opener": "if(WITH_METAL_BACKEND)",
+          "line": 279
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 17,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      script_pyapi_gpu_vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend vulkan\n    ",
+      "text": "add_blender_test(\n      script_pyapi_gpu_vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend vulkan\n    )",
+      "line": 288,
+      "context": [
+        {
+          "opener": "if(WITH_GPU_BACKEND_TESTS)",
+          "line": 270
+        },
+        {
+          "opener": "if(WITH_VULKAN_BACKEND)",
+          "line": 287
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 18,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_bpy_app_tempdir\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app_tempdir.py\n",
+      "text": "add_blender_test(\n  script_pyapi_bpy_app_tempdir\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app_tempdir.py\n)",
+      "line": 296,
+      "context": []
+    },
+    {
+      "source_declaration_index": 19,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n",
+      "text": "add_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)",
+      "line": 301,
+      "context": []
+    },
+    {
+      "source_declaration_index": 20,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_bpy_utils_units\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_utils_units.py\n",
+      "text": "add_blender_test(\n  script_pyapi_bpy_utils_units\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_utils_units.py\n)",
+      "line": 306,
+      "context": []
+    },
+    {
+      "source_declaration_index": 21,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n",
+      "text": "add_blender_test(\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n)",
+      "line": 311,
+      "context": []
+    },
+    {
+      "source_declaration_index": 22,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_bpy_driver_secure_eval\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_driver_secure_eval.py\n",
+      "text": "add_blender_test(\n  script_pyapi_bpy_driver_secure_eval\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_driver_secure_eval.py\n)",
+      "line": 316,
+      "context": []
+    },
+    {
+      "source_declaration_index": 23,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_idprop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop.py\n",
+      "text": "add_blender_test(\n  script_pyapi_idprop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop.py\n)",
+      "line": 321,
+      "context": []
+    },
+    {
+      "source_declaration_index": 24,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_idprop_datablock\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop_datablock.py\n",
+      "text": "add_blender_test(\n  script_pyapi_idprop_datablock\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop_datablock.py\n)",
+      "line": 326,
+      "context": []
+    },
+    {
+      "source_declaration_index": 25,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_prop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop.py\n",
+      "text": "add_blender_test(\n  script_pyapi_prop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop.py\n)",
+      "line": 331,
+      "context": []
+    },
+    {
+      "source_declaration_index": 26,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n",
+      "text": "add_blender_test(\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n)",
+      "line": 336,
+      "context": []
+    },
+    {
+      "source_declaration_index": 27,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_text\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_text.py\n",
+      "text": "add_blender_test(\n  script_pyapi_text\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_text.py\n)",
+      "line": 341,
+      "context": []
+    },
+    {
+      "source_declaration_index": 28,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_bmesh\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bmesh.py\n",
+      "text": "add_blender_test(\n  script_pyapi_bmesh\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bmesh.py\n)",
+      "line": 346,
+      "context": []
+    },
+    {
+      "source_declaration_index": 29,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  imbuf_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_py_api.py\n",
+      "text": "add_blender_test(\n  imbuf_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_py_api.py\n)",
+      "line": 351,
+      "context": []
+    },
+    {
+      "source_declaration_index": 30,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  operator_function_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_function_py_api.py\n",
+      "text": "add_blender_test(\n  operator_function_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_function_py_api.py\n)",
+      "line": 356,
+      "context": []
+    },
+    {
+      "source_declaration_index": 31,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  operator_wrap_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_wrap_py_api.py\n",
+      "text": "add_blender_test(\n  operator_wrap_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_wrap_py_api.py\n)",
+      "line": 361,
+      "context": []
+    },
+    {
+      "source_declaration_index": 32,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_grease_pencil\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_grease_pencil.py\n",
+      "text": "add_blender_test(\n  script_pyapi_grease_pencil\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_grease_pencil.py\n)",
+      "line": 366,
+      "context": []
+    },
+    {
+      "source_declaration_index": 33,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_annotations\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_annotations.py\n",
+      "text": "add_blender_test(\n  script_pyapi_annotations\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_annotations.py\n)",
+      "line": 371,
+      "context": []
+    },
+    {
+      "source_declaration_index": 34,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_blf_buffer\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=BUFFER\n",
+      "text": "add_blender_test(\n  script_pyapi_blf_buffer\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=BUFFER\n)",
+      "line": 376,
+      "context": []
+    },
+    {
+      "source_declaration_index": 35,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    script_pyapi_blf_gpu\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n    --\n    --mode=GPU\n  ",
+      "text": "add_blender_test(\n    script_pyapi_blf_gpu\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n    --\n    --mode=GPU\n  )",
+      "line": 386,
+      "context": [
+        {
+          "opener": "if(FALSE)",
+          "line": 385
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 36,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n",
+      "text": "add_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)",
+      "line": 394,
+      "context": []
+    },
+    {
+      "source_declaration_index": 37,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n",
+      "text": "add_blender_test(\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n)",
+      "line": 408,
+      "context": []
+    },
+    {
+      "source_declaration_index": 38,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  id_management\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_id_management.py\n",
+      "text": "add_blender_test(\n  id_management\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_id_management.py\n)",
+      "line": 417,
+      "context": []
+    },
+    {
+      "source_declaration_index": 39,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_rna_paths\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_paths.py\n",
+      "text": "add_blender_test(\n  bl_rna_paths\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_paths.py\n)",
+      "line": 422,
+      "context": []
+    },
+    {
+      "source_declaration_index": 40,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_rna_accessors\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_accessors.py\n",
+      "text": "add_blender_test(\n  bl_rna_accessors\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_accessors.py\n)",
+      "line": 427,
+      "context": []
+    },
+    {
+      "source_declaration_index": 41,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  blendfile_io\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_io.py --\n  --output-dir ${TEST_OUT_DIR}/blendfile_io/\n",
+      "text": "add_blender_test(\n  blendfile_io\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_io.py --\n  --output-dir ${TEST_OUT_DIR}/blendfile_io/\n)",
+      "line": 436,
+      "context": []
+    },
+    {
+      "source_declaration_index": 42,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  blendfile_autosave\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_autosave.py --\n  --src-test-dir ${TEST_SRC_DIR}/io_tests/blend_autosave/\n  --output-dir ${TEST_OUT_DIR}/blendfile_autosave/\n",
+      "text": "add_blender_test(\n  blendfile_autosave\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_autosave.py --\n  --src-test-dir ${TEST_SRC_DIR}/io_tests/blend_autosave/\n  --output-dir ${TEST_OUT_DIR}/blendfile_autosave/\n)",
+      "line": 442,
+      "context": []
+    },
+    {
+      "source_declaration_index": 43,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      \"blendfile_versioning_${idx}_over_${BLENDFILE_VERSIONING_SPLIT_RANGE}\"\n      --log \"*blendfile*\"\n      --debug-memory\n      --debug\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_versioning.py --\n      --src-test-dir ${TEST_SRC_DIR}/\n      --output-dir ${TEST_OUT_DIR}/blendfile_io/\n      --slice-range ${BLENDFILE_VERSIONING_SPLIT_RANGE}\n      --slice-index ${idx}\n    ",
+      "text": "add_blender_test(\n      \"blendfile_versioning_${idx}_over_${BLENDFILE_VERSIONING_SPLIT_RANGE}\"\n      --log \"*blendfile*\"\n      --debug-memory\n      --debug\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_versioning.py --\n      --src-test-dir ${TEST_SRC_DIR}/\n      --output-dir ${TEST_OUT_DIR}/blendfile_io/\n      --slice-range ${BLENDFILE_VERSIONING_SPLIT_RANGE}\n      --slice-index ${idx}\n    )",
+      "line": 456,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        },
+        {
+          "opener": "foreach(idx RANGE ${BLENDFILE_VERSIONING_SPLIT_RANGE_CMAKE})",
+          "line": 455
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 44,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    blendfile_liblink\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_liblink.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  ",
+      "text": "add_blender_test(\n    blendfile_liblink\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_liblink.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )",
+      "line": 469,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 45,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    blendfile_relationships\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_relationships.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  ",
+      "text": "add_blender_test(\n    blendfile_relationships\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_relationships.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )",
+      "line": 476,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 46,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    blendfile_library_overrides\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_library_overrides.py --\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n    --test-dir \"${TEST_SRC_DIR}/libraries_and_linking\"\n  ",
+      "text": "add_blender_test(\n    blendfile_library_overrides\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_library_overrides.py --\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n    --test-dir \"${TEST_SRC_DIR}/libraries_and_linking\"\n  )",
+      "line": 483,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 47,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    blendfile_header\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_header.py --\n    --testdir \"${TEST_SRC_DIR}/io_tests/blend_parsing\"\n  ",
+      "text": "add_blender_test(\n    blendfile_header\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_header.py --\n    --testdir \"${TEST_SRC_DIR}/io_tests/blend_parsing\"\n  )",
+      "line": 490,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 48,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  global_undo\n  --log \"*undo*\"\n  --log-level debug\n  --debug-memory\n  --debug\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_global_undo.py --\n  --src-test-dir ${TEST_SRC_DIR}/\n  --output-dir ${TEST_OUT_DIR}/global_undo/\n",
+      "text": "add_blender_test(\n  global_undo\n  --log \"*undo*\"\n  --log-level debug\n  --debug-memory\n  --debug\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_global_undo.py --\n  --src-test-dir ${TEST_SRC_DIR}/\n  --output-dir ${TEST_OUT_DIR}/global_undo/\n)",
+      "line": 501,
+      "context": []
+    },
+    {
+      "source_declaration_index": 49,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bmesh_bevel\n    ${TEST_SRC_DIR}/modeling/bevel_regression.blend\n    --python ${TEST_PYTHON_DIR}/bevel_operator.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    bmesh_bevel\n    ${TEST_SRC_DIR}/modeling/bevel_regression.blend\n    --python ${TEST_PYTHON_DIR}/bevel_operator.py\n    --\n    --run-all-tests\n  )",
+      "line": 517,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 50,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bmesh_boolean\n    ${TEST_SRC_DIR}/modeling/bool_regression.blend\n    --python ${TEST_PYTHON_DIR}/boolean_operator.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    bmesh_boolean\n    ${TEST_SRC_DIR}/modeling/bool_regression.blend\n    --python ${TEST_PYTHON_DIR}/boolean_operator.py\n    --\n    --run-all-tests\n  )",
+      "line": 525,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 51,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bmesh_split_faces\n    ${TEST_SRC_DIR}/modeling/split_faces_test.blend\n    --python-text run_tests\n  ",
+      "text": "add_blender_test(\n    bmesh_split_faces\n    ${TEST_SRC_DIR}/modeling/split_faces_test.blend\n    --python-text run_tests\n  )",
+      "line": 533,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 52,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    curve_to_mesh\n    ${TEST_SRC_DIR}/modeling/curve_to_mesh.blend\n    --python ${TEST_PYTHON_DIR}/curve_to_mesh.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    curve_to_mesh\n    ${TEST_SRC_DIR}/modeling/curve_to_mesh.blend\n    --python ${TEST_PYTHON_DIR}/curve_to_mesh.py\n    --\n    --run-all-tests\n  )",
+      "line": 539,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 53,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    curves_extrude\n    ${TEST_SRC_DIR}/modeling/curves_extrude.blend\n    --python ${TEST_PYTHON_DIR}/curves_extrude.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    curves_extrude\n    ${TEST_SRC_DIR}/modeling/curves_extrude.blend\n    --python ${TEST_PYTHON_DIR}/curves_extrude.py\n    --\n    --run-all-tests\n  )",
+      "line": 547,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 54,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    mesh_join\n    --python ${TEST_PYTHON_DIR}/mesh_join.py\n  ",
+      "text": "add_blender_test(\n    mesh_join\n    --python ${TEST_PYTHON_DIR}/mesh_join.py\n  )",
+      "line": 555,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 55,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    mesh_validate\n    --python ${TEST_PYTHON_DIR}/mesh_validate.py\n    --\n    --testdir \"${TEST_SRC_DIR}\"\n  ",
+      "text": "add_blender_test_allow_error(\n    mesh_validate\n    --python ${TEST_PYTHON_DIR}/mesh_validate.py\n    --\n    --testdir \"${TEST_SRC_DIR}\"\n  )",
+      "line": 560,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 56,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    object_edit\n    --python ${TEST_PYTHON_DIR}/object_edit.py\n  ",
+      "text": "add_blender_test(\n    object_edit\n    --python ${TEST_PYTHON_DIR}/object_edit.py\n  )",
+      "line": 567,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 57,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    object_conversion\n    ${TEST_SRC_DIR}/modeling/object_conversion.blend\n    --python ${TEST_PYTHON_DIR}/object_conversion.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    object_conversion\n    ${TEST_SRC_DIR}/modeling/object_conversion.blend\n    --python ${TEST_PYTHON_DIR}/object_conversion.py\n    --\n    --run-all-tests\n  )",
+      "line": 572,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 58,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    object_api\n    --python ${TEST_PYTHON_DIR}/bl_object.py\n  ",
+      "text": "add_blender_test(\n    object_api\n    --python ${TEST_PYTHON_DIR}/bl_object.py\n  )",
+      "line": 580,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 59,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    node_tools\n    --python ${TEST_PYTHON_DIR}/bl_node_tool.py\n  ",
+      "text": "add_blender_test(\n    node_tools\n    --python ${TEST_PYTHON_DIR}/bl_node_tool.py\n  )",
+      "line": 585,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 60,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  geometry_attributes\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geometry_attributes.py\n",
+      "text": "add_blender_test(\n  geometry_attributes\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geometry_attributes.py\n)",
+      "line": 591,
+      "context": []
+    },
+    {
+      "source_declaration_index": 61,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  geo_node_file_reporting\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geo_node_file_reporting.py\n  --\n  --testdir \"${TEST_SRC_DIR}\"\n",
+      "text": "add_blender_test(\n  geo_node_file_reporting\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geo_node_file_reporting.py\n  --\n  --testdir \"${TEST_SRC_DIR}\"\n)",
+      "line": 596,
+      "context": []
+    },
+    {
+      "source_declaration_index": 62,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    object_modifier_array\n    ${TEST_SRC_DIR}/modifier_stack/array_test.blend\n    --python-text run_tests.py\n  ",
+      "text": "add_blender_test(\n    object_modifier_array\n    ${TEST_SRC_DIR}/modifier_stack/array_test.blend\n    --python-text run_tests.py\n  )",
+      "line": 608,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 63,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    modifiers\n    ${TEST_SRC_DIR}/modeling/modifiers/modifiers.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/modifiers.py\n  ",
+      "text": "add_blender_test(\n    modifiers\n    ${TEST_SRC_DIR}/modeling/modifiers/modifiers.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/modifiers.py\n  )",
+      "line": 614,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 64,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    modifiers_multires\n    ${TEST_SRC_DIR}/modeling/modifiers/multires_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/multires_modifier.py\n  ",
+      "text": "add_blender_test(\n    modifiers_multires\n    ${TEST_SRC_DIR}/modeling/modifiers/multires_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/multires_modifier.py\n  )",
+      "line": 620,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 65,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    modifiers_armature\n    ${TEST_SRC_DIR}/modeling/modifiers/armature_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/armature_modifier.py\n  ",
+      "text": "add_blender_test(\n    modifiers_armature\n    ${TEST_SRC_DIR}/modeling/modifiers/armature_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/armature_modifier.py\n  )",
+      "line": 626,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 66,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    physics_cloth\n    ${TEST_SRC_DIR}/physics/cloth_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_cloth.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    physics_cloth\n    ${TEST_SRC_DIR}/physics/cloth_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_cloth.py\n    --\n    --run-all-tests\n  )",
+      "line": 632,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 67,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    physics_softbody\n    ${TEST_SRC_DIR}/physics/softbody_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_softbody.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    physics_softbody\n    ${TEST_SRC_DIR}/physics/softbody_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_softbody.py\n    --\n    --run-all-tests\n  )",
+      "line": 640,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 68,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    physics_dynamic_paint\n    ${TEST_SRC_DIR}/physics/dynamic_paint_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_dynamic_paint.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    physics_dynamic_paint\n    ${TEST_SRC_DIR}/physics/dynamic_paint_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_dynamic_paint.py\n    --\n    --run-all-tests\n  )",
+      "line": 648,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 69,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    deform_modifiers\n    ${TEST_SRC_DIR}/modeling/deform_modifiers.blend\n    --python ${TEST_PYTHON_DIR}/deform_modifiers.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    deform_modifiers\n    ${TEST_SRC_DIR}/modeling/deform_modifiers.blend\n    --python ${TEST_PYTHON_DIR}/deform_modifiers.py\n    --\n    --run-all-tests\n  )",
+      "line": 656,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 70,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      physics_ocean\n      ${TEST_SRC_DIR}/physics/ocean_test.blend\n      --python ${TEST_PYTHON_DIR}/physics_ocean.py\n      --\n      --run-all-tests\n    ",
+      "text": "add_blender_test(\n      physics_ocean\n      ${TEST_SRC_DIR}/physics/ocean_test.blend\n      --python ${TEST_PYTHON_DIR}/physics_ocean.py\n      --\n      --run-all-tests\n    )",
+      "line": 665,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        },
+        {
+          "opener": "if(WITH_MOD_OCEANSIM)",
+          "line": 664
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 71,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    physics_particle_system\n    ${TEST_SRC_DIR}/physics/physics_particle_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_system.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    physics_particle_system\n    ${TEST_SRC_DIR}/physics/physics_particle_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_system.py\n    --\n    --run-all-tests\n  )",
+      "line": 674,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 72,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    physics_particle_instance\n    ${TEST_SRC_DIR}/physics/physics_particle_instance.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_instance.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    physics_particle_instance\n    ${TEST_SRC_DIR}/physics/physics_particle_instance.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_instance.py\n    --\n    --run-all-tests\n  )",
+      "line": 682,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 73,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    constraints\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_constraints.py\n    --\n    --testdir \"${TEST_SRC_DIR}/constraints\"\n  ",
+      "text": "add_blender_test(\n    constraints\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_constraints.py\n    --\n    --testdir \"${TEST_SRC_DIR}/constraints\"\n  )",
+      "line": 690,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 74,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  ",
+      "text": "add_blender_test(\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  )",
+      "line": 703,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 702
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 75,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_animation_armature\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_armature.py\n  --\n  --testdir \"${TEST_SRC_DIR}/animation\"\n",
+      "text": "add_blender_test(\n  bl_animation_armature\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_armature.py\n  --\n  --testdir \"${TEST_SRC_DIR}/animation\"\n)",
+      "line": 716,
+      "context": []
+    },
+    {
+      "source_declaration_index": 76,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_animation_bake\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_bake.py\n",
+      "text": "add_blender_test(\n  bl_animation_bake\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_bake.py\n)",
+      "line": 723,
+      "context": []
+    },
+    {
+      "source_declaration_index": 77,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_animation_rename\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_rename.py\n",
+      "text": "add_blender_test(\n  bl_animation_rename\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_rename.py\n)",
+      "line": 728,
+      "context": []
+    },
+    {
+      "source_declaration_index": 78,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_animation_nla_strip\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_nla_strip.py\n",
+      "text": "add_blender_test(\n  bl_animation_nla_strip\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_nla_strip.py\n)",
+      "line": 733,
+      "context": []
+    },
+    {
+      "source_declaration_index": 79,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_animation_pose_slide\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_pose_slide.py\n",
+      "text": "add_blender_test(\n  bl_animation_pose_slide\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_pose_slide.py\n)",
+      "line": 738,
+      "context": []
+    },
+    {
+      "source_declaration_index": 80,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_animation_drivers\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_drivers.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_animation_drivers\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_drivers.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 744,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 81,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_animation_shapekey\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_shapekey.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_animation_shapekey\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_shapekey.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 751,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 82,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_animation_fcurves\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_fcurves.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_animation_fcurves\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_fcurves.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 758,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 83,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_animation_action\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_action.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n    --output-dir \"${TEST_OUT_DIR}/bl_animation_action\"\n  ",
+      "text": "add_blender_test(\n    bl_animation_action\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_action.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n    --output-dir \"${TEST_OUT_DIR}/bl_animation_action\"\n  )",
+      "line": 765,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 84,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_animation_keyframing\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_keyframing.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_animation_keyframing\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_keyframing.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 773,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 85,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_animation_motion_path\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_motion_path.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_animation_motion_path\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_motion_path.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 780,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 86,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_pose_assets\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pose_assets.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_pose_assets\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pose_assets.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 787,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 87,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_rigging_symmetrize\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_rigging_symmetrize.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    bl_rigging_symmetrize\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_rigging_symmetrize.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 794,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 88,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    vertex_group_painting\n    --python ${CMAKE_CURRENT_LIST_DIR}/vertex_group_painting.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  ",
+      "text": "add_blender_test(\n    vertex_group_painting\n    --python ${CMAKE_CURRENT_LIST_DIR}/vertex_group_painting.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "line": 801,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 89,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  bl_brush\n  --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_asset_test.py\n",
+      "text": "add_blender_test(\n  bl_brush\n  --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_asset_test.py\n)",
+      "line": 811,
+      "context": []
+    },
+    {
+      "source_declaration_index": 90,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_node_structure_type_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_structure_type_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  ",
+      "text": "add_blender_test(\n    bl_node_structure_type_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_structure_type_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "line": 821,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 91,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_node_socket_usage_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_socket_usage_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  ",
+      "text": "add_blender_test(\n    bl_node_socket_usage_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_socket_usage_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "line": 828,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 92,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_node_group_compat\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_compat.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  ",
+      "text": "add_blender_test(\n    bl_node_group_compat\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_compat.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "line": 835,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 93,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_node_group_interface\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_interface.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  ",
+      "text": "add_blender_test(\n    bl_node_group_interface\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_interface.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "line": 842,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 94,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_node_copy_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_copy_operators.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  ",
+      "text": "add_blender_test(\n    bl_node_copy_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_copy_operators.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "line": 849,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 95,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_node_link_drag\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_link_drag.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  ",
+      "text": "add_blender_test(\n    bl_node_link_drag\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_link_drag.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "line": 856,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 96,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    cycles_osl_compile_test\n    --python ${CMAKE_CURRENT_LIST_DIR}/cycles_osl_compile_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/render\"\n  ",
+      "text": "add_blender_test(\n    cycles_osl_compile_test\n    --python ${CMAKE_CURRENT_LIST_DIR}/cycles_osl_compile_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/render\"\n  )",
+      "line": 1094,
+      "context": [
+        {
+          "opener": "if(WITH_CYCLES AND WITH_CYCLES_OSL)",
+          "line": 1093
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 97,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    compositor_cpu_file_output\n    --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n    --\n    --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n    --outdir \"${TEST_OUT_DIR}/compositor_cpu/file_output\"\n    --device \"CPU\"\n  ",
+      "text": "add_blender_test(\n    compositor_cpu_file_output\n    --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n    --\n    --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n    --outdir \"${TEST_OUT_DIR}/compositor_cpu/file_output\"\n    --device \"CPU\"\n  )",
+      "line": 1134,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1106
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 98,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      compositor_opengl_file_output\n      --gpu-backend opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_opengl/file_output\"\n      --device \"GPU\"\n    ",
+      "text": "add_blender_test(\n      compositor_opengl_file_output\n      --gpu-backend opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_opengl/file_output\"\n      --device \"GPU\"\n    )",
+      "line": 1173,
+      "context": [
+        {
+          "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)",
+          "line": 1144
+        },
+        {
+          "opener": "if(WITH_OPENGL_BACKEND)",
+          "line": 1163
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 99,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      compositor_metal_file_output\n      --gpu-backend metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_metal/file_output\"\n      --device \"GPU\"\n    ",
+      "text": "add_blender_test(\n      compositor_metal_file_output\n      --gpu-backend metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_metal/file_output\"\n      --device \"GPU\"\n    )",
+      "line": 1193,
+      "context": [
+        {
+          "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)",
+          "line": 1144
+        },
+        {
+          "opener": "if(WITH_METAL_BACKEND)",
+          "line": 1183
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 100,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      compositor_vulkan_file_output\n      --gpu-backend vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_vulkan/file_output\"\n      --device \"GPU\"\n    ",
+      "text": "add_blender_test(\n      compositor_vulkan_file_output\n      --gpu-backend vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_vulkan/file_output\"\n      --device \"GPU\"\n    )",
+      "line": 1213,
+      "context": [
+        {
+          "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)",
+          "line": 1144
+        },
+        {
+          "opener": "if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN)",
+          "line": 1203
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 101,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n  compositing_node_group\n  --python ${CMAKE_CURRENT_LIST_DIR}/compositing_node_group.py\n",
+      "text": "add_blender_test(\n  compositing_node_group\n  --python ${CMAKE_CURRENT_LIST_DIR}/compositing_node_group.py\n)",
+      "line": 1225,
+      "context": []
+    },
+    {
+      "source_declaration_index": 102,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n        geo_node_${geo_node_test}_${filename}\n        ${file}\n        --python ${TEST_PYTHON_DIR}/geo_node_test.py\n      ",
+      "text": "add_blender_test(\n        geo_node_${geo_node_test}_${filename}\n        ${file}\n        --python ${TEST_PYTHON_DIR}/geo_node_test.py\n      )",
+      "line": 1278,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1234
+        },
+        {
+          "opener": "foreach(geo_node_test ${geo_node_tests})",
+          "line": 1274
+        },
+        {
+          "opener": "foreach(file ${files})",
+          "line": 1276
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 103,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n      geo_node_simulation_test_${filename}\n      ${file}\n      --python ${TEST_PYTHON_DIR}/geo_node_sim_test.py\n    ",
+      "text": "add_blender_test(\n      geo_node_simulation_test_${filename}\n      ${file}\n      --python ${TEST_PYTHON_DIR}/geo_node_sim_test.py\n    )",
+      "line": 1289,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1234
+        },
+        {
+          "opener": "foreach(file ${files})",
+          "line": 1287
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 104,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    script_alembic_io\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_alembic_io_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/alembic\"\n    --outdir \"${TEST_OUT_DIR}/io_alembic\"\n  ",
+      "text": "add_blender_test(\n    script_alembic_io\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_alembic_io_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/alembic\"\n    --outdir \"${TEST_OUT_DIR}/io_alembic\"\n  )",
+      "line": 1344,
+      "context": [
+        {
+          "opener": "if(WITH_ALEMBIC AND TEST_SRC_DIR_EXISTS)",
+          "line": 1328
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 105,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    io_usd_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n  ",
+      "text": "add_blender_test(\n    io_usd_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n  )",
+      "line": 1354,
+      "context": [
+        {
+          "opener": "if(WITH_USD AND TEST_SRC_DIR_EXISTS)",
+          "line": 1353
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 106,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    io_usd_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n    --outdir \"${TEST_OUT_DIR}/io_usd\"\n  ",
+      "text": "add_blender_test(\n    io_usd_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n    --outdir \"${TEST_OUT_DIR}/io_usd\"\n  )",
+      "line": 1360,
+      "context": [
+        {
+          "opener": "if(WITH_USD AND TEST_SRC_DIR_EXISTS)",
+          "line": 1353
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 107,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_fbx_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_fbx_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/fbx\"\n    --outdir \"${TEST_OUT_DIR}/io_fbx\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_fbx_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_fbx_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/fbx\"\n    --outdir \"${TEST_OUT_DIR}/io_fbx\"\n  )",
+      "line": 1370,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1369
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 108,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_gltf_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/import\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_import\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_gltf_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/import\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_import\"\n  )",
+      "line": 1380,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1379
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 109,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_gltf_roundtrip\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_roundtrip_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/roundtrip\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_roundtrip\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_gltf_roundtrip\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_roundtrip_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/roundtrip\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_roundtrip\"\n  )",
+      "line": 1390,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1389
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 110,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_gltf_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/export\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_export\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_gltf_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/export\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_export\"\n  )",
+      "line": 1400,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1399
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 111,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_obj_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_obj_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/obj\"\n    --outdir \"${TEST_OUT_DIR}/io_obj\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_obj_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_obj_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/obj\"\n    --outdir \"${TEST_OUT_DIR}/io_obj\"\n  )",
+      "line": 1410,
+      "context": [
+        {
+          "opener": "if(WITH_IO_WAVEFRONT_OBJ AND TEST_SRC_DIR_EXISTS)",
+          "line": 1409
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 112,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_ply_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_ply_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/ply\"\n    --outdir \"${TEST_OUT_DIR}/io_ply\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_ply_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_ply_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/ply\"\n    --outdir \"${TEST_OUT_DIR}/io_ply\"\n  )",
+      "line": 1420,
+      "context": [
+        {
+          "opener": "if(WITH_IO_PLY AND TEST_SRC_DIR_EXISTS)",
+          "line": 1419
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 113,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    io_stl_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_stl_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/stl\"\n    --outdir \"${TEST_OUT_DIR}/io_stl\"\n  ",
+      "text": "add_blender_test_allow_error(\n    io_stl_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_stl_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/stl\"\n    --outdir \"${TEST_OUT_DIR}/io_stl\"\n  )",
+      "line": 1430,
+      "context": [
+        {
+          "opener": "if(WITH_IO_STL AND TEST_SRC_DIR_EXISTS)",
+          "line": 1429
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 114,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    imbuf_save\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_save.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/save\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  ",
+      "text": "add_blender_test(\n    imbuf_save\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_save.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/save\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )",
+      "line": 1460,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)",
+          "line": 1448
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 115,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_allow_error",
+      "arguments": "\n    imbuf_load\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_load.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/load\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  ",
+      "text": "add_blender_test_allow_error(\n    imbuf_load\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_load.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/load\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )",
+      "line": 1470,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)",
+          "line": 1448
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 116,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    sequencer_input_colorspace\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_input_colorspace.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sequence_editing\"\n  ",
+      "text": "add_blender_test(\n    sequencer_input_colorspace\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_input_colorspace.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sequence_editing\"\n  )",
+      "line": 1522,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1485
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 117,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    sequencer_strip_naming\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_strip_naming.py\n  ",
+      "text": "add_blender_test(\n    sequencer_strip_naming\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_strip_naming.py\n  )",
+      "line": 1529,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1485
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 118,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    sequencer_load_meta_stack\n    ${TEST_SRC_DIR}/sequence_editing/vse_load_meta_stack.blend\n    --python ${TEST_PYTHON_DIR}/sequencer_load_meta_stack.py\n  ",
+      "text": "add_blender_test(\n    sequencer_load_meta_stack\n    ${TEST_SRC_DIR}/sequence_editing/vse_load_meta_stack.blend\n    --python ${TEST_PYTHON_DIR}/sequencer_load_meta_stack.py\n  )",
+      "line": 1534,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1485
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 119,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_voxel_remesh\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_test.py\n  ",
+      "text": "add_blender_test(\n    bl_voxel_remesh\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_test.py\n  )",
+      "line": 1582,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 120,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_voxel_remesh_compare\n    ${TEST_SRC_DIR}/sculpting/voxel_remesh_compare.blend\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_compare_test.py\n  ",
+      "text": "add_blender_test(\n    bl_voxel_remesh_compare\n    ${TEST_SRC_DIR}/sculpting/voxel_remesh_compare.blend\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_compare_test.py\n  )",
+      "line": 1587,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 121,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_sculpt_mask\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  ",
+      "text": "add_blender_test(\n    bl_sculpt_mask\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "line": 1593,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 122,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_sculpt_face_set\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/face_set_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  ",
+      "text": "add_blender_test(\n    bl_sculpt_face_set\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/face_set_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "line": 1600,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 123,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_multires\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/multires_operators_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  ",
+      "text": "add_blender_test(\n    bl_multires\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/multires_operators_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "line": 1607,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 124,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_sculpt_mesh_filter\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mesh_filter_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  ",
+      "text": "add_blender_test(\n    bl_sculpt_mesh_filter\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mesh_filter_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "line": 1614,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 125,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_sculpt_automasking\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/automask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  ",
+      "text": "add_blender_test(\n    bl_sculpt_automasking\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/automask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "line": 1621,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 126,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_sculpt_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/sculpt_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  ",
+      "text": "add_blender_test(\n    bl_sculpt_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/sculpt_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "line": 1628,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 127,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_vertex_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/vertex_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  ",
+      "text": "add_blender_test(\n    bl_vertex_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/vertex_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "line": 1635,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 128,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_weight_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/weight_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  ",
+      "text": "add_blender_test(\n    bl_weight_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/weight_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "line": 1642,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 129,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_texture_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/texture_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  ",
+      "text": "add_blender_test(\n    bl_texture_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/texture_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "line": 1649,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 130,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test",
+      "arguments": "\n    bl_sculpt_brush_curve_presets\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_strength_curves_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  ",
+      "text": "add_blender_test(\n    bl_sculpt_brush_curve_presets\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_strength_curves_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "line": 1656,
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ]
+    },
+    {
+      "source_declaration_index": 131,
+      "source_path": "tests/python/CMakeLists.txt",
+      "name": "add_blender_test_ui",
+      "arguments": "\n      \"${ui_test}\"\n      --enable-event-simulate\n      --python \"${CMAKE_CURRENT_LIST_DIR}/ui_simulate/run_blender_setup.py\"\n      --\n      --tests \"${ui_test}\"\n    ",
+      "text": "add_blender_test_ui(\n      \"${ui_test}\"\n      --enable-event-simulate\n      --python \"${CMAKE_CURRENT_LIST_DIR}/ui_simulate/run_blender_setup.py\"\n      --\n      --tests \"${ui_test}\"\n    )",
+      "line": 1734,
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 1684
+        },
+        {
+          "opener": "foreach(ui_test ${_ui_tests})",
+          "line": 1733
+        }
+      ]
+    }
+  ]
+}

@@ -38,7 +38,7 @@ DAWN_COMMIT = "36cf1fae0cd8a81a4fb4580751648b80b2e6255c"
 BLENDER_LFS_URL = "https://projects.blender.org/blender/blender.git/info/lfs"
 NUMERIC_PATCHSET_SHA256 = "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147"
 SQLITE_PATCHSET_SHA256 = "4c3d9fe421f461854a77abc36fa1580dba3e11abbeb39f3d7bf409bf36e8a57d"
-CODEC_PATCHSET_SHA256 = "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708"
+CODEC_PATCHSET_SHA256 = "1c98842c68dc7706630ce31132cdab20649ea61b860dd05b88722dc1a79b0bcf"
 DEPENDENCIES = (
     "zlib zstd fmt eigen robinmap imath libdeflate openjph openexr libjpeg "
     "libpng libtiff expat yamlcpp pystring minizipng opencolorio brotli "

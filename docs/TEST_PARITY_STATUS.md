@@ -1,8 +1,81 @@
 # Original Blender test parity status
 
-Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The latest separately qualified browser package has 516 successful native/browser pairs in a selected 829-obligation candidate scope. A separate original mesh-driver profile now qualifies all 88 bevel cases. These profiles retain separate denominators. Unexpanded declarations, failed cases, missing cases, missing subtests, expected failures and unavailable host tools remain visible. The complete selected unittest matrix was rerun after the original brush asset was restored.
+Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The latest source-built browser package has **528 successful native/browser pairs in the selected 829-obligation candidate scope**. All 12 original disk-file hash cases now pass with the real SQLite extension. The same build aborts during its original ImBuf invocation before emitting the final execution payload, so all 80 ImBuf parents and 57 required subtests remain missing for that profile. Earlier package results remain separate. The separately qualified 88-case bevel profile is also outside this denominator.
 
-## Exact scope and references
+## Latest source build and exact qualification
+
+The [source build](https://github.com/596050/blended/actions/runs/39986612484)
+at `f25e69ed72fed2d31d7d65e657fd6515da4bd792` completed all 132 stages in
+2,771.476395 seconds, approximately 46 minutes 11 seconds. It reused 4,103
+individually verified dependency files and three source-derived libpng aliases;
+this is not a clean-build timing. The build succeeded and both complete
+qualification jobs failed. The [recovered original build receipts](../compatibility/evidence/source-build-recovery-39986612484/README.md)
+and [raw qualification files](../compatibility/evidence/source-rebuild-unittest-39986612484/)
+preserve those distinctions.
+
+| Qualification profile | Strict successful pairs | Outcome agreements | Missing parents | Missing subtests |
+|---|---:|---:|---:|---:|
+| Earlier base package | 512 | 597 | 12 | 14 |
+| Earlier Essentials package | 516 | 601 | 12 | 14 |
+| Source build with codecs, SQLite and Essentials | 528 | 536 | 80 | 57 |
+
+The [current report](../compatibility/evidence/unittest-parity-ledger-source-build-39986612484/report.json)
+has SHA-256 `913a5f430f2ea9df35ec2878240a3c3b3b6783062c733a2e9a6f58d3b6c21b0b`.
+Its browser observations are 539 passes, 207 assertion failures, two errors and
+one original expected failure, totaling 749 recorded parent outcomes. Only 528
+meet the strict successful-execution criteria. The 12 new SQLite pairs are
+actual original-suite executions on this artifact. Earlier ImBuf observations
+cannot fill the 80 missing outcomes. Losing 77 earlier ImBuf agreements while
+adding 12 SQLite agreements explains the change from 601 to 536 agreements.
+
+The exact browser archive is
+`c2105e12ae93e1804f82f3f49fdec3e0185ce2dd7fe9f26e97f4d3b44308df3c`.
+The base archive before resource augmentation is
+`0d51a33313902a0331df02d900fc5776fd0855e8b0f2062b46cf0150d859499a`.
+The [runtime context](../compatibility/evidence/runtime-context-source-build-39986612484/browser-context.json)
+binds the package, real Chrome executable, source producer and CI invocation.
+The normalizer accepts this older CI producer only through exact pinned source
+identities and complete command checks. Its working directory is source-derived
+from the pinned producer, not claimed as an independently observed OS property.
+
+An exact 730-entry path map restores CI absolute paths to verified repository
+files. Duplicate paths, changed bytes, noncanonical paths and symlinks fail
+validation. Missing execution payloads remain typed missing observations;
+malformed or contradictory payloads cannot become empty successful runs.
+
+Workspace maintenance removed the local checkout and some uncommitted files.
+The published checkpoint, retained normalized copies and exact CI artifacts
+restored the current report, normalizer and complete input closure. A new
+normalizer execution reproduced all 858 profile files byte for byte, and the
+strict ledger again exited 1 with `gate: blocked`. The [recovery receipts](../compatibility/evidence/parity-recovery-2026-10-23/README.md)
+identify the lost older infrastructure and diagnostic receipts explicitly.
+No replacement historical execution receipts were synthesized.
+
+### DPX correction awaiting complete application qualification
+
+The [codec patch](../patches/browser-codecs/README.md) now corrects two active
+OIIO DPX expressions that lose their negative storage-reuse sentinel on
+wasm32. Exact source-level numeric regressions reproduce `4294963200` for
+1,024 RGBA8 pixels in the original 32-bit expression and verify the corrected
+`-4096` result, including the other affected descriptors and 64-bit behavior.
+The production recipe verifies original source, patch and resulting source
+hashes before building. These regressions do not qualify image decoding.
+
+The earlier controlled diagnostic compiled the corrected object, but no
+corrected runtime result was observed before cleanup. A new complete Blender
+browser build must therefore execute the unchanged original ImBuf invocation,
+all 80 parent identities, and all 57 native subtest identities before any
+additional strict pairs are credited. The declared-scope, all-upstream and
+full-feature gates remain false. All 101 unexpanded declarations remain visible.
+
+The [fresh infrastructure execution](../compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/README.md)
+passes all 383 tests with zero skips. It includes 31 new normalizer regressions
+and six new DPX numeric/recipe regressions. All 145 captured input identities
+remain unchanged across execution. The [independent source review](../compatibility/evidence/dpx-production-review-2026-10-23/README.md)
+confirms the two-expression scope and exact patch equivalence. Infrastructure
+success does not change any original Blender test outcome.
+
+## Earlier reference profiles
 
 | Scope | Immutable identity | What the evidence establishes |
 |---|---|---|
@@ -10,16 +83,16 @@ Updated 2026-10-23. **Full one-to-one test parity is not achieved.** The latest 
 | Browser port source | gessa-ai/blender-web, `0e02e84b2bc5d9b27a6dc6e275443292f781fbad` | Source-derived development build with recorded numerical patches and source/build provenance. |
 | Native executable | Official 5.2.0 Linux x64 release, archive SHA-256 `96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48` | Independent native discovery and execution of complete original invocations. |
 | Base browser artifact | Archive SHA-256 `5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991` | Local Chrome 155.0.8059.39 qualification with software GPU flags; no deployed or hardware profile qualification. |
-| Current augmented browser package | Archive SHA-256 `3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910` | Same Wasm, exact original Essentials brush asset added before application startup, independent package measurement and full selected matrix rerun. |
+| Earlier Essentials browser package | Archive SHA-256 `3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910` | Same Wasm, exact original Essentials brush asset added before application startup, independent package measurement and full selected matrix rerun. |
 | Product target | Blender 5.4 alpha, `94363991e7dcf39e2d70614aa002ab6f67764a5d` | Separate source/fixture inventory, successful native configurations and original C++ execution; no transfer of candidate passes. |
 
-The normalized [current report](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/report.json) contains every known case pair and its blockers. The [conversion record](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/conversion.json) binds the original reports, manifests, context measurements, process logs and superseded attempts. The [contract](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/contract.json), inventory and typed receipts are independently replayable after relocating the checkout. The unchanged [base-package report](../compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/report.json) remains available with its 512 strict successful pairs.
+The normalized [earlier Essentials report](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/report.json) contains every known case pair and its blockers. The [conversion record](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/conversion.json) binds the original reports, manifests, context measurements, process logs and superseded attempts. The [contract](../compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/contract.json), inventory and typed receipts are independently replayable after relocating the checkout. The unchanged [base-package report](../compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/report.json) remains available with its 512 strict successful pairs.
 
-## Current selected matrix
+## Earlier Essentials selected matrix
 
 Native resource-complete discovery identifies 31 original invocations from 30 distinct Python source files. Their different invocation and fixture requirements produce 829 obligations and 827 distinct source-qualified case IDs. Two IDs occur in both original font modes and retain both obligations.
 
-| Observation | Native | Current augmented browser package |
+| Observation | Native | Earlier Essentials browser package |
 |---|---:|---:|
 | Required case obligations | 829 | 829 |
 | Cases discovered and executed | 829 | 817 |
@@ -152,7 +225,7 @@ Both complete browser font modes now receive the exact original fonts and refere
 
 A separate host-assisted diagnostic executes the exact source-derived OpenImageIO `idiff` command, arguments and tolerances against those browser PNGs and original references. **All 207 images satisfy the original acceptance predicate:** 80 BUFFER and 127 VFONT. All 80 BUFFER outputs are byte-identical to their reference PNGs. VFONT has 56 comparator exits of 0 and 71 exits of 1; the pinned original test explicitly accepts both. Exit 2, other exits and timeouts cannot pass.
 
-This establishes the selected image comparisons under that host-assisted diagnostic on the base browser artifact. It does not make the original browser invocations pass, implement general browser subprocess support, qualify unrelated rendering features, or transfer a successful image comparison to a different package. The current augmented package still records all 207 original font assertion failures. See the [per-case oracle evidence](../compatibility/evidence/unittest-font-host-oracle-5.2-2026-10-23/summary.json).
+This establishes the selected image comparisons under that host-assisted diagnostic on the base browser artifact. It does not make the original browser invocations pass, implement general browser subprocess support, qualify unrelated rendering features, or transfer a successful image comparison to a different package. The earlier Essentials package still records all 207 original font assertion failures. See the [per-case oracle evidence](../compatibility/evidence/unittest-font-host-oracle-5.2-2026-10-23/summary.json).
 
 ## Remaining demonstrated gaps
 
@@ -165,8 +238,8 @@ at one job in 552.20 seconds. Separate SQLite WebAssembly checks pass in Node
 and Chrome, including WAL, concurrent connections, transactions, rollback,
 foreign keys and close/reopen behavior. The original disk-hash suite attempted
 on standalone CPython still executes zero cases: its unchanged package
-initializer requires `bpy`. The complete Blender rebuild is therefore required
-before those 12 missing obligations can change. Raw attempts are retained in
+initializer requires `bpy`. The later complete Blender rebuild qualifies all 12 original cases, as shown
+in the latest source-build section above. Raw attempts are retained in
 [database build evidence](../compatibility/evidence/browser-sqlite-build-2026-10-23/).
 
 A separate [Python binding diagnostic](../compatibility/evidence/browser-sqlite-python-validation-2026-10-23/)
@@ -193,15 +266,15 @@ browser case credit from dependency validation.
 
 The source workflow now selects both byte-bound extensions, preserves the
 original brush overlay, and reruns the frozen initial invocation matrix plus
-resource retries. None of this implementation progress changes the current
-516 strict pairs until the new engine produces its own qualifying observations.
+resource retries. The later source build raises the strict count from 516 to 528 with its own
+original SQLite observations. Its ImBuf invocation remains incomplete.
 
 | Gap | Exact evidence | Required implementation or qualification |
 |---|---|---|
-| SQLite | 12 native disk-file hash cases cannot be discovered on the current qualified package; browser import fails on `_sqlite3`. | The new real extension and dependency pass component validation. Rerun the complete original 12-case invocation on the rebuilt Blender engine. |
+| SQLite | All 12 original disk-file hash cases pass on the source-built package. | Preserve this complete invocation on subsequent repaired builds; earlier packages retain their missing cases. |
 | Background process and socket support | `BackgroundDownloaderProcessTest.test_start_stop` fails through `multiprocessing.Pipe`, `socketpair`, and the unsupported socket syscall. | Implement the needed browser worker/IPC behavior and preserve the original lifecycle assertions. The seven other pass callbacks do not qualify a failing invocation. |
-| AVIF | Two imbuf parent cases fail in three AVIF subtests; the current qualified package's OIIO was built with `USE_LIBHEIF=OFF`. | The new libheif/AOM/OIIO dependency integration passes. Verify the original Blender read/write comparisons on the rebuilt engine. |
-| Missing image formats | Fourteen CINEON, DPX, JPEG2000 and WEBP subtest events are absent because the current package exposes a reduced format list. | The new recipes enable the corresponding compiled features. Require all native event identities and original outcomes on the rebuilt artifact. A passing parent alone is insufficient. |
+| AVIF | The earlier Essentials package fails two ImBuf parents in three AVIF subtests. The later source build includes libheif/AOM, but its incomplete ImBuf invocation supplies no final outcomes. | Complete the original invocation on the corrected engine and preserve the exact original AVIF comparisons and tolerance. |
+| Missing image formats | The earlier Essentials package lacks 14 conditional format events. The later source build enables the codecs but loses all 57 final subtest observations when ImBuf aborts. | Qualify the signed DPX correction in a complete rebuilt invocation. Require every native parent and subtest identity; component arithmetic checks supply no original test credit. |
 | Image-comparator execution | 207 font-image assertions fail at the original missing-tool guard, despite the separate successful host image oracle. | Supply a faithful browser-compatible comparator or a clearly declared supported test-helper execution profile; retain exact original command and acceptance semantics. |
 | Documentation subprocess | The first original documentation subtest succeeds; `sphinx_stub_gen` fails when spawning the required Python process. | Implement the required execution facility and dependency closure before claiming the full original invocation passes. |
 | Mesh fill topology | Two of 105 original operator cases fail the exact edge-topology comparison on the current package, while all 105 pass natively. | Capture actual evaluated/reference geometry and isolate the divergence in the shared fill or comparator path. Preserve the original topology criterion and rerun the full invocation on any repaired engine. |
@@ -236,7 +309,7 @@ Raw reports are retained before normalization. The normalizer validates their ha
 
 The old facet gate's hash-only evidence acceptance was replaced with typed case-execution receipts that must match the independently selected case, target, profile, run and context. Hash-valid arbitrary or failed JSON is no longer accepted as a feature pass. Both the facet gate and the new test ledger keep `full_feature_parity` false; satisfying a declared test contract would still leave whole-application coverage to be established.
 
-The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate and independently checks both base and augmented packages. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
+The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate and independently checks the base, Essentials and source-built codec/SQLite profiles. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
 
 The latest local infrastructure run passes **346 tests with zero skips** in 121.485 seconds, including real CMake configuration, dependency integration, patch application, qualification validation and the cache failure regressions. Its prospectively captured [execution receipt](../compatibility/evidence/infrastructure-tests-cache-verified-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm all 156 selected implementation, workflow and original-preimage files were unchanged during the run. The preceding [337-test run](../compatibility/evidence/infrastructure-tests-codecs-sqlite-2026-10-23/execution.json) and [294-test run](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) remain unchanged. These counts validate the project's testing machinery; they are not added to Blender feature passes.
 

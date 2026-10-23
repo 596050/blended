@@ -15,8 +15,8 @@
   },
   "patch": {
     "file": "0001-enable-original-image-codecs.patch",
-    "bytes": 20766,
-    "sha256": "0c88ac2d285346c325c9a282efa829a0ef52b7f73084b7eee73b7361c608b28e"
+    "bytes": 22069,
+    "sha256": "0a129c4d827048faff088b95b446e86df7f116739b09b9aa67deaf887d3872f2"
   },
   "application_helper": {
     "file": "apply.py",
@@ -67,10 +67,16 @@
       "after_bytes": 2251
     },
     {
+      "path": "scripts/deps/openimageio-dpx-signed-buffer.patch",
+      "before_sha256": null,
+      "after_sha256": "c61f210fae985bd4119b84aa0b81915c9a4b704cd270734256aa1ba2f42eb185",
+      "after_bytes": 302
+    },
+    {
       "path": "scripts/deps/openimageio.sh",
       "before_sha256": "a17f3434f60d1914d61c03d10a91b7bafc562b411a4d215dc5b78a77ff681e5f",
-      "after_sha256": "25094118fcc8f047d5f6dfd507c727e333717913e3a664776b8a4c3a0380a180",
-      "after_bytes": 15256
+      "after_sha256": "86d5e0c38066dca337c30128b586e3173b4ea547d0a1067685d710e03a6c9a01",
+      "after_bytes": 15890
     },
     {
       "path": "scripts/deps/openjpeg.sh",
@@ -174,6 +180,32 @@
   "limits": [
     "Dependency compilation and recipe smoke probes do not establish original Blender test parity.",
     "CINEON and DPX compile and original 80-parent, 57-subtest ImBuf conformance require a new complete Blender browser build.",
-    "The Libheif source guard disables only unused standalone Embind wrappers for static C API embedding."
-  ]
+    "The Libheif source guard disables only unused standalone Embind wrappers for static C API embedding.",
+    "The signed DPX helper regression is a source-level component check; the rebuilt original ImBuf invocation must still complete all parent and subtest obligations."
+  ],
+  "dpx_signed_buffer": {
+    "source": "src/dpx.imageio/libdpx/DPXColorConverter.cpp",
+    "before_sha256": "793e53edfac8dc79b8cea7bf0cc15c29a23b947e5559cf65cbe4bafd7227ebf1",
+    "after_sha256": "28dd63ce548ee759f09bd23c2a90040408e3f91ffdfc7be3888fb357ad11d9b3",
+    "patch": {
+      "file": "dependency-patches/openimageio-dpx-signed-buffer.patch",
+      "bytes": 302,
+      "sha256": "c61f210fae985bd4119b84aa0b81915c9a4b704cd270734256aa1ba2f42eb185"
+    },
+    "test_preimages": [
+      {
+        "file": "test-data/DPXColorConverter.cpp",
+        "bytes": 23722,
+        "sha256": "793e53edfac8dc79b8cea7bf0cc15c29a23b947e5559cf65cbe4bafd7227ebf1"
+      },
+      {
+        "file": "test-data/DPXHeader.h",
+        "bytes": 56855,
+        "sha256": "9a7aacfed1ce795060a97cc452e7f85a5a8b7912e00e5dda9f89622b860039b1"
+      }
+    ],
+    "scope": "Preserve the original negative RGB/RGBA storage sentinel with signed 64-bit multiplication on wasm32.",
+    "upstream_tests_modified": false,
+    "original_blender_cases_qualified_by_this_patch_alone": 0
+  }
 }

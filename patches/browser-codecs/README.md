@@ -41,6 +41,38 @@ The platform fragment loads the actual WebP, OpenJPEG and libheif config package
 
 libheif automatically includes standalone JavaScript Embind wrappers when compiling for Emscripten. Those unused wrappers fail under the pinned SDK's raw-pointer binding rules. The small [dependency patch](dependency-patches/libheif-static-c-api.patch) adds an opt-out guard, enabled only by the embedded static C API recipe. It leaves the codec algorithms and C API unchanged. The recipe checks both the original and patched file digest.
 
+## Signed DPX buffer size on wasm32
+
+The [DPX dependency patch](dependency-patches/openimageio-dpx-signed-buffer.patch)
+corrects two active expressions in OIIO 3.1.13.1's original
+`QueryRGBBufferSizeInternal`. RGB and RGBA descriptors use a negative size to
+indicate that the caller's storage can be reused. Multiplying an unsigned
+32-bit `size_t` by `-3` or `-4` wraps before the result is widened to `int64_t`.
+For 1,024 RGBA8 pixels, the original expression returns `4294963200` instead
+of `-4096`. The reader treats a positive result as an allocation request.
+
+The correction converts both unsigned operands to `int64_t` before
+multiplication. Only those two active expressions change. Positive allocation
+branches, unsupported descriptors, inactive code, codec configuration and
+Blender assertions retain their original bytes. The build recipe verifies the
+original source, the dependency patch, and the resulting source hashes.
+The zero-context patch encoding avoids importing upstream trailing whitespace
+into the enclosing port patch; source identities still bind the entire file.
+
+The numeric regressions compile the actual extracted helper and original
+descriptor enum with unsigned 32-bit and 64-bit operand types. They reproduce
+the original unsigned result, verify every affected descriptor against an
+independent integer oracle, and check unchanged positive/default branches.
+Recipe regressions reject altered source and patch bytes before mutation.
+These checks establish arithmetic and source preparation, not image decoding
+or Blender test parity.
+
+The [recovery note](../../compatibility/evidence/dpx-standalone-recovery-2026-10-23/README.md)
+preserves the limits of the earlier standalone investigation. Workspace cleanup
+removed its raw execution receipts after the corrected object had compiled.
+No corrected decode completion was observed. The production patch therefore
+requires a newly captured complete browser rebuild and original ImBuf run.
+
 ## Validation and acceptance boundary
 
 Run the patch integrity regressions with:

@@ -1,0 +1,20 @@
+--- a/src/dpx.imageio/libdpx/DPXColorConverter.cpp
++++ b/src/dpx.imageio/libdpx/DPXColorConverter.cpp
+@@ -298,7 +298,7 @@
+ 				
+ 			case kCbYCr:	// 4:4:4 -> RGB, can get away with swiveling
+ 			case kRGB:		// redundant
+-				return pixels * -3 * bytes;
++				return -int64_t(pixels) * 3 * int64_t(bytes);
+ 				
+ 			case kCbYACrYA:	// 4:2:2:4 -> RGBA, requires allocation
+ 				return pixels * 4 * bytes;
+@@ -306,7 +306,7 @@
+ 			case kCbYCrA:	// 4:4:4:4 -> RGBA, can get away with swiveling
+ 			case kRGBA:		// redundant
+ 			case kABGR:		// only needs swapping
+-				return pixels * -4 * bytes;
++				return -int64_t(pixels) * 4 * int64_t(bytes);
+ 				
+             // Added by lg, does this work?
+             case kRed:

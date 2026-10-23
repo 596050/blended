@@ -1,0 +1,5 @@
+--- a/libheif/api/libheif/heif.cc
++++ b/libheif/api/libheif/heif.cc
+@@ -23 +23 @@
+-#if defined(__EMSCRIPTEN__) && !defined(__EMSCRIPTEN_STANDALONE_WASM__)
++#if defined(__EMSCRIPTEN__) && !defined(__EMSCRIPTEN_STANDALONE_WASM__) && !defined(LIBHEIF_DISABLE_EMBIND)

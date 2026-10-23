@@ -1,0 +1,57 @@
+{
+  "checkout_root": "/home/runner/work/blended/blended",
+  "ci_run": {
+    "bytes": 12001,
+    "path": "ci-run.json",
+    "sha256": "03f4779c4c5357c638458915a00dbd49029531e3e974c00a084c8d2872c85f68"
+  },
+  "cwd_basis": "Source-derived from the exact workflow entrypoint and producer ROOT; not an OS-observed cwd.",
+  "kind": "source-derived-frozen-producer-context",
+  "limitations": [
+    "The actual OS cwd was not recorded in the host receipt.",
+    "The cwd and source acquisition mode are derived only for these exact immutable producer and workflow bytes."
+  ],
+  "matrices": [
+    {
+      "matrix": {
+        "bytes": 135777,
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/source-rebuild-unittest-39986612484/main/matrix.json",
+        "sha256": "b74614f2b2aab601e288b844df449ace8a57c687dbd821d32c6642ac9c996fdd"
+      },
+      "plan": "main"
+    },
+    {
+      "matrix": {
+        "bytes": 54563,
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/source-rebuild-unittest-39986612484/resources/matrix.json",
+        "sha256": "540e584d4718c78906f6aac66d2f7405363b96a286149cff9e8ec0d8d4567b66"
+      },
+      "plan": "resources"
+    }
+  ],
+  "matrix_driver": {
+    "bytes": 12682,
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/source-rebuild-unittest-39986612484/main/harness/tools/run_unittest_browser_matrix.py",
+    "sha256": "7e9830db4f6bb378c8bf0d5ea36e13e0ac164c609633fe368026b8a75e10c0e3",
+    "upstream_path": "tools/run_unittest_browser_matrix.py"
+  },
+  "original_entrypoint": "/home/runner/work/blended/blended/tools/run_unittest_browser_matrix.py",
+  "os_cwd_observed": false,
+  "probe": {
+    "bytes": 75480,
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/source-rebuild-unittest-39986612484/main/harness/tools/probe_browser_port.py",
+    "sha256": "2dd05ff937337d861972e224c63639f90c471002eab496a1f2595853303672cd",
+    "upstream_path": "tools/probe_browser_port.py"
+  },
+  "rule": "original-unittest-downloaded-sources-f25e69ed72fe-v1",
+  "run_id": 39986612484,
+  "schema": 1,
+  "source_commit": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+  "source_mode": "Complete frozen suite and helper downloads, each checked against original SHA256 and byte count before execution.",
+  "workflow": {
+    "bytes": 16666,
+    "path": "browser-source-build.yml",
+    "sha256": "cf330f75ff2ea44c7cf9090950269033ca19de9b0c281e64a87caabfab29fcff",
+    "upstream_path": ".github/workflows/browser-source-build.yml"
+  }
+}

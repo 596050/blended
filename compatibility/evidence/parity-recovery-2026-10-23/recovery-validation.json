@@ -1,0 +1,114 @@
+{
+  "kind": "post-recovery-ledger-verification",
+  "results": [
+    {
+      "byte_identical_to_retained_strict_report": true,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/base/normalizer/test_parity_ledger.py",
+        "--contract",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/base/contract.json",
+        "--inventory",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/base/inventory.json",
+        "--executions",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/base/executions.json",
+        "--evidence-root",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/base",
+        "--output",
+        "/tmp/blended-parity-recovery/recovery-validation/base/strict-gate.json"
+      ],
+      "cwd": "/tmp/blended-parity-recovery/recovery-validation",
+      "duration_seconds": 0.5013629009990836,
+      "gate": "blocked",
+      "normalizer_only_fields": [
+        "missing_browser_subtest_count",
+        "observation_count_limit",
+        "observation_totals",
+        "unexpected_browser_subtest_count"
+      ],
+      "outcome_agreements": 597,
+      "output_bytes": 752366,
+      "output_sha256": "d83327f46ac81237b9d8a77001874f466c2110ca59570aa48598c8805a3b9cf0",
+      "profile": "base",
+      "returncode": 1,
+      "scope": "Post-recovery ledger verification only; no Blender test execution.",
+      "shared_fields_equal": true,
+      "started_utc": "2026-10-23T18:44:46.729276+00:00",
+      "strict_only_fields": [],
+      "strict_successful_pairs": 512
+    },
+    {
+      "byte_identical_to_retained_strict_report": true,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/essentials/normalizer/test_parity_ledger.py",
+        "--contract",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/essentials/contract.json",
+        "--inventory",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/essentials/inventory.json",
+        "--executions",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/essentials/executions.json",
+        "--evidence-root",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/essentials",
+        "--output",
+        "/tmp/blended-parity-recovery/recovery-validation/essentials/strict-gate.json"
+      ],
+      "cwd": "/tmp/blended-parity-recovery/recovery-validation",
+      "duration_seconds": 0.6473258050027653,
+      "gate": "blocked",
+      "normalizer_only_fields": [
+        "missing_browser_subtest_count",
+        "observation_count_limit",
+        "observation_totals",
+        "unexpected_browser_subtest_count"
+      ],
+      "outcome_agreements": 601,
+      "output_bytes": 751831,
+      "output_sha256": "9ef7b9546af034c7453a754b0e96cb3403c6f0a6f0f2a0ed7e0138770698385a",
+      "profile": "essentials",
+      "returncode": 1,
+      "scope": "Post-recovery ledger verification only; no Blender test execution.",
+      "shared_fields_equal": true,
+      "started_utc": "2026-10-23T18:44:47.231638+00:00",
+      "strict_only_fields": [],
+      "strict_successful_pairs": 516
+    },
+    {
+      "byte_identical_to_retained_strict_report": true,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/source-build-codecs-sqlite/normalizer/test_parity_ledger.py",
+        "--contract",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/source-build-codecs-sqlite/contract.json",
+        "--inventory",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/source-build-codecs-sqlite/inventory.json",
+        "--executions",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/source-build-codecs-sqlite/executions.json",
+        "--evidence-root",
+        "/tmp/blended-parity-recovery/retained-replay-profiles/source-build-codecs-sqlite",
+        "--output",
+        "/tmp/blended-parity-recovery/recovery-validation/source-build-codecs-sqlite/strict-gate.json"
+      ],
+      "cwd": "/tmp/blended-parity-recovery/recovery-validation",
+      "duration_seconds": 0.8093853190002847,
+      "gate": "blocked",
+      "normalizer_only_fields": [
+        "missing_browser_subtest_count",
+        "observation_count_limit",
+        "observation_totals",
+        "unexpected_browser_subtest_count"
+      ],
+      "outcome_agreements": 536,
+      "output_bytes": 779547,
+      "output_sha256": "03c9f9f7b3f868a9c8a91080a52bce173978b054b0e37e10408178c463a53f82",
+      "profile": "source-build-codecs-sqlite",
+      "returncode": 1,
+      "scope": "Post-recovery ledger verification only; no Blender test execution.",
+      "shared_fields_equal": true,
+      "started_utc": "2026-10-23T18:44:47.880253+00:00",
+      "strict_only_fields": [],
+      "strict_successful_pairs": 528
+    }
+  ],
+  "schema": 1
+}

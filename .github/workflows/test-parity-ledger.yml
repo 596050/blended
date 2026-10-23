@@ -58,10 +58,17 @@ jobs:
             browser_matrix: unittest-browser-matrix-5.2-2026-10-23
             resource_matrix: unittest-browser-resources-5.2-2026-10-23
             context: runtime-context-2026-10-23
+            path_map: ''
           - package: essentials
             browser_matrix: unittest-browser-essentials-5.2-2026-10-23
             resource_matrix: unittest-browser-essentials-resources-5.2-2026-10-23
             context: runtime-context-essentials-2026-10-23
+            path_map: ''
+          - package: source-build-codecs-sqlite
+            browser_matrix: source-rebuild-unittest-39986612484/main
+            resource_matrix: source-rebuild-unittest-39986612484/resources
+            context: runtime-context-source-build-39986612484
+            path_map: compatibility/evidence/source-rebuild-unittest-39986612484/path-map.json
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,17 +77,23 @@ jobs:
         with:
           python-version: '3.12'
       - name: Reconcile immutable original attempts and explicit resource retries
-        run: >-
-          python3 tools/reconcile_unittest_matrix.py
-          --repo-root .
-          --source-plan compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json
-          --native-retry-plan compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json
-          --browser-matrix compatibility/evidence/${{ matrix.browser_matrix }}/matrix.json
-          --browser-matrix compatibility/evidence/${{ matrix.resource_matrix }}/matrix.json
-          --native-context compatibility/evidence/runtime-context-2026-10-23/native-context.json
-          --browser-context compatibility/evidence/${{ matrix.context }}/browser-context.json
-          --output evidence/reconciled-original-tests
-          --report-only
+        env:
+          PARITY_PATH_MAP: ${{ matrix.path_map }}
+        run: |
+          parity_map_args=()
+          if [[ -n "$PARITY_PATH_MAP" ]]; then
+            parity_map_args=(--path-map "$PARITY_PATH_MAP")
+          fi
+          python3 tools/reconcile_unittest_matrix.py \
+            --repo-root . \
+            --source-plan compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json \
+            --native-retry-plan compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json \
+            --browser-matrix compatibility/evidence/${{ matrix.browser_matrix }}/matrix.json \
+            --browser-matrix compatibility/evidence/${{ matrix.resource_matrix }}/matrix.json \
+            --native-context compatibility/evidence/runtime-context-2026-10-23/native-context.json \
+            --browser-context compatibility/evidence/${{ matrix.context }}/browser-context.json \
+            --output evidence/reconciled-original-tests \
+            "${parity_map_args[@]}" --report-only
       - name: Enforce the strict declared-scope gate
         run: >-
           python3 tools/test_parity_ledger.py

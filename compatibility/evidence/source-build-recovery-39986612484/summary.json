@@ -1,0 +1,122 @@
+{
+  "all_upstream_test_parity": false,
+  "basis": "Original source-build receipt, its exact stage logs, cache receipt and harvest manifest. This is not a new build.",
+  "cache_reuse": {
+    "basis": "Original cache-reuse receipt reports these checks during the CI build. Recovery did not revalidate absent dependency payloads.",
+    "cache_key": "blender-source-ubuntu24-x64-ebd6a49b6f17d26d0800c172eb40348041eb5fb37f5c7d4c67e5857f6dc8abd6-39841653080",
+    "harvest_manifest_distinct_paths": 4184,
+    "harvest_manifest_record_count": 4184,
+    "harvest_scope": "File identities recorded by the new build; this recovery preserves and checks the manifest bytes, not all cache payloads.",
+    "verified_bytes": 391934030,
+    "verified_files": 4103,
+    "verified_source_derived_aliases": 3
+  },
+  "full_feature_parity": false,
+  "kind": "post-recovery-original-build-analysis",
+  "original_build": {
+    "bitwise_reproducibility_verified": false,
+    "build_mode": "OFF",
+    "checkout_commit": "f25e69ed72fed2d31d7d65e657fd6515da4bd792",
+    "codec_patch_manifest_sha256": "b2881dbf9366a9e1ad6bbf9ffe4d61b0b53d47745472bd2b14f02da5730f2708",
+    "configured_features": {
+      "WITH_IMAGE_CINEON": "ON",
+      "WITH_IMAGE_OPENJPEG": "ON",
+      "WITH_IMAGE_WEBP": "ON"
+    },
+    "contains_new_dpx_signed_size_patch": false,
+    "deployed": false,
+    "duration_seconds": 2771.476395,
+    "finished_utc": "2026-10-23T17:12:53.258565+00:00",
+    "hardware_verified": false,
+    "jobs": 2,
+    "nonzero_stage_exit_count": 0,
+    "passed_stage_count": 132,
+    "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+    "selected_stages": [
+      {
+        "duration_seconds": 221.007,
+        "exit_code": 0,
+        "name": "dependency-openimageio",
+        "status": "passed"
+      },
+      {
+        "duration_seconds": 22.115,
+        "exit_code": 0,
+        "name": "dependency-sqlite",
+        "status": "passed"
+      },
+      {
+        "duration_seconds": 349.593,
+        "exit_code": 0,
+        "name": "dependency-python",
+        "status": "passed"
+      },
+      {
+        "duration_seconds": 1645.898,
+        "exit_code": 0,
+        "name": "compile-engine",
+        "status": "passed"
+      }
+    ],
+    "shipping_profile": false,
+    "stage_count": 132,
+    "started_utc": "2026-10-23T16:26:41.782170+00:00",
+    "tests_executed_in_build": false,
+    "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "with_buildinfo": true
+  },
+  "schema": 1,
+  "separate_original_test_observations": {
+    "basis": "Recovered original main/resources observations normalized in a separate verified execution; no Blender rerun during recovery.",
+    "distinct_case_ids": 827,
+    "gate": "blocked",
+    "missing_browser_subtests": 57,
+    "observation_totals": {
+      "browser": {
+        "discovered": 749,
+        "error": 2,
+        "executed": 749,
+        "expected_failure": 1,
+        "failed": 207,
+        "fixed_native_cases": 829,
+        "missing_outcomes": 80,
+        "observed_terminal_cases": 749,
+        "passed": 539,
+        "skipped": 0,
+        "subtest_events": 14,
+        "unexpected_success": 0
+      },
+      "native": {
+        "discovered": 829,
+        "error": 0,
+        "executed": 829,
+        "expected_failure": 1,
+        "failed": 0,
+        "fixed_native_cases": 829,
+        "missing_outcomes": 0,
+        "observed_terminal_cases": 829,
+        "passed": 828,
+        "skipped": 0,
+        "subtest_events": 71,
+        "unexpected_success": 0
+      }
+    },
+    "outcome_agreements": 536,
+    "paired_obligations": 829,
+    "report": {
+      "bytes": 780486,
+      "path": "../unittest-parity-ledger-source-build-39986612484/report.json",
+      "sha256": "913a5f430f2ea9df35ec2878240a3c3b3b6783062c733a2e9a6f58d3b6c21b0b"
+    },
+    "required_source_registrations": 132,
+    "selected_invocations": 31,
+    "successful_execution_pairs": 528,
+    "unexpected_browser_subtests": 0,
+    "unresolved_source_registrations": 101
+  },
+  "source_build_receipt": {
+    "bytes": 172975,
+    "path": "build/source-build.json",
+    "sha256": "44bdb061bcd22a7a2b7756e93fe406a9eabfd2dd9e9f8fd4b63947ff31e2503f"
+  }
+}

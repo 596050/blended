@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -135,6 +136,187 @@ class CodecPatchApplicationTests(unittest.TestCase):
         result, receipt = self.execute()
         self.assertNotEqual(result.returncode, 0)
         self.assertEqual(receipt["status"], "failed")
+
+
+class DPXSignedBufferTests(unittest.TestCase):
+    """Execute the exact upstream helper with both relevant unsigned widths.
+
+    These are component arithmetic and recipe regressions. They do not execute
+    Blender or establish image decoding or original-suite conformance.
+    """
+
+    BEFORE = "793e53edfac8dc79b8cea7bf0cc15c29a23b947e5559cf65cbe4bafd7227ebf1"
+    AFTER = "28dd63ce548ee759f09bd23c2a90040408e3f91ffdfc7be3888fb357ad11d9b3"
+    SOURCE_NAME = "src/dpx.imageio/libdpx/DPXColorConverter.cpp"
+    PATCH_NAME = "scripts/deps/openimageio-dpx-signed-buffer.patch"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.temporary = tempfile.TemporaryDirectory(prefix="blended-dpx-width-")
+        cls.addClassCleanup(cls.temporary.cleanup)
+        cls.root = Path(cls.temporary.name)
+        cls.port = cls.root / "port"
+        cls.port.mkdir()
+        manifest = json.loads((PACKAGE / "manifest.json").read_text())
+        for row in manifest["files"]:
+            if row["before_sha256"] is not None:
+                target = cls.port / row["path"]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(SOURCE / row["path"], target)
+        applied = subprocess.run(
+            [sys.executable, str(PACKAGE / "apply.py"), "--port-root", str(cls.port),
+             "--receipt", str(cls.root / "application.json"),
+             "--expected-manifest-sha256", sha(PACKAGE / "manifest.json")],
+            capture_output=True, text=True, timeout=30)
+        if applied.returncode:
+            raise RuntimeError(applied.stderr)
+        cls.original = (PACKAGE / "test-data/DPXColorConverter.cpp").read_bytes()
+        if hashlib.sha256(cls.original).hexdigest() != cls.BEFORE:
+            raise RuntimeError("DPX upstream preimage identity mismatch")
+        for row in manifest["dpx_signed_buffer"]["test_preimages"]:
+            payload = (PACKAGE / row["file"]).read_bytes()
+            if len(payload) != row["bytes"] or hashlib.sha256(payload).hexdigest() != row["sha256"]:
+                raise RuntimeError("DPX test preimage identity mismatch")
+        if (cls.port / cls.PATCH_NAME).read_bytes() != (
+                PACKAGE / manifest["dpx_signed_buffer"]["patch"]["file"]).read_bytes():
+            raise RuntimeError("Embedded and reviewed DPX dependency patches differ")
+        recipe = (cls.port / "scripts/deps/openimageio.sh").read_text()
+        start = recipe.index("# DPX uses a negative byte count")
+        end_marker = 'bc_check_sha256 "$BC_DPX_SOURCE" ' + cls.AFTER + "\n"
+        end = recipe.index(end_marker, start) + len(end_marker)
+        cls.recipe_block = recipe[start:end]
+        cls.source_tree = cls.root / "upstream"
+        original_path = cls.source_tree / cls.SOURCE_NAME
+        original_path.parent.mkdir(parents=True)
+        original_path.write_bytes(cls.original)
+        result = cls.apply_recipe(cls.port, cls.source_tree)
+        if result.returncode:
+            raise RuntimeError(result.stderr)
+        cls.patched = original_path.read_bytes()
+        if hashlib.sha256(cls.patched).hexdigest() != cls.AFTER:
+            raise RuntimeError("DPX recipe did not produce the exact reviewed source")
+
+        header = (PACKAGE / "test-data/DPXHeader.h").read_text()
+        enum = re.search(r"\benum Descriptor\s*\{.*?\n\s*\};", header, flags=re.S)
+        if enum is None:
+            raise RuntimeError("Pinned upstream Descriptor enum is absent")
+
+        def helper(payload):
+            text = payload.decode()
+            begin = text.index("\tstatic inline int64_t QueryRGBBufferSizeInternal(")
+            end = text.index("\n\tint64_t QueryRGBBufferSize(", begin)
+            return text[begin:end]
+
+        program = "#include <cstdint>\n#include <iostream>\n"
+        program += "static_assert(sizeof(std::uint32_t) == 4);\n"
+        program += "static_assert(sizeof(std::uint64_t) == 8);\n"
+        variants = (("before32", 32, cls.original), ("after32", 32, cls.patched),
+                    ("before64", 64, cls.original), ("after64", 64, cls.patched))
+        for name, width, payload in variants:
+            program += ("namespace " + name + " {\nusing size_t = std::uint" + str(width)
+                        + "_t;\nusing int64_t = std::int64_t;\n" + enum[0] + "\n"
+                        + helper(payload) + "\n}\n")
+        program += "int main() { unsigned d; std::uint64_t p, b;\n"
+        program += "while (std::cin >> d >> p >> b) {\n"
+        for index, (name, _, _) in enumerate(variants):
+            program += ("std::cout << " + name + "::QueryRGBBufferSizeInternal(static_cast<"
+                        + name + "::Descriptor>(d), static_cast<" + name
+                        + "::size_t>(p), static_cast<" + name + "::size_t>(b))"
+                        + (" << ' ';\n" if index < 3 else " << '\\n';\n"))
+        program += "} return std::cin.eof() ? 0 : 2; }\n"
+        source = cls.root / "actual-helpers.cpp"
+        source.write_text(program)
+        cls.executable = cls.root / "actual-helpers"
+        compiler = shutil.which("c++")
+        if not compiler:
+            raise RuntimeError("A C++ compiler is required for DPX numeric regression coverage")
+        compiled = subprocess.run(
+            [compiler, "-std=c++17", "-O2", "-Wall", "-Wextra", "-pedantic",
+             "-fsanitize=undefined", "-fno-sanitize-recover=undefined",
+             str(source), "-o", str(cls.executable)], capture_output=True, text=True, timeout=30)
+        if compiled.returncode:
+            raise RuntimeError(compiled.stderr)
+
+    @classmethod
+    def apply_recipe(cls, port, source_tree):
+        script = ('set -euo pipefail\nROOT="$1"\nSRC="$2"\n'
+                  'source "$ROOT/scripts/deps/codec-common.sh"\n' + cls.recipe_block)
+        return subprocess.run(["bash", "-s", "--", str(port), str(source_tree)],
+                              input=script, capture_output=True, text=True, timeout=30)
+
+    def evaluate(self, cases):
+        result = subprocess.run([str(self.executable)],
+                                input="".join("%d %d %d\n" % row for row in cases),
+                                capture_output=True, text=True, timeout=10)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        values = [tuple(map(int, line.split())) for line in result.stdout.splitlines()]
+        self.assertEqual(len(values), len(cases))
+        self.assertTrue(all(len(row) == 4 for row in values))
+        return values
+
+    def test_actual_32_by_32_rgba_reproduces_unsigned_failure_and_signed_sentinel(self):
+        self.assertEqual(self.evaluate([(51, 32 * 32, 1)]),
+                         [(4294963200, -4096, -4096, -4096)])
+
+    def test_all_original_negative_descriptor_branches_keep_the_signed_size(self):
+        channels = {50: 3, 102: 3, 51: 4, 52: 4, 103: 4}
+        cases = [(desc, pixels, width) for desc in channels
+                 for pixels in (0, 1, 31, 1024, 65537, 2**32 - 1)
+                 for width in (1, 2, 4, 8)]
+        for case, values in zip(cases, self.evaluate(cases)):
+            desc, pixels, width = case
+            expected = -(pixels * channels[desc] * width)
+            with self.subTest(descriptor=desc, pixels=pixels, component_bytes=width):
+                self.assertEqual(values[1:], (expected, expected, expected))
+                self.assertEqual(values[0], expected % (2**32))
+
+    def test_positive_and_unsupported_descriptors_preserve_existing_results(self):
+        channels = {100: 3, 101: 4, 1: 1, 2: 1, 3: 1, 4: 1, 6: 1, 8: 1,
+                    0: 0, 7: 0, 9: 0, 150: 0, 151: 0, 152: 0, 153: 0,
+                    154: 0, 155: 0, 156: 0, 255: 0}
+        cases = [(desc, pixels, width) for desc in channels
+                 for pixels in (0, 1, 31, 1024, 65537) for width in (1, 2, 4, 8)]
+        for case, values in zip(cases, self.evaluate(cases)):
+            desc, pixels, width = case
+            expected = pixels * channels[desc] * width
+            with self.subTest(descriptor=desc, pixels=pixels, component_bytes=width):
+                self.assertEqual(values, (expected,) * 4)
+
+    def test_inactive_source_and_every_other_source_byte_are_unchanged(self):
+        expected = self.original
+        for count in (3, 4):
+            expected = expected.replace(f"return pixels * -{count} * bytes;".encode(),
+                                        f"return -int64_t(pixels) * {count} * int64_t(bytes);".encode(), 1)
+        self.assertEqual(self.patched, expected)
+        for count in (3, 4):
+            self.assertEqual(self.patched.count(f"return pixels * -{count} * bytes;".encode()), 1)
+
+    def test_recipe_rejects_changed_upstream_source_before_patching(self):
+        with tempfile.TemporaryDirectory(prefix="blended-dpx-bad-source-") as directory:
+            tree = Path(directory)
+            source = tree / self.SOURCE_NAME
+            source.parent.mkdir(parents=True)
+            modified = self.original + b"\n// altered source\n"
+            source.write_bytes(modified)
+            result = self.apply_recipe(self.port, tree)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("SHA256 mismatch", result.stderr)
+            self.assertEqual(source.read_bytes(), modified)
+
+    def test_recipe_rejects_changed_dependency_patch_before_source_mutation(self):
+        with tempfile.TemporaryDirectory(prefix="blended-dpx-bad-patch-") as directory:
+            root = Path(directory)
+            port, tree = root / "port", root / "source"
+            shutil.copytree(self.port, port)
+            patch = port / self.PATCH_NAME
+            patch.write_bytes(patch.read_bytes() + b"\n# altered patch\n")
+            source = tree / self.SOURCE_NAME
+            source.parent.mkdir(parents=True)
+            source.write_bytes(self.original)
+            result = self.apply_recipe(port, tree)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("SHA256 mismatch", result.stderr)
+            self.assertEqual(source.read_bytes(), self.original)
 
 
 if __name__ == "__main__":

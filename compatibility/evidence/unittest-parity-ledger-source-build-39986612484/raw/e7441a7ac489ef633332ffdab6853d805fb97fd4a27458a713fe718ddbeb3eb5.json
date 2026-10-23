@@ -1,0 +1,116 @@
+{
+  "browser": {
+    "archive": {
+      "bytes": 143552428,
+      "path": "/workspace/scratch/d63596d831b2/runtime/source-build-39986612484/chrome-official-inspection/google-chrome-stable_155.0.8059.39-1_amd64.deb",
+      "sha256": "c58aa0f2cd66179c9f050e062c882d27aa9b9f8c2b7c73fee3498560b5ed0b38",
+      "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_155.0.8059.39-1_amd64.deb"
+    },
+    "bytes": 297798984,
+    "numeric_version": "155.0.8059.39",
+    "path": "/workspace/scratch/d63596d831b2/runtime/source-build-39986612484/chrome-official-inspection/chrome",
+    "sha256": "9bfb381296dffe75f3419d07b6cc64525105ed117d1453a4ef3b291cb97d2b58",
+    "version": "Google Chrome 155.0.8059.39",
+    "version_field_basis": "Normalized product name plus the four-component numeric token parsed from the preserved independent --version stdout; the trailing unknown build label is retained above.",
+    "version_raw_stdout": "Google Chrome 155.0.8059.39 unknown\n"
+  },
+  "build_configuration": {
+    "bytes": 64787,
+    "path": "CMakeCache.txt",
+    "sha256": "e5e7f83a6ba3b0b3dc9de8f4ad361686d9efc602581f20335cd2ec265c9dc932"
+  },
+  "engine_archive": {
+    "bytes": 109564486,
+    "path": "/workspace/scratch/d63596d831b2/runtime/source-build-39986612484/browser-source-development-39986612484/blender-source-development.tar.gz",
+    "sha256": "0d51a33313902a0331df02d900fc5776fd0855e8b0f2062b46cf0150d859499a"
+  },
+  "kind": "artifact-bound-browser-context",
+  "limitations": [
+    "The independently downloaded official package's exact ELF matches the producer-reported CI browser digest; CI process behavior is not independently re-executed.",
+    "Source receipt, CMake cache and measured archives are bound, but no independent source-to-binary rebuild correspondence is claimed.",
+    "Original background Python observations do not qualify editor UI, hardware profiles, deployed sessions or Blender5.4.",
+    "Source-derived from the exact workflow entrypoint and producer ROOT; not an OS-observed cwd."
+  ],
+  "profile_scope": "GitHub-hosted headless Chrome with software GPU requested. The engine-selected GPU is not instrumented.",
+  "raw_evidence": [
+    {
+      "bytes": 6207,
+      "path": "chrome/Packages",
+      "sha256": "75aa435a733954bc18ac813573479a30a9117638a30c72780826812e89d96feb"
+    },
+    {
+      "bytes": 1412,
+      "path": "chrome/Packages.gz",
+      "sha256": "280b43ce3200a698b4624658d28b04944dd6901231a74e93241a43c3e5983b12"
+    },
+    {
+      "bytes": 1242,
+      "path": "chrome/metadata-receipt.json",
+      "sha256": "d563fb7fbdab8f6c7971431a0e9e2908dab456a61addcd81d4a6714f24fcd65f"
+    },
+    {
+      "bytes": 1189,
+      "path": "chrome/exact-package-head.json",
+      "sha256": "49c136ea59f9b5e4e17ec42f8e9ce870eaaedf6c82b7fed3c36227dfa03cbf72"
+    },
+    {
+      "bytes": 1621,
+      "path": "chrome/package-download.json",
+      "sha256": "679f4886f6dc98d0fe0ecae1dda291e628eb75560b3deb173e3d6914424385bd"
+    },
+    {
+      "bytes": 75,
+      "path": "chrome/package-control.txt",
+      "sha256": "936172f5bde1348d066a291464d1f04b705c7f3a5f66f0605e44aebceebf8c34"
+    },
+    {
+      "bytes": 2134,
+      "path": "chrome/measurement.json",
+      "sha256": "ca9218a0d9c9133df6c2edb06e12b4c9e5ead793d5b955422c823326f71248af"
+    },
+    {
+      "bytes": 36,
+      "path": "chrome/version.stdout.log",
+      "sha256": "25cc2181c3a57d59de6a975fd680f6f8151495911cd09303aef8966025c0f3c9"
+    },
+    {
+      "bytes": 0,
+      "path": "chrome/version.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 4795,
+      "path": "chrome/measure-official-package.py",
+      "sha256": "6158c7996e8b4c00c4a07c1d62ed04c2690ae3a7ddc60b15787b67512fb2c228"
+    },
+    {
+      "bytes": 4808,
+      "path": "chrome/measure-official-package-v2.py",
+      "sha256": "da4c412b03aadc4a2f8dc9d3fbcfb0aafa5b8f156dad21cb7533581d0b7edb91"
+    },
+    {
+      "bytes": 597,
+      "path": "chrome/attempt-01-failure.json",
+      "sha256": "88b8827afa594b16c79fc80f791d5b7cbb4cd3437a6a05da4676595265fc15ca"
+    }
+  ],
+  "requested_flags": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu-watchdog",
+    "--enable-unsafe-webgpu",
+    "--enable-unsafe-swiftshader",
+    "--use-angle=swiftshader"
+  ],
+  "schema": 1,
+  "source_build_receipt": {
+    "bytes": 172975,
+    "path": "source-build.json",
+    "sha256": "44bdb061bcd22a7a2b7756e93fe406a9eabfd2dd9e9f8fd4b63947ff31e2503f"
+  },
+  "upstream": {
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "repository": "blender/blender",
+    "version": "5.2.0"
+  }
+}

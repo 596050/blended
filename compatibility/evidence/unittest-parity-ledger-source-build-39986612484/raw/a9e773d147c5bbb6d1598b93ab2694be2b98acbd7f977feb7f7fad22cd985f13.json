@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "started_utc": "2026-10-23T12:49:44.720190+00:00",
+  "finished_utc": "2026-10-23T12:49:45.663104+00:00",
+  "scope": "selected Blender 5.2.0 candidate native reference qualification only",
+  "profile": "native-reference",
+  "full_parity": false,
+  "browser_parity": false,
+  "product_target_parity": false,
+  "selected_suites_passed": true,
+  "official_release_checksum_verified": true,
+  "upstream_build_hash_verified": true,
+  "source_correspondence_verified": false,
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": "5.2.0"
+  },
+  "artifact": {
+    "url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "expected_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "expected_bytes": 384441228,
+    "observed_bytes": 384441228,
+    "observed_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48"
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_bpy_path.py",
+      "bytes": 1942,
+      "sha256": "cba0759c2584d9af68f2e44bf3d13e1d7a1795f1b066e18a7f13f543faa364bb",
+      "support_files": [],
+      "fixture_files": [],
+      "driver": "unittest-main",
+      "required_background": true,
+      "driver_execution": {
+        "entrypoint": "original __main__",
+        "process_isolation": "one-upstream-script",
+        "background": true,
+        "blender_args": [
+          "--background",
+          "--console-crash-handler",
+          "--factory-startup",
+          "--debug-memory",
+          "--debug-exit-on-error",
+          "--python-exit-code",
+          "1",
+          "--python-expr",
+          "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+        ],
+        "script_args": [],
+        "ctest_name": "script_pyapi_bpy_path",
+        "cmake_sources": [
+          {
+            "upstream_path": "tests/CMakeLists.txt",
+            "bytes": 5871,
+            "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+          },
+          {
+            "upstream_path": "tests/python/CMakeLists.txt",
+            "bytes": 50161,
+            "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+          }
+        ],
+        "registration": "add_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)"
+      },
+      "case_id_normalization": "original-main",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_bpy_path.py"
+    }
+  ],
+  "summary": {
+    "expected_suites": 1,
+    "observed_suites": 1,
+    "totals": {
+      "discovered": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 0
+    },
+    "suites": [
+      {
+        "upstream_path": "tests/python/bl_pyapi_bpy_path.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 1,
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      }
+    ],
+    "required_case_inventory": {
+      "fixed_for_all_requested_suites": false,
+      "expected_cases": 0,
+      "missing_cases": 0,
+      "suites": []
+    }
+  },
+  "execution": {
+    "driver_observation": {
+      "entrypoint": "original __main__",
+      "failfast": false,
+      "original_exit_code": 0,
+      "runner_invocations": 1,
+      "support_files": []
+    },
+    "exception": null,
+    "execution_context": {
+      "background": true,
+      "entrypoint": "original __main__",
+      "runtime_argv": [
+        "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python",
+        "/tmp/blended-native-reference-61936xk3/native-runner.py"
+      ],
+      "script_argv": [
+        "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python",
+        "/tmp/blended-original-unittest-so7e8qz4/tests/python/bl_pyapi_bpy_path.py"
+      ],
+      "source_root": "/tmp/blended-original-unittest-so7e8qz4"
+    },
+    "identity": {
+      "binary_path": "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender",
+      "build_branch": "blender-v5.2-release",
+      "build_hash": "fbe6228777e7",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "io_observation": {
+      "fixture_bytes_preserved": true,
+      "fixture_files": []
+    },
+    "suites": [
+      {
+        "discovered": 1,
+        "discovered_ids": [
+          "__main__.TestBpyPath.test_ensure_ext"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "__main__.TestBpyPath.test_ensure_ext",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "cba0759c2584d9af68f2e44bf3d13e1d7a1795f1b066e18a7f13f543faa364bb",
+        "skipped": 0,
+        "testsRun": 1,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_bpy_path.py"
+      }
+    ]
+  },
+  "blockers": [],
+  "cohort": {
+    "id": "script_pyapi_bpy_path-5.2",
+    "manifest_sha256": "087daad7231900ddab0352e28832bdd1c5bc512bdcaa5d05a4ebfe824ce535ba",
+    "stage": "native-discovery",
+    "expected_cases": null,
+    "suite_kind": "unittest-main",
+    "blender_args": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "original_invocation": {
+      "entrypoint": "original __main__",
+      "process_isolation": "one-upstream-script",
+      "background": true,
+      "blender_args": [
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+      ],
+      "script_args": [],
+      "ctest_name": "script_pyapi_bpy_path",
+      "cmake_sources": [
+        {
+          "upstream_path": "tests/CMakeLists.txt",
+          "bytes": 5871,
+          "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+        },
+        {
+          "upstream_path": "tests/python/CMakeLists.txt",
+          "bytes": 50161,
+          "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+        }
+      ],
+      "registration": "add_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)"
+    },
+    "native_discovery": null,
+    "complete_cohort_requested": true
+  },
+  "input_fixture_transfer": null,
+  "extraction": {
+    "members": 6546,
+    "unpacked_bytes": 1238222253,
+    "filter": "data",
+    "shared_verified_extraction": true
+  },
+  "executable": {
+    "path": "blender-5.2.0-linux-x64/blender",
+    "sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "bytes": 174666336
+  },
+  "runner_sha256": "496362805a92ec8c584b91c0a32f614b9d4b0f28e2f890c95b1c2b809a1c086e",
+  "process": {
+    "flags": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "timeout_seconds": 60,
+    "returncode": 0
+  },
+  "transport": {
+    "protocol": "marker-prefixed-json-v1",
+    "result_markers": 1,
+    "recovered_json_prefix": false,
+    "trailing_runtime_text": null
+  },
+  "reason": "All selected unchanged upstream test files passed on the checksum-verified official Blender 5.2.0 native release, with matching reported upstream build identity.",
+  "log": {
+    "path": "native-reference.log",
+    "sha256": "0476c05b6212aa68b7c454460040157233374030b6aaa5b6893d21e2750b5f1d",
+    "bytes": 2105
+  }
+}

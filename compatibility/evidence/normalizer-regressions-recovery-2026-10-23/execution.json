@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "kind": "post-recovery-infrastructure-test-execution",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_reconcile_unittest_matrix.py",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/d63596d831b2/blended",
+  "started_utc": "2026-10-23T18:48:02.773087+00:00",
+  "finished_utc": "2026-10-23T18:50:36.775504+00:00",
+  "duration_seconds": 154.00242494600388,
+  "exit_code": 0,
+  "inputs": {
+    "tools/reconcile_unittest_matrix.py": {
+      "bytes": 83881,
+      "sha256": "6675c3f1604ef92f3aa139e0d0cc9a91f0a59487b46e0cb5f9685676cd5caa5c"
+    },
+    "tests/test_reconcile_unittest_matrix.py": {
+      "bytes": 48802,
+      "sha256": "2e3112e7f1af77e68d72c1826e72f4204486561f821a00052da6e54af96932ba"
+    }
+  },
+  "original_blender_tests_executed": 0,
+  "recovered_historical_receipt": false,
+  "stdout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr.log": {
+    "bytes": 13428,
+    "sha256": "c6a2f64601f4992ebacfa8ae593db8cb9499cabf740d243a1d5922ceae66a870"
+  }
+}

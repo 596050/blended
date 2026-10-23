@@ -348,16 +348,28 @@ diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
  
  mkdir -p "$CACHE" "$SCRATCH"
  if [ ! -f "$TARBALL" ]; then
-@@ -62,6 +68,8 @@
-   echo "openimageio: MD5 mismatch (got $GOT_MD5 want $OIIO_MD5)" >&2
+@@ -63,9 +69,20 @@
    exit 1
  fi
-+
-+bc_check_sha256 "$TARBALL" 0fc59b8e2708ded02d3793b8f3331f037ed49bfcde38158f05ac0e876ebb85b7
  
++bc_check_sha256 "$TARBALL" 0fc59b8e2708ded02d3793b8f3331f037ed49bfcde38158f05ac0e876ebb85b7
++
  SRC="$SCRATCH/OpenImageIO-${OIIO_VERSION}"
  rm -rf "$SRC"
-@@ -145,7 +153,7 @@
+ tar -xzf "$TARBALL" -C "$SCRATCH"
++
++# DPX uses a negative byte count to reuse the caller's RGB/RGBA storage.
++# Keep that sentinel signed before multiplying with wasm32 size_t operands.
++BC_DPX_SOURCE="$SRC/src/dpx.imageio/libdpx/DPXColorConverter.cpp"
++BC_DPX_PATCH="$ROOT/scripts/deps/openimageio-dpx-signed-buffer.patch"
++bc_check_sha256 "$BC_DPX_SOURCE" 793e53edfac8dc79b8cea7bf0cc15c29a23b947e5559cf65cbe4bafd7227ebf1
++bc_check_sha256 "$BC_DPX_PATCH" c61f210fae985bd4119b84aa0b81915c9a4b704cd270734256aa1ba2f42eb185
++patch --batch --fuzz=0 -p1 -d "$SRC" < "$BC_DPX_PATCH"
++bc_check_sha256 "$BC_DPX_SOURCE" 28dd63ce548ee759f09bd23c2a90040408e3f91ffdfc7be3888fb357ad11d9b3
+ 
+ # --- source patch: OIIO 3.1 marks OpenColorIO REQUIRED but then references the
+ # OpenColorIO::OpenColorIO target UNCONDITIONALLY (externalpackages.cmake), so a
+@@ -145,7 +162,7 @@
    -DCMAKE_CXX_STANDARD=17 \
    -DBUILD_SHARED_LIBS=OFF \
    -DLINKSTATIC=ON \
@@ -366,7 +378,7 @@ diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
    -DOpenImageIO_BUILD_MISSING_DEPS="" \
    -DOIIO_BUILD_TOOLS=OFF \
    -DOIIO_BUILD_TESTS=OFF \
-@@ -166,9 +174,9 @@
+@@ -166,9 +183,9 @@
    -DUSE_OPENCV=OFF \
    -DUSE_OPENVDB=OFF \
    -DUSE_FFMPEG=OFF \
@@ -379,7 +391,7 @@ diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
    -DUSE_LIBRAW=OFF \
    -DUSE_JXL=OFF \
    -DUSE_GIF=OFF \
-@@ -177,6 +185,9 @@
+@@ -177,6 +194,9 @@
    -DUSE_DICOM=OFF \
    -DUSE_R3DSDK=OFF \
    -DUSE_BZIP2=OFF \
@@ -389,7 +401,7 @@ diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
    -DOpenEXR_ROOT="$PREFIX" \
    -DImath_ROOT="$PREFIX" \
    -Dfmt_ROOT="$PREFIX" \
-@@ -231,7 +242,19 @@
+@@ -231,7 +251,19 @@
  #include <OpenImageIO/imageio.h>
  #include <OpenImageIO/sysutil.h>
  #include <OpenImageIO/typedesc.h>
@@ -409,7 +421,7 @@ diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
    OIIO::ImageSpec spec(64, 48, 4, OIIO::TypeDesc::UINT8);
    // exercise a non-trivial method so the linker keeps real OIIO code
    std::string s = spec.serialize(OIIO::ImageSpec::SerialText);
-@@ -248,6 +271,13 @@
+@@ -248,6 +280,13 @@
    "$PREFIX"/lib/libOpenImageIO.a \
    "$PREFIX"/lib/libOpenImageIO_Util.a \
    "$PREFIX"/lib/libOpenColorIO.a \
@@ -423,7 +435,7 @@ diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
    "$PREFIX"/lib/libtiff.a \
    "$PREFIX"/lib/libOpenEXR*.a \
    "$PREFIX"/lib/libIlmThread*.a \
-@@ -269,7 +299,23 @@
+@@ -269,7 +308,23 @@
    "$VDIR/t.cpp" -Wl,--start-group $LIBS -Wl,--end-group -o "$VDIR/t.js"
  test -f "$VDIR/t.wasm"
  node "$VDIR/t.js"
@@ -503,3 +515,16 @@ new file mode 100644
 +  -DWEBP_BUILD_EXTRAS=OFF \
 +  -DWEBP_BUILD_FUZZTEST=OFF
 +bc_install lib/libwebp.a lib/libwebpmux.a lib/libwebpdemux.a lib/libsharpyuv.a
+diff --git a/scripts/deps/openimageio-dpx-signed-buffer.patch b/scripts/deps/openimageio-dpx-signed-buffer.patch
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/openimageio-dpx-signed-buffer.patch
+@@ -0,0 +1,8 @@
++--- a/src/dpx.imageio/libdpx/DPXColorConverter.cpp
+++++ b/src/dpx.imageio/libdpx/DPXColorConverter.cpp
++@@ -301 +301 @@
++-				return pixels * -3 * bytes;
+++				return -int64_t(pixels) * 3 * int64_t(bytes);
++@@ -309 +309 @@
++-				return pixels * -4 * bytes;
+++				return -int64_t(pixels) * 4 * int64_t(bytes);
