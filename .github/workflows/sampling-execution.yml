@@ -1,0 +1,29 @@
+name: Image and curve sampling execution sensitivity
+on:
+  push:
+    branches: [main, 'compat/**']
+    paths: ['tools/verify_sampling_execution.py', 'crates/blended-core/src/image_sampling.rs', 'crates/blended-core/src/curve_sampling.rs', 'crates/blended-core/src/sampling_cases.rs', 'crates/blended-core/src/curve_cases.rs', '.github/workflows/sampling-execution.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sensitivity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - run: python3 -m pip install playwright==1.57.0
+      - name: Prove original assertions reject two broken implementations and retain infinity smoke execution
+        run: python3 tools/verify_sampling_execution.py --output evidence/sampling-sensitivity/result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sampling-sensitivity-evidence
+          path: evidence/sampling-sensitivity/
+          retention-days: 1
