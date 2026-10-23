@@ -1,0 +1,51 @@
+name: Publish verified Blender parity checkpoint 88f5a032ca4f
+
+on:
+  push:
+    branches: ['checkpoint/import-88f5a032ca4f']
+    paths:
+      - checkpoint-88f5a032ca4f/**
+      - .github/workflows/import-checkpoint-88f5a032ca4f.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: checkpoint-import-88f5a032ca4f
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Verify exact bundle and publish with a branch lease
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configure GitHub's existing repository-scoped credential helper
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh auth setup-git
+      - name: Verify chunk hashes, bundle, commit, tree and remote branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_TERMINAL_PROMPT: '0'
+        run: >-
+          python3 checkpoint-88f5a032ca4f/import_checkpoint.py
+          --manifest checkpoint-88f5a032ca4f/manifest.json
+          --chunks-root .
+          --work-dir '${{ runner.temp }}/checkpoint-88f5a032ca4f'
+          --push
+      - name: Preserve publication receipt and raw command logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-publication-88f5a032ca4f-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/checkpoint-88f5a032ca4f/receipt.json
+            ${{ runner.temp }}/checkpoint-88f5a032ca4f/commands/
+            ${{ runner.temp }}/checkpoint-88f5a032ca4f/error.log
+          retention-days: 14
+          if-no-files-found: error
