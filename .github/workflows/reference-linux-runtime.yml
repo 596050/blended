@@ -17,11 +17,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Record environment and free unused hosted-runner SDK space
+      - name: Record environment and install required EGL headers
         run: |
           mkdir -p evidence/linux-runtime
           df -h > evidence/linux-runtime/disk-before.txt
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          sudo apt-get update -qq
+          sudo apt-get install -y libegl1-mesa-dev libgl-dev libxkbcommon-dev
           df -h > evidence/linux-runtime/disk-after.txt
           clang --version > evidence/linux-runtime/compiler.txt
       - name: Fetch exact Blender source and library dependencies
