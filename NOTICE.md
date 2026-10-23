@@ -1,13 +1,13 @@
 # Copyright, licensing and attribution
 
-Original Blended code is licensed under GNU GPL version 3 or later (SPDX: GPL-3.0-or-later). It is provided without warranty. The build includes the full GPL text from the pinned Solarxy source with its source distribution.
+Original Blended code is GPL-3.0-or-later unless a file specifies otherwise, and is provided without warranty. Retain the full licence texts and component-specific notices supplied with upstream source distributions.
 
-`crates/blended-core/src/compat_cases.rs` and `tests/upstream_math_vector.rs` translate tests from Blender, Copyright 2023 Blender Authors, licensed Apache-2.0. Their expected values and tolerances are retained, with Rust array/function adaptations. See the upstream file and licence at the commit in `upstream.lock.json`. The signed-zero hash static assertion now has a separate compile-time port. The complete Blender test suite remains unfinished.
+Translated Blender tests retain their Apache-2.0 identifiers and Blender Authors copyright notices in source snapshots and generated Rust files. Expected results, tolerances and provenance remain traceable to the commit in `upstream.lock.json`. The complete Blender test port remains unfinished.
 
-Solarxy is Copyright Marko Koljancic and contributors, GPL-3.0-or-later at the pinned revision. The initial browser studio compiles Solarxy; its capabilities are not represented as newly implemented Blender features. Source attribution and third-party notices are retained. The build publishes the complete modified source snapshot alongside the WASM binary.
+The heap/priority-queue implementation and deterministic RNG/shuffle adaptation use GPL-2.0-or-later Blender source. Relevant notices include Copyright 2023 Blender Authors and Copyright 2001-2002 NaN Holding BV. All rights reserved. The supplemental C++ input oracle extracts original rand.cc functions and includes original BLI_rand.hh; these retain their upstream licence and attribution. Consult individual source-file identifiers rather than assuming all source or test files have one licence.
 
-Blender and Cycles reference checkouts retain their own individual file licences. No Cycles renderer is compiled into this initial browser application.
+Solarxy is Copyright Marko Koljancic and contributors, GPL-3.0-or-later at the pinned revision. The initial experimental browser studio compiled Solarxy; its features are not newly implemented Blender features. Its rendering blocker remains separate from the working Three.js modeller. Three.js is MIT-licensed. Blender and Cycles reference checkouts retain their individual file licences. No complete Cycles renderer is compiled into this modeller.
+
+The current conformance workbench uses a freshly compiled single combined Rust/WebAssembly module, with the corresponding source archive and upstream licence files. Earlier integration-preview archives used two unchanged separately compiled modules; their historical results and source archives must not be represented as current merged-build verification.
 
 Blended is independent and is not affiliated with the Blender Foundation or Solarxy's author.
-
-The integration preview contains two unchanged, separately compiled conformance modules, not the merged candidate build. Their exact corresponding source archives and original notices are distributed alongside each module. Historical execution records are labelled separately from new local checks.

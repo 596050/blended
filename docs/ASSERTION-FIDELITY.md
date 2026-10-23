@@ -2,24 +2,28 @@
 
 ## Current verified subset
 
-Run [40007823640](https://github.com/596050/blended/actions/runs/40007823640), source `8bb0e6e43237cc68cf5e3c403dfc0b9419f083ed`, verifies **338 Blender runtime cases and 16,804 assertion executions** against Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Both native Rust and Chromium WebAssembly comparisons pass. Eight native and nine browser differences are explicitly recorded within original floating-point comparison rules. This is not a bitwise-equivalence or full-suite certificate.
+[Run 40019426923](https://github.com/596050/blended/actions/runs/40019426923), source `df61b87fa3b2b5a0751100e427eab11d7205ad5a`, verifies **367 Blender runtime cases and 33,104 assertion events** against Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Native Rust and Chromium WebAssembly comparisons pass. Eight native and nine browser differences are explicitly recorded within original floating-point rules; the heap cases add no floating difference. This is not a bitwise-equivalence or complete-suite certificate.
 
-[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40007823640/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40007823640/browser-comparison.json) · [All raw evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40007823640)
+[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40019426923/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40019426923/browser-comparison.json) · [Raw transcripts and build metadata](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40019426923)
 
-## Preservation and comparison rules
+## Preservation and comparison
 
-Each registered upstream identity maps to a reviewed source snapshot and Rust target hash. The generators must reproduce the committed translations from pinned originals. The executable registries must form an exact bijection with the reviewed runtime contracts. Six tracked compile-time assertions remain separate from runtime counts; missing compile-time and runtime work is retained by the completeness audit.
+Registered identities map to reviewed source snapshots and target hashes. Generators reproduce committed translations from pinned originals. Runtime registries form an exact bijection with reviewed contracts. Six compile-time mappings are separate; missing work remains visible to the completeness audit.
 
-The original C++ test bodies are unchanged. An include-only diagnostic overlay records evaluated operands once and still invokes the bundled pinned GoogleTest machinery. Rust recording occurs in an explicit shadow build; production tests and implementations are tested separately. Both sides record case boundaries and ordered assertion kinds, operands, outcomes and counts. An assertion-free original smoke case has explicit boundary and negative-execution checks rather than fabricated assertions.
+Original C++ test bodies are unchanged. An include-only diagnostic overlay records evaluated operands once and invokes pinned GoogleTest assertions. Rust recording occurs in an explicit shadow build, separate from production tests and implementations. Both record case boundaries and ordered assertion kinds, operands, outcomes and counts. Assertion-free smoke cases have boundary and negative-execution checks rather than fabricated assertions.
 
-Exact equality remains exact. Original scalar near tolerances and floating-equality ULP rules are preserved. Literal floating expectations are fixed. Numeric representation, symmetric equality operand order, upstream empty-range equality and cross-process relative pointers have documented normalisations. All accepted numeric differences are listed, not hidden. Fatal assertions retain their stop-on-failure behaviour, with native/WASM mutation evidence.
+Exact equality stays exact. Original near tolerances and floating-equality ULP rules are retained. Literal floating expectations are fixed. Numeric representation, symmetric equality operand order, upstream empty-range equality and cross-process relative pointers have documented normalisations. Ordered comparisons such as EXPECT_LE never permit operand reversal. Fatal assertions retain stop-on-failure behaviour with native/browser mutation evidence. Accepted differences remain listed in the reports.
 
-The diagnostic Chromium run is not a deployed-site test. The production workbench is separately built, published and executed at its immutable public URL, with expected identities, assertion counts and WebAssembly SHA-256 checked independently of its displayed status.
+The diagnostic Chromium run is not a deployed-site test. The production module is separately built, published and exercised at its immutable URL, checking identities, counts and WASM SHA-256 independently of the displayed status.
 
-## Negative controls
+## Input preservation and negative controls
 
-Infrastructure regressions reject omitted/extra/reordered cases, changed assertions, broadened tolerances, fake pass flags, stale pins, altered source hashes and fabricated runtime denominators. Implementation-level probes additionally show that wrong image borders and wrong curve endpoint spacing fail unchanged upstream assertions, and that the original nonfinite-coordinate smoke call still executes. [Sampling details and evidence](SAMPLING-PORT-VERIFICATION.md)
+Matching sorted outputs does not establish identical randomized inputs. An independently compiled original-C++ oracle now verifies all 15,000 random draws and 3,175 shuffled items exactly against native Rust and browser WebAssembly. Original shuffle rules and seeds are retained, not replaced by a standard algorithm.
 
-## Completion is separate
+Infrastructure regressions reject omitted/extra/reordered cases, changed assertions, broadened tolerances, fake pass flags, stale references, changed hashes and fabricated runtime denominators. New implementation-level probes make removal and priority increase fail unchanged source tests while controls pass. Compilation errors, panics and traps are not accepted as assertion-failure evidence. [Heap details and immutable results](HEAP-PORT-VERIFICATION.md)
 
-The full-completeness gate is still failed. A verified subset cannot establish coverage of unported Blender test families or prove complete feature or performance parity. Historical 99-, 131-, 211-, 272- and 302-case results are evidence of those earlier scopes, not substitutes for the current combined run.
+Historical sampling probes check border handling, endpoint spacing and execution of the original infinity-input smoke call. [Sampling verification](SAMPLING-PORT-VERIFICATION.md)
+
+## Completion remains separate
+
+Whole-suite completeness still fails. This subset cannot establish unported test-family coverage, full feature parity or competitive performance. Older 99/131/211/272/302/338-case evidence retains its original scope and is not substituted for the latest combined run.
