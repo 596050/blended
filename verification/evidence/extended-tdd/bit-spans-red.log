@@ -1,0 +1,40 @@
+   Compiling blended-core v0.1.0 (/mnt/data/blended-dev/crates/blended-core)
+error: expected pattern, found `let`
+   --> crates/blended-core/src/bit_span_cases.rs:594:8
+    |
+594 |   for (let mut i: i32 = 0; i < 10; ++i) {
+    |        ^^^
+    |
+help: remove the unnecessary `let` keyword
+    |
+594 -   for (let mut i: i32 = 0; i < 10; ++i) {
+594 +   for (mut i: i32 = 0; i < 10; ++i) {
+    |
+
+error: expected one of `)`, `,`, `@`, `if`, or `|`, found `:`
+   --> crates/blended-core/src/bit_span_cases.rs:594:17
+    |
+594 |   for (let mut i: i32 = 0; i < 10; ++i) {
+    |                 ^ expected one of `)`, `,`, `@`, `if`, or `|`
+
+error[E0432]: unresolved import `crate::bit_spans`
+ --> crates/blended-core/src/bit_span_cases.rs:5:5
+  |
+5 | use crate::bit_spans as m;
+  |     ^^^^^^^^^^^^^^^^^^^^^ no `bit_spans` in the root
+
+error[E0282]: type annotations needed
+  --> crates/blended-core/src/bit_span_cases.rs:51:12
+   |
+51 |     eq!(r, bit.test(), matches!(index,2|3));
+   |            ^^^ cannot infer type
+
+error[E0282]: type annotations needed
+   --> crates/blended-core/src/bit_span_cases.rs:102:5
+    |
+102 |     bit.set(index % 4 == 0);
+    |     ^^^ cannot infer type
+
+Some errors have detailed explanations: E0282, E0432.
+For more information about an error, try `rustc --explain E0282`.
+error: could not compile `blended-core` (lib) due to 5 previous errors

@@ -1,0 +1,389 @@
+{
+  "schema": 1,
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "review_scope": "Literal inputs, expected results, comparison kinds, tolerances and nonfatal assertion collection for the listed cases. API adapters are explicit. Hashes detect subsequent drift, not general algorithmic equivalence. Full test port is not complete.",
+  "contracts": [
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_base_test.cc",
+      "source_sha256": "afffefc44fbf4f8591ac97ede6958f0bff157c684116b07e63d66a0981581a8e",
+      "target_path": "crates/blended-core/src/additional_cases.rs",
+      "target_sha256": "8919e9303f12ac215375884b0eb332358762682eb89d60017fdc48ed09e6a1de",
+      "case_ids": [
+        "math_base.CompareFFRelativeValid",
+        "math_base.CompareFFRelativeNormal",
+        "math_base.CompareFFRelativeZero",
+        "math_base.UlpDiffFF",
+        "math_base.Log2FloorU",
+        "math_base.Log2CeilU",
+        "math_base.CeilPowerOf10",
+        "math_base.FloorPowerOf10",
+        "math_base.MinVectorAndFloat",
+        "math_base.ClampInt",
+        "math_base.StepLessThan",
+        "math_base.StepGreaterThan",
+        "math_base.StepExact",
+        "math_base.Midpoint",
+        "math_base.InterpolateInt",
+        "math_base.FlooredFMod",
+        "math_base.ModPeriodic"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_base_safe_test.cc",
+      "source_sha256": "c31be0d9964e56534459d8007f6a3343c3aef016ea370cfd5ee953401c6d3b78",
+      "target_path": "crates/blended-core/src/additional_cases.rs",
+      "target_sha256": "8919e9303f12ac215375884b0eb332358762682eb89d60017fdc48ed09e6a1de",
+      "case_ids": [
+        "math_base.SafePowf",
+        "math_base.SafeModf",
+        "math_base.SafeLogf"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_bits_test.cc",
+      "source_sha256": "344cadb1445fd5f4c92dd848c919ee518f0265d1fcef2c4829ee0e213c0f502e",
+      "target_path": "crates/blended-core/src/additional_cases.rs",
+      "target_sha256": "8919e9303f12ac215375884b0eb332358762682eb89d60017fdc48ed09e6a1de",
+      "case_ids": [
+        "math_bits.BitscanReverseClearUint",
+        "math_bits.PopCount"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_solvers_test.cc",
+      "source_sha256": "352bfa9b6384039123f872ab5b7ef6d4908b66b3e8de44f720b6663dc9197c08",
+      "target_path": "crates/blended-core/src/additional_cases.rs",
+      "target_sha256": "8919e9303f12ac215375884b0eb332358762682eb89d60017fdc48ed09e6a1de",
+      "case_ids": [
+        "math_solvers.Tridiagonal1",
+        "math_solvers.Tridiagonal3",
+        "math_solvers.CyclicTridiagonal1",
+        "math_solvers.CyclicTridiagonal2",
+        "math_solvers.CyclicTridiagonal3"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_time_test.cc",
+      "source_sha256": "a313532d82a278d570f44e1fae37895d9e8da4f1767f9d92cdb0f49f81bc3f76",
+      "target_path": "crates/blended-core/src/additional_cases.rs",
+      "target_sha256": "8919e9303f12ac215375884b0eb332358762682eb89d60017fdc48ed09e6a1de",
+      "case_ids": [
+        "math_time.SecondsExplode"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_vector_test.cc",
+      "source_sha256": "b52b9c6cb1d46b9f6c35cd6dbcdeccba9641c4649cf3fbe4f6bbd62c6107da51",
+      "target_path": "crates/blended-core/src/compat_cases.rs",
+      "target_sha256": "f68760aaa2e9dbff2a5900cffdd26c37bd3304237a5da7bd50023e9a4c316df0",
+      "case_ids": [
+        "math_vector.ClampVecWithFloats",
+        "math_vector.test_invert_v3_safe",
+        "math_vector.Clamp",
+        "math_vector.MinList",
+        "math_vector.MaxList",
+        "math_vector.InterpolateInt",
+        "math_vector.InterpolateFloat",
+        "math_vector.CeilToMultiple",
+        "math_vector.DivideCeil",
+        "math_vector.Sign",
+        "math_vector.sqrt",
+        "math_vector.safe_sqrt",
+        "math_vector.rcp",
+        "math_vector.safe_rcp",
+        "math_vector.exp",
+        "math_vector.log",
+        "math_vector.square"
+      ],
+      "runtime_assertions": 68,
+      "review_note": "Nonfatal assertion collection, component counts and upstream float comparisons also for integer results; no boolean short circuit."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_index_range_test.cc",
+      "source_sha256": "df16feb982375c7420535382262caa09ee454c4330bb8c3357b24d712f15c74a",
+      "target_path": "crates/blended-core/src/structure_cases.rs",
+      "target_sha256": "75c21fe73def979b4bd08f15bc338f65956e608b63fc3cb0b9cedc983e5bec51",
+      "case_ids": [
+        "index_range.DefaultConstructor",
+        "index_range.FromBeginSize",
+        "index_range.FromBeginEnd",
+        "index_range.FromBeginEndInclusive",
+        "index_range.FromEndSize",
+        "index_range.FromSingle",
+        "index_range.SingleElementRange",
+        "index_range.MultipleElementRange",
+        "index_range.SubscriptOperator",
+        "index_range.Before",
+        "index_range.After",
+        "index_range.Contains",
+        "index_range.First",
+        "index_range.Last",
+        "index_range.OneAfterEnd",
+        "index_range.OneBeforeStart",
+        "index_range.Start",
+        "index_range.Slice",
+        "index_range.Intersect",
+        "index_range.SliceRange",
+        "index_range.DropBack",
+        "index_range.DropBackAll",
+        "index_range.DropFront",
+        "index_range.DropFrontLargeN",
+        "index_range.DropFrontAll",
+        "index_range.TakeFront",
+        "index_range.TakeFrontLargeN",
+        "index_range.TakeBack",
+        "index_range.TakeBackLargeN",
+        "index_range.constexpr_",
+        "index_range.GenericAlgorithms",
+        "index_range.SplitByAlignment"
+      ],
+      "assertion_sites": 120,
+      "runtime_assertions": 123,
+      "adapter_review": "C++ Span/Array/Vector storage uses Rust slices/Vec; vector values use fixed-size VecN. IndexRange operator[] uses a checked const get method. EXPECT_EQ/GT/TRUE/FALSE remain nonfatal and exact. Repeated assertions, loop bounds, and the constexpr/static assertion are preserved."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_binary_search_test.cc",
+      "source_sha256": "727451f8fcbc5d230558c26f82d6c46b62752688b006ca5e1e54c7d90daa9f5d",
+      "target_path": "crates/blended-core/src/structure_cases.rs",
+      "target_sha256": "75c21fe73def979b4bd08f15bc338f65956e608b63fc3cb0b9cedc983e5bec51",
+      "case_ids": [
+        "binary_search.Empty",
+        "binary_search.One",
+        "binary_search.Multiple"
+      ],
+      "assertion_sites": 20,
+      "runtime_assertions": 20,
+      "adapter_review": "C++ Span/Array/Vector storage uses Rust slices/Vec; vector values use fixed-size VecN. IndexRange operator[] uses a checked const get method. EXPECT_EQ/GT/TRUE/FALSE remain nonfatal and exact. Repeated assertions, loop bounds, and the constexpr/static assertion are preserved."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_bounds_test.cc",
+      "source_sha256": "a0b86885646bd7e606917154df25260e0bdfb8b36d2b24a1e3d6a7f9040fca1c",
+      "target_path": "crates/blended-core/src/structure_cases.rs",
+      "target_sha256": "75c21fe73def979b4bd08f15bc338f65956e608b63fc3cb0b9cedc983e5bec51",
+      "case_ids": [
+        "bounds.Empty",
+        "bounds.EmptyInt",
+        "bounds.Center",
+        "bounds.Size",
+        "bounds.Translate",
+        "bounds.ScaleFromCenter",
+        "bounds.Resize",
+        "bounds.Recenter",
+        "bounds.Pad",
+        "bounds.MinMaxEmpty",
+        "bounds.MinMax",
+        "bounds.MinMaxFloat",
+        "bounds.MinGreaterThanZero",
+        "bounds.MinMaxRadii",
+        "bounds.Large",
+        "bounds.Contains",
+        "bounds.IntersectSegment1D",
+        "bounds.IntersectSegment2D",
+        "bounds.IntersectSegment3D"
+      ],
+      "assertion_sites": 86,
+      "runtime_assertions": 92,
+      "adapter_review": "C++ Span/Array/Vector storage uses Rust slices/Vec; vector values use fixed-size VecN. IndexRange operator[] uses a checked const get method. EXPECT_EQ/GT/TRUE/FALSE remain nonfatal and exact. Repeated assertions, loop bounds, and the constexpr/static assertion are preserved."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_bit_ref_test.cc",
+      "source_sha256": "1d101274b2f6c0e52cbeaf892103d36b4af695bbbeecd11f43178ea7df572b40",
+      "target_path": "crates/blended-core/src/collection_cases.rs",
+      "target_sha256": "8c0523d5297b0f8b2114e3c5ff0b77e738a7a9944dfc08c591a3d5db5b6dd572",
+      "case_ids": [
+        "bit_ref.MaskFirstNBits",
+        "bit_ref.MaskLastNBits",
+        "bit_ref.MaskSingleBit",
+        "bit_ref.IntContainingBit",
+        "bit_ref.Test",
+        "bit_ref.Set",
+        "bit_ref.Reset",
+        "bit_ref.SetBranchless",
+        "bit_ref.Cast",
+        "bit_ref.MaskRangeBits"
+      ],
+      "assertion_sites": 63,
+      "runtime_assertions": 63,
+      "adapter_review": "Original loops, comparison kinds and values retained. Shared Cell bit references, independent clones, empty moved-from state, checked word-address identity, fixed builder capacity and borrowed slices are explicit API adapters."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_bit_vector_test.cc",
+      "source_sha256": "21297ed08bd7a266030f15d416dc483fe43fca1901fa99e4a3ccba02ccbe744c",
+      "target_path": "crates/blended-core/src/collection_cases.rs",
+      "target_sha256": "8c0523d5297b0f8b2114e3c5ff0b77e738a7a9944dfc08c591a3d5db5b6dd572",
+      "case_ids": [
+        "bit_vector.DefaultConstructor",
+        "bit_vector.CopyConstructorInline",
+        "bit_vector.CopyConstructorLarge",
+        "bit_vector.MoveConstructorInline",
+        "bit_vector.MoveConstructorLarge",
+        "bit_vector.SizeConstructor",
+        "bit_vector.SizeFillConstructor",
+        "bit_vector.IndexAccess",
+        "bit_vector.Iterator",
+        "bit_vector.Append",
+        "bit_vector.AppendMany"
+      ],
+      "assertion_sites": 57,
+      "runtime_assertions": 408,
+      "adapter_review": "Original loops, comparison kinds and values retained. Shared Cell bit references, independent clones, empty moved-from state, checked word-address identity, fixed builder capacity and borrowed slices are explicit API adapters."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_index_ranges_builder_test.cc",
+      "source_sha256": "9b24613cc64a90a6ae177173fdd3f63fa35c185ac7e8a83f63d1eb0d90cdd7cc",
+      "target_path": "crates/blended-core/src/collection_cases.rs",
+      "target_sha256": "8c0523d5297b0f8b2114e3c5ff0b77e738a7a9944dfc08c591a3d5db5b6dd572",
+      "case_ids": [
+        "index_ranges_builder.Empty",
+        "index_ranges_builder.Single",
+        "index_ranges_builder.Multiple",
+        "index_ranges_builder.Full"
+      ],
+      "assertion_sites": 16,
+      "runtime_assertions": 16,
+      "adapter_review": "Original loops, comparison kinds and values retained. Shared Cell bit references, independent clones, empty moved-from state, checked word-address identity, fixed builder capacity and borrowed slices are explicit API adapters."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_unique_sorted_indices_test.cc",
+      "source_sha256": "9230df5cc6251e46aeacc59e95489591b908a190f7647076fde2d2eed8b4341f",
+      "target_path": "crates/blended-core/src/collection_cases.rs",
+      "target_sha256": "8c0523d5297b0f8b2114e3c5ff0b77e738a7a9944dfc08c591a3d5db5b6dd572",
+      "case_ids": [
+        "unique_sorted_indices.FindRangeEnd",
+        "unique_sorted_indices.NonEmptyIsRange",
+        "unique_sorted_indices.NonEmptyAsRange",
+        "unique_sorted_indices.FindSizeOfNextRange",
+        "unique_sorted_indices.FindStartOfNextRange",
+        "unique_sorted_indices.SplitToRangesAndSpans",
+        "unique_sorted_indices.FindContentRange"
+      ],
+      "assertion_sites": 34,
+      "runtime_assertions": 34,
+      "adapter_review": "Original loops, comparison kinds and values retained. Shared Cell bit references, independent clones, empty moved-from state, checked word-address identity, fixed builder capacity and borrowed slices are explicit API adapters."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_vector_test.cc",
+      "source_sha256": "b52b9c6cb1d46b9f6c35cd6dbcdeccba9641c4649cf3fbe4f6bbd62c6107da51",
+      "target_path": "crates/blended-core/src/compile_time_cases.rs",
+      "target_sha256": "5d67387a38444edb1e1fadce6f48abd84899c5c9eecfab07138920844471193e",
+      "case_ids": [
+        "static_assert@219"
+      ],
+      "assertion_sites": 1,
+      "runtime_assertions": 0,
+      "adapter_review": "Original signed-zero vector hash comparison evaluated as a Rust constant in native and wasm builds; independent negative compiler test rejects raw signed-zero hashing."
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_string_ref_test.cc",
+      "source_sha256": "c5ff75c549388f3e0b58aa29909f97134f3108dcd17b6d12d1f8ecb4980f43c3",
+      "target_path": "crates/blended-core/src/string_ref_cases.rs",
+      "target_sha256": "a1af518693782e92898013fe674058c36030c1a787d5a7f459a875a0e83489d1",
+      "case_ids": [
+        "string_ref_null.DefaultConstructor",
+        "string_ref_null.CStringConstructor",
+        "string_ref_null.CStringLengthConstructor",
+        "string_ref_null.CompareEqual",
+        "string_ref_null.CompareEqualCharPtr1",
+        "string_ref_null.CompareEqualCharPtr2",
+        "string_ref_null.CompareEqualString1",
+        "string_ref_null.CompareEqualString2",
+        "string_ref_null.CompareEqualStringRef1",
+        "string_ref_null.CompareEqualStringRef2",
+        "string_ref_null.Constexpr",
+        "string_ref.DefaultConstructor",
+        "string_ref.StartEndConstructor",
+        "string_ref.StartEndConstructorNullptr",
+        "string_ref.StartEndConstructorSame",
+        "string_ref.CStringConstructor",
+        "string_ref.PointerWithLengthConstructor",
+        "string_ref.StdStringConstructor",
+        "string_ref.SpanConstructor",
+        "string_ref.SubscriptOperator",
+        "string_ref.ToStdString",
+        "string_ref.Print",
+        "string_ref.Add",
+        "string_ref.AddCharPtr1",
+        "string_ref.AddCharPtr2",
+        "string_ref.AddString1",
+        "string_ref.AddString2",
+        "string_ref.CompareEqual",
+        "string_ref.CompareEqualCharPtr1",
+        "string_ref.CompareEqualCharPtr2",
+        "string_ref.CompareEqualString1",
+        "string_ref.CompareEqualString2",
+        "string_ref.Iterate",
+        "string_ref.StartsWith",
+        "string_ref.EndsWith",
+        "string_ref.DropPrefixN",
+        "string_ref.DropPrefixLargeN",
+        "string_ref.DropKnownPrefix",
+        "string_ref.DropSuffix",
+        "string_ref.DropSuffixLargeN",
+        "string_ref.TrimArbitrary",
+        "string_ref.TrimWhitespace",
+        "string_ref.TrimCharacter",
+        "string_ref.TrimLeftArbitrary",
+        "string_ref.TrimLeftWhitespace",
+        "string_ref.TrimRightArbitrary",
+        "string_ref.TrimRightWhitespace",
+        "string_ref.Substr",
+        "string_ref.CopyUtf8Truncated",
+        "string_ref.CopyBytesTruncated",
+        "string_ref.FromStringView",
+        "string_ref.ToStringView",
+        "string_ref.Constexpr"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_bit_span_test.cc",
+      "source_sha256": "8dcf6c71063a45f72623b2d33dcaddaad7c4c06d447b93bfc15754a96a8fff82",
+      "target_path": "crates/blended-core/src/bit_span_cases.rs",
+      "target_sha256": "00f88ce87cb7c0fa72ba273d06861c90468c9f098eef2a2512be530166dcaa16",
+      "case_ids": [
+        "bit_span.DefaultConstructor",
+        "bit_span.Iteration",
+        "bit_span.MutableIteration",
+        "bit_span.SubscriptOperator",
+        "bit_span.RangeConstructor",
+        "bit_span.Set",
+        "bit_span.SetEmpty",
+        "bit_span.SetSliced",
+        "bit_span.IsBounded",
+        "bit_span.CopyFrom",
+        "bit_span.InPlaceOr",
+        "bit_span.InPlaceAnd",
+        "bit_span.ForEach1",
+        "bit_span.ForEach1Cancel",
+        "bit_span.FindFirst1Index",
+        "bit_span.FindFirst0Index",
+        "bit_span.or_bools_into_bits",
+        "bit_span.to_index_ranges_small",
+        "bit_span.to_index_ranges_all_ones"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_bit_group_vector_test.cc",
+      "source_sha256": "246c01c57c51251ff2fe657fd6a1c85138baa00ddb492b7fc223293046e39763",
+      "target_path": "crates/blended-core/src/bit_span_cases.rs",
+      "target_sha256": "00f88ce87cb7c0fa72ba273d06861c90468c9f098eef2a2512be530166dcaa16",
+      "case_ids": [
+        "bit_group_vector.DefaultConstruct",
+        "bit_group_vector.Construct",
+        "bit_group_vector.CopyConstruct",
+        "bit_group_vector.foreachAnd"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_bitmap_test.cc",
+      "source_sha256": "49c1ee49fb00de67637066d232214ddab45375ebda6141ccb4811ca26aaa296d",
+      "target_path": "crates/blended-core/src/bit_span_cases.rs",
+      "target_sha256": "00f88ce87cb7c0fa72ba273d06861c90468c9f098eef2a2512be530166dcaa16",
+      "case_ids": [
+        "bitmap.empty_is_all_unset",
+        "bitmap.find_first_unset_empty",
+        "bitmap.find_first_unset_full",
+        "bitmap.find_first_unset_middle"
+      ]
+    }
+  ]
+}
