@@ -60,15 +60,15 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] bit_span.SetEmpty
 [       OK ] bit_span.SetEmpty (0 ms)
 [ RUN      ] bit_span.SetSliced
-[       OK ] bit_span.SetSliced (1 ms)
+[       OK ] bit_span.SetSliced (2 ms)
 [ RUN      ] bit_span.IsBounded
 [       OK ] bit_span.IsBounded (0 ms)
 [ RUN      ] bit_span.CopyFrom
 [       OK ] bit_span.CopyFrom (0 ms)
 [ RUN      ] bit_span.InPlaceOr
-[       OK ] bit_span.InPlaceOr (8 ms)
+[       OK ] bit_span.InPlaceOr (10 ms)
 [ RUN      ] bit_span.InPlaceAnd
-[       OK ] bit_span.InPlaceAnd (8 ms)
+[       OK ] bit_span.InPlaceAnd (10 ms)
 [ RUN      ] bit_span.ForEach1
 [       OK ] bit_span.ForEach1 (0 ms)
 [ RUN      ] bit_span.ForEach1Cancel
@@ -83,7 +83,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] bit_span.to_index_ranges_small (0 ms)
 [ RUN      ] bit_span.to_index_ranges_all_ones
 [       OK ] bit_span.to_index_ranges_all_ones (0 ms)
-[----------] 19 tests from bit_span (19 ms total)
+[----------] 19 tests from bit_span (24 ms total)
 
 [----------] 11 tests from bit_vector
 [ RUN      ] bit_vector.DefaultConstructor
@@ -160,7 +160,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] bounds.IntersectSegment2D (0 ms)
 [ RUN      ] bounds.IntersectSegment3D
 [       OK ] bounds.IntersectSegment3D (0 ms)
-[----------] 19 tests from bounds (1 ms total)
+[----------] 19 tests from bounds (2 ms total)
 
 [----------] 11 tests from color
 [ RUN      ] color.ThemeByteToFloat
@@ -424,7 +424,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] math_matrix_types.ViewVectorMultiplyOperator (0 ms)
 [ RUN      ] math_matrix_types.ViewMatrixNormalize
 [       OK ] math_matrix_types.ViewMatrixNormalize (0 ms)
-[----------] 21 tests from math_matrix_types (0 ms total)
+[----------] 21 tests from math_matrix_types (1 ms total)
 
 [----------] 5 tests from math_solvers
 [ RUN      ] math_solvers.Tridiagonal1
@@ -672,5 +672,5 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [----------] 7 tests from unique_sorted_indices (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 302 tests from 22 test suites ran. (27 ms total)
+[==========] 302 tests from 22 test suites ran. (33 ms total)
 [  PASSED  ] 302 tests.
