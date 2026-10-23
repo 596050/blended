@@ -2,7 +2,7 @@ name: Blender test-port conformance
 on:
   push:
     branches: [main, 'compat/**', 'quality/**']
-    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_embedded_static_ports.py', 'tools/inventory.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
+    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_embedded_static_ports.py', 'tools/verify_heap_*.py', 'tools/inventory.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -68,6 +68,8 @@ jobs:
           python3 tools/verify_embedded_static_ports.py --output evidence/embedded-static-ports.json
           python3 -m pip install playwright==1.57.0
           python3 tools/verify_zero_assertion_case.py --output evidence/zero-assertion-probe.json
+          python3 tools/verify_heap_inputs.py --output evidence/heap-inputs/result.json
+          python3 tools/verify_heap_sensitivity.py --output evidence/heap-sensitivity/result.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
       - uses: actions/upload-artifact@v4
@@ -80,12 +82,12 @@ jobs:
             crates/blended-core/src/*cases.rs
             crates/blended-core/tests/upstream*.rs
             tests/upstream/
-          retention-days: 1
+          retention-days: 3
       - uses: actions/upload-artifact@v4
         with:
           name: conformance-site
           path: build/conformance/
-          retention-days: 1
+          retention-days: 3
   full-test-port-completeness:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -106,7 +108,7 @@ jobs:
           path: |
             evidence/complete-test-port.json
             build/blender-inventory.json
-          retention-days: 1
+          retention-days: 3
   publish-subset-workbench:
     needs: [native-and-wasm, assertion-fidelity]
     runs-on: ubuntu-24.04
@@ -175,7 +177,7 @@ jobs:
         with:
           name: deployed-test-port-evidence
           path: evidence/deployed-port/
-          retention-days: 1
+          retention-days: 3
       - name: Preserve public test evidence beyond artifact expiry
         if: always()
         env:
