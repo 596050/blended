@@ -8,7 +8,7 @@
   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 [1m[33mwarning[0m: `blended-core` (test "upstream_cycles_math") generated 1 warning (run `cargo fix --test "upstream_cycles_math" -p blended-core` to apply 1 suggestion)
-[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 2.22s
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 1.83s
 [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/blended_core-7c19c97da15a31fb)
 
 running 0 tests
@@ -21,9 +21,9 @@ running 6 tests
 test box_faces_point_outwards ... ok
 test box_has_exact_dimensions ... ok
 test box_has_independent_face_vertices_and_twelve_triangles ... ok
-test invalid_box_dimensions_rejected ... ok
 test invalid_plane_dimensions_rejected ... ok
 test plane_is_xz_with_two_triangles ... ok
+test invalid_box_dimensions_rejected ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -76,10 +76,10 @@ test result: ok. 28 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 32 tests
 test bit_ref__Cast ... ok
 test bit_ref__IntContainingBit ... ok
-test bit_ref__MaskFirstNBits ... ok
 test bit_ref__MaskRangeBits ... ok
-test bit_ref__MaskLastNBits ... ok
+test bit_ref__MaskFirstNBits ... ok
 test bit_ref__MaskSingleBit ... ok
+test bit_ref__MaskLastNBits ... ok
 test bit_ref__Reset ... ok
 test bit_ref__Set ... ok
 test bit_ref__SetBranchless ... ok
@@ -88,22 +88,22 @@ test bit_vector__Append ... ok
 test bit_vector__CopyConstructorInline ... ok
 test bit_vector__AppendMany ... ok
 test bit_vector__CopyConstructorLarge ... ok
-test bit_vector__DefaultConstructor ... ok
 test bit_vector__IndexAccess ... ok
-test bit_vector__Iterator ... ok
+test bit_vector__DefaultConstructor ... ok
 test bit_vector__MoveConstructorInline ... ok
 test bit_vector__MoveConstructorLarge ... ok
 test bit_vector__SizeConstructor ... ok
+test bit_vector__Iterator ... ok
 test bit_vector__SizeFillConstructor ... ok
 test index_ranges_builder__Empty ... ok
-test index_ranges_builder__Full ... ok
 test index_ranges_builder__Multiple ... ok
 test index_ranges_builder__Single ... ok
 test unique_sorted_indices__FindContentRange ... ok
 test unique_sorted_indices__FindRangeEnd ... ok
+test index_ranges_builder__Full ... ok
 test unique_sorted_indices__FindSizeOfNextRange ... ok
-test unique_sorted_indices__FindStartOfNextRange ... ok
 test unique_sorted_indices__NonEmptyAsRange ... ok
+test unique_sorted_indices__FindStartOfNextRange ... ok
 test unique_sorted_indices__NonEmptyIsRange ... ok
 test unique_sorted_indices__SplitToRangesAndSpans ... ok
 
@@ -113,18 +113,18 @@ test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
 running 3 tests
 test next_power_of_two ... ok
-test reverse_integer_bits ... ok
 test prev_power_of_two ... ok
+test reverse_integer_bits ... ok
 
 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 [1m[92m     Running[0m tests/upstream_math_vector.rs (target/debug/deps/upstream_math_vector-a8a5e43fc25adc5a)
 
 running 17 tests
-test CeilToMultiple ... ok
 test Clamp ... ok
-test ClampVecWithFloats ... ok
 test DivideCeil ... ok
+test CeilToMultiple ... ok
+test ClampVecWithFloats ... ok
 test InterpolateFloat ... ok
 test InterpolateInt ... ok
 test MaxList ... ok
@@ -147,24 +147,24 @@ running 21 tests
 test math_matrix_types__AddOperator ... ok
 test math_matrix_types__ComponentAccess ... ok
 test math_matrix_types__ComponentMasking ... ok
+test math_matrix_types__DefaultConstructor ... ok
 test math_matrix_types__MatrixMultiplyOperator ... ok
 test math_matrix_types__MultiplyOperator ... ok
-test math_matrix_types__DefaultConstructor ... ok
 test math_matrix_types__PointerArrayConversion ... ok
-test math_matrix_types__PointerConversion ... ok
 test math_matrix_types__SmallerMatrixConstructor ... ok
 test math_matrix_types__StaticConstructor ... ok
 test math_matrix_types__SubtractOperator ... ok
 test math_matrix_types__TypeConversion ... ok
+test math_matrix_types__PointerConversion ... ok
 test math_matrix_types__VectorConstructor ... ok
 test math_matrix_types__VectorMultiplyOperator ... ok
-test math_matrix_types__ViewAssignment ... ok
 test math_matrix_types__ViewConstructor ... ok
+test math_matrix_types__ViewAssignment ... ok
 test math_matrix_types__ViewFromCstyleMatrix ... ok
-test math_matrix_types__ViewMatrixMultiplyOperator ... ok
 test math_matrix_types__ViewMatrixNormalize ... ok
 test math_matrix_types__ViewScalarOperators ... ok
 test math_matrix_types__ViewVectorMultiplyOperator ... ok
+test math_matrix_types__ViewMatrixMultiplyOperator ... ok
 
 test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -173,8 +173,9 @@ test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 93 tests
 test color__SceneLinearByteDecoding ... ok
 test color__SceneLinearByteEncoding ... ok
-test color__SceneLinearPremultipliedToSrgbByte ... ok
 test color__SceneLinearPremultipliedToStraight ... ok
+test color__SceneLinearPremultipliedToSrgbByte ... ok
+test color__SceneLinearPremultipliedToSrgbFloat ... ok
 test color__SceneLinearStraightSrgbByte ... ok
 test color__SceneLinearStraightSrgbFloat ... ok
 test color__SceneLinearStraightToPremultiplied ... ok
@@ -185,7 +186,6 @@ test math_vec_types__Add ... ok
 test math_vec_types__AddFloatByVector ... ok
 test math_vec_types__ComponentMasking ... ok
 test math_vec_types__Divide ... ok
-test color__SceneLinearPremultipliedToSrgbFloat ... ok
 test math_vec_types__DivideFloatByVector ... ok
 test math_vec_types__DivideFloatByVectorSmall ... ok
 test math_vec_types__MixedScalarVectorConstructorVec3 ... ok
@@ -193,8 +193,8 @@ test math_vec_types__MixedScalarVectorConstructorVec4 ... ok
 test math_vec_types__Mul ... ok
 test math_vec_types__MulFloatByVector ... ok
 test math_vec_types__MultiScalarConstructorVec2 ... ok
-test math_vec_types__MultiScalarConstructorVec4 ... ok
 test math_vec_types__MultiScalarConstructorVec3 ... ok
+test math_vec_types__MultiScalarConstructorVec4 ... ok
 test math_vec_types__PointerArrayConversion ... ok
 test math_vec_types__PointerConversion ... ok
 test math_vec_types__ScalarConstructorDouble ... ok
@@ -204,10 +204,10 @@ test math_vec_types__ScalarConstructorUnsigned ... ok
 test math_vec_types__Sub ... ok
 test math_vec_types__SubFloatByVector ... ok
 test math_vec_types__SwizzleAssignment ... ok
-test math_vec_types__SwizzleComparison ... ok
 test math_vec_types__SwizzleFloat2 ... ok
 test math_vec_types__SwizzleFloat3 ... ok
 test math_vec_types__SwizzleFloat4 ... ok
+test math_vec_types__SwizzleComparison ... ok
 test math_vec_types__SwizzleOperators ... ok
 test math_vec_types__SwizzleReinterpret ... ok
 test math_vec_types__VectorTypeConversion ... ok
@@ -273,56 +273,56 @@ running 54 tests
 test binary_search__Empty ... ok
 test binary_search__Multiple ... ok
 test binary_search__One ... ok
+test bounds__Center ... ok
 test bounds__Contains ... ok
 test bounds__Empty ... ok
 test bounds__EmptyInt ... ok
 test bounds__IntersectSegment1D ... ok
 test bounds__IntersectSegment2D ... ok
-test bounds__Center ... ok
 test bounds__IntersectSegment3D ... ok
 test bounds__MinGreaterThanZero ... ok
 test bounds__MinMax ... ok
 test bounds__MinMaxEmpty ... ok
 test bounds__MinMaxFloat ... ok
+test bounds__MinMaxRadii ... ok
 test bounds__Pad ... ok
 test bounds__Recenter ... ok
-test bounds__MinMaxRadii ... ok
 test bounds__Resize ... ok
 test bounds__ScaleFromCenter ... ok
 test bounds__Size ... ok
+test bounds__Translate ... ok
 test index_range__After ... ok
 test index_range__Before ... ok
 test index_range__Contains ... ok
-test bounds__Translate ... ok
 test index_range__DefaultConstructor ... ok
 test index_range__DropBack ... ok
 test index_range__DropBackAll ... ok
+test index_range__DropFront ... ok
 test index_range__DropFrontAll ... ok
 test index_range__DropFrontLargeN ... ok
-test index_range__DropFront ... ok
-test index_range__First ... ok
 test index_range__FromBeginEnd ... ok
+test index_range__First ... ok
 test index_range__FromBeginEndInclusive ... ok
 test index_range__FromBeginSize ... ok
 test index_range__FromEndSize ... ok
 test index_range__FromSingle ... ok
 test index_range__GenericAlgorithms ... ok
+test index_range__Intersect ... ok
 test index_range__Last ... ok
 test index_range__MultipleElementRange ... ok
 test index_range__OneAfterEnd ... ok
-test index_range__Intersect ... ok
 test index_range__OneBeforeStart ... ok
+test index_range__SingleElementRange ... ok
 test index_range__Slice ... ok
 test index_range__SliceRange ... ok
-test index_range__SingleElementRange ... ok
 test index_range__SplitByAlignment ... ok
 test index_range__Start ... ok
-test index_range__SubscriptOperator ... ok
 test index_range__TakeBack ... ok
+test index_range__TakeBackLargeN ... ok
 test index_range__TakeFront ... ok
+test index_range__SubscriptOperator ... ok
 test index_range__TakeFrontLargeN ... ok
 test index_range__constexpr_ ... ok
-test index_range__TakeBackLargeN ... ok
 test bounds__Large ... ok
 
 test result: ok. 54 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
