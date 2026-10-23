@@ -1,0 +1,85 @@
+name: Verify original-test evidence and enforce scoped parity
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['parity/**']
+    paths:
+      - tools/*.py
+      - tests/**
+      - compatibility/candidate-suites/**
+      - compatibility/evidence/**
+      - .github/workflows/test-parity-ledger.yml
+  pull_request:
+    paths:
+      - tools/*.py
+      - tests/**
+      - compatibility/candidate-suites/**
+      - compatibility/evidence/**
+      - .github/workflows/test-parity-ledger.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-parity-ledger-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  infrastructure:
+    name: Test inventory, observer and receipt validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the CMake version used by the registration fixture
+        run: python3 -m pip install cmake==4.4.4
+      - name: Generate local site metadata required by existing tests
+        run: python3 tools/prepare_site.py
+      - name: Run infrastructure regressions, including real CMake configuration
+        run: python3 -m unittest discover -s tests -q
+
+  original-test-parity:
+    name: Require every declared native/browser obligation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile immutable original attempts and explicit resource retries
+        run: >-
+          python3 tools/reconcile_unittest_matrix.py
+          --repo-root .
+          --source-plan compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json
+          --native-retry-plan compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json
+          --browser-matrix compatibility/evidence/unittest-browser-matrix-5.2-2026-10-23/matrix.json
+          --browser-matrix compatibility/evidence/unittest-browser-resources-5.2-2026-10-23/matrix.json
+          --native-context compatibility/evidence/runtime-context-2026-10-23/native-context.json
+          --browser-context compatibility/evidence/runtime-context-2026-10-23/browser-context.json
+          --output evidence/reconciled-original-tests
+          --report-only
+      - name: Enforce the strict declared-scope gate
+        run: >-
+          python3 tools/test_parity_ledger.py
+          --contract evidence/reconciled-original-tests/contract.json
+          --inventory evidence/reconciled-original-tests/inventory.json
+          --executions evidence/reconciled-original-tests/executions.json
+          --evidence-root evidence/reconciled-original-tests
+          --output evidence/reconciled-original-tests/strict-gate.json
+      - name: Preserve blocked and passing reports alike
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-test-ledger-${{ github.run_id }}
+          path: evidence/reconciled-original-tests/
+          retention-days: 14
+          if-no-files-found: error

@@ -1,0 +1,17 @@
+E
+======================================================================
+ERROR: test_doc_gen_and_stubs (__main__.DocGenTest.test_doc_gen_and_stubs) [sphinx_doc_gen]
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/blended-original-unittest-p_9aqb50/tests/python/bl_pyapi_doc_gen.py", line 87, in test_doc_gen_and_stubs
+    import sphinx_doc_gen  # type: ignore[import-not-found]
+    ^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'sphinx_doc_gen'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
+BLENDED_NATIVE_REFERENCE_a46cc20c815f2ae0f4f9a2e7:{"driver_observation": {"entrypoint": "original __main__", "failfast": false, "original_exit_code": 1, "runner_invocations": 1, "support_files": []}, "exception": null, "execution_context": {"background": true, "entrypoint": "original __main__", "runtime_argv": ["/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender", "--background", "--console-crash-handler", "--factory-startup", "--debug-memory", "--debug-exit-on-error", "--python-exit-code", "1", "--python-expr", "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'", "--python", "/tmp/blended-native-reference-gqr16tqh/native-runner.py"], "script_argv": ["/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender", "--background", "--console-crash-handler", "--factory-startup", "--debug-memory", "--debug-exit-on-error", "--python-exit-code", "1", "--python-expr", "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'", "--python", "/tmp/blended-original-unittest-p_9aqb50/tests/python/bl_pyapi_doc_gen.py"], "source_root": "/tmp/blended-original-unittest-p_9aqb50"}, "identity": {"binary_path": "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender", "build_branch": "blender-v5.2-release", "build_hash": "fbe6228777e7", "version": [5, 2, 0], "version_string": "5.2.0 LTS"}, "io_observation": {"fixture_bytes_preserved": true, "fixture_files": []}, "suites": [{"discovered": 1, "discovered_ids": ["__main__.DocGenTest.test_doc_gen_and_stubs"], "errors": 1, "expected_failures": 0, "failures": 0, "outcomes": [{"detail": "Traceback (most recent call last):\n  File \"/tmp/blended-original-unittest-p_9aqb50/tests/python/bl_pyapi_doc_gen.py\", line 87, in test_doc_gen_and_stubs\n    import sphinx_doc_gen  # type: ignore[import-not-found]\n    ^^^^^^^^^^^^^^^^^^^^^\nModuleNotFoundError: No module named 'sphinx_doc_gen'\n", "id": "__main__.DocGenTest.test_doc_gen_and_stubs [sphinx_doc_gen]", "kind": "subtest", "parent_id": "__main__.DocGenTest.test_doc_gen_and_stubs", "status": "failed"}], "sha256": "658ffbbb8dd5a7c9c9510139b788b3749e39fe4b2c3249154a6e13a1dc3e23ab", "skipped": 0, "testsRun": 1, "unexpected_successes": 0, "upstream_path": "tests/python/bl_pyapi_doc_gen.py"}]}
+Switching to fully guarded memory allocator.
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:32:04)

@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-23T12:45:13.124884+00:00",
+  "evidence_kind": "standalone_ctest_infrastructure",
+  "blender_tests_executed": 0,
+  "synthetic_source_scope": "0000000000000000000000000000000000000000",
+  "fixture_sha256": "94afde99911bd1b3db112f987b2f2b576ff771e92dd1d653e4f4b4024ed3f4ab",
+  "adapter_sha256": "dc1bc1e2b1afc355dfe644263f7bf4b93c6595935a77de7fd962d1dcdb8809b1",
+  "test_module_sha256": "09bfdb14200c8855eea7d7fa406b06d2848491f5accf553886ce4b84b8970435",
+  "cmake_version": "cmake version 4.4.4",
+  "configurations": {
+    "Debug": {
+      "registrations": [
+        "setup",
+        "aggregate",
+        "cleanup",
+        "disabled",
+        "unavailable",
+        "debug_only"
+      ],
+      "registration_enumeration_complete": false,
+      "runtime_enumeration_complete": false
+    },
+    "Release": {
+      "registrations": [
+        "setup",
+        "aggregate",
+        "cleanup",
+        "disabled",
+        "unavailable"
+      ],
+      "registration_enumeration_complete": false,
+      "runtime_enumeration_complete": false
+    }
+  },
+  "captures": [
+    {
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "4d92ce18ddf9889d463ac875608423312823ad89e7fd5178b02a21ea26a2bd3d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_kind": "standalone_ctest_infrastructure"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+        "-S",
+        "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture",
+        "-B",
+        "/tmp/blended-registration-inventory-gozlh0mw/build"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "2094c67ffe36e109628ce1d94f4846e6dc9a738b4ab13c896d39ad861b43b2d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_kind": "standalone_ctest_infrastructure"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/tmp/blended-registration-inventory-gozlh0mw/build",
+        "--show-only=json-v1",
+        "-C",
+        "Debug"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "4d84fa32b3f2a664d84c708003c766a1daf2cde0e66e509422e6576c3c25f5d9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_kind": "standalone_ctest_infrastructure"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+        "--test-dir",
+        "/tmp/blended-registration-inventory-gozlh0mw/build",
+        "--show-only=json-v1",
+        "-C",
+        "Release"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "80ef0dfd9cb435e08be0f5c30ae8c9591a30c9e90c15f7bd5527d561e694c1c6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_kind": "standalone_ctest_infrastructure"
+    }
+  ]
+}

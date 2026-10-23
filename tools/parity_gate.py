@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Gate a declared Blender parity contract using current, hash-bound evidence.
+"""Gate a declared Blender test contract using typed, hash-bound receipts.
 
-This validates coverage and evidence identity. It does not execute Blender,
-independently judge comparison outputs, or establish that an author's declared
-inventory covers every Blender feature. Test producers and inventory reviewers
-remain responsible for those claims. Native and browser profiles are distinct.
+Each pass requires a receipt for that exact case, profile, target, execution run
+and independently selected context. Attachments are integrity-checked supporting
+files, not a substitute for the receipt's successful outcome and completion.
+This does not execute Blender, re-run assertions or image comparators, establish
+the trustworthiness of a receipt producer, or prove inventory completeness. A
+satisfied declared contract never establishes full Blender feature parity.
 
 The strict command exits 1 for an incomplete or non-passing contract, 2 for a
 malformed input, and 0 only for a satisfied contract. --report-only exits 0 for
@@ -35,6 +37,8 @@ CONTEXT_FIELDS = {
     "comparison_policy_sha256": 64,
     "suite_manifest_sha256": 64,
 }
+RECEIPT_TYPE = "blender-case-execution"
+MAX_RECEIPT_BYTES = 1_048_576
 
 
 def _require(condition: bool, message: str) -> None:
@@ -167,45 +171,95 @@ def validate_inventory(inventory: dict, manifest: dict, facets: dict[str, dict] 
     return cases
 
 
-def _evidence_problem(evidence: Any, evidence_root: Path | None) -> str | None:
-    if not isinstance(evidence, list) or not evidence:
-        return "missing evidence"
-    if evidence_root is None:
-        return "missing evidence root"
+def _bound_file(entry: Any, evidence_root: Path | None, *, read_limit: int | None = None) -> bytes | None:
+    """Verify one confined file; hash the same bytes used to interpret receipts."""
+    _require(evidence_root is not None, "missing evidence root")
     root = Path(evidence_root).resolve()
-    if not root.is_dir():
-        return "evidence root is not a directory"
-    seen = set()
-    for entry in evidence:
-        if not isinstance(entry, dict):
-            return "malformed evidence entry"
-        name, digest = entry.get("path"), entry.get("sha256")
-        if not isinstance(name, str) or not name or "\\" in name:
-            return "invalid evidence path"
-        relative = PurePosixPath(name)
-        if relative.is_absolute() or any(p in {"..", "."} for p in name.split("/")):
-            return "evidence path escapes or is not canonical"
-        if name in seen:
-            return "duplicate evidence path"
-        seen.add(name)
-        if not isinstance(digest, str) or not re.fullmatch("[0-9a-f]{64}", digest):
-            return "invalid evidence hash"
-        candidate = root
-        for part in relative.parts:
-            candidate /= part
-            if candidate.is_symlink():
-                return "symlink evidence is not allowed"
-        try:
-            resolved = candidate.resolve(strict=True)
-            resolved.relative_to(root)
-            if not resolved.is_file():
-                return "evidence is not a file"
-            with resolved.open("rb") as stream:
+    _require(root.is_dir(), "evidence root is not a directory")
+    _require(isinstance(entry, dict), "missing or malformed evidence reference")
+    name, digest = entry.get("path"), entry.get("sha256")
+    _require(isinstance(name, str) and bool(name) and "\\" not in name, "invalid evidence path")
+    relative = PurePosixPath(name)
+    _require(not relative.is_absolute() and not any(p in {"..", ".", ""} for p in name.split("/"))
+             and relative.as_posix() == name, "evidence path escapes or is not canonical")
+    _hash(digest, 64, "evidence.sha256")
+    candidate = root
+    for part in relative.parts:
+        candidate /= part
+        _require(not candidate.is_symlink(), "symlink evidence is not allowed")
+    try:
+        resolved = candidate.resolve(strict=True)
+        resolved.relative_to(root)
+        _require(resolved.is_file(), "evidence is not a file")
+        with resolved.open("rb") as stream:
+            if read_limit is None:
+                payload = None
                 actual = hashlib.file_digest(stream, "sha256").hexdigest()
-            if actual != digest:
-                return "evidence hash mismatch"
-        except (OSError, ValueError):
-            return "evidence missing or outside root"
+            else:
+                payload = stream.read(read_limit + 1)
+                _require(len(payload) <= read_limit, "execution receipt exceeds its byte limit")
+                actual = hashlib.sha256(payload).hexdigest()
+    except OSError as exc:
+        raise ValueError("evidence missing or unreadable") from exc
+    _require(actual == digest, "evidence hash mismatch")
+    return payload
+
+
+def _receipt_json(payload: bytes) -> dict:
+    """Reject ambiguous duplicate fields and non-JSON numeric values."""
+    def unique_object(pairs):
+        obj = {}
+        for key, value in pairs:
+            _require(key not in obj, "execution receipt contains duplicate JSON field: " + key)
+            obj[key] = value
+        return obj
+
+    def reject_constant(value):
+        raise ValueError("execution receipt contains invalid JSON value: " + value)
+
+    return _schema(json.loads(payload.decode("utf-8"), object_pairs_hook=unique_object,
+                              parse_constant=reject_constant), "execution receipt")
+
+
+def _receipt_problem(record: dict, target: dict, context: dict, run_id: Any,
+                     evidence_root: Path | None) -> str | None:
+    """Interpret a case receipt; arbitrary logs cannot prove a passing case."""
+    try:
+        _text(run_id, "results.run_id")
+        reference = record.get("receipt")
+        _require(isinstance(reference, dict), "missing typed execution receipt")
+        receipt = _receipt_json(_bound_file(reference, evidence_root, read_limit=MAX_RECEIPT_BYTES))
+        _require(receipt.get("type") == RECEIPT_TYPE, "unsupported execution receipt type")
+        for key, expected in (("case_id", record["case_id"]), ("profile", record["profile"]),
+                              ("run_id", run_id)):
+            _require(receipt.get(key) == expected, "execution receipt " + key + " does not match result")
+        _require(_target(receipt.get("target"), "receipt.target") == target,
+                 "execution receipt targets a different Blender revision")
+        _require(_context(receipt.get("context"), "receipt.context") == context,
+                 "execution receipt context differs from independently selected context")
+        _require(receipt.get("outcome") == "passed", "execution receipt does not report a passed outcome")
+        execution = _object(receipt.get("execution"), "receipt.execution")
+        _require(execution.get("started") is True and execution.get("completed") is True,
+                 "execution receipt does not record a started and completed execution")
+        _require(type(execution.get("exit_code")) is int and execution["exit_code"] == 0,
+                 "execution receipt does not record successful process exit")
+        _require(execution.get("timed_out") is False and execution.get("crashed") is False,
+                 "execution receipt does not exclude timeout and crash")
+        comparison = _object(receipt.get("comparison"), "receipt.comparison")
+        _require(comparison.get("status") == "passed", "execution receipt comparison did not pass")
+        _require(comparison.get("policy_sha256") == context["comparison_policy_sha256"],
+                 "execution receipt comparison policy differs from independently selected policy")
+        attachments = record.get("attachments", [])
+        _require(isinstance(attachments, list), "attachments must be a list")
+        seen = {reference["path"]}
+        for attachment in attachments:
+            _require(isinstance(attachment, dict), "malformed attachment reference")
+            name = _text(attachment.get("path"), "attachment.path")
+            _require(name not in seen, "duplicate receipt or attachment path")
+            seen.add(name)
+            _bound_file(attachment, evidence_root)
+    except (OSError, ValueError, TypeError, RecursionError) as exc:
+        return str(exc)
     return None
 
 
@@ -223,12 +277,14 @@ def evaluate(manifest: dict, inventory: dict, results: dict | None = None,
     target = _target(manifest["target"], "manifest.target")
     expected = _context(expected_context, "expected_context") if expected_context is not None else None
     records: dict[tuple[str, str], dict] = {}
+    run_id = None
     context_problem = "no execution results"
     if results is not None:
         _schema(results, "results")
         _require(_target(results.get("target"), "results.target") == target,
                  "Results target a different Blender revision")
         actual_context = _context(results.get("context"), "results.context")
+        run_id = results.get("run_id")
         context_problem = ("missing independent expected context" if expected is None else
                            "execution context does not match expected build/fixtures/policy"
                            if actual_context != expected else None)
@@ -269,8 +325,9 @@ def evaluate(manifest: dict, inventory: dict, results: dict | None = None,
                 status = record["status"] if record else "missing_result"
                 reason = None
                 if status == "passed":
-                    reason = context_problem or _evidence_problem(record.get("evidence"),
-                                                                  Path(evidence_root) if evidence_root is not None else None)
+                    reason = context_problem or _receipt_problem(
+                        record, target, expected, run_id,
+                        Path(evidence_root) if evidence_root is not None else None)
                     if reason:
                         status = "invalid_evidence"
                 own_counts[status] += 1
@@ -309,8 +366,10 @@ def evaluate(manifest: dict, inventory: dict, results: dict | None = None,
     passed = bool(cases) and coverage_complete and all(f["status"] == "passed" for f in facet_reports.values())
     report = {
         "schema": 1, "target": target, "gate": "passed" if passed else "blocked",
-        "full_feature_parity": passed,
-        "claim_scope": "Declared target, profiles, and reviewed facet contract only; evidence semantics are the test producer's responsibility.",
+        "declared_contract_satisfied": passed,
+        "full_feature_parity": False,
+        "full_feature_parity_reason": "No independently validated full feature acceptance mechanism is present.",
+        "claim_scope": "Declared target, profiles, inventory and typed execution receipts only. Receipt producer trust, exhaustive enumeration and full feature acceptance are not established by this gate.",
         "enumeration_complete": inventory["enumeration_complete"],
         "coverage_complete": coverage_complete,
         "known_case_count": len(cases), "known_obligation_count": obligation_count,
@@ -346,14 +405,15 @@ def main(argv: list[str] | None = None) -> int:
         try:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps({"schema": 1, "gate": "invalid",
+                                              "declared_contract_satisfied": False,
                                               "full_feature_parity": False,
                                               "error": str(exc)}, indent=2) + "\n")
         except OSError:
             pass
         parser.exit(2, f"Invalid parity input: {exc}\n")
-    print(json.dumps({key: report[key] for key in ("gate", "full_feature_parity", "known_case_count",
+    print(json.dumps({key: report[key] for key in ("gate", "declared_contract_satisfied", "full_feature_parity", "known_case_count",
                                                   "known_obligation_count", "passed_obligation_count")}))
-    return 0 if args.report_only or report["full_feature_parity"] else 1
+    return 0 if args.report_only or report["declared_contract_satisfied"] else 1
 
 
 if __name__ == "__main__":

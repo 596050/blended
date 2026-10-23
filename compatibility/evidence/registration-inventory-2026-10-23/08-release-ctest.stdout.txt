@@ -1,0 +1,210 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 6,
+        "parent" : 0
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 9,
+        "parent" : 2
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 12,
+        "parent" : 4
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 15,
+        "parent" : 6
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 18,
+        "parent" : 8
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "command" : 
+      [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "true"
+      ],
+      "config" : "Release",
+      "name" : "setup",
+      "properties" : 
+      [
+        {
+          "name" : "FIXTURES_SETUP",
+          "value" : 
+          [
+            "assets"
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "fixture"
+          ]
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "command" : 
+      [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "echo",
+        "driver placeholder"
+      ],
+      "config" : "Release",
+      "name" : "aggregate",
+      "properties" : 
+      [
+        {
+          "name" : "DEPENDS",
+          "value" : 
+          [
+            "setup"
+          ]
+        },
+        {
+          "name" : "FIXTURES_REQUIRED",
+          "value" : 
+          [
+            "assets"
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "geometry",
+            "native"
+          ]
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "true"
+      ],
+      "config" : "Release",
+      "name" : "cleanup",
+      "properties" : 
+      [
+        {
+          "name" : "DEPENDS",
+          "value" : 
+          [
+            "aggregate",
+            "setup"
+          ]
+        },
+        {
+          "name" : "FIXTURES_CLEANUP",
+          "value" : 
+          [
+            "assets"
+          ]
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 7,
+      "command" : 
+      [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "false"
+      ],
+      "config" : "Release",
+      "name" : "disabled",
+      "properties" : 
+      [
+        {
+          "name" : "DISABLED",
+          "value" : true
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 9,
+      "config" : "Release",
+      "name" : "unavailable",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

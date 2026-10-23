@@ -1,0 +1,926 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_repository": "blender/blender",
+  "source_files_inspected": 10848,
+  "source_candidate_count": 5637,
+  "source_candidate_count_is_runtime_test_denominator": false,
+  "candidate_kinds": {
+    "TEST": 2150,
+    "TEST_F": 1068,
+    "TEST_P": 25,
+    "TYPED_TEST": 4,
+    "TYPED_TEST_P": 3,
+    "python_test": 1586,
+    "static_assert": 801
+  },
+  "candidate_top_level_paths": {
+    "extern": 150,
+    "intern": 814,
+    "scripts": 86,
+    "source": 3087,
+    "tests": 1493,
+    "tools": 7
+  },
+  "source_candidates_flagged_for_runtime_expansion": 96,
+  "all_source_candidates_require_runtime_or_compile_reconciliation": true,
+  "source_candidates_reconciled_to_product_runtime": 0,
+  "source_candidates_unreconciled": 5637,
+  "unreadable_source_files": [
+    {
+      "path": "extern/bullet2/src/BulletCollision/Gimpact/btGImpactShape.h",
+      "phase": "source_discovery",
+      "error": "'utf-8' codec can't decode byte 0xdf in position 51: invalid continuation byte"
+    },
+    {
+      "path": "extern/bullet2/src/BulletSoftBody/btSoftBody.cpp",
+      "phase": "source_discovery",
+      "error": "'utf-8' codec can't decode byte 0xba in position 19668: invalid start byte"
+    },
+    {
+      "path": "extern/mantaflow/preprocessed/python/defines.py",
+      "phase": "source_discovery",
+      "error": "invalid syntax (defines.py, line 6)"
+    },
+    {
+      "path": "extern/quadriflow/3rd/lemon-1.3.1/lemon/soplex.h",
+      "phase": "source_discovery",
+      "error": "'utf-8' codec can't decode byte 0xfc in position 1143: invalid start byte"
+    },
+    {
+      "path": "extern/quadriflow/src/loader.cpp",
+      "phase": "source_discovery",
+      "error": "'utf-8' codec can't decode byte 0xa9 in position 80: invalid start byte"
+    }
+  ],
+  "cmake_files_indexed": 437,
+  "lexical_cmake_call_candidates": 157,
+  "lexical_cmake_call_candidate_counts": {
+    "add_blender_test": 128,
+    "add_python_test": 5,
+    "add_test": 13,
+    "blender_add_ctests": 2,
+    "enable_testing": 2,
+    "gtest_add_tests": 6,
+    "gtest_discover_tests": 1
+  },
+  "lexical_cmake_call_candidates_are_registrations": false,
+  "cmake_candidate_calls_unreconciled": 157,
+  "fixture_roots": [
+    {
+      "path": "tests/files",
+      "status": "present",
+      "files_discovered": 7329
+    }
+  ],
+  "fixture_candidates": 7353,
+  "fixture_status_counts": {
+    "lfs_pointer": 6715,
+    "present_unvalidated": 638
+  },
+  "fixture_candidates_outside_declared_roots": 24,
+  "valid_lfs_pointer_count": 6715,
+  "unique_lfs_payload_oids": 6543,
+  "unique_lfs_payload_declared_bytes": 880195119,
+  "fixture_completeness": "unknown",
+  "runtime_enumeration_complete": false,
+  "blender_tests_executed": 0,
+  "cases_passed": 0,
+  "facets_complete": [],
+  "facets": [
+    {
+      "facet": "foundation",
+      "source_candidate_path_hints": 1882,
+      "fixture_globs": [],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "platform",
+      "source_candidate_path_hints": 108,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/ui_tests/**",
+          "candidate_file_matches": 6,
+          "presence_status_counts": {
+            "lfs_pointer": 6
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "python_api",
+      "source_candidate_path_hints": 391,
+      "fixture_globs": [],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "scene_data",
+      "source_candidate_path_hints": 605,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/layers/**",
+          "candidate_file_matches": 15,
+          "presence_status_counts": {
+            "lfs_pointer": 1,
+            "present_unvalidated": 14
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/libraries_and_linking/**",
+          "candidate_file_matches": 12,
+          "presence_status_counts": {
+            "lfs_pointer": 12
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "blend_io",
+      "source_candidate_path_hints": 418,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/io_tests/blend_autosave/**",
+          "candidate_file_matches": 2,
+          "presence_status_counts": {
+            "lfs_pointer": 2
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/io_tests/blend_parsing/**",
+          "candidate_file_matches": 4,
+          "presence_status_counts": {
+            "lfs_pointer": 4
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/libraries_and_linking/**",
+          "candidate_file_matches": 12,
+          "presence_status_counts": {
+            "lfs_pointer": 12
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/invalid_blendfiles/**",
+          "candidate_file_matches": 86,
+          "presence_status_counts": {
+            "lfs_pointer": 85,
+            "present_unvalidated": 1
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "depsgraph",
+      "source_candidate_path_hints": 377,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/depsgraph/**",
+          "candidate_file_matches": 28,
+          "presence_status_counts": {
+            "lfs_pointer": 28
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "object_transforms",
+      "source_candidate_path_hints": 5,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/modeling/object_conversion.blend",
+          "candidate_file_matches": 1,
+          "presence_status_counts": {
+            "lfs_pointer": 1
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/ui_tests/**",
+          "candidate_file_matches": 6,
+          "presence_status_counts": {
+            "lfs_pointer": 6
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "mesh_edit",
+      "source_candidate_path_hints": 96,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/modeling/**",
+          "candidate_file_matches": 484,
+          "presence_status_counts": {
+            "lfs_pointer": 465,
+            "present_unvalidated": 19
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "modifiers",
+      "source_candidate_path_hints": 364,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/modeling/modifiers/**",
+          "candidate_file_matches": 3,
+          "presence_status_counts": {
+            "lfs_pointer": 3
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/modeling/deform_modifiers.blend",
+          "candidate_file_matches": 1,
+          "presence_status_counts": {
+            "lfs_pointer": 1
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/modifier_stack/**",
+          "candidate_file_matches": 8,
+          "presence_status_counts": {
+            "lfs_pointer": 8
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "curves_text_hair",
+      "source_candidate_path_hints": 387,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/modeling/**",
+          "candidate_file_matches": 484,
+          "presence_status_counts": {
+            "lfs_pointer": 465,
+            "present_unvalidated": 19
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/hair/**",
+          "candidate_file_matches": 90,
+          "presence_status_counts": {
+            "lfs_pointer": 90
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/pointcloud/**",
+          "candidate_file_matches": 41,
+          "presence_status_counts": {
+            "lfs_pointer": 41
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/blenfont/**",
+          "candidate_file_matches": 214,
+          "presence_status_counts": {
+            "lfs_pointer": 213,
+            "present_unvalidated": 1
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "geometry_nodes",
+      "source_candidate_path_hints": 161,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/modeling/geometry_nodes/**",
+          "candidate_file_matches": 465,
+          "presence_status_counts": {
+            "lfs_pointer": 447,
+            "present_unvalidated": 18
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/node_group/**",
+          "candidate_file_matches": 8,
+          "presence_status_counts": {
+            "lfs_pointer": 8
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "sculpt",
+      "source_candidate_path_hints": 517,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/sculpting/**",
+          "candidate_file_matches": 28,
+          "presence_status_counts": {
+            "lfs_pointer": 28
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/mesh_paint/**",
+          "candidate_file_matches": 1,
+          "presence_status_counts": {
+            "lfs_pointer": 1
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "uv",
+      "source_candidate_path_hints": 15,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/modeling/**",
+          "candidate_file_matches": 484,
+          "presence_status_counts": {
+            "lfs_pointer": 465,
+            "present_unvalidated": 19
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "painting",
+      "source_candidate_path_hints": 467,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/mesh_paint/**",
+          "candidate_file_matches": 1,
+          "presence_status_counts": {
+            "lfs_pointer": 1
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/paint/**",
+          "candidate_file_matches": 9,
+          "presence_status_counts": {
+            "lfs_pointer": 6,
+            "present_unvalidated": 3
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "gpu_backend",
+      "source_candidate_path_hints": 224,
+      "fixture_globs": [],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "workbench",
+      "source_candidate_path_hints": 129,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/render/workbench/**",
+          "candidate_file_matches": 40,
+          "presence_status_counts": {
+            "lfs_pointer": 40
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/**",
+          "candidate_file_matches": 3752,
+          "presence_status_counts": {
+            "lfs_pointer": 3745,
+            "present_unvalidated": 7
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/screenshot/**",
+          "candidate_file_matches": 6,
+          "presence_status_counts": {
+            "lfs_pointer": 6
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "materials_color",
+      "source_candidate_path_hints": 614,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/render/bsdf/**",
+          "candidate_file_matches": 147,
+          "presence_status_counts": {
+            "lfs_pointer": 147
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/principled_bsdf/**",
+          "candidate_file_matches": 77,
+          "presence_status_counts": {
+            "lfs_pointer": 77
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/shader/**",
+          "candidate_file_matches": 223,
+          "presence_status_counts": {
+            "lfs_pointer": 223
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/texture/**",
+          "candidate_file_matches": 209,
+          "presence_status_counts": {
+            "lfs_pointer": 209
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/colorspace/**",
+          "candidate_file_matches": 10,
+          "presence_status_counts": {
+            "lfs_pointer": 10
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/imbuf_io/**",
+          "candidate_file_matches": 425,
+          "presence_status_counts": {
+            "lfs_pointer": 285,
+            "present_unvalidated": 140
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/materials/**",
+          "candidate_file_matches": 3,
+          "presence_status_counts": {
+            "lfs_pointer": 3
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "eevee",
+      "source_candidate_path_hints": 218,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/render/**",
+          "candidate_file_matches": 3752,
+          "presence_status_counts": {
+            "lfs_pointer": 3745,
+            "present_unvalidated": 7
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "cycles_cpu",
+      "source_candidate_path_hints": 582,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/render/**",
+          "candidate_file_matches": 3752,
+          "presence_status_counts": {
+            "lfs_pointer": 3745,
+            "present_unvalidated": 7
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "cycles_gpu",
+      "source_candidate_path_hints": 759,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/render/**",
+          "candidate_file_matches": 3752,
+          "presence_status_counts": {
+            "lfs_pointer": 3745,
+            "present_unvalidated": 7
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "animation_rigging",
+      "source_candidate_path_hints": 418,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/animation/**",
+          "candidate_file_matches": 23,
+          "presence_status_counts": {
+            "lfs_pointer": 23
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/constraints/**",
+          "candidate_file_matches": 1,
+          "presence_status_counts": {
+            "lfs_pointer": 1
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "simulation",
+      "source_candidate_path_hints": 361,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/physics/**",
+          "candidate_file_matches": 13,
+          "presence_status_counts": {
+            "lfs_pointer": 13
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/modeling/geometry_nodes/simulation/**",
+          "candidate_file_matches": 11,
+          "presence_status_counts": {
+            "lfs_pointer": 11
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/particles_and_hair/**",
+          "candidate_file_matches": 9,
+          "presence_status_counts": {
+            "lfs_pointer": 9
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/volume/**",
+          "candidate_file_matches": 185,
+          "presence_status_counts": {
+            "lfs_pointer": 185
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/openvdb/**",
+          "candidate_file_matches": 359,
+          "presence_status_counts": {
+            "lfs_pointer": 359
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "grease_pencil",
+      "source_candidate_path_hints": 414,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/grease_pencil/**",
+          "candidate_file_matches": 3,
+          "presence_status_counts": {
+            "lfs_pointer": 3
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/render/grease_pencil/**",
+          "candidate_file_matches": 40,
+          "presence_status_counts": {
+            "lfs_pointer": 40
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/modeling/geometry_nodes/grease_pencil/**",
+          "candidate_file_matches": 5,
+          "presence_status_counts": {
+            "lfs_pointer": 5
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "format_io",
+      "source_candidate_path_hints": 503,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/io_tests/**",
+          "candidate_file_matches": 694,
+          "presence_status_counts": {
+            "lfs_pointer": 404,
+            "present_unvalidated": 290
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/alembic/**",
+          "candidate_file_matches": 71,
+          "presence_status_counts": {
+            "lfs_pointer": 60,
+            "present_unvalidated": 11
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/usd/**",
+          "candidate_file_matches": 114,
+          "presence_status_counts": {
+            "lfs_pointer": 52,
+            "present_unvalidated": 62
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/imbuf_io/**",
+          "candidate_file_matches": 425,
+          "presence_status_counts": {
+            "lfs_pointer": 285,
+            "present_unvalidated": 140
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "compositing",
+      "source_candidate_path_hints": 86,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/compositor/**",
+          "candidate_file_matches": 632,
+          "presence_status_counts": {
+            "lfs_pointer": 632
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "video_audio",
+      "source_candidate_path_hints": 438,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/sequence_editing/**",
+          "candidate_file_matches": 535,
+          "presence_status_counts": {
+            "lfs_pointer": 453,
+            "present_unvalidated": 82
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/ffmpeg/**",
+          "candidate_file_matches": 6,
+          "presence_status_counts": {
+            "lfs_pointer": 6
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/sound/**",
+          "candidate_file_matches": 3,
+          "presence_status_counts": {
+            "lfs_pointer": 2,
+            "present_unvalidated": 1
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "tracking",
+      "source_candidate_path_hints": 596,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/tracking/**",
+          "candidate_file_matches": 64,
+          "presence_status_counts": {
+            "lfs_pointer": 64
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/compositor/tracking/**",
+          "candidate_file_matches": 10,
+          "presence_status_counts": {
+            "lfs_pointer": 10
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/compositor/keying/**",
+          "candidate_file_matches": 22,
+          "presence_status_counts": {
+            "lfs_pointer": 22
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/compositor/mask/**",
+          "candidate_file_matches": 18,
+          "presence_status_counts": {
+            "lfs_pointer": 18
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "assets",
+      "source_candidate_path_hints": 191,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/asset_library/**",
+          "candidate_file_matches": 5,
+          "presence_status_counts": {
+            "present_unvalidated": 5
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/libraries_and_linking/**",
+          "candidate_file_matches": 12,
+          "presence_status_counts": {
+            "lfs_pointer": 12
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "ui_workflows",
+      "source_candidate_path_hints": 130,
+      "fixture_globs": [
+        {
+          "pattern": "tests/files/ui_tests/**",
+          "candidate_file_matches": 6,
+          "presence_status_counts": {
+            "lfs_pointer": 6
+          },
+          "dependency_closure": "unverified"
+        },
+        {
+          "pattern": "tests/files/screenshot/**",
+          "candidate_file_matches": 6,
+          "presence_status_counts": {
+            "lfs_pointer": 6
+          },
+          "dependency_closure": "unverified"
+        }
+      ],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    },
+    {
+      "facet": "performance_reliability",
+      "source_candidate_path_hints": 40,
+      "fixture_globs": [],
+      "native_runtime_enumeration": "not_performed_at_product_pin",
+      "source_registration_reconciliation": "unresolved",
+      "fixture_closure": "unverified",
+      "workflow_obligations": "unresolved"
+    }
+  ],
+  "limitations": [
+    "Source candidates include compile-time assertions and third-party vendored code.",
+    "Counts do not enumerate generated/parameterized runtime instances or configuration gates.",
+    "Glob matches are path hints, not dependency closure or suite membership.",
+    "Regular file bytes are unvalidated; pointer text is not its payload.",
+    "No source or fixture file was hydrated or modified for this capture."
+  ]
+}

@@ -1,0 +1,819 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "started_utc": "2026-10-23T12:56:56.259083+00:00",
+  "finished_utc": "2026-10-23T12:57:06.153080+00:00",
+  "scope": "selected upstream Python suite qualification of a new development source build",
+  "profile": "chromium-software-webgpu",
+  "deployed": false,
+  "hardware_verified": false,
+  "native_oracle_compared": false,
+  "full_parity": false,
+  "selected_suites_passed": true,
+  "summary": {
+    "expected_suites": 1,
+    "observed_suites": 1,
+    "totals": {
+      "discovered": 42,
+      "executed": 42,
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 0
+    },
+    "suites": [
+      {
+        "upstream_path": "tests/python/bl_pyapi_prop_array.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 42,
+          "executed": 42,
+          "passed": 42,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      }
+    ],
+    "required_case_inventory": {
+      "fixed_for_all_requested_suites": true,
+      "expected_cases": 42,
+      "missing_cases": 0,
+      "suites": [
+        {
+          "upstream_path": "tests/python/bl_pyapi_prop_array.py",
+          "expected_cases": 42,
+          "missing_cases": 0,
+          "missing_case_ids": [],
+          "unexpected_case_ids": []
+        }
+      ]
+    }
+  },
+  "blockers": [],
+  "source_correspondence_verified": false,
+  "candidate": {
+    "repository": "gessa-ai/blender-web",
+    "source_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+    "kind": "blender-source-development",
+    "numeric_patchset_id": "blender-5.2.0-web-numerics-v1"
+  },
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+  },
+  "artifact": {
+    "url": null,
+    "expected_sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991",
+    "expected_bytes": 107362300,
+    "observed_sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991",
+    "observed_bytes": 107362300
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_prop_array.py",
+      "bytes": 32276,
+      "sha256": "70a7a78562f356fbc1490cadb0a672df7c8afb6c0253ea33485e6ad7b0f8ed9a",
+      "support_files": [],
+      "fixture_files": [],
+      "case_ids": [
+        "TestPropArrayDynamicArg.test_param_dynamic",
+        "TestPropArrayDynamicAssign.test_assign_fixed",
+        "TestPropArrayDynamicAssign.test_assign_fixed_over_by_1px",
+        "TestPropArrayDynamicAssign.test_assign_fixed_under_0px",
+        "TestPropArrayDynamicAssign.test_assign_fixed_under_1px",
+        "TestPropArrayForeach.test_foreach_getset_f_1d",
+        "TestPropArrayForeach.test_foreach_getset_f_2d",
+        "TestPropArrayForeach.test_foreach_getset_f_3d",
+        "TestPropArrayForeach.test_foreach_getset_i_1d",
+        "TestPropArrayForeach.test_foreach_getset_i_2d",
+        "TestPropArrayForeach.test_foreach_getset_i_3d",
+        "TestPropArrayIndex.test_indices_access_b_1d",
+        "TestPropArrayIndex.test_indices_access_b_2d",
+        "TestPropArrayIndex.test_indices_access_b_2d_getset",
+        "TestPropArrayIndex.test_indices_access_b_2d_getset_transform",
+        "TestPropArrayIndex.test_indices_access_b_3d",
+        "TestPropArrayIndex.test_indices_access_b_3d_transform",
+        "TestPropArrayIndex.test_indices_access_f_1d",
+        "TestPropArrayIndex.test_indices_access_f_2d",
+        "TestPropArrayIndex.test_indices_access_f_2d_getset",
+        "TestPropArrayIndex.test_indices_access_f_2d_getset_transform",
+        "TestPropArrayIndex.test_indices_access_f_3d",
+        "TestPropArrayIndex.test_indices_access_f_3d_transform",
+        "TestPropArrayIndex.test_indices_access_i_1d",
+        "TestPropArrayIndex.test_indices_access_i_2d",
+        "TestPropArrayIndex.test_indices_access_i_2d_getset",
+        "TestPropArrayIndex.test_indices_access_i_2d_getset_transform",
+        "TestPropArrayIndex.test_indices_access_i_3d",
+        "TestPropArrayIndex.test_indices_access_i_3d_transform",
+        "TestPropArrayInvalidForeachGetSet.test_foreach_invalid_smaller_array",
+        "TestPropArrayInvalidForeachGetSet.test_foreach_valid",
+        "TestPropArrayMultiDimensional.test_defaults",
+        "TestPropArrayMultiDimensional.test_matrix_3x3",
+        "TestPropArrayMultiDimensional.test_matrix_4x4",
+        "TestPropArrayMultiDimensional.test_matrix_with_callbacks_3x3",
+        "TestPropArrayMultiDimensional.test_matrix_with_callbacks_4x4",
+        "TestPropArraySliceStep.test_step_2d_inner",
+        "TestPropArraySliceStep.test_step_2d_outer",
+        "TestPropArraySliceStep.test_step_full_reverse",
+        "TestPropArraySliceStep.test_step_negative",
+        "TestPropArraySliceStep.test_step_positive",
+        "TestPropArraySliceStep.test_step_write_size_mismatch"
+      ],
+      "mandatory_case_ids": [
+        "TestPropArrayDynamicArg.test_param_dynamic",
+        "TestPropArrayDynamicAssign.test_assign_fixed",
+        "TestPropArrayDynamicAssign.test_assign_fixed_over_by_1px",
+        "TestPropArrayDynamicAssign.test_assign_fixed_under_0px",
+        "TestPropArrayDynamicAssign.test_assign_fixed_under_1px",
+        "TestPropArrayForeach.test_foreach_getset_f_1d",
+        "TestPropArrayForeach.test_foreach_getset_f_2d",
+        "TestPropArrayForeach.test_foreach_getset_f_3d",
+        "TestPropArrayForeach.test_foreach_getset_i_1d",
+        "TestPropArrayForeach.test_foreach_getset_i_2d",
+        "TestPropArrayForeach.test_foreach_getset_i_3d",
+        "TestPropArrayIndex.test_indices_access_b_1d",
+        "TestPropArrayIndex.test_indices_access_b_2d",
+        "TestPropArrayIndex.test_indices_access_b_2d_getset",
+        "TestPropArrayIndex.test_indices_access_b_2d_getset_transform",
+        "TestPropArrayIndex.test_indices_access_b_3d",
+        "TestPropArrayIndex.test_indices_access_b_3d_transform",
+        "TestPropArrayIndex.test_indices_access_f_1d",
+        "TestPropArrayIndex.test_indices_access_f_2d",
+        "TestPropArrayIndex.test_indices_access_f_2d_getset",
+        "TestPropArrayIndex.test_indices_access_f_2d_getset_transform",
+        "TestPropArrayIndex.test_indices_access_f_3d",
+        "TestPropArrayIndex.test_indices_access_f_3d_transform",
+        "TestPropArrayIndex.test_indices_access_i_1d",
+        "TestPropArrayIndex.test_indices_access_i_2d",
+        "TestPropArrayIndex.test_indices_access_i_2d_getset",
+        "TestPropArrayIndex.test_indices_access_i_2d_getset_transform",
+        "TestPropArrayIndex.test_indices_access_i_3d",
+        "TestPropArrayIndex.test_indices_access_i_3d_transform",
+        "TestPropArrayInvalidForeachGetSet.test_foreach_invalid_smaller_array",
+        "TestPropArrayInvalidForeachGetSet.test_foreach_valid",
+        "TestPropArrayMultiDimensional.test_defaults",
+        "TestPropArrayMultiDimensional.test_matrix_3x3",
+        "TestPropArrayMultiDimensional.test_matrix_4x4",
+        "TestPropArrayMultiDimensional.test_matrix_with_callbacks_3x3",
+        "TestPropArrayMultiDimensional.test_matrix_with_callbacks_4x4",
+        "TestPropArraySliceStep.test_step_2d_inner",
+        "TestPropArraySliceStep.test_step_2d_outer",
+        "TestPropArraySliceStep.test_step_full_reverse",
+        "TestPropArraySliceStep.test_step_negative",
+        "TestPropArraySliceStep.test_step_positive",
+        "TestPropArraySliceStep.test_step_write_size_mismatch"
+      ],
+      "expected_cases": 42,
+      "driver": "unittest-main",
+      "required_background": true,
+      "driver_execution": {
+        "entrypoint": "original __main__",
+        "process_isolation": "one-upstream-script",
+        "background": true,
+        "blender_args": [
+          "--background",
+          "--console-crash-handler",
+          "--factory-startup",
+          "--debug-memory",
+          "--debug-exit-on-error",
+          "--python-exit-code",
+          "1",
+          "--python-expr",
+          "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+        ],
+        "script_args": [],
+        "ctest_name": "script_pyapi_prop_array",
+        "cmake_sources": [
+          {
+            "upstream_path": "tests/CMakeLists.txt",
+            "bytes": 5871,
+            "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+          },
+          {
+            "upstream_path": "tests/python/CMakeLists.txt",
+            "bytes": 50161,
+            "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+          }
+        ],
+        "registration": "add_blender_test(\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n)"
+      },
+      "case_id_normalization": "original-main",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_prop_array.py"
+    }
+  ],
+  "browser_errors": [],
+  "execution": {
+    "driver_observation": {
+      "entrypoint": "original __main__",
+      "failfast": false,
+      "original_exit_code": 0,
+      "runner_invocations": 1,
+      "support_files": []
+    },
+    "exception": null,
+    "execution_context": {
+      "background": true,
+      "entrypoint": "original __main__",
+      "runtime_argv": [
+        "./this.program",
+        "--factory-startup",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python-expr",
+        "import bpy, os, json, traceback\n_BWFB_IO = \"/tmp/bw_io\"\n_BWFB_STORE = \"/projects/imported\"\ndef _bwfb_log(m):\n    try: os.write(2, ('BW-FILEBRIDGE ' + m + '\\n').encode())\n    except Exception: pass\nfor _d in (_BWFB_IO, _BWFB_IO+'/in', _BWFB_IO+'/cmd', _BWFB_IO+'/out', _BWFB_IO+'/ack'):\n    try: os.makedirs(_d, exist_ok=True)\n    except Exception as _e: _bwfb_log('MKIO-ERR %r' % _e)\ntry: os.makedirs(_BWFB_STORE, exist_ok=True)\nexcept Exception as _e: _bwfb_log('MKSTORE-ERR %r' % _e)\ndef _bwfb_ack(tok, obj):\n    try:\n        f = open(_BWFB_IO + '/ack/' + tok + '.json', 'w'); f.write(json.dumps(obj)); f.close()\n    except Exception as e: _bwfb_log('ACK-ERR %r' % e)\ndef _bwfb_safe(name):\n    base = os.path.basename(str(name)).replace('\\\\', '_')\n    base = ''.join(c for c in base if c.isalnum() or c in '._- ') or 'untitled.blend'\n    if not base.lower().endswith('.blend'): base += '.blend'\n    return base\ndef _bwfb_do(tok, spec):\n    op = spec.get('op')\n    try:\n        if op == 'open':\n            name = _bwfb_safe(spec.get('name', 'imported.blend'))\n            src = _BWFB_IO + '/in/' + tok + '.blend'\n            dst = _BWFB_STORE + '/' + name\n            data = open(src, 'rb').read()\n            open(dst, 'wb').write(data)\n            try: os.remove(src)\n            except Exception: pass\n            bpy.ops.wm.open_mainfile(filepath=dst)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'storePath': dst, 'size': len(data), 'name': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        elif op == 'open_store':\n            name = _bwfb_safe(spec.get('name', 'imported.blend'))\n            dst = _BWFB_STORE + '/' + name\n            if not os.path.exists(dst):\n                _bwfb_ack(tok, {'ok': False, 'op': op, 'error': 'not in store: ' + name}); return\n            bpy.ops.wm.open_mainfile(filepath=dst)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'storePath': dst, 'size': os.path.getsize(dst), 'name': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        elif op == 'save':\n            name = _bwfb_safe(spec.get('name', 'untitled.blend'))\n            dst = _BWFB_STORE + '/' + name\n            mk = spec.get('addEmpty')\n            if mk:\n                ob = bpy.data.objects.new(str(mk), None); bpy.context.scene.collection.objects.link(ob)\n            sm = spec.get('sceneMarker')\n            if sm is not None: bpy.context.scene['bw_io_marker'] = sm\n            bpy.ops.wm.save_as_mainfile(filepath=dst, copy=True)\n            data = open(dst, 'rb').read()\n            open(_BWFB_IO + '/out/' + tok + '.blend', 'wb').write(data)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'storePath': dst, 'size': len(data), 'name': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        elif op == 'list':\n            try: items = sorted(os.listdir(_BWFB_STORE))\n            except Exception: items = []\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'items': items})\n        elif op == 'inspect':\n            active = bpy.context.view_layer.objects.active\n            data = getattr(active, 'data', None) if active else None\n            anim = getattr(active, 'animation_data', None) if active else None\n            action = getattr(anim, 'action', None) if anim else None\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'mode': getattr(active, 'mode', 'NONE') if active else 'NONE', 'active': getattr(active, 'name', None), 'objectCount': len(bpy.data.objects), 'objects': sorted(o.name for o in bpy.data.objects), 'meshVertices': len(data.vertices) if data and hasattr(data, 'vertices') else None, 'modifiers': [m.type for m in active.modifiers] if active else [], 'materials': [m.name for m in data.materials if m] if data and hasattr(data, 'materials') else [], 'hasAction': bool(action), 'frameRange': list(action.frame_range) if action else None, 'renderEngine': bpy.context.scene.render.engine})\n        elif op == 'reload_interface_fonts':\n            font_paths = ('/bw/datafiles/fonts/Inter.woff2', '/bw/datafiles/fonts/DejaVuSansMono.woff2')\n            font_bytes = {path: os.path.getsize(path) for path in font_paths}\n            view = bpy.context.preferences.view\n            view.font_path_ui = view.font_path_ui\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'fontBytes': font_bytes})\n        elif op == 'mark':\n            name = str(spec.get('name', 'BW_MARKER'))\n            ob = bpy.data.objects.new(name, None); bpy.context.scene.collection.objects.link(ob)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'object': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        else:\n            _bwfb_ack(tok, {'ok': False, 'op': op, 'error': 'unknown op'})\n    except Exception as e:\n        _bwfb_log('DO-ERR %r' % e)\n        _bwfb_ack(tok, {'ok': False, 'op': op, 'error': repr(e), 'tb': traceback.format_exc()})\ndef _bwfb_poll():\n    try:\n        cdir = _BWFB_IO + '/cmd'\n        for fn in sorted(os.listdir(cdir)):\n            if not fn.endswith('.json'): continue\n            tok = fn[:-5]; cpath = cdir + '/' + fn\n            try: spec = json.load(open(cpath))\n            except Exception as e:\n                _bwfb_log('BADCMD %s %r' % (fn, e))\n                try: os.remove(cpath)\n                except Exception: pass\n                continue\n            try: os.remove(cpath)\n            except Exception: pass\n            _bwfb_do(tok, spec)\n    except Exception as e:\n        _bwfb_log('POLL-ERR %r' % e)\n    return 0.3\ntry: open(_BWFB_IO + '/ready', 'w').write('1')\nexcept Exception: pass\nbpy.app.timers.register(_bwfb_poll, first_interval=0.0, persistent=True)\n_bwfb_log('ARMED store=%s conduit=%s' % (_BWFB_STORE, _BWFB_IO))",
+        "--python-expr",
+        {
+          "bytes": 56318,
+          "injected_runner_sha256": "c3dc7c378438134495139f6778a509030b980565d0c94a9e0d4a77f63de73051"
+        }
+      ],
+      "script_argv": [
+        "/this.program",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python",
+        "/tmp/blended-original-unittest-xau9cq_a/tests/python/bl_pyapi_prop_array.py"
+      ],
+      "source_root": "/tmp/blended-original-unittest-xau9cq_a"
+    },
+    "identity": {
+      "binary_path": "/this.program",
+      "build_branch": "HEAD (modified)",
+      "build_hash": "fbe6228777e7",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "io_observation": {
+      "fixture_bytes_preserved": true,
+      "fixture_files": []
+    },
+    "suites": [
+      {
+        "discovered": 42,
+        "discovered_ids": [
+          "__main__.TestPropArrayDynamicArg.test_param_dynamic",
+          "__main__.TestPropArrayDynamicAssign.test_assign_fixed",
+          "__main__.TestPropArrayDynamicAssign.test_assign_fixed_over_by_1px",
+          "__main__.TestPropArrayDynamicAssign.test_assign_fixed_under_0px",
+          "__main__.TestPropArrayDynamicAssign.test_assign_fixed_under_1px",
+          "__main__.TestPropArrayForeach.test_foreach_getset_f_1d",
+          "__main__.TestPropArrayForeach.test_foreach_getset_f_2d",
+          "__main__.TestPropArrayForeach.test_foreach_getset_f_3d",
+          "__main__.TestPropArrayForeach.test_foreach_getset_i_1d",
+          "__main__.TestPropArrayForeach.test_foreach_getset_i_2d",
+          "__main__.TestPropArrayForeach.test_foreach_getset_i_3d",
+          "__main__.TestPropArrayIndex.test_indices_access_b_1d",
+          "__main__.TestPropArrayIndex.test_indices_access_b_2d",
+          "__main__.TestPropArrayIndex.test_indices_access_b_2d_getset",
+          "__main__.TestPropArrayIndex.test_indices_access_b_2d_getset_transform",
+          "__main__.TestPropArrayIndex.test_indices_access_b_3d",
+          "__main__.TestPropArrayIndex.test_indices_access_b_3d_transform",
+          "__main__.TestPropArrayIndex.test_indices_access_f_1d",
+          "__main__.TestPropArrayIndex.test_indices_access_f_2d",
+          "__main__.TestPropArrayIndex.test_indices_access_f_2d_getset",
+          "__main__.TestPropArrayIndex.test_indices_access_f_2d_getset_transform",
+          "__main__.TestPropArrayIndex.test_indices_access_f_3d",
+          "__main__.TestPropArrayIndex.test_indices_access_f_3d_transform",
+          "__main__.TestPropArrayIndex.test_indices_access_i_1d",
+          "__main__.TestPropArrayIndex.test_indices_access_i_2d",
+          "__main__.TestPropArrayIndex.test_indices_access_i_2d_getset",
+          "__main__.TestPropArrayIndex.test_indices_access_i_2d_getset_transform",
+          "__main__.TestPropArrayIndex.test_indices_access_i_3d",
+          "__main__.TestPropArrayIndex.test_indices_access_i_3d_transform",
+          "__main__.TestPropArrayInvalidForeachGetSet.test_foreach_invalid_smaller_array",
+          "__main__.TestPropArrayInvalidForeachGetSet.test_foreach_valid",
+          "__main__.TestPropArrayMultiDimensional.test_defaults",
+          "__main__.TestPropArrayMultiDimensional.test_matrix_3x3",
+          "__main__.TestPropArrayMultiDimensional.test_matrix_4x4",
+          "__main__.TestPropArrayMultiDimensional.test_matrix_with_callbacks_3x3",
+          "__main__.TestPropArrayMultiDimensional.test_matrix_with_callbacks_4x4",
+          "__main__.TestPropArraySliceStep.test_step_2d_inner",
+          "__main__.TestPropArraySliceStep.test_step_2d_outer",
+          "__main__.TestPropArraySliceStep.test_step_full_reverse",
+          "__main__.TestPropArraySliceStep.test_step_negative",
+          "__main__.TestPropArraySliceStep.test_step_positive",
+          "__main__.TestPropArraySliceStep.test_step_write_size_mismatch"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayDynamicArg.test_param_dynamic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayDynamicAssign.test_assign_fixed",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayDynamicAssign.test_assign_fixed_over_by_1px",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayDynamicAssign.test_assign_fixed_under_0px",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayDynamicAssign.test_assign_fixed_under_1px",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayForeach.test_foreach_getset_f_1d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayForeach.test_foreach_getset_f_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayForeach.test_foreach_getset_f_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayForeach.test_foreach_getset_i_1d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayForeach.test_foreach_getset_i_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayForeach.test_foreach_getset_i_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_b_1d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_b_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_b_2d_getset",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_b_2d_getset_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_b_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_b_3d_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_f_1d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_f_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_f_2d_getset",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_f_2d_getset_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_f_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_f_3d_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_i_1d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_i_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_i_2d_getset",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_i_2d_getset_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_i_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayIndex.test_indices_access_i_3d_transform",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayInvalidForeachGetSet.test_foreach_invalid_smaller_array",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayInvalidForeachGetSet.test_foreach_valid",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayMultiDimensional.test_defaults",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayMultiDimensional.test_matrix_3x3",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayMultiDimensional.test_matrix_4x4",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayMultiDimensional.test_matrix_with_callbacks_3x3",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArrayMultiDimensional.test_matrix_with_callbacks_4x4",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArraySliceStep.test_step_2d_inner",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArraySliceStep.test_step_2d_outer",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArraySliceStep.test_step_full_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArraySliceStep.test_step_negative",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArraySliceStep.test_step_positive",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TestPropArraySliceStep.test_step_write_size_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "70a7a78562f356fbc1490cadb0a672df7c8afb6c0253ea33485e6ad7b0f8ed9a",
+        "skipped": 0,
+        "testsRun": 42,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_prop_array.py"
+      }
+    ]
+  },
+  "source_build_receipt_verified": true,
+  "source_build": {
+    "schema": 1,
+    "artifact_kind": "blender-source-development",
+    "status": "built",
+    "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+    "canonical_patch_sha256": "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c",
+    "build_mode": "OFF",
+    "with_buildinfo": true,
+    "numeric_patchset": {
+      "id": "blender-5.2.0-web-numerics-v1",
+      "manifest_sha256": "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147",
+      "applied": true,
+      "patches": [
+        {
+          "id": "emscripten-acosf-small-angle",
+          "component": "emscripten",
+          "path": "system/lib/libc/musl/src/math/acosf.c",
+          "before_sha256": "b20b3dcb58ce7cc55963945f8cb83efbf064b29d2da3011f2cec5d08459f2aa7",
+          "after_sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da",
+          "patch_sha256": "4c3d45d779891d979d1836076aafaecc326e616df1f805bdad0bb5b796e73b3d"
+        },
+        {
+          "id": "eigen-matrix-wasm-sse2",
+          "component": "blender",
+          "path": "intern/eigen/CMakeLists.txt",
+          "before_sha256": "2cf96c73f436aab27c54328957ef6fd243ef4a03d1d0a83f5b21d7951e3595b3",
+          "after_sha256": "a585eb495b0898e99db86cdbf26168a1c8fd696d138cbcc58044ddcf940558ad",
+          "patch_sha256": "a1839f064e2dd5948cf98640749ab221e549b9e64fd6bb0468639b0b329edd8b"
+        }
+      ]
+    },
+    "numeric_fixes_declared": true,
+    "receipt_sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3",
+    "validation_scope": "Declared source pins and artifact digest only; no independent recompile or release correspondence claimed."
+  },
+  "cohort": {
+    "id": "script_pyapi_prop_array-5.2",
+    "manifest_sha256": "2e89e8e24a94a0d5e72f9056343075702f94b16e651513452313c47b753cebb8",
+    "stage": "frozen",
+    "expected_cases": 42,
+    "suite_kind": "unittest-main",
+    "blender_args": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "original_invocation": {
+      "entrypoint": "original __main__",
+      "process_isolation": "one-upstream-script",
+      "background": true,
+      "blender_args": [
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+      ],
+      "script_args": [],
+      "ctest_name": "script_pyapi_prop_array",
+      "cmake_sources": [
+        {
+          "upstream_path": "tests/CMakeLists.txt",
+          "bytes": 5871,
+          "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+        },
+        {
+          "upstream_path": "tests/python/CMakeLists.txt",
+          "bytes": 50161,
+          "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+        }
+      ],
+      "registration": "add_blender_test(\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n)"
+    },
+    "native_discovery": {
+      "path": "../../evidence/unittest-native-5.2-2026-10-23/script_pyapi_prop_array/native_reference.json",
+      "sha256": "f97fb51e5afac88bac7270513927bd5dcda7704a56ff7c3c880cbbed2dadca1c",
+      "bytes": 21189
+    },
+    "complete_cohort_requested": true
+  },
+  "input_fixture_transfer": null,
+  "engine_files": [
+    {
+      "path": "blender-source-development/bin/blender_browser.data",
+      "sha256": "e4a4fa44fc6a630a51e6879e1917f32443382806e2f2f13bbc035886814bb0c2",
+      "bytes": 168831870
+    },
+    {
+      "path": "blender-source-development/bin/blender_browser.js",
+      "sha256": "308065bbf93e28f772f09c84a99995fd71f38113fb012f3b45013add05f76c64",
+      "bytes": 693917
+    },
+    {
+      "path": "blender-source-development/bin/blender_browser.wasm",
+      "sha256": "27b25e78567bc6b95b81ef43fbf255c91b3655a9d4b6b9615296621e5d1fcf23",
+      "bytes": 119225569
+    }
+  ],
+  "shell": {
+    "entry": "windowed.html",
+    "boot_sha256": "edeb59e47b11db890b8ad4b2ef400164240832cab4e8fb657a540070163f7561",
+    "modified": false
+  },
+  "url": "http://127.0.0.1:38785/",
+  "browser": {
+    "version": "155.0.8059.39",
+    "flags": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu-watchdog",
+      "--enable-unsafe-webgpu",
+      "--enable-unsafe-swiftshader",
+      "--use-angle=swiftshader"
+    ]
+  },
+  "runner_sha256": "c3dc7c378438134495139f6778a509030b980565d0c94a9e0d4a77f63de73051",
+  "execution_mode": {
+    "requested": "background",
+    "extra_argv": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "hook": "unchanged shell __BW_ARGS before __BW_PYEXPR",
+    "runtime_exit_code": 0
+  },
+  "capabilities": {
+    "crossOriginIsolated": true,
+    "sharedArrayBuffer": true,
+    "webgpu": true,
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "features": [
+        "depth32float-stencil8",
+        "rg11b10ufloat-renderable",
+        "bgra8unorm-storage",
+        "texture-compression-bc",
+        "chromium-experimental-sampling-resource-table",
+        "core-features-and-limits",
+        "chromium-experimental-timestamp-query-inside-passes",
+        "float32-filterable",
+        "indirect-first-instance",
+        "texture-compression-astc-sliced-3d",
+        "float32-blendable",
+        "subgroup-size-control",
+        "texture-compression-unaligned",
+        "texture-compression-astc",
+        "texture-compression-etc2",
+        "depth-clip-control",
+        "texture-compression-bc-sliced-3d",
+        "timestamp-query",
+        "clip-distances",
+        "texture-component-swizzle",
+        "subgroups"
+      ]
+    }
+  },
+  "adapter_measurement_scope": "Independent navigator.gpu.requestAdapter probe; engine-selected adapter is not instrumented.",
+  "transport": {
+    "protocol": "marker-prefixed-json-v1",
+    "result_markers": 1,
+    "recovered_json_prefix": false,
+    "trailing_runtime_text": null
+  },
+  "upstream_build_hash_verified": true,
+  "identity_limit": null,
+  "reason": "Whole selected unchanged upstream test files passed on the pinned artifact in a local browser; reported upstream build identity matched. Observed probe profile: chromium-software-webgpu."
+}

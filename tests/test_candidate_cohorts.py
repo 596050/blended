@@ -28,6 +28,15 @@ def run_payload(source):
 
 
 class CandidateCohortTests(unittest.TestCase):
+    def test_marker_inside_original_argv_is_json_data_not_a_second_result(self):
+        marker = "ORIGINAL_TEST_RESULT:"
+        value = {"execution_context": {"runtime_argv": ["--python-expr", "print('" + marker + "')"]}}
+        decoded, suffix = probe.decode_qualification_event(marker + json.dumps(value), marker)
+        self.assertEqual(decoded, value)
+        self.assertEqual(suffix, "")
+        with self.assertRaisesRegex(RuntimeError, "duplicate"):
+            probe.decode_qualification_event(marker + json.dumps(value) + marker + "{}", marker)
+
     def test_upstream_id_property_does_not_break_discovery_or_subtest_recording(self):
         result, expected = run_payload('''
 import unittest
@@ -65,6 +74,21 @@ class BrokenSetup(unittest.TestCase):
         self.assertIn("original setup failure", result["suites"][0]["outcomes"][0]["detail"])
         with self.assertRaises(RuntimeError):
             probe.validate_suite_execution(result, expected)
+
+    def test_assertion_and_nonassertion_subtest_outcomes_match_unittest_categories(self):
+        source = '''
+import unittest
+class Original(unittest.TestCase):
+    def test_subtest_categories(self):
+        with self.subTest(kind="assertion"):
+            self.assertEqual(1, 2)
+        with self.subTest(kind="exception"):
+            raise RuntimeError("original nonassertion error")
+'''
+        result, _ = run_payload(source)
+        row = result["suites"][0]
+        self.assertEqual((row["failures"], row["errors"]), (1, 1))
+        self.assertEqual([event["status"] for event in row["outcomes"]], ["failed", "error"])
 
     def test_missing_conditional_cases_cannot_reduce_the_native_denominator(self):
         result, expected = run_payload('''

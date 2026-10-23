@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "scope": "Independent review of one original-resource package overlay and its four-case receipt",
+  "status": "passed",
+  "edits_made": false,
+  "source_build_receipt": {
+    "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/base-source-build.json",
+    "bytes": 165401,
+    "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+  },
+  "overlay_receipt": {
+    "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/package-overlay.json",
+    "bytes": 2547,
+    "sha256": "45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb"
+  },
+  "manifest": {
+    "path": "compatibility/candidate-suites/unittest-main-5.2/bl_brush.json",
+    "bytes": 2463,
+    "sha256": "9f82a905c156ac80df0a689ea0a8c2a7961eb69ea651af68b4a7a5ed1bb24f73"
+  },
+  "qualification": {
+    "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/bl_brush-local-server/qualification.json",
+    "bytes": 23909,
+    "sha256": "00845cdb676f151fc21e2589f8b4c6043fca63bd1e54a2530d383f1f2f23ad5e"
+  },
+  "host_process": {
+    "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/bl_brush-local-server/host-process.json",
+    "bytes": 1890,
+    "sha256": "1a3a516ea551ef2280621541ee6dd77bd04dd000230f6d44587da98cfdf18d75"
+  },
+  "browser_log": {
+    "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/bl_brush-local-server/browser.log",
+    "bytes": 9953,
+    "sha256": "7263ecd3eee0af1d1b6219628025cbd7840c3260e9b1690fef680ac9162e45cd"
+  },
+  "harness_manifest": {
+    "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/harness-manifest.json",
+    "bytes": 7642,
+    "sha256": "436d87a478a10c09db022ad72648fb3004c2866f071d27eb88fe01ec0fd8648d"
+  },
+  "source_pointer": {
+    "source_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "upstream_path": "assets/brushes/essentials_brushes-mesh_sculpt.blend",
+    "text": "version https://git-lfs.github.com/spec/v1\noid sha256:f8b15126658f5a4ac455b0826a7eeae026576ed7c2ac45562d8880383fbf03bf\nsize 2715184\n",
+    "bytes": 132,
+    "sha256": "82056f20b7a5724c765c7594d88b9eb090e5a7888a35405d23a07d3baec7f0f1"
+  },
+  "native_asset": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/native/blender-5.2.0-linux-x64/5.2/datafiles/assets/brushes/essentials_brushes-mesh_sculpt.blend",
+    "bytes": 2715184,
+    "sha256": "f8b15126658f5a4ac455b0826a7eeae026576ed7c2ac45562d8880383fbf03bf"
+  },
+  "package_verification": {
+    "base_file_count": 119,
+    "augmented_file_count": 120,
+    "unchanged_file_count": 117,
+    "changed_files": [
+      "blender-source-development/bin/blender_browser.data",
+      "blender-source-development/bin/blender_browser.js"
+    ],
+    "added_file": "blender-source-development/PACKAGE-OVERLAY.json",
+    "unchanged_wasm": true,
+    "exact_data_prefix_and_asset_append": true,
+    "only_exact_metadata_and_two_directory_creation_edits": true,
+    "original_data_bytes": 168831870,
+    "augmented_data_bytes": 171547054
+  },
+  "test_execution": {
+    "native_case_ids": [
+      "AssetActivateTest.test_loads_essential_asset",
+      "AssetActivateTest.test_toggle_when_brush_differs_sets_specified_brush",
+      "AssetActivateTest.test_toggle_when_brush_matches_sets_previous_brush",
+      "AssetSaveAsTest.test_saves_asset_locally"
+    ],
+    "discovered": 4,
+    "executed": 4,
+    "passed": 4,
+    "skipped": 0,
+    "failed": 0,
+    "original_main_exit_code": 0,
+    "browser_runtime_exit_code": 0,
+    "host_process_returncode": 0,
+    "native_original_context_preserved": true,
+    "tests_modified": false,
+    "profile": "chromium-software-webgpu"
+  },
+  "preserved_failed_attempts": [
+    {
+      "path": "compatibility/evidence/unittest-browser-matrix-5.2-2026-10-23/bl_brush/qualification.json",
+      "bytes": 24386,
+      "sha256": "3e6eeb1bcda9498c7f484ac73e97516a8574081964bb49dc43e1fd1500e55085"
+    },
+    {
+      "path": "compatibility/evidence/brush-package-overlay-5.2-2026-10-23/bl_brush/qualification.json",
+      "bytes": 12499,
+      "sha256": "c05f33548e4a47b881993a21ec00914f6053279d81bed632ab6a4f4fa071465a"
+    }
+  ],
+  "authoritative_ledgers": [
+    {
+      "report": {
+        "path": "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23/report.json",
+        "bytes": 753305,
+        "sha256": "07c3eda18d9a3ec79b5184b6ea82fa159e596ddca766729e962e0571e0f6e094"
+      },
+      "strict_base_pairs": 512,
+      "base_brush_errors_retained": 4,
+      "overlay_passes_counted": 0
+    },
+    {
+      "report": {
+        "path": "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23-v2/report.json",
+        "bytes": 753305,
+        "sha256": "7aef2c48b4d1e3ae7a561ac70b068e75c86cadadfeee89e539a28abc574d5aa6"
+      },
+      "strict_base_pairs": 512,
+      "base_brush_errors_retained": 4,
+      "overlay_passes_counted": 0
+    }
+  ],
+  "new_archive_cases_qualified": 4,
+  "base_artifact_successful_pairs_not_transferred": 512,
+  "full_parity": false,
+  "source_correspondence_verified": false
+}

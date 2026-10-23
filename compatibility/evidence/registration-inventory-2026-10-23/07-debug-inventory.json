@@ -1,0 +1,563 @@
+{
+  "schema": 1,
+  "inventory_kind": "ctest_registrations",
+  "scope": {
+    "source_commit": "0000000000000000000000000000000000000000",
+    "build_config_sha256": "f62be3b984f0e2d59acb94b90f21bb064f40e5a2d9385c5d16f9775d04dfcf10",
+    "configuration": "Debug"
+  },
+  "provenance": {
+    "argv": [
+      "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/ctest",
+      "--test-dir",
+      "/tmp/blended-registration-inventory-gozlh0mw/build",
+      "--show-only=json-v1",
+      "-C",
+      "Debug"
+    ],
+    "evidence_kind": "standalone_ctest_infrastructure",
+    "returncode": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "4d84fa32b3f2a664d84c708003c766a1daf2cde0e66e509422e6576c3c25f5d9"
+  },
+  "input_sha256": "4d84fa32b3f2a664d84c708003c766a1daf2cde0e66e509422e6576c3c25f5d9",
+  "input_hash_encoding": "raw_utf8",
+  "ctest_version": {
+    "major": 1,
+    "minor": 0
+  },
+  "backtrace_graph": {
+    "commands": [
+      "add_test"
+    ],
+    "files": [
+      "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+    ],
+    "nodes": [
+      {
+        "file": 0
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 6,
+        "parent": 0
+      },
+      {
+        "file": 0
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 9,
+        "parent": 2
+      },
+      {
+        "file": 0
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 12,
+        "parent": 4
+      },
+      {
+        "file": 0
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 15,
+        "parent": 6
+      },
+      {
+        "file": 0
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 18,
+        "parent": 8
+      },
+      {
+        "file": 0
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 19,
+        "parent": 10
+      }
+    ]
+  },
+  "registration_enumeration_complete": false,
+  "runtime_enumeration_complete": false,
+  "fixture_completeness": "unknown",
+  "registrations": [
+    {
+      "id": "ctest:239087c27b3107454e3204d892116928444f9a447dd08c0063b535ec69d58f48",
+      "identity": "setup",
+      "kind": "ctest_registration",
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "true"
+      ],
+      "command_status": "present_unvalidated",
+      "config": "Debug",
+      "configuration_status": "captured",
+      "properties": [
+        {
+          "name": "FIXTURES_SETUP",
+          "value": [
+            "assets"
+          ]
+        },
+        {
+          "name": "LABELS",
+          "value": [
+            "fixture"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ],
+      "labels": [
+        "fixture"
+      ],
+      "fixtures": {
+        "setup": [
+          "assets"
+        ],
+        "required": [],
+        "cleanup": []
+      },
+      "disabled": false,
+      "backtrace": [
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt",
+          "line": 6,
+          "command": "add_test"
+        },
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+        }
+      ],
+      "raw_registration": {
+        "backtrace": 1,
+        "command": [
+          "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+          "-E",
+          "true"
+        ],
+        "config": "Debug",
+        "name": "setup",
+        "properties": [
+          {
+            "name": "FIXTURES_SETUP",
+            "value": [
+              "assets"
+            ]
+          },
+          {
+            "name": "LABELS",
+            "value": [
+              "fixture"
+            ]
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+          }
+        ]
+      },
+      "diagnostics": [],
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "required",
+        "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+        "children": []
+      }
+    },
+    {
+      "id": "ctest:08abd6f39e43a84cf653b9ff70113743af3ac42c2df347c54f7333537b39f809",
+      "identity": "aggregate",
+      "kind": "ctest_registration",
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "echo",
+        "driver placeholder"
+      ],
+      "command_status": "present_unvalidated",
+      "config": "Debug",
+      "configuration_status": "captured",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "setup"
+          ]
+        },
+        {
+          "name": "FIXTURES_REQUIRED",
+          "value": [
+            "assets"
+          ]
+        },
+        {
+          "name": "LABELS",
+          "value": [
+            "geometry",
+            "native"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ],
+      "labels": [
+        "geometry",
+        "native"
+      ],
+      "fixtures": {
+        "setup": [],
+        "required": [
+          "assets"
+        ],
+        "cleanup": []
+      },
+      "disabled": false,
+      "backtrace": [
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt",
+          "line": 9,
+          "command": "add_test"
+        },
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+        }
+      ],
+      "raw_registration": {
+        "backtrace": 3,
+        "command": [
+          "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+          "-E",
+          "echo",
+          "driver placeholder"
+        ],
+        "config": "Debug",
+        "name": "aggregate",
+        "properties": [
+          {
+            "name": "DEPENDS",
+            "value": [
+              "setup"
+            ]
+          },
+          {
+            "name": "FIXTURES_REQUIRED",
+            "value": [
+              "assets"
+            ]
+          },
+          {
+            "name": "LABELS",
+            "value": [
+              "geometry",
+              "native"
+            ]
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+          }
+        ]
+      },
+      "diagnostics": [],
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "required",
+        "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+        "children": []
+      }
+    },
+    {
+      "id": "ctest:1625b675cbdf31c2803ca323635ad0890b47371fd37facdc8c2006673cc6b637",
+      "identity": "cleanup",
+      "kind": "ctest_registration",
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "true"
+      ],
+      "command_status": "present_unvalidated",
+      "config": "Debug",
+      "configuration_status": "captured",
+      "properties": [
+        {
+          "name": "DEPENDS",
+          "value": [
+            "aggregate",
+            "setup"
+          ]
+        },
+        {
+          "name": "FIXTURES_CLEANUP",
+          "value": [
+            "assets"
+          ]
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ],
+      "labels": [],
+      "fixtures": {
+        "setup": [],
+        "required": [],
+        "cleanup": [
+          "assets"
+        ]
+      },
+      "disabled": false,
+      "backtrace": [
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt",
+          "line": 12,
+          "command": "add_test"
+        },
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+        }
+      ],
+      "raw_registration": {
+        "backtrace": 5,
+        "command": [
+          "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+          "-E",
+          "true"
+        ],
+        "config": "Debug",
+        "name": "cleanup",
+        "properties": [
+          {
+            "name": "DEPENDS",
+            "value": [
+              "aggregate",
+              "setup"
+            ]
+          },
+          {
+            "name": "FIXTURES_CLEANUP",
+            "value": [
+              "assets"
+            ]
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+          }
+        ]
+      },
+      "diagnostics": [],
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "required",
+        "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+        "children": []
+      }
+    },
+    {
+      "id": "ctest:ca44feddc5df21a728028059ef0421274fdc1936efba46ddeebb6184ffef86c9",
+      "identity": "disabled",
+      "kind": "ctest_registration",
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "false"
+      ],
+      "command_status": "present_unvalidated",
+      "config": "Debug",
+      "configuration_status": "captured",
+      "properties": [
+        {
+          "name": "DISABLED",
+          "value": true
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ],
+      "labels": [],
+      "fixtures": {
+        "setup": [],
+        "required": [],
+        "cleanup": []
+      },
+      "disabled": true,
+      "backtrace": [
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt",
+          "line": 15,
+          "command": "add_test"
+        },
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+        }
+      ],
+      "raw_registration": {
+        "backtrace": 7,
+        "command": [
+          "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+          "-E",
+          "false"
+        ],
+        "config": "Debug",
+        "name": "disabled",
+        "properties": [
+          {
+            "name": "DISABLED",
+            "value": true
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+          }
+        ]
+      },
+      "diagnostics": [],
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "required",
+        "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+        "children": []
+      }
+    },
+    {
+      "id": "ctest:b721ec28b4e640c79014b914e9402e4e6f53a29e23fecec460c5688faf8a4fba",
+      "identity": "unavailable",
+      "kind": "ctest_registration",
+      "command": null,
+      "command_status": "unavailable",
+      "config": "Debug",
+      "configuration_status": "captured",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ],
+      "labels": [],
+      "fixtures": {
+        "setup": [],
+        "required": [],
+        "cleanup": []
+      },
+      "disabled": false,
+      "backtrace": [
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt",
+          "line": 18,
+          "command": "add_test"
+        },
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+        }
+      ],
+      "raw_registration": {
+        "backtrace": 9,
+        "config": "Debug",
+        "name": "unavailable",
+        "properties": [
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+          }
+        ]
+      },
+      "diagnostics": [],
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "unresolved",
+        "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+        "children": []
+      }
+    },
+    {
+      "id": "ctest:7394ce68e1147ebc41f140b37fcf76ae32254b0b66f10120f20e26d1b01cc434",
+      "identity": "debug_only",
+      "kind": "ctest_registration",
+      "command": [
+        "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+        "-E",
+        "true"
+      ],
+      "command_status": "present_unvalidated",
+      "config": "Debug",
+      "configuration_status": "captured",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+        }
+      ],
+      "labels": [],
+      "fixtures": {
+        "setup": [],
+        "required": [],
+        "cleanup": []
+      },
+      "disabled": false,
+      "backtrace": [
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt",
+          "line": 19,
+          "command": "add_test"
+        },
+        {
+          "file": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/registration-inventory-2026-10-23/fixture/CMakeLists.txt"
+        }
+      ],
+      "raw_registration": {
+        "backtrace": 11,
+        "command": [
+          "/workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/bin/cmake",
+          "-E",
+          "true"
+        ],
+        "config": "Debug",
+        "name": "debug_only",
+        "properties": [
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/tmp/blended-registration-inventory-gozlh0mw/build"
+          }
+        ]
+      },
+      "diagnostics": [],
+      "execution": "not_run",
+      "expansion_obligation": {
+        "status": "required",
+        "reason": "CTest commands require runtime leaf discovery and source reconciliation.",
+        "children": []
+      }
+    }
+  ],
+  "counts": {
+    "registrations": 6,
+    "not_run": 6
+  },
+  "blockers": [
+    "capture_scope_requires_attestation",
+    "source_and_configuration_reconciliation_required",
+    "runtime_expansion_required",
+    "fixture_closure_unverified",
+    "unresolved_registrations"
+  ]
+}

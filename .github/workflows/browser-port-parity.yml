@@ -77,7 +77,7 @@ jobs:
                      '--inventory', 'compatibility/facet-inventory.json',
                      '--output', 'evidence/parity/strict-report.json']
           result = subprocess.run(command, check=False)
-          expected = 0 if report['full_feature_parity'] else 1
+          expected = 0 if report['declared_contract_satisfied'] else 1
           assert result.returncode == expected, (result.returncode, expected)
           PY
       - uses: actions/upload-artifact@v4

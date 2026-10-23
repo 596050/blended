@@ -20,7 +20,7 @@ import urllib.request
 
 
 LFS_BATCH_URL = "https://projects.blender.org/blender/blender.git/info/lfs/objects/batch"
-MAX_FIXTURES = 32
+MAX_FIXTURES = 256
 MAX_FIXTURE_BYTES = 32 * 1024 * 1024
 MAX_TOTAL_BYTES = 128 * 1024 * 1024
 MAX_POINTER_BYTES = 1024
@@ -58,7 +58,7 @@ def _validate_rows(rows, upstream_sha=None, *, payloads=False):
     if upstream_sha is not None:
         _require(isinstance(upstream_sha, str) and _COMMIT.fullmatch(upstream_sha),
                  "fixture upstream commit must be a full lowercase Git commit")
-    paths, objects, pins, total = set(), set(), set(), 0
+    paths, objects, pins, total = set(), {}, set(), 0
     validated = []
     for row in rows:
         _require(isinstance(row, dict), "fixture metadata must be an object")
@@ -83,8 +83,11 @@ def _validate_rows(rows, upstream_sha=None, *, payloads=False):
         size, digest = row.get("bytes"), row.get("sha256")
         _require(type(size) is int and 0 < size <= MAX_FIXTURE_BYTES, "fixture byte count exceeds its bound or is invalid")
         _require(isinstance(digest, str) and _SHA256.fullmatch(digest), "fixture SHA-256 is invalid")
-        _require(digest not in objects, "duplicate fixture object identity")
-        objects.add(digest)
+        # Different upstream paths may legitimately contain the same LFS object.
+        # The path is the fixture identity; its content identity may be shared.
+        _require(digest not in objects or objects[digest] == size,
+                 "shared fixture object has inconsistent byte counts")
+        objects[digest] = size
         total += size
         _require(total <= MAX_TOTAL_BYTES, "fixture inventory exceeds its total byte bound")
         pointer = row.get("lfs_pointer")
@@ -176,8 +179,9 @@ def _read_local(root, row):
 
 
 def _download_rows(rows):
+    expected = {row["sha256"]: row for row in rows}
     body = {"operation": "download", "transfers": ["basic"],
-            "objects": [{"oid": row["sha256"], "size": row["bytes"]} for row in rows]}
+            "objects": [{"oid": row["sha256"], "size": row["bytes"]} for row in expected.values()]}
     request = urllib.request.Request(LFS_BATCH_URL, data=json.dumps(body).encode("utf-8"), method="POST",
                                      headers={"Accept": "application/vnd.git-lfs+json", "Content-Type": "application/vnd.git-lfs+json"})
     try:
@@ -193,8 +197,7 @@ def _download_rows(rows):
         raise FixtureError("LFS batch response is not complete valid JSON") from error
     _require(isinstance(batch, dict) and batch.get("transfer", "basic") == "basic", "LFS response has an unsupported transfer")
     returned = batch.get("objects")
-    _require(isinstance(returned, list) and len(returned) == len(rows), "LFS batch returned a missing or extra fixture object")
-    expected = {row["sha256"]: row for row in rows}
+    _require(isinstance(returned, list) and len(returned) == len(expected), "LFS batch returned a missing or extra fixture object")
     actions = {}
     for obj in returned:
         _require(isinstance(obj, dict), "LFS returned a malformed object")
@@ -219,8 +222,8 @@ def _download_rows(rows):
                      len(value) <= 16384 and "\r" not in value and "\n" not in value for key, value in headers.items()),
                  "LFS download headers are malformed or exceed their bound")
         actions[oid] = (href, headers)
-    downloaded = []
-    for row in rows:
+    downloaded = {}
+    for row in expected.values():
         href, headers = actions[row["sha256"]]
         try:
             request = urllib.request.Request(href, headers=headers)
@@ -231,8 +234,8 @@ def _download_rows(rows):
         except Exception:
             # Exception text can contain signed action URLs or authorization headers.
             raise FixtureError("LFS fixture download failed: " + row["relative_path"]) from None
-        downloaded.append(_verify_bytes(data, row))
-    return downloaded
+        downloaded[row["sha256"]] = _verify_bytes(data, row)
+    return [downloaded[row["sha256"]] for row in rows]
 
 
 def _write_tree(rows, contents, destination):

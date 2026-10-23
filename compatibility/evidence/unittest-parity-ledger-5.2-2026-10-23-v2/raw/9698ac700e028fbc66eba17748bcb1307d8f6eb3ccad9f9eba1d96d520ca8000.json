@@ -1,0 +1,2199 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "started_utc": "2026-10-23T12:56:36.761533+00:00",
+  "finished_utc": "2026-10-23T12:56:46.244426+00:00",
+  "scope": "selected upstream Python suite qualification of a new development source build",
+  "profile": "chromium-software-webgpu",
+  "deployed": false,
+  "hardware_verified": false,
+  "native_oracle_compared": false,
+  "full_parity": false,
+  "selected_suites_passed": true,
+  "summary": {
+    "expected_suites": 1,
+    "observed_suites": 1,
+    "totals": {
+      "discovered": 180,
+      "executed": 180,
+      "passed": 180,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 0
+    },
+    "suites": [
+      {
+        "upstream_path": "tests/python/bl_pyapi_mathutils.py",
+        "status": "passed",
+        "counts": {
+          "discovered": 180,
+          "executed": 180,
+          "passed": 180,
+          "failed": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 0,
+          "subtest_events": 0
+        },
+        "failure_events": []
+      }
+    ],
+    "required_case_inventory": {
+      "fixed_for_all_requested_suites": true,
+      "expected_cases": 180,
+      "missing_cases": 0,
+      "suites": [
+        {
+          "upstream_path": "tests/python/bl_pyapi_mathutils.py",
+          "expected_cases": 180,
+          "missing_cases": 0,
+          "missing_case_ids": [],
+          "unexpected_case_ids": []
+        }
+      ]
+    }
+  },
+  "blockers": [],
+  "source_correspondence_verified": false,
+  "candidate": {
+    "repository": "gessa-ai/blender-web",
+    "source_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+    "kind": "blender-source-development",
+    "numeric_patchset_id": "blender-5.2.0-web-numerics-v1"
+  },
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+  },
+  "artifact": {
+    "url": null,
+    "expected_sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991",
+    "expected_bytes": 107362300,
+    "observed_sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991",
+    "observed_bytes": 107362300
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_mathutils.py",
+      "bytes": 41853,
+      "sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+      "support_files": [],
+      "fixture_files": [],
+      "case_ids": [
+        "ColorTesting.test_buffer_protocol",
+        "ColorTestingSlice.test_slice_get",
+        "ColorTestingSlice.test_slice_set",
+        "ColorTestingSlice.test_slice_set_empty_slice_empty_seq",
+        "ColorTestingSlice.test_slice_set_frozen",
+        "ColorTestingSlice.test_slice_set_identity_preserved",
+        "ColorTestingSlice.test_slice_set_length_mismatch",
+        "ColorTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+        "ColorTestingSlice.test_slice_set_self_aliased_full",
+        "ColorTestingSlice.test_slice_set_self_aliased_reverse",
+        "ColorTestingSlice.test_slice_set_seq_longer_than_slice",
+        "ColorTestingSlice.test_slice_set_type_error_atomic",
+        "EulerTesting.test_buffer_protocol",
+        "EulerTestingSlice.test_slice_get",
+        "EulerTestingSlice.test_slice_set",
+        "EulerTestingSlice.test_slice_set_empty_slice_empty_seq",
+        "EulerTestingSlice.test_slice_set_frozen",
+        "EulerTestingSlice.test_slice_set_identity_preserved",
+        "EulerTestingSlice.test_slice_set_length_mismatch",
+        "EulerTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+        "EulerTestingSlice.test_slice_set_self_aliased_full",
+        "EulerTestingSlice.test_slice_set_self_aliased_reverse",
+        "EulerTestingSlice.test_slice_set_seq_longer_than_slice",
+        "EulerTestingSlice.test_slice_set_type_error_atomic",
+        "KDTreeTesting.test_kdtree_empty",
+        "KDTreeTesting.test_kdtree_grid",
+        "KDTreeTesting.test_kdtree_grid_filter_pairs",
+        "KDTreeTesting.test_kdtree_grid_filter_simple",
+        "KDTreeTesting.test_kdtree_invalid_balance",
+        "KDTreeTesting.test_kdtree_invalid_filter",
+        "KDTreeTesting.test_kdtree_invalid_size",
+        "KDTreeTesting.test_kdtree_line",
+        "KDTreeTesting.test_kdtree_single",
+        "KDTreeTesting.test_kdtree_without_balance",
+        "KDTreeTesting.test_kdtree_without_balance_and_insert",
+        "Matrix3x3TestingSlice.test_slice_get",
+        "Matrix3x3TestingSlice.test_slice_set",
+        "Matrix3x3TestingSlice.test_slice_set_frozen",
+        "Matrix3x3TestingSlice.test_slice_set_identity_preserved",
+        "Matrix3x3TestingSlice.test_slice_set_length_mismatch",
+        "Matrix3x3TestingSlice.test_slice_set_self_aliased_full",
+        "Matrix3x3TestingSlice.test_slice_set_self_aliased_reverse",
+        "Matrix3x3TestingSlice.test_slice_set_type_error_atomic",
+        "Matrix4x4TestingSlice.test_slice_get",
+        "Matrix4x4TestingSlice.test_slice_set",
+        "Matrix4x4TestingSlice.test_slice_set_frozen",
+        "Matrix4x4TestingSlice.test_slice_set_identity_preserved",
+        "Matrix4x4TestingSlice.test_slice_set_length_mismatch",
+        "Matrix4x4TestingSlice.test_slice_set_self_aliased_full",
+        "Matrix4x4TestingSlice.test_slice_set_self_aliased_reverse",
+        "Matrix4x4TestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess3x3ColTestingSlice.test_slice_get",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_frozen",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess3x3RowTestingSlice.test_slice_get",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_frozen",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess4x4ColTestingSlice.test_slice_get",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_frozen",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess4x4RowTestingSlice.test_slice_get",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_frozen",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixTesting.test_buffer_protocol",
+        "MatrixTesting.test_item_access",
+        "MatrixTesting.test_item_assignment",
+        "MatrixTesting.test_loc_rot_scale",
+        "MatrixTesting.test_mat4x4_vec3D_matmul",
+        "MatrixTesting.test_mat_vec_matmul",
+        "MatrixTesting.test_matrix_column_access",
+        "MatrixTesting.test_matrix_freeze_is_read_only",
+        "MatrixTesting.test_matrix_freeze_iter",
+        "MatrixTesting.test_matrix_inverse",
+        "MatrixTesting.test_matrix_inverse_safe",
+        "MatrixTesting.test_matrix_matmult",
+        "MatrixTesting.test_matrix_mul",
+        "MatrixTesting.test_matrix_non_square_matmul",
+        "MatrixTesting.test_matrix_square_matmul",
+        "MatrixTesting.test_matrix_to_3x3",
+        "MatrixTesting.test_matrix_to_translation",
+        "MatrixTesting.test_matrix_translation",
+        "QuaternionTesting.test_buffer_protocol",
+        "QuaternionTesting.test_expmap_axis_normalization",
+        "QuaternionTesting.test_from_expmap",
+        "QuaternionTesting.test_to_expmap",
+        "QuaternionTestingSlice.test_slice_get",
+        "QuaternionTestingSlice.test_slice_set",
+        "QuaternionTestingSlice.test_slice_set_empty_slice_empty_seq",
+        "QuaternionTestingSlice.test_slice_set_frozen",
+        "QuaternionTestingSlice.test_slice_set_identity_preserved",
+        "QuaternionTestingSlice.test_slice_set_length_mismatch",
+        "QuaternionTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+        "QuaternionTestingSlice.test_slice_set_self_aliased_full",
+        "QuaternionTestingSlice.test_slice_set_self_aliased_reverse",
+        "QuaternionTestingSlice.test_slice_set_seq_longer_than_slice",
+        "QuaternionTestingSlice.test_slice_set_type_error_atomic",
+        "TesselatePolygon.test_2d",
+        "TesselatePolygon.test_3d",
+        "TesselatePolygon.test_3d_degenerate",
+        "TesselatePolygon.test_empty",
+        "TypeTesting.test_keywords_unsupported_color",
+        "TypeTesting.test_keywords_unsupported_euler",
+        "TypeTesting.test_keywords_unsupported_matrix",
+        "TypeTesting.test_keywords_unsupported_vector",
+        "TypeTesting.test_subclass_color",
+        "TypeTesting.test_subclass_euler",
+        "TypeTesting.test_subclass_matrix",
+        "TypeTesting.test_subclass_quaternion",
+        "TypeTesting.test_subclass_vector",
+        "VectorTesting.test_buffer_protocol",
+        "VectorTesting.test_orthogonal",
+        "VectorTesting.test_vector_freeze_is_read_only",
+        "VectorTesting.test_vector_imatmul",
+        "VectorTesting.test_vector_imul",
+        "VectorTesting.test_vector_matmul",
+        "VectorTesting.test_vector_mul",
+        "VectorTestingSlice10.test_slice_get",
+        "VectorTestingSlice10.test_slice_set",
+        "VectorTestingSlice10.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice10.test_slice_set_frozen",
+        "VectorTestingSlice10.test_slice_set_identity_preserved",
+        "VectorTestingSlice10.test_slice_set_length_mismatch",
+        "VectorTestingSlice10.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice10.test_slice_set_self_aliased_full",
+        "VectorTestingSlice10.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice10.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice10.test_slice_set_type_error_atomic",
+        "VectorTestingSlice2.test_slice_get",
+        "VectorTestingSlice2.test_slice_set",
+        "VectorTestingSlice2.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice2.test_slice_set_frozen",
+        "VectorTestingSlice2.test_slice_set_identity_preserved",
+        "VectorTestingSlice2.test_slice_set_length_mismatch",
+        "VectorTestingSlice2.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice2.test_slice_set_self_aliased_full",
+        "VectorTestingSlice2.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice2.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice2.test_slice_set_type_error_atomic",
+        "VectorTestingSlice3.test_slice_get",
+        "VectorTestingSlice3.test_slice_set",
+        "VectorTestingSlice3.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice3.test_slice_set_frozen",
+        "VectorTestingSlice3.test_slice_set_identity_preserved",
+        "VectorTestingSlice3.test_slice_set_length_mismatch",
+        "VectorTestingSlice3.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice3.test_slice_set_self_aliased_full",
+        "VectorTestingSlice3.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice3.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice3.test_slice_set_type_error_atomic",
+        "VectorTestingSlice4.test_slice_get",
+        "VectorTestingSlice4.test_slice_set",
+        "VectorTestingSlice4.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice4.test_slice_set_frozen",
+        "VectorTestingSlice4.test_slice_set_identity_preserved",
+        "VectorTestingSlice4.test_slice_set_length_mismatch",
+        "VectorTestingSlice4.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice4.test_slice_set_self_aliased_full",
+        "VectorTestingSlice4.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice4.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice4.test_slice_set_type_error_atomic"
+      ],
+      "mandatory_case_ids": [
+        "ColorTesting.test_buffer_protocol",
+        "ColorTestingSlice.test_slice_get",
+        "ColorTestingSlice.test_slice_set",
+        "ColorTestingSlice.test_slice_set_empty_slice_empty_seq",
+        "ColorTestingSlice.test_slice_set_frozen",
+        "ColorTestingSlice.test_slice_set_identity_preserved",
+        "ColorTestingSlice.test_slice_set_length_mismatch",
+        "ColorTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+        "ColorTestingSlice.test_slice_set_self_aliased_full",
+        "ColorTestingSlice.test_slice_set_self_aliased_reverse",
+        "ColorTestingSlice.test_slice_set_seq_longer_than_slice",
+        "ColorTestingSlice.test_slice_set_type_error_atomic",
+        "EulerTesting.test_buffer_protocol",
+        "EulerTestingSlice.test_slice_get",
+        "EulerTestingSlice.test_slice_set",
+        "EulerTestingSlice.test_slice_set_empty_slice_empty_seq",
+        "EulerTestingSlice.test_slice_set_frozen",
+        "EulerTestingSlice.test_slice_set_identity_preserved",
+        "EulerTestingSlice.test_slice_set_length_mismatch",
+        "EulerTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+        "EulerTestingSlice.test_slice_set_self_aliased_full",
+        "EulerTestingSlice.test_slice_set_self_aliased_reverse",
+        "EulerTestingSlice.test_slice_set_seq_longer_than_slice",
+        "EulerTestingSlice.test_slice_set_type_error_atomic",
+        "KDTreeTesting.test_kdtree_empty",
+        "KDTreeTesting.test_kdtree_grid",
+        "KDTreeTesting.test_kdtree_grid_filter_pairs",
+        "KDTreeTesting.test_kdtree_grid_filter_simple",
+        "KDTreeTesting.test_kdtree_invalid_balance",
+        "KDTreeTesting.test_kdtree_invalid_filter",
+        "KDTreeTesting.test_kdtree_invalid_size",
+        "KDTreeTesting.test_kdtree_line",
+        "KDTreeTesting.test_kdtree_single",
+        "KDTreeTesting.test_kdtree_without_balance",
+        "KDTreeTesting.test_kdtree_without_balance_and_insert",
+        "Matrix3x3TestingSlice.test_slice_get",
+        "Matrix3x3TestingSlice.test_slice_set",
+        "Matrix3x3TestingSlice.test_slice_set_frozen",
+        "Matrix3x3TestingSlice.test_slice_set_identity_preserved",
+        "Matrix3x3TestingSlice.test_slice_set_length_mismatch",
+        "Matrix3x3TestingSlice.test_slice_set_self_aliased_full",
+        "Matrix3x3TestingSlice.test_slice_set_self_aliased_reverse",
+        "Matrix3x3TestingSlice.test_slice_set_type_error_atomic",
+        "Matrix4x4TestingSlice.test_slice_get",
+        "Matrix4x4TestingSlice.test_slice_set",
+        "Matrix4x4TestingSlice.test_slice_set_frozen",
+        "Matrix4x4TestingSlice.test_slice_set_identity_preserved",
+        "Matrix4x4TestingSlice.test_slice_set_length_mismatch",
+        "Matrix4x4TestingSlice.test_slice_set_self_aliased_full",
+        "Matrix4x4TestingSlice.test_slice_set_self_aliased_reverse",
+        "Matrix4x4TestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess3x3ColTestingSlice.test_slice_get",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_frozen",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess3x3ColTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess3x3RowTestingSlice.test_slice_get",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_frozen",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess3x3RowTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess4x4ColTestingSlice.test_slice_get",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_frozen",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess4x4ColTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixAccess4x4RowTestingSlice.test_slice_get",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_frozen",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_identity_preserved",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_length_mismatch",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_full",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_reverse",
+        "MatrixAccess4x4RowTestingSlice.test_slice_set_type_error_atomic",
+        "MatrixTesting.test_buffer_protocol",
+        "MatrixTesting.test_item_access",
+        "MatrixTesting.test_item_assignment",
+        "MatrixTesting.test_loc_rot_scale",
+        "MatrixTesting.test_mat4x4_vec3D_matmul",
+        "MatrixTesting.test_mat_vec_matmul",
+        "MatrixTesting.test_matrix_column_access",
+        "MatrixTesting.test_matrix_freeze_is_read_only",
+        "MatrixTesting.test_matrix_freeze_iter",
+        "MatrixTesting.test_matrix_inverse",
+        "MatrixTesting.test_matrix_inverse_safe",
+        "MatrixTesting.test_matrix_matmult",
+        "MatrixTesting.test_matrix_mul",
+        "MatrixTesting.test_matrix_non_square_matmul",
+        "MatrixTesting.test_matrix_square_matmul",
+        "MatrixTesting.test_matrix_to_3x3",
+        "MatrixTesting.test_matrix_to_translation",
+        "MatrixTesting.test_matrix_translation",
+        "QuaternionTesting.test_buffer_protocol",
+        "QuaternionTesting.test_expmap_axis_normalization",
+        "QuaternionTesting.test_from_expmap",
+        "QuaternionTesting.test_to_expmap",
+        "QuaternionTestingSlice.test_slice_get",
+        "QuaternionTestingSlice.test_slice_set",
+        "QuaternionTestingSlice.test_slice_set_empty_slice_empty_seq",
+        "QuaternionTestingSlice.test_slice_set_frozen",
+        "QuaternionTestingSlice.test_slice_set_identity_preserved",
+        "QuaternionTestingSlice.test_slice_set_length_mismatch",
+        "QuaternionTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+        "QuaternionTestingSlice.test_slice_set_self_aliased_full",
+        "QuaternionTestingSlice.test_slice_set_self_aliased_reverse",
+        "QuaternionTestingSlice.test_slice_set_seq_longer_than_slice",
+        "QuaternionTestingSlice.test_slice_set_type_error_atomic",
+        "TesselatePolygon.test_2d",
+        "TesselatePolygon.test_3d",
+        "TesselatePolygon.test_3d_degenerate",
+        "TesselatePolygon.test_empty",
+        "TypeTesting.test_keywords_unsupported_color",
+        "TypeTesting.test_keywords_unsupported_euler",
+        "TypeTesting.test_keywords_unsupported_matrix",
+        "TypeTesting.test_keywords_unsupported_vector",
+        "TypeTesting.test_subclass_color",
+        "TypeTesting.test_subclass_euler",
+        "TypeTesting.test_subclass_matrix",
+        "TypeTesting.test_subclass_quaternion",
+        "TypeTesting.test_subclass_vector",
+        "VectorTesting.test_buffer_protocol",
+        "VectorTesting.test_orthogonal",
+        "VectorTesting.test_vector_freeze_is_read_only",
+        "VectorTesting.test_vector_imatmul",
+        "VectorTesting.test_vector_imul",
+        "VectorTesting.test_vector_matmul",
+        "VectorTesting.test_vector_mul",
+        "VectorTestingSlice10.test_slice_get",
+        "VectorTestingSlice10.test_slice_set",
+        "VectorTestingSlice10.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice10.test_slice_set_frozen",
+        "VectorTestingSlice10.test_slice_set_identity_preserved",
+        "VectorTestingSlice10.test_slice_set_length_mismatch",
+        "VectorTestingSlice10.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice10.test_slice_set_self_aliased_full",
+        "VectorTestingSlice10.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice10.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice10.test_slice_set_type_error_atomic",
+        "VectorTestingSlice2.test_slice_get",
+        "VectorTestingSlice2.test_slice_set",
+        "VectorTestingSlice2.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice2.test_slice_set_frozen",
+        "VectorTestingSlice2.test_slice_set_identity_preserved",
+        "VectorTestingSlice2.test_slice_set_length_mismatch",
+        "VectorTestingSlice2.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice2.test_slice_set_self_aliased_full",
+        "VectorTestingSlice2.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice2.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice2.test_slice_set_type_error_atomic",
+        "VectorTestingSlice3.test_slice_get",
+        "VectorTestingSlice3.test_slice_set",
+        "VectorTestingSlice3.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice3.test_slice_set_frozen",
+        "VectorTestingSlice3.test_slice_set_identity_preserved",
+        "VectorTestingSlice3.test_slice_set_length_mismatch",
+        "VectorTestingSlice3.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice3.test_slice_set_self_aliased_full",
+        "VectorTestingSlice3.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice3.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice3.test_slice_set_type_error_atomic",
+        "VectorTestingSlice4.test_slice_get",
+        "VectorTestingSlice4.test_slice_set",
+        "VectorTestingSlice4.test_slice_set_empty_slice_empty_seq",
+        "VectorTestingSlice4.test_slice_set_frozen",
+        "VectorTestingSlice4.test_slice_set_identity_preserved",
+        "VectorTestingSlice4.test_slice_set_length_mismatch",
+        "VectorTestingSlice4.test_slice_set_nonempty_seq_into_empty_slice",
+        "VectorTestingSlice4.test_slice_set_self_aliased_full",
+        "VectorTestingSlice4.test_slice_set_self_aliased_reverse",
+        "VectorTestingSlice4.test_slice_set_seq_longer_than_slice",
+        "VectorTestingSlice4.test_slice_set_type_error_atomic"
+      ],
+      "expected_cases": 180,
+      "driver": "unittest-main",
+      "required_background": true,
+      "driver_execution": {
+        "entrypoint": "original __main__",
+        "process_isolation": "one-upstream-script",
+        "background": true,
+        "blender_args": [
+          "--background",
+          "--console-crash-handler",
+          "--factory-startup",
+          "--debug-memory",
+          "--debug-exit-on-error",
+          "--python-exit-code",
+          "1",
+          "--python-expr",
+          "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+        ],
+        "script_args": [],
+        "ctest_name": "script_pyapi_mathutils",
+        "cmake_sources": [
+          {
+            "upstream_path": "tests/CMakeLists.txt",
+            "bytes": 5871,
+            "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+          },
+          {
+            "upstream_path": "tests/python/CMakeLists.txt",
+            "bytes": 50161,
+            "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+          }
+        ],
+        "registration": "add_blender_test(\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n)"
+      },
+      "case_id_normalization": "original-main",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_mathutils.py"
+    }
+  ],
+  "browser_errors": [],
+  "execution": {
+    "driver_observation": {
+      "entrypoint": "original __main__",
+      "failfast": false,
+      "original_exit_code": 0,
+      "runner_invocations": 1,
+      "support_files": []
+    },
+    "exception": null,
+    "execution_context": {
+      "background": true,
+      "entrypoint": "original __main__",
+      "runtime_argv": [
+        "./this.program",
+        "--factory-startup",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python-expr",
+        "import bpy, os, json, traceback\n_BWFB_IO = \"/tmp/bw_io\"\n_BWFB_STORE = \"/projects/imported\"\ndef _bwfb_log(m):\n    try: os.write(2, ('BW-FILEBRIDGE ' + m + '\\n').encode())\n    except Exception: pass\nfor _d in (_BWFB_IO, _BWFB_IO+'/in', _BWFB_IO+'/cmd', _BWFB_IO+'/out', _BWFB_IO+'/ack'):\n    try: os.makedirs(_d, exist_ok=True)\n    except Exception as _e: _bwfb_log('MKIO-ERR %r' % _e)\ntry: os.makedirs(_BWFB_STORE, exist_ok=True)\nexcept Exception as _e: _bwfb_log('MKSTORE-ERR %r' % _e)\ndef _bwfb_ack(tok, obj):\n    try:\n        f = open(_BWFB_IO + '/ack/' + tok + '.json', 'w'); f.write(json.dumps(obj)); f.close()\n    except Exception as e: _bwfb_log('ACK-ERR %r' % e)\ndef _bwfb_safe(name):\n    base = os.path.basename(str(name)).replace('\\\\', '_')\n    base = ''.join(c for c in base if c.isalnum() or c in '._- ') or 'untitled.blend'\n    if not base.lower().endswith('.blend'): base += '.blend'\n    return base\ndef _bwfb_do(tok, spec):\n    op = spec.get('op')\n    try:\n        if op == 'open':\n            name = _bwfb_safe(spec.get('name', 'imported.blend'))\n            src = _BWFB_IO + '/in/' + tok + '.blend'\n            dst = _BWFB_STORE + '/' + name\n            data = open(src, 'rb').read()\n            open(dst, 'wb').write(data)\n            try: os.remove(src)\n            except Exception: pass\n            bpy.ops.wm.open_mainfile(filepath=dst)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'storePath': dst, 'size': len(data), 'name': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        elif op == 'open_store':\n            name = _bwfb_safe(spec.get('name', 'imported.blend'))\n            dst = _BWFB_STORE + '/' + name\n            if not os.path.exists(dst):\n                _bwfb_ack(tok, {'ok': False, 'op': op, 'error': 'not in store: ' + name}); return\n            bpy.ops.wm.open_mainfile(filepath=dst)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'storePath': dst, 'size': os.path.getsize(dst), 'name': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        elif op == 'save':\n            name = _bwfb_safe(spec.get('name', 'untitled.blend'))\n            dst = _BWFB_STORE + '/' + name\n            mk = spec.get('addEmpty')\n            if mk:\n                ob = bpy.data.objects.new(str(mk), None); bpy.context.scene.collection.objects.link(ob)\n            sm = spec.get('sceneMarker')\n            if sm is not None: bpy.context.scene['bw_io_marker'] = sm\n            bpy.ops.wm.save_as_mainfile(filepath=dst, copy=True)\n            data = open(dst, 'rb').read()\n            open(_BWFB_IO + '/out/' + tok + '.blend', 'wb').write(data)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'storePath': dst, 'size': len(data), 'name': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        elif op == 'list':\n            try: items = sorted(os.listdir(_BWFB_STORE))\n            except Exception: items = []\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'items': items})\n        elif op == 'inspect':\n            active = bpy.context.view_layer.objects.active\n            data = getattr(active, 'data', None) if active else None\n            anim = getattr(active, 'animation_data', None) if active else None\n            action = getattr(anim, 'action', None) if anim else None\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'mode': getattr(active, 'mode', 'NONE') if active else 'NONE', 'active': getattr(active, 'name', None), 'objectCount': len(bpy.data.objects), 'objects': sorted(o.name for o in bpy.data.objects), 'meshVertices': len(data.vertices) if data and hasattr(data, 'vertices') else None, 'modifiers': [m.type for m in active.modifiers] if active else [], 'materials': [m.name for m in data.materials if m] if data and hasattr(data, 'materials') else [], 'hasAction': bool(action), 'frameRange': list(action.frame_range) if action else None, 'renderEngine': bpy.context.scene.render.engine})\n        elif op == 'reload_interface_fonts':\n            font_paths = ('/bw/datafiles/fonts/Inter.woff2', '/bw/datafiles/fonts/DejaVuSansMono.woff2')\n            font_bytes = {path: os.path.getsize(path) for path in font_paths}\n            view = bpy.context.preferences.view\n            view.font_path_ui = view.font_path_ui\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'fontBytes': font_bytes})\n        elif op == 'mark':\n            name = str(spec.get('name', 'BW_MARKER'))\n            ob = bpy.data.objects.new(name, None); bpy.context.scene.collection.objects.link(ob)\n            _bwfb_ack(tok, {'ok': True, 'op': op, 'object': name, 'objects': sorted(o.name for o in bpy.data.objects)})\n        else:\n            _bwfb_ack(tok, {'ok': False, 'op': op, 'error': 'unknown op'})\n    except Exception as e:\n        _bwfb_log('DO-ERR %r' % e)\n        _bwfb_ack(tok, {'ok': False, 'op': op, 'error': repr(e), 'tb': traceback.format_exc()})\ndef _bwfb_poll():\n    try:\n        cdir = _BWFB_IO + '/cmd'\n        for fn in sorted(os.listdir(cdir)):\n            if not fn.endswith('.json'): continue\n            tok = fn[:-5]; cpath = cdir + '/' + fn\n            try: spec = json.load(open(cpath))\n            except Exception as e:\n                _bwfb_log('BADCMD %s %r' % (fn, e))\n                try: os.remove(cpath)\n                except Exception: pass\n                continue\n            try: os.remove(cpath)\n            except Exception: pass\n            _bwfb_do(tok, spec)\n    except Exception as e:\n        _bwfb_log('POLL-ERR %r' % e)\n    return 0.3\ntry: open(_BWFB_IO + '/ready', 'w').write('1')\nexcept Exception: pass\nbpy.app.timers.register(_bwfb_poll, first_interval=0.0, persistent=True)\n_bwfb_log('ARMED store=%s conduit=%s' % (_BWFB_STORE, _BWFB_IO))",
+        "--python-expr",
+        {
+          "bytes": 82932,
+          "injected_runner_sha256": "836966bee118aa2d8fa7d1b1e973246243e60d0febceb24770a5b94eb9720619"
+        }
+      ],
+      "script_argv": [
+        "/this.program",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python",
+        "/tmp/blended-original-unittest-hyu9xgws/tests/python/bl_pyapi_mathutils.py"
+      ],
+      "source_root": "/tmp/blended-original-unittest-hyu9xgws"
+    },
+    "identity": {
+      "binary_path": "/this.program",
+      "build_branch": "HEAD (modified)",
+      "build_hash": "fbe6228777e7",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "io_observation": {
+      "fixture_bytes_preserved": true,
+      "fixture_files": []
+    },
+    "suites": [
+      {
+        "discovered": 180,
+        "discovered_ids": [
+          "__main__.ColorTesting.test_buffer_protocol",
+          "__main__.ColorTestingSlice.test_slice_get",
+          "__main__.ColorTestingSlice.test_slice_set",
+          "__main__.ColorTestingSlice.test_slice_set_empty_slice_empty_seq",
+          "__main__.ColorTestingSlice.test_slice_set_frozen",
+          "__main__.ColorTestingSlice.test_slice_set_identity_preserved",
+          "__main__.ColorTestingSlice.test_slice_set_length_mismatch",
+          "__main__.ColorTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.ColorTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.ColorTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.ColorTestingSlice.test_slice_set_seq_longer_than_slice",
+          "__main__.ColorTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.EulerTesting.test_buffer_protocol",
+          "__main__.EulerTestingSlice.test_slice_get",
+          "__main__.EulerTestingSlice.test_slice_set",
+          "__main__.EulerTestingSlice.test_slice_set_empty_slice_empty_seq",
+          "__main__.EulerTestingSlice.test_slice_set_frozen",
+          "__main__.EulerTestingSlice.test_slice_set_identity_preserved",
+          "__main__.EulerTestingSlice.test_slice_set_length_mismatch",
+          "__main__.EulerTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.EulerTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.EulerTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.EulerTestingSlice.test_slice_set_seq_longer_than_slice",
+          "__main__.EulerTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.KDTreeTesting.test_kdtree_empty",
+          "__main__.KDTreeTesting.test_kdtree_grid",
+          "__main__.KDTreeTesting.test_kdtree_grid_filter_pairs",
+          "__main__.KDTreeTesting.test_kdtree_grid_filter_simple",
+          "__main__.KDTreeTesting.test_kdtree_invalid_balance",
+          "__main__.KDTreeTesting.test_kdtree_invalid_filter",
+          "__main__.KDTreeTesting.test_kdtree_invalid_size",
+          "__main__.KDTreeTesting.test_kdtree_line",
+          "__main__.KDTreeTesting.test_kdtree_single",
+          "__main__.KDTreeTesting.test_kdtree_without_balance",
+          "__main__.KDTreeTesting.test_kdtree_without_balance_and_insert",
+          "__main__.Matrix3x3TestingSlice.test_slice_get",
+          "__main__.Matrix3x3TestingSlice.test_slice_set",
+          "__main__.Matrix3x3TestingSlice.test_slice_set_frozen",
+          "__main__.Matrix3x3TestingSlice.test_slice_set_identity_preserved",
+          "__main__.Matrix3x3TestingSlice.test_slice_set_length_mismatch",
+          "__main__.Matrix3x3TestingSlice.test_slice_set_self_aliased_full",
+          "__main__.Matrix3x3TestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.Matrix3x3TestingSlice.test_slice_set_type_error_atomic",
+          "__main__.Matrix4x4TestingSlice.test_slice_get",
+          "__main__.Matrix4x4TestingSlice.test_slice_set",
+          "__main__.Matrix4x4TestingSlice.test_slice_set_frozen",
+          "__main__.Matrix4x4TestingSlice.test_slice_set_identity_preserved",
+          "__main__.Matrix4x4TestingSlice.test_slice_set_length_mismatch",
+          "__main__.Matrix4x4TestingSlice.test_slice_set_self_aliased_full",
+          "__main__.Matrix4x4TestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.Matrix4x4TestingSlice.test_slice_set_type_error_atomic",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_get",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_frozen",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_identity_preserved",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_length_mismatch",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_get",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_frozen",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_identity_preserved",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_length_mismatch",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_get",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_frozen",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_identity_preserved",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_length_mismatch",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_get",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_frozen",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_identity_preserved",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_length_mismatch",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.MatrixTesting.test_buffer_protocol",
+          "__main__.MatrixTesting.test_item_access",
+          "__main__.MatrixTesting.test_item_assignment",
+          "__main__.MatrixTesting.test_loc_rot_scale",
+          "__main__.MatrixTesting.test_mat4x4_vec3D_matmul",
+          "__main__.MatrixTesting.test_mat_vec_matmul",
+          "__main__.MatrixTesting.test_matrix_column_access",
+          "__main__.MatrixTesting.test_matrix_freeze_is_read_only",
+          "__main__.MatrixTesting.test_matrix_freeze_iter",
+          "__main__.MatrixTesting.test_matrix_inverse",
+          "__main__.MatrixTesting.test_matrix_inverse_safe",
+          "__main__.MatrixTesting.test_matrix_matmult",
+          "__main__.MatrixTesting.test_matrix_mul",
+          "__main__.MatrixTesting.test_matrix_non_square_matmul",
+          "__main__.MatrixTesting.test_matrix_square_matmul",
+          "__main__.MatrixTesting.test_matrix_to_3x3",
+          "__main__.MatrixTesting.test_matrix_to_translation",
+          "__main__.MatrixTesting.test_matrix_translation",
+          "__main__.QuaternionTesting.test_buffer_protocol",
+          "__main__.QuaternionTesting.test_expmap_axis_normalization",
+          "__main__.QuaternionTesting.test_from_expmap",
+          "__main__.QuaternionTesting.test_to_expmap",
+          "__main__.QuaternionTestingSlice.test_slice_get",
+          "__main__.QuaternionTestingSlice.test_slice_set",
+          "__main__.QuaternionTestingSlice.test_slice_set_empty_slice_empty_seq",
+          "__main__.QuaternionTestingSlice.test_slice_set_frozen",
+          "__main__.QuaternionTestingSlice.test_slice_set_identity_preserved",
+          "__main__.QuaternionTestingSlice.test_slice_set_length_mismatch",
+          "__main__.QuaternionTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.QuaternionTestingSlice.test_slice_set_self_aliased_full",
+          "__main__.QuaternionTestingSlice.test_slice_set_self_aliased_reverse",
+          "__main__.QuaternionTestingSlice.test_slice_set_seq_longer_than_slice",
+          "__main__.QuaternionTestingSlice.test_slice_set_type_error_atomic",
+          "__main__.TesselatePolygon.test_2d",
+          "__main__.TesselatePolygon.test_3d",
+          "__main__.TesselatePolygon.test_3d_degenerate",
+          "__main__.TesselatePolygon.test_empty",
+          "__main__.TypeTesting.test_keywords_unsupported_color",
+          "__main__.TypeTesting.test_keywords_unsupported_euler",
+          "__main__.TypeTesting.test_keywords_unsupported_matrix",
+          "__main__.TypeTesting.test_keywords_unsupported_vector",
+          "__main__.TypeTesting.test_subclass_color",
+          "__main__.TypeTesting.test_subclass_euler",
+          "__main__.TypeTesting.test_subclass_matrix",
+          "__main__.TypeTesting.test_subclass_quaternion",
+          "__main__.TypeTesting.test_subclass_vector",
+          "__main__.VectorTesting.test_buffer_protocol",
+          "__main__.VectorTesting.test_orthogonal",
+          "__main__.VectorTesting.test_vector_freeze_is_read_only",
+          "__main__.VectorTesting.test_vector_imatmul",
+          "__main__.VectorTesting.test_vector_imul",
+          "__main__.VectorTesting.test_vector_matmul",
+          "__main__.VectorTesting.test_vector_mul",
+          "__main__.VectorTestingSlice10.test_slice_get",
+          "__main__.VectorTestingSlice10.test_slice_set",
+          "__main__.VectorTestingSlice10.test_slice_set_empty_slice_empty_seq",
+          "__main__.VectorTestingSlice10.test_slice_set_frozen",
+          "__main__.VectorTestingSlice10.test_slice_set_identity_preserved",
+          "__main__.VectorTestingSlice10.test_slice_set_length_mismatch",
+          "__main__.VectorTestingSlice10.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.VectorTestingSlice10.test_slice_set_self_aliased_full",
+          "__main__.VectorTestingSlice10.test_slice_set_self_aliased_reverse",
+          "__main__.VectorTestingSlice10.test_slice_set_seq_longer_than_slice",
+          "__main__.VectorTestingSlice10.test_slice_set_type_error_atomic",
+          "__main__.VectorTestingSlice2.test_slice_get",
+          "__main__.VectorTestingSlice2.test_slice_set",
+          "__main__.VectorTestingSlice2.test_slice_set_empty_slice_empty_seq",
+          "__main__.VectorTestingSlice2.test_slice_set_frozen",
+          "__main__.VectorTestingSlice2.test_slice_set_identity_preserved",
+          "__main__.VectorTestingSlice2.test_slice_set_length_mismatch",
+          "__main__.VectorTestingSlice2.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.VectorTestingSlice2.test_slice_set_self_aliased_full",
+          "__main__.VectorTestingSlice2.test_slice_set_self_aliased_reverse",
+          "__main__.VectorTestingSlice2.test_slice_set_seq_longer_than_slice",
+          "__main__.VectorTestingSlice2.test_slice_set_type_error_atomic",
+          "__main__.VectorTestingSlice3.test_slice_get",
+          "__main__.VectorTestingSlice3.test_slice_set",
+          "__main__.VectorTestingSlice3.test_slice_set_empty_slice_empty_seq",
+          "__main__.VectorTestingSlice3.test_slice_set_frozen",
+          "__main__.VectorTestingSlice3.test_slice_set_identity_preserved",
+          "__main__.VectorTestingSlice3.test_slice_set_length_mismatch",
+          "__main__.VectorTestingSlice3.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.VectorTestingSlice3.test_slice_set_self_aliased_full",
+          "__main__.VectorTestingSlice3.test_slice_set_self_aliased_reverse",
+          "__main__.VectorTestingSlice3.test_slice_set_seq_longer_than_slice",
+          "__main__.VectorTestingSlice3.test_slice_set_type_error_atomic",
+          "__main__.VectorTestingSlice4.test_slice_get",
+          "__main__.VectorTestingSlice4.test_slice_set",
+          "__main__.VectorTestingSlice4.test_slice_set_empty_slice_empty_seq",
+          "__main__.VectorTestingSlice4.test_slice_set_frozen",
+          "__main__.VectorTestingSlice4.test_slice_set_identity_preserved",
+          "__main__.VectorTestingSlice4.test_slice_set_length_mismatch",
+          "__main__.VectorTestingSlice4.test_slice_set_nonempty_seq_into_empty_slice",
+          "__main__.VectorTestingSlice4.test_slice_set_self_aliased_full",
+          "__main__.VectorTestingSlice4.test_slice_set_self_aliased_reverse",
+          "__main__.VectorTestingSlice4.test_slice_set_seq_longer_than_slice",
+          "__main__.VectorTestingSlice4.test_slice_set_type_error_atomic"
+        ],
+        "errors": 0,
+        "expected_failures": 0,
+        "failures": 0,
+        "outcomes": [
+          {
+            "detail": null,
+            "id": "__main__.ColorTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.ColorTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.EulerTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_empty",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_grid",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_grid_filter_pairs",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_grid_filter_simple",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_invalid_balance",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_invalid_filter",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_invalid_size",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_line",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_single",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_without_balance",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.KDTreeTesting.test_kdtree_without_balance_and_insert",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix3x3TestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.Matrix4x4TestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3ColTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess3x3RowTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4ColTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixAccess4x4RowTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_item_access",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_item_assignment",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_loc_rot_scale",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_mat4x4_vec3D_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_mat_vec_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_column_access",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_freeze_is_read_only",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_freeze_iter",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_inverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_inverse_safe",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_matmult",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_mul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_non_square_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_square_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_to_3x3",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_to_translation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.MatrixTesting.test_matrix_translation",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTesting.test_expmap_axis_normalization",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTesting.test_from_expmap",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTesting.test_to_expmap",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.QuaternionTestingSlice.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TesselatePolygon.test_2d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TesselatePolygon.test_3d",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TesselatePolygon.test_3d_degenerate",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TesselatePolygon.test_empty",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_keywords_unsupported_color",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_keywords_unsupported_euler",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_keywords_unsupported_matrix",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_keywords_unsupported_vector",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_subclass_color",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_subclass_euler",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_subclass_matrix",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_subclass_quaternion",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.TypeTesting.test_subclass_vector",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_buffer_protocol",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_orthogonal",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_vector_freeze_is_read_only",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_vector_imatmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_vector_imul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_vector_matmul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTesting.test_vector_mul",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice10.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice2.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice3.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_get",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_empty_slice_empty_seq",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_frozen",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_identity_preserved",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_length_mismatch",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_nonempty_seq_into_empty_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_self_aliased_full",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_self_aliased_reverse",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_seq_longer_than_slice",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          },
+          {
+            "detail": null,
+            "id": "__main__.VectorTestingSlice4.test_slice_set_type_error_atomic",
+            "kind": "test",
+            "parent_id": null,
+            "status": "passed"
+          }
+        ],
+        "sha256": "c5e252adc5fc80590faca2c667ba81d0ff732f682e1d866f1d4a0050b21a99af",
+        "skipped": 0,
+        "testsRun": 180,
+        "unexpected_successes": 0,
+        "upstream_path": "tests/python/bl_pyapi_mathutils.py"
+      }
+    ]
+  },
+  "source_build_receipt_verified": true,
+  "source_build": {
+    "schema": 1,
+    "artifact_kind": "blender-source-development",
+    "status": "built",
+    "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+    "canonical_patch_sha256": "04ba2e6ba8a04ef37bdaf879b10a135736f07114597a908bbbdea8bba244193c",
+    "build_mode": "OFF",
+    "with_buildinfo": true,
+    "numeric_patchset": {
+      "id": "blender-5.2.0-web-numerics-v1",
+      "manifest_sha256": "de27984fc9c6648049237f57380d83078a39e80f5fea2cead7ca122e05c4c147",
+      "applied": true,
+      "patches": [
+        {
+          "id": "emscripten-acosf-small-angle",
+          "component": "emscripten",
+          "path": "system/lib/libc/musl/src/math/acosf.c",
+          "before_sha256": "b20b3dcb58ce7cc55963945f8cb83efbf064b29d2da3011f2cec5d08459f2aa7",
+          "after_sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da",
+          "patch_sha256": "4c3d45d779891d979d1836076aafaecc326e616df1f805bdad0bb5b796e73b3d"
+        },
+        {
+          "id": "eigen-matrix-wasm-sse2",
+          "component": "blender",
+          "path": "intern/eigen/CMakeLists.txt",
+          "before_sha256": "2cf96c73f436aab27c54328957ef6fd243ef4a03d1d0a83f5b21d7951e3595b3",
+          "after_sha256": "a585eb495b0898e99db86cdbf26168a1c8fd696d138cbcc58044ddcf940558ad",
+          "patch_sha256": "a1839f064e2dd5948cf98640749ab221e549b9e64fd6bb0468639b0b329edd8b"
+        }
+      ]
+    },
+    "numeric_fixes_declared": true,
+    "receipt_sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3",
+    "validation_scope": "Declared source pins and artifact digest only; no independent recompile or release correspondence claimed."
+  },
+  "cohort": {
+    "id": "script_pyapi_mathutils-5.2",
+    "manifest_sha256": "bc54d627814e60bdce64cb8b4768629ffd7d64d6d7d1441da6bd4e8294e43868",
+    "stage": "frozen",
+    "expected_cases": 180,
+    "suite_kind": "unittest-main",
+    "blender_args": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "original_invocation": {
+      "entrypoint": "original __main__",
+      "process_isolation": "one-upstream-script",
+      "background": true,
+      "blender_args": [
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+      ],
+      "script_args": [],
+      "ctest_name": "script_pyapi_mathutils",
+      "cmake_sources": [
+        {
+          "upstream_path": "tests/CMakeLists.txt",
+          "bytes": 5871,
+          "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+        },
+        {
+          "upstream_path": "tests/python/CMakeLists.txt",
+          "bytes": 50161,
+          "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+        }
+      ],
+      "registration": "add_blender_test(\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n)"
+    },
+    "native_discovery": {
+      "path": "../../evidence/unittest-native-5.2-2026-10-23/script_pyapi_mathutils/native_reference.json",
+      "sha256": "f3d80b990f77fa75c3268b59e0f554e365cba800d7865bd701701e222a80aca0",
+      "bytes": 61117
+    },
+    "complete_cohort_requested": true
+  },
+  "input_fixture_transfer": null,
+  "engine_files": [
+    {
+      "path": "blender-source-development/bin/blender_browser.data",
+      "sha256": "e4a4fa44fc6a630a51e6879e1917f32443382806e2f2f13bbc035886814bb0c2",
+      "bytes": 168831870
+    },
+    {
+      "path": "blender-source-development/bin/blender_browser.js",
+      "sha256": "308065bbf93e28f772f09c84a99995fd71f38113fb012f3b45013add05f76c64",
+      "bytes": 693917
+    },
+    {
+      "path": "blender-source-development/bin/blender_browser.wasm",
+      "sha256": "27b25e78567bc6b95b81ef43fbf255c91b3655a9d4b6b9615296621e5d1fcf23",
+      "bytes": 119225569
+    }
+  ],
+  "shell": {
+    "entry": "windowed.html",
+    "boot_sha256": "edeb59e47b11db890b8ad4b2ef400164240832cab4e8fb657a540070163f7561",
+    "modified": false
+  },
+  "url": "http://127.0.0.1:39657/",
+  "browser": {
+    "version": "155.0.8059.39",
+    "flags": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu-watchdog",
+      "--enable-unsafe-webgpu",
+      "--enable-unsafe-swiftshader",
+      "--use-angle=swiftshader"
+    ]
+  },
+  "runner_sha256": "836966bee118aa2d8fa7d1b1e973246243e60d0febceb24770a5b94eb9720619",
+  "execution_mode": {
+    "requested": "background",
+    "extra_argv": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "hook": "unchanged shell __BW_ARGS before __BW_PYEXPR",
+    "runtime_exit_code": 0
+  },
+  "capabilities": {
+    "crossOriginIsolated": true,
+    "sharedArrayBuffer": true,
+    "webgpu": true,
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true,
+      "features": [
+        "depth32float-stencil8",
+        "rg11b10ufloat-renderable",
+        "bgra8unorm-storage",
+        "texture-compression-bc",
+        "core-features-and-limits",
+        "chromium-experimental-sampling-resource-table",
+        "chromium-experimental-timestamp-query-inside-passes",
+        "float32-filterable",
+        "indirect-first-instance",
+        "texture-compression-astc-sliced-3d",
+        "float32-blendable",
+        "subgroup-size-control",
+        "texture-compression-unaligned",
+        "texture-compression-astc",
+        "texture-compression-etc2",
+        "depth-clip-control",
+        "texture-compression-bc-sliced-3d",
+        "clip-distances",
+        "timestamp-query",
+        "texture-component-swizzle",
+        "subgroups"
+      ]
+    }
+  },
+  "adapter_measurement_scope": "Independent navigator.gpu.requestAdapter probe; engine-selected adapter is not instrumented.",
+  "transport": {
+    "protocol": "marker-prefixed-json-v1",
+    "result_markers": 1,
+    "recovered_json_prefix": false,
+    "trailing_runtime_text": null
+  },
+  "upstream_build_hash_verified": true,
+  "identity_limit": null,
+  "reason": "Whole selected unchanged upstream test files passed on the pinned artifact in a local browser; reported upstream build identity matched. Observed probe profile: chromium-software-webgpu."
+}

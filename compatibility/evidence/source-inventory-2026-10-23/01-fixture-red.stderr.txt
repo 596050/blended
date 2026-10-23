@@ -1,0 +1,99 @@
+test_absent_fixture_is_visible (test_inventory.InventoryTests.test_absent_fixture_is_visible) ... ok
+test_cpp_comments_and_strings (test_inventory.InventoryTests.test_cpp_comments_and_strings) ... ok
+test_cpp_multiline_case (test_inventory.InventoryTests.test_cpp_multiline_case) ... ok
+test_cpp_simple_case (test_inventory.InventoryTests.test_cpp_simple_case) ... ok
+test_declared_fixture_roots_include_non_blend_assets_and_reference_outputs (test_inventory.InventoryTests.test_declared_fixture_roots_include_non_blend_assets_and_reference_outputs) ... ERROR
+test_discovery_is_not_execution (test_inventory.InventoryTests.test_discovery_is_not_execution) ... ok
+test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) ... 
+  test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) (root='../outside') ... ERROR
+  test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) (root='/tmp') ... ERROR
+  test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) (root='tests/../files') ... ERROR
+test_invalid_status_rejected (test_inventory.InventoryTests.test_invalid_status_rejected) ... ok
+test_lfs_pointer_not_fixture (test_inventory.InventoryTests.test_lfs_pointer_not_fixture) ... ok
+test_lifetimes_do_not_hide_tests (test_inventory.InventoryTests.test_lifetimes_do_not_hide_tests) ... ok
+test_missing_declared_fixture_root_is_explicit (test_inventory.InventoryTests.test_missing_declared_fixture_root_is_explicit) ... ERROR
+test_missing_never_passes (test_inventory.InventoryTests.test_missing_never_passes) ... ok
+test_non_blend_lfs_pointer_does_not_count_as_available_payload (test_inventory.InventoryTests.test_non_blend_lfs_pointer_does_not_count_as_available_payload) ... ERROR
+test_parameters_are_not_expanded (test_inventory.InventoryTests.test_parameters_are_not_expanded) ... ok
+test_python_classes (test_inventory.InventoryTests.test_python_classes) ... ok
+test_python_decorators (test_inventory.InventoryTests.test_python_decorators) ... ok
+test_python_syntax_failure (test_inventory.InventoryTests.test_python_syntax_failure) ... ok
+test_rust_case (test_inventory.InventoryTests.test_rust_case) ... ok
+test_source_path_and_line (test_inventory.InventoryTests.test_source_path_and_line) ... ok
+test_static_assert_separate (test_inventory.InventoryTests.test_static_assert_separate) ... ok
+test_symlinked_fixture_bytes_are_never_followed (test_inventory.InventoryTests.test_symlinked_fixture_bytes_are_never_followed) ... ERROR
+test_unparseable_source_keeps_content_hash_and_unresolved_error (test_inventory.InventoryTests.test_unparseable_source_keeps_content_hash_and_unresolved_error) ... ERROR
+
+======================================================================
+ERROR: test_declared_fixture_roots_include_non_blend_assets_and_reference_outputs (test_inventory.InventoryTests.test_declared_fixture_roots_include_non_blend_assets_and_reference_outputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 57, in test_declared_fixture_roots_include_non_blend_assets_and_reference_outputs
+    result=inventory(root,'blender','0'*40,fixture_roots=['tests/files'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) (root='../outside')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 84, in test_fixture_roots_cannot_escape_the_checkout
+    inventory(Path(d),'blender','0'*40,fixture_roots=[root])
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) (root='/tmp')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 84, in test_fixture_roots_cannot_escape_the_checkout
+    inventory(Path(d),'blender','0'*40,fixture_roots=[root])
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_fixture_roots_cannot_escape_the_checkout (test_inventory.InventoryTests.test_fixture_roots_cannot_escape_the_checkout) (root='tests/../files')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 84, in test_fixture_roots_cannot_escape_the_checkout
+    inventory(Path(d),'blender','0'*40,fixture_roots=[root])
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_missing_declared_fixture_root_is_explicit (test_inventory.InventoryTests.test_missing_declared_fixture_root_is_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 77, in test_missing_declared_fixture_root_is_explicit
+    result=inventory(Path(d),'blender','0'*40,fixture_roots=['tests/files'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_non_blend_lfs_pointer_does_not_count_as_available_payload (test_inventory.InventoryTests.test_non_blend_lfs_pointer_does_not_count_as_available_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 69, in test_non_blend_lfs_pointer_does_not_count_as_available_payload
+    result=inventory(root,'blender','0'*40,fixture_roots=['tests/files'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_symlinked_fixture_bytes_are_never_followed (test_inventory.InventoryTests.test_symlinked_fixture_bytes_are_never_followed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 90, in test_symlinked_fixture_bytes_are_never_followed
+    result=inventory(root,'blender','0'*40,fixture_roots=['tests/files'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: inventory() got an unexpected keyword argument 'fixture_roots'
+
+======================================================================
+ERROR: test_unparseable_source_keeps_content_hash_and_unresolved_error (test_inventory.InventoryTests.test_unparseable_source_keeps_content_hash_and_unresolved_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/tests/test_inventory.py", line 100, in test_unparseable_source_keeps_content_hash_and_unresolved_error
+    self.assertEqual(result['files'][0]['sha256'],hashlib.sha256(raw).hexdigest())
+                     ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.007s
+
+FAILED (errors=8)

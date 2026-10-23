@@ -45,6 +45,15 @@ class ObservedStream(io.BytesIO):
 
 
 class BlenderFixtureTests(unittest.TestCase):
+    def test_complete_small_reference_image_tree_fits_count_bound_without_relaxing_bytes(self):
+        rows = [metadata("references/image_%03d.png" % i, b"small reference" + str(i).encode()) for i in range(211)]
+        self.assertEqual(len(fixtures._validate_rows(rows, PIN)), 211)
+        excessive = [metadata("references/image_%03d.png" % i, b"small reference" + str(i).encode())
+                     for i in range(fixtures.MAX_FIXTURES + 1)]
+        with self.assertRaisesRegex(fixtures.FixtureError, "count bound"):
+            fixtures._validate_rows(excessive, PIN)
+        self.assertEqual(fixtures.MAX_TOTAL_BYTES, 128 * 1024 * 1024)
+
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
@@ -79,6 +88,31 @@ class BlenderFixtureTests(unittest.TestCase):
             self.assertEqual((self.root / "work" / row["relative_path"]).read_bytes(), data)
         payloads[0]["lfs_pointer"]["text"] = "changed copy"
         self.assertEqual(self.rows, before)
+
+    def test_identical_content_at_distinct_original_paths_is_preserved(self):
+        data = b"shared original fixture contents"
+        rows = [metadata("images/first.png", data), metadata("references/first.png", data)]
+        for row in rows:
+            path = self.local / row["relative_path"]
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+        with mock.patch.object(fixtures.urllib.request, "urlopen") as network:
+            payloads = fixtures.prepare_fixture_payloads(rows, PIN, self.root / "shared", self.local)
+        network.assert_not_called()
+        self.assertEqual([p["relative_path"] for p in payloads], [r["relative_path"] for r in rows])
+        self.assertTrue(all((self.root / "shared" / row["relative_path"]).read_bytes() == data for row in rows))
+
+    def test_repeated_content_requests_one_lfs_object_and_materializes_both_paths(self):
+        data = b"shared original fixture contents"
+        rows = [metadata("textures/a.png", data), metadata("references/a.png", data)]
+        with mock.patch.object(fixtures.urllib.request, "urlopen", side_effect=[
+                self.response(self.batch(rows[:1])), ObservedStream(data)]) as network:
+            payloads = fixtures.prepare_fixture_payloads(rows, PIN, self.root / "shared")
+        self.assertEqual(network.call_count, 2)
+        body = json.loads(network.call_args_list[0].args[0].data)
+        self.assertEqual(body["objects"], [{"oid": rows[0]["sha256"], "size": len(data)}])
+        self.assertEqual(len(payloads), 2)
+        self.assertTrue(all((self.root / "shared" / row["relative_path"]).read_bytes() == data for row in rows))
 
     def test_changed_and_missing_local_objects_fail_without_network_or_output(self):
         path = self.local / self.rows[0]["relative_path"]

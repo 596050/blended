@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "command": [
+    "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/cmake",
+    "-S",
+    "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d",
+    "-B",
+    "/workspace/scratch/d63596d831b2/runtime/product-native-configure-gcc14",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DWITH_GTESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS=ON",
+    "-DWITH_GPU_RENDER_TESTS_HEADED=ON",
+    "-DWITH_GPU_BACKEND_TESTS=ON",
+    "-DWITH_GPU_DRAW_TESTS=ON",
+    "-DWITH_GPU_COMPOSITOR_TESTS=ON",
+    "-DWITH_UI_TESTS=ON",
+    "-DWITH_STRICT_BUILD_OPTIONS=ON",
+    "-DCMAKE_C_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14",
+    "-DCMAKE_CXX_COMPILER=/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14"
+  ],
+  "environment_overrides": {
+    "LD_LIBRARY_PATH": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/lib/x86_64-linux-gnu"
+  },
+  "compiler_executables": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14",
+      "bytes": 1186944,
+      "sha256": "ce298ce0c8fbdaa4b43f6e0596e37d25a35a07b5c743cb26f11815b76fccf90d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14",
+      "bytes": 1186944,
+      "sha256": "916ef3c03c2d024857af2e084d3648204033b9c79e0e62575974f567f99adc84"
+    }
+  ],
+  "started_utc": "2026-10-23T13:25:23.283690+00:00",
+  "finished_utc": "2026-10-23T13:25:23.900163+00:00",
+  "returncode": 1,
+  "configured": false,
+  "runtime_enumeration_complete": false,
+  "tests_executed": 0,
+  "log": {
+    "path": "configure-with-gcc14.log",
+    "bytes": 2511,
+    "sha256": "396f5e1ef2d745247a4ba38f9681f6dafac2fef807388f2a7b5254dcbe592407"
+  },
+  "claim": "Original source and test-enabled strict configuration with an actual supported GCC14 toolchain; no source feature guard bypassed."
+}

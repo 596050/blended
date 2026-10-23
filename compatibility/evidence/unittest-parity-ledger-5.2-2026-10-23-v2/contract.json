@@ -1,0 +1,2675 @@
+{
+  "configurations": [
+    {
+      "id": "blender-5.2-original-main-artifact-pair",
+      "registrations": [
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "8ead68f0fd5655ddb26ed468f2545470478ad3a01f7214394e280341158dfea7",
+          "id": "source-declaration:0",
+          "invocation_sha256": "e549f45085201e88484dddd8ba22c25a024baeb52548e21ec5e678408bf58751",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 49,
+                "opener": "function(add_blender_test testname)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 50,
+            "registration": "add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${TEST_BLENDER_EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )",
+            "source_declaration_index": 0,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "de5a38206f2a68999862c59640d85a15f5b2956e3b21420c24971a75607c7780",
+          "id": "source-declaration:1",
+          "invocation_sha256": "6777c1136e79565824d30cd038972ceae6a53837d969d19dc2d1bdbed327b60e",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 60,
+                "opener": "function(add_blender_test_allow_error testname)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 65,
+            "registration": "add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )",
+            "source_declaration_index": 1,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "71f1e0a5ae81da23312cbf018cb1e0142eb4e29ae80d27981b26bf2d96d3c9eb",
+          "id": "source-declaration:2",
+          "invocation_sha256": "c29039084cae5c89c63784bcb2b48fa87e371a4513c58622798cb557b05c9544",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 75,
+                "opener": "if(WITH_UI_TESTS)"
+              },
+              {
+                "line": 112,
+                "opener": "function(add_blender_test_ui_backend testname backend)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 116,
+            "registration": "add_blender_test_impl(\n      \"${testname}\"\n      \"${_blender_headless_env_vars}\"\n      \"${TEST_PYTHON_EXE}\"\n      \"${CMAKE_SOURCE_DIR}/tests/utils/blender_headless.py\"\n      # NOTE: attempting to maximize the window causes problems with a headless `weston`,\n      # while this could be investigated, use windowed mode instead.\n      # Use a window size that balances software GPU rendering with enough room to use the UI.\n      --factory-startup\n      # Workaround for https://projects.blender.org/blender/blender/issues/154770.\n      --no-native-pixels\n      # No need for window frame with tests.\n      --no-window-frame\n      -p 0 0 800 600\n      --gpu-backend ${backend}\n      # Log operator calls at a debug level so it is easier to debug runs on the buildbot that fail\n      --log \"operator\" --log-level \"debug\"\n      \"${EXE_PARAMS}\"\n      \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n      \"${ARGN}\"\n    )",
+            "source_declaration_index": 2,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "a37971d9ec744296123e0acc78dafb006c742b5b2f4e00e9341159826669612d",
+          "id": "source-declaration:3",
+          "invocation_sha256": "d270b885eebd80155ef35f8f17efcd7d1dd2328843bbc19fdba4417517ca0165",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 75,
+                "opener": "if(WITH_UI_TESTS)"
+              },
+              {
+                "line": 138,
+                "opener": "function(add_blender_test_ui testname)"
+              },
+              {
+                "line": 139,
+                "opener": "if(WITH_OPENGL_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 140,
+            "registration": "add_blender_test_ui_backend(\n        \"ui_opengl_${testname}\"\n        \"opengl\"\n        \"${ARGN}\"\n      )",
+            "source_declaration_index": 3,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "79fea9a35c662a6aafa79505175a84f04db8d4903ef17e30e3d36a452e504dab",
+          "id": "source-declaration:4",
+          "invocation_sha256": "dcf09e7c4a92b0ada4fc0889d3ab86c81010e813ead42ecea83247c1a7399c61",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 75,
+                "opener": "if(WITH_UI_TESTS)"
+              },
+              {
+                "line": 138,
+                "opener": "function(add_blender_test_ui testname)"
+              },
+              {
+                "line": 146,
+                "opener": "if(WITH_METAL_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 147,
+            "registration": "add_blender_test_ui_backend(\n        \"ui_metal_${testname}\"\n        \"metal\"\n        \"${ARGN}\"\n      )",
+            "source_declaration_index": 4,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "9681715b747a819ff19588fde5a681e5268056317d6a936eefaa80984b8c0ee1",
+          "id": "source-declaration:5",
+          "invocation_sha256": "b8c7ce8ceba72b2dea02d4760e52a8016adfd82f74bf47587a4681b86de32988",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 75,
+                "opener": "if(WITH_UI_TESTS)"
+              },
+              {
+                "line": 138,
+                "opener": "function(add_blender_test_ui testname)"
+              },
+              {
+                "line": 153,
+                "opener": "if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN AND WITH_UI_TESTS_VULKAN)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 154,
+            "registration": "add_blender_test_ui_backend(\n        \"ui_vulkan_${testname}\"\n        \"vulkan\"\n        \"${ARGN}\"\n      )",
+            "source_declaration_index": 5,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f16fe390f8506cc2f6c767801ef4af114d99ceeaadfde142caebc3d05b99314f",
+          "id": "source-declaration:6",
+          "invocation_sha256": "68bc8a89ac640a647f212dca925a1be5a326c3b9ace188a3b263155b390ca2db",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_load_keymap",
+            "line": 217,
+            "registration": "add_blender_test(\n  script_load_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_completeness.py\n)",
+            "source_declaration_index": 6,
+            "upstream_path": "tests/python/bl_keymap_completeness.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "fb2577c76e7e5e7e542319c11560848a61b16ac7822dc4cd31a1439ff6a12dc2",
+          "id": "source-declaration:7",
+          "invocation_sha256": "3fd5cef69ae7f90b59546a277aa6f135a695a19418715c8dc3cd608f9ba8f9c3",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_validate_keymap",
+            "line": 222,
+            "registration": "add_blender_test(\n  script_validate_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_validate.py\n  -- --relaxed  # Disable minor things that should not cause tests to break.\n)",
+            "source_declaration_index": 7,
+            "upstream_path": "tests/python/bl_keymap_validate.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "5f4965579cd827070738f96f45688d9a6d055f4a065a82ce41557d791f993b60",
+          "id": "source-declaration:8",
+          "invocation_sha256": "d04dca63f3c172cfa98ac831c237ac11375bd59da1a658f94a26963139fce36f",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_load_addons",
+            "line": 228,
+            "registration": "add_blender_test(\n  script_load_addons\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_addons.py\n)",
+            "source_declaration_index": 8,
+            "upstream_path": "tests/python/bl_load_addons.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "8e21a63ab113f3245a14d539ce483cd3f4a5234e61f5d3de1172bdc91d5d1a5e",
+          "id": "source-declaration:9",
+          "invocation_sha256": "0628f6536486aa1982ccd72a122d7c79432bd0e7bf5ab6a75eb3e3371ab45bda",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_load_modules",
+            "line": 233,
+            "registration": "add_blender_test(\n  script_load_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_py_modules.py\n)",
+            "source_declaration_index": 9,
+            "upstream_path": "tests/python/bl_load_py_modules.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "658952ac1fe5e07855e09ce5176e7b7476f81721d6ea5f3e4230bdee3edb9e7c",
+          "id": "source-declaration:10",
+          "invocation_sha256": "dc5d46c631ac42a7f4f109e474e2c533ae93fe5c3289dd49ace8fe0d4643c23d",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_bundled_modules",
+            "line": 238,
+            "registration": "add_blender_test(\n  script_bundled_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_bundled_modules.py -- --inside-blender\n)",
+            "source_declaration_index": 10,
+            "upstream_path": "tests/python/bl_bundled_modules.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:11",
+          "invocation_sha256": "905b179ba771c02b20ff6e72a95760294f1b75accf4fb7b48ee0843594a13781",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_http_downloader",
+            "line": 243,
+            "registration": "add_blender_test(\n  script_http_downloader\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_http_downloader.py\n)",
+            "source_declaration_index": 11,
+            "upstream_path": "tests/python/bl_http_downloader.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:12",
+          "invocation_sha256": "03a7cbe68ccce48574a63e346b57b1ba304bc72678e2c979fec39439d274723d",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_disk_file_hash_service_test",
+            "line": 248,
+            "registration": "add_blender_test(\n  script_disk_file_hash_service_test\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_disk_file_hash_service_test.py\n)",
+            "source_declaration_index": 12,
+            "upstream_path": "tests/python/bl_disk_file_hash_service_test.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "5c8710d98572b3d0a9e8be457b3468ca192c2fca1f257ac4bc4365ea626c2356",
+          "id": "source-declaration:13",
+          "invocation_sha256": "6c11049cab7fd0b62555bc2ee94e2b38d0eae7008f4be60da3c99cd3e4622422",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 254,
+                "opener": "if(WITH_TESTS_EXPERIMENTAL)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 255,
+            "registration": "add_blender_test(\n    script_run_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_run_operators.py\n  )",
+            "source_declaration_index": 13,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:14",
+          "invocation_sha256": "fd6cc88f4810f498ee230e68ba07edd4788b1e6bea3ac58cd3c1d8a3ab483ca4",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_bpy_app",
+            "line": 265,
+            "registration": "add_blender_test(\n  script_pyapi_bpy_app\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app.py\n)",
+            "source_declaration_index": 14,
+            "upstream_path": "tests/python/bl_pyapi_bpy_app.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "0187d39489aa85f43336f330e8c0b6200caa85236fea3ecfcd7e6ae3067bc223",
+          "id": "source-declaration:15",
+          "invocation_sha256": "b1585c72e91fadfe08427bafcae6239b946d85bdd9fcce38f5280e583ca45592",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 270,
+                "opener": "if(WITH_GPU_BACKEND_TESTS)"
+              },
+              {
+                "line": 271,
+                "opener": "if(WITH_OPENGL_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 272,
+            "registration": "add_blender_test(\n      script_pyapi_gpu_opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend opengl\n    )",
+            "source_declaration_index": 15,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "1475badb4dd881d4175b55bd2b8b380217aefcabe6b4d6066f644772381c293a",
+          "id": "source-declaration:16",
+          "invocation_sha256": "c083cb89970a9a4f05390739aadb5c14c7521654c8482b1340d0a5e38e13c08c",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 270,
+                "opener": "if(WITH_GPU_BACKEND_TESTS)"
+              },
+              {
+                "line": 279,
+                "opener": "if(WITH_METAL_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 280,
+            "registration": "add_blender_test(\n      script_pyapi_gpu_metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend metal\n    )",
+            "source_declaration_index": 16,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "269a9cd453d975cd0146da50a143a2ab9748889196cfb9b685381d71fb8adf12",
+          "id": "source-declaration:17",
+          "invocation_sha256": "5950eedc97a14bb0abcba5a80f0ebae6d4cc5cdb1e49e592606bf693f3a22553",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 270,
+                "opener": "if(WITH_GPU_BACKEND_TESTS)"
+              },
+              {
+                "line": 287,
+                "opener": "if(WITH_VULKAN_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 288,
+            "registration": "add_blender_test(\n      script_pyapi_gpu_vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend vulkan\n    )",
+            "source_declaration_index": 17,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:18",
+          "invocation_sha256": "7dd0cf82590e982752e67234049288ea2f2d9e30975d828e6231be89cf38b1b0",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_bpy_app_tempdir",
+            "line": 296,
+            "registration": "add_blender_test(\n  script_pyapi_bpy_app_tempdir\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app_tempdir.py\n)",
+            "source_declaration_index": 18,
+            "upstream_path": "tests/python/bl_pyapi_bpy_app_tempdir.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:19",
+          "invocation_sha256": "c8be186025b5c7f3de347f8c47cd55d3ad7a274eb9d824f6e387c5f4f7e93138",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_bpy_path",
+            "line": 301,
+            "registration": "add_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)",
+            "source_declaration_index": 19,
+            "upstream_path": "tests/python/bl_pyapi_bpy_path.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:20",
+          "invocation_sha256": "e63a56772ffe176584a19af71bc3a6094bfbdc0b6698fae563ca2f3a2b8f12e1",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_bpy_utils_units",
+            "line": 306,
+            "registration": "add_blender_test(\n  script_pyapi_bpy_utils_units\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_utils_units.py\n)",
+            "source_declaration_index": 20,
+            "upstream_path": "tests/python/bl_pyapi_bpy_utils_units.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:21",
+          "invocation_sha256": "544c9040d9d2da1ee9cd8f3efd24bc12f817a73481b2a542aebc6b39f57e12b0",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_mathutils",
+            "line": 311,
+            "registration": "add_blender_test(\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n)",
+            "source_declaration_index": 21,
+            "upstream_path": "tests/python/bl_pyapi_mathutils.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:22",
+          "invocation_sha256": "c67216627caa951eae22ce9b6e5e9c9f6f717e1355d82060cbeb6c032c07af26",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_bpy_driver_secure_eval",
+            "line": 316,
+            "registration": "add_blender_test(\n  script_pyapi_bpy_driver_secure_eval\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_driver_secure_eval.py\n)",
+            "source_declaration_index": 22,
+            "upstream_path": "tests/python/bl_pyapi_bpy_driver_secure_eval.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:23",
+          "invocation_sha256": "73c79e697bd1c5c9d81249e7ab570fc60cf9d6e1311c7ee56fd7e52755edb2c1",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_idprop",
+            "line": 321,
+            "registration": "add_blender_test(\n  script_pyapi_idprop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop.py\n)",
+            "source_declaration_index": 23,
+            "upstream_path": "tests/python/bl_pyapi_idprop.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "c6268b95ebfe79e1028c29d67efaa9611d05e60f2395d8ee3b3d4f040d7169d2",
+          "id": "source-declaration:24",
+          "invocation_sha256": "292c1789bc9a02086b71637282820ffda168f072c736b8635a458c8d23525bc0",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_idprop_datablock",
+            "line": 326,
+            "registration": "add_blender_test(\n  script_pyapi_idprop_datablock\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop_datablock.py\n)",
+            "source_declaration_index": 24,
+            "upstream_path": "tests/python/bl_pyapi_idprop_datablock.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:25",
+          "invocation_sha256": "4217e482b14c25d4e38318abbee8833c28b0c78e7abd9547c224ce3cbc0a7826",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_prop",
+            "line": 331,
+            "registration": "add_blender_test(\n  script_pyapi_prop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop.py\n)",
+            "source_declaration_index": 25,
+            "upstream_path": "tests/python/bl_pyapi_prop.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:26",
+          "invocation_sha256": "092e46d1cbe0cf20cd8bccf91b84452a735febd00b6471883686eeca3721ec52",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_prop_array",
+            "line": 336,
+            "registration": "add_blender_test(\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n)",
+            "source_declaration_index": 26,
+            "upstream_path": "tests/python/bl_pyapi_prop_array.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:27",
+          "invocation_sha256": "77e8e5d4e12a610876df2a3d207d6482756e69cac49e35cfa523478f9f14d10f",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_text",
+            "line": 341,
+            "registration": "add_blender_test(\n  script_pyapi_text\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_text.py\n)",
+            "source_declaration_index": 27,
+            "upstream_path": "tests/python/bl_pyapi_text.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:28",
+          "invocation_sha256": "ada6719f66923458aea545e4d468237a8c9dc4b7b2ccc97b597b17a1746a46f6",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_bmesh",
+            "line": 346,
+            "registration": "add_blender_test(\n  script_pyapi_bmesh\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bmesh.py\n)",
+            "source_declaration_index": 28,
+            "upstream_path": "tests/python/bl_pyapi_bmesh.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:29",
+          "invocation_sha256": "94e5657c5f509d3d39b8894a0fdd1ebfbd12fc83918eef29f4f6d18ecef5cce2",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "imbuf_py_api",
+            "line": 351,
+            "registration": "add_blender_test(\n  imbuf_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_py_api.py\n)",
+            "source_declaration_index": 29,
+            "upstream_path": "tests/python/bl_imbuf_py_api.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:30",
+          "invocation_sha256": "422c09da4bd01eb58d05c629ed98b14ff6466b5b5a7d4ac4fda33413182a285d",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "operator_function_py_api",
+            "line": 356,
+            "registration": "add_blender_test(\n  operator_function_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_function_py_api.py\n)",
+            "source_declaration_index": 30,
+            "upstream_path": "tests/python/bl_operator_function_py_api.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:31",
+          "invocation_sha256": "3f917b985bc74382c307bd7cb5459874cf75e5a92609b878630e98b51e06c579",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "operator_wrap_py_api",
+            "line": 361,
+            "registration": "add_blender_test(\n  operator_wrap_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_wrap_py_api.py\n)",
+            "source_declaration_index": 31,
+            "upstream_path": "tests/python/bl_operator_wrap_py_api.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:32",
+          "invocation_sha256": "497219638290cf1374829bccbc76c1d5dc07c2cfae7e55d5589eec11a76bbb3c",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_grease_pencil",
+            "line": 366,
+            "registration": "add_blender_test(\n  script_pyapi_grease_pencil\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_grease_pencil.py\n)",
+            "source_declaration_index": 32,
+            "upstream_path": "tests/python/bl_pyapi_grease_pencil.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:33",
+          "invocation_sha256": "02f69a038f6a42c3dba9df969a8c153719c514f47a6a7ccb9ef3211d00d34599",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_annotations",
+            "line": 371,
+            "registration": "add_blender_test(\n  script_pyapi_annotations\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_annotations.py\n)",
+            "source_declaration_index": 33,
+            "upstream_path": "tests/python/bl_pyapi_annotations.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "0a850b28ad04d0616197e40d406b6ecfd7a5f731d255f596260ab2d16d74c892",
+          "id": "source-declaration:34",
+          "invocation_sha256": "29b82560d2bdcb0880367d1031c6a160ca578199b65acd9692042e77e76acfc6",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_blf_buffer",
+            "line": 376,
+            "registration": "add_blender_test(\n  script_pyapi_blf_buffer\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=BUFFER\n)",
+            "source_declaration_index": 34,
+            "upstream_path": "tests/python/bl_pyapi_blf.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "396edcb931246117b33d319de43d9b9eedd28f62cccd30935445413934c6debc",
+          "id": "source-declaration:35",
+          "invocation_sha256": "9d45d7e7d4c1904e22b30f4f1cba21f77093d2f3d8d33ecfdaf08c180649ff4c",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 385,
+                "opener": "if(FALSE)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 386,
+            "registration": "add_blender_test(\n    script_pyapi_blf_gpu\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n    --\n    --mode=GPU\n  )",
+            "source_declaration_index": 35,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "808919296e6f50e7fe1e45bcfac92e54dd3a63a7db6787544aff5773dea1f282",
+          "id": "source-declaration:36",
+          "invocation_sha256": "e8bed9dc900426128918e26aab1fbf3eb1479b1c518aa585b3b4bbd9d11e0305",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_blf_vfont",
+            "line": 394,
+            "registration": "add_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)",
+            "source_declaration_index": 36,
+            "upstream_path": "tests/python/bl_pyapi_blf.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "83530dd4b606d818e91156b23ffcc0a82c8bfa3be30c4be3fbde97e8a6c5c085",
+          "id": "source-declaration:37",
+          "invocation_sha256": "159714a6c95addd8e5e05714751d71ae85924fef66ebfed0096f1af8a4b231ec",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "script_pyapi_doc_gen",
+            "line": 408,
+            "registration": "add_blender_test(\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n)",
+            "source_declaration_index": 37,
+            "upstream_path": "tests/python/bl_pyapi_doc_gen.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:38",
+          "invocation_sha256": "057304699861c5ff6a1bc9de3e37c9e24e283dd4e097e5e535cc06077578fb02",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "id_management",
+            "line": 417,
+            "registration": "add_blender_test(\n  id_management\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_id_management.py\n)",
+            "source_declaration_index": 38,
+            "upstream_path": "tests/python/bl_id_management.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:39",
+          "invocation_sha256": "353e41f567fb21666ca6b772d0c79c3eb0c3be401d77d115199e3cf8c1d0a8e8",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_rna_paths",
+            "line": 422,
+            "registration": "add_blender_test(\n  bl_rna_paths\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_paths.py\n)",
+            "source_declaration_index": 39,
+            "upstream_path": "tests/python/bl_rna_paths.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:40",
+          "invocation_sha256": "cf5ead60261e7db86e7b76289c9514544075f82564e17f256de74087b52a184f",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_rna_accessors",
+            "line": 427,
+            "registration": "add_blender_test(\n  bl_rna_accessors\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_accessors.py\n)",
+            "source_declaration_index": 40,
+            "upstream_path": "tests/python/bl_rna_accessors.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "cb107fadf8d2a5778be83c86d6836d764a9126400246f977c05191e59e832cc9",
+          "id": "source-declaration:41",
+          "invocation_sha256": "3bc12106a5298f9814c68cdf4299480705ad6f16097da2bf9be66a2df7354fa9",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": null,
+            "line": 436,
+            "registration": "add_blender_test(\n  blendfile_io\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_io.py --\n  --output-dir ${TEST_OUT_DIR}/blendfile_io/\n)",
+            "source_declaration_index": 41,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "165f7d212521c6bd75489f32925d7b228dd50d35dac9ace009ca5b375eb20ee3",
+          "id": "source-declaration:42",
+          "invocation_sha256": "22b988243c0493959df5ff990ebade490fcbe399f452912b6c7d121d7f46246c",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": null,
+            "line": 442,
+            "registration": "add_blender_test(\n  blendfile_autosave\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_autosave.py --\n  --src-test-dir ${TEST_SRC_DIR}/io_tests/blend_autosave/\n  --output-dir ${TEST_OUT_DIR}/blendfile_autosave/\n)",
+            "source_declaration_index": 42,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "df7271122c02e38e891a4fe30e302b7e89881cb5be71db460ade28bd147cd2d7",
+          "id": "source-declaration:43",
+          "invocation_sha256": "04a0a22e03a1a7eeebb6af37c23ffa957ec4dff58a7b929a71bda527ec3cdd92",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 452,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 455,
+                "opener": "foreach(idx RANGE ${BLENDFILE_VERSIONING_SPLIT_RANGE_CMAKE})"
+              }
+            ],
+            "ctest_name": null,
+            "line": 456,
+            "registration": "add_blender_test(\n      \"blendfile_versioning_${idx}_over_${BLENDFILE_VERSIONING_SPLIT_RANGE}\"\n      --log \"*blendfile*\"\n      --debug-memory\n      --debug\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_versioning.py --\n      --src-test-dir ${TEST_SRC_DIR}/\n      --output-dir ${TEST_OUT_DIR}/blendfile_io/\n      --slice-range ${BLENDFILE_VERSIONING_SPLIT_RANGE}\n      --slice-index ${idx}\n    )",
+            "source_declaration_index": 43,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "963ba7ed352ad1f082774cfac9e012e4c999cd2e2ac75c98b012071588ce4bfb",
+          "id": "source-declaration:44",
+          "invocation_sha256": "296cadb38f193a3e0389bc80e61131f452fef411a279f6d0cf70f8e637d3fb0b",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 452,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 469,
+            "registration": "add_blender_test(\n    blendfile_liblink\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_liblink.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )",
+            "source_declaration_index": 44,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "780a5860f714176bde14fedd46b5d048c836ccd75d6395da59db2bfaf4a7b3c4",
+          "id": "source-declaration:45",
+          "invocation_sha256": "1892b0d60ba56dadedcbd5b8df1fd37cf8b4aaecda4e530f2b7a76abb2635a53",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 452,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 476,
+            "registration": "add_blender_test(\n    blendfile_relationships\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_relationships.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )",
+            "source_declaration_index": 45,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "daacd63eb7937ab71d336026ea2d336e6c303321b391b5970407c6548a5a1e98",
+          "id": "source-declaration:46",
+          "invocation_sha256": "020e48d5ea850ae65dc2dbbedb48dd866a2cd558c30d35572bfbe950db2a5764",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 452,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 483,
+            "registration": "add_blender_test(\n    blendfile_library_overrides\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_library_overrides.py --\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n    --test-dir \"${TEST_SRC_DIR}/libraries_and_linking\"\n  )",
+            "source_declaration_index": 46,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "ef7079cf022d512def6d6cfc73b99ea1446ba683eebf84732378754738a4e0e9",
+          "id": "source-declaration:47",
+          "invocation_sha256": "f6ff5ef1a36bc82793473fe85b2f80781244ed11520e4c8ce48af3328d3acfec",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 452,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 490,
+            "registration": "add_blender_test(\n    blendfile_header\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_header.py --\n    --testdir \"${TEST_SRC_DIR}/io_tests/blend_parsing\"\n  )",
+            "source_declaration_index": 47,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "d3d7b3aeee7cab87e9286acc5e9e379b5c18814e28045434a2e41df3870c4d8d",
+          "id": "source-declaration:48",
+          "invocation_sha256": "0e1bede1b9984f14b9a46efdbf93feb9850894babe9a1bd6a3d39714baa8d357",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": null,
+            "line": 501,
+            "registration": "add_blender_test(\n  global_undo\n  --log \"*undo*\"\n  --log-level debug\n  --debug-memory\n  --debug\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_global_undo.py --\n  --src-test-dir ${TEST_SRC_DIR}/\n  --output-dir ${TEST_OUT_DIR}/global_undo/\n)",
+            "source_declaration_index": 48,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "91cddeaab1a0b59f4ad89ed58bbbe46dfcdf7591396675eccf1ff11a1c9d730e",
+          "id": "source-declaration:49",
+          "invocation_sha256": "45220088da268cb9793505400ee78b23d19b82c3e2953ba5cb0cbb080d32367a",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 517,
+            "registration": "add_blender_test(\n    bmesh_bevel\n    ${TEST_SRC_DIR}/modeling/bevel_regression.blend\n    --python ${TEST_PYTHON_DIR}/bevel_operator.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 49,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "91025bbec40c9dbcff1c6a1e17df8dcf2e503b8d0748e63c838b1ec424dbba4a",
+          "id": "source-declaration:50",
+          "invocation_sha256": "0332edbe5efb35fa3bf4f7b0a11f37f54061ab16fcfc77e42fd94936625fb95c",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 525,
+            "registration": "add_blender_test(\n    bmesh_boolean\n    ${TEST_SRC_DIR}/modeling/bool_regression.blend\n    --python ${TEST_PYTHON_DIR}/boolean_operator.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 50,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "d32708adfaf386759d569b254e420571b11e889b0bc77cc0e37a6e7e6d84bc61",
+          "id": "source-declaration:51",
+          "invocation_sha256": "5da81bce1195bdc79fff569657dc5e89b380ac796ace658db6bf8f8ea59502d6",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 533,
+            "registration": "add_blender_test(\n    bmesh_split_faces\n    ${TEST_SRC_DIR}/modeling/split_faces_test.blend\n    --python-text run_tests\n  )",
+            "source_declaration_index": 51,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "4b895830fe31a575caeda1d61f3ca3fc45c2a2b72e63195eb184cc740687bd8f",
+          "id": "source-declaration:52",
+          "invocation_sha256": "3d5d801474a40bc84ae72233367ce65712bde20bf44ebb63f96072c5bcc14a82",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 539,
+            "registration": "add_blender_test(\n    curve_to_mesh\n    ${TEST_SRC_DIR}/modeling/curve_to_mesh.blend\n    --python ${TEST_PYTHON_DIR}/curve_to_mesh.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 52,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "fb9ee34fcf51b6cebb4d67f3a620d88fee683af033a04bcb81ed77a3161ad8dd",
+          "id": "source-declaration:53",
+          "invocation_sha256": "2d75bca2b702092c740cbab067b3621ade3fb94d434920c9271146e95e35ba16",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 547,
+            "registration": "add_blender_test(\n    curves_extrude\n    ${TEST_SRC_DIR}/modeling/curves_extrude.blend\n    --python ${TEST_PYTHON_DIR}/curves_extrude.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 53,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f69098cf9da8383cb01286dfde9c2566d9b87bada7a5050f732adb9ee8683b00",
+          "id": "source-declaration:54",
+          "invocation_sha256": "bcdf24c766d64d73fd1c6ea67e615f44c7dd37be999882c92e3192cf8b7ca42e",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 555,
+            "registration": "add_blender_test(\n    mesh_join\n    --python ${TEST_PYTHON_DIR}/mesh_join.py\n  )",
+            "source_declaration_index": 54,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "64723462cc5bd6f29d88876ad04594ffc21c1017946c23b40c3a040c4a200b8e",
+          "id": "source-declaration:55",
+          "invocation_sha256": "8e85d97cee577863a606d0a89fc2d22aad29f57df352eec456a888f29c2545ac",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 560,
+            "registration": "add_blender_test_allow_error(\n    mesh_validate\n    --python ${TEST_PYTHON_DIR}/mesh_validate.py\n    --\n    --testdir \"${TEST_SRC_DIR}\"\n  )",
+            "source_declaration_index": 55,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "174d5bedf955b1cf2de78975d99380e5c58c3f05d61da2cf1d1789104dff4f90",
+          "id": "source-declaration:56",
+          "invocation_sha256": "e62402fb6bf2aa741f6e9f994934a168dcf3be3042f102cd7bec490f46754989",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 567,
+            "registration": "add_blender_test(\n    object_edit\n    --python ${TEST_PYTHON_DIR}/object_edit.py\n  )",
+            "source_declaration_index": 56,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "35713c741a08384fa0b9c22c394784234f42d282daa61a5c34ca515a0e7c08df",
+          "id": "source-declaration:57",
+          "invocation_sha256": "45cf680f35b18f00a682475a6b4f8b1a5bb590b48ba17799358a422cba9151ce",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 572,
+            "registration": "add_blender_test(\n    object_conversion\n    ${TEST_SRC_DIR}/modeling/object_conversion.blend\n    --python ${TEST_PYTHON_DIR}/object_conversion.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 57,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "206c4fe30bb58a96c370ceaf3c26263ccc006880fa39c8b08f4ab00cbe0446b9",
+          "id": "source-declaration:58",
+          "invocation_sha256": "1c18d722da27fc5a3596a0dfcfec1a63cb09616e80a1a584171535d92c498ec1",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 580,
+            "registration": "add_blender_test(\n    object_api\n    --python ${TEST_PYTHON_DIR}/bl_object.py\n  )",
+            "source_declaration_index": 58,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "da49a24420703aebbdfbd1a7865d1b863d357a123a0e23268143e13218ed0f8f",
+          "id": "source-declaration:59",
+          "invocation_sha256": "557316c9f3848fd47820f492098375643932a6fc59d6e196fe2f0a212367cb86",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 516,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 585,
+            "registration": "add_blender_test(\n    node_tools\n    --python ${TEST_PYTHON_DIR}/bl_node_tool.py\n  )",
+            "source_declaration_index": 59,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:60",
+          "invocation_sha256": "c4574619e46df27c26d6b9ff0477f4d8f276f0ac48f66a4bac4befe7448b31b0",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "geometry_attributes",
+            "line": 591,
+            "registration": "add_blender_test(\n  geometry_attributes\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geometry_attributes.py\n)",
+            "source_declaration_index": 60,
+            "upstream_path": "tests/python/bl_geometry_attributes.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "323ffb260406c65496d84469fbe3e8c32a2e9a48c949253f4ec28766a1a331d3",
+          "id": "source-declaration:61",
+          "invocation_sha256": "a5c524c1c1716a944dd2b92da1d5dbe749a7e8c40a5a1ee62b6e9eb46957f6e7",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": null,
+            "line": 596,
+            "registration": "add_blender_test(\n  geo_node_file_reporting\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geo_node_file_reporting.py\n  --\n  --testdir \"${TEST_SRC_DIR}\"\n)",
+            "source_declaration_index": 61,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "a49074f722e4efb1bb27c1d28e58628bebb67a838c7084dbbdba7994c13c8b54",
+          "id": "source-declaration:62",
+          "invocation_sha256": "7bffde959a20f67617aef68228654eac0e93e9592d14a29dbc63b3043c165621",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 608,
+            "registration": "add_blender_test(\n    object_modifier_array\n    ${TEST_SRC_DIR}/modifier_stack/array_test.blend\n    --python-text run_tests.py\n  )",
+            "source_declaration_index": 62,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "64d03e221407cc356234767db9af641589aa13a71dcc8d3ff63150fc6fe35db2",
+          "id": "source-declaration:63",
+          "invocation_sha256": "7d8f95b36b2129f520a88b77c885350c0562bcf1988c33f01c6bc8acf2fa5fb0",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 614,
+            "registration": "add_blender_test(\n    modifiers\n    ${TEST_SRC_DIR}/modeling/modifiers/modifiers.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/modifiers.py\n  )",
+            "source_declaration_index": 63,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "3cea324d7052214de8dde70b1d786f82d8d652405204e42e7584f6eba6d71677",
+          "id": "source-declaration:64",
+          "invocation_sha256": "eda7f31720c4c4a1956955cd014c91dcc1730549b260aeb30eb98fa78b8b19b0",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 620,
+            "registration": "add_blender_test(\n    modifiers_multires\n    ${TEST_SRC_DIR}/modeling/modifiers/multires_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/multires_modifier.py\n  )",
+            "source_declaration_index": 64,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "465805532e2742f1294cf4e9272c5aecbc47e909b8aaa8a4da037cdf8a90744a",
+          "id": "source-declaration:65",
+          "invocation_sha256": "00d3ca28d457e0066f7fe143da8e375bb1be67af5c02714018472db8e8c53683",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 626,
+            "registration": "add_blender_test(\n    modifiers_armature\n    ${TEST_SRC_DIR}/modeling/modifiers/armature_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/armature_modifier.py\n  )",
+            "source_declaration_index": 65,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "38f564ae324d711f2f800c49f4a5fa626e05df7f31ef3013669ad733bc29987c",
+          "id": "source-declaration:66",
+          "invocation_sha256": "92d7d0dd7cdcef385ff3ad788b1d32d1850adb43866351d0978c5622b92ce161",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 632,
+            "registration": "add_blender_test(\n    physics_cloth\n    ${TEST_SRC_DIR}/physics/cloth_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_cloth.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 66,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "beb02e0c044872c1717c7e30eb50c1841ac0af86ba3f9e61f49637c04de39cea",
+          "id": "source-declaration:67",
+          "invocation_sha256": "919f4440abb1f7bb2a209c714a93dea5a8cdeed7f6c6a3f5f1f0548c461bc60a",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 640,
+            "registration": "add_blender_test(\n    physics_softbody\n    ${TEST_SRC_DIR}/physics/softbody_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_softbody.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 67,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "dd12eedef6f4a8d7f35914b0f39c6a918b29005e87a4eefcb1bb8464312cba6f",
+          "id": "source-declaration:68",
+          "invocation_sha256": "88ba94a7a0396783966997602de0b21d065876ff66675825cdd03b372aa424f0",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 648,
+            "registration": "add_blender_test(\n    physics_dynamic_paint\n    ${TEST_SRC_DIR}/physics/dynamic_paint_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_dynamic_paint.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 68,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "726a2aeb8808c5a187f81ff10f6cb47955dba04fcd326af55313728038353e0d",
+          "id": "source-declaration:69",
+          "invocation_sha256": "7c250bf2d8fad101e49a38c783cd531fa9c0d85f6349714fa806ed0ea174b474",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 656,
+            "registration": "add_blender_test(\n    deform_modifiers\n    ${TEST_SRC_DIR}/modeling/deform_modifiers.blend\n    --python ${TEST_PYTHON_DIR}/deform_modifiers.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 69,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "e8813f68801509d4dc881504834b72dfb122756435d6ac61a04b331039651e78",
+          "id": "source-declaration:70",
+          "invocation_sha256": "2ce32730d4077cc7a1573caa96b7a22cd9737ace4c2799c652497eec4c008fdf",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 664,
+                "opener": "if(WITH_MOD_OCEANSIM)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 665,
+            "registration": "add_blender_test(\n      physics_ocean\n      ${TEST_SRC_DIR}/physics/ocean_test.blend\n      --python ${TEST_PYTHON_DIR}/physics_ocean.py\n      --\n      --run-all-tests\n    )",
+            "source_declaration_index": 70,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "80712230dbe89c1243947b451d6c43bca7edd159dd2ec085fe99d082cda023c0",
+          "id": "source-declaration:71",
+          "invocation_sha256": "79d44d387409aa3bf18e96437c379fbd31aa648dbdec634ca0d24604347a4046",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 674,
+            "registration": "add_blender_test(\n    physics_particle_system\n    ${TEST_SRC_DIR}/physics/physics_particle_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_system.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 71,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "d421b6289aa1d65a140b6d2cc138e637adbc2cb620ea28532b6fdaf367ac8224",
+          "id": "source-declaration:72",
+          "invocation_sha256": "74cd1b38020573d11ee2522ba39826cdf168680da21efcf75b0d2b9f514be3a7",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 682,
+            "registration": "add_blender_test(\n    physics_particle_instance\n    ${TEST_SRC_DIR}/physics/physics_particle_instance.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_instance.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 72,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "904cf9b437b1b5864f7b164297a7f5d8116eb4ad8efd3b20254524e7f263c791",
+          "id": "source-declaration:73",
+          "invocation_sha256": "6fab6096737279a8b89cf20883fc110a5b5816469fab938a516e32f5d03b4dfd",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 607,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 690,
+            "registration": "add_blender_test(\n    constraints\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_constraints.py\n    --\n    --testdir \"${TEST_SRC_DIR}/constraints\"\n  )",
+            "source_declaration_index": 73,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "1a6d75ea558f55518cfc65844c673d27ac29f4fb6b48d5f9d4130a4e7145eb71",
+          "id": "source-declaration:74",
+          "invocation_sha256": "181bcf539a9443749dbc04f277df9e0108e572d45ca931fe054b0e973c3af0fb",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 702,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 703,
+            "registration": "add_blender_test(\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  )",
+            "source_declaration_index": 74,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f0b2e950fa73c99ec49a3edab282eb63612be56b126ecb948920822482bbb6c6",
+          "id": "source-declaration:75",
+          "invocation_sha256": "88f0d7dbb7e0ac3104233123d937bea987150d563dd61f4775915dca5e2a0dee",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": null,
+            "line": 716,
+            "registration": "add_blender_test(\n  bl_animation_armature\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_armature.py\n  --\n  --testdir \"${TEST_SRC_DIR}/animation\"\n)",
+            "source_declaration_index": 75,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:76",
+          "invocation_sha256": "da9f30de2d62a3fc0ebeed5e409f78ec57e990cf15482ff32dcad28c3cbb877d",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_animation_bake",
+            "line": 723,
+            "registration": "add_blender_test(\n  bl_animation_bake\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_bake.py\n)",
+            "source_declaration_index": 76,
+            "upstream_path": "tests/python/bl_animation_bake.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:77",
+          "invocation_sha256": "9e4ca628e026708c6a6e3343a31561d31a1ccfbdd5b18d29b83171e089b7c0c6",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_animation_rename",
+            "line": 728,
+            "registration": "add_blender_test(\n  bl_animation_rename\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_rename.py\n)",
+            "source_declaration_index": 77,
+            "upstream_path": "tests/python/bl_animation_rename.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:78",
+          "invocation_sha256": "104eb582dc018d4d66bcc09f054671d638a065979e7d7eec1a0d9df64305b15b",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_animation_nla_strip",
+            "line": 733,
+            "registration": "add_blender_test(\n  bl_animation_nla_strip\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_nla_strip.py\n)",
+            "source_declaration_index": 78,
+            "upstream_path": "tests/python/bl_animation_nla_strip.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:79",
+          "invocation_sha256": "c7d397d28d67c335701bce26fbd00c0dd530cc80978a18514a5d34f38c01b997",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_animation_pose_slide",
+            "line": 738,
+            "registration": "add_blender_test(\n  bl_animation_pose_slide\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_pose_slide.py\n)",
+            "source_declaration_index": 79,
+            "upstream_path": "tests/python/bl_animation_pose_slide.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "490b183e528421a23dbefcd84b6fb23f08bebb6d84bc2adc0ab88f6f3f23c146",
+          "id": "source-declaration:80",
+          "invocation_sha256": "8f644dc1ed934b2c753c69a8c874dc717bdc4ceb9d4dbd5de51757fed385fa9a",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 744,
+            "registration": "add_blender_test(\n    bl_animation_drivers\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_drivers.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 80,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "9795c7d7103b2aa26b82f9c5b645b678f775d558acdaefb6e5e57c58ed98a432",
+          "id": "source-declaration:81",
+          "invocation_sha256": "99cd8c9d9778f846291e168aa0d55108d4e7ce19873d88e880e6c094e3376639",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 751,
+            "registration": "add_blender_test(\n    bl_animation_shapekey\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_shapekey.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 81,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "da07e6a74be31266aea919376db7d4861257f21c135e77dbe0cb12db886adfe1",
+          "id": "source-declaration:82",
+          "invocation_sha256": "110cfc915cf68b77bb2305ddfecd9efe17e34558c673ec78d989ca77dbbbaa6a",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 758,
+            "registration": "add_blender_test(\n    bl_animation_fcurves\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_fcurves.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 82,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "513b2880b95f1dfb43ee6a0f9a6b6a381cda105cfae580eb01087282c542fd84",
+          "id": "source-declaration:83",
+          "invocation_sha256": "e689dc69204d4f9ff0115ae9a144165570dbba2097cbe193bb04885bdfb455a3",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 765,
+            "registration": "add_blender_test(\n    bl_animation_action\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_action.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n    --output-dir \"${TEST_OUT_DIR}/bl_animation_action\"\n  )",
+            "source_declaration_index": 83,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "4d64581ea97203a65dfde3d1e087225ea6f005516200f6a4560bcdfdd6a73d51",
+          "id": "source-declaration:84",
+          "invocation_sha256": "b733e4a32841a57d2068303a42b6335df8531e3342c6a5ce488daeade1544765",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 773,
+            "registration": "add_blender_test(\n    bl_animation_keyframing\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_keyframing.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 84,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "b0bb61bba93696cbbaa5706ae7698e84bcde952c3f097e0bc9ac7b5786cb410c",
+          "id": "source-declaration:85",
+          "invocation_sha256": "2a6a42f9368c02fc0ff75c97ba774c10e24846f8398af7a126d1821e1c3d7ec7",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 780,
+            "registration": "add_blender_test(\n    bl_animation_motion_path\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_motion_path.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 85,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f2d059b77200180c0227a95f13add4c029ad8acdd2f9218036ac931f920c1af3",
+          "id": "source-declaration:86",
+          "invocation_sha256": "39821f16178af188b0a15b1b2c49553fce2299c546cad9f37feff41eceb35fd0",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 787,
+            "registration": "add_blender_test(\n    bl_pose_assets\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pose_assets.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 86,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "6f317b3d5a43df716adf88a254ecd9e46ed6c6e90780023e38b42edd41db3f0f",
+          "id": "source-declaration:87",
+          "invocation_sha256": "46312ad72e83187fa13d68e5941f7aac70816a2ce4c290453a6e065adb14c462",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 794,
+            "registration": "add_blender_test(\n    bl_rigging_symmetrize\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_rigging_symmetrize.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 87,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "28951c311adde31a0fb6966bfc2b27a9a17aac4adcec2b4a9136f35180ef04a5",
+          "id": "source-declaration:88",
+          "invocation_sha256": "9c3d472c59a63c5caca6a417cde847118ed429eb7fc7308db9dd7024b40bb389",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 743,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 801,
+            "registration": "add_blender_test(\n    vertex_group_painting\n    --python ${CMAKE_CURRENT_LIST_DIR}/vertex_group_painting.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+            "source_declaration_index": 88,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:89",
+          "invocation_sha256": "28136432dbde9fa4632ed601efa707bdd0946f5725d5aaa65b73f8519c5de310",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "bl_brush",
+            "line": 811,
+            "registration": "add_blender_test(\n  bl_brush\n  --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_asset_test.py\n)",
+            "source_declaration_index": 89,
+            "upstream_path": "tests/python/sculpt_paint/brush_asset_test.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "69fda9d69f5447daa386d87791af6d769ab60aff7dbcc030b76ea6910c169c81",
+          "id": "source-declaration:90",
+          "invocation_sha256": "b2efa4a30091b712ea36dc74ca7ef793087614d73a77def40a5540713895b0ee",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 820,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 821,
+            "registration": "add_blender_test(\n    bl_node_structure_type_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_structure_type_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+            "source_declaration_index": 90,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "0c74f49c8cf75e72548679413c642f5a546c3a7ba924cc4ffc26e5535441c975",
+          "id": "source-declaration:91",
+          "invocation_sha256": "3d74d677854afe0dcc25ae370f47daf4d76ac4cb7bee168dcb14a89543dafe78",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 820,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 828,
+            "registration": "add_blender_test(\n    bl_node_socket_usage_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_socket_usage_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+            "source_declaration_index": 91,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f65d996512aff5d40cac5d685fd5e74fc73eb43e636a8e53964d7907891bb7d2",
+          "id": "source-declaration:92",
+          "invocation_sha256": "8e9483172a4a05e893d85b3709ba95016538a7a5455a51a5066f96f127fad59e",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 820,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 835,
+            "registration": "add_blender_test(\n    bl_node_group_compat\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_compat.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+            "source_declaration_index": 92,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "bfa51705cc134487df466f53326dbb7f26948092bae123156c552870ecb2aa5a",
+          "id": "source-declaration:93",
+          "invocation_sha256": "a9621c29e9f9d463a94c3347c6ce75419bfbece77ba16928551ee2f11e081c87",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 820,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 842,
+            "registration": "add_blender_test(\n    bl_node_group_interface\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_interface.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+            "source_declaration_index": 93,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "3ddbbb09ea7ba9e02013280186f6e85e6b95336bcb5ba8868a81ffe674aec350",
+          "id": "source-declaration:94",
+          "invocation_sha256": "49a7287f08019bb32e8c06dc55407b292427a54a3f60751418ffc93d54220eb2",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 820,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 849,
+            "registration": "add_blender_test(\n    bl_node_copy_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_copy_operators.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+            "source_declaration_index": 94,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "57e336fbcfaa8e98d103573e762076bb7f2a5099a06405ed5b0c3c3a2d41f933",
+          "id": "source-declaration:95",
+          "invocation_sha256": "5d523fa921a052a4468fb8fa825e71f1963a344bcace580b68b7668a9562e388",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 820,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 856,
+            "registration": "add_blender_test(\n    bl_node_link_drag\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_link_drag.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+            "source_declaration_index": 95,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "aa369f7e0f4a75095215162dc9e901c9b38f8a8341aeef0e98e3f8b5648dc6ea",
+          "id": "source-declaration:96",
+          "invocation_sha256": "55fabe772b3cd61c7f401f32d2a40ea784b045d999605f02590ca76dbece3251",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1093,
+                "opener": "if(WITH_CYCLES AND WITH_CYCLES_OSL)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1094,
+            "registration": "add_blender_test(\n    cycles_osl_compile_test\n    --python ${CMAKE_CURRENT_LIST_DIR}/cycles_osl_compile_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/render\"\n  )",
+            "source_declaration_index": 96,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "bafc01c9c4d8526b6e7e94f6a30c58a2b2f394b665e0c2bc449140055b59c28b",
+          "id": "source-declaration:97",
+          "invocation_sha256": "e1fe62e7ae5ad4480b222ca1e8194c3c1038bec809a56c60f1e4ccb5b1df433c",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1106,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1134,
+            "registration": "add_blender_test(\n    compositor_cpu_file_output\n    --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n    --\n    --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n    --outdir \"${TEST_OUT_DIR}/compositor_cpu/file_output\"\n    --device \"CPU\"\n  )",
+            "source_declaration_index": 97,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "fedfd83221b16cf59f70542d4d789a86590c3dfcbb366597a2346678390ec0a4",
+          "id": "source-declaration:98",
+          "invocation_sha256": "c707283aa53f0073614675f0a618dad3185769b5c7a25327feb3309c591ac19a",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1144,
+                "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 1163,
+                "opener": "if(WITH_OPENGL_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1173,
+            "registration": "add_blender_test(\n      compositor_opengl_file_output\n      --gpu-backend opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_opengl/file_output\"\n      --device \"GPU\"\n    )",
+            "source_declaration_index": 98,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "52e545a14cd046654e5bd487617ccd159c2a4c31932640713eb9a689d880a4d2",
+          "id": "source-declaration:99",
+          "invocation_sha256": "783721e75d6ff198f0394fc71d4c3b59803d4694592e40a564dc1bcc9e5762aa",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1144,
+                "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 1183,
+                "opener": "if(WITH_METAL_BACKEND)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1193,
+            "registration": "add_blender_test(\n      compositor_metal_file_output\n      --gpu-backend metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_metal/file_output\"\n      --device \"GPU\"\n    )",
+            "source_declaration_index": 99,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "b1cbac9b334c094c5758da8e5151332ab63a6c072f72d34c82468ead175629a2",
+          "id": "source-declaration:100",
+          "invocation_sha256": "831876b69355162edc241fe7f85a0a2152fd9fa7e37eecf84c58dc3ec027f90a",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1144,
+                "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 1203,
+                "opener": "if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1213,
+            "registration": "add_blender_test(\n      compositor_vulkan_file_output\n      --gpu-backend vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_vulkan/file_output\"\n      --device \"GPU\"\n    )",
+            "source_declaration_index": 100,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "original-invocation",
+          "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+          "id": "source-declaration:101",
+          "invocation_sha256": "a344a5fa88fa8125043c78b707fcbe3a6a16edc0ed704f866bde34557a66a040",
+          "source_declaration": {
+            "context": [],
+            "ctest_name": "compositing_node_group",
+            "line": 1225,
+            "registration": "add_blender_test(\n  compositing_node_group\n  --python ${CMAKE_CURRENT_LIST_DIR}/compositing_node_group.py\n)",
+            "source_declaration_index": 101,
+            "upstream_path": "tests/python/compositing_node_group.py"
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f86a0bff1cb72764b9dde6aa40cb1cac0bbfecdbe7cdb3b9bec70347267cee7a",
+          "id": "source-declaration:102",
+          "invocation_sha256": "5432e6e2a39e8718dfeaac4ef223401eb5b6d6ec50c48c584c51c10a5adb206f",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1234,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 1274,
+                "opener": "foreach(geo_node_test ${geo_node_tests})"
+              },
+              {
+                "line": 1276,
+                "opener": "foreach(file ${files})"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1278,
+            "registration": "add_blender_test(\n        geo_node_${geo_node_test}_${filename}\n        ${file}\n        --python ${TEST_PYTHON_DIR}/geo_node_test.py\n      )",
+            "source_declaration_index": 102,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "569354baee70f924f6f95be56b32757d167f2ed5c420cc7d98a5f1ecf9c31584",
+          "id": "source-declaration:103",
+          "invocation_sha256": "3ae99e4c01a92b8fd8095e29f191f3d25fc50a7da7f5f04fcaca9b6968348caa",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1234,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              },
+              {
+                "line": 1287,
+                "opener": "foreach(file ${files})"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1289,
+            "registration": "add_blender_test(\n      geo_node_simulation_test_${filename}\n      ${file}\n      --python ${TEST_PYTHON_DIR}/geo_node_sim_test.py\n    )",
+            "source_declaration_index": 103,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "56ffc8331b3a11c0135208421249195006e004dac5dbad36806df9f59fab0cc0",
+          "id": "source-declaration:104",
+          "invocation_sha256": "927f29221bdd691422d0e01a68099e5b5516813e8dd5bdddf0e3c851612e61c9",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1328,
+                "opener": "if(WITH_ALEMBIC AND TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1344,
+            "registration": "add_blender_test(\n    script_alembic_io\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_alembic_io_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/alembic\"\n    --outdir \"${TEST_OUT_DIR}/io_alembic\"\n  )",
+            "source_declaration_index": 104,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "8079656317b06ffe6d0d20dae7771e12abecb52d32afbb2343556737d51406f1",
+          "id": "source-declaration:105",
+          "invocation_sha256": "b018afc187e52fb52fccc7ab834e9b1a9e122c762aee5426194b933a55979351",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1353,
+                "opener": "if(WITH_USD AND TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1354,
+            "registration": "add_blender_test(\n    io_usd_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n  )",
+            "source_declaration_index": 105,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "f1a79e2e773fb11415f632dee7a8f365258a0b5f3254efb28d6bb7e2bff46318",
+          "id": "source-declaration:106",
+          "invocation_sha256": "dc99225bd83b4c1a4cd3f80447762ee584a358c2526a38c1c45a806d88af2b90",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1353,
+                "opener": "if(WITH_USD AND TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1360,
+            "registration": "add_blender_test(\n    io_usd_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n    --outdir \"${TEST_OUT_DIR}/io_usd\"\n  )",
+            "source_declaration_index": 106,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "484aceea605a9a8bb00846a476f99980a11253ced03f668a5b0dc91ec274ff44",
+          "id": "source-declaration:107",
+          "invocation_sha256": "06c1e64fa16a21715fd8bf3b0c85f0db282bbd04d393e916d73cfde7b294aa59",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1369,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1370,
+            "registration": "add_blender_test_allow_error(\n    io_fbx_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_fbx_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/fbx\"\n    --outdir \"${TEST_OUT_DIR}/io_fbx\"\n  )",
+            "source_declaration_index": 107,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "fa7af8cab5884b944166baaecdc666b204b987256842531206db6afcc59415f4",
+          "id": "source-declaration:108",
+          "invocation_sha256": "def46bdadc428213bba69f4e4352e8df8842f838633f1f2c0fd3553250815029",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1379,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1380,
+            "registration": "add_blender_test_allow_error(\n    io_gltf_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/import\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_import\"\n  )",
+            "source_declaration_index": 108,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "d0453ebead591716aa1ef1e436aff57f4cd5b7285982ff41f277e1d5eedf7597",
+          "id": "source-declaration:109",
+          "invocation_sha256": "dc0fed0c2032747e78edc873a743dcd5fd1a6d3ecb80c0938f76c64fbef508cc",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1389,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1390,
+            "registration": "add_blender_test_allow_error(\n    io_gltf_roundtrip\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_roundtrip_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/roundtrip\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_roundtrip\"\n  )",
+            "source_declaration_index": 109,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "2ad312606dd9f9df7e2a60de1812157d2df611f0cb0d3421bf971822c889de90",
+          "id": "source-declaration:110",
+          "invocation_sha256": "706f2eb410b75fff23fc5a7d4ca2b5bad26ce9c43aa474d7e590b6f1a8e42d1e",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1399,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1400,
+            "registration": "add_blender_test_allow_error(\n    io_gltf_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/export\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_export\"\n  )",
+            "source_declaration_index": 110,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "5b29d46737d7c632f6007b6f38b591064b89c3e04630910c2283e70cc55762bd",
+          "id": "source-declaration:111",
+          "invocation_sha256": "ff31db36b8790c1191b002826791be385b2ae9c8cb6d1648eb645f0baf50d8f4",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1409,
+                "opener": "if(WITH_IO_WAVEFRONT_OBJ AND TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1410,
+            "registration": "add_blender_test_allow_error(\n    io_obj_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_obj_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/obj\"\n    --outdir \"${TEST_OUT_DIR}/io_obj\"\n  )",
+            "source_declaration_index": 111,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "d773d3fea0be4f1b2f2cd14ec9aa3ce0214bcb5aa5d5e8eee0a8b403cbbc4bfc",
+          "id": "source-declaration:112",
+          "invocation_sha256": "4d100505ca16e903380044d3eca5ade8157431d7861fbc67d4a75382ccc1f8ec",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1419,
+                "opener": "if(WITH_IO_PLY AND TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1420,
+            "registration": "add_blender_test_allow_error(\n    io_ply_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_ply_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/ply\"\n    --outdir \"${TEST_OUT_DIR}/io_ply\"\n  )",
+            "source_declaration_index": 112,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "eb642df2404711d15775750394153f9fa5ac8e8b3505853a7e55a8c9b984083a",
+          "id": "source-declaration:113",
+          "invocation_sha256": "0dc4ff1d292ff6bdcec48620824701c31ea0311e7e1a80ea5158c5212c8598b1",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1429,
+                "opener": "if(WITH_IO_STL AND TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1430,
+            "registration": "add_blender_test_allow_error(\n    io_stl_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_stl_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/stl\"\n    --outdir \"${TEST_OUT_DIR}/io_stl\"\n  )",
+            "source_declaration_index": 113,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "abde8561e9e755217e2147f168cde2ebd1873ed8da60135845ca16f70a49de28",
+          "id": "source-declaration:114",
+          "invocation_sha256": "7b3f51101b8b98b006c04a2194cfcad9e78a9d3f9bb2142a640e888eb8f93a06",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1448,
+                "opener": "if(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1460,
+            "registration": "add_blender_test(\n    imbuf_save\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_save.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/save\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )",
+            "source_declaration_index": 114,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "8f7a13fec1d989f3f2eb01800f857753b4b25ffff20bef3d37cb9b6ab9d8e0c7",
+          "id": "source-declaration:115",
+          "invocation_sha256": "5a128244ed0be93f0584206abb4524afdb87f42f3ba6dcda9842c73e532cca43",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1448,
+                "opener": "if(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1470,
+            "registration": "add_blender_test_allow_error(\n    imbuf_load\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_load.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/load\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )",
+            "source_declaration_index": 115,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "c7dcd5ea82f748941bf295d9277f2637aa47994bc11c9267edfb000e86280fd3",
+          "id": "source-declaration:116",
+          "invocation_sha256": "b1f4844b2feed15d19c45bedb4752f6cee49f2c4224a7fcb16fed3f77a1505c9",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1485,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1522,
+            "registration": "add_blender_test(\n    sequencer_input_colorspace\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_input_colorspace.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sequence_editing\"\n  )",
+            "source_declaration_index": 116,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "c731ff34cb693441d55c94e6afb702b48f1b2ef443b054fc5ee0bcd7539031b6",
+          "id": "source-declaration:117",
+          "invocation_sha256": "1686917fc55cc952061e4f861087877426547e1818890015dcc30071c0f1a810",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1485,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1529,
+            "registration": "add_blender_test(\n    sequencer_strip_naming\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_strip_naming.py\n  )",
+            "source_declaration_index": 117,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "1b73785598e4abc0f9cc020f31ca25610fba1229f1e4eac9806a9dd080a178f1",
+          "id": "source-declaration:118",
+          "invocation_sha256": "4dd2f81def9790fe17bdd05bef7a6fcd6e1750f4caac183574ffc87d99b93246",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1485,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1534,
+            "registration": "add_blender_test(\n    sequencer_load_meta_stack\n    ${TEST_SRC_DIR}/sequence_editing/vse_load_meta_stack.blend\n    --python ${TEST_PYTHON_DIR}/sequencer_load_meta_stack.py\n  )",
+            "source_declaration_index": 118,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "830ca21534f40d411472f0b3902031459390b4784cdff1f41e6d54692a5a50b9",
+          "id": "source-declaration:119",
+          "invocation_sha256": "fe414d17a7560e62f5c13974df5908878f550dec8af52c4be4eeb587e105c8dd",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1582,
+            "registration": "add_blender_test(\n    bl_voxel_remesh\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_test.py\n  )",
+            "source_declaration_index": 119,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "c17e71b227f81fca28bd65d49c8e81b1b5ecfdaf72af46f8291b6939c0f21e1e",
+          "id": "source-declaration:120",
+          "invocation_sha256": "a548b758aecf48f74f38fe7a73363e79d17e840ddd3e60516ae0127cd91cc7d6",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1587,
+            "registration": "add_blender_test(\n    bl_voxel_remesh_compare\n    ${TEST_SRC_DIR}/sculpting/voxel_remesh_compare.blend\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_compare_test.py\n  )",
+            "source_declaration_index": 120,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "3aee9b221bbb7197e279f9f5a2769f18ed3caab7af97437fa99b0781395939ac",
+          "id": "source-declaration:121",
+          "invocation_sha256": "1bb9955f0851725835face891ae2f2bfa891920f4fef882b12eea87194aceb89",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1593,
+            "registration": "add_blender_test(\n    bl_sculpt_mask\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+            "source_declaration_index": 121,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "1e18f9dcf79204dfe72e0107098c2088ff6712d445f34c6ab916ffa7bf5f4422",
+          "id": "source-declaration:122",
+          "invocation_sha256": "64762bb7d65705480e6d7e76f39e99cc57bb5c9299fe98d7d2c3ee5106350be5",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1600,
+            "registration": "add_blender_test(\n    bl_sculpt_face_set\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/face_set_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+            "source_declaration_index": 122,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "435281c36fc97cb4482e40da993ca8681ac1957e4e3796175820085e45e5e361",
+          "id": "source-declaration:123",
+          "invocation_sha256": "0fbe899237cc956e0bf4d994bf9dfa609f6c8ad174a920f18b9e363a14e5a996",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1607,
+            "registration": "add_blender_test(\n    bl_multires\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/multires_operators_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+            "source_declaration_index": 123,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "702a16f280bac13250d17a094280b0aab848f25abacd13c04e13721a2867c6ba",
+          "id": "source-declaration:124",
+          "invocation_sha256": "b45f326205e27421b79de63d478a00578d9453f210958e25b3a8de945b3f4a98",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1614,
+            "registration": "add_blender_test(\n    bl_sculpt_mesh_filter\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mesh_filter_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+            "source_declaration_index": 124,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "d217fa71831f661260a662070d22583924f23377b1c851c09dfb4d5778c4d41d",
+          "id": "source-declaration:125",
+          "invocation_sha256": "e06477f03d22778ff11f6931d93fa809c121cb22f9293078e9b4f2569eca45a2",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1621,
+            "registration": "add_blender_test(\n    bl_sculpt_automasking\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/automask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+            "source_declaration_index": 125,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "7bd9376c1ec9a89b3205a23dd57a507539ba305dd9e2a48f2fdd2a56ad095630",
+          "id": "source-declaration:126",
+          "invocation_sha256": "894b46cbf18ca62f8a0363e0b756c8d5f4cd808f88efc13eb8929d022c622ba2",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1628,
+            "registration": "add_blender_test(\n    bl_sculpt_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/sculpt_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+            "source_declaration_index": 126,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "3ba35fb70af4c4936d863f36bcbc9693cb95ccec10e5e14047b092a1f3645497",
+          "id": "source-declaration:127",
+          "invocation_sha256": "c086a06525f9717e757beae174b4fbc75760c27ad6dfc743214abc81d548bd74",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1635,
+            "registration": "add_blender_test(\n    bl_vertex_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/vertex_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+            "source_declaration_index": 127,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "536bc2a65a340582a1d5ca1ba7046312d62855ffca16aa539ce30f866f50608f",
+          "id": "source-declaration:128",
+          "invocation_sha256": "7144adb954a9f339dc4f9986b62914827a4ede0e9646f7e5e403dafca9a38476",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1642,
+            "registration": "add_blender_test(\n    bl_weight_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/weight_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+            "source_declaration_index": 128,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "7acd8717424020fcfdaad1304ee45af0060fb77740728d15a116ad254b844363",
+          "id": "source-declaration:129",
+          "invocation_sha256": "3e0d20ebcd0d77053514337033c06a0966ebab67408782f89f787362af903792",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1649,
+            "registration": "add_blender_test(\n    bl_texture_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/texture_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+            "source_declaration_index": 129,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "91bd6c78ddfe9325bd6ce2b8f69bb25f71831bc488e1cf8824287a48ca2d5180",
+          "id": "source-declaration:130",
+          "invocation_sha256": "6f1026f7ae347a080c758860923f4abbc1429a4bccfe736b1163fd76b01c681b",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1581,
+                "opener": "if(TEST_SRC_DIR_EXISTS)"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1656,
+            "registration": "add_blender_test(\n    bl_sculpt_brush_curve_presets\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_strength_curves_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+            "source_declaration_index": 130,
+            "upstream_path": null
+          }
+        },
+        {
+          "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+          "criteria_kind": "unresolved-source-obligation",
+          "fixture_manifest_sha256": "801f216175311afb2687cf7200f8168b84f3b219c13541ac18ee2ef6b8afba7a",
+          "id": "source-declaration:131",
+          "invocation_sha256": "0a13be5d17f50360b9af54ca79aeb187758e9ef7b63156009a03665bbb606f4c",
+          "source_declaration": {
+            "context": [
+              {
+                "line": 1684,
+                "opener": "if(WITH_UI_TESTS)"
+              },
+              {
+                "line": 1733,
+                "opener": "foreach(ui_test ${_ui_tests})"
+              }
+            ],
+            "ctest_name": null,
+            "line": 1734,
+            "registration": "add_blender_test_ui(\n      \"${ui_test}\"\n      --enable-event-simulate\n      --python \"${CMAKE_CURRENT_LIST_DIR}/ui_simulate/run_blender_setup.py\"\n      --\n      --tests \"${ui_test}\"\n    )",
+            "source_declaration_index": 131,
+            "upstream_path": null
+          }
+        }
+      ]
+    }
+  ],
+  "context_evidence": [
+    {
+      "bytes": 64011,
+      "path": "raw/026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773.txt",
+      "sha256": "026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773"
+    },
+    {
+      "bytes": 1976,
+      "path": "raw/2f6a8989becb6aaad68555b8c28e882417f7a9223024063091f95c79ff507fc7.json",
+      "sha256": "2f6a8989becb6aaad68555b8c28e882417f7a9223024063091f95c79ff507fc7"
+    },
+    {
+      "bytes": 2902,
+      "path": "raw/56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae.json",
+      "sha256": "56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae"
+    },
+    {
+      "bytes": 165401,
+      "path": "raw/5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3.json",
+      "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+    },
+    {
+      "bytes": 200,
+      "path": "raw/8ba6a788711185d77b0b14ed0ae26594a5dac871cd2354588f0fa2733d19f238.log",
+      "sha256": "8ba6a788711185d77b0b14ed0ae26594a5dac871cd2354588f0fa2733d19f238"
+    },
+    {
+      "bytes": 4956,
+      "path": "raw/8d2f79ef00aeb4314466226b04041d37d2f41c0ddddc30131e9d3034ee6e02da.json",
+      "sha256": "8d2f79ef00aeb4314466226b04041d37d2f41c0ddddc30131e9d3034ee6e02da"
+    },
+    {
+      "bytes": 1217,
+      "path": "raw/d652bf41a372623fbeee273c3ea3abc826cf0a7a6ef34d02576f8df434b05255.py",
+      "sha256": "d652bf41a372623fbeee273c3ea3abc826cf0a7a6ef34d02576f8df434b05255"
+    },
+    {
+      "bytes": 1462,
+      "path": "raw/ef34a5dec642a748666d5c2c9f0f22e4c8b8ce8c8f44ec7a8a4fbe8cc73cfac3.txt",
+      "sha256": "ef34a5dec642a748666d5c2c9f0f22e4c8b8ce8c8f44ec7a8a4fbe8cc73cfac3"
+    }
+  ],
+  "coverage": {
+    "blockers": [
+      "Source declarations are not a configured CTest inventory or an all-Blender leaf denominator.",
+      "Only this artifact pair and selected original background unittest invocations are measured.",
+      "The native release has measured build options, not a recovered full CMake configuration matrix.",
+      "Fixture and host-service closure remains unproved for unresolved declarations.",
+      "A local software Chromium profile does not qualify hardware browsers, deployment, UI, or Blender 5.4."
+    ],
+    "configuration_matrix_complete": false,
+    "fixture_closure_complete": false,
+    "source_registration_reconciliation_complete": false
+  },
+  "input_evidence": [
+    {
+      "bytes": 88447,
+      "path": "raw/25bc5c5e790461d0c56b64e039fe1e4b1663e2ea120c7bbe8f1ec3efb627a0ef.json",
+      "sha256": "25bc5c5e790461d0c56b64e039fe1e4b1663e2ea120c7bbe8f1ec3efb627a0ef"
+    },
+    {
+      "bytes": 54334,
+      "path": "raw/3b13bb54265b121d2b390259d0b4fd0a2a8db25674743462be84078129a9b4c2.json",
+      "sha256": "3b13bb54265b121d2b390259d0b4fd0a2a8db25674743462be84078129a9b4c2"
+    },
+    {
+      "bytes": 5486,
+      "path": "raw/9bdd9f03d1910499eee59d7c010ebde7be076e98ba55626d427e2ac3b9462932.json",
+      "sha256": "9bdd9f03d1910499eee59d7c010ebde7be076e98ba55626d427e2ac3b9462932"
+    },
+    {
+      "bytes": 141450,
+      "path": "raw/b31e9cdaa8230877deadb0e4c09ea0976e4502dfddffa0a5d4a9486b8a360362.json",
+      "sha256": "b31e9cdaa8230877deadb0e4c09ea0976e4502dfddffa0a5d4a9486b8a360362"
+    }
+  ],
+  "normalization_adapter": {
+    "files": [
+      {
+        "bytes": 57286,
+        "path": "normalizer/reconcile_unittest_matrix.py",
+        "sha256": "6991b7cecd6630cc74faf5dd605fa4d17d29ebf5f8aab8daa7c6e89638a0c2ac"
+      },
+      {
+        "bytes": 24508,
+        "path": "normalizer/test_parity_ledger.py",
+        "sha256": "c247fbff7210efdd7327651fd81908a06e8f2747cf8ff3c299a2c462487c24eb"
+      },
+      {
+        "bytes": 26497,
+        "path": "normalizer/unittest_cohort.py",
+        "sha256": "1d94c2e079c611d188f795c452fc52d777a9abdbce603626aa02975d4c9c0270"
+      },
+      {
+        "bytes": 5399,
+        "path": "normalizer/upstream_resources.py",
+        "sha256": "dbf171e22447fbc069af3dea02a333b22134972d27baa2b79bf9a51c0e0fa8c0"
+      },
+      {
+        "bytes": 14844,
+        "path": "normalizer/probe_blender_fixtures.py",
+        "sha256": "b8f7e2939ffa95481c42b3468831fa61c2127d76dd4c0cf066cd8a6ba0afa138"
+      },
+      {
+        "bytes": 6005,
+        "path": "normalizer/upstream_invocations.py",
+        "sha256": "99404347b9a863c8a58ece0e6815199b386e161f5a0dcaeae30c9add2ceece6d"
+      },
+      {
+        "bytes": 140627,
+        "path": "normalizer/upstream_invocations_5_2.json",
+        "sha256": "c326f9a99e665b15901dda134afd0c074c5c150441ed2971d977ce134a1fe7f2"
+      }
+    ],
+    "meaning": "Versioned evidence normalization program; not an independent execution-adapter verification.",
+    "policy": {
+      "acceptance": "Original source assertions, thresholds and complete script arguments are unchanged.",
+      "case_identity": "upstream_path::unittest_id; remove only the __main__. module prefix",
+      "completion": "An original test callback is distinct from an independently observed whole-process exit.",
+      "expected_failure": "May establish outcome agreement; never a successful functional test.",
+      "failure_detail": "Replace only the observed temporary source_root prefix with {source_root}; preserve all other text.",
+      "name": "unchanged-upstream-unittest-outcomes-v1",
+      "schema": 1,
+      "subtest_identity": "Preserve the complete original parent ID and unittest sub-description."
+    }
+  },
+  "profiles": [
+    {
+      "contexts": {
+        "blender-5.2-original-main-artifact-pair": {
+          "adapter_sha256": "6991b7cecd6630cc74faf5dd605fa4d17d29ebf5f8aab8daa7c6e89638a0c2ac",
+          "artifact_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+          "build_config_sha256": "56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae",
+          "runtime_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27"
+        }
+      },
+      "id": "native-reference",
+      "role": "reference",
+      "runtime_kind": "native"
+    },
+    {
+      "contexts": {
+        "blender-5.2-original-main-artifact-pair": {
+          "adapter_sha256": "6991b7cecd6630cc74faf5dd605fa4d17d29ebf5f8aab8daa7c6e89638a0c2ac",
+          "artifact_sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991",
+          "build_config_sha256": "026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773",
+          "runtime_sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778"
+        }
+      },
+      "id": "chromium-software-webgpu",
+      "role": "candidate",
+      "runtime_kind": "browser"
+    }
+  ],
+  "schema": 1,
+  "scope": "bounded-source-plan-and-native-frozen-original-unittest-invocations",
+  "target": {
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "repository": "blender/blender"
+  }
+}

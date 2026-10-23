@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "scope": "host-assisted original Blender font image comparison only",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "native_frozen_image_cases": 207,
+  "captured_images": 207,
+  "host_idiff_passed": 207,
+  "host_idiff_image_mismatch": 0,
+  "host_idiff_errors": 0,
+  "original_browser_tests_passed": false,
+  "browser_subprocess_implemented": false,
+  "comparison_tolerances_modified": false,
+  "tests_modified": false,
+  "full_parity": false,
+  "invocations": [
+    {
+      "ctest_name": "script_pyapi_blf_buffer",
+      "oracle": {
+        "path": "script_pyapi_blf_buffer/font-image-oracle.json",
+        "bytes": 310653,
+        "sha256": "6b5c5781ce889df5e35a3bf6a2ae6e133720c3bd1efcfde7617978652d72cb18"
+      },
+      "counts": {
+        "native_image_cases": 80,
+        "captured_images": 80,
+        "captured_bytes": 529812,
+        "host_idiff_passed": 80,
+        "host_idiff_image_mismatch": 0,
+        "host_idiff_errors": 0
+      },
+      "idiff_exit_counts": {
+        "0": 80
+      },
+      "byte_identical_reference_pngs": 80,
+      "original_browser_tests_passed": false
+    },
+    {
+      "ctest_name": "script_pyapi_blf_vfont",
+      "oracle": {
+        "path": "script_pyapi_blf_vfont/font-image-oracle.json",
+        "bytes": 487536,
+        "sha256": "3e90f96329828c573d5be84f269d92493fc03b206c014cbf44c50cbdb25f686b"
+      },
+      "counts": {
+        "native_image_cases": 127,
+        "captured_images": 127,
+        "captured_bytes": 555007,
+        "host_idiff_passed": 127,
+        "host_idiff_image_mismatch": 0,
+        "host_idiff_errors": 0
+      },
+      "idiff_exit_counts": {
+        "1": 71,
+        "0": 56
+      },
+      "byte_identical_reference_pngs": 0,
+      "original_browser_tests_passed": false
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schema": 2,
+  "stage": "frozen",
+  "cohort_id": "script_pyapi_bpy_path-5.2",
+  "suite_kind": "unittest-main",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"
+  },
+  "execution": {
+    "entrypoint": "original __main__",
+    "process_isolation": "one-upstream-script",
+    "background": true,
+    "blender_args": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "script_args": [],
+    "ctest_name": "script_pyapi_bpy_path",
+    "cmake_sources": [
+      {
+        "upstream_path": "tests/CMakeLists.txt",
+        "bytes": 5871,
+        "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+      },
+      {
+        "upstream_path": "tests/python/CMakeLists.txt",
+        "bytes": 50161,
+        "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+      }
+    ],
+    "registration": "add_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)"
+  },
+  "suites": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_bpy_path.py",
+      "bytes": 1942,
+      "sha256": "cba0759c2584d9af68f2e44bf3d13e1d7a1795f1b066e18a7f13f543faa364bb",
+      "support_files": [],
+      "fixture_files": [],
+      "case_ids": [
+        "TestBpyPath.test_ensure_ext"
+      ],
+      "mandatory_case_ids": [
+        "TestBpyPath.test_ensure_ext"
+      ],
+      "expected_cases": 1
+    }
+  ],
+  "discovery_manifest_sha256": "087daad7231900ddab0352e28832bdd1c5bc512bdcaa5d05a4ebfe824ce535ba",
+  "expected_total_cases": 1,
+  "native_discovery": {
+    "path": "../../evidence/unittest-native-5.2-2026-10-23/script_pyapi_bpy_path/native_reference.json",
+    "sha256": "a9e773d147c5bbb6d1598b93ab2694be2b98acbd7f977feb7f7fad22cd985f13",
+    "bytes": 9072
+  }
+}

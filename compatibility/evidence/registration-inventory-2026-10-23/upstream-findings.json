@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "claim": "Registration semantics only; this is not a complete source or runtime test denominator.",
+  "sources": [
+    {
+      "repository": "blender/blender",
+      "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "path": "build_files/cmake/testing.cmake",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/testing.cmake",
+      "findings": [
+        {
+          "id": "fixture_tree_guard",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "repository": "blender/blender",
+      "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "path": "build_files/cmake/Modules/GTest.cmake",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/build_files/cmake/Modules/GTest.cmake",
+      "findings": [
+        {
+          "id": "suite_filter_aggregation",
+          "line": 393
+        },
+        {
+          "id": "runtime_discovery_removed",
+          "line": 408
+        }
+      ]
+    },
+    {
+      "repository": "blender/blender",
+      "commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+      "path": "extern/gtest/src/gtest.cc",
+      "url": "https://github.com/blender/blender/blob/94363991e7dcf39e2d70614aa002ab6f67764a5d/extern/gtest/src/gtest.cc",
+      "findings": [
+        {
+          "id": "disabled_pattern",
+          "line": 180
+        },
+        {
+          "id": "runtime_listing",
+          "line": 6220
+        },
+        {
+          "id": "annotation_truncation",
+          "line": 6222
+        }
+      ]
+    },
+    {
+      "repository": "blender/blender",
+      "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+      "path": "build_files/cmake/testing.cmake",
+      "url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/build_files/cmake/testing.cmake",
+      "findings": [
+        {
+          "id": "fixture_tree_guard",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "repository": "blender/blender",
+      "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+      "path": "build_files/cmake/Modules/GTest.cmake",
+      "url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/build_files/cmake/Modules/GTest.cmake",
+      "findings": [
+        {
+          "id": "suite_filter_aggregation",
+          "line": 393
+        },
+        {
+          "id": "runtime_discovery_removed",
+          "line": 408
+        }
+      ]
+    },
+    {
+      "repository": "blender/blender",
+      "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+      "path": "extern/gtest/src/gtest.cc",
+      "url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/extern/gtest/src/gtest.cc",
+      "findings": [
+        {
+          "id": "disabled_pattern",
+          "line": 180
+        },
+        {
+          "id": "runtime_listing",
+          "line": 6220
+        },
+        {
+          "id": "annotation_truncation",
+          "line": 6222
+        }
+      ]
+    }
+  ],
+  "official_format_references": [
+    "https://cmake.org/cmake/help/latest/manual/ctest.1.html#show-as-json-object-model",
+    "https://google.github.io/googletest/advanced.html#listing-test-names"
+  ]
+}

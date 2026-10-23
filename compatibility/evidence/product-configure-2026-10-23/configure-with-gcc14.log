@@ -1,0 +1,45 @@
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-gcc-14 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /workspace/scratch/d63596d831b2/runtime/gcc-14/root/usr/bin/x86_64-linux-gnu-g++-14 - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for malloc_stats
+-- Looking for malloc_stats - found
+-- Looking for feenableexcept
+-- Looking for feenableexcept - not found
+-- Looking for include file execinfo.h
+-- Looking for include file execinfo.h - found
+-- Found Git: /usr/local/bin/git (found version "2.51.1")
+-- Library directory "/workspace/scratch/d63596d831b2/runtime/upstream-product/blender-94363991e7dcf39e2d70614aa002ab6f67764a5d/lib/linux_x64" is empty or does not exist.
+CMake Error at build_files/cmake/platform/platform_unix.cmake:53 (message):
+  Unable to find LIBDIR: "".  WITH_LIBS_PRECOMPILED needs to be able to find
+  the LIBDIR for the precompiled libraries.
+Call Stack (most recent call first):
+  CMakeLists.txt:1594 (include)
+
+
+CMake Error at build_files/cmake/macros.cmake:1415 (message):
+  WITH_LIBS_PRECOMPILED disabled but required by WITH_CPU_CHECK
+Call Stack (most recent call first):
+  build_files/cmake/platform/platform_unix.cmake:74 (set_and_warn_dependency)
+  CMakeLists.txt:1594 (include)
+
+
+CMake Error at /workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):
+  Could NOT find JPEG (missing: JPEG_LIBRARY JPEG_INCLUDE_DIR)
+Call Stack (most recent call first):
+  /workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:654 (_FPHSA_FAILURE_MESSAGE)
+  /workspace/scratch/d63596d831b2/runtime/browser-python/lib/python3.12/site-packages/cmake/data/share/cmake-4.4/Modules/FindJPEG.cmake:139 (find_package_handle_standard_args)
+  build_files/cmake/platform/platform_unix.cmake:124 (find_package)
+  build_files/cmake/platform/platform_unix.cmake:138 (find_package_wrapper)
+  CMakeLists.txt:1594 (include)
+
+
+-- Configuring incomplete, errors occurred!

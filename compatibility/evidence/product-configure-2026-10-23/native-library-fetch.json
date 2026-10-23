@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "source_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "library_commit": "2b5fbb917a1bf7537cb25456fcb9064302d7e168",
+  "stages": [
+    {
+      "command": [
+        "git",
+        "init",
+        "--initial-branch=pinned-input",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64"
+      ],
+      "started_utc": "2026-10-23T13:24:56.289761+00:00",
+      "finished_utc": "2026-10-23T13:24:56.297339+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "native-library-0.log",
+        "bytes": 112,
+        "sha256": "453e3c910624f8753f0476e0ef7fa4435ce1720d42674a30cfb10aec68431728"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+        "remote",
+        "add",
+        "origin",
+        "https://projects.blender.org/blender/lib-linux_x64.git"
+      ],
+      "started_utc": "2026-10-23T13:24:56.297541+00:00",
+      "finished_utc": "2026-10-23T13:24:56.300585+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "native-library-1.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+        "fetch",
+        "--depth=1",
+        "origin",
+        "2b5fbb917a1bf7537cb25456fcb9064302d7e168"
+      ],
+      "started_utc": "2026-10-23T13:24:56.300736+00:00",
+      "finished_utc": "2026-10-23T13:25:04.079352+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "native-library-2.log",
+        "bytes": 132,
+        "sha256": "28254984b5baf3ae3979bcb3c5d0f19e4549a6b24efd7a8f67630f6a4f553c12"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "started_utc": "2026-10-23T13:25:04.079657+00:00",
+      "finished_utc": "2026-10-23T13:25:05.909714+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "native-library-3.log",
+        "bytes": 77,
+        "sha256": "3d243dc641dfae11240a8b9560f6ed45f666902500075151f4963349b429033b"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started_utc": "2026-10-23T13:25:05.909993+00:00",
+      "finished_utc": "2026-10-23T13:25:05.915401+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "native-library-4.log",
+        "bytes": 41,
+        "sha256": "1aac5dffb41af406b110657aad902b7f8b9af06a39d8b9df78a7fab36aabdb7f"
+      }
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/d63596d831b2/runtime/product-native-libs/linux_x64",
+        "lfs",
+        "ls-files",
+        "--json"
+      ],
+      "started_utc": "2026-10-23T13:25:05.915724+00:00",
+      "finished_utc": "2026-10-23T13:25:06.822080+00:00",
+      "returncode": 0,
+      "log": {
+        "path": "native-library-5.log",
+        "bytes": 204205,
+        "sha256": "083897ebd7d75342298b0996831c03e45d116e0383d258c4799ef6d8cc6a0e83"
+      }
+    }
+  ],
+  "tests_executed": 0,
+  "status": "source_and_pointers_fetched",
+  "lfs_objects": 716,
+  "declared_lfs_bytes": 2223963905
+}

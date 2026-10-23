@@ -64,8 +64,19 @@ def digest(path):
     return h.hexdigest()
 
 
-def load_suite_catalog(cohort="numeric"):
+def load_suite_catalog(cohort="numeric", manifest_path=None, manifest_sha256=None, *, allow_discovery=False):
     """Select an independently frozen native denominator, never browser discovery."""
+    if manifest_path is not None or manifest_sha256 is not None:
+        if cohort != "numeric" or manifest_path is None or manifest_sha256 is None:
+            raise Blocked("an external suite manifest requires its checksum and cannot be combined with a named cohort")
+        try:
+            try:
+                from .unittest_cohort import load_manifest
+            except ImportError:
+                from unittest_cohort import load_manifest
+            return load_manifest(manifest_path, manifest_sha256, allow_discovery=allow_discovery)
+        except ValueError as error:
+            raise Blocked(str(error)) from error
     if cohort == "numeric":
         counts = {"bl_pyapi_mathutils.py": 180, "bl_pyapi_bmesh.py": 12}
         return {"id": "numeric-5.2", "manifest_sha256": None, "expected_cases": 192, "suite_kind": "unittest",
@@ -123,7 +134,7 @@ def load_suite_catalog(cohort="numeric"):
             "extra_blender_args": ["--disable-autoexec"] if cohort == "liblink52" else []}
 
 
-def prepare_suites(local_paths, work, catalog, require_complete=False, fixture_root=None):
+def prepare_suites(local_paths, work, catalog, require_complete=False, fixture_root=None, resource_root=None):
     all_sources = [source for row in catalog["suites"] for source in (row, *row.get("support_files", []))]
     by_name = {PurePosixPath(row["upstream_path"]).name: row for row in all_sources}
     if len(by_name) != len(all_sources):
@@ -167,13 +178,30 @@ def prepare_suites(local_paths, work, catalog, require_complete=False, fixture_r
                 from probe_blender_fixtures import prepare_fixture_payloads
             row["_fixture_payloads"] = prepare_fixture_payloads(
                 source["fixture_files"], UPSTREAM_SHA, work / "fixtures", local_root=fixture_root)
+        if source.get("resource_files"):
+            try:
+                from .upstream_resources import prepare_resources
+            except ImportError:
+                from upstream_resources import prepare_resources
+            row["_resource_payloads"] = prepare_resources(source["resource_files"], UPSTREAM_SHA, work / "resources", resource_root)
         suites.append((row, data))
     return suites
 
 
 def suite_metadata(row):
     """Keep transported helper bytes out of the public source identity rows."""
-    return {key: value for key, value in row.items() if key not in ("_support_payloads", "_fixture_payloads")}
+    return {key: value for key, value in row.items() if key not in ("_support_payloads", "_fixture_payloads", "_resource_payloads")}
+
+
+def preserve_suite_resources(suites, destination):
+    payloads = [value for row, _ in suites for value in row.get("_resource_payloads", [])]
+    if not payloads:
+        return None
+    try:
+        from .upstream_resources import preserve_resources
+    except ImportError:
+        from upstream_resources import preserve_resources
+    return preserve_resources(payloads, destination)
 
 
 def preserve_suite_fixtures(suites, destination):
@@ -187,10 +215,12 @@ def preserve_suite_fixtures(suites, destination):
     return preserve_fixture_payloads(payloads, destination)
 
 
-def canonical_case_id(value):
+def canonical_case_id(value, source=None):
     """Normalize only the injected module prefix, preserving class and method."""
     if not isinstance(value, str) or "." not in value:
         raise RuntimeError("case ID has no runtime module prefix")
+    if source and source.get("case_id_normalization") == "original-main":
+        return value.removeprefix("__main__.")
     return value.split(".", 1)[1]
 
 
@@ -242,7 +272,7 @@ def validate_numeric_patchset(receipt):
     return expected
 
 
-def select_artifact_contract(args, report):
+def _select_base_artifact_contract(args, report):
     """Select the immutable release or an explicitly identified new source build.
 
     A build receipt supplies the expected digest for its new artifact. Checking
@@ -300,6 +330,37 @@ def select_artifact_contract(args, report):
             "label": "selected source-build receipt"}
 
 
+def select_artifact_contract(args, report):
+    """Keep a package augmentation distinct from its original source build."""
+    overlay_path = getattr(args, "package_overlay_receipt", None)
+    if overlay_path is not None and getattr(args, "source_build_receipt", None) is None:
+        raise Blocked("package overlay requires its unchanged base source-build receipt")
+    contract = _select_base_artifact_contract(args, report)
+    if overlay_path is None:
+        if getattr(args, "package_base_asset", None) is not None:
+            raise Blocked("package base asset requires an explicit package overlay receipt")
+        return contract
+    try:
+        try:
+            from .browser_package_overlay import verify_overlay_receipt
+        except ImportError:
+            from browser_package_overlay import verify_overlay_receipt
+        overlay = verify_overlay_receipt(
+            overlay_path, args.source_build_receipt,
+            base_archive=getattr(args, "package_base_asset", None), augmented_archive=args.asset)
+    except (OSError, ValueError, tarfile.TarError) as error:
+        raise Blocked("package overlay verification failed: " + str(error)) from error
+    artifact = overlay["artifact"]
+    report["package_overlay"] = overlay
+    report["candidate"]["kind"] = "blender-source-development-package-overlay"
+    report["candidate"]["package_overlay_id"] = overlay["overlay_id"]
+    report["source_build"]["base_artifact"] = overlay["base_artifact"]
+    report["artifact"] = {"url": None, "expected_sha256": artifact["sha256"], "expected_bytes": artifact["bytes"]}
+    report["scope"] = "selected original upstream tests on a separately identified augmented runtime package"
+    return {"url": None, "sha256": artifact["sha256"], "bytes": artifact["bytes"],
+            "label": "verified original-resource package overlay"}
+
+
 def adapter_profile(adapter):
     """Classify observed fallback/software evidence without certifying hardware."""
     if not adapter:
@@ -328,8 +389,6 @@ def decode_qualification_event(text, marker):
     if not text.startswith(marker):
         raise RuntimeError("qualification event has no matching marker")
     payload = text[len(marker):].lstrip()
-    if marker in payload:
-        raise RuntimeError("duplicate qualification result marker in one event")
     decoder = json.JSONDecoder()
     try:
         result, end = decoder.raw_decode(payload)
@@ -339,6 +398,8 @@ def decode_qualification_event(text, marker):
     if not isinstance(result, dict):
         raise RuntimeError("qualification result is not an object")
     suffix = payload[end:]
+    if marker in suffix:
+        raise RuntimeError("duplicate qualification result marker in one event")
     if suffix.strip():
         try:
             decoder.raw_decode(suffix.lstrip())
@@ -367,7 +428,7 @@ def validate_suite_execution(result, expected_sources):
             raise RuntimeError("suite ran zero tests or omitted/duplicated discovered tests")
         if "expected_cases" in expected and len(ids) != expected["expected_cases"]:
             raise RuntimeError("suite case count differs from the fixed native denominator: " + row["upstream_path"])
-        if "case_ids" in expected and {canonical_case_id(value) for value in ids} != set(expected["case_ids"]):
+        if "case_ids" in expected and {canonical_case_id(value, expected) for value in ids} != set(expected["case_ids"]):
             raise RuntimeError("suite cases differ from the fixed native case IDs: " + row["upstream_path"])
         if any(row[key] for key in ("failures", "errors", "skipped", "expected_failures", "unexpected_successes")):
             raise RuntimeError("upstream suite is not completely passing: " + row["upstream_path"])
@@ -401,7 +462,17 @@ def summarize_execution(result, expected_sources, browser_errors=()):
     if (any(source.get("required_background") is True for source in expected_sources) and
             result.get("execution_context", {}).get("background") is not True):
         blockers.append({"scope": "execution_context", "status": "failed",
-                         "reason": "original blend-file CTest driver requires observed bpy.app.background=True"})
+                         "reason": "original CTest driver requires observed bpy.app.background=True"})
+    if any(source.get("driver") == "unittest-main" for source in expected_sources):
+        observation = result.get("driver_observation", {})
+        if (observation.get("entrypoint") != "original __main__" or observation.get("runner_invocations") != 1 or
+                observation.get("failfast") is not False or observation.get("original_exit_code") not in (None, 0)):
+            blockers.append({"scope": "original_driver", "status": "failed",
+                             "reason": "one complete original unittest entrypoint and its successful exit were not observed"})
+        expected_resources = [{key: value[key] for key in ("upstream_path", "sha256", "bytes")}
+                              for source in expected_sources for value in source.get("resource_files", [])]
+        if observation.get("resource_files", []) != expected_resources:
+            blockers.append({"scope": "source_resources", "status": "failed", "reason": "complete original source resource bytes were not observed"})
     expected_fixtures = [value for source in expected_sources for value in source.get("fixture_files", [])]
     if expected_fixtures:
         observation = result.get("io_observation")
@@ -467,7 +538,7 @@ def summarize_execution(result, expected_sources, browser_errors=()):
             continue
         observed = observed_by_path.get(expected["upstream_path"], {})
         ids = observed.get("discovered_ids", [])
-        canonical_ids = {value.split(".", 1)[1] for value in ids if isinstance(value, str) and "." in value}
+        canonical_ids = {canonical_case_id(value, expected) for value in ids if isinstance(value, str) and "." in value}
         missing_ids = sorted(set(expected.get("case_ids", [])) - canonical_ids)
         extra_ids = sorted(canonical_ids - set(expected["case_ids"])) if "case_ids" in expected else []
         missing = len(missing_ids) if "case_ids" in expected else max(expected["expected_cases"] - len(ids), 0)
@@ -516,6 +587,14 @@ def extract_asset(archive, directory):
 
 def python_payload(suites, marker, output_root=None, wait_for_output_transfer=False):
     """Transport and execute whole source files without changing assertions."""
+    if any(row.get("driver") == "unittest-main" for row, _ in suites):
+        if len(suites) != 1:
+            raise Blocked("original unittest scripts require separate processes")
+        try:
+            from .unittest_cohort import python_payload as original_unittest_payload
+        except ImportError:
+            from unittest_cohort import python_payload as original_unittest_payload
+        return original_unittest_payload(suites, marker)
     if any(row.get("driver") == "original-script" for row, _ in suites):
         if len(suites) != 1 or output_root is None:
             raise Blocked("the original blend-file script requires an isolated output directory and complete cohort")
@@ -544,6 +623,7 @@ try:
         "build_branch": _blended_text(bpy.app.build_branch),
         "binary_path": bpy.app.binary_path,
     }
+    _blended_report["execution_context"] = {"background": getattr(bpy.app, "background", None)}
     def _blended_case_id(test):
         # Upstream ID-property helpers use an `id` property for a Blender ID.
         # Call unittest's base implementation without evaluating that property.
@@ -572,7 +652,8 @@ try:
             super().addUnexpectedSuccess(test); self._record(test, "unexpected_success")
         def addSubTest(self, test, subtest, err):
             super().addSubTest(test, subtest, err)
-            self._record(subtest, "passed" if err is None else "failed",
+            status = "passed" if err is None else ("failed" if issubclass(err[0], test.failureException) else "error")
+            self._record(subtest, status,
                          None if err is None else self._exc_info_to_string(err, test),
                          kind="subtest", parent_id=_blended_case_id(test))
     def _blended_ids(suite):
@@ -663,12 +744,15 @@ def probe(args, report):
         if measured_digest != artifact_contract["sha256"] or archive.stat().st_size != artifact_contract["bytes"]:
             raise Blocked("candidate artifact does not match the " + artifact_contract["label"])
 
-        catalog = load_suite_catalog(getattr(args, "cohort", "numeric"))
+        catalog = load_suite_catalog(getattr(args, "cohort", "numeric"),
+                                     getattr(args, "suite_manifest", None), getattr(args, "suite_manifest_sha256", None))
         report["cohort"] = {key: value for key, value in catalog.items() if key != "suites"}
-        suites = prepare_suites(args.suite, work, catalog, fixture_root=getattr(args, "fixture_root", None))
+        suites = prepare_suites(args.suite, work, catalog, fixture_root=getattr(args, "fixture_root", None),
+                                resource_root=getattr(args, "resource_root", None))
         report["cohort"]["complete_cohort_requested"] = len(suites) == len(catalog["suites"])
         report["suite_sources"] = [suite_metadata(row) for row, _ in suites]
         report["input_fixture_transfer"] = preserve_suite_fixtures(suites, output / "fixtures")
+        report["input_resource_transfer"] = preserve_suite_resources(suites, output / "resources")
 
         unpacked = work / "unpacked"
         unpacked.mkdir()
@@ -734,10 +818,11 @@ def probe(args, report):
                 page.on("crash", lambda: browser_errors.append("browser page crashed"))
                 code = python_payload(suites, marker, io_root, wait_for_output_transfer=bool(io_root))
                 report["runner_sha256"] = hashlib.sha256(code.encode("utf-8")).hexdigest()
-                extra_args = (["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"] +
+                background = any(row.get("required_background") is True for row, _ in suites)
+                extra_args = catalog.get("blender_args") or (["--background", "--factory-startup", "--threads", "1", "--python-exit-code", "1"] +
                               catalog.get("extra_blender_args", [])
-                              if io_root else [])
-                report["execution_mode"] = {"requested": "background" if io_root else "windowed",
+                              if background else [])
+                report["execution_mode"] = {"requested": "background" if background else "windowed",
                     "extra_argv": extra_args, "hook": "unchanged shell __BW_ARGS before __BW_PYEXPR"}
                 if extra_args:
                     page.add_init_script("window.__BW_ARGS = " + json.dumps(extra_args) + ";")
@@ -812,6 +897,7 @@ def probe(args, report):
                     except Exception as error:
                         report["output_transfer_acknowledgement"] = {"status": "failed", "reason": str(error)}
                         browser_errors.append("output transfer acknowledgement failed: " + str(error))
+                if background:
                     try:
                         # The unmodified shell's onExit writes the real Emscripten
                         # exit code. A Python result alone does not prove shutdown.
@@ -851,12 +937,19 @@ def main(argv=None):
                         help="Local pinned release archive, or new archive identified by --source-build-receipt")
     parser.add_argument("--source-build-receipt", type=Path,
                         help="Exact development build receipt; requires --asset and preserves all runtime/test gates")
+    parser.add_argument("--package-overlay-receipt", type=Path,
+                        help="Explicit original-resource package augmentation; base receipt and every execution gate remain required")
+    parser.add_argument("--package-base-asset", type=Path,
+                        help="Optional relocated base archive for independent overlay member verification")
     parser.add_argument("--suite", action="append", type=Path,
                         help="Exact pinned source file from the selected cohort; repeatable")
     parser.add_argument("--fixture-root", type=Path,
                         help="Local exact cohort fixtures under their original tests/files relative paths")
+    parser.add_argument("--resource-root", type=Path, help="Local pinned source resource tree, preserving original repository paths")
     parser.add_argument("--cohort", choices=("numeric", "data52", "blendio52", "liblink52"), default="numeric",
                         help="Selected fixed native suite inventory; default keeps the original 192 numerical tests")
+    parser.add_argument("--suite-manifest", type=Path, help="Hash-bound external frozen original unittest invocation")
+    parser.add_argument("--suite-manifest-sha256", help="Expected SHA-256 of --suite-manifest; native discovery is mandatory")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--browser-executable")
     parser.add_argument("--timeout", type=int, default=240)

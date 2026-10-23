@@ -14,7 +14,11 @@ The current product reference is Blender 5.4.0 alpha at the existing immutable p
 
 The browser-port workflow records qualification results separately from the working limited modeller. Its receipts are preserved on `browser-port-evidence`; a failed or blocked qualification remains visible. Infrastructure tests validate reporting and test transport and are not Blender feature passes.
 
-Selected original Blender 5.2 cohorts now include 192 numerical cases, 48 data/API cases, four blend-file IO methods and 17 library-linking methods. Native and browser pass all 48 data cases and all four IO methods. The IO workflow also transfers the actual browser-generated files and matches all four current file pairs in the same verified native reader. The released browser artifact still reports an unknown build identity, and two numerical parent tests still fail in that release. Narrow source fixes have passed actual WebAssembly kernel probes; the complete source rebuild and unchanged 192-case qualification remain separate gates. The library cohort has a passing native baseline with exact external fixtures; its browser and persistent-library results are recorded independently. See the programme for immutable receipts, remaining blockers and the distinction from full Blender 5.4 parity.
+The source-built Blender 5.2 candidate now has a broader original-test qualification. Native discovery and resource-complete retries establish **829 case obligations across 31 original invocations and 30 source files**. Native Blender passes 828 and retains one upstream expected failure. The selected browser attempts produce 601 pass callbacks, 210 assertion failures, five errors, one expected failure and 12 missing outcomes. These callbacks are not a one-to-one parity count: 14 native image-format subtests are missing, some processes fail, and some required host tools are unavailable. The strict ledger qualifies 512 successful native/browser pairs and keeps the overall gate blocked.
+
+The ledger binds exact source, invocation, native discovery, fixtures, build/runtime context, subtest identities and raw execution receipts. All 132 declarations in the bounded source plan remain visible, including 101 not yet expanded. The source plan is not a complete configured CTest inventory. Candidate 5.2 results do not establish Blender 5.4 product parity. See [current test parity status](docs/TEST_PARITY_STATUS.md), [original invocation contracts](docs/ORIGINAL_UNITTEST_COHORTS.md), and [failure evidence and causes](docs/ORIGINAL_TEST_FAILURE_TRIAGE.md).
+
+Earlier selected data, blend-file IO and library-linking cohorts remain separately recorded. Their overlapping cases must not be added to the new invocation count. A newly packaged or rebuilt engine also needs its own qualification; passing one repaired cohort does not transfer the full matrix to a different artifact.
 
 ## What works in the initial modeller
 
@@ -28,7 +32,7 @@ Selected original Blender 5.2 cohorts now include 192 numerical cases, 48 data/A
 
 The public-URL test executed 28 checks successfully, including rendered cube pixels, geometry changes, numeric translation, undo/redo, duplication/deletion, scene-file round trips, OBJ/STL import/export, PNG output and the 17 WASM cases. These checks do not establish every interaction or Blender feature. Hardware-GPU performance has not been benchmarked.
 
-## Important limits
+## Important limits of the initial modeller
 
 **Full Blender and Cycles functionality and test parity are NOT implemented.** There is no mesh edit mode, sculpt mode, rigging/animation suite, simulation, compositor, Python add-on API, native `.blend` support or Cycles renderer compatibility. OBJ export does not include materials. Import is limited to 20 MB and bounded geometry sizes. History snapshots are bounded but are not designed for Blender-scale scenes.
 
@@ -53,7 +57,7 @@ The Three.js modeller is not a fix for the Solarxy rendering fault and does not 
 | Public application workflow | 28 checks passed in the linked release run |
 | Source discovery | 5,637 Blender, 543 Cycles and 1,596 Solarxy candidate declarations; not complete runtime enumeration |
 
-The raw discovery reports and separate port mappings are retained on [`compatibility-index`](https://github.com/596050/blended/tree/compatibility-index). Source candidates include parameterised declarations and compile-time assertions. Blender and Cycles overlap. Do not sum them into a unique test total or derive a parity percentage. The Blender checkout contained 2,169 `.blend` LFS pointers whose fixture payloads were unavailable; they are not silently counted as executed tests.
+The raw discovery reports and separate port mappings are retained on [`compatibility-index`](https://github.com/596050/blended/tree/compatibility-index). Source candidates include parameterised declarations and compile-time assertions. Blender and Cycles overlap. Do not sum them into a unique test total or derive a parity percentage. The newer [product source inventory](compatibility/evidence/source-inventory-2026-10-23/source-inventory-summary.json) retains 7,353 candidate fixture paths, including 6,715 LFS pointers representing 6,543 distinct content objects. Those product fixture payloads have not been hydrated or executed by that inventory. Selected candidate-version resources are verified and recorded separately.
 
 Observed red-to-green sequences:
 

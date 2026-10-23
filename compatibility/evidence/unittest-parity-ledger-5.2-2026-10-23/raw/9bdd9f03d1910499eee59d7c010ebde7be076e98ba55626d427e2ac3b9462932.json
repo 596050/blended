@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "scope": "Explicit resource-closure retry of three existing original source declarations; all other declarations remain in the immutable base inventory",
+  "configured_ctest_inventory": false,
+  "complete_test_denominator": false,
+  "base_inventory": {
+    "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json",
+    "sha256": "25bc5c5e790461d0c56b64e039fe1e4b1663e2ea120c7bbe8f1ec3efb627a0ef"
+  },
+  "registrations": [
+    {
+      "source_declaration_index": 34,
+      "line": 376,
+      "registration": "add_blender_test(\n  script_pyapi_blf_buffer\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=BUFFER\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_blf_buffer",
+      "upstream_path": "tests/python/bl_pyapi_blf.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-resources-5.2-2026-10-23/script_pyapi_blf_buffer/native_reference.json",
+        "sha256": "7d32c15270ea2731f8e0ba0d91f5145b749df55586338b87f2857d164b8b7fc6",
+        "bytes": 196151
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-resources-5.2/script_pyapi_blf_buffer.json",
+        "sha256": "06f4b2faad2dda48f65568c748fbb2bbffc2e2c2eecd378c2f5bec639af222e9",
+        "bytes": 121313
+      },
+      "expected_cases": 82,
+      "supersedes": {
+        "original_state": "native_inventory_frozen",
+        "original_native_receipt": {
+          "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_blf_buffer/native_reference.json",
+          "sha256": "0efa05fb469e4521235ad1ca2ab69188a3447a00927df99cea9c31a75efc3824",
+          "bytes": 91102
+        },
+        "original_manifest": {
+          "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_blf_buffer.json",
+          "sha256": "9f06f6d13ae959f650ea4c60fc336a4d9b7c57467d95f86753f717a4dedf117c",
+          "bytes": 11219
+        }
+      }
+    },
+    {
+      "source_declaration_index": 36,
+      "line": 394,
+      "registration": "add_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_blf_vfont",
+      "upstream_path": "tests/python/bl_pyapi_blf.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-resources-5.2-2026-10-23/script_pyapi_blf_vfont/native_reference.json",
+        "sha256": "3949ff905260a09414add8afcaa94bd390e7088cfd1c04776bde643bfd32091b",
+        "bytes": 299814
+      },
+      "native_status": "passed",
+      "expected_cases": 129,
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-resources-5.2/script_pyapi_blf_vfont.json",
+        "sha256": "a549d9b42e7db542b9827a2e1de392a9cc807ccdbcd237b02a46f31b5a72a533",
+        "bytes": 187721
+      },
+      "supersedes": {
+        "original_state": "native_discovery_blocked",
+        "original_native_receipt": {
+          "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_blf_vfont/native_reference.json",
+          "sha256": "f47b6026d84cb87c910ab8caaabfc4511a5d430656f62ba560602ff27bdd4de2",
+          "bytes": 11902
+        },
+        "original_manifest": null
+      }
+    },
+    {
+      "source_declaration_index": 37,
+      "line": 408,
+      "registration": "add_blender_test(\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_doc_gen",
+      "upstream_path": "tests/python/bl_pyapi_doc_gen.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-resources-5.2-2026-10-23/script_pyapi_doc_gen/native_reference.json",
+        "sha256": "0bbcedae5eef4da969c44fb4184b26a1cdfe45f2334280fab34290e6d1dfadba",
+        "bytes": 178293
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-resources-5.2/script_pyapi_doc_gen.json",
+        "sha256": "4ddac7e42627f8cdeefb6cfa447c1e283707a5d739a7a7d1aa1b1011e00bf4c4",
+        "bytes": 71093
+      },
+      "expected_cases": 1,
+      "supersedes": {
+        "original_state": "native_inventory_frozen",
+        "original_native_receipt": {
+          "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_doc_gen/native_reference.json",
+          "sha256": "8a34c44236bffbb37090015ce366f806b3c94e7eb8daba4e40c7df12adaf6364",
+          "bytes": 10265
+        },
+        "original_manifest": {
+          "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_doc_gen.json",
+          "sha256": "c7fd97b44a5125d159edc9e6fce33e258494e9edfaa44007f7f32741a7852221",
+          "bytes": 2040
+        }
+      }
+    }
+  ],
+  "declaration_counts": {
+    "native_inventory_frozen": 3
+  }
+}
