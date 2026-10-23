@@ -1,0 +1,120 @@
+{
+  "artifact": {
+    "bytes": 110053572,
+    "path": "/workspace/scratch/d63596d831b2/runtime/brush-package-overlay-5.2/blender-source-development-essentials.tar.gz",
+    "sha256": "3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910"
+  },
+  "base_artifact": {
+    "bytes": 107362300,
+    "path": "/workspace/scratch/d63596d831b2/runtime/source/blender-source-development.tar.gz",
+    "sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991"
+  },
+  "base_context": {
+    "bytes": 1976,
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/runtime-context-2026-10-23/browser-context.json",
+    "sha256": "2f6a8989becb6aaad68555b8c28e882417f7a9223024063091f95c79ff507fc7"
+  },
+  "engine_files": [
+    {
+      "bytes": 171547054,
+      "path": "blender-source-development/bin/blender_browser.data",
+      "sha256": "a66c183e1248e08426f28a73c961676b9f8d9bc7df6de4888f74cecc0dcd03a2"
+    },
+    {
+      "bytes": 694154,
+      "path": "blender-source-development/bin/blender_browser.js",
+      "sha256": "fc6757edf1624671c766a847ffee391b638b90f35874b1b54fbdd1c8cfe95ffb"
+    },
+    {
+      "bytes": 119225569,
+      "path": "blender-source-development/bin/blender_browser.wasm",
+      "sha256": "27b25e78567bc6b95b81ef43fbf255c91b3655a9d4b6b9615296621e5d1fcf23"
+    }
+  ],
+  "finished_utc": "2026-10-23T13:47:45.365094+00:00",
+  "kind": "verified-browser-package-measurement",
+  "measurement_tool": {
+    "bytes": 3916,
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/runtime-context-essentials-2026-10-23/measure.py",
+    "sha256": "6dae229e0965ab8998742db6122396d028506d0f0837d7befd9ac49bd6f256e7"
+  },
+  "package_overlay": {
+    "additions": [
+      {
+        "bytes": 2715184,
+        "destination": "/bw/datafiles/assets/brushes/essentials_brushes-mesh_sculpt.blend",
+        "identity_source": "Git LFS pointer at the exact upstream commit",
+        "sha256": "f8b15126658f5a4ac455b0826a7eeae026576ed7c2ac45562d8880383fbf03bf",
+        "source_url": "https://github.com/blender/blender/blob/fbe6228777e7d9afefcd61a413844e790ae75db7/assets/brushes/essentials_brushes-mesh_sculpt.blend",
+        "upstream_path": "assets/brushes/essentials_brushes-mesh_sculpt.blend"
+      }
+    ],
+    "artifact": {
+      "bytes": 110053572,
+      "path": "/workspace/scratch/d63596d831b2/runtime/brush-package-overlay-5.2/blender-source-development-essentials.tar.gz",
+      "sha256": "3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910"
+    },
+    "assembly_tool": {
+      "bytes": 19562,
+      "path": "/workspace/scratch/d63596d831b2/blended/tools/browser_package_overlay.py",
+      "sha256": "af2c68cb6c60c9908e5ade48d7b811a4efac00221db9fd0e86e53a3defd6bacc"
+    },
+    "base_artifact": {
+      "bytes": 107362300,
+      "path": "/workspace/scratch/d63596d831b2/runtime/source/blender-source-development.tar.gz",
+      "sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991"
+    },
+    "engine_recompiled": false,
+    "full_parity": false,
+    "kind": "blender-browser-package-overlay",
+    "manifest": {
+      "bytes": 879,
+      "sha256": "3face96d93404046a15b0a22d77f25711997039a374d14d6458d547fd57483dd"
+    },
+    "overlay_id": "blender-5.2-essentials-mesh-sculpt-v1",
+    "receipt_sha256": "45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb",
+    "schema": 1,
+    "scope": "Original resource package augmentation only; browser qualification is a separate execution.",
+    "source_build_receipt": {
+      "bytes": 165401,
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/runtime-context-2026-10-23/source-build.json",
+      "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+    },
+    "status": "assembled",
+    "tests_executed": 0,
+    "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "verification": {
+      "added_files": 1,
+      "added_resource_bytes_verified": true,
+      "base_archive_verified": true,
+      "existing_preload_bytes_unchanged": true,
+      "modified_files": [
+        "blender-source-development/bin/blender_browser.data",
+        "blender-source-development/bin/blender_browser.js"
+      ],
+      "mount_timing": "Emscripten preload before application main",
+      "scope": "Actual archive members compared with actual original package and pinned asset hashes.",
+      "unchanged_files": 117,
+      "wasm_unchanged": true
+    }
+  },
+  "package_overlay_receipt": {
+    "bytes": 2547,
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/brush-package-overlay-5.2-2026-10-23/package-overlay.json",
+    "sha256": "45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb"
+  },
+  "schema": 1,
+  "scope": "Archive content verification and engine member identities only; no test outcomes or runtime behavior inferred.",
+  "source_build_receipt": {
+    "bytes": 165401,
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/runtime-context-2026-10-23/source-build.json",
+    "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+  },
+  "started_utc": "2026-10-23T13:47:35.753469+00:00",
+  "tests_executed": 0,
+  "verification_tool": {
+    "bytes": 19562,
+    "path": "/workspace/scratch/d63596d831b2/blended/tools/browser_package_overlay.py",
+    "sha256": "af2c68cb6c60c9908e5ade48d7b811a4efac00221db9fd0e86e53a3defd6bacc"
+  }
+}

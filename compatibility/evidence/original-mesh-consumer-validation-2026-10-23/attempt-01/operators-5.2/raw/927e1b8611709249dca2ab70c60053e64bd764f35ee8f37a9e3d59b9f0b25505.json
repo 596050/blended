@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "kind": "evidence-only-original-mesh-launcher-derivation",
+  "source_launcher": "original-bmesh-bevel-essentials-chromium-custom-launcher-v2",
+  "output_launcher": "original-mesh-operators-essentials-chromium-custom-launcher-v2",
+  "source_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-browser-essentials-5.2-2026-10-23/launcher-v2.js",
+      "bytes": 8345,
+      "sha256": "e35ca3b593406aa83b27e28197018ad12dfcb5ec278d13507aa69cc893dae84d"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-browser-essentials-5.2-2026-10-23/launcher-v2.html",
+      "bytes": 284,
+      "sha256": "b0372c0527cc61f78abb65906b14b0dd82be343a83b43091d5915747c46db6cf"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-browser-essentials-5.2-2026-10-23/run-browser-v2.py",
+      "bytes": 21465,
+      "sha256": "0253d2d399fa6cc8aac5ccfed775e16427fa5663edd6667d8452324f96f9d487"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/bmesh-bevel-browser-essentials-5.2-2026-10-23/capture-process-v2.py",
+      "bytes": 2845,
+      "sha256": "344f7269004198d511f32ba15b3c3decfbddc71acb7131c662f356c8579a3fa3"
+    }
+  ],
+  "output_files": [
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/launcher-v2.js",
+      "bytes": 8357,
+      "sha256": "0b5c320a3a4e66db3524832b500f8bbadf7e565fe9a009735116da678770c204"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/launcher-v2.html",
+      "bytes": 288,
+      "sha256": "0fe2bd362e7370bdd1f03ad80087567c3b635e1d122d3afcea03de19c944253c"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/run-browser-v2.py",
+      "bytes": 21570,
+      "sha256": "6c82d08ef4eed768ecf91a15f5e95192615d4d6899b951cb1c76f56592eb2ba8"
+    },
+    {
+      "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/capture-process-v2.py",
+      "bytes": 2849,
+      "sha256": "363f827aca2924e3dd01e490a0f9fca4af77b8024d56e5cb038912db098310b7"
+    }
+  ],
+  "derivation_script": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-browser-essentials-5.2-2026-10-23/prepare-launcher.py",
+    "bytes": 4275,
+    "sha256": "7d872b0588caef0d9b29956d5dbd4065976669c3e20bbf36e9938fbcebf85811"
+  },
+  "exact_text_edits": {
+    "launcher-v2.js": [
+      {
+        "before": "BEVEL_BROWSER_EVENT",
+        "after": "OPERATORS_BROWSER_EVENT",
+        "occurrences": 1
+      },
+      {
+        "before": "__bevelEvidence",
+        "after": "__operatorsEvidence",
+        "occurrences": 1
+      },
+      {
+        "before": "__bevelModule",
+        "after": "__operatorsModule",
+        "occurrences": 1
+      }
+    ],
+    "launcher-v2.html": [
+      {
+        "before": "bevel",
+        "after": "operators",
+        "occurrences": 1
+      }
+    ],
+    "run-browser-v2.py": [
+      {
+        "before": "bmesh-bevel-source-native-elevated-5.2-2026-10-23",
+        "after": "mesh-operators-source-native-5.2-2026-10-23",
+        "occurrences": 1
+      },
+      {
+        "before": "bmesh-bevel-source-native-5.2-2026-10-23",
+        "after": "mesh-operators-source-native-5.2-2026-10-23",
+        "occurrences": 1
+      },
+      {
+        "before": "54b9c3e3bfe5504dc151ed534dd7039fec0d85a15315ac61e0860002b5ee949d",
+        "after": "fff5cc16a4b72b4913b9c98ce25055eff66c8061417351d3f3c273a1915cb02e",
+        "occurrences": 1
+      },
+      {
+        "before": "4e3a34d7bb949b6bd7e4c6a050ea4c62c41958ccdc5b672a8c5b4e004aaee48d",
+        "after": "8c6928062436813530f7b02865e828b549170841094606cac6074f63f6a70461",
+        "occurrences": 1
+      },
+      {
+        "before": "7c3b0da36e5552299dfe97e40c87fafde231e4587525cafa631d799b83734d09",
+        "after": "c64b5f9e1b4ef9d6eabad71b854b4861baef5fdc7bd185cb8c16b9d993a82600",
+        "occurrences": 1
+      },
+      {
+        "before": "98f2ebc9f46b28a0452e4e0dcb37c256d76ec76a24213475ae0d8795eabf1d33",
+        "after": "5bd8f7d04927f420233861416512e68cfdfa5ad115a64d4c8a2716fe7cbbf7df",
+        "occurrences": 1
+      },
+      {
+        "before": "native_summary[\"observed_original_native_passes_in_completed_invocation\"] != 88",
+        "after": "native_summary[\"observed_original_native_passes_in_completed_invocation\"] != 105",
+        "occurrences": 1
+      },
+      {
+        "before": "Path(__file__).resolve(), HERE / \"launcher-v2.js\", HERE / \"launcher-v2.html\",",
+        "after": "Path(__file__).resolve(), HERE / \"launcher-v2.js\", HERE / \"launcher-v2.html\",\n        HERE / \"prepare-launcher.py\", HERE / \"launcher-derivation.json\",",
+        "occurrences": 1
+      },
+      {
+        "before": "BEVEL_BROWSER_EVENT",
+        "after": "OPERATORS_BROWSER_EVENT",
+        "occurrences": 1
+      },
+      {
+        "before": "__bevelEvidence",
+        "after": "__operatorsEvidence",
+        "occurrences": 2
+      },
+      {
+        "before": "original-bmesh-bevel",
+        "after": "original-mesh-operators",
+        "occurrences": 2
+      },
+      {
+        "before": "bevel-browser-",
+        "after": "operators-browser-",
+        "occurrences": 1
+      },
+      {
+        "before": "frozen_native_bevel_parser",
+        "after": "frozen_native_operators_parser",
+        "occurrences": 1
+      },
+      {
+        "before": "bevel",
+        "after": "operators",
+        "occurrences": 2
+      }
+    ],
+    "capture-process-v2.py": [
+      {
+        "before": "browser-bevel-host",
+        "after": "browser-operators-host",
+        "occurrences": 1
+      }
+    ]
+  },
+  "scope": "Receipt/source bindings and observer labels only; original Python, helper, reference fixture, argv, and oracles are not edited.",
+  "tests_executed_by_derivation": 0,
+  "full_feature_parity": false
+}

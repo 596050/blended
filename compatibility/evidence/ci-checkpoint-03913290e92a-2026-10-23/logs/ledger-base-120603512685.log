@@ -1,0 +1,223 @@
+﻿2026-10-23T19:06:49.4220040Z Current runner version: '2.338.0'
+2026-10-23T19:06:49.4244899Z ##[group]Runner Image Provisioner
+2026-10-23T19:06:49.4245903Z Hosted Compute Agent
+2026-10-23T19:06:49.4246557Z Version: 20261012.601
+2026-10-23T19:06:49.4247690Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-23T19:06:49.4248503Z Build Date: 2026-10-12T17:48:21Z
+2026-10-23T19:06:49.4249197Z Worker ID: {15bd1b9c-03f6-435a-ab5c-32ab7cb11b83}
+2026-10-23T19:06:49.4249978Z Region: eastus2
+2026-10-23T19:06:49.4250573Z Cloud: Azure
+2026-10-23T19:06:49.4251109Z ##[endgroup]
+2026-10-23T19:06:49.4252794Z ##[group]Operating System
+2026-10-23T19:06:49.4253499Z Ubuntu
+2026-10-23T19:06:49.4254106Z 24.04.5
+2026-10-23T19:06:49.4254663Z LTS
+2026-10-23T19:06:49.4255173Z ##[endgroup]
+2026-10-23T19:06:49.4255813Z ##[group]Runner Image
+2026-10-23T19:06:49.4256430Z Image: ubuntu-24.04
+2026-10-23T19:06:49.4257780Z Version: 20261012.334.1
+2026-10-23T19:06:49.4260032Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-23T19:06:49.4262698Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-23T19:06:49.4263855Z ##[endgroup]
+2026-10-23T19:06:49.4265119Z ##[group]GITHUB_TOKEN Permissions
+2026-10-23T19:06:49.4267573Z Contents: read
+2026-10-23T19:06:49.4268288Z Metadata: read
+2026-10-23T19:06:49.4268899Z ##[endgroup]
+2026-10-23T19:06:49.4271240Z Secret source: Actions
+2026-10-23T19:06:49.4272358Z Cache mode: write
+2026-10-23T19:06:49.4273116Z Prepare workflow directory
+2026-10-23T19:06:49.4604005Z Prepare all required actions
+2026-10-23T19:06:49.4651716Z Getting action download info
+2026-10-23T19:06:49.7040761Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-23T19:06:49.8499520Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-23T19:06:49.9664026Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-23T19:06:50.2400677Z Complete job name: Require declared native/browser obligations (base)
+2026-10-23T19:06:50.3293950Z ##[group]Run actions/checkout@v4
+2026-10-23T19:06:50.3294870Z with:
+2026-10-23T19:06:50.3295354Z   persist-credentials: false
+2026-10-23T19:06:50.3295901Z   repository: 596050/blended
+2026-10-23T19:06:50.3299874Z   token: ***
+2026-10-23T19:06:50.3300354Z   ssh-strict: true
+2026-10-23T19:06:50.3300813Z   ssh-user: git
+2026-10-23T19:06:50.3301264Z   clean: true
+2026-10-23T19:06:50.3301739Z   sparse-checkout-cone-mode: true
+2026-10-23T19:06:50.3302293Z   fetch-depth: 1
+2026-10-23T19:06:50.3302746Z   fetch-tags: false
+2026-10-23T19:06:50.3303219Z   show-progress: true
+2026-10-23T19:06:50.3303695Z   lfs: false
+2026-10-23T19:06:50.3304140Z   submodules: false
+2026-10-23T19:06:50.3304617Z   set-safe-directory: true
+2026-10-23T19:06:50.3305151Z   allow-unsafe-pr-checkout: false
+2026-10-23T19:06:50.3305976Z ##[endgroup]
+2026-10-23T19:06:50.4359016Z Syncing repository: 596050/blended
+2026-10-23T19:06:50.4362005Z ##[group]Getting Git version info
+2026-10-23T19:06:50.4363449Z Working directory is '/home/runner/work/blended/blended'
+2026-10-23T19:06:50.4366282Z [command]/usr/bin/git version
+2026-10-23T19:06:50.4495858Z git version 2.55.0
+2026-10-23T19:06:50.4518640Z ##[endgroup]
+2026-10-23T19:06:50.4534771Z Temporarily overriding HOME='/home/runner/work/_temp/df6a1059-5084-4c4c-b4b1-1e1779db24b8' before making global git config changes
+2026-10-23T19:06:50.4538011Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T19:06:50.4542730Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/blended/blended
+2026-10-23T19:06:50.4620203Z Deleting the contents of '/home/runner/work/blended/blended'
+2026-10-23T19:06:50.4634685Z ##[group]Initializing the repository
+2026-10-23T19:06:50.4636200Z [command]/usr/bin/git init /home/runner/work/blended/blended
+2026-10-23T19:06:50.4740992Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-23T19:06:50.4743575Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-23T19:06:50.4745297Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-23T19:06:50.4746305Z hint: call:
+2026-10-23T19:06:50.4746903Z hint:
+2026-10-23T19:06:50.4747711Z hint: 	git config --global init.defaultBranch <name>
+2026-10-23T19:06:50.4748576Z hint:
+2026-10-23T19:06:50.4749250Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-23T19:06:50.4750408Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-23T19:06:50.4751341Z hint:
+2026-10-23T19:06:50.4751844Z hint: 	git branch -m <name>
+2026-10-23T19:06:50.4752570Z hint:
+2026-10-23T19:06:50.4753410Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-23T19:06:50.4759377Z Initialized empty Git repository in /home/runner/work/blended/blended/.git/
+2026-10-23T19:06:50.4775414Z [command]/usr/bin/git remote add origin https://github.com/596050/blended
+2026-10-23T19:06:50.4833630Z ##[endgroup]
+2026-10-23T19:06:50.4835930Z ##[group]Disabling automatic garbage collection
+2026-10-23T19:06:50.4840385Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-23T19:06:50.4876184Z ##[endgroup]
+2026-10-23T19:06:50.4878217Z ##[group]Setting up auth
+2026-10-23T19:06:50.4889234Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T19:06:50.4963469Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T19:06:50.5382842Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T19:06:50.5429792Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T19:06:50.5675454Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T19:06:50.5713614Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T19:06:50.5940437Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-23T19:06:50.5986288Z ##[endgroup]
+2026-10-23T19:06:50.5987494Z ##[group]Fetching the repository
+2026-10-23T19:06:50.6001060Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +03913290e92a98cd9c45fdecf679072587c4dbe7:refs/remotes/origin/parity/upstream-browser-ports
+2026-10-23T19:06:52.4184777Z From https://github.com/596050/blended
+2026-10-23T19:06:52.4187073Z  * [new ref]         03913290e92a98cd9c45fdecf679072587c4dbe7 -> origin/parity/upstream-browser-ports
+2026-10-23T19:06:52.4190507Z ##[endgroup]
+2026-10-23T19:06:52.4191533Z ##[group]Determining the checkout info
+2026-10-23T19:06:52.4192781Z ##[endgroup]
+2026-10-23T19:06:52.4207316Z [command]/usr/bin/git sparse-checkout disable
+2026-10-23T19:06:52.4253051Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-23T19:06:52.4285455Z ##[group]Checking out the ref
+2026-10-23T19:06:52.4290050Z [command]/usr/bin/git checkout --progress --force -B parity/upstream-browser-ports refs/remotes/origin/parity/upstream-browser-ports
+2026-10-23T19:06:53.4450016Z Updating files:  94% (9194/9707)
+2026-10-23T19:06:53.4554480Z Updating files:  95% (9222/9707)
+2026-10-23T19:06:53.4609575Z Updating files:  96% (9319/9707)
+2026-10-23T19:06:53.4668572Z Updating files:  97% (9416/9707)
+2026-10-23T19:06:53.4752882Z Updating files:  98% (9513/9707)
+2026-10-23T19:06:53.4816545Z Updating files:  99% (9610/9707)
+2026-10-23T19:06:53.4817688Z Updating files: 100% (9707/9707)
+2026-10-23T19:06:53.4818397Z Updating files: 100% (9707/9707), done.
+2026-10-23T19:06:53.4939502Z Switched to a new branch 'parity/upstream-browser-ports'
+2026-10-23T19:06:53.4945696Z branch 'parity/upstream-browser-ports' set up to track 'origin/parity/upstream-browser-ports'.
+2026-10-23T19:06:53.4977956Z ##[endgroup]
+2026-10-23T19:06:53.5025410Z [command]/usr/bin/git log -1 --format=%H
+2026-10-23T19:06:53.5053399Z 03913290e92a98cd9c45fdecf679072587c4dbe7
+2026-10-23T19:06:53.5062552Z ##[group]Removing auth
+2026-10-23T19:06:53.5066481Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T19:06:53.5099538Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T19:06:53.5336007Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T19:06:53.5364624Z http.https://github.com/.extraheader
+2026-10-23T19:06:53.5371706Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-23T19:06:53.5405661Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T19:06:53.5640117Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T19:06:53.5671341Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T19:06:53.5903487Z ##[endgroup]
+2026-10-23T19:06:53.6227616Z ##[group]Run actions/setup-python@v5
+2026-10-23T19:06:53.6228150Z with:
+2026-10-23T19:06:53.6228529Z   python-version: 3.12
+2026-10-23T19:06:53.6228984Z   check-latest: false
+2026-10-23T19:06:53.6234122Z   token: ***
+2026-10-23T19:06:53.6234562Z   update-environment: true
+2026-10-23T19:06:53.6235010Z   allow-prereleases: false
+2026-10-23T19:06:53.6235433Z   freethreaded: false
+2026-10-23T19:06:53.6235835Z ##[endgroup]
+2026-10-23T19:06:53.7505573Z ##[group]Installed versions
+2026-10-23T19:06:53.8089365Z (node:2397) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T19:06:53.8090109Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T19:06:53.8091786Z Successfully set up CPython (3.12.15)
+2026-10-23T19:06:53.8092509Z ##[endgroup]
+2026-10-23T19:06:53.8279989Z ##[group]Run parity_map_args=()
+2026-10-23T19:06:53.8280369Z [36;1mparity_map_args=()[0m
+2026-10-23T19:06:53.8280700Z [36;1mif [[ -n "$PARITY_PATH_MAP" ]]; then[0m
+2026-10-23T19:06:53.8281101Z [36;1m  parity_map_args=(--path-map "$PARITY_PATH_MAP")[0m
+2026-10-23T19:06:53.8281442Z [36;1mfi[0m
+2026-10-23T19:06:53.8281712Z [36;1mpython3 tools/reconcile_unittest_matrix.py \[0m
+2026-10-23T19:06:53.8282044Z [36;1m  --repo-root . \[0m
+2026-10-23T19:06:53.8282549Z [36;1m  --source-plan compatibility/evidence/unittest-native-5.2-2026-10-23/discovery-inventory.json \[0m
+2026-10-23T19:06:53.8283412Z [36;1m  --native-retry-plan compatibility/evidence/unittest-native-resources-5.2-2026-10-23/resource-retry-inventory.json \[0m
+2026-10-23T19:06:53.8284239Z [36;1m  --browser-matrix compatibility/evidence/unittest-browser-matrix-5.2-2026-10-23/matrix.json \[0m
+2026-10-23T19:06:53.8285015Z [36;1m  --browser-matrix compatibility/evidence/unittest-browser-resources-5.2-2026-10-23/matrix.json \[0m
+2026-10-23T19:06:53.8285760Z [36;1m  --native-context compatibility/evidence/runtime-context-2026-10-23/native-context.json \[0m
+2026-10-23T19:06:53.8286454Z [36;1m  --browser-context compatibility/evidence/runtime-context-2026-10-23/browser-context.json \[0m
+2026-10-23T19:06:53.8287219Z [36;1m  --output evidence/reconciled-original-tests \[0m
+2026-10-23T19:06:53.8287589Z [36;1m  "${parity_map_args[@]}" --report-only[0m
+2026-10-23T19:06:53.8607750Z shell: /usr/bin/bash -e {0}
+2026-10-23T19:06:53.8608102Z env:
+2026-10-23T19:06:53.8608415Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:06:53.8609140Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-23T19:06:53.8609624Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:06:53.8610044Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:06:53.8610463Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:06:53.8610899Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-23T19:06:53.8611266Z   PARITY_PATH_MAP: 
+2026-10-23T19:06:53.8611498Z ##[endgroup]
+2026-10-23T19:07:01.0420455Z {"schema": 1, "target": {"repository": "blender/blender", "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7"}, "scope": "bounded-source-plan-and-native-frozen-original-unittest-invocations", "contract_sha256": "24ee99efcb55d81284b8ea89bef2915a91466010d1d049537302ce48cf8b1066", "inventory_sha256": "a4d2415f353a2b85f57c49903f7018b023eb9a0aad68ae52b1972d8d94233ab2", "gate": "blocked", "declared_scope_test_parity": false, "scope_enumeration_complete": false, "required_registration_count": 132, "unresolved_registration_count": 101, "known_case_count": 827, "known_case_configuration_count": 827, "paired_obligation_count": 829, "registration_execution_pair_count": 829, "obligation_identity_fields": ["configuration", "case_id", "browser_profile", "invocation_sha256", "fixture_manifest_sha256", "comparison_policy_sha256"], "successful_execution_pair_count": 512, "outcome_agreement_count": 597, "all_upstream_test_parity": false, "full_feature_parity": false, "claim_limit": "Only the independently supplied registrations and native-expanded cases are assessed. Outcome agreement requires complete, unfiltered discovery and executions. Coverage review flags do not certify an exhaustive upstream universe or application feature parity.", "observation_totals": {"native": {"discovered": 829, "error": 0, "executed": 829, "expected_failure": 1, "failed": 0, "fixed_native_cases": 829, "missing_outcomes": 0, "observed_terminal_cases": 829, "passed": 828, "skipped": 0, "subtest_events": 71, "unexpected_success": 0}, "browser": {"discovered": 817, "error": 5, "executed": 817, "expected_failure": 1, "failed": 210, "fixed_native_cases": 829, "missing_outcomes": 12, "observed_terminal_cases": 817, "passed": 601, "skipped": 0, "subtest_events": 57, "unexpected_success": 0}}, "missing_browser_subtest_count": 14, "unexpected_browser_subtest_count": 0, "observation_count_limit": "Original callback counts are diagnostic; they do not imply one-to-one outcome agreement or successful process execution."}
+2026-10-23T19:07:01.0636194Z ##[group]Run python3 tools/test_parity_ledger.py --contract evidence/reconciled-original-tests/contract.json --inventory evidence/reconciled-original-tests/inventory.json --executions evidence/reconciled-original-tests/executions.json --evidence-root evidence/reconciled-original-tests --output evidence/reconciled-original-tests/strict-gate.json
+2026-10-23T19:07:01.0639384Z [36;1mpython3 tools/test_parity_ledger.py --contract evidence/reconciled-original-tests/contract.json --inventory evidence/reconciled-original-tests/inventory.json --executions evidence/reconciled-original-tests/executions.json --evidence-root evidence/reconciled-original-tests --output evidence/reconciled-original-tests/strict-gate.json[0m
+2026-10-23T19:07:01.0703789Z shell: /usr/bin/bash -e {0}
+2026-10-23T19:07:01.0704072Z env:
+2026-10-23T19:07:01.0704372Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:01.0704911Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-23T19:07:01.0705409Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:01.0705847Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:01.0706283Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:01.0707012Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-23T19:07:01.0707387Z ##[endgroup]
+2026-10-23T19:07:02.0034019Z {"schema": 1, "target": {"commit": "fbe6228777e7d9afefcd61a413844e790ae75db7", "repository": "blender/blender"}, "scope": "bounded-source-plan-and-native-frozen-original-unittest-invocations", "contract_sha256": "24ee99efcb55d81284b8ea89bef2915a91466010d1d049537302ce48cf8b1066", "inventory_sha256": "a4d2415f353a2b85f57c49903f7018b023eb9a0aad68ae52b1972d8d94233ab2", "gate": "blocked", "declared_scope_test_parity": false, "scope_enumeration_complete": false, "required_registration_count": 132, "unresolved_registration_count": 101, "known_case_count": 827, "known_case_configuration_count": 827, "paired_obligation_count": 829, "registration_execution_pair_count": 829, "obligation_identity_fields": ["configuration", "case_id", "browser_profile", "invocation_sha256", "fixture_manifest_sha256", "comparison_policy_sha256"], "successful_execution_pair_count": 512, "outcome_agreement_count": 597, "all_upstream_test_parity": false, "full_feature_parity": false, "claim_limit": "Only the independently supplied registrations and native-expanded cases are assessed. Outcome agreement requires complete, unfiltered discovery and executions. Coverage review flags do not certify an exhaustive upstream universe or application feature parity."}
+2026-10-23T19:07:02.0111596Z ##[error]Process completed with exit code 1.
+2026-10-23T19:07:02.0195335Z ##[group]Run actions/upload-artifact@v4
+2026-10-23T19:07:02.0195650Z with:
+2026-10-23T19:07:02.0195891Z   name: original-test-ledger-base-40008805411
+2026-10-23T19:07:02.0196236Z   path: evidence/reconciled-original-tests/
+2026-10-23T19:07:02.0196534Z   retention-days: 14
+2026-10-23T19:07:02.0197057Z   if-no-files-found: error
+2026-10-23T19:07:02.0197309Z   compression-level: 6
+2026-10-23T19:07:02.0197541Z   overwrite: false
+2026-10-23T19:07:02.0197765Z   include-hidden-files: false
+2026-10-23T19:07:02.0198010Z env:
+2026-10-23T19:07:02.0198269Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:02.0198709Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-23T19:07:02.0199159Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:02.0199547Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:02.0199941Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-23T19:07:02.0200357Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-23T19:07:02.0200736Z ##[endgroup]
+2026-10-23T19:07:02.1787126Z (node:2410) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T19:07:02.1788355Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T19:07:02.3264494Z With the provided path, there will be 818 files uploaded
+2026-10-23T19:07:02.3265651Z Artifact name is valid!
+2026-10-23T19:07:02.3266222Z Root directory input is valid!
+2026-10-23T19:07:02.5476472Z Beginning upload of artifact content to blob storage
+2026-10-23T19:07:03.2565175Z (node:2410) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-23T19:07:03.3710703Z Uploaded bytes 3857156
+2026-10-23T19:07:03.3833327Z Finished uploading artifact content to blob storage!
+2026-10-23T19:07:03.3834907Z SHA256 digest of uploaded artifact zip is 7e318238888b3d4f71bbf5a072b6871c69ca2a6dcd2c4470d110f29ae00cf8f5
+2026-10-23T19:07:03.3836458Z Finalizing artifact upload
+2026-10-23T19:07:03.8015057Z Artifact original-test-ledger-base-40008805411.zip successfully finalized. Artifact ID 12525630992
+2026-10-23T19:07:03.8017233Z Artifact original-test-ledger-base-40008805411 has been successfully uploaded! Final size is 3857156 bytes. Artifact ID is 12525630992
+2026-10-23T19:07:03.8023285Z Artifact download URL: https://github.com/596050/blended/actions/runs/40008805411/artifacts/12525630992
+2026-10-23T19:07:03.8267873Z Post job cleanup.
+2026-10-23T19:07:03.9083840Z [command]/usr/bin/git version
+2026-10-23T19:07:03.9131980Z git version 2.55.0
+2026-10-23T19:07:03.9171241Z Temporarily overriding HOME='/home/runner/work/_temp/717a72a1-2eae-4264-b415-b6e01714de3e' before making global git config changes
+2026-10-23T19:07:03.9172778Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T19:07:03.9176349Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/blended/blended
+2026-10-23T19:07:03.9215489Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T19:07:03.9252809Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T19:07:03.9532202Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T19:07:03.9572178Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T19:07:03.9862427Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T19:07:03.9903365Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T19:07:04.0334800Z Cleaning up orphan processes
+2026-10-23T19:07:04.0682209Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

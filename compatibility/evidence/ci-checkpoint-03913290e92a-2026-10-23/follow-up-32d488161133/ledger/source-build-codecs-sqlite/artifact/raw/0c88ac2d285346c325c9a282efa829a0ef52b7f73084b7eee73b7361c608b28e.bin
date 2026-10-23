@@ -1,0 +1,505 @@
+diff --git a/patches/blender_web.cmake b/patches/blender_web.cmake
+--- a/patches/blender_web.cmake
++++ b/patches/blender_web.cmake
+@@ -199,11 +199,11 @@
+ set(WITH_IK_ITASC           OFF CACHE BOOL "" FORCE)
+ set(WITH_IK_SOLVER          OFF CACHE BOOL "" FORCE)
+ 
+-# ---- Image codecs (unported / out of launch tier) --------------------------
++# ---- Image codecs (original pinned static implementations) --------------------------
+ set(WITH_CODEC_FFMPEG       OFF CACHE BOOL "" FORCE)
+-set(WITH_IMAGE_CINEON       OFF CACHE BOOL "" FORCE)
+-set(WITH_IMAGE_OPENJPEG     OFF CACHE BOOL "" FORCE)
+-set(WITH_IMAGE_WEBP         OFF CACHE BOOL "" FORCE)
++set(WITH_IMAGE_CINEON       ON  CACHE BOOL "" FORCE)
++set(WITH_IMAGE_OPENJPEG     ON  CACHE BOOL "" FORCE)
++set(WITH_IMAGE_WEBP         ON  CACHE BOOL "" FORCE)
+ 
+ # ---- File IO: native C++ exporters (launch-tier "OBJ/USD IO") --------------
+ # OBJ/PLY/STL are pure-C++ mesh IO (no native-only deps) and part of the launch
+diff --git a/patches/image_codecs.cmake b/patches/image_codecs.cmake
+new file mode 100644
+--- /dev/null
++++ b/patches/image_codecs.cmake
+@@ -0,0 +1,55 @@
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Exact static codec packages for Blender's original ImBuf implementations.
++# Included after Threads is resolved and before the static OIIO package.
++
++foreach(_bw_codec_flag WITH_IMAGE_CINEON WITH_IMAGE_OPENJPEG WITH_IMAGE_WEBP)
++  if(NOT ${_bw_codec_flag})
++    message(FATAL_ERROR "browser codecs require ${_bw_codec_flag}=ON")
++  endif()
++endforeach()
++unset(_bw_codec_flag)
++
++# Blender's FindWebP module accepts incomplete component lists. Require every
++# archive explicitly, including the HEIF/AOM chain used by unconditional AVIF.
++foreach(_bw_codec_file
++    lib/libwebp.a
++    lib/libwebpmux.a
++    lib/libwebpdemux.a
++    lib/libsharpyuv.a
++    lib/libopenjp2.a
++    lib/libaom.a
++    lib/libheif.a
++    include/webp/decode.h
++    include/openjpeg-2.5/openjpeg.h
++    include/libheif/heif.h)
++  if(NOT EXISTS "${LIBDIR}/${_bw_codec_file}" OR IS_DIRECTORY "${LIBDIR}/${_bw_codec_file}")
++    message(FATAL_ERROR "Missing required wasm codec artifact: ${LIBDIR}/${_bw_codec_file}")
++  endif()
++endforeach()
++unset(_bw_codec_file)
++
++# OIIO 3.1.13.1's installed static config references optional codec targets but
++# does not find them itself. Load only the selected wasm prefix, before OIIO.
++set(WebP_DIR "${LIBDIR}/share/WebP/cmake")
++set(OpenJPEG_DIR "${LIBDIR}/lib/cmake/openjpeg-2.5")
++set(Libheif_DIR "${LIBDIR}/lib/cmake/libheif")
++find_package(WebP CONFIG REQUIRED PATHS "${WebP_DIR}" NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
++find_package(OpenJPEG CONFIG REQUIRED PATHS "${OpenJPEG_DIR}" NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
++find_package(Libheif CONFIG REQUIRED PATHS "${Libheif_DIR}" NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
++foreach(_bw_codec_target WebP::webp WebP::webpdemux WebP::libwebpmux WebP::sharpyuv openjp2 heif)
++  if(NOT TARGET ${_bw_codec_target})
++    message(FATAL_ERROR "Missing required wasm codec target: ${_bw_codec_target}")
++  endif()
++endforeach()
++unset(_bw_codec_target)
++
++# Populate the unchanged Blender Find modules and dependency_targets.cmake.
++set(WEBP_INCLUDE_DIR "${LIBDIR}/include")
++set(WEBP_WEBP_LIBRARY "${LIBDIR}/lib/libwebp.a")
++set(WEBP_WEBPMUX_LIBRARY "${LIBDIR}/lib/libwebpmux.a")
++set(WEBP_WEBPDEMUX_LIBRARY "${LIBDIR}/lib/libwebpdemux.a")
++set(WEBP_SHARPYUV_LIBRARY "${LIBDIR}/lib/libsharpyuv.a")
++find_package(WebP MODULE REQUIRED)
++set(OPENJPEG_INCLUDE_DIR "${LIBDIR}/include/openjpeg-2.5")
++set(OPENJPEG_LIBRARY "${LIBDIR}/lib/libopenjp2.a")
++find_package(OpenJPEG MODULE REQUIRED)
+diff --git a/patches/platform_wasm.cmake b/patches/platform_wasm.cmake
+--- a/patches/platform_wasm.cmake
++++ b/patches/platform_wasm.cmake
+@@ -906,6 +906,7 @@
+     set(USD_LIBRARY_DIR "${LIBDIR}/lib")
+     set(USD_FOUND TRUE)
+   endif()
++  include("${BLENDER_WEB_PATCH_DIR}/image_codecs.cmake")
+   find_package(OpenColorIO 2.0.0 REQUIRED)         # -> OpenColorIO::OpenColorIO
+   find_package(OpenImageIO REQUIRED)               # -> OpenImageIO::OpenImageIO
+   find_package(Eigen3 REQUIRED)                    # -> Eigen3::Eigen
+diff --git a/scripts/deps/aom.sh b/scripts/deps/aom.sh
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/aom.sh
+@@ -0,0 +1,29 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Original Blender 5.2 libaom 3.13.1 and the exact upstream Blender patch.
++set -euo pipefail
++source "$(dirname "$0")/codec-common.sh"
++bc_prepare aom libaom-3.13.1.tar.gz \
++  https://storage.googleapis.com/aom-releases/libaom-3.13.1.tar.gz \
++  19e45a5a7192d690565229983dad900e76b513a02306c12053fb9a262cbeca7d \
++  libaom-3.13.1
++
++BC_AOM_PATCH="$BC_ROOT/upstream/build_files/build_environment/patches/aom_6d2b7f71b98bfa28e372b1f2d85f137280bdb3de.diff"
++bc_check_sha256 "$BC_AOM_PATCH" 5cb6ce17857a5283521d507dd834e6a45f8749468eeea1d2a9fd5f2e3e7544ea
++patch --batch --fuzz=0 -p1 -d "$BC_SOURCE" < "$BC_AOM_PATCH"
++
++# AOM's generic C backend avoids native assembly and CPU probing. Encoding,
++# decoding, high bit depth and pthread support retain their upstream settings.
++# A static archive is required by this Emscripten link profile.
++bc_configure \
++  -DAOM_TARGET_CPU=generic \
++  -DCONFIG_AV1_ENCODER=1 \
++  -DCONFIG_AV1_DECODER=1 \
++  -DCONFIG_AV1_HIGHBITDEPTH=1 \
++  -DCONFIG_MULTITHREAD=1 \
++  -DENABLE_TESTDATA=OFF \
++  -DENABLE_TESTS=OFF \
++  -DENABLE_TOOLS=OFF \
++  -DENABLE_EXAMPLES=OFF \
++  -DENABLE_DOCS=OFF
++bc_install lib/libaom.a include/aom/aom_encoder.h include/aom/aom_decoder.h
+diff --git a/scripts/deps/codec-common.sh b/scripts/deps/codec-common.sh
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/codec-common.sh
+@@ -0,0 +1,84 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Shared setup for the optional original Blender 5.2 codec dependencies.
++# Recipes are installed in the pinned port's scripts/deps directory.
++
++bc_check_sha256() {
++  python3 - "$1" "$2" <<'PY'
++import hashlib
++from pathlib import Path
++import sys
++p = Path(sys.argv[1])
++h = hashlib.sha256(p.read_bytes()).hexdigest()
++if h != sys.argv[2]:
++    raise SystemExit(f"SHA256 mismatch for {p}: {h}")
++PY
++}
++
++bc_prepare() {
++  BC_NAME="$1"
++  BC_FILENAME="$2"
++  BC_URL="$3"
++  BC_SHA256="$4"
++  BC_TOPDIR="$5"
++  BC_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
++  BC_PREFIX="$BC_ROOT/lib/wasm"
++  BC_SCRATCH="$BC_ROOT/build-deps/$BC_NAME"
++  BC_CACHE="$BC_ROOT/build-deps/_cache"
++  BC_JOBS="${BLENDED_BUILD_JOBS:-1}"
++  case "$BC_JOBS" in 1|2|3|4) ;; *) echo "codec builds require 1 to 4 jobs" >&2; exit 2 ;; esac
++  : "${EM_CACHE:?Set EM_CACHE to a build-specific directory before running codec recipes}"
++  BC_EM_CACHE="$EM_CACHE"
++
++  # shellcheck disable=SC1091
++  source "$BC_ROOT/tools/emsdk/emsdk_env.sh"
++  # emsdk_env.sh assigns its own cache. Restore the selected isolated cache.
++  export EM_CACHE="$BC_EM_CACHE"
++  mkdir -p "$BC_CACHE" "$BC_PREFIX"
++  BC_TARBALL="$BC_CACHE/$BC_FILENAME"
++  if [ ! -f "$BC_TARBALL" ]; then
++    curl -fL --retry 3 -o "$BC_TARBALL" "$BC_URL"
++  fi
++  bc_check_sha256 "$BC_TARBALL" "$BC_SHA256"
++
++  # Reconfigure each recipe from verified source. An old archive or CMake
++  # marker must not silently qualify a different codec feature profile.
++  rm -rf "$BC_SCRATCH"
++  mkdir -p "$BC_SCRATCH"
++  python3 - "$BC_TARBALL" "$BC_SCRATCH" "$BC_TOPDIR" <<'PY'
++from pathlib import Path, PurePosixPath
++import sys
++import tarfile
++archive, scratch, expected_root = sys.argv[1:]
++with tarfile.open(archive) as source:
++    for member in source.getmembers():
++        path = PurePosixPath(member.name)
++        if path.is_absolute() or ".." in path.parts or not path.parts or path.parts[0] != expected_root:
++            raise SystemExit(f"Unexpected archive path: {member.name}")
++    source.extractall(scratch, filter="data")
++assert (Path(scratch) / expected_root / "CMakeLists.txt").is_file()
++PY
++  BC_SOURCE="$BC_SCRATCH/$BC_TOPDIR"
++  BC_BUILD="$BC_SCRATCH/build"
++}
++
++bc_configure() {
++  emcmake cmake -S "$BC_SOURCE" -B "$BC_BUILD" -G "Unix Makefiles" \
++    -DCMAKE_BUILD_TYPE=Release \
++    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
++    -DCMAKE_INSTALL_PREFIX="$BC_PREFIX" \
++    -DCMAKE_INSTALL_LIBDIR=lib \
++    -DCMAKE_PREFIX_PATH="$BC_PREFIX" \
++    -DBUILD_SHARED_LIBS=OFF \
++    -DCMAKE_C_FLAGS="-pthread -fexceptions" \
++    -DCMAKE_CXX_FLAGS="-pthread -fexceptions" \
++    "$@"
++}
++
++bc_install() {
++  emmake cmake --build "$BC_BUILD" --target install --parallel "$BC_JOBS"
++  local artifact
++  for artifact in "$@"; do
++    test -s "$BC_PREFIX/$artifact" || { echo "missing codec artifact: $artifact" >&2; exit 1; }
++  done
++}
+diff --git a/scripts/deps/libheif-static-c-api.patch b/scripts/deps/libheif-static-c-api.patch
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/libheif-static-c-api.patch
+@@ -0,0 +1,5 @@
++--- a/libheif/api/libheif/heif.cc
+++++ b/libheif/api/libheif/heif.cc
++@@ -23 +23 @@
++-#if defined(__EMSCRIPTEN__) && !defined(__EMSCRIPTEN_STANDALONE_WASM__)
+++#if defined(__EMSCRIPTEN__) && !defined(__EMSCRIPTEN_STANDALONE_WASM__) && !defined(LIBHEIF_DISABLE_EMBIND)
+diff --git a/scripts/deps/libheif.sh b/scripts/deps/libheif.sh
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/libheif.sh
+@@ -0,0 +1,54 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Original Blender 5.2 libheif 1.20.2 with its original AOM encoder/decoder.
++set -euo pipefail
++source "$(dirname "$0")/codec-common.sh"
++bc_prepare libheif libheif-1.20.2.tar.gz \
++  https://github.com/strukturag/libheif/releases/download/v1.20.2/libheif-1.20.2.tar.gz \
++  68ac9084243004e0ef3633f184eeae85d615fe7e4444373a0a21cebccae9d12a \
++  libheif-1.20.2
++test -s "$BC_PREFIX/lib/libaom.a"
++
++# Blender uses libheif's original C API inside OIIO. Its standalone JavaScript
++# bindings are unused, and their raw-pointer conversions fail with SDK 6.0.5.
++# Guard only that wrapper include; retain the original codec implementations.
++BC_HEIF_PATCH="$BC_ROOT/scripts/deps/libheif-static-c-api.patch"
++bc_check_sha256 "$BC_HEIF_PATCH" a0d9e21fd68ed1777e27be37a412c07ac89ac04975542630eb08a34dee7f3ada
++bc_check_sha256 "$BC_SOURCE/libheif/api/libheif/heif.cc" 3ecfc021816ce9013f7b5285a61961be2f8504dd505ce2405f82639a0d7783a2
++patch --batch --fuzz=0 -d "$BC_SOURCE" -p1 < "$BC_HEIF_PATCH"
++bc_check_sha256 "$BC_SOURCE/libheif/api/libheif/heif.cc" 12b0d0fe77f06d4fa4861469638c2bb832c22edea9c63e9055567ec7cabb6ff3
++
++# Match Blender's selected AV1 backends. Emscripten embeds both backends into
++# libheif instead of requiring native dynamic plugin loading.
++bc_configure \
++  -DCMAKE_CXX_FLAGS="-pthread -fexceptions -DLIBHEIF_DISABLE_EMBIND" \
++  -DENABLE_PLUGIN_LOADING=OFF \
++  -DWITH_AOM_ENCODER=ON \
++  -DWITH_AOM_DECODER=ON \
++  -DWITH_AOM_ENCODER_PLUGIN=OFF \
++  -DWITH_AOM_DECODER_PLUGIN=OFF \
++  -DWITH_DAV1D=OFF \
++  -DWITH_FFMPEG_DECODER=OFF \
++  -DWITH_JPEG_ENCODER=OFF \
++  -DWITH_JPEG_DECODER=OFF \
++  -DWITH_KVAZAAR=OFF \
++  -DWITH_LIBDE265=OFF \
++  -DWITH_LIBSHARPYUV=OFF \
++  -DWITH_OPENJPH_ENCODER=OFF \
++  -DWITH_OpenH264_DECODER=OFF \
++  -DWITH_OpenJPEG_DECODER=OFF \
++  -DWITH_OpenJPEG_ENCODER=OFF \
++  -DWITH_RAV1E=OFF \
++  -DWITH_SvtEnc=OFF \
++  -DWITH_UVG266=OFF \
++  -DWITH_VVDEC=OFF \
++  -DWITH_VVENC=OFF \
++  -DWITH_X265=OFF \
++  -DAOM_INCLUDE_DIR="$BC_PREFIX/include" \
++  -DAOM_LIBRARY="$BC_PREFIX/lib/libaom.a" \
++  -DENABLE_MULTITHREADING_SUPPORT=ON \
++  -DWITH_EXAMPLES=OFF \
++  -DWITH_EXAMPLE_HEIF_VIEW=OFF \
++  -DWITH_GDK_PIXBUF=OFF \
++  -DBUILD_TESTING=OFF
++bc_install lib/libheif.a include/libheif/heif.h
+diff --git a/scripts/deps/openimageio.sh b/scripts/deps/openimageio.sh
+--- a/scripts/deps/openimageio.sh
++++ b/scripts/deps/openimageio.sh
+@@ -2,29 +2,32 @@
+ # SPDX-FileCopyrightText: 2026 blender-web contributors
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ #
+-# Build a TRIMMED OpenImageIO for wasm, static, -pthread. Version pinned from
++# Build OpenImageIO with the original pinned image codecs for wasm, static, -pthread. Version pinned from
+ # upstream/build_files/build_environment/cmake/versions.cmake (OPENIMAGEIO_VERSION).
+ #
+ # blenlib PUBLIC-links OpenImageIO::OpenImageIO (dependency_targets.cmake:143) so
+ # this is on the M1 tier-(a) gtest critical path. We enable ONLY the readers the
+-# headless core needs (EXR, TIFF, PNG, JPEG) and disable everything else that
++# headless core needs plus WebP, JPEG2000, HEIF/AVIF and DPX; disable features that
+ # costs host-side tool builds or extra deps we have not cross-compiled:
+ #   - no OIIO tools (oiiotool/iconvert/... are host binaries we can't run in wasm)
+ #   - no Python bindings, no plugin DSO loading (EMBEDPLUGINS on = static formats)
+-#   - no WebP/OpenJPEG/HEIF/Raw/JXL/GIF/DICOM/Ptex/FFmpeg/OpenVDB/Nuke/OpenCV/Qt/
++#   - no Raw/JXL/GIF/DICOM/Ptex/FFmpeg/OpenVDB/Nuke/OpenCV/Qt/
+ #     Freetype/OCIO/TBB
+ #   - USE_SIMD=0: never let OIIO probe the HOST (x86 sse4.2) — the wasm stack is
+ #     -pthread only (no -msimd128), matching openjph/tiff.
+ #   - USE_EXTERNAL_PUGIXML=OFF: use OIIO's bundled pugixml (avoids building it).
+ # See notes/deps-oiio.md for the cross-compile host-tool analysis.
+-# Idempotent: no-op once the OpenImageIO CMake config is present.
++# Rebuild unconditionally: the old trimmed OIIO config cannot qualify this profile.
+ set -euo pipefail
+ 
+ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ PREFIX="$ROOT/lib/wasm"
+ SCRATCH="$ROOT/build-deps/openimageio"
+ CACHE="$ROOT/build-deps/_cache"
+-NPROC="$(getconf _NPROCESSORS_ONLN)"
++NPROC="${BLENDED_BUILD_JOBS:-1}"
++case "$NPROC" in 1|2|3|4) ;; *) echo "codec builds require 1 to 4 jobs" >&2; exit 2 ;; esac
++export EMCC_CORES="$NPROC"
++source "$ROOT/scripts/deps/codec-common.sh"
+ 
+ OIIO_VERSION="3.1.13.1"
+ OIIO_URL="https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v${OIIO_VERSION}.tar.gz"
+@@ -32,10 +35,6 @@
+ TARBALL="$CACHE/OpenImageIO-${OIIO_VERSION}.tar.gz"
+ 
+ CONFIG_MARKER="$PREFIX/lib/cmake/OpenImageIO/OpenImageIOConfig.cmake"
+-if [ -f "$CONFIG_MARKER" ] && [ "${BW_REBUILD_OPENIMAGEIO:-0}" != 1 ]; then
+-  echo "openimageio: already installed ($CONFIG_MARKER) — skip"
+-  exit 0
+-fi
+ 
+ # --- prerequisites from the shared prefix (build them if missing) ---
+ [ -f "$PREFIX/lib/cmake/Imath/ImathConfig.cmake" ]                  || bash "$ROOT/scripts/deps/imath.sh"
+@@ -50,8 +49,15 @@
+ [ -f "$PREFIX/lib/cmake/OpenColorIO/OpenColorIOConfig.cmake" ]      || bash "$ROOT/scripts/deps/opencolorio.sh"
+ EXPAT_DIR="$(dirname "$(ls "$PREFIX"/lib/cmake/expat-*/expat-config.cmake | head -1)")"
+ 
++# Codec prerequisites were built explicitly by the selected build driver.
++for BC_LIB in webp webpmux webpdemux sharpyuv openjp2 aom heif; do
++  test -s "$PREFIX/lib/lib${BC_LIB}.a" || { echo "missing codec: $BC_LIB" >&2; exit 1; }
++done
++: "${EM_CACHE:?Set EM_CACHE to a build-specific directory}"
++BC_EM_CACHE="$EM_CACHE"
+ # shellcheck disable=SC1091
+ source "$ROOT/tools/emsdk/emsdk_env.sh"
++export EM_CACHE="$BC_EM_CACHE"
+ 
+ mkdir -p "$CACHE" "$SCRATCH"
+ if [ ! -f "$TARBALL" ]; then
+@@ -62,6 +68,8 @@
+   echo "openimageio: MD5 mismatch (got $GOT_MD5 want $OIIO_MD5)" >&2
+   exit 1
+ fi
++
++bc_check_sha256 "$TARBALL" 0fc59b8e2708ded02d3793b8f3331f037ed49bfcde38158f05ac0e876ebb85b7
+ 
+ SRC="$SCRATCH/OpenImageIO-${OIIO_VERSION}"
+ rm -rf "$SRC"
+@@ -145,7 +153,7 @@
+   -DCMAKE_CXX_STANDARD=17 \
+   -DBUILD_SHARED_LIBS=OFF \
+   -DLINKSTATIC=ON \
+-  -DOpenImageIO_REQUIRED_DEPS="TIFF;OpenEXR;PNG;libjpeg-turbo;fmt;Robinmap;ZLIB;OpenColorIO" \
++  -DOpenImageIO_REQUIRED_DEPS="TIFF;OpenEXR;PNG;libjpeg-turbo;fmt;Robinmap;ZLIB;OpenColorIO;WebP;OpenJPEG;Libheif" \
+   -DOpenImageIO_BUILD_MISSING_DEPS="" \
+   -DOIIO_BUILD_TOOLS=OFF \
+   -DOIIO_BUILD_TESTS=OFF \
+@@ -166,9 +174,9 @@
+   -DUSE_OPENCV=OFF \
+   -DUSE_OPENVDB=OFF \
+   -DUSE_FFMPEG=OFF \
+-  -DUSE_WEBP=OFF \
+-  -DUSE_OPENJPEG=OFF \
+-  -DUSE_LIBHEIF=OFF \
++  -DUSE_WEBP=ON \
++  -DUSE_OPENJPEG=ON \
++  -DUSE_LIBHEIF=ON \
+   -DUSE_LIBRAW=OFF \
+   -DUSE_JXL=OFF \
+   -DUSE_GIF=OFF \
+@@ -177,6 +185,9 @@
+   -DUSE_DICOM=OFF \
+   -DUSE_R3DSDK=OFF \
+   -DUSE_BZIP2=OFF \
++  -DWebP_DIR="$PREFIX/share/WebP/cmake" \
++  -DOpenJPEG_DIR="$PREFIX/lib/cmake/openjpeg-2.5" \
++  -DLibheif_DIR="$PREFIX/lib/cmake/libheif" \
+   -DOpenEXR_ROOT="$PREFIX" \
+   -DImath_ROOT="$PREFIX" \
+   -Dfmt_ROOT="$PREFIX" \
+@@ -231,7 +242,19 @@
+ #include <OpenImageIO/imageio.h>
+ #include <OpenImageIO/sysutil.h>
+ #include <OpenImageIO/typedesc.h>
++#include <libheif/heif.h>
+ int main() {
++  for (const char *format : {"webp", "jpeg2000", "heif", "dpx"}) {
++    if (!OIIO::ImageInput::create(format) || !OIIO::ImageOutput::create(format)) {
++      std::fprintf(stderr, "Missing required static OIIO plugin: %s\n", format);
++      return 2;
++    }
++  }
++  if (!heif_have_encoder_for_format(heif_compression_AV1) ||
++      !heif_have_decoder_for_format(heif_compression_AV1)) {
++    std::fprintf(stderr, "Missing required static AV1 encoder or decoder\n");
++    return 3;
++  }
+   OIIO::ImageSpec spec(64, 48, 4, OIIO::TypeDesc::UINT8);
+   // exercise a non-trivial method so the linker keeps real OIIO code
+   std::string s = spec.serialize(OIIO::ImageSpec::SerialText);
+@@ -248,6 +271,13 @@
+   "$PREFIX"/lib/libOpenImageIO.a \
+   "$PREFIX"/lib/libOpenImageIO_Util.a \
+   "$PREFIX"/lib/libOpenColorIO.a \
++  "$PREFIX"/lib/libwebp.a \
++  "$PREFIX"/lib/libwebpmux.a \
++  "$PREFIX"/lib/libwebpdemux.a \
++  "$PREFIX"/lib/libsharpyuv.a \
++  "$PREFIX"/lib/libopenjp2.a \
++  "$PREFIX"/lib/libheif.a \
++  "$PREFIX"/lib/libaom.a \
+   "$PREFIX"/lib/libtiff.a \
+   "$PREFIX"/lib/libOpenEXR*.a \
+   "$PREFIX"/lib/libIlmThread*.a \
+@@ -269,7 +299,23 @@
+   "$VDIR/t.cpp" -Wl,--start-group $LIBS -Wl,--end-group -o "$VDIR/t.js"
+ test -f "$VDIR/t.wasm"
+ node "$VDIR/t.js"
+-echo "openimageio: verify link+physical-memory runtime OK"
++echo "openimageio: verify static codecs, AV1 backends, link and physical-memory runtime OK"
++
++# Preserve exact generated configuration for the outer build receipt.
++python3 - "$BUILD/CMakeCache.txt" <<'PY'
++from pathlib import Path
++import re, sys
++values = {}
++for line in Path(sys.argv[1]).read_text().splitlines():
++    match = re.fullmatch(r"([^:#][^:]*):[^=]+=(.*)", line)
++    if match: values[match[1]] = match[2]
++expected = {"USE_WEBP": "ON", "USE_OPENJPEG": "ON", "USE_LIBHEIF": "ON", "EMBEDPLUGINS": "ON", "BUILD_SHARED_LIBS": "OFF"}
++for key, value in expected.items():
++    if values.get(key) != value:
++        raise SystemExit(f"Required OIIO configuration missing: {key}={value}")
++PY
++mkdir -p "$PREFIX/share/blended"
++install -m644 "$BUILD/CMakeCache.txt" "$PREFIX/share/blended/openimageio-codecs-CMakeCache.txt"
+ 
+ rm -rf "$SCRATCH"
+ echo "openimageio ${OIIO_VERSION}: installed to $PREFIX (config: lib/cmake/OpenImageIO)"
+diff --git a/scripts/deps/openjpeg.sh b/scripts/deps/openjpeg.sh
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/openjpeg.sh
+@@ -0,0 +1,17 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Original Blender 5.2 OpenJPEG 2.5.3; original encoder and decoder are retained.
++set -euo pipefail
++source "$(dirname "$0")/codec-common.sh"
++bc_prepare openjpeg openjpeg-v2.5.3.tar.gz \
++  https://github.com/uclouvain/openjpeg/archive/v2.5.3.tar.gz \
++  368fe0468228e767433c9ebdea82ad9d801a3ad1e4234421f352c8b06e7aa707 \
++  openjpeg-2.5.3
++bc_configure \
++  -DBUILD_STATIC_LIBS=ON \
++  -DBUILD_CODEC=OFF \
++  -DBUILD_TESTING=OFF \
++  -DBUILD_UNIT_TESTS=OFF \
++  -DBUILD_DOC=OFF \
++  -DOPJ_USE_THREAD=ON
++bc_install lib/libopenjp2.a include/openjpeg-2.5/openjpeg.h
+diff --git a/scripts/deps/webp.sh b/scripts/deps/webp.sh
+new file mode 100644
+--- /dev/null
++++ b/scripts/deps/webp.sh
+@@ -0,0 +1,28 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: GPL-2.0-or-later
++# Original Blender 5.2 libwebp 1.6.0, including encoder, decoder, mux and demux.
++set -euo pipefail
++source "$(dirname "$0")/codec-common.sh"
++bc_prepare webp libwebp-1.6.0.tar.gz \
++  https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz \
++  e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564 \
++  libwebp-1.6.0
++
++# These match Blender's original utility exclusions. The libraries stay on.
++# Generic C avoids host CPU detection and preserves the original codec APIs.
++bc_configure \
++  -DWEBP_ENABLE_SIMD=OFF \
++  -DWEBP_USE_THREAD=ON \
++  -DWEBP_BUILD_LIBWEBPMUX=ON \
++  -DWEBP_BUILD_WEBP_JS=OFF \
++  -DWEBP_BUILD_ANIM_UTILS=OFF \
++  -DWEBP_BUILD_CWEBP=OFF \
++  -DWEBP_BUILD_DWEBP=OFF \
++  -DWEBP_BUILD_GIF2WEBP=OFF \
++  -DWEBP_BUILD_IMG2WEBP=OFF \
++  -DWEBP_BUILD_VWEBP=OFF \
++  -DWEBP_BUILD_WEBPINFO=OFF \
++  -DWEBP_BUILD_WEBPMUX=OFF \
++  -DWEBP_BUILD_EXTRAS=OFF \
++  -DWEBP_BUILD_FUZZTEST=OFF
++bc_install lib/libwebp.a lib/libwebpmux.a lib/libwebpdemux.a lib/libsharpyuv.a

@@ -68,6 +68,22 @@ all 80 parent identities, and all 57 native subtest identities before any
 additional strict pairs are credited. The declared-scope, all-upstream and
 full-feature gates remain false. All 101 unexpanded declarations remain visible.
 
+The correction is published at
+[`03913290e92a`](https://github.com/596050/blended/commit/03913290e92a98cd9c45fdecf679072587c4dbe7).
+Its new [complete source build](https://github.com/596050/blended/actions/runs/40008805236)
+is running. The host prerequisites, selected cache restoration and complete
+cache verification succeeded; the reconstruct/build/package step remains in
+progress at the latest observation. No corrected browser image-decoding result
+has yet been credited.
+
+An [exact producer source review](../compatibility/evidence/source-producer-review-03913290e92a-2026-10-23/review.json)
+binds that commit's workflow, matrix runner and probe. The first two files are
+unchanged from the prior reviewed producer; the probe changes only its pinned
+codec-manifest digest. A separate allowlist entry accepts only those exact
+bytes and source commit, a completed matching workflow run, and its bound
+matrices and original commands. Preparing this consumer entry creates no
+execution observations or additional test credit.
+
 The [fresh infrastructure execution](../compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/README.md)
 passes all 383 tests with zero skips. It includes 31 new normalizer regressions
 and six new DPX numeric/recipe regressions. All 145 captured input identities
@@ -178,7 +194,7 @@ establish the selected original CPU mesh comparisons under this new launcher
 and software-adapter profile. They do not establish configured CTest execution,
 the package's original UI shell, GPU behavior, complete native/browser build
 correspondence or whole-application parity. Neither the 829-obligation ledger
-nor its 516 strict successful pairs is rewritten to incorporate this result.
+nor its current 528 strict successful pairs is rewritten to incorporate this result.
 
 The complete original `operators` driver adds a separately recorded
 105-case native/browser comparison on the same package. Native passes all
@@ -204,6 +220,29 @@ The [independent mesh-driver review](../compatibility/evidence/original-mesh-bro
 checks both complete invocations, 78 evidence identities, launcher derivations,
 original case/specification mappings, event order, actual process exits and
 the retained source triage. It adds zero executions or case passes.
+
+The new [mesh evidence consumer](../tools/reconcile_original_mesh.py) converts
+these two retained invocations into separate contracts, native-derived
+inventories, typed execution receipts and strict reports. It checks the
+unchanged original source, helper, fixture, full command, forbidden environment
+keys, mounted bytes before main and at original quit, ordered original stdout,
+automatic application main and all three process exits. The selected historical
+native, engine and Chrome identities are fixed; this consumer cannot substitute
+the newer source-build package.
+
+| Separate original mesh scope | Obligations | Strict successful pairs | Qualified agreements | Raw terminal outcome matches |
+|---|---:|---:|---:|---:|
+| `bmesh_bevel` | 88 | 88 | 88 | 88 |
+| `operators` | 105 | 0 | 0 | 103 |
+
+The [captured adapter validation](../compatibility/evidence/original-mesh-consumer-validation-2026-10-23/attempt-01/execution.json)
+passes all 58 infrastructure regressions. Both the consumer and the independent
+unchanged strict ledger return 0 for bevel and 1 for the blocked operators
+scope. All 13 captured implementation, selector and plan inputs remain
+unchanged, and all 95 consumed historical paths were reverified. These are new
+consumer executions over retained observations, with zero new original Blender
+executions. Dedicated CI matrix jobs retain both reports and enforce their
+strict gates independently of the 829-obligation unittest profiles.
 
 The [next-invocation audit](../compatibility/evidence/original-next-invocations-5.2-2026-10-23/proposed-next-invocations.json)
 retains all 101 declarations previously unexpanded by the unittest adapter
@@ -311,9 +350,9 @@ The old facet gate's hash-only evidence acceptance was replaced with typed case-
 
 The CI workflow [test-parity-ledger.yml](../.github/workflows/test-parity-ledger.yml) separates infrastructure regressions from the strict original-test gate and independently checks the base, Essentials and source-built codec/SQLite profiles. Valid blocked reports are generated and uploaded; the subsequent strict gate exits unsuccessfully while obligations remain. A green infrastructure job does not claim Blender parity.
 
-The latest local infrastructure run passes **346 tests with zero skips** in 121.485 seconds, including real CMake configuration, dependency integration, patch application, qualification validation and the cache failure regressions. Its prospectively captured [execution receipt](../compatibility/evidence/infrastructure-tests-cache-verified-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm all 156 selected implementation, workflow and original-preimage files were unchanged during the run. The preceding [337-test run](../compatibility/evidence/infrastructure-tests-codecs-sqlite-2026-10-23/execution.json) and [294-test run](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) remain unchanged. These counts validate the project's testing machinery; they are not added to Blender feature passes.
+The earlier cache-validation infrastructure run passed **346 tests with zero skips** in 121.485 seconds, including real CMake configuration, dependency integration, patch application, qualification validation and the cache failure regressions. Its prospectively captured [execution receipt](../compatibility/evidence/infrastructure-tests-cache-verified-2026-10-23/execution.json) preserves actual stdout/stderr, process timing, exit status, interpreter and CMake identities. Before/after hashes confirm all 156 selected implementation, workflow and original-preimage files were unchanged during that run. The preceding [337-test run](../compatibility/evidence/infrastructure-tests-codecs-sqlite-2026-10-23/execution.json) and [294-test run](../compatibility/evidence/infrastructure-tests-essentials-2026-10-23/execution.json) remain unchanged. The later 383-test DPX/recovery run is described above. These counts validate the project's testing machinery; they are not added to Blender feature passes.
 
-The published implementation checkpoint is
+The earlier published implementation checkpoint is
 [`f25e69ed72fed2d31d7d65e657fd6515da4bd792`](https://github.com/596050/blended/commit/f25e69ed72fed2d31d7d65e657fd6515da4bd792).
 Its [publication receipt](../compatibility/evidence/checkpoint-publication-f25e69ed72fe-2026-10-23/summary.json)
 records independent verification of the exact commit and tree before the
@@ -325,13 +364,23 @@ report, retaining 516 successful pairs and 601 outcome agreements. This
 [CI evidence replay](../compatibility/evidence/ci-ledger-f25e69ed72fe-2026-10-23/summary.json)
 reexecutes zero original Blender cases.
 
-The new [source-build run](https://github.com/596050/blended/actions/runs/39986612484)
-has restored the explicitly selected historical dependency cache and passed
-the complete installed-file and source-derived alias verification. Its
-reconstruct/build/package step was still running at the last observation on
-2026-10-23. The workflow subsequently requires the original brush overlay and
-fresh execution of both frozen browser matrices. No completed new engine or
-new original-case result is inferred from this running build.
+The [source-build run at that checkpoint](https://github.com/596050/blended/actions/runs/39986612484)
+subsequently completed, with its exact results documented at the top of this
+page. It is distinct from the currently running DPX-corrected build.
+
+The recovered DPX checkpoint `03913290e92a` was published without changing
+`main`. Its first CI replay correctly rejected an evidence map whose historical
+runner paths overlapped the current checkout. Workflow-only follow-up
+[`32d488161133`](https://github.com/596050/blended/commit/32d488161133c5721e8379531b18af65a86e6624)
+places the replay in a separate checkout directory and retains the validator's
+guard. The [completed follow-up CI](https://github.com/596050/blended/actions/runs/40009788126)
+passes all **383 infrastructure tests** in 93.848 seconds. All three normalizers
+return 0 and all three strict unittest gates return 1 with valid blocked
+reports. The source profile's complete 858-file bundle is byte-identical to the
+frozen report, preserving 528 strict successful pairs and 536 agreements.
+The [initial and follow-up evidence](../compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/README.md)
+retain both the original rejection and its successful replay; these jobs
+execute zero original Blender cases.
 
 ## Product target inventory and configuration
 

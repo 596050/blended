@@ -1,0 +1,273 @@
+{
+  "schema": 1,
+  "status": "failed",
+  "started_utc": "2026-10-23T12:49:59.458410+00:00",
+  "finished_utc": "2026-10-23T12:50:00.403167+00:00",
+  "scope": "selected Blender 5.2.0 candidate native reference qualification only",
+  "profile": "native-reference",
+  "full_parity": false,
+  "browser_parity": false,
+  "product_target_parity": false,
+  "selected_suites_passed": false,
+  "official_release_checksum_verified": true,
+  "upstream_build_hash_verified": true,
+  "source_correspondence_verified": false,
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": "5.2.0"
+  },
+  "artifact": {
+    "url": "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz",
+    "expected_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "expected_bytes": 384441228,
+    "observed_bytes": 384441228,
+    "observed_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48"
+  },
+  "suite_sources": [
+    {
+      "upstream_path": "tests/python/bl_pyapi_blf.py",
+      "bytes": 138030,
+      "sha256": "3a0f8e1acaa2ca2949c6b365929f04049896847e99b0759e63b1773a3871e328",
+      "support_files": [],
+      "fixture_files": [],
+      "driver": "unittest-main",
+      "required_background": true,
+      "driver_execution": {
+        "entrypoint": "original __main__",
+        "process_isolation": "one-upstream-script",
+        "background": true,
+        "blender_args": [
+          "--background",
+          "--console-crash-handler",
+          "--factory-startup",
+          "--debug-memory",
+          "--debug-exit-on-error",
+          "--python-exit-code",
+          "1",
+          "--python-expr",
+          "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+        ],
+        "script_args": [
+          "--mode=VFONT",
+          "--use-vfont-render"
+        ],
+        "ctest_name": "script_pyapi_blf_vfont",
+        "cmake_sources": [
+          {
+            "upstream_path": "tests/CMakeLists.txt",
+            "bytes": 5871,
+            "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+          },
+          {
+            "upstream_path": "tests/python/CMakeLists.txt",
+            "bytes": 50161,
+            "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+          }
+        ],
+        "registration": "add_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)"
+      },
+      "case_id_normalization": "original-main",
+      "url": "https://raw.githubusercontent.com/blender/blender/fbe6228777e7d9afefcd61a413844e790ae75db7/tests/python/bl_pyapi_blf.py"
+    }
+  ],
+  "summary": {
+    "expected_suites": 1,
+    "observed_suites": 0,
+    "totals": {
+      "discovered": 0,
+      "executed": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "missing_outcomes": 0,
+      "failure_events": 0,
+      "subtest_events": 0
+    },
+    "suites": [],
+    "required_case_inventory": {
+      "fixed_for_all_requested_suites": false,
+      "expected_cases": 0,
+      "missing_cases": 0,
+      "suites": []
+    }
+  },
+  "execution": {
+    "driver_observation": {
+      "entrypoint": "original __main__",
+      "failfast": null,
+      "runner_invocations": 0,
+      "support_files": []
+    },
+    "exception": "Traceback (most recent call last):\n  File \"/tmp/blended-native-reference-1js2kk_e/native-runner.py\", line 105, in <module>\n    runpy.run_path(str(_main_path), run_name=\"__main__\")\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3782, in <module>\n    main()\n    ~~~~^^\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3740, in main\n    regular=bpy.data.fonts.load(FONT_PATH_REGULAR),\n            ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nRuntimeError: Error: Cannot read '/tmp/blended-original-unittest-zv4ujdtt/tests/files/blenfont/noto_fonts/NotoSans-Regular.otf': No such file or directory\n\n",
+    "execution_context": {
+      "background": true,
+      "entrypoint": "original __main__",
+      "runtime_argv": [
+        "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python",
+        "/tmp/blended-native-reference-1js2kk_e/native-runner.py"
+      ],
+      "script_argv": [
+        "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender",
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'",
+        "--python",
+        "/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py",
+        "--",
+        "--mode=VFONT",
+        "--use-vfont-render"
+      ],
+      "source_root": "/tmp/blended-original-unittest-zv4ujdtt"
+    },
+    "identity": {
+      "binary_path": "/tmp/blended-native-batch-0wifx86t/blender-5.2.0-linux-x64/blender",
+      "build_branch": "blender-v5.2-release",
+      "build_hash": "fbe6228777e7",
+      "version": [
+        5,
+        2,
+        0
+      ],
+      "version_string": "5.2.0 LTS"
+    },
+    "io_observation": {
+      "fixture_bytes_preserved": true,
+      "fixture_files": []
+    },
+    "suites": []
+  },
+  "blockers": [
+    {
+      "scope": "suite_inventory",
+      "status": "failed",
+      "reason": "not every requested suite executed exactly once"
+    },
+    {
+      "scope": "runner",
+      "status": "failed",
+      "reason": "Traceback (most recent call last):\n  File \"/tmp/blended-native-reference-1js2kk_e/native-runner.py\", line 105, in <module>\n    runpy.run_path(str(_main_path), run_name=\"__main__\")\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3782, in <module>\n    main()\n    ~~~~^^\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3740, in main\n    regular=bpy.data.fonts.load(FONT_PATH_REGULAR),\n            ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nRuntimeError: Error: Cannot read '/tmp/blended-original-unittest-zv4ujdtt/tests/files/blenfont/noto_fonts/NotoSans-Regular.otf': No such file or directory\n\n"
+    },
+    {
+      "scope": "original_driver",
+      "status": "failed",
+      "reason": "one complete original unittest entrypoint and its successful exit were not observed"
+    },
+    {
+      "scope": "native_runtime",
+      "status": "failed",
+      "reason": "native Blender exited with code 1"
+    }
+  ],
+  "cohort": {
+    "id": "script_pyapi_blf_vfont-5.2",
+    "manifest_sha256": "86c489ccdbb40027f83eb3952d1214c3093585b4b86ebc60aa7b2bce7b3f93fc",
+    "stage": "native-discovery",
+    "expected_cases": null,
+    "suite_kind": "unittest-main",
+    "blender_args": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "original_invocation": {
+      "entrypoint": "original __main__",
+      "process_isolation": "one-upstream-script",
+      "background": true,
+      "blender_args": [
+        "--background",
+        "--console-crash-handler",
+        "--factory-startup",
+        "--debug-memory",
+        "--debug-exit-on-error",
+        "--python-exit-code",
+        "1",
+        "--python-expr",
+        "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+      ],
+      "script_args": [
+        "--mode=VFONT",
+        "--use-vfont-render"
+      ],
+      "ctest_name": "script_pyapi_blf_vfont",
+      "cmake_sources": [
+        {
+          "upstream_path": "tests/CMakeLists.txt",
+          "bytes": 5871,
+          "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+        },
+        {
+          "upstream_path": "tests/python/CMakeLists.txt",
+          "bytes": 50161,
+          "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+        }
+      ],
+      "registration": "add_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)"
+    },
+    "native_discovery": null,
+    "complete_cohort_requested": true
+  },
+  "input_fixture_transfer": null,
+  "extraction": {
+    "members": 6546,
+    "unpacked_bytes": 1238222253,
+    "filter": "data",
+    "shared_verified_extraction": true
+  },
+  "executable": {
+    "path": "blender-5.2.0-linux-x64/blender",
+    "sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27",
+    "bytes": 174666336
+  },
+  "runner_sha256": "7c5fbccf3f66437aa8fe2bd13248f9e72b4b9773111464dddf2dc6d09932d4ad",
+  "process": {
+    "flags": [
+      "--background",
+      "--console-crash-handler",
+      "--factory-startup",
+      "--debug-memory",
+      "--debug-exit-on-error",
+      "--python-exit-code",
+      "1",
+      "--python-expr",
+      "import bpy;bpy.context.preferences.filepaths.file_preview_type='NONE'"
+    ],
+    "timeout_seconds": 60,
+    "returncode": 1
+  },
+  "transport": {
+    "protocol": "marker-prefixed-json-v1",
+    "result_markers": 1,
+    "recovered_json_prefix": false,
+    "trailing_runtime_text": null
+  },
+  "reason": "suite_inventory: not every requested suite executed exactly once; runner: Traceback (most recent call last):\n  File \"/tmp/blended-native-reference-1js2kk_e/native-runner.py\", line 105, in <module>\n    runpy.run_path(str(_main_path), run_name=\"__main__\")\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3782, in <module>\n    main()\n    ~~~~^^\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3740, in main\n    regular=bpy.data.fonts.load(FONT_PATH_REGULAR),\n            ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nRuntimeError: Error: Cannot read '/tmp/blended-original-unittest-zv4ujdtt/tests/files/blenfont/noto_fonts/NotoSans-Regular.otf': No such file or directory\n\n; original_driver: one complete original unittest entrypoint and its successful exit were not observed; native_runtime: native Blender exited with code 1",
+  "log": {
+    "path": "native-reference.log",
+    "sha256": "1dbcca0b890bec02e1a2ec86ec721792c42858851e9470856521e782d951587b",
+    "bytes": 2637
+  }
+}

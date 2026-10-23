@@ -1,0 +1,146 @@
+{
+  "comparison_policy": {
+    "case_identity": "Original upstream commit, registration, source path, line, name and specification SHA256.",
+    "completion": "Case observations are distinct from original main and host process completion.",
+    "entrypoint": "The original script main and --run-all-tests branch with comparison enabled.",
+    "expected_failure": "These selected original drivers have no expectedFailure annotation.",
+    "failed": "Original FAILED marker and its complete original comparison and validation diagnostics.",
+    "name": "unchanged-original-spec-mesh-run-all-v1",
+    "oracle": "Unchanged original mesh_test.py comparison and validation; no invented subtest identities.",
+    "passed": "Exactly one original PASSED marker, Mesh Comparison : Same, and Mesh Validation : Valid.",
+    "schema": 1
+  },
+  "configurations": [
+    {
+      "id": "blender-5.2-source-derived-original-mesh",
+      "registrations": [
+        {
+          "comparison_policy_sha256": "7a2b557fc0ac4a4c7f8c822a612ebfeed7d15d8197042172e7c2909cab2368b2",
+          "fixture_manifest_sha256": "2036cfa76a24e87baa20c6f24ab91873827417ad91a4d2c8400fbd48e6083a33",
+          "id": "operators",
+          "invocation_sha256": "910f5a53396820a0bb9073c59a4cf39ea11bcd5fdb8cac9f8f100fbc6c88f09f"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "blockers": [
+      "Only one selected source-derived original mesh registration is assessed.",
+      "The original TEST_SRC_DIR_EXISTS condition is preserved; no configured CTest inventory is claimed.",
+      "This independent profile does not extend the 829-obligation unittest scope."
+    ],
+    "configuration_matrix_complete": false,
+    "fixture_closure_complete": true,
+    "source_registration_reconciliation_complete": false
+  },
+  "historical_engine_context": {
+    "bytes": 2819,
+    "path": "raw/5a86e73f391ab76ff957050c624c03bbb3850e91fbe49c018f958d35032614cf.json",
+    "sha256": "5a86e73f391ab76ff957050c624c03bbb3850e91fbe49c018f958d35032614cf"
+  },
+  "normalization_sources": [
+    {
+      "bytes": 78387,
+      "path": "normalizer/reconcile_original_mesh.py",
+      "sha256": "4ff7cc1cd71dd89422866b7be2376662f9b3fc0da9dbd8cad3ba3075ea6f7f5d"
+    },
+    {
+      "bytes": 24508,
+      "path": "normalizer/test_parity_ledger.py",
+      "sha256": "c247fbff7210efdd7327651fd81908a06e8f2747cf8ff3c299a2c462487c24eb"
+    },
+    {
+      "bytes": 84840,
+      "path": "normalizer/reconcile_unittest_matrix.py",
+      "sha256": "0accf71173c8a5d6e281757c659851e6e6803e5bcb0dd1fa4aaff08ca0998036"
+    },
+    {
+      "bytes": 26497,
+      "path": "normalizer/unittest_cohort.py",
+      "sha256": "1d94c2e079c611d188f795c452fc52d777a9abdbce603626aa02975d4c9c0270"
+    },
+    {
+      "bytes": 6005,
+      "path": "normalizer/upstream_invocations.py",
+      "sha256": "99404347b9a863c8a58ece0e6815199b386e161f5a0dcaeae30c9add2ceece6d"
+    },
+    {
+      "bytes": 140627,
+      "path": "normalizer/upstream_invocations_5_2.json",
+      "sha256": "c326f9a99e665b15901dda134afd0c074c5c150441ed2971d977ce134a1fe7f2"
+    },
+    {
+      "bytes": 5399,
+      "path": "normalizer/upstream_resources.py",
+      "sha256": "dbf171e22447fbc069af3dea02a333b22134972d27baa2b79bf9a51c0e0fa8c0"
+    },
+    {
+      "bytes": 14844,
+      "path": "normalizer/probe_blender_fixtures.py",
+      "sha256": "b8f7e2939ffa95481c42b3468831fa61c2127d76dd4c0cf066cd8a6ba0afa138"
+    },
+    {
+      "bytes": 19562,
+      "path": "normalizer/browser_package_overlay.py",
+      "sha256": "af2c68cb6c60c9908e5ade48d7b811a4efac00221db9fd0e86e53a3defd6bacc"
+    },
+    {
+      "bytes": 879,
+      "path": "compatibility/package-overlays/essentials-brushes-5.2.json",
+      "sha256": "3face96d93404046a15b0a22d77f25711997039a374d14d6458d547fd57483dd"
+    }
+  ],
+  "original_declaration": {
+    "arguments": "\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  ",
+    "context": [
+      {
+        "line": 702,
+        "opener": "if(TEST_SRC_DIR_EXISTS)"
+      }
+    ],
+    "line": 703,
+    "name": "add_blender_test",
+    "source_declaration_index": 74,
+    "source_path": "tests/python/CMakeLists.txt",
+    "text": "add_blender_test(\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  )"
+  },
+  "profiles": [
+    {
+      "contexts": {
+        "blender-5.2-source-derived-original-mesh": {
+          "adapter_sha256": "7870979f7960ae9a8472c8e3e66adaaa21867faaf06672f7765dfbb5bc6f011b",
+          "artifact_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+          "build_config_sha256": "56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae",
+          "runtime_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27"
+        }
+      },
+      "id": "native-reference",
+      "role": "reference",
+      "runtime_kind": "native"
+    },
+    {
+      "contexts": {
+        "blender-5.2-source-derived-original-mesh": {
+          "adapter_sha256": "7870979f7960ae9a8472c8e3e66adaaa21867faaf06672f7765dfbb5bc6f011b",
+          "artifact_sha256": "3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910",
+          "build_config_sha256": "026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773",
+          "runtime_sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778"
+        }
+      },
+      "id": "original-mesh-operators-essentials-chromium-custom-launcher-v2",
+      "role": "candidate",
+      "runtime_kind": "browser"
+    }
+  ],
+  "schema": 1,
+  "scope": "retained-original-mesh:original-mesh-operators-essentials-chromium-custom-launcher-v2",
+  "selected_profile": {
+    "bytes": 2676,
+    "path": "raw/3a601e239a53d71f236acb4dac771bd38e086e63de4c745024e843053018c692.json",
+    "sha256": "3a601e239a53d71f236acb4dac771bd38e086e63de4c745024e843053018c692"
+  },
+  "target": {
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "repository": "blender/blender"
+  }
+}

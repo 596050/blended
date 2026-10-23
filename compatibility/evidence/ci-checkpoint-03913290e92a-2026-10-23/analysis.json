@@ -1,0 +1,243 @@
+{
+  "all_upstream_test_parity": false,
+  "analysis_utc": "2026-10-23T19:14:40.952392+00:00",
+  "checkpoint": {
+    "commit": "03913290e92a98cd9c45fdecf679072587c4dbe7",
+    "sole_parent": "9e75e19fbddf80ab68e60c4a7edefd8cd6e3c20c",
+    "tree": "a3fbe996e97c8e872ca4d94a1c0f7283e9cb86ad"
+  },
+  "connected_account_publication_observation": {
+    "bytes": 3697,
+    "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/publication/inputs/publication-observation.json",
+    "sha256": "c888f9f4c2a189a80ae8de1003c260d5ff7ee5a2010410d8a7e6bf92ab66becd"
+  },
+  "full_feature_parity": false,
+  "infrastructure": {
+    "blender_test_credit": 0,
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-q"
+    ],
+    "exit_basis": "The single-command infrastructure step completed successfully.",
+    "exit_code": 0,
+    "job_conclusion": "success",
+    "job_id": 120603512741,
+    "local_reference": {
+      "bytes": 2833,
+      "path": "compatibility/evidence/infrastructure-tests-dpx-recovery-2026-10-23/execution.json",
+      "sha256": "06761325aa8986cb0e7854d3351916fc712dda0452e7c8b90be200d147a17e85"
+    },
+    "local_reference_seconds": 155.557,
+    "log": {
+      "bytes": 18805,
+      "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/logs/infrastructure-120603512741.log",
+      "sha256": "adb6179095c7c374772c5121dce4e38a177b8da3e025f1fc40e6ea656cb936e1"
+    },
+    "observed_seconds": 162.436,
+    "observed_summary": "OK",
+    "observed_tests": 383,
+    "same_test_count_and_success_as_local": true
+  },
+  "kind": "completed-checkpoint-ci-and-publication-observation",
+  "ledger_profile_comparisons": [
+    {
+      "actual_report": {
+        "bytes": 753305,
+        "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/ledger/base/artifact/report.json",
+        "sha256": "a62c6acc81888c3aabe7a58e20ab01f6986e5e9897a06bdf788fe6f46578d42d"
+      },
+      "all_case_pairs_equal": true,
+      "all_registrations_equal": true,
+      "difference_scope": "Normalizer provenance changes the contract and inventory identities; every case pair, registration and other field is identical.",
+      "frozen_report": {
+        "bytes": 753305,
+        "path": "compatibility/evidence/unittest-parity-ledger-5.2-2026-10-23/report.json",
+        "sha256": "07c3eda18d9a3ec79b5184b6ea82fa159e596ddca766729e962e0571e0f6e094"
+      },
+      "gate": "blocked",
+      "job_conclusion": "failure",
+      "job_id": 120603512685,
+      "new_blender_test_credit": 0,
+      "normalizer_exit_basis": "Single final command completed successfully in the workflow step.",
+      "normalizer_exit_code": 0,
+      "normalizer_only_fields": [
+        "missing_browser_subtest_count",
+        "observation_count_limit",
+        "observation_totals",
+        "unexpected_browser_subtest_count"
+      ],
+      "only_differing_top_level_fields": [
+        "contract_sha256",
+        "inventory_sha256"
+      ],
+      "outcome_agreements": 597,
+      "pair_count": 829,
+      "pairs_canonical_sha256": "2df9bf924e97af502baa69f4d43c6b188f0b2b19d152571ba7f8bf896ff2b8de",
+      "profile": "base",
+      "registration_count": 132,
+      "registrations_canonical_sha256": "ff2d3fffbf418808ce3e88d015832210d841780d5962ce6e2c0b6fb14a29346b",
+      "strict_gate_exit_basis": "Explicit completed-job log.",
+      "strict_gate_exit_code": 1,
+      "strict_report": {
+        "bytes": 752366,
+        "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/ledger/base/artifact/strict-gate.json",
+        "sha256": "d83327f46ac81237b9d8a77001874f466c2110ca59570aa48598c8805a3b9cf0"
+      },
+      "strict_shared_fields_equal": true,
+      "successful_execution_pairs": 512
+    },
+    {
+      "actual_report": {
+        "bytes": 752770,
+        "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/ledger/essentials/artifact/report.json",
+        "sha256": "c03cf220c8abf834d1d94802e1c9ea2b996258b83a395050b05a9f676ab2b74d"
+      },
+      "all_case_pairs_equal": true,
+      "all_registrations_equal": true,
+      "difference_scope": "Normalizer provenance changes the contract and inventory identities; every case pair, registration and other field is identical.",
+      "frozen_report": {
+        "bytes": 752770,
+        "path": "compatibility/evidence/unittest-parity-ledger-essentials-5.2-2026-10-23/report.json",
+        "sha256": "d1b6df970fd0be756b374eba9ca2c662372106c9e3ec1fe6df9ea80bff553e81"
+      },
+      "gate": "blocked",
+      "job_conclusion": "failure",
+      "job_id": 120603512541,
+      "new_blender_test_credit": 0,
+      "normalizer_exit_basis": "Single final command completed successfully in the workflow step.",
+      "normalizer_exit_code": 0,
+      "normalizer_only_fields": [
+        "missing_browser_subtest_count",
+        "observation_count_limit",
+        "observation_totals",
+        "unexpected_browser_subtest_count"
+      ],
+      "only_differing_top_level_fields": [
+        "contract_sha256",
+        "inventory_sha256"
+      ],
+      "outcome_agreements": 601,
+      "pair_count": 829,
+      "pairs_canonical_sha256": "20c9b934e52e6ac070e7733a18d7cd0e90dec2a2d332d42ad58a39dc248412c0",
+      "profile": "essentials",
+      "registration_count": 132,
+      "registrations_canonical_sha256": "ff2d3fffbf418808ce3e88d015832210d841780d5962ce6e2c0b6fb14a29346b",
+      "strict_gate_exit_basis": "Explicit completed-job log.",
+      "strict_gate_exit_code": 1,
+      "strict_report": {
+        "bytes": 751831,
+        "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/ledger/essentials/artifact/strict-gate.json",
+        "sha256": "9ef7b9546af034c7453a754b0e96cb3403c6f0a6f0f2a0ed7e0138770698385a"
+      },
+      "strict_shared_fields_equal": true,
+      "successful_execution_pairs": 516
+    }
+  ],
+  "ledger_run_conclusion": "failure",
+  "ledger_run_id": 40008805411,
+  "new_blender_test_credit": 0,
+  "publication_attempts": [
+    {
+      "attempt": 1,
+      "blender_tests_executed": 0,
+      "command_count": 18,
+      "command_exit_codes": {
+        "ancestry": 0,
+        "commit": 0,
+        "fetch-base": 0,
+        "fsck": 0,
+        "import-bundle": 0,
+        "init": 0,
+        "ledger": 0,
+        "lfs-clean": 0,
+        "lfs-push": 0,
+        "lfs-version": 0,
+        "original-lfs-pointer": 0,
+        "parents": 0,
+        "push": 1,
+        "remote": 0,
+        "remote-after-command-error": 0,
+        "remote-before": 0,
+        "tree": 0,
+        "verify-bundle": 0
+      },
+      "receipt": {
+        "bytes": 19673,
+        "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/publication/attempt-01/artifact/receipt.json",
+        "sha256": "12de015a14c28f48fc3336f845fd4afb9a0f33f5fa4cc97b2ad734902f184821"
+      },
+      "remote_after": "9e75e19fbddf80ab68e60c4a7edefd8cd6e3c20c",
+      "remote_before": "9e75e19fbddf80ab68e60c4a7edefd8cd6e3c20c",
+      "scope": "All verification and LFS upload commands passed. GitHub refused the branch push for missing workflows permission. The remote branch remained at the base commit.",
+      "status": "failed"
+    },
+    {
+      "attempt": 2,
+      "blender_tests_executed": 0,
+      "command_count": 16,
+      "command_exit_codes": {
+        "ancestry": 0,
+        "commit": 0,
+        "fetch-base": 0,
+        "fsck": 0,
+        "import-bundle": 0,
+        "init": 0,
+        "ledger": 0,
+        "lfs-clean": 0,
+        "lfs-version": 0,
+        "original-lfs-pointer": 0,
+        "parents": 0,
+        "remote": 0,
+        "remote-after": 0,
+        "remote-before": 0,
+        "tree": 0,
+        "verify-bundle": 0
+      },
+      "receipt": {
+        "bytes": 17677,
+        "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/publication/attempt-02/artifact/receipt.json",
+        "sha256": "7595bec2b607c5e1051d18867424bb10d3bd42f528108ad653b3395c0f72d98c"
+      },
+      "remote_after": "03913290e92a98cd9c45fdecf679072587c4dbe7",
+      "remote_before": "03913290e92a98cd9c45fdecf679072587c4dbe7",
+      "scope": "Verified the exact existing target after authorized connected-account publication. No branch push or LFS upload was attempted in this rerun.",
+      "status": "published"
+    }
+  ],
+  "publication_run_id": 40008313085,
+  "schema": 1,
+  "scope": "Publication verification and infrastructure/evidence replay only. Full source-build monitoring belongs to a separate capture.",
+  "source_profile_replay_failure": {
+    "artifact_file_count": 1,
+    "ci_case_pair_comparison_possible": false,
+    "ci_report_present": false,
+    "error": "exact evidence map cannot shadow a current repository path",
+    "frozen_outcome_agreements": 536,
+    "frozen_reference": {
+      "bytes": 780486,
+      "path": "compatibility/evidence/unittest-parity-ledger-source-build-39986612484/report.json",
+      "sha256": "913a5f430f2ea9df35ec2878240a3c3b3b6783062c733a2e9a6f58d3b6c21b0b"
+    },
+    "frozen_reference_scope": "Prior original observations only; absent CI output is not filled from this reference.",
+    "frozen_successful_execution_pairs": 528,
+    "job_conclusion": "failure",
+    "job_id": 120603512234,
+    "new_blender_test_credit": 0,
+    "normalizer_exit_code": 2,
+    "only_artifact_file": {
+      "bytes": 319425,
+      "path": "compatibility/evidence/ci-checkpoint-03913290e92a-2026-10-23/ledger/source-build-codecs-sqlite/artifact/raw/49f721772bf1022dea2b74c083e0f2406f4e099220c1b285af929a9ddeff125e.json",
+      "sha256": "49f721772bf1022dea2b74c083e0f2406f4e099220c1b285af929a9ddeff125e"
+    },
+    "path_map_exactly_matches_frozen": true,
+    "profile": "source-build-codecs-sqlite",
+    "source_derived_cause": "The current GitHub checkout root /home/runner/work/blended/blended contains the original absolute map paths. The unchanged guard rejects these as potential current-repository path shadowing.",
+    "strict_gate_exit_code": null,
+    "strict_gate_step": "skipped"
+  }
+}

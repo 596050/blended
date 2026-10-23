@@ -1,0 +1,2079 @@
+{
+  "schema": 1,
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "scope": "bounded CMake source invocation plan",
+  "configured_ctest_inventory": false,
+  "complete_test_denominator": false,
+  "cmake_sources": [
+    {
+      "upstream_path": "tests/CMakeLists.txt",
+      "bytes": 5871,
+      "sha256": "1170647b903d4d730c938a57b44b3aebcbc0f424bcf1c6efa67b5fd55bbc4b3c"
+    },
+    {
+      "upstream_path": "tests/python/CMakeLists.txt",
+      "bytes": 50161,
+      "sha256": "d787d904f8488ccada448a062dae412255eee5e5a8a2daa605351fe9e204248c"
+    }
+  ],
+  "registrations": [
+    {
+      "source_declaration_index": 0,
+      "line": 50,
+      "registration": "add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${TEST_BLENDER_EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )",
+      "context": [
+        {
+          "opener": "function(add_blender_test testname)",
+          "line": 49
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 1,
+      "line": 65,
+      "registration": "add_blender_test_impl(\n    \"${testname}\"\n    \"\"\n    \"${TEST_BLENDER_EXE}\"\n    ${EXE_PARAMS}\n    \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n    ${ARGN}\n  )",
+      "context": [
+        {
+          "opener": "function(add_blender_test_allow_error testname)",
+          "line": 60
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 2,
+      "line": 116,
+      "registration": "add_blender_test_impl(\n      \"${testname}\"\n      \"${_blender_headless_env_vars}\"\n      \"${TEST_PYTHON_EXE}\"\n      \"${CMAKE_SOURCE_DIR}/tests/utils/blender_headless.py\"\n      # NOTE: attempting to maximize the window causes problems with a headless `weston`,\n      # while this could be investigated, use windowed mode instead.\n      # Use a window size that balances software GPU rendering with enough room to use the UI.\n      --factory-startup\n      # Workaround for https://projects.blender.org/blender/blender/issues/154770.\n      --no-native-pixels\n      # No need for window frame with tests.\n      --no-window-frame\n      -p 0 0 800 600\n      --gpu-backend ${backend}\n      # Log operator calls at a debug level so it is easier to debug runs on the buildbot that fail\n      --log \"operator\" --log-level \"debug\"\n      \"${EXE_PARAMS}\"\n      \"${TEST_BLENDER_EXE_PARAMS_NO_THUMB}\"\n      \"${ARGN}\"\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui_backend testname backend)",
+          "line": 112
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 3,
+      "line": 140,
+      "registration": "add_blender_test_ui_backend(\n        \"ui_opengl_${testname}\"\n        \"opengl\"\n        \"${ARGN}\"\n      )",
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui testname)",
+          "line": 138
+        },
+        {
+          "opener": "if(WITH_OPENGL_BACKEND)",
+          "line": 139
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 4,
+      "line": 147,
+      "registration": "add_blender_test_ui_backend(\n        \"ui_metal_${testname}\"\n        \"metal\"\n        \"${ARGN}\"\n      )",
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui testname)",
+          "line": 138
+        },
+        {
+          "opener": "if(WITH_METAL_BACKEND)",
+          "line": 146
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 5,
+      "line": 154,
+      "registration": "add_blender_test_ui_backend(\n        \"ui_vulkan_${testname}\"\n        \"vulkan\"\n        \"${ARGN}\"\n      )",
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 75
+        },
+        {
+          "opener": "function(add_blender_test_ui testname)",
+          "line": 138
+        },
+        {
+          "opener": "if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN AND WITH_UI_TESTS_VULKAN)",
+          "line": 153
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 6,
+      "line": 217,
+      "registration": "add_blender_test(\n  script_load_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_completeness.py\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "original driver is not a supported unittest entrypoint",
+      "ctest_name": "script_load_keymap",
+      "upstream_path": "tests/python/bl_keymap_completeness.py"
+    },
+    {
+      "source_declaration_index": 7,
+      "line": 222,
+      "registration": "add_blender_test(\n  script_validate_keymap\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_keymap_validate.py\n  -- --relaxed  # Disable minor things that should not cause tests to break.\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "original driver is not a supported unittest entrypoint",
+      "ctest_name": "script_validate_keymap",
+      "upstream_path": "tests/python/bl_keymap_validate.py"
+    },
+    {
+      "source_declaration_index": 8,
+      "line": 228,
+      "registration": "add_blender_test(\n  script_load_addons\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_addons.py\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "original driver is not a supported unittest entrypoint",
+      "ctest_name": "script_load_addons",
+      "upstream_path": "tests/python/bl_load_addons.py"
+    },
+    {
+      "source_declaration_index": 9,
+      "line": 233,
+      "registration": "add_blender_test(\n  script_load_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_load_py_modules.py\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "original driver is not a supported unittest entrypoint",
+      "ctest_name": "script_load_modules",
+      "upstream_path": "tests/python/bl_load_py_modules.py"
+    },
+    {
+      "source_declaration_index": 10,
+      "line": 238,
+      "registration": "add_blender_test(\n  script_bundled_modules\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_bundled_modules.py -- --inside-blender\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "original driver is not a supported unittest entrypoint",
+      "ctest_name": "script_bundled_modules",
+      "upstream_path": "tests/python/bl_bundled_modules.py"
+    },
+    {
+      "source_declaration_index": 11,
+      "line": 243,
+      "registration": "add_blender_test(\n  script_http_downloader\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_http_downloader.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_http_downloader",
+      "upstream_path": "tests/python/bl_http_downloader.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_http_downloader/native_reference.json",
+        "sha256": "be83bd8c3b7d45eace9f73dd5d228a9a0199cd8fa1c1a1d9fea2afc505b9acc4",
+        "bytes": 11016
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_http_downloader.json",
+        "sha256": "8a52ec7ca4c74aef3de7973eb49a4d9072d9533cbe09107591d10ba527c2bb02",
+        "bytes": 2758
+      },
+      "expected_cases": 8
+    },
+    {
+      "source_declaration_index": 12,
+      "line": 248,
+      "registration": "add_blender_test(\n  script_disk_file_hash_service_test\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_disk_file_hash_service_test.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_disk_file_hash_service_test",
+      "upstream_path": "tests/python/bl_disk_file_hash_service_test.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_disk_file_hash_service_test/native_reference.json",
+        "sha256": "8b3b9e63c0f41e6fa2d5d105c440db240742f0863ec2a39f20f255bcf749fdc3",
+        "bytes": 12484
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_disk_file_hash_service_test.json",
+        "sha256": "3496f885278f483cdd8f87d8c566c64f1bf8e898f10797edd141860ab16c9e1a",
+        "bytes": 3456
+      },
+      "expected_cases": 12
+    },
+    {
+      "source_declaration_index": 13,
+      "line": 255,
+      "registration": "add_blender_test(\n    script_run_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_run_operators.py\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_TESTS_EXPERIMENTAL)",
+          "line": 254
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 14,
+      "line": 265,
+      "registration": "add_blender_test(\n  script_pyapi_bpy_app\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_bpy_app",
+      "upstream_path": "tests/python/bl_pyapi_bpy_app.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bpy_app/native_reference.json",
+        "sha256": "89221f6812f9c32afb54aaaaa332f134708d0cf76dd4f88be500a6fc4bef011f",
+        "bytes": 9071
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_bpy_app.json",
+        "sha256": "b384ffc0fe1be1709e22620ba5559c8bed748149c09b89510d50652bcdf1e2f7",
+        "bytes": 2035
+      },
+      "expected_cases": 1
+    },
+    {
+      "source_declaration_index": 15,
+      "line": 272,
+      "registration": "add_blender_test(\n      script_pyapi_gpu_opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend opengl\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_GPU_BACKEND_TESTS)",
+          "line": 270
+        },
+        {
+          "opener": "if(WITH_OPENGL_BACKEND)",
+          "line": 271
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 16,
+      "line": 280,
+      "registration": "add_blender_test(\n      script_pyapi_gpu_metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend metal\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_GPU_BACKEND_TESTS)",
+          "line": 270
+        },
+        {
+          "opener": "if(WITH_METAL_BACKEND)",
+          "line": 279
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 17,
+      "line": 288,
+      "registration": "add_blender_test(\n      script_pyapi_gpu_vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_gpu.py\n      --gpu-backend vulkan\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_GPU_BACKEND_TESTS)",
+          "line": 270
+        },
+        {
+          "opener": "if(WITH_VULKAN_BACKEND)",
+          "line": 287
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 18,
+      "line": 296,
+      "registration": "add_blender_test(\n  script_pyapi_bpy_app_tempdir\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_app_tempdir.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_bpy_app_tempdir",
+      "upstream_path": "tests/python/bl_pyapi_bpy_app_tempdir.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bpy_app_tempdir/native_reference.json",
+        "sha256": "ef43a5afc95048544ec894e667d4f87c10dcf89ff60b2bf548d5dba32d16a9b6",
+        "bytes": 10158
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_bpy_app_tempdir.json",
+        "sha256": "06f822423bef280f8b2e81f7463475440f2150b6625d68d311f062916d951e82",
+        "bytes": 2383
+      },
+      "expected_cases": 5
+    },
+    {
+      "source_declaration_index": 19,
+      "line": 301,
+      "registration": "add_blender_test(\n  script_pyapi_bpy_path\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_path.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_bpy_path",
+      "upstream_path": "tests/python/bl_pyapi_bpy_path.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bpy_path/native_reference.json",
+        "sha256": "a9e773d147c5bbb6d1598b93ab2694be2b98acbd7f977feb7f7fad22cd985f13",
+        "bytes": 9072
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_bpy_path.json",
+        "sha256": "61688420f8b4b05ad1482acd57774cd1ac351a09775f47ba7acd306f28bfa324",
+        "bytes": 2030
+      },
+      "expected_cases": 1
+    },
+    {
+      "source_declaration_index": 20,
+      "line": 306,
+      "registration": "add_blender_test(\n  script_pyapi_bpy_utils_units\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_utils_units.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_bpy_utils_units",
+      "upstream_path": "tests/python/bl_pyapi_bpy_utils_units.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bpy_utils_units/native_reference.json",
+        "sha256": "fe4d40b4714d78d8d170ceb6006534921f95b4135fb3d497d34bd343ebfee16a",
+        "bytes": 9421
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_bpy_utils_units.json",
+        "sha256": "fd5b7a13fe645777b685cacf1fc0da4e5e655c07b0d58ec1e310a7af2c51ab11",
+        "bytes": 2164
+      },
+      "expected_cases": 2
+    },
+    {
+      "source_declaration_index": 21,
+      "line": 311,
+      "registration": "add_blender_test(\n  script_pyapi_mathutils\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_mathutils.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_mathutils",
+      "upstream_path": "tests/python/bl_pyapi_mathutils.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_mathutils/native_reference.json",
+        "sha256": "f3d80b990f77fa75c3268b59e0f554e365cba800d7865bd701701e222a80aca0",
+        "bytes": 61117
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_mathutils.json",
+        "sha256": "bc54d627814e60bdce64cb8b4768629ffd7d64d6d7d1441da6bd4e8294e43868",
+        "bytes": 23090
+      },
+      "expected_cases": 180
+    },
+    {
+      "source_declaration_index": 22,
+      "line": 316,
+      "registration": "add_blender_test(\n  script_pyapi_bpy_driver_secure_eval\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bpy_driver_secure_eval.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_bpy_driver_secure_eval",
+      "upstream_path": "tests/python/bl_pyapi_bpy_driver_secure_eval.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bpy_driver_secure_eval/native_reference.json",
+        "sha256": "eac7f04455b4cd9303d6190d76b112d786233601d5d19105cc14ddd8dcfe8bf3",
+        "bytes": 12725
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_bpy_driver_secure_eval.json",
+        "sha256": "e0745793b6326573e90bd46f6e131596ab6127c77cb8fb369f26450607d0c651",
+        "bytes": 3345
+      },
+      "expected_cases": 14
+    },
+    {
+      "source_declaration_index": 23,
+      "line": 321,
+      "registration": "add_blender_test(\n  script_pyapi_idprop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_idprop",
+      "upstream_path": "tests/python/bl_pyapi_idprop.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_idprop/native_reference.json",
+        "sha256": "2428c9b18f6ec56ee0b1d6c7a85d0963b739c3801e5b38a5364b9e1341578cca",
+        "bytes": 19567
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_idprop.json",
+        "sha256": "a66f244b6316cb8fdb8532beda8a8fda2a2004b36f838ead21b32768c673d23d",
+        "bytes": 5958
+      },
+      "expected_cases": 39
+    },
+    {
+      "source_declaration_index": 24,
+      "line": 326,
+      "registration": "add_blender_test(\n  script_pyapi_idprop_datablock\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_idprop_datablock.py\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "original driver is not a supported unittest entrypoint",
+      "ctest_name": "script_pyapi_idprop_datablock",
+      "upstream_path": "tests/python/bl_pyapi_idprop_datablock.py"
+    },
+    {
+      "source_declaration_index": 25,
+      "line": 331,
+      "registration": "add_blender_test(\n  script_pyapi_prop\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_prop",
+      "upstream_path": "tests/python/bl_pyapi_prop.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_prop/native_reference.json",
+        "sha256": "f939b8c0b2fe28e9fcc33f595924f2bc1aa2b8f518184f3a5c1f0babbe5fd9dc",
+        "bytes": 18747
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_prop.json",
+        "sha256": "82b8d04c6b63342d85533ef928e30cbd69fe641565c67e5c611a55db7f716696",
+        "bytes": 5842
+      },
+      "expected_cases": 35
+    },
+    {
+      "source_declaration_index": 26,
+      "line": 336,
+      "registration": "add_blender_test(\n  script_pyapi_prop_array\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_prop_array.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_prop_array",
+      "upstream_path": "tests/python/bl_pyapi_prop_array.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_prop_array/native_reference.json",
+        "sha256": "f97fb51e5afac88bac7270513927bd5dcda7704a56ff7c3c880cbbed2dadca1c",
+        "bytes": 21189
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_prop_array.json",
+        "sha256": "2e89e8e24a94a0d5e72f9056343075702f94b16e651513452313c47b753cebb8",
+        "bytes": 7036
+      },
+      "expected_cases": 42
+    },
+    {
+      "source_declaration_index": 27,
+      "line": 341,
+      "registration": "add_blender_test(\n  script_pyapi_text\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_text.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_text",
+      "upstream_path": "tests/python/bl_pyapi_text.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_text/native_reference.json",
+        "sha256": "ad689141cd04f668ebb10b9730cd79cf32a6f3eeb6d95580467bdcd060630ad0",
+        "bytes": 10040
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_text.json",
+        "sha256": "ecb6173aaf2d9edd6c76fa3b2046e609e0ca5a85c110003b4a73c32e187222c0",
+        "bytes": 2331
+      },
+      "expected_cases": 5
+    },
+    {
+      "source_declaration_index": 28,
+      "line": 346,
+      "registration": "add_blender_test(\n  script_pyapi_bmesh\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_bmesh.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_bmesh",
+      "upstream_path": "tests/python/bl_pyapi_bmesh.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_bmesh/native_reference.json",
+        "sha256": "960f88aa664d347ec1414ca0a1093a16282da30751dfc28201d3ab6386610c2a",
+        "bytes": 13897
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_bmesh.json",
+        "sha256": "4f547ba2b47ec049f4edf75a718ca9c5c1596c7df1878cd6b174f4b1e64fe920",
+        "bytes": 3306
+      },
+      "expected_cases": 12
+    },
+    {
+      "source_declaration_index": 29,
+      "line": 351,
+      "registration": "add_blender_test(\n  imbuf_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_py_api.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "imbuf_py_api",
+      "upstream_path": "tests/python/bl_imbuf_py_api.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/imbuf_py_api/native_reference.json",
+        "sha256": "f51d22d1352c66633e8425cc69cfb044d6082568c4c987d919f805ca3cfc8eb2",
+        "bytes": 48271
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/imbuf_py_api.json",
+        "sha256": "807e364aa1e57cce4e762b6092d353ac0465509161ae1e1008d4edd8f9dc2fe3",
+        "bytes": 10548
+      },
+      "expected_cases": 80
+    },
+    {
+      "source_declaration_index": 30,
+      "line": 356,
+      "registration": "add_blender_test(\n  operator_function_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_function_py_api.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "operator_function_py_api",
+      "upstream_path": "tests/python/bl_operator_function_py_api.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/operator_function_py_api/native_reference.json",
+        "sha256": "92e8d71cce9dbdd6b6643fdbdb9910086f782e1a473138ae5b0233461ef82a1f",
+        "bytes": 18985
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/operator_function_py_api.json",
+        "sha256": "75b124c109ec250e1c06c4eefceb562759095ed1a4f1abbe816df847c2647abb",
+        "bytes": 6349
+      },
+      "expected_cases": 33
+    },
+    {
+      "source_declaration_index": 31,
+      "line": 361,
+      "registration": "add_blender_test(\n  operator_wrap_py_api\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_operator_wrap_py_api.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "operator_wrap_py_api",
+      "upstream_path": "tests/python/bl_operator_wrap_py_api.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/operator_wrap_py_api/native_reference.json",
+        "sha256": "0143c4e844a186bc2752e5c14120a79256cb76fda60a9cd6ac1338ee9f20fc23",
+        "bytes": 23144
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/operator_wrap_py_api.json",
+        "sha256": "e7e2c0af41019d1282b7d7975aeb4446efac021882255331b8e5d96dee386224",
+        "bytes": 7936
+      },
+      "expected_cases": 48
+    },
+    {
+      "source_declaration_index": 32,
+      "line": 366,
+      "registration": "add_blender_test(\n  script_pyapi_grease_pencil\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_grease_pencil.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_grease_pencil",
+      "upstream_path": "tests/python/bl_pyapi_grease_pencil.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_grease_pencil/native_reference.json",
+        "sha256": "c22f9a1d8290950bd2b53f47a3e3b19f04ff6a8f1f43f50d344d5493d42108d5",
+        "bytes": 16994
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_grease_pencil.json",
+        "sha256": "c0016ae47079cbd4948cb16e521465c92709583d9a2401e0bf855676d7a11d89",
+        "bytes": 5592
+      },
+      "expected_cases": 26
+    },
+    {
+      "source_declaration_index": 33,
+      "line": 371,
+      "registration": "add_blender_test(\n  script_pyapi_annotations\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_annotations.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_annotations",
+      "upstream_path": "tests/python/bl_pyapi_annotations.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_annotations/native_reference.json",
+        "sha256": "85060e1116ca25c99e95cedf11d546cdafcdc777ffca3285bd20c2ce71a69c3a",
+        "bytes": 13642
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_annotations.json",
+        "sha256": "2d08fbc2fd4f19139b9a83075f30b8821a611c962f13761fc2b6c35e9c86b5d1",
+        "bytes": 4151
+      },
+      "expected_cases": 15
+    },
+    {
+      "source_declaration_index": 34,
+      "line": 376,
+      "registration": "add_blender_test(\n  script_pyapi_blf_buffer\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=BUFFER\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_blf_buffer",
+      "upstream_path": "tests/python/bl_pyapi_blf.py",
+      "native_exit_code": 1,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_blf_buffer/native_reference.json",
+        "sha256": "0efa05fb469e4521235ad1ca2ab69188a3447a00927df99cea9c31a75efc3824",
+        "bytes": 91102
+      },
+      "native_status": "failed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_blf_buffer.json",
+        "sha256": "9f06f6d13ae959f650ea4c60fc336a4d9b7c57467d95f86753f717a4dedf117c",
+        "bytes": 11219
+      },
+      "expected_cases": 82
+    },
+    {
+      "source_declaration_index": 35,
+      "line": 386,
+      "registration": "add_blender_test(\n    script_pyapi_blf_gpu\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n    --\n    --mode=GPU\n  )",
+      "context": [
+        {
+          "opener": "if(FALSE)",
+          "line": 385
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 36,
+      "line": 394,
+      "registration": "add_blender_test(\n  script_pyapi_blf_vfont\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_blf.py\n  --\n  --mode=VFONT\n  # Use Workbench render instead of simple GPU rasterization.\n  # Most build-bots systems fail with `gpu.init()` otherwise this could be avoided.\n  # Ideally it could be removed eventually as it's slower.\n  --use-vfont-render\n)",
+      "context": [],
+      "state": "native_discovery_blocked",
+      "reason": "suite_inventory: not every requested suite executed exactly once; runner: Traceback (most recent call last):\n  File \"/tmp/blended-native-reference-1js2kk_e/native-runner.py\", line 105, in <module>\n    runpy.run_path(str(_main_path), run_name=\"__main__\")\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3782, in <module>\n    main()\n    ~~~~^^\n  File \"/tmp/blended-original-unittest-zv4ujdtt/tests/python/bl_pyapi_blf.py\", line 3740, in main\n    regular=bpy.data.fonts.load(FONT_PATH_REGULAR),\n            ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nRuntimeError: Error: Cannot read '/tmp/blended-original-unittest-zv4ujdtt/tests/files/blenfont/noto_fonts/NotoSans-Regular.otf': No such file or directory\n\n; original_driver: one complete original unittest entrypoint and its successful exit were not observed; native_runtime: native Blender exited with code 1",
+      "ctest_name": "script_pyapi_blf_vfont",
+      "upstream_path": "tests/python/bl_pyapi_blf.py",
+      "native_exit_code": 1,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_blf_vfont/native_reference.json",
+        "sha256": "f47b6026d84cb87c910ab8caaabfc4511a5d430656f62ba560602ff27bdd4de2",
+        "bytes": 11902
+      },
+      "native_status": "failed"
+    },
+    {
+      "source_declaration_index": 37,
+      "line": 408,
+      "registration": "add_blender_test(\n  script_pyapi_doc_gen\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_pyapi_doc_gen.py --\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "script_pyapi_doc_gen",
+      "upstream_path": "tests/python/bl_pyapi_doc_gen.py",
+      "native_exit_code": 1,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/script_pyapi_doc_gen/native_reference.json",
+        "sha256": "8a34c44236bffbb37090015ce366f806b3c94e7eb8daba4e40c7df12adaf6364",
+        "bytes": 10265
+      },
+      "native_status": "failed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/script_pyapi_doc_gen.json",
+        "sha256": "c7fd97b44a5125d159edc9e6fce33e258494e9edfaa44007f7f32741a7852221",
+        "bytes": 2040
+      },
+      "expected_cases": 1
+    },
+    {
+      "source_declaration_index": 38,
+      "line": 417,
+      "registration": "add_blender_test(\n  id_management\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_id_management.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "id_management",
+      "upstream_path": "tests/python/bl_id_management.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/id_management/native_reference.json",
+        "sha256": "ed9c660c470105a3983b10fee8a8ca2e0a40d1ce0f5d274ac9b5389995d2e473",
+        "bytes": 11004
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/id_management.json",
+        "sha256": "537ecca7a38b0c39de28ed8c0ed89f62335a3d46edf5cabbb97a5a2458dab9cb",
+        "bytes": 2765
+      },
+      "expected_cases": 8
+    },
+    {
+      "source_declaration_index": 39,
+      "line": 422,
+      "registration": "add_blender_test(\n  bl_rna_paths\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_paths.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_rna_paths",
+      "upstream_path": "tests/python/bl_rna_paths.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_rna_paths/native_reference.json",
+        "sha256": "da29c874ebd8bcf576a911eb0ec186f65937aa8bd9550b6f97950cd24383d74d",
+        "bytes": 9267
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_rna_paths.json",
+        "sha256": "9aa7e46482ba8cc4749e2d1dd531a3c8f0ffa1e4215c548cfae4589661bf2a12",
+        "bytes": 2084
+      },
+      "expected_cases": 2
+    },
+    {
+      "source_declaration_index": 40,
+      "line": 427,
+      "registration": "add_blender_test(\n  bl_rna_accessors\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_rna_accessors.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_rna_accessors",
+      "upstream_path": "tests/python/bl_rna_accessors.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_rna_accessors/native_reference.json",
+        "sha256": "dc48dcde05c18b918da16b3aff2f0274aeac198ac16f95cfac1cf2956546c5d5",
+        "bytes": 9064
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_rna_accessors.json",
+        "sha256": "fa9dc292f2d69717d18ab72806cc2efe2f674c2d475193b2da6c776ec1711d7d",
+        "bytes": 2032
+      },
+      "expected_cases": 1
+    },
+    {
+      "source_declaration_index": 41,
+      "line": 436,
+      "registration": "add_blender_test(\n  blendfile_io\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_io.py --\n  --output-dir ${TEST_OUT_DIR}/blendfile_io/\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "fixture, output, or computed arguments require an explicit resource manifest"
+    },
+    {
+      "source_declaration_index": 42,
+      "line": 442,
+      "registration": "add_blender_test(\n  blendfile_autosave\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_autosave.py --\n  --src-test-dir ${TEST_SRC_DIR}/io_tests/blend_autosave/\n  --output-dir ${TEST_OUT_DIR}/blendfile_autosave/\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "fixture, output, or computed arguments require an explicit resource manifest"
+    },
+    {
+      "source_declaration_index": 43,
+      "line": 456,
+      "registration": "add_blender_test(\n      \"blendfile_versioning_${idx}_over_${BLENDFILE_VERSIONING_SPLIT_RANGE}\"\n      --log \"*blendfile*\"\n      --debug-memory\n      --debug\n      --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_versioning.py --\n      --src-test-dir ${TEST_SRC_DIR}/\n      --output-dir ${TEST_OUT_DIR}/blendfile_io/\n      --slice-range ${BLENDFILE_VERSIONING_SPLIT_RANGE}\n      --slice-index ${idx}\n    )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        },
+        {
+          "opener": "foreach(idx RANGE ${BLENDFILE_VERSIONING_SPLIT_RANGE_CMAKE})",
+          "line": 455
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 44,
+      "line": 469,
+      "registration": "add_blender_test(\n    blendfile_liblink\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_liblink.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 45,
+      "line": 476,
+      "registration": "add_blender_test(\n    blendfile_relationships\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_relationships.py --\n    --src-test-dir ${TEST_SRC_DIR}/\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 46,
+      "line": 483,
+      "registration": "add_blender_test(\n    blendfile_library_overrides\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_library_overrides.py --\n    --output-dir ${TEST_OUT_DIR}/blendfile_io/\n    --test-dir \"${TEST_SRC_DIR}/libraries_and_linking\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 47,
+      "line": 490,
+      "registration": "add_blender_test(\n    blendfile_header\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_blendfile_header.py --\n    --testdir \"${TEST_SRC_DIR}/io_tests/blend_parsing\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 452
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 48,
+      "line": 501,
+      "registration": "add_blender_test(\n  global_undo\n  --log \"*undo*\"\n  --log-level debug\n  --debug-memory\n  --debug\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_global_undo.py --\n  --src-test-dir ${TEST_SRC_DIR}/\n  --output-dir ${TEST_OUT_DIR}/global_undo/\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "non-Python or additional Blender arguments need a reviewed driver"
+    },
+    {
+      "source_declaration_index": 49,
+      "line": 517,
+      "registration": "add_blender_test(\n    bmesh_bevel\n    ${TEST_SRC_DIR}/modeling/bevel_regression.blend\n    --python ${TEST_PYTHON_DIR}/bevel_operator.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 50,
+      "line": 525,
+      "registration": "add_blender_test(\n    bmesh_boolean\n    ${TEST_SRC_DIR}/modeling/bool_regression.blend\n    --python ${TEST_PYTHON_DIR}/boolean_operator.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 51,
+      "line": 533,
+      "registration": "add_blender_test(\n    bmesh_split_faces\n    ${TEST_SRC_DIR}/modeling/split_faces_test.blend\n    --python-text run_tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 52,
+      "line": 539,
+      "registration": "add_blender_test(\n    curve_to_mesh\n    ${TEST_SRC_DIR}/modeling/curve_to_mesh.blend\n    --python ${TEST_PYTHON_DIR}/curve_to_mesh.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 53,
+      "line": 547,
+      "registration": "add_blender_test(\n    curves_extrude\n    ${TEST_SRC_DIR}/modeling/curves_extrude.blend\n    --python ${TEST_PYTHON_DIR}/curves_extrude.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 54,
+      "line": 555,
+      "registration": "add_blender_test(\n    mesh_join\n    --python ${TEST_PYTHON_DIR}/mesh_join.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 55,
+      "line": 560,
+      "registration": "add_blender_test_allow_error(\n    mesh_validate\n    --python ${TEST_PYTHON_DIR}/mesh_validate.py\n    --\n    --testdir \"${TEST_SRC_DIR}\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 56,
+      "line": 567,
+      "registration": "add_blender_test(\n    object_edit\n    --python ${TEST_PYTHON_DIR}/object_edit.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 57,
+      "line": 572,
+      "registration": "add_blender_test(\n    object_conversion\n    ${TEST_SRC_DIR}/modeling/object_conversion.blend\n    --python ${TEST_PYTHON_DIR}/object_conversion.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 58,
+      "line": 580,
+      "registration": "add_blender_test(\n    object_api\n    --python ${TEST_PYTHON_DIR}/bl_object.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 59,
+      "line": 585,
+      "registration": "add_blender_test(\n    node_tools\n    --python ${TEST_PYTHON_DIR}/bl_node_tool.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 516
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 60,
+      "line": 591,
+      "registration": "add_blender_test(\n  geometry_attributes\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geometry_attributes.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "geometry_attributes",
+      "upstream_path": "tests/python/bl_geometry_attributes.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/geometry_attributes/native_reference.json",
+        "sha256": "98818a529475a751af7c9ed463a5ec26e9597a3c2f1aab5112f00f3d09d55963",
+        "bytes": 13522
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/geometry_attributes.json",
+        "sha256": "c785f363d42f30b3c0850801af7f82c7e5381ade40ffa163f3ed64a9c6b5f971",
+        "bytes": 3857
+      },
+      "expected_cases": 16
+    },
+    {
+      "source_declaration_index": 61,
+      "line": 596,
+      "registration": "add_blender_test(\n  geo_node_file_reporting\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_geo_node_file_reporting.py\n  --\n  --testdir \"${TEST_SRC_DIR}\"\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "fixture, output, or computed arguments require an explicit resource manifest"
+    },
+    {
+      "source_declaration_index": 62,
+      "line": 608,
+      "registration": "add_blender_test(\n    object_modifier_array\n    ${TEST_SRC_DIR}/modifier_stack/array_test.blend\n    --python-text run_tests.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 63,
+      "line": 614,
+      "registration": "add_blender_test(\n    modifiers\n    ${TEST_SRC_DIR}/modeling/modifiers/modifiers.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/modifiers.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 64,
+      "line": 620,
+      "registration": "add_blender_test(\n    modifiers_multires\n    ${TEST_SRC_DIR}/modeling/modifiers/multires_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/multires_modifier.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 65,
+      "line": 626,
+      "registration": "add_blender_test(\n    modifiers_armature\n    ${TEST_SRC_DIR}/modeling/modifiers/armature_modifier.blend\n    --python ${TEST_PYTHON_DIR}/modeling/modifiers/armature_modifier.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 66,
+      "line": 632,
+      "registration": "add_blender_test(\n    physics_cloth\n    ${TEST_SRC_DIR}/physics/cloth_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_cloth.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 67,
+      "line": 640,
+      "registration": "add_blender_test(\n    physics_softbody\n    ${TEST_SRC_DIR}/physics/softbody_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_softbody.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 68,
+      "line": 648,
+      "registration": "add_blender_test(\n    physics_dynamic_paint\n    ${TEST_SRC_DIR}/physics/dynamic_paint_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_dynamic_paint.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 69,
+      "line": 656,
+      "registration": "add_blender_test(\n    deform_modifiers\n    ${TEST_SRC_DIR}/modeling/deform_modifiers.blend\n    --python ${TEST_PYTHON_DIR}/deform_modifiers.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 70,
+      "line": 665,
+      "registration": "add_blender_test(\n      physics_ocean\n      ${TEST_SRC_DIR}/physics/ocean_test.blend\n      --python ${TEST_PYTHON_DIR}/physics_ocean.py\n      --\n      --run-all-tests\n    )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        },
+        {
+          "opener": "if(WITH_MOD_OCEANSIM)",
+          "line": 664
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 71,
+      "line": 674,
+      "registration": "add_blender_test(\n    physics_particle_system\n    ${TEST_SRC_DIR}/physics/physics_particle_test.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_system.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 72,
+      "line": 682,
+      "registration": "add_blender_test(\n    physics_particle_instance\n    ${TEST_SRC_DIR}/physics/physics_particle_instance.blend\n    --python ${TEST_PYTHON_DIR}/physics_particle_instance.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 73,
+      "line": 690,
+      "registration": "add_blender_test(\n    constraints\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_constraints.py\n    --\n    --testdir \"${TEST_SRC_DIR}/constraints\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 607
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 74,
+      "line": 703,
+      "registration": "add_blender_test(\n    operators\n    ${TEST_SRC_DIR}/modeling/operators.blend\n    --python ${TEST_PYTHON_DIR}/operators.py\n    --\n    --run-all-tests\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 702
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 75,
+      "line": 716,
+      "registration": "add_blender_test(\n  bl_animation_armature\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_armature.py\n  --\n  --testdir \"${TEST_SRC_DIR}/animation\"\n)",
+      "context": [],
+      "state": "blocked",
+      "reason": "fixture, output, or computed arguments require an explicit resource manifest"
+    },
+    {
+      "source_declaration_index": 76,
+      "line": 723,
+      "registration": "add_blender_test(\n  bl_animation_bake\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_bake.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_animation_bake",
+      "upstream_path": "tests/python/bl_animation_bake.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_animation_bake/native_reference.json",
+        "sha256": "af7c0b5e5fb832df6d88ada476109315e1374c1473658ca0543f3beaae5453a0",
+        "bytes": 10349
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_animation_bake.json",
+        "sha256": "d860b0e39dba3923e09b78dd8867a70a439179c7440e9d928d9987cc3af9aaa0",
+        "bytes": 2620
+      },
+      "expected_cases": 5
+    },
+    {
+      "source_declaration_index": 77,
+      "line": 728,
+      "registration": "add_blender_test(\n  bl_animation_rename\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_rename.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_animation_rename",
+      "upstream_path": "tests/python/bl_animation_rename.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_animation_rename/native_reference.json",
+        "sha256": "fc775e48aa3c0338d040a7b0a1f45b88e544d3733722b74b8e70b5118e9f4294",
+        "bytes": 9981
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_animation_rename.json",
+        "sha256": "2b98eaff93256f8fa2c64b1a595ed5052e050605940432eb0d0679c23bc3b8fd",
+        "bytes": 2412
+      },
+      "expected_cases": 4
+    },
+    {
+      "source_declaration_index": 78,
+      "line": 733,
+      "registration": "add_blender_test(\n  bl_animation_nla_strip\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_nla_strip.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_animation_nla_strip",
+      "upstream_path": "tests/python/bl_animation_nla_strip.py",
+      "native_exit_code": 1,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_animation_nla_strip/native_reference.json",
+        "sha256": "dc8439ab157f5346ae87801c9afa7ca1f04cfb9bca44b9f046356a140f2e8b83",
+        "bytes": 11749
+      },
+      "native_status": "failed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_animation_nla_strip.json",
+        "sha256": "7e6f36c2385ae015b92abeaee71cf03fd070113b302a788526e08b62e2cc5db5",
+        "bytes": 2805
+      },
+      "expected_cases": 7
+    },
+    {
+      "source_declaration_index": 79,
+      "line": 738,
+      "registration": "add_blender_test(\n  bl_animation_pose_slide\n  --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_pose_slide.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_animation_pose_slide",
+      "upstream_path": "tests/python/bl_animation_pose_slide.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_animation_pose_slide/native_reference.json",
+        "sha256": "4352c39dedf5e484ed2d16ad6523b0ea069f3aab468aa203d1804966936bce94",
+        "bytes": 11975
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_animation_pose_slide.json",
+        "sha256": "24e44641de9ff6491d35dcb018ca3b0b996e5a5f0f4fc4faaeb0705f0396a09d",
+        "bytes": 3166
+      },
+      "expected_cases": 11
+    },
+    {
+      "source_declaration_index": 80,
+      "line": 744,
+      "registration": "add_blender_test(\n    bl_animation_drivers\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_drivers.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 81,
+      "line": 751,
+      "registration": "add_blender_test(\n    bl_animation_shapekey\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_shapekey.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 82,
+      "line": 758,
+      "registration": "add_blender_test(\n    bl_animation_fcurves\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_fcurves.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 83,
+      "line": 765,
+      "registration": "add_blender_test(\n    bl_animation_action\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_action.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n    --output-dir \"${TEST_OUT_DIR}/bl_animation_action\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 84,
+      "line": 773,
+      "registration": "add_blender_test(\n    bl_animation_keyframing\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_keyframing.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 85,
+      "line": 780,
+      "registration": "add_blender_test(\n    bl_animation_motion_path\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_animation_motion_path.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 86,
+      "line": 787,
+      "registration": "add_blender_test(\n    bl_pose_assets\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_pose_assets.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 87,
+      "line": 794,
+      "registration": "add_blender_test(\n    bl_rigging_symmetrize\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_rigging_symmetrize.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 88,
+      "line": 801,
+      "registration": "add_blender_test(\n    vertex_group_painting\n    --python ${CMAKE_CURRENT_LIST_DIR}/vertex_group_painting.py\n    --\n    --testdir \"${TEST_SRC_DIR}/animation\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 743
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 89,
+      "line": 811,
+      "registration": "add_blender_test(\n  bl_brush\n  --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_asset_test.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "bl_brush",
+      "upstream_path": "tests/python/sculpt_paint/brush_asset_test.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/bl_brush/native_reference.json",
+        "sha256": "2fd6a3a69078ff4d9f2be52c36fc491147ee0be7dd3763829ab47d45aaa7ea63",
+        "bytes": 10070
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/bl_brush.json",
+        "sha256": "9f82a905c156ac80df0a689ea0a8c2a7961eb69ea651af68b4a7a5ed1bb24f73",
+        "bytes": 2463
+      },
+      "expected_cases": 4
+    },
+    {
+      "source_declaration_index": 90,
+      "line": 821,
+      "registration": "add_blender_test(\n    bl_node_structure_type_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_structure_type_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 91,
+      "line": 828,
+      "registration": "add_blender_test(\n    bl_node_socket_usage_inference\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_socket_usage_inference.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 92,
+      "line": 835,
+      "registration": "add_blender_test(\n    bl_node_group_compat\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_compat.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 93,
+      "line": 842,
+      "registration": "add_blender_test(\n    bl_node_group_interface\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_group_interface.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 94,
+      "line": 849,
+      "registration": "add_blender_test(\n    bl_node_copy_operators\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_copy_operators.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 95,
+      "line": 856,
+      "registration": "add_blender_test(\n    bl_node_link_drag\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_node_link_drag.py\n    --\n    --testdir \"${TEST_SRC_DIR}/node_group\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 820
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 96,
+      "line": 1094,
+      "registration": "add_blender_test(\n    cycles_osl_compile_test\n    --python ${CMAKE_CURRENT_LIST_DIR}/cycles_osl_compile_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/render\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_CYCLES AND WITH_CYCLES_OSL)",
+          "line": 1093
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 97,
+      "line": 1134,
+      "registration": "add_blender_test(\n    compositor_cpu_file_output\n    --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n    --\n    --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n    --outdir \"${TEST_OUT_DIR}/compositor_cpu/file_output\"\n    --device \"CPU\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1106
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 98,
+      "line": 1173,
+      "registration": "add_blender_test(\n      compositor_opengl_file_output\n      --gpu-backend opengl\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_opengl/file_output\"\n      --device \"GPU\"\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)",
+          "line": 1144
+        },
+        {
+          "opener": "if(WITH_OPENGL_BACKEND)",
+          "line": 1163
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 99,
+      "line": 1193,
+      "registration": "add_blender_test(\n      compositor_metal_file_output\n      --gpu-backend metal\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_metal/file_output\"\n      --device \"GPU\"\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)",
+          "line": 1144
+        },
+        {
+          "opener": "if(WITH_METAL_BACKEND)",
+          "line": 1183
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 100,
+      "line": 1213,
+      "registration": "add_blender_test(\n      compositor_vulkan_file_output\n      --gpu-backend vulkan\n      --python ${CMAKE_CURRENT_LIST_DIR}/compositor_file_output_tests.py\n      --\n      --testdir \"${TEST_SRC_DIR}/compositor/file_output/\"\n      --outdir \"${TEST_OUT_DIR}/compositor_vulkan/file_output\"\n      --device \"GPU\"\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_GPU_COMPOSITOR_TESTS AND TEST_SRC_DIR_EXISTS)",
+          "line": 1144
+        },
+        {
+          "opener": "if(WITH_VULKAN_BACKEND AND WITH_GPU_RENDER_TESTS_VULKAN)",
+          "line": 1203
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 101,
+      "line": 1225,
+      "registration": "add_blender_test(\n  compositing_node_group\n  --python ${CMAKE_CURRENT_LIST_DIR}/compositing_node_group.py\n)",
+      "context": [],
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "ctest_name": "compositing_node_group",
+      "upstream_path": "tests/python/compositing_node_group.py",
+      "native_exit_code": 0,
+      "native_receipt": {
+        "path": "compatibility/evidence/unittest-native-5.2-2026-10-23/compositing_node_group/native_reference.json",
+        "sha256": "b41a440c53547f57823ec6a49a3743eb4497b4d656241bf6fc39510ca0928378",
+        "bytes": 9145
+      },
+      "native_status": "passed",
+      "manifest": {
+        "path": "compatibility/candidate-suites/unittest-main-5.2/compositing_node_group.json",
+        "sha256": "ba80c5904d256beda9bc62183c078cc5f7573bfee5339190a044dac16974238f",
+        "bytes": 2077
+      },
+      "expected_cases": 1
+    },
+    {
+      "source_declaration_index": 102,
+      "line": 1278,
+      "registration": "add_blender_test(\n        geo_node_${geo_node_test}_${filename}\n        ${file}\n        --python ${TEST_PYTHON_DIR}/geo_node_test.py\n      )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1234
+        },
+        {
+          "opener": "foreach(geo_node_test ${geo_node_tests})",
+          "line": 1274
+        },
+        {
+          "opener": "foreach(file ${files})",
+          "line": 1276
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 103,
+      "line": 1289,
+      "registration": "add_blender_test(\n      geo_node_simulation_test_${filename}\n      ${file}\n      --python ${TEST_PYTHON_DIR}/geo_node_sim_test.py\n    )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1234
+        },
+        {
+          "opener": "foreach(file ${files})",
+          "line": 1287
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 104,
+      "line": 1344,
+      "registration": "add_blender_test(\n    script_alembic_io\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_alembic_io_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/alembic\"\n    --outdir \"${TEST_OUT_DIR}/io_alembic\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_ALEMBIC AND TEST_SRC_DIR_EXISTS)",
+          "line": 1328
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 105,
+      "line": 1354,
+      "registration": "add_blender_test(\n    io_usd_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_USD AND TEST_SRC_DIR_EXISTS)",
+          "line": 1353
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 106,
+      "line": 1360,
+      "registration": "add_blender_test(\n    io_usd_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_usd_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/usd\"\n    --outdir \"${TEST_OUT_DIR}/io_usd\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_USD AND TEST_SRC_DIR_EXISTS)",
+          "line": 1353
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 107,
+      "line": 1370,
+      "registration": "add_blender_test_allow_error(\n    io_fbx_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_fbx_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/fbx\"\n    --outdir \"${TEST_OUT_DIR}/io_fbx\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1369
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 108,
+      "line": 1380,
+      "registration": "add_blender_test_allow_error(\n    io_gltf_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/import\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_import\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1379
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 109,
+      "line": 1390,
+      "registration": "add_blender_test_allow_error(\n    io_gltf_roundtrip\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_roundtrip_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/roundtrip\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_roundtrip\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1389
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 110,
+      "line": 1400,
+      "registration": "add_blender_test_allow_error(\n    io_gltf_export\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_gltf_export_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/gltf/export\"\n    --outdir \"${TEST_OUT_DIR}/io_gltf_export\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1399
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 111,
+      "line": 1410,
+      "registration": "add_blender_test_allow_error(\n    io_obj_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_obj_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/obj\"\n    --outdir \"${TEST_OUT_DIR}/io_obj\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_IO_WAVEFRONT_OBJ AND TEST_SRC_DIR_EXISTS)",
+          "line": 1409
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 112,
+      "line": 1420,
+      "registration": "add_blender_test_allow_error(\n    io_ply_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_ply_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/ply\"\n    --outdir \"${TEST_OUT_DIR}/io_ply\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_IO_PLY AND TEST_SRC_DIR_EXISTS)",
+          "line": 1419
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 113,
+      "line": 1430,
+      "registration": "add_blender_test_allow_error(\n    io_stl_import\n    --python ${CMAKE_CURRENT_LIST_DIR}/io_stl_import_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/io_tests/stl\"\n    --outdir \"${TEST_OUT_DIR}/io_stl\"\n  )",
+      "context": [
+        {
+          "opener": "if(WITH_IO_STL AND TEST_SRC_DIR_EXISTS)",
+          "line": 1429
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 114,
+      "line": 1460,
+      "registration": "add_blender_test(\n    imbuf_save\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_save.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/save\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)",
+          "line": 1448
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 115,
+      "line": 1470,
+      "registration": "add_blender_test_allow_error(\n    imbuf_load\n    --python ${CMAKE_CURRENT_LIST_DIR}/bl_imbuf_load.py\n    --\n    -test_dir \"${TEST_SRC_DIR}/imbuf_io\"\n    -output_dir \"${TEST_OUT_DIR}/imbuf_io/load\"\n    -oiiotool \"${OPENIMAGEIO_TOOL}\"\n    -optional_formats \"${OPTIONAL_FORMATS}\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS AND TEST_OPENIMAGEIO_TOOL_EXISTS)",
+          "line": 1448
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 116,
+      "line": 1522,
+      "registration": "add_blender_test(\n    sequencer_input_colorspace\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_input_colorspace.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sequence_editing\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1485
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 117,
+      "line": 1529,
+      "registration": "add_blender_test(\n    sequencer_strip_naming\n    --python ${CMAKE_CURRENT_LIST_DIR}/sequencer_strip_naming.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1485
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 118,
+      "line": 1534,
+      "registration": "add_blender_test(\n    sequencer_load_meta_stack\n    ${TEST_SRC_DIR}/sequence_editing/vse_load_meta_stack.blend\n    --python ${TEST_PYTHON_DIR}/sequencer_load_meta_stack.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1485
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 119,
+      "line": 1582,
+      "registration": "add_blender_test(\n    bl_voxel_remesh\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_test.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 120,
+      "line": 1587,
+      "registration": "add_blender_test(\n    bl_voxel_remesh_compare\n    ${TEST_SRC_DIR}/sculpting/voxel_remesh_compare.blend\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/voxel_remesh_compare_test.py\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 121,
+      "line": 1593,
+      "registration": "add_blender_test(\n    bl_sculpt_mask\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 122,
+      "line": 1600,
+      "registration": "add_blender_test(\n    bl_sculpt_face_set\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/face_set_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 123,
+      "line": 1607,
+      "registration": "add_blender_test(\n    bl_multires\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/multires_operators_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 124,
+      "line": 1614,
+      "registration": "add_blender_test(\n    bl_sculpt_mesh_filter\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/mesh_filter_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 125,
+      "line": 1621,
+      "registration": "add_blender_test(\n    bl_sculpt_automasking\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/automask_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 126,
+      "line": 1628,
+      "registration": "add_blender_test(\n    bl_sculpt_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/sculpt_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 127,
+      "line": 1635,
+      "registration": "add_blender_test(\n    bl_vertex_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/vertex_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 128,
+      "line": 1642,
+      "registration": "add_blender_test(\n    bl_weight_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/weight_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 129,
+      "line": 1649,
+      "registration": "add_blender_test(\n    bl_texture_paint_brushes\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/texture_paint_brushes_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/mesh_paint\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 130,
+      "line": 1656,
+      "registration": "add_blender_test(\n    bl_sculpt_brush_curve_presets\n    --python ${CMAKE_CURRENT_LIST_DIR}/sculpt_paint/brush_strength_curves_test.py\n    --\n    --testdir \"${TEST_SRC_DIR}/sculpting\"\n  )",
+      "context": [
+        {
+          "opener": "if(TEST_SRC_DIR_EXISTS)",
+          "line": 1581
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    },
+    {
+      "source_declaration_index": 131,
+      "line": 1734,
+      "registration": "add_blender_test_ui(\n      \"${ui_test}\"\n      --enable-event-simulate\n      --python \"${CMAKE_CURRENT_LIST_DIR}/ui_simulate/run_blender_setup.py\"\n      --\n      --tests \"${ui_test}\"\n    )",
+      "context": [
+        {
+          "opener": "if(WITH_UI_TESTS)",
+          "line": 1684
+        },
+        {
+          "opener": "foreach(ui_test ${_ui_tests})",
+          "line": 1733
+        }
+      ],
+      "state": "blocked",
+      "reason": "conditional, generated, function, error-allowing, or UI invocation requires configured CTest evidence"
+    }
+  ],
+  "declaration_counts": {
+    "blocked": 101,
+    "native_inventory_frozen": 30,
+    "native_discovery_blocked": 1
+  }
+}

@@ -8,6 +8,7 @@ on:
       - tools/**
       - tests/**
       - compatibility/candidate-suites/**
+      - compatibility/mesh-driver-profiles/**
       - compatibility/package-overlays/**
       - compatibility/evidence/**
       - .github/workflows/test-parity-ledger.yml
@@ -16,6 +17,7 @@ on:
       - tools/**
       - tests/**
       - compatibility/candidate-suites/**
+      - compatibility/mesh-driver-profiles/**
       - compatibility/package-overlays/**
       - compatibility/evidence/**
       - .github/workflows/test-parity-ledger.yml
@@ -112,5 +114,48 @@ jobs:
         with:
           name: original-test-ledger-${{ matrix.package }}-${{ github.run_id }}
           path: parity-evidence-checkout/evidence/reconciled-original-tests/
+          retention-days: 14
+          if-no-files-found: error
+
+  original-mesh-parity:
+    name: Require unchanged original mesh comparisons (${{ matrix.profile }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: parity-evidence-checkout
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [bmesh-bevel-5.2, operators-5.2]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          path: parity-evidence-checkout
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile the selected retained original mesh invocation
+        run: >-
+          python3 tools/reconcile_original_mesh.py
+          --repo-root .
+          --profile compatibility/mesh-driver-profiles/${{ matrix.profile }}.json
+          --output evidence/reconciled-original-mesh
+          --report-only
+      - name: Enforce the unchanged strict declared-scope gate
+        run: >-
+          python3 tools/test_parity_ledger.py
+          --contract evidence/reconciled-original-mesh/contract.json
+          --inventory evidence/reconciled-original-mesh/inventory.json
+          --executions evidence/reconciled-original-mesh/executions.json
+          --evidence-root evidence/reconciled-original-mesh
+          --output evidence/reconciled-original-mesh/strict-gate.json
+      - name: Preserve original failures and passing comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-mesh-ledger-${{ matrix.profile }}-${{ github.run_id }}
+          path: parity-evidence-checkout/evidence/reconciled-original-mesh/
           retention-days: 14
           if-no-files-found: error

@@ -1,0 +1,1525 @@
+{
+  "schema": 1,
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "started_utc": "2026-10-23T13:51:09.085389+00:00",
+  "finished_utc": "2026-10-23T13:51:57.845008+00:00",
+  "native_inventory": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/native-discovery-inventory.json",
+    "bytes": 5486,
+    "sha256": "9bdd9f03d1910499eee59d7c010ebde7be076e98ba55626d427e2ac3b9462932"
+  },
+  "harness_manifest": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/harness-manifest.json",
+    "bytes": 8120,
+    "sha256": "18dbc73926f3a76cdfe1690e991cda78647e8a487c91ea1adea0cdcf04f5faf8"
+  },
+  "source_build_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/source-build.json",
+    "bytes": 165401,
+    "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+  },
+  "asset": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/brush-package-overlay-5.2/blender-source-development-essentials.tar.gz",
+    "bytes": 110053572,
+    "sha256": "3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910"
+  },
+  "browser_executable": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64/chrome",
+    "bytes": 297680200,
+    "sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778"
+  },
+  "python_executable": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/browser-python/bin/python",
+    "bytes": 30894944,
+    "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+  },
+  "jobs": 2,
+  "configured_ctest_inventory": false,
+  "all_upstream_test_parity": false,
+  "full_feature_parity": false,
+  "registrations": [
+    {
+      "source_declaration_index": 34,
+      "line": 376,
+      "ctest_name": "script_pyapi_blf_buffer",
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "native_status": "passed",
+      "expected_cases": 82,
+      "browser_state": "failed",
+      "manifest": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/candidate-suites/unittest-main-resources-5.2/script_pyapi_blf_buffer.json",
+        "bytes": 121313,
+        "sha256": "06f4b2faad2dda48f65568c748fbb2bbffc2e2c2eecd378c2f5bec639af222e9"
+      },
+      "host_process": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/script_pyapi_blf_buffer/host-process.json",
+        "bytes": 2174,
+        "sha256": "c7a657a2e63f084749f59358b8431f28ab1e0c2abe79c7b7f11e721e16882129"
+      },
+      "browser_receipt": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/script_pyapi_blf_buffer/qualification.json",
+        "bytes": 310124,
+        "sha256": "9dd6cad2d3a40b554c5c16e9e65304b67e6b0ae65b5bdf7365f65b870a363afd"
+      },
+      "browser_reason": "suite: upstream suite is not completely passing: tests/python/bl_pyapi_blf.py",
+      "browser_summary": {
+        "expected_suites": 1,
+        "observed_suites": 1,
+        "totals": {
+          "discovered": 82,
+          "executed": 82,
+          "passed": 2,
+          "failed": 80,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 80,
+          "subtest_events": 3
+        },
+        "suites": [
+          {
+            "upstream_path": "tests/python/bl_pyapi_blf.py",
+            "status": "failed",
+            "counts": {
+              "discovered": 82,
+              "executed": 82,
+              "passed": 2,
+              "failed": 80,
+              "skipped": 0,
+              "expected_failures": 0,
+              "missing_outcomes": 0,
+              "failure_events": 80,
+              "subtest_events": 3
+            },
+            "failure_events": [
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_buffer_combining_after_space",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_buffer_combining_at_end",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_buffer_combining_first",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_buffer_many_combining_no_base",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_buffer_Avatar",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_buffer_Eve",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_buffer_XV",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_buffer_Yolanda",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_buffer_ro",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_buffer_acute_e",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_buffer_diaeresis_Y",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_buffer_grave_A",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_buffer_phrase_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningSequences.test_buffer_alternating",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningSequences.test_buffer_base_then_burst",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningSequences.test_buffer_repeated_mark",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_boundary",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_font_size_1",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_lorem",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_no_break",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_stress",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningWordWrap.test_buffer_width_1",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMultiline.test_buffer_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMultiline.test_buffer_combining_after_newline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMultiline.test_buffer_combining_before_newline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMultiline.test_buffer_newline_only",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMultiline.test_buffer_plain",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_ascii_sweep",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_bom",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_carriage_return",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_cr_lf",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_double_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_empty_string",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_line_feed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_only_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_replacement_char",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_tab",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_tiny_buffer",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_buffer_zero_width_joiner",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_buffer_lrm_rlm",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_buffer_mixed_script",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_buffer_nested_embed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_buffer_rtl_override",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_buffer_all_diacriticals",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_buffer_alphabet_above_and_below_combiners",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_buffer_cgj",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_buffer_enclosing",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_buffer_half_marks",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_buffer_zalgo_100",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_buffer_arabic",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_buffer_devanagari",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_buffer_hangul_jamo",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_buffer_thai",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressEdgeParams.test_buffer_font_size_1",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressEdgeParams.test_buffer_font_size_2",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressEdgeParams.test_buffer_negative_pos",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressEdgeParams.test_buffer_wrap_0",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_buffer_max_codepoint",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_buffer_nonchar_fdd0",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_buffer_nonchar_ffff",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_buffer_replacement",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_buffer_specials",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressSupplementary.test_buffer_emoji",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressSupplementary.test_buffer_emoji_zwj",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressSupplementary.test_buffer_math_alpha",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressSupplementary.test_buffer_mixed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_buffer_cjk",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_buffer_fullwidth_latin",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_buffer_fullwidth_space",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_buffer_halfwidth_kana",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_buffer_mixed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_buffer_unicode_spaces",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_buffer_bom_start",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_buffer_sequence",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_buffer_soft_hyphen",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_buffer_var_selector",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_buffer_word_joiner",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestWrapCombiningEdge.test_buffer_at_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestWrapCombiningEdge.test_buffer_combining_tight",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              }
+            ]
+          }
+        ],
+        "required_case_inventory": {
+          "fixed_for_all_requested_suites": true,
+          "expected_cases": 82,
+          "missing_cases": 0,
+          "suites": [
+            {
+              "upstream_path": "tests/python/bl_pyapi_blf.py",
+              "expected_cases": 82,
+              "missing_cases": 0,
+              "missing_case_ids": [],
+              "unexpected_case_ids": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_declaration_index": 36,
+      "line": 394,
+      "ctest_name": "script_pyapi_blf_vfont",
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "native_status": "passed",
+      "expected_cases": 129,
+      "browser_state": "failed",
+      "manifest": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/candidate-suites/unittest-main-resources-5.2/script_pyapi_blf_vfont.json",
+        "bytes": 187721,
+        "sha256": "a549d9b42e7db542b9827a2e1de392a9cc807ccdbcd237b02a46f31b5a72a533"
+      },
+      "host_process": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/script_pyapi_blf_vfont/host-process.json",
+        "bytes": 2171,
+        "sha256": "6cf0ba4fcd5c689fe81f47da6ebf6c1af50558542f5046baee9deaeb5bc35311"
+      },
+      "browser_receipt": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/script_pyapi_blf_vfont/qualification.json",
+        "bytes": 481417,
+        "sha256": "74cc0b4a3eeae9980a23ae93989bf4ce0cf1ea4437a1e9c7e6838c513ac062cb"
+      },
+      "browser_reason": "suite: upstream suite is not completely passing: tests/python/bl_pyapi_blf.py",
+      "browser_summary": {
+        "expected_suites": 1,
+        "observed_suites": 1,
+        "totals": {
+          "discovered": 129,
+          "executed": 129,
+          "passed": 2,
+          "failed": 127,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 127,
+          "subtest_events": 3
+        },
+        "suites": [
+          {
+            "upstream_path": "tests/python/bl_pyapi_blf.py",
+            "status": "failed",
+            "counts": {
+              "discovered": 129,
+              "executed": 129,
+              "passed": 2,
+              "failed": 127,
+              "skipped": 0,
+              "expected_failures": 0,
+              "missing_outcomes": 0,
+              "failure_events": 127,
+              "subtest_events": 3
+            },
+            "failure_events": [
+              {
+                "id": "__main__.TestBasic.test_vfont_alpha_bravo",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestBasic.test_vfont_charlie_delta",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_vfont_combining_after_space",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_vfont_combining_at_end",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_vfont_combining_first",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningEdgePositions.test_vfont_many_combining_no_base",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_vfont_Avatar",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_vfont_Eve",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_vfont_XV",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_vfont_Yolanda",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningKerning.test_vfont_ro",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_vfont_acute_e",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_vfont_diaeresis_Y",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_vfont_grave_A",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningPosition.test_vfont_phrase_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningSequences.test_vfont_alternating",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningSequences.test_vfont_base_then_burst",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestCombiningSequences.test_vfont_repeated_mark",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestGeometry.test_vfont_offset_negative",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestGeometry.test_vfont_offset_positive",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestGridLayouts.test_vfont_grid_4x4",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMaterials.test_vfont_cmyk",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMaterials.test_vfont_colored_bold",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMaterials.test_vfont_three_colors",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestMaterials.test_vfont_two_colors",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_align_center",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_align_flush",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_align_justify",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_align_left",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_align_right",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_spill_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_spill_multiline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_spill_single",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_valign_bottom",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_valign_bottom_baseline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_valign_center",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_valign_top",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillOverflow.test_vfont_valign_top_baseline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_align_center",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_align_flush",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_align_justify",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_align_left",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_align_right",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_fits",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_multiline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_narrow",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_valign_bottom",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_valign_bottom_baseline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_valign_center",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_valign_top",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillScaleToFit.test_vfont_valign_top_baseline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_align_center",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_align_flush",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_align_justify",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_align_left",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_align_right",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_cut_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_cut_lines",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_cut_wrap",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_valign_bottom",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_valign_bottom_baseline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_valign_center",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_valign_top",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestOverflowWillTruncate.test_vfont_valign_top_baseline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSize.test_vfont_double",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSize.test_vfont_half",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSpacing.test_vfont_character_tight",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSpacing.test_vfont_character_wide",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSpacing.test_vfont_line_tight",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSpacing.test_vfont_line_wide",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSpacing.test_vfont_word_tight",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestSpacing.test_vfont_word_wide",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_ascii_sweep",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_bom",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_carriage_return",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_cr_lf",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_double_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_empty_string",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_line_feed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_only_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_replacement_char",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_tab",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_tiny_buffer",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStrangeCharacters.test_vfont_zero_width_joiner",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_vfont_lrm_rlm",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_vfont_mixed_script",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_vfont_nested_embed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressBidi.test_vfont_rtl_override",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_vfont_all_diacriticals",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_vfont_alphabet_above_and_below_combiners",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_vfont_cgj",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_vfont_enclosing",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_vfont_half_marks",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressCombining.test_vfont_zalgo_100",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_vfont_arabic",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_vfont_devanagari",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_vfont_hangul_jamo",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressComplexScripts.test_vfont_thai",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_vfont_max_codepoint",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_vfont_nonchar_fdd0",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_vfont_nonchar_ffff",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_vfont_replacement",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressInvalidCodepoints.test_vfont_specials",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_vfont_cjk",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_vfont_fullwidth_latin",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_vfont_fullwidth_space",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_vfont_halfwidth_kana",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_vfont_mixed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressWidths.test_vfont_unicode_spaces",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_vfont_bom_start",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_vfont_sequence",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_vfont_soft_hyphen",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_vfont_var_selector",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStressZeroWidth.test_vfont_word_joiner",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStyles.test_vfont_kern_tight",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStyles.test_vfont_kern_wide",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStyles.test_vfont_mixed",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStyles.test_vfont_mixed_fonts",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStyles.test_vfont_smallcaps",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestStyles.test_vfont_underline",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestTextBoxes.test_vfont_height_limit",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestTextBoxes.test_vfont_narrow_combining",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestTextBoxes.test_vfont_narrow_wrap",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestTextBoxes.test_vfont_offset_origin",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestTextBoxes.test_vfont_two_boxes",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              },
+              {
+                "id": "__main__.TestTextOnCurve.test_vfont_circle",
+                "parent_id": null,
+                "kind": "test",
+                "status": "failed"
+              }
+            ]
+          }
+        ],
+        "required_case_inventory": {
+          "fixed_for_all_requested_suites": true,
+          "expected_cases": 129,
+          "missing_cases": 0,
+          "suites": [
+            {
+              "upstream_path": "tests/python/bl_pyapi_blf.py",
+              "expected_cases": 129,
+              "missing_cases": 0,
+              "missing_case_ids": [],
+              "unexpected_case_ids": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "source_declaration_index": 37,
+      "line": 408,
+      "ctest_name": "script_pyapi_doc_gen",
+      "state": "native_inventory_frozen",
+      "reason": null,
+      "native_status": "passed",
+      "expected_cases": 1,
+      "browser_state": "failed",
+      "manifest": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/candidate-suites/unittest-main-resources-5.2/script_pyapi_doc_gen.json",
+        "bytes": 71093,
+        "sha256": "4ddac7e42627f8cdeefb6cfa447c1e283707a5d739a7a7d1aa1b1011e00bf4c4"
+      },
+      "host_process": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/script_pyapi_doc_gen/host-process.json",
+        "bytes": 2169,
+        "sha256": "2ba908d48511826d4879ce23592abb4ebfaf6c3e4bfab1733f68db239ecc5d8d"
+      },
+      "browser_receipt": {
+        "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/script_pyapi_doc_gen/qualification.json",
+        "bytes": 192800,
+        "sha256": "46f5be0e97c18d9e562e16b57ba68a82267841fe37bc4ca7c42f2cf49b6800fb"
+      },
+      "browser_reason": "original_driver: one complete original unittest entrypoint and its successful exit were not observed; suite: upstream suite is not completely passing: tests/python/bl_pyapi_doc_gen.py; browser_runtime: browser background runtime exited with code 1",
+      "browser_summary": {
+        "expected_suites": 1,
+        "observed_suites": 1,
+        "totals": {
+          "discovered": 1,
+          "executed": 1,
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "expected_failures": 0,
+          "missing_outcomes": 0,
+          "failure_events": 1,
+          "subtest_events": 2
+        },
+        "suites": [
+          {
+            "upstream_path": "tests/python/bl_pyapi_doc_gen.py",
+            "status": "failed",
+            "counts": {
+              "discovered": 1,
+              "executed": 1,
+              "passed": 0,
+              "failed": 1,
+              "skipped": 0,
+              "expected_failures": 0,
+              "missing_outcomes": 0,
+              "failure_events": 1,
+              "subtest_events": 2
+            },
+            "failure_events": [
+              {
+                "id": "__main__.DocGenTest.test_doc_gen_and_stubs [sphinx_stub_gen]",
+                "parent_id": "__main__.DocGenTest.test_doc_gen_and_stubs",
+                "kind": "subtest",
+                "status": "error"
+              }
+            ]
+          }
+        ],
+        "required_case_inventory": {
+          "fixed_for_all_requested_suites": true,
+          "expected_cases": 1,
+          "missing_cases": 0,
+          "suites": [
+            {
+              "upstream_path": "tests/python/bl_pyapi_doc_gen.py",
+              "expected_cases": 1,
+              "missing_cases": 0,
+              "missing_case_ids": [],
+              "unexpected_case_ids": []
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "package_overlay_receipt": {
+    "path": "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/unittest-browser-essentials-resources-5.2-2026-10-23/package-overlay.json",
+    "bytes": 2547,
+    "sha256": "45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb"
+  },
+  "package_base_asset": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/source/blender-source-development.tar.gz",
+    "bytes": 107362300,
+    "sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991"
+  },
+  "browser_state_counts": {
+    "failed": 3
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "id": "blender-5.2.0-web-numerics-v1",
+  "upstream_commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+  "port_commit": "0e02e84b2bc5d9b27a6dc6e275443292f781fbad",
+  "toolchain": {
+    "emsdk_repo_commit": "1ab2e627b1a84567f5284d1baaa5f6be7ccf07de",
+    "emsdk_release_commit": "dbd755b5da399329c2576f6e3dfa7f419f5d8409",
+    "emscripten_version": "6.0.5",
+    "emscripten_commit": "1db513782be24469589d7cb8a1f1834e9a33f271"
+  },
+  "native_oracle": {
+    "version": "5.2.0 LTS",
+    "runtime_hash": "fbe6228777e7",
+    "architecture": "Linux x64 x86-64-v2",
+    "archive_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48"
+  },
+  "cache": {
+    "namespace_must_include_manifest_sha256": true,
+    "force_rebuild_command": [
+      "embuilder",
+      "--force",
+      "build",
+      "libc",
+      "libc-mt"
+    ],
+    "required_variants": [
+      "libc",
+      "libc-mt"
+    ],
+    "apply_sdk_patch_before_building_dependencies": true,
+    "unqualified_variants": [
+      "libc_optz",
+      "libc_optz-mt",
+      "LTO",
+      "wasm64",
+      "sanitizer"
+    ]
+  },
+  "scope": "Candidate 5.2 baseline against the named official x86-64-v2 oracle only. Kernel regressions do not constitute full-engine acceptance or product-target parity.",
+  "patches": [
+    {
+      "id": "emscripten-acosf-small-angle",
+      "component": "emscripten",
+      "path": "system/lib/libc/musl/src/math/acosf.c",
+      "before_sha256": "b20b3dcb58ce7cc55963945f8cb83efbf064b29d2da3011f2cec5d08459f2aa7",
+      "after_sha256": "759230a866370b3b7b5804c680344e6a42ff5344cfbdd980ae3ae9de1d6314da",
+      "patch_sha256": "4c3d45d779891d979d1836076aafaecc326e616df1f805bdad0bb5b796e73b3d",
+      "patch_file": "0001-emscripten-acosf-small-angle.patch"
+    },
+    {
+      "id": "eigen-matrix-wasm-sse2",
+      "component": "blender",
+      "path": "intern/eigen/CMakeLists.txt",
+      "before_sha256": "2cf96c73f436aab27c54328957ef6fd243ef4a03d1d0a83f5b21d7951e3595b3",
+      "after_sha256": "a585eb495b0898e99db86cdbf26168a1c8fd696d138cbcc58044ddcf940558ad",
+      "patch_sha256": "a1839f064e2dd5948cf98640749ab221e549b9e64fd6bb0468639b0b329edd8b",
+      "patch_file": "0002-eigen-matrix-wasm-sse2.patch"
+    }
+  ]
+}

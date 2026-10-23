@@ -1,0 +1,65 @@
+{
+  "browser": {
+    "archive": {
+      "bytes": 198195769,
+      "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64.zip",
+      "sha256": "55672d1f392fd3e7b7a08621b6e804e6bcb39d40cf155504abb74b3a021ea8ea",
+      "url": "https://storage.googleapis.com/chrome-for-testing-public/155.0.8059.39/linux64/chrome-linux64.zip"
+    },
+    "bytes": 297680200,
+    "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64/chrome",
+    "sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778",
+    "version": "Google Chrome for Testing 155.0.8059.39"
+  },
+  "build_configuration": {
+    "bytes": 64011,
+    "path": "../runtime-context-2026-10-23/CMakeCache.txt",
+    "sha256": "026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773"
+  },
+  "engine_archive": {
+    "bytes": 110053572,
+    "path": "/workspace/scratch/d63596d831b2/runtime/brush-package-overlay-5.2/blender-source-development-essentials.tar.gz",
+    "sha256": "3d813cf86ee16eea1530251942f481fc96ec693a8202d9f39392c82f28266910"
+  },
+  "kind": "artifact-bound-browser-context",
+  "limitations": [
+    "Source build receipt binds declared source pins and artifact identity; no independent rebuild correspondence is claimed.",
+    "Software-profile original Python tests do not qualify hardware rendering, editor visuals, deployed sessions or the Blender5.4 product target.",
+    "Augmented package is a distinct artifact with independent test obligations; original artifact passes are not transferred."
+  ],
+  "package_base_asset": {
+    "bytes": 107362300,
+    "path": "/workspace/scratch/d63596d831b2/runtime/source/blender-source-development.tar.gz",
+    "sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991"
+  },
+  "package_overlay_measurement": {
+    "bytes": 5425,
+    "path": "package-measurement.json",
+    "sha256": "188d6f7adcb7101242003c037eb5f3dd192ec8f6e2cc55116246069503aec443"
+  },
+  "package_overlay_receipt": {
+    "bytes": 2547,
+    "path": "../brush-package-overlay-5.2-2026-10-23/package-overlay.json",
+    "sha256": "45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb"
+  },
+  "profile_scope": "Local headless Chromium with software GPU requested; engine-selected GPU is not instrumented",
+  "requested_flags": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu-watchdog",
+    "--enable-unsafe-webgpu",
+    "--enable-unsafe-swiftshader",
+    "--use-angle=swiftshader"
+  ],
+  "schema": 1,
+  "source_build_receipt": {
+    "bytes": 165401,
+    "path": "../runtime-context-2026-10-23/source-build.json",
+    "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+  },
+  "upstream": {
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "repository": "blender/blender",
+    "version": "5.2.0"
+  }
+}

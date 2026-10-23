@@ -1,0 +1,209 @@
+{
+  "case_ids": [
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferType.test_buffer_type_after_convert",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferType.test_buffer_type_default_is_byte",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferType.test_buffer_type_float_from_new",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferType.test_buffer_type_is_read_only",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferType.test_convert_round_trip_preserves_pixels",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferType.test_new_rejects_bogus_buffer_type",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferTypeConvert.test_convert_blocked_while_exported",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferTypeConvert.test_convert_byte_to_float",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferTypeConvert.test_convert_float_to_byte",
+    "tests/python/bl_imbuf_py_api.py::TestImBufBufferTypeConvert.test_convert_noop_when_same_type",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCopy.test_copy",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCopy.test_copy_and_deepcopy",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCrop.test_crop_basic",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCrop.test_crop_full_image",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCrop.test_crop_invalid",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCrop.test_crop_partial",
+    "tests/python/bl_imbuf_py_api.py::TestImBufCrop.test_crop_single_pixel",
+    "tests/python/bl_imbuf_py_api.py::TestImBufFileTypes.test_file_types_have_id_and_extensions",
+    "tests/python/bl_imbuf_py_api.py::TestImBufFileTypes.test_none_file_type",
+    "tests/python/bl_imbuf_py_api.py::TestImBufFileTypes.test_write_and_detect_all_types",
+    "tests/python/bl_imbuf_py_api.py::TestImBufFree.test_double_free",
+    "tests/python/bl_imbuf_py_api.py::TestImBufFree.test_free_then_access",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_load_from_buffer",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_load_from_buffer_bytearray",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_load_from_buffer_invalid",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_load_nonexistent",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_load_sets_filepath",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_write_and_load",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_write_to_buffer",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_write_to_buffer_not_writable",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_write_to_invalid_path",
+    "tests/python/bl_imbuf_py_api.py::TestImBufIO.test_write_uses_image_filepath",
+    "tests/python/bl_imbuf_py_api.py::TestImBufNew.test_new_basic",
+    "tests/python/bl_imbuf_py_api.py::TestImBufNew.test_new_default_properties",
+    "tests/python/bl_imbuf_py_api.py::TestImBufNew.test_new_invalid_size",
+    "tests/python/bl_imbuf_py_api.py::TestImBufNew.test_new_large",
+    "tests/python/bl_imbuf_py_api.py::TestImBufNew.test_new_single_pixel",
+    "tests/python/bl_imbuf_py_api.py::TestImBufNoExitSync.test_write_does_not_change_buffer_type",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_buffer_shape_and_size",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_double_enter_blocked",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_exports_block_crop",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_exports_block_free",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_exports_block_resize",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_freed_image",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_read_only_by_default",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_reentry_after_exit",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsBytes.test_write_mode",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsFloat.test_float_buffer_access",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsFloat.test_float_write",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_full_image_region_matches_no_region",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_full_image_shape",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_inverted_region_sanitized",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_oversized_region_clamped_to_image",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_region_none_full_shape",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_region_pixel_values",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_region_write_does_not_corrupt_neighbors",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_sub_region_shape",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPixelsRegion.test_zero_area_region",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPlanes.test_new_planes_invalid",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPlanes.test_new_planes_values",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPlanes.test_planes_roundtrip",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_compress",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_file_type",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_filepath_empty_default",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_filepath_read_write",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_filepath_read_write_bytes",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_filepath_type_error",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_ppm_invalid",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_ppm_read_write",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_quality",
+    "tests/python/bl_imbuf_py_api.py::TestImBufProperties.test_readonly_properties",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPythonProtocols.test_hash",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPythonProtocols.test_isinstance",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPythonProtocols.test_repr",
+    "tests/python/bl_imbuf_py_api.py::TestImBufPythonProtocols.test_repr_after_free",
+    "tests/python/bl_imbuf_py_api.py::TestImBufResize.test_resize_basic",
+    "tests/python/bl_imbuf_py_api.py::TestImBufResize.test_resize_invalid",
+    "tests/python/bl_imbuf_py_api.py::TestImBufResize.test_resize_method_bilinear",
+    "tests/python/bl_imbuf_py_api.py::TestImBufResize.test_resize_non_square",
+    "tests/python/bl_imbuf_py_api.py::TestImBufResize.test_resize_upscale"
+  ],
+  "comparison_policy_sha256": "b2820613b2d6637f7b628c8e49b87c0882e1e3cd538300212d4dbd3a98e67d60",
+  "configuration": "blender-5.2-original-main-artifact-pair",
+  "context": {
+    "adapter_sha256": "6675c3f1604ef92f3aa139e0d0cc9a91f0a59487b46e0cb5f9685676cd5caa5c",
+    "artifact_sha256": "96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48",
+    "build_config_sha256": "56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae",
+    "runtime_sha256": "83e8261eace07a5337f71b52d156c1eece1a6ba913403cc6406182ae58bacf27"
+  },
+  "contract_sha256": "78e7129761f982effae4702886105301179bb13ba8c695e9af56006f5bce2d0a",
+  "disabled_case_ids": [],
+  "discovery_basis": "Observed original unittest loader before the complete original invocation; process exit is preserved.",
+  "fixture_manifest_sha256": "35130cd015687420fecad03cc5dbe29e66aa62c076d2f7b06405558bdaad30b7",
+  "invocation_sha256": "94e5657c5f509d3d39b8894a0fdd1ebfbd12fc83918eef29f4f6d18ecef5cce2",
+  "kind": "blender-test-discovery",
+  "process": {
+    "completed": true,
+    "crashed": false,
+    "exit_code": 0,
+    "started": true,
+    "timed_out": false
+  },
+  "profile": "native-reference",
+  "raw_evidence": [
+    {
+      "bytes": 64011,
+      "path": "raw/026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773.txt",
+      "sha256": "026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773"
+    },
+    {
+      "bytes": 5425,
+      "path": "raw/188d6f7adcb7101242003c037eb5f3dd192ec8f6e2cc55116246069503aec443.json",
+      "sha256": "188d6f7adcb7101242003c037eb5f3dd192ec8f6e2cc55116246069503aec443"
+    },
+    {
+      "bytes": 1976,
+      "path": "raw/2f6a8989becb6aaad68555b8c28e882417f7a9223024063091f95c79ff507fc7.json",
+      "sha256": "2f6a8989becb6aaad68555b8c28e882417f7a9223024063091f95c79ff507fc7"
+    },
+    {
+      "bytes": 2547,
+      "path": "raw/45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb.json",
+      "sha256": "45bbd14b53afe8f4dd466a3d8191d7b43110409f8dc0de7762f983eb09a42cdb"
+    },
+    {
+      "bytes": 2902,
+      "path": "raw/56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae.json",
+      "sha256": "56567a375fa9f3b505be355e3e9676f67f997a42788fbe15904907722712aaae"
+    },
+    {
+      "bytes": 2819,
+      "path": "raw/5a86e73f391ab76ff957050c624c03bbb3850e91fbe49c018f958d35032614cf.json",
+      "sha256": "5a86e73f391ab76ff957050c624c03bbb3850e91fbe49c018f958d35032614cf"
+    },
+    {
+      "bytes": 165401,
+      "path": "raw/5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3.json",
+      "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+    },
+    {
+      "bytes": 3916,
+      "path": "raw/6dae229e0965ab8998742db6122396d028506d0f0837d7befd9ac49bd6f256e7.py",
+      "sha256": "6dae229e0965ab8998742db6122396d028506d0f0837d7befd9ac49bd6f256e7"
+    },
+    {
+      "bytes": 29657,
+      "path": "raw/76b3612afab8c18aa08e521a515ca7feefdc2a8497feb6ad4f902617c2800527.log",
+      "sha256": "76b3612afab8c18aa08e521a515ca7feefdc2a8497feb6ad4f902617c2800527"
+    },
+    {
+      "bytes": 10548,
+      "path": "raw/807e364aa1e57cce4e762b6092d353ac0465509161ae1e1008d4edd8f9dc2fe3.json",
+      "sha256": "807e364aa1e57cce4e762b6092d353ac0465509161ae1e1008d4edd8f9dc2fe3"
+    },
+    {
+      "bytes": 200,
+      "path": "raw/8ba6a788711185d77b0b14ed0ae26594a5dac871cd2354588f0fa2733d19f238.log",
+      "sha256": "8ba6a788711185d77b0b14ed0ae26594a5dac871cd2354588f0fa2733d19f238"
+    },
+    {
+      "bytes": 4956,
+      "path": "raw/8d2f79ef00aeb4314466226b04041d37d2f41c0ddddc30131e9d3034ee6e02da.json",
+      "sha256": "8d2f79ef00aeb4314466226b04041d37d2f41c0ddddc30131e9d3034ee6e02da"
+    },
+    {
+      "bytes": 19562,
+      "path": "raw/af2c68cb6c60c9908e5ade48d7b811a4efac00221db9fd0e86e53a3defd6bacc.py",
+      "sha256": "af2c68cb6c60c9908e5ade48d7b811a4efac00221db9fd0e86e53a3defd6bacc"
+    },
+    {
+      "bytes": 33079,
+      "path": "raw/cc97ac9e6a3d1854d87f3937dd273765b37a4a11322b947bd33ef43c9b92ff4e.py",
+      "sha256": "cc97ac9e6a3d1854d87f3937dd273765b37a4a11322b947bd33ef43c9b92ff4e"
+    },
+    {
+      "bytes": 1217,
+      "path": "raw/d652bf41a372623fbeee273c3ea3abc826cf0a7a6ef34d02576f8df434b05255.py",
+      "sha256": "d652bf41a372623fbeee273c3ea3abc826cf0a7a6ef34d02576f8df434b05255"
+    },
+    {
+      "bytes": 1462,
+      "path": "raw/ef34a5dec642a748666d5c2c9f0f22e4c8b8ce8c8f44ec7a8a4fbe8cc73cfac3.txt",
+      "sha256": "ef34a5dec642a748666d5c2c9f0f22e4c8b8ce8c8f44ec7a8a4fbe8cc73cfac3"
+    },
+    {
+      "bytes": 1477,
+      "path": "raw/f11713076146ecb3054e364611fdb25738df32c736794084dbe468e3c13d3508.json",
+      "sha256": "f11713076146ecb3054e364611fdb25738df32c736794084dbe468e3c13d3508"
+    },
+    {
+      "bytes": 48271,
+      "path": "raw/f51d22d1352c66633e8425cc69cfb044d6082568c4c987d919f805ca3cfc8eb2.json",
+      "sha256": "f51d22d1352c66633e8425cc69cfb044d6082568c4c987d919f805ca3cfc8eb2"
+    }
+  ],
+  "registration_id": "source-declaration:29",
+  "runtime_kind": "native",
+  "schema": 1,
+  "selection": {
+    "filters": [],
+    "shard": null
+  },
+  "target": {
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "repository": "blender/blender"
+  }
+}

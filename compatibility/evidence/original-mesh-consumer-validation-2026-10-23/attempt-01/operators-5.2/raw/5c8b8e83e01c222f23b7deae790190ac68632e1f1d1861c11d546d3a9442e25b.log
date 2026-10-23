@@ -1,0 +1,15 @@
+[bw] WM-worker WebGPU device pre-acquired (ADR-007); features=21 tier1=false tier2=false fallback=true maxStorageTexturesPerShaderStage=4 maxSampledTexturesPerShaderStage=16 maxSamplersPerShaderStage=16 maxStorageBuffersPerShaderStage=10 maxBufferSize=1073741824 maxStorageBufferBindingSize=1073741824 adapterMaxColorAttachmentBytesPerSample=128 requestedMaxColorAttachmentBytesPerSample=128 deviceMaxColorAttachmentBytesPerSample=128 adapterMaxComputeWorkgroupStorageSize=32768 requestedMaxComputeWorkgroupStorageSize=32768 deviceMaxComputeWorkgroupStorageSize=32768
+[bw] WM-worker WebGPU presentation pre-acquired; canvas=1280x720 validation=fallback-diagnostic
+Unable to find the Python binary, the multiprocessing module may not be functional!
+Traceback (most recent call last):
+  File "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/operators.py", line 1048, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/operators.py", line 1038, in main
+    operators_test.run_all_tests()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/modules/mesh_test.py", line 947, in run_all_tests
+    raise Exception("Tests {} failed".format(self._failed_tests_list))
+Exception: Tests ['IcosphereFill', 'IcosphereFillUseBeautyFalse'] failed
+
+Error: script failed, file: '/workspace/scratch/d63596d831b2/blended/compatibility/evidence/mesh-operators-source-native-5.2-2026-10-23/source/tests/python/operators.py', exiting.

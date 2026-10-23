@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "kind": "artifact-bound-browser-context",
+  "upstream": {
+    "repository": "blender/blender",
+    "commit": "fbe6228777e7d9afefcd61a413844e790ae75db7",
+    "version": "5.2.0"
+  },
+  "browser": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64/chrome",
+    "bytes": 297680200,
+    "sha256": "ed05e73a2cdf875326fcfa438b31c71a6a885a353610731dd52090dfc476f778",
+    "version": "Google Chrome for Testing 155.0.8059.39",
+    "archive": {
+      "path": "/workspace/scratch/d63596d831b2/runtime/chrome/chrome-linux64.zip",
+      "bytes": 198195769,
+      "sha256": "55672d1f392fd3e7b7a08621b6e804e6bcb39d40cf155504abb74b3a021ea8ea",
+      "url": "https://storage.googleapis.com/chrome-for-testing-public/155.0.8059.39/linux64/chrome-linux64.zip"
+    }
+  },
+  "engine_archive": {
+    "path": "/workspace/scratch/d63596d831b2/runtime/source/blender-source-development.tar.gz",
+    "bytes": 107362300,
+    "sha256": "5141ef40e3191ce2236fd80e23f26a73b7ac2db88f68755c6f4b23c6b59fe991"
+  },
+  "source_build_receipt": {
+    "path": "source-build.json",
+    "bytes": 165401,
+    "sha256": "5ed2a839fc340d16de08a096be3db74506a4cffdaaa87f40fbd1553810b53ce3"
+  },
+  "build_configuration": {
+    "path": "CMakeCache.txt",
+    "bytes": 64011,
+    "sha256": "026c70cc6d3a121258bbf3986c6fea94d823f8e74fdfb6c58227e8ce3eebb773"
+  },
+  "requested_flags": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu-watchdog",
+    "--enable-unsafe-webgpu",
+    "--enable-unsafe-swiftshader",
+    "--use-angle=swiftshader"
+  ],
+  "profile_scope": "Local headless Chromium with software GPU requested; engine-selected GPU is not instrumented",
+  "limitations": [
+    "Source build receipt binds declared source pins and artifact identity; no independent rebuild correspondence is claimed.",
+    "Software-profile original Python tests do not qualify hardware rendering, editor visuals, deployed sessions or the Blender5.4 product target."
+  ]
+}

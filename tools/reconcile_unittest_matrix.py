@@ -58,6 +58,22 @@ CI_PRODUCER_FILES = {
     "probe": ("tools/probe_browser_port.py", 75480,
               "2dd05ff937337d861972e224c63639f90c471002eab496a1f2595853303672cd"),
 }
+# Each compatibility entry binds one reviewed Git commit and every producer
+# byte. The DPX revision changes only the probe's codec-manifest digest; its
+# workflow, matrix driver, source download mode and command expansion match the
+# original entry. This allowlist does not establish any execution or test pass.
+CI_PRODUCER_PROFILES = {
+    CI_PRODUCER_RULE: {"commit": CI_PRODUCER_COMMIT, "files": CI_PRODUCER_FILES},
+    "original-unittest-downloaded-sources-03913290e92a-v1": {
+        "commit": "03913290e92a98cd9c45fdecf679072587c4dbe7",
+        "files": {
+            "workflow": CI_PRODUCER_FILES["workflow"],
+            "matrix_driver": CI_PRODUCER_FILES["matrix_driver"],
+            "probe": ("tools/probe_browser_port.py", 75480,
+                      "bd975ec99e30c5d33496fc94a3d0f00837e181a5b5ea543431829fcbb71c1887"),
+        },
+    },
+}
 CI_ARTIFACT_PATH = "source-build/essentials/blender-source-development-essentials.tar.gz"
 CI_CWD_BASIS = "Source-derived from the exact workflow entrypoint and producer ROOT; not an OS-observed cwd."
 CI_SOURCE_MODE = "Complete frozen suite and helper downloads, each checked against original SHA256 and byte count before execution."
@@ -374,9 +390,11 @@ def read_producer_compatibility(evidence: Evidence, context_file: Captured, brow
         return None, []
     captured = evidence.reference(pin, context_file.path.parent)
     value = captured.json()
+    rule = value.get("rule")
+    profile = CI_PRODUCER_PROFILES.get(rule) if isinstance(rule, str) else None
     require(type(value.get("schema")) is int and value["schema"] == 1
             and value.get("kind") == "source-derived-frozen-producer-context"
-            and value.get("rule") == CI_PRODUCER_RULE and value.get("source_commit") == CI_PRODUCER_COMMIT
+            and profile is not None and value.get("source_commit") == profile["commit"]
             and value.get("cwd_basis") == CI_CWD_BASIS and value.get("source_mode") == CI_SOURCE_MODE
             and value.get("os_cwd_observed") is False,
             "unreviewed source-derived producer compatibility context")
@@ -384,7 +402,7 @@ def read_producer_compatibility(evidence: Evidence, context_file: Captured, brow
     require(value.get("original_entrypoint") == str(root / "tools/run_unittest_browser_matrix.py"),
             "source-derived producer entrypoint is outside its exact checkout")
     refs, files = [captured.ref], {}
-    for field, (upstream_path, size, digest_value) in CI_PRODUCER_FILES.items():
+    for field, (upstream_path, size, digest_value) in profile["files"].items():
         require(isinstance(value.get(field), dict) and value[field].get("upstream_path") == upstream_path,
                 "source-derived producer omits its original source path: " + field)
         source = evidence.reference(value[field], captured.path.parent)
@@ -395,8 +413,8 @@ def read_producer_compatibility(evidence: Evidence, context_file: Captured, brow
     run_file = evidence.reference(value.get("ci_run"), captured.path.parent)
     run = run_file.json()
     require(type(value.get("run_id")) is int and value["run_id"] > 0 and run.get("id") == value["run_id"]
-            and run.get("head_sha") == CI_PRODUCER_COMMIT
-            and run.get("path") == CI_PRODUCER_FILES["workflow"][0] and run.get("status") == "completed",
+            and run.get("head_sha") == profile["commit"]
+            and run.get("path") == profile["files"]["workflow"][0] and run.get("status") == "completed",
             "source-derived producer context is not bound to its completed exact workflow run")
     refs.append(run_file.ref)
     require(isinstance(value.get("matrices"), list) and bool(value["matrices"]),
@@ -411,7 +429,7 @@ def read_producer_compatibility(evidence: Evidence, context_file: Captured, brow
         matrices[matrix.ref["sha256"]] = row["plan"]
         refs.append(matrix.ref)
     return {"receipt": captured.ref, "checkout_root": root, "files": files, "matrices": matrices, "run": run,
-            "rule": CI_PRODUCER_RULE, "cwd_basis": CI_CWD_BASIS, "source_mode": CI_SOURCE_MODE}, refs
+            "rule": rule, "cwd_basis": CI_CWD_BASIS, "source_mode": CI_SOURCE_MODE}, refs
 
 
 def check_producer_matrix(producer: dict, captured: Captured, matrix: dict, harness: dict) -> dict:
@@ -436,10 +454,10 @@ def check_producer_matrix(producer: dict, captured: Captured, matrix: dict, harn
             "source-derived matrix is outside its bound workflow run interval")
     Evidence.canonical_path(matrix.get("python_executable", {}).get("path"), absolute=True)
     for field in ("matrix_driver", "probe"):
-        name, _, _ = CI_PRODUCER_FILES[field]
+        name, _, _ = CI_PRODUCER_PROFILES[producer["rule"]]["files"][field]
         require(name in harness and harness[name].data == producer["files"][field].data,
                 "matrix harness differs from the reviewed exact producer pair")
-    return {"rule": CI_PRODUCER_RULE, "checkout_root": str(root), "original_output_root": str(output),
+    return {"rule": producer["rule"], "checkout_root": str(root), "original_output_root": str(output),
             "cwd_basis": CI_CWD_BASIS, "source_mode": CI_SOURCE_MODE, "context_receipt": producer["receipt"]}
 
 
