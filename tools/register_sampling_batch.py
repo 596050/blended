@@ -40,7 +40,7 @@ pub mod {module};
  contract_path.write_text(json.dumps(contracts,indent=2)+'\n')
  # These are infrastructure universe tests, never upstream expectations.
  for name in ['test_extended_port.py','test_geometry_math_port.py','test_port_workbench.py','test_collection_port.py','test_numeric_types.py']:
-  p=ROOT/'tests'/name;s=p.read_text().replace(',302)',',338)').replace(',16402)',',16804)');p.write_text(s)
+  p=ROOT/'tests'/name;s=p.read_text().replace(',302)',',338)').replace(',16402)',',16804)').replace("len(contracts(ROOT)['contracts']),23)","len(contracts(ROOT)['contracts']),25)");p.write_text(s)
  edit('tests/test_port_workbench.py',"'geometry_math_assertions':0,", "'geometry_math_assertions':0,'sampling_assertions':0,'curve_assertions':0,")
  if json.loads((ROOT/'upstream.lock.json').read_text())['upstreams']['blender']['commit']!=PIN:raise ValueError('Wrong pin')
 if __name__=='__main__':register()
