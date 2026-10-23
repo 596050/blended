@@ -63,3 +63,20 @@ pub mod hashing;
 pub mod compile_time_cases;
 
 pub mod numerics_text_cases;
+
+pub mod numeric_vectors;
+pub mod string_views;
+pub mod color_types;
+
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_numerics_text_case_count()->u32 {numerics_text_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_numerics_text_run_case(index:u32)->i32 {
+    numerics_text_cases::CASES.get(index as usize).map(|(_,run,count)|{
+        let r=run();i32::from(r.passed() && r.assertions==*count)
+    }).unwrap_or(-1)
+}
+#[unsafe(no_mangle)]
+pub extern "C" fn blended_numerics_text_assertion_count(index:u32)->u32 {
+    numerics_text_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
+}

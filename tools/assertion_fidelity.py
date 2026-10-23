@@ -72,7 +72,7 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','numerics_text_cases.rs']:
         p=src/name;before=p.read_text();after=before
         changes={
           'macro_rules! eq ': 'macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};} ',
@@ -82,6 +82,9 @@ def shadow(root:Path,out:Path):
           'macro_rules! yes ': 'macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};} ',
           'macro_rules! no ': 'macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};} ',
         }
+        if name=='numerics_text_cases.rs':
+            changes['macro_rules! eq ']='macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_ref(&($a),&($b)),stringify!($a == $b),line!());}};} '
+            changes['macro_rules! numeq ']='macro_rules! numeq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a as f64,$b as f64),stringify!($a == $b),line!());}};} '
         # Preserve the original scalar EQ expected-value cast. Structure EQ is same-type.
         if name=='additional_cases.rs':changes['macro_rules! eq ']='macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{let a=$a;$r.check(crate::fidelity_trace::eq(a,$b as _),stringify!($a == $b),line!());}};} '
         for prefix,replacement in changes.items():
@@ -115,6 +118,8 @@ def normal(value):
     if isinstance(value,list):return tuple(normal(v) for v in value)
     if isinstance(value,dict):return tuple((k,normal(v)) for k,v in sorted(value.items()))
     if not isinstance(value,str):raise ValueError('Malformed tagged trace value')
+    if value.startswith('p8:'):return ('byte_pointer',int(value[3:]))
+    if value.startswith('s:'):return ('bytes',bytes.fromhex(value[2:]))
     if value.startswith('p64:'):return ('word_pointer',int(value[4:]))
     if value.startswith('i:'):return Fraction(int(value[2:]))
     if value.startswith('f:'):

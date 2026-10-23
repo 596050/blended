@@ -757,7 +757,7 @@ pub fn string_ref__StdStringConstructor()->Report{
 let mut r=Report::default();
 
   let str=String::from("Test");
-  let value=s::StringRef::new(&(str));
+  let value=s::StringRef::with_length(str.as_bytes(),str.len());
   eq!(r, value.size(), 4);
   eq!(r, value.data(), str.as_ptr());
 
@@ -768,8 +768,8 @@ r
 pub fn string_ref__SpanConstructor()->Report{
 let mut r=Report::default();
 
-  eq!(r, s::StringRef::new(&(s::StringRef::with_length("hello".as_bytes(),5))), "hello");
-  eq!(r, s::StringRef::new(&(s::StringRef::with_length("hello".as_bytes(),2))), "he");
+  eq!(r, s::StringRef::with_length("hello".as_bytes(),5), "hello");
+  eq!(r, s::StringRef::with_length("hello".as_bytes(),2), "he");
 
 r
 }

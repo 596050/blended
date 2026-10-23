@@ -8,6 +8,8 @@
 #include "BLI_math_vector_types.hh"
 #include "BLI_bit_ref.hh"
 #include "BLI_span.hh"
+#include "BLI_string_ref.hh"
+#include <string_view>
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
@@ -68,6 +70,24 @@ template<> struct Encoder<blender::bits::BitRef> {
 template<class T> struct Encoder<blender::Span<T>> {
  static void write(std::ostream &out,const blender::Span<T> &v){out<<'[';for(int64_t i=0;i<v.size();++i){if(i)out<<',';value(out,v[i]);}out<<']';}
 };
+inline void text_value(std::ostream &out,const char *p,size_t n){
+ out<<"\"s:";static constexpr char hex[]="0123456789abcdef";
+ for(size_t i=0;i<n;++i){auto v=static_cast<unsigned char>(p[i]);out<<hex[v>>4]<<hex[v&15];}out<<'"';
+}
+template<> struct Encoder<std::string>{static void write(std::ostream &out,const std::string &v){text_value(out,v.data(),v.size());}};
+template<> struct Encoder<std::string_view>{static void write(std::ostream &out,const std::string_view &v){text_value(out,v.data(),v.size());}};
+template<> struct Encoder<blender::StringRef>{static void write(std::ostream &out,const blender::StringRef &v){text_value(out,v.data(),v.size());}};
+template<> struct Encoder<blender::StringRefNull>{static void write(std::ostream &out,const blender::StringRefNull &v){text_value(out,v.data(),v.size());}};
+template<> struct Encoder<const char*>{static void write(std::ostream &out,const char *v){text_value(out,v,std::strlen(v));}};
+template<> struct Encoder<char*>{static void write(std::ostream &out,const char *v){text_value(out,v,std::strlen(v));}};
+template<size_t N>struct Encoder<char[N]>{static void write(std::ostream &out,const char (&v)[N]){text_value(out,v,std::strlen(v));}};
+struct ByteAddress{const char *ptr;};
+template<>struct Encoder<ByteAddress>{static void write(std::ostream &out,ByteAddress v){
+ static const ::testing::TestInfo *last=nullptr;static std::uintptr_t base=0;
+ auto *test=::testing::UnitTest::GetInstance()->current_test_info();auto address=reinterpret_cast<std::uintptr_t>(v.ptr);
+ if(last!=test){last=test;base=address;}
+ out<<"\"p8:"<<static_cast<int64_t>(address)-static_cast<int64_t>(base)<<"\"";
+}};
 inline std::ofstream &stream() {
  static std::ofstream out([](){const char *p=std::getenv("BLENDED_ASSERTION_TRACE");if(!p)std::abort();return p;}());
  if(!out)std::abort();return out;
@@ -82,7 +102,12 @@ template<class... T> void record(const char *kind,bool passed,const char *ea,con
  if(ea){out<<",\"fixed\":["<<(literal(ea)?"true":"false")<<','<<(literal(eb)?"true":"false");if constexpr(sizeof...(args)==3)out<<",true";out<<']';}
  out<<"}\n";out.flush();
 }
-template<class A,class B> void eq(const A &a,const B &b) {record("EQ",bool(::testing::internal::EqHelper::Compare("a","b",a,b)),nullptr,nullptr,a,b);EXPECT_EQ(a,b);}
+template<class A,class B> void eq(const A &a,const B &b) {
+ const bool p=bool(::testing::internal::EqHelper::Compare("a","b",a,b));
+ if constexpr(std::is_pointer_v<A>&&std::is_pointer_v<B>&&std::is_same_v<std::remove_cv_t<std::remove_pointer_t<A>>,char>&&std::is_same_v<std::remove_cv_t<std::remove_pointer_t<B>>,char>){record("EQ",p,nullptr,nullptr,ByteAddress{a},ByteAddress{b});}
+ else{record("EQ",p,nullptr,nullptr,a,b);}
+ EXPECT_EQ(a,b);
+}
 template<class A,class B> void gt(const A &a,const B &b) {record("GT",a>b,nullptr,nullptr,a,b);EXPECT_GT(a,b);}
 inline void feq(float a,float b,const char *ea,const char *eb) {record("FLOAT_EQ",bool(::testing::internal::CmpHelperFloatingPointEQ<float>("a","b",a,b)),ea,eb,a,b);EXPECT_FLOAT_EQ(a,b);}
 inline void near(double a,double b,double e,const char *ea,const char *eb) {record("NEAR",bool(::testing::internal::DoubleNearPredFormat("a","b","e",a,b,e)),ea,eb,a,b,e);EXPECT_NEAR(a,b,e);}

@@ -59,6 +59,7 @@ def load_ports(inventory):
     for manifest,target_path,module in (
         ('additional-ports.json','crates/blended-core/src/additional_cases.rs','upstream_additional'),
         ('structure-ports.json','crates/blended-core/src/structure_cases.rs','upstream_structures'),
+        ('numerics-text-ports.json','crates/blended-core/src/numerics_text_cases.rs','upstream_numerics_text'),
         ('collection-ports.json','crates/blended-core/src/collection_cases.rs','upstream_collections'),
         ('compile-time-ports.json','crates/blended-core/src/compile_time_cases.rs','compile_time_cases'),
     ):

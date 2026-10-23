@@ -108,7 +108,12 @@ def string_expr(expr):
     expr=re.sub(r'Span<char>\(("[^"]*"),\s*(\d+)\)',r's::StringRef::with_length(\1.as_bytes(),\2)',expr)
     def construct(a):
         args=split_args(a)
-        if len(args)==1:return 's::StringRef::new(&('+string_expr(args[0])+'))'
+        if len(args)==1:
+            if args[0].startswith('s::StringRef::with_length('):
+                return args[0]
+            if args[0].startswith('Span<char>'):
+                return string_expr(args[0])
+            return 's::StringRef::new(&('+string_expr(args[0])+'))'
         if args==['nullptr','nullptr']:return 's::StringRef::default()'
         if args[1]==args[0]:return 's::StringRef::with_length('+args[0]+'.as_bytes(),0)'
         delta=re.fullmatch(re.escape(args[0])+r'\s*\+\s*(\d+)',args[1])
@@ -152,6 +157,7 @@ def strings(body,identity):
             args=split_args(expr)
             first='concat!('+args[0]+',"\\0").as_bytes()' if args[0].startswith('"') else args[0]+'.as_bytes()'
             out=f's::StringRefNull::'+('new' if len(args)==1 else 'with_length')+'('+first+(','+args[1] if len(args)==2 else '')+')'
+        elif identity.endswith('.StdStringConstructor') and expr=='str':out='s::StringRef::with_length(str.as_bytes(),str.len())'
         elif rest.startswith('='):
             if expr.startswith('"'):out='s::StringRef::new('+expr+')'
             else:out=string_expr(expr)
@@ -207,7 +213,7 @@ def generate(root=ROOT,upstream=None):
     out+='\npub const CASES:&[(&str,fn()->Report,u32)]=&[\n'+''.join(f'("{c["id"]}",{c["rust_function"]},{c["assertion_count"]}),\n' for c in cases)+'];\n'
     (root/'crates/blended-core/src/numerics_text_cases.rs').write_text(out)
     (root/'crates/blended-core/tests/upstream_numerics_text.rs').write_text(native)
-    manifest={'schema':1,'upstream_commit':PIN,'source_files':FILES,'cases':cases,'complete_blender_test_port':False,'notes':'Complete runtime cases in three locked files. Constexpr string assertions are embedded and vector compile-time contracts are tracked separately. Numeric equality casts preserve all exact operands in this finite input set; vectors, strings and pointers use their proper equality implementations.'}
+    manifest={'schema':1,'upstream_commit':PIN,'source_files':FILES,'cases':cases,'complete_blender_test_port':False,'notes':'Complete runtime cases in three locked files. Four constexpr string assertions are retained in the generated cases. Nine standalone C++ vector type/layout assertions remain unported and are not hidden from the source ledger. Numeric equality casts preserve all exact operands in this finite input set; vectors, strings and pointers use their proper equality implementations.'}
     (root/'compatibility/numerics-text-ports.json').write_text(json.dumps(manifest,indent=2)+'\n')
     return manifest
 if __name__=='__main__':

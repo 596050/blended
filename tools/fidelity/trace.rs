@@ -23,6 +23,20 @@ impl Value for *const core::cell::Cell<u64> {
  })}
 }
 impl<T:Value> Value for &[T] {fn encode(&self)->String{format!("[{}]",self.iter().map(Value::encode).collect::<Vec<_>>().join(","))}}
+impl<T:Value,const N:usize> Value for crate::numeric_vectors::V<T,N>{fn encode(&self)->String{self.0.encode()}}
+fn text_value(bytes:&[u8])->String{format!("\"s:{}\"",bytes.iter().map(|b|format!("{b:02x}")).collect::<String>())}
+impl Value for str{fn encode(&self)->String{text_value(self.as_bytes())}}
+impl Value for &str{fn encode(&self)->String{text_value(self.as_bytes())}}
+impl Value for String{fn encode(&self)->String{text_value(self.as_bytes())}}
+impl Value for crate::string_views::StringRef<'_>{fn encode(&self)->String{text_value(self.as_bytes())}}
+impl Value for crate::string_views::StringRefNull<'_>{fn encode(&self)->String{text_value(self.as_bytes())}}
+impl Value for *const u8{fn encode(&self)->String{POINTER_ORIGIN.with(|origin|{
+ let address=*self as usize;let mut origin=origin.borrow_mut();let base=*origin.get_or_insert(address);
+ format!("\"p8:{}\"",address as i128-base as i128)
+})}}
+pub fn eq_ref<A:PartialEq<B>+Value+?Sized,B:Value+?Sized>(a:&A,b:&B)->bool{
+ let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p
+}
 pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
@@ -44,6 +58,7 @@ pub fn run_all()->String {
  for (id,run) in crate::additional_cases::CASES{start(id);assert!(run().passed(),"Scalar port failed");}
  for (id,run,count) in crate::structure_cases::CASES{start(id);let r=run();assert!(r.passed(),"Structure port failed");assert_eq!(r.assertions,*count);}
  for (id,run,count) in crate::collection_cases::CASES{start(id);let r=run();assert!(r.passed(),"Collection port failed");assert_eq!(r.assertions,*count);}
+ for (id,run,count) in crate::numerics_text_cases::CASES{start(id);let r=run();assert!(r.passed(),"Numeric/text port failed");assert_eq!(r.assertions,*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}
