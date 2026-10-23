@@ -61,3 +61,26 @@ pub extern "C" fn blended_collections_assertion_count(index:u32)->u32 {
 
 pub mod hashing;
 pub mod compile_time_cases;
+
+pub mod string_ref_cases;
+
+pub mod string_refs;
+
+pub mod bit_span_cases;
+
+pub mod bit_spans;
+
+// Additional runtime groups retain the legacy application ABI unchanged.
+macro_rules! exported_cases {
+    ($count:ident,$run:ident,$assertions:ident,$module:ident)=>{
+        #[unsafe(no_mangle)] pub extern "C" fn $count()->u32{$module::CASES.len() as u32}
+        #[unsafe(no_mangle)] pub extern "C" fn $run(index:u32)->i32{
+            $module::CASES.get(index as usize).map(|(_,run,expected)|{let r=run();i32::from(r.passed()&&r.assertions==*expected)}).unwrap_or(-1)
+        }
+        #[unsafe(no_mangle)] pub extern "C" fn $assertions(index:u32)->u32{
+            $module::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)
+        }
+    };
+}
+exported_cases!(blended_strings_case_count,blended_strings_run_case,blended_strings_assertion_count,string_ref_cases);
+exported_cases!(blended_bit_spans_case_count,blended_bit_spans_run_case,blended_bit_spans_assertion_count,bit_span_cases);

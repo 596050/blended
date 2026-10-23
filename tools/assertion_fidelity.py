@@ -72,7 +72,7 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs']:
         p=src/name;before=p.read_text();after=before
         changes={
           'macro_rules! eq ': 'macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};} ',
@@ -84,6 +84,8 @@ def shadow(root:Path,out:Path):
         }
         # Preserve the original scalar EQ expected-value cast. Structure EQ is same-type.
         if name=='additional_cases.rs':changes['macro_rules! eq ']='macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{let a=$a;$r.check(crate::fidelity_trace::eq(a,$b as _),stringify!($a == $b),line!());}};} '
+        if name in ('string_ref_cases.rs','bit_span_cases.rs'):
+            changes['macro_rules! eq ']='macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_refs(&$a,&$b),stringify!($a == $b),line!());}};}'
         for prefix,replacement in changes.items():
             lines=after.splitlines();matches=[i for i,s in enumerate(lines) if s.startswith(prefix)]
             if matches:
@@ -115,6 +117,8 @@ def normal(value):
     if isinstance(value,list):return tuple(normal(v) for v in value)
     if isinstance(value,dict):return tuple((k,normal(v)) for k,v in sorted(value.items()))
     if not isinstance(value,str):raise ValueError('Malformed tagged trace value')
+    if value.startswith('s:'):return ('string_bytes',bytes.fromhex(value[2:]))
+    if value.startswith('p8:'):return ('byte_pointer',int(value[3:]))
     if value.startswith('p64:'):return ('word_pointer',int(value[4:]))
     if value.startswith('i:'):return Fraction(int(value[2:]))
     if value.startswith('f:'):
@@ -139,12 +143,26 @@ def equivalent(kind,a,b,fixed=()):
         return a[2]==b[2] and isinstance(a[2],Fraction) and all(x==y or (isinstance(x,Fraction) and isinstance(y,Fraction) and abs(x-y)<=a[2]) for x,y in zip(a[:2],b[:2]))
     return False
 
-def compare(reference:list,port:list,expected:list):
-    ref=defaultdict(list);got=defaultdict(list)
-    for row in reference:ref[row['case']].append(row)
-    for row in port:got[row['case']].append(row)
+def compare(reference:list,port:list,expected:list,require_boundaries=False):
     ids=[c['id'] for c in expected]
     if len(set(ids))!=len(ids) or not ids:raise ValueError('Invalid expected case universe')
+    def group_trace(rows):
+        grouped=defaultdict(list);started=set();finished=set();active=None
+        for row in rows:
+            key=row.get('case');kind=row.get('kind')
+            if key not in ids:raise ValueError('Missing or unexpected case identity')
+            if kind=='CASE_BEGIN':
+                if active is not None or key in started or row.get('passed') is not True or row.get('values')!=[]:raise ValueError('Invalid/duplicate case begin')
+                active=key;started.add(key);grouped[key]
+            elif kind=='CASE_END':
+                if active!=key or key in finished or row.get('passed') is not True or row.get('values')!=[]:raise ValueError('Invalid/failed case end')
+                active=None;finished.add(key)
+            else:
+                if require_boundaries and active!=key:raise ValueError('Assertion outside an executed case')
+                grouped[key].append(row)
+        if require_boundaries and (active is not None or started!=set(ids) or finished!=set(ids)):raise ValueError('Unexecuted or unfinished case')
+        return grouped
+    ref=group_trace(reference);got=group_trace(port)
     if set(ref)!=set(ids) or set(got)!=set(ids):raise ValueError('Missing or unexpected case identity')
     checked=0;approx=[]
     for contract in expected:
@@ -162,7 +180,7 @@ def compare(reference:list,port:list,expected:list):
             if not any(equivalent(kind,rv,v,r.get('fixed',())) for v in options):raise ValueError(f'Assertion values/tolerance differ: {key}:{i}: {r["values"]} != {p["values"]}')
             if rv not in options:approx.append({'case':key,'ordinal':i,'kind':kind,'reference':r['values'],'port':p['values']})
             checked+=1
-    return {'status':'passed','case_count':len(ids),'assertions_compared':checked,'floating_differences_within_original_rule':approx,'complete_blender_test_port':False,'scope':'mapped runtime subset; equality operand order may differ; empty-range start normalised by upstream equality; not a proof of all behaviour'}
+    return {'status':'passed','case_count':len(ids),'case_boundaries_verified':require_boundaries,'assertion_free_cases':[c['id'] for c in expected if c['expected_runtime_assertions']==0],'assertions_compared':checked,'floating_differences_within_original_rule':approx,'complete_blender_test_port':False,'scope':'mapped runtime subset; equality operand order may differ; empty-range start normalised by upstream equality; not a proof of all behaviour'}
 
 def load_tape(path):return [json.loads(s) for s in Path(path).read_text().splitlines() if s.strip()]
 
@@ -187,7 +205,7 @@ def main():
         sys.path.insert(0,str(a.root/'tools'));from port_workbench import expected_cases
         expected,pin=expected_cases(a.root)
         report={'status':'failed','complete_blender_test_port':False,'reference_commit':pin,'reference_trace_sha256':digest(a.reference),'port_trace_sha256':digest(a.port)}
-        try:report.update(compare(load_tape(a.reference),load_tape(a.port),expected))
+        try:report.update(compare(load_tape(a.reference),load_tape(a.port),expected,require_boundaries=True))
         except Exception as e:report['failure']=str(e)
         a.output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
         return 0 if report['status']=='passed' else 1

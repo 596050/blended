@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import sys
 ROOT=Path(__file__).resolve().parents[1]
+from port_registry import GROUPS
 FAMILIES=('ctest','gtest','python','render','ui','compile_time')
 def key(c):return f"{c['path']}::{c.get('identity',c.get('id'))}::{c.get('line',1)}"
 def evaluate(inventory,ports,runtime=None,execution=None):
@@ -56,12 +57,7 @@ def evaluate(inventory,ports,runtime=None,execution=None):
 
 def load_ports(inventory):
     hashes={f['path']:f['sha256'] for f in inventory['files']};ports=[]
-    for manifest,target_path,module in (
-        ('additional-ports.json','crates/blended-core/src/additional_cases.rs','upstream_additional'),
-        ('structure-ports.json','crates/blended-core/src/structure_cases.rs','upstream_structures'),
-        ('collection-ports.json','crates/blended-core/src/collection_cases.rs','upstream_collections'),
-        ('compile-time-ports.json','crates/blended-core/src/compile_time_cases.rs','compile_time_cases'),
-    ):
+    for manifest,target_path,module in [*( (g.manifest,'crates/blended-core/src/'+g.module+'.rs',g.native_suite) for g in GROUPS),('compile-time-ports.json','crates/blended-core/src/compile_time_cases.rs','compile_time_cases')]:
         generated=ROOT/'compatibility'/manifest
         if not generated.exists():continue
         data=json.loads(generated.read_text())

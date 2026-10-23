@@ -1,0 +1,39 @@
+"""Explicit implemented runtime groups, separate from the full upstream universe.
+
+Removing a group cannot silently reduce the accepted subset: reviewed runtime
+contract identities must form an exact bijection with these registered cases.
+"""
+from dataclasses import dataclass
+from pathlib import Path
+import hashlib,json
+
+@dataclass(frozen=True)
+class Group:
+    name:str
+    manifest:str
+    module:str
+    native_suite:str
+    generator:str
+    total_key:str
+    abi:tuple[str,str,str]
+
+GROUPS=(
+    Group('additional','additional-ports.json','additional_cases','upstream_additional','port_scalar_tests.py','additional_assertions',('blended_additional_case_count','blended_additional_run_case','blended_additional_assertion_count')),
+    Group('structures','structure-ports.json','structure_cases','upstream_structures','port_structure_tests.py','structure_assertions',('blended_structures_case_count','blended_structures_run_case','blended_structures_assertion_count')),
+    Group('collections','collection-ports.json','collection_cases','upstream_collections','port_collection_tests.py','collection_assertions',('blended_collections_case_count','blended_collections_run_case','blended_collections_assertion_count')),
+    Group('strings','string-ref-ports.json','string_ref_cases','upstream_string_refs','port_string_ref_tests.py','string_assertions',('blended_strings_case_count','blended_strings_run_case','blended_strings_assertion_count')),
+    Group('bit_spans','bit-span-ports.json','bit_span_cases','upstream_bit_spans','port_bit_span_tests.py','bit_span_assertions',('blended_bit_spans_case_count','blended_bit_spans_run_case','blended_bit_spans_assertion_count')),
+)
+TOTAL_KEYS={'legacy':'vector_assertions',**{g.name:g.total_key for g in GROUPS}}
+ABI={'legacy':('blended_case_count','blended_run_case','blended_case_assertion_count'),**{g.name:g.abi for g in GROUPS}}
+
+def verify_runtime_contract_bijection(root:Path,cases:list):
+    contracts=json.loads((root/'compatibility/assertion-contracts.lock.json').read_text())
+    registered={c['id'] for c in cases};reviewed=[]
+    for c in contracts['contracts']:
+        if c['target_path'].endswith('/compile_time_cases.rs'):continue
+        if hashlib.sha256((root/c['target_path']).read_bytes()).hexdigest()!=c['target_sha256']:
+            raise ValueError('Reviewed test source has changed: '+c['target_path'])
+        reviewed.extend(c['case_ids'])
+    if len(reviewed)!=len(set(reviewed)) or set(reviewed)!=registered or len(cases)!=len(registered):
+        raise ValueError('Reviewed runtime contracts and executable registries do not match exactly')

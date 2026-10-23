@@ -23,6 +23,15 @@ impl Value for *const core::cell::Cell<u64> {
  })}
 }
 impl<T:Value> Value for &[T] {fn encode(&self)->String{format!("[{}]",self.iter().map(Value::encode).collect::<Vec<_>>().join(","))}}
+thread_local! {static BYTE_POINTER_ORIGIN:RefCell<Option<usize>>=const{RefCell::new(None)};}
+impl Value for *const u8 {
+ fn encode(&self)->String {BYTE_POINTER_ORIGIN.with(|origin|{let address=*self as usize;let mut origin=origin.borrow_mut();let base=*origin.get_or_insert(address);format!("\"p8:{}\"",address as i128-base as i128)})}
+}
+fn bytes_value(bytes:&[u8])->String{format!("\"s:{}\"",bytes.iter().map(|b|format!("{b:02x}")).collect::<String>())}
+impl Value for crate::string_refs::StringRef<'_>{fn encode(&self)->String{bytes_value(self.as_bytes())}}
+impl Value for crate::string_refs::StringRefNull<'_>{fn encode(&self)->String{bytes_value(self.as_bytes())}}
+impl Value for crate::string_refs::Bytes{fn encode(&self)->String{bytes_value(self.as_ref())}}
+pub fn eq_refs<A:PartialEq<B>+Value+?Sized,B:Value+?Sized>(a:&A,b:&B)->bool{let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p}
 pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
@@ -37,13 +46,16 @@ pub fn float_eq(a:f32,b:f32)->bool {
  record("FLOAT_EQ",p,&[a.encode(),b.encode()]);p
 }
 pub fn near(a:f64,b:f64,e:f64)->bool {let p=(a-b).abs()<=e;record("NEAR",p,&[a.encode(),b.encode(),e.encode()]);p}
-fn start(id:&str){TAPE.with(|t|t.borrow_mut().0=id.into());POINTER_ORIGIN.with(|p|*p.borrow_mut()=None);}
+fn start(id:&str){TAPE.with(|t|t.borrow_mut().0=id.into());POINTER_ORIGIN.with(|p|*p.borrow_mut()=None);BYTE_POINTER_ORIGIN.with(|p|*p.borrow_mut()=None);record("CASE_BEGIN",true,&[]);}
+fn end(passed:bool){record("CASE_END",passed,&[]);assert!(passed,"Port case failed");}
 pub fn run_all()->String {
  TAPE.with(|t|*t.borrow_mut()=(String::new(),String::new()));
- for ((id,_),run) in crate::compat_cases::CASES.iter().zip(crate::compat_cases::REPORTS){start(id);assert!(run().passed(),"Vector port failed");}
- for (id,run) in crate::additional_cases::CASES{start(id);assert!(run().passed(),"Scalar port failed");}
- for (id,run,count) in crate::structure_cases::CASES{start(id);let r=run();assert!(r.passed(),"Structure port failed");assert_eq!(r.assertions,*count);}
- for (id,run,count) in crate::collection_cases::CASES{start(id);let r=run();assert!(r.passed(),"Collection port failed");assert_eq!(r.assertions,*count);}
+ for ((id,_),run) in crate::compat_cases::CASES.iter().zip(crate::compat_cases::REPORTS){start(id);end(run().passed());}
+ for (id,run) in crate::additional_cases::CASES{start(id);end(run().passed());}
+ for (id,run,count) in crate::structure_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
+ for (id,run,count) in crate::collection_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
+ for (id,run,count) in crate::string_ref_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
+ for (id,run,count) in crate::bit_span_cases::CASES{start(id);let r=run();end(r.passed() && r.assertions==*count);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

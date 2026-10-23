@@ -6,19 +6,22 @@ import hashlib,json,re,shutil,subprocess,sys,tarfile
 from pathlib import Path
 from urllib.parse import urlparse
 ROOT=Path(__file__).resolve().parents[1]
+from port_registry import GROUPS,TOTAL_KEYS,ABI,verify_runtime_contract_bijection
 HTML='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blended | Test-port evidence</title><style>body{font:16px/1.55 system-ui;max-width:1100px;margin:48px auto;padding:0 24px;background:#101722;color:#edf2f8}h1{font-size:36px}a{color:#8ed8ff}button{padding:12px 24px;font:inherit;cursor:pointer}table{width:100%;border-collapse:collapse;margin-top:24px}td,th{text-align:left;padding:8px;border-bottom:1px solid #3b4654}.notice{padding:20px;background:#3b2d16;border-left:4px solid #e5ae46}.pass{color:#88e8ad}.fail{color:#ff9f9f}code{overflow-wrap:anywhere}</style><h1>Blended test-port workbench</h1><p class="notice"><strong>The complete Blender test port is unfinished.</strong> This page executes a verified subset. Passing these cases does not establish application or rendering parity.</p><p id="provenance"></p><p><a href="source.tar.gz">Corresponding source</a> · <a href="manifest.json">Case manifest</a> · <a href="audit.json">Full source-candidate audit</a></p><button id="run">Run all ported Blender cases</button><p id="status" role="status">Loading the manifest…</p><table><thead><tr><th>Upstream test</th><th>Assertions</th><th>Result</th></tr></thead><tbody id="cases"></tbody></table><script type="module" src="run.mjs"></script></html>'''
 JS='''const response=await fetch('./manifest.json');
 if(!response.ok)throw Error('Manifest fetch failed');
 const manifest=await response.json();
 const tbody=document.querySelector('#cases');
 document.querySelector('#provenance').textContent=`Source ${manifest.source_commit}; Blender reference ${manifest.reference_commit}.`;
-const groups=['legacy','additional','structures','collections'];
+const groups=manifest.groups;
+if(!Array.isArray(groups)||new Set(groups).size!==groups.length)throw Error('Malformed group registry');
 const all=groups.flatMap(group=>manifest[group].map((c,index)=>({...c,index,group})));
 if(new Set(all.map(c=>c.id)).size!==all.length)throw Error('Duplicate case identity');
 for(const c of all){const tr=document.createElement('tr');for(const text of [c.id,c.expected_runtime_assertions??c.assertion_count??'Original case','Not run']){const td=document.createElement('td');td.textContent=text;tr.append(td);}tbody.append(tr);}
 document.querySelector('#status').textContent=`${all.length} translated cases ready. Full-suite completeness remains unverified.`;
 document.querySelector('#run').addEventListener('click',async()=>{
  const result={source_commit:manifest.source_commit,reference_commit:manifest.reference_commit,status:'failed',complete_test_port:false,passed:0,vector_assertions:0,additional_assertions:0,structure_assertions:0,collection_assertions:0,cases:[],errors:[]};
+ for(const key of Object.values(manifest.total_keys))result[key]=0;
  const button=document.querySelector('#run');button.disabled=true;
  try{
   const response=await fetch('./blended_core.wasm');if(!response.ok)throw Error('WASM fetch failed');
@@ -27,14 +30,11 @@ document.querySelector('#run').addEventListener('click',async()=>{
   if(digest!==manifest.wasm_sha256)throw Error('WASM hash/manifest mismatch');
   result.wasm_sha256=digest;
   const {instance}=await WebAssembly.instantiate(bytes,{});const w=instance.exports;
-  const registries={legacy:[w.blended_case_count,w.blended_run_case,w.blended_case_assertion_count],additional:[w.blended_additional_case_count,w.blended_additional_run_case,w.blended_additional_assertion_count],structures:[w.blended_structures_case_count,w.blended_structures_run_case,w.blended_structures_assertion_count],collections:[w.blended_collections_case_count,w.blended_collections_run_case,w.blended_collections_assertion_count]};
+  const registries=Object.fromEntries(groups.map(g=>[g,manifest.abi[g].map(name=>{if(typeof w[name]!=='function')throw Error('Missing ABI '+name);return w[name];})]));
   for(const group of groups){if(registries[group][0]()!==manifest[group].length)throw Error(`Registry/manifest count mismatch: ${group}`);}
   for(const [i,c] of all.entries()){
    const [,run,count]=registries[c.group];const code=run(c.index);const assertions=count?count(c.index):null;
-   if(c.group==='legacy')result.vector_assertions+=assertions;
-   if(c.group==='additional')result.additional_assertions+=assertions;
-   if(c.group==='structures')result.structure_assertions+=assertions;
-   if(c.group==='collections')result.collection_assertions+=assertions;
+   result[manifest.total_keys[c.group]]+=assertions;
    const expected=c.expected_runtime_assertions??c.assertion_count;
    const passed=code===1&&assertions===expected;
    result.cases.push({id:c.id,group:c.group,passed,code,assertions});if(passed)result.passed++;
@@ -55,14 +55,17 @@ def expected_cases(root=ROOT):
     if vector['reference_commit']!=lock or vector['target_sha256']!=hashlib.sha256((root/'crates/blended-core/src/compat_cases.rs').read_bytes()).hexdigest():raise ValueError('Vector assertion contract changed')
     if [c['id'] for c in vector['cases']]!=ids:raise ValueError('Vector registry mismatch')
     result=[{'id':c['id'],'group':'legacy','expected_runtime_assertions':c['assertion_count']} for c in vector['cases']]
-    for filename,group in [('additional-ports.json','additional'),('structure-ports.json','structures'),('collection-ports.json','collections')]:
+    for registry in GROUPS:
+        filename,group=registry.manifest,registry.name
         data=json.loads((root/'compatibility'/filename).read_text())
         if data['upstream_commit']!=lock:raise ValueError('Reference revision mismatch: '+filename)
         for case in data['cases']:
             count=case.get('expected_runtime_assertions',case['assertion_count'])
-            if not isinstance(count,int) or count<=0:raise ValueError('Invalid assertion execution count')
+            if type(count) is not int or count<0:raise ValueError('Invalid assertion execution count')
+            if count==0 and (case.get('assertion_free_smoke') is not True or case['assertion_count']!=0):raise ValueError('Unreviewed zero-assertion case')
             result.append({'id':case['id'],'group':group,'expected_runtime_assertions':count})
     if not ids or len({c['id'] for c in result})!=len(result):raise ValueError('Empty or duplicate trusted case universe')
+    verify_runtime_contract_bijection(root,result)
     return result,lock
 
 def validate_result(data,expected,commit,reference):
@@ -73,7 +76,7 @@ def validate_result(data,expected,commit,reference):
     for actual,contract in zip(cases,expected):
         if actual.get('passed') is not True or actual.get('code')!=1:raise ValueError('WASM assertion failure: '+contract['id'])
         if actual.get('assertions')!=contract['expected_runtime_assertions']:raise ValueError('Assertion execution changed: '+contract['id'])
-    for group,key in [('legacy','vector_assertions'),('additional','additional_assertions'),('structures','structure_assertions'),('collections','collection_assertions')]:
+    for group,key in TOTAL_KEYS.items():
         total=sum(c['expected_runtime_assertions'] or 0 for c in expected if c['group']==group)
         if data.get(key)!=total:raise ValueError('Missing assertion execution: '+group)
     if not re.fullmatch('[0-9a-f]{64}',data.get('wasm_sha256','')):raise ValueError('Missing verified WASM hash')
@@ -90,7 +93,8 @@ def build(commit):
     structures=json.loads((ROOT/'compatibility/structure-ports.json').read_text())
     expected,reference=expected_cases()
     if reference!=added['upstream_commit']:raise ValueError('Reference mismatch')
-    manifest={'schema':2,'source_commit':commit,'reference_commit':added['upstream_commit'],'legacy':legacy['cases'],'additional':added['cases'],'structures':structures['cases'],'collections':json.loads((ROOT/'compatibility/collection-ports.json').read_text())['cases'],'complete_test_port':False,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest()}
+    manifest={'schema':3,'source_commit':commit,'reference_commit':reference,'groups':list(ABI),'abi':ABI,'total_keys':TOTAL_KEYS,'legacy':legacy['cases'],'complete_test_port':False,'wasm_sha256':hashlib.sha256(wasm.read_bytes()).hexdigest()}
+    for registry in GROUPS:manifest[registry.name]=json.loads((ROOT/'compatibility'/registry.manifest).read_text())['cases']
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (out/'index.html').write_text(HTML);(out/'run.mjs').write_text(JS)
     subprocess.run([sys.executable,str(ROOT/'tools/inventory.py'),'--root',str(ROOT/'.upstream/blender'),'--name','blender','--commit',added['upstream_commit'],'--output',str(ROOT/'build/blender-inventory.json')],check=True)

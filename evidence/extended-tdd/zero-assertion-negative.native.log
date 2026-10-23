@@ -1,0 +1,122 @@
+
+running 1 test
+test bit_span__SetEmpty ... FAILED
+
+failures:
+
+---- bit_span__SetEmpty stdout ----
+
+thread 'bit_span__SetEmpty' (4063) panicked at crates/blended-core/src/bit_spans.rs:64:28:
+MUTATION_EMPTY_SPAN_EXECUTED
+stack backtrace:
+   0:     0x55f959077792 - std::backtrace_rs::backtrace::libunwind::trace::hd57362190422746d
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/../../backtrace/src/backtrace/libunwind.rs:117:9
+   1:     0x55f959077792 - std::backtrace_rs::backtrace::trace_unsynchronized::he61be86f5e8dfc7b
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/../../backtrace/src/backtrace/mod.rs:66:14
+   2:     0x55f959077792 - std::sys::backtrace::_print_fmt::hd233ea33e70c29e2
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/sys/backtrace.rs:66:9
+   3:     0x55f959077792 - <std::sys::backtrace::BacktraceLock::print::DisplayBacktrace as core::fmt::Display>::fmt::h718e2d17a1928e63
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/sys/backtrace.rs:39:26
+   4:     0x55f95908786f - core::fmt::rt::Argument::fmt::hdeda3281325c4830
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/fmt/rt.rs:173:76
+   5:     0x55f95908786f - core::fmt::write::h1d2246b072ea91eb
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/fmt/mod.rs:1469:25
+   6:     0x55f959045173 - std::io::default_write_fmt::hf2990b04dc91ddcb
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/io/mod.rs:639:11
+   7:     0x55f959045173 - std::io::Write::write_fmt::h4dc37df907a84320
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/io/mod.rs:1954:13
+   8:     0x55f959051102 - std::sys::backtrace::BacktraceLock::print::h61c3bd81a9458a03
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/sys/backtrace.rs:42:9
+   9:     0x55f959055b9f - std::panicking::default_hook::{{closure}}::haf1ffb5d1e33a97f
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:301:27
+  10:     0x55f959055a31 - std::panicking::default_hook::hc32245deb6eaa988
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:325:9
+  11:     0x55f95901820e - <alloc::boxed::Box<F,A> as core::ops::function::Fn<Args>>::call::h5b07bdb4e2461dd5
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/alloc/src/boxed.rs:2019:9
+  12:     0x55f95901820e - test::test_main_with_exit_callback::{{closure}}::hada1495969e1e199
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/test/src/lib.rs:145:21
+  13:     0x55f9590561af - <alloc::boxed::Box<F,A> as core::ops::function::Fn<Args>>::call::h46ff3cb4adee632e
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/alloc/src/boxed.rs:2019:9
+  14:     0x55f9590561af - std::panicking::panic_with_hook::h43adc00fd0e494cb
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:842:13
+  15:     0x55f959055fd6 - std::panicking::panic_handler::{{closure}}::h44391079756da3e7
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:700:13
+  16:     0x55f959051239 - std::sys::backtrace::__rust_end_short_backtrace::h934e1568393e5b8f
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/sys/backtrace.rs:174:18
+  17:     0x55f95903991d - __rustc[d9b87f19e823c0ef]::rust_begin_unwind
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:698:5
+  18:     0x55f95908f200 - core::panicking::panic_fmt::h62031895f6e012da
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panicking.rs:80:14
+  19:     0x55f958ff2d8f - blended_core::bit_spans::MutableBitSpan::set_all::h15b27b77ba571bd7
+                               at /tmp/blended-zero-smoke-feuzomnf/crates/blended-core/src/bit_spans.rs:64:28
+  20:     0x55f958fe08d4 - blended_core::bit_span_cases::bit_span__SetEmpty::h629cc80dd8824013
+                               at /tmp/blended-zero-smoke-feuzomnf/crates/blended-core/src/bit_span_cases.rs:187:30
+  21:     0x55f958fdc642 - upstream_bit_spans::bit_span__SetEmpty::hd43e5ba6852aeb0c
+                               at /tmp/blended-zero-smoke-feuzomnf/crates/blended-core/tests/upstream_bit_spans.rs:22:31
+  22:     0x55f958fdf377 - upstream_bit_spans::bit_span__SetEmpty::{{closure}}::h5b07fa0926e505a1
+                               at /tmp/blended-zero-smoke-feuzomnf/crates/blended-core/tests/upstream_bit_spans.rs:22:24
+  23:     0x55f958fdeed6 - core::ops::function::FnOnce::call_once::h82684f8423c31616
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/ops/function.rs:250:5
+  24:     0x55f959017fcb - core::ops::function::FnOnce::call_once::h504f59b78dd1adb7
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/ops/function.rs:250:5
+  25:     0x55f959017fcb - test::__rust_begin_short_backtrace::h2b0eed61d2975d00
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/test/src/lib.rs:663:18
+  26:     0x55f95902c678 - test::run_test_in_process::{{closure}}::h142189405f389fce
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/test/src/lib.rs:686:74
+  27:     0x55f95902c678 - <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once::hc863a04d0067326a
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panic/unwind_safe.rs:274:9
+  28:     0x55f95902c678 - std::panicking::catch_unwind::do_call::h3ae6e182b207775c
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:590:40
+  29:     0x55f95902c678 - std::panicking::catch_unwind::ha0bb438d1d891e19
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:553:19
+  30:     0x55f95902c678 - std::panic::catch_unwind::hd66b4cc9000cf089
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panic.rs:359:14
+  31:     0x55f95902c678 - test::run_test_in_process::h297cda21856299bd
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/test/src/lib.rs:686:27
+  32:     0x55f95902c678 - test::run_test::{{closure}}::he1bbe7ada8590d87
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/test/src/lib.rs:607:43
+  33:     0x55f959005474 - test::run_test::{{closure}}::ha88bc8f47ef55538
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/test/src/lib.rs:637:41
+  34:     0x55f959005474 - std::sys::backtrace::__rust_begin_short_backtrace::h92d7bd1c79fffba8
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/sys/backtrace.rs:158:18
+  35:     0x55f959008cda - std::thread::Builder::spawn_unchecked_::{{closure}}::{{closure}}::h0a3beb4446618604
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/thread/mod.rs:562:17
+  36:     0x55f959008cda - <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once::h689d2fcca37f36df
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/panic/unwind_safe.rs:274:9
+  37:     0x55f959008cda - std::panicking::catch_unwind::do_call::hf9c865a345b92747
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:590:40
+  38:     0x55f959008cda - std::panicking::catch_unwind::hd2bf7e6cef7f9137
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panicking.rs:553:19
+  39:     0x55f959008cda - std::panic::catch_unwind::hcbd48e64e5c832e5
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/panic.rs:359:14
+  40:     0x55f959008cda - std::thread::Builder::spawn_unchecked_::{{closure}}::h0dd88e0a1e309e03
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/thread/mod.rs:560:30
+  41:     0x55f959008cda - core::ops::function::FnOnce::call_once{{vtable.shim}}::h60e1da9eb0ad9039
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/core/src/ops/function.rs:250:5
+  42:     0x55f95904c52f - <alloc::boxed::Box<F,A> as core::ops::function::FnOnce<Args>>::call_once::hbc67be0d9233d09e
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/alloc/src/boxed.rs:2005:9
+  43:     0x55f95904c52f - std::sys::thread::unix::Thread::new::thread_start::h4637f1bfded3ea68
+                               at /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234/library/std/src/sys/thread/unix.rs:126:17
+  44:     0x7f4b5d6b9b7b - <unknown>
+  45:     0x7f4b5d7377f8 - <unknown>
+  46:                0x0 - <unknown>
+
+
+failures:
+    bit_span__SetEmpty
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 26 filtered out; finished in 0.01s
+
+   Compiling blended-core v0.1.0 (/tmp/blended-zero-smoke-feuzomnf/crates/blended-core)
+warning: unused variable: `bit_index`
+  --> crates/blended-core/src/bit_span_cases.rs:84:9
+   |
+84 |     for bit_index in m::iter_1_indices(data2.get()) {
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_bit_index`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: `blended-core` (lib) generated 1 warning (run `cargo fix --lib -p blended-core` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.31s
+     Running tests/upstream_bit_spans.rs (target/debug/deps/upstream_bit_spans-9ffee3d13cb9f69e)
+error: test failed, to rerun pass `--test upstream_bit_spans`

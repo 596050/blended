@@ -57,6 +57,7 @@ impl BitVector {
         let v=Self::with_fill(i64::try_from(values.len()).expect("Too many bits"),false);
         for (i,b) in values.iter().copied().enumerate(){v.bit_mut(i as i64).set(b);}v
     }
+    pub(crate) fn words(&self)->&[Cell<u64>] {&self.words}
     pub fn size(&self)->i64 {self.len}
     pub fn get(&self,index:i64)->bool {self.bit_mut(index).test()}
     pub fn bit_mut(&self,index:i64)->MutableBitRef<'_> {

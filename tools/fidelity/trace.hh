@@ -8,6 +8,7 @@
 #include "BLI_math_vector_types.hh"
 #include "BLI_bit_ref.hh"
 #include "BLI_span.hh"
+#include "BLI_string_ref.hh"
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
@@ -68,6 +69,27 @@ template<> struct Encoder<blender::bits::BitRef> {
 template<class T> struct Encoder<blender::Span<T>> {
  static void write(std::ostream &out,const blender::Span<T> &v){out<<'[';for(int64_t i=0;i<v.size();++i){if(i)out<<',';value(out,v[i]);}out<<']';}
 };
+// String-value assertions record bytes. Pointer-identity assertions remain addresses,
+// expressed relative to the first byte address observed in that same test case.
+inline void byte_pointer_value(std::ostream &out,const char *v) {
+ static const ::testing::TestInfo *last=nullptr;static std::uintptr_t base=0;
+ const auto *test=::testing::UnitTest::GetInstance()->current_test_info();
+ const auto address=reinterpret_cast<std::uintptr_t>(v);
+ if(last!=test){last=test;base=address;}
+ out<<"\"p8:"<<(static_cast<int64_t>(address)-static_cast<int64_t>(base))<<"\"";
+}
+inline void bytes_value(std::ostream &out,const char *v,size_t n) {
+ std::ostringstream encoded;encoded<<std::hex<<std::setfill('0');
+ for(size_t i=0;i<n;++i)encoded<<std::setw(2)<<static_cast<unsigned int>(static_cast<unsigned char>(v[i]));
+ out<<"\"s:"<<encoded.str()<<"\"";
+}
+template<> struct Encoder<char*> {static void write(std::ostream &out,char *v){byte_pointer_value(out,v);}};
+template<> struct Encoder<const char*> {static void write(std::ostream &out,const char *v){byte_pointer_value(out,v);}};
+template<size_t N> struct Encoder<char[N]> {static void write(std::ostream &out,const char(&v)[N]){size_t n=0;while(n<N&&v[n])++n;bytes_value(out,v,n);}};
+template<> struct Encoder<blender::StringRef> {static void write(std::ostream &out,blender::StringRef v){bytes_value(out,v.data(),size_t(v.size()));}};
+template<> struct Encoder<blender::StringRefNull> {static void write(std::ostream &out,blender::StringRefNull v){bytes_value(out,v.data(),size_t(v.size()));}};
+template<> struct Encoder<std::string> {static void write(std::ostream &out,const std::string &v){bytes_value(out,v.data(),v.size());}};
+template<> struct Encoder<std::string_view> {static void write(std::ostream &out,std::string_view v){bytes_value(out,v.data(),v.size());}};
 inline std::ofstream &stream() {
  static std::ofstream out([](){const char *p=std::getenv("BLENDED_ASSERTION_TRACE");if(!p)std::abort();return p;}());
  if(!out)std::abort();return out;
@@ -81,6 +103,21 @@ template<class... T> void record(const char *kind,bool passed,const char *ea,con
  int i=0;((out<<(i++?",":""),value(out,args)),...);out<<']';
  if(ea){out<<",\"fixed\":["<<(literal(ea)?"true":"false")<<','<<(literal(eb)?"true":"false");if constexpr(sizeof...(args)==3)out<<",true";out<<']';}
  out<<"}\n";out.flush();
+}
+// Start/end evidence matters for legitimate zero-EXPECT smoke cases. An empty
+// transcript must never be accepted as evidence that such a case actually ran.
+class CaseEvents final : public ::testing::EmptyTestEventListener {
+ void OnTestStart(const ::testing::TestInfo &) override {record("CASE_BEGIN",true,nullptr,nullptr);}
+ void OnTestEnd(const ::testing::TestInfo &info) override {record("CASE_END",info.result()->Passed(),nullptr,nullptr);}
+};
+inline const bool case_events_registered=[](){::testing::UnitTest::GetInstance()->listeners().Append(new CaseEvents());return true;}();
+// The upstream helper is a template function defined before this overlay. Record
+// precisely its length assertion and conditional per-element assertions, then call
+// that original helper once. Do not replace it with a single Boolean equality.
+template<class T> void span_eq(const blender::Span<T> expected,const blender::Span<T> actual) {
+ record("EQ",expected.size()==actual.size(),nullptr,nullptr,expected.size(),actual.size());
+ if(expected.size()==actual.size())for(int64_t i=0;i<expected.size();++i)record("EQ",bool(::testing::internal::EqHelper::Compare("expected","actual",expected[i],actual[i])),nullptr,nullptr,expected[i],actual[i]);
+ ::EXPECT_EQ_SPAN<T>(expected,actual);
 }
 template<class A,class B> void eq(const A &a,const B &b) {record("EQ",bool(::testing::internal::EqHelper::Compare("a","b",a,b)),nullptr,nullptr,a,b);EXPECT_EQ(a,b);}
 template<class A,class B> void gt(const A &a,const B &b) {record("GT",a>b,nullptr,nullptr,a,b);EXPECT_GT(a,b);}
@@ -101,3 +138,5 @@ inline void no(bool v){record("FALSE",!v,nullptr,nullptr,v);EXPECT_FALSE(v);}
 #define EXPECT_NEAR(a,b,e) ::blended_fidelity::near((a),(b),(e),#a,#b)
 #define EXPECT_TRUE(v) ::blended_fidelity::yes(bool(v))
 #define EXPECT_FALSE(v) ::blended_fidelity::no(bool(v))
+
+#define EXPECT_EQ_SPAN ::blended_fidelity::span_eq
