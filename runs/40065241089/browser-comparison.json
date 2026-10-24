@@ -2,14 +2,14 @@
   "status": "passed",
   "complete_blender_test_port": false,
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "reference_trace_sha256": "016fdcc03514b6a5545ef5efc6e8d0e3693789124baeb6cc55e4777ad4103fcf",
-  "port_trace_sha256": "78b4566b693ed0da846b81b73ec516a60ee8eca6e5201d19f131bc3e58bd513b",
-  "case_count": 464,
+  "reference_trace_sha256": "d835e8957db0325bb1ad191b8e7c63a3e5da18c41361a82b61f166e28a138164",
+  "port_trace_sha256": "f3c41394c5a489717bc1f5008d21153c19261442cc8134f1348d950e4fcf1eb5",
+  "case_count": 503,
   "case_boundaries_verified": true,
   "assertion_free_cases": [
     "bit_span.SetEmpty"
   ],
-  "assertions_compared": 34214,
+  "assertions_compared": 1661377,
   "floating_differences_within_original_rule": [
     {
       "case": "color.ThemeByteToFloat",
@@ -147,5 +147,6 @@
       ]
     }
   ],
-  "scope": "mapped runtime subset; equality operand order may differ; empty-range start normalised by upstream equality; not a proof of all behaviour"
+  "comparison_mode": "all events, bounded batches using original reviewed comparator; no sampling",
+  "scope": "mapped runtime subset; original comparison normalisations retained; not proof of all behaviour"
 }
