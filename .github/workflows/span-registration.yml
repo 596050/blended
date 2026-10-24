@@ -1,0 +1,48 @@
+name: Register and compile original span contracts
+on:
+  push:
+    branches: [compat/span-views-and-const-contracts]
+    paths: ['.github/workflows/span-registration.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Reproduce and register the fixed reviewed translation
+        run: |
+          set -euo pipefail
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_span_batch.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit the registered source-only changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools compatibility tests
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register 40 original span cases and 13 separate compile-time contracts with fixed reviewed hashes'
+          git push origin HEAD:refs/heads/compat/span-views-and-const-contracts
+      - name: Execute the actual Rust tests and WebAssembly compiler
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/span-compile
+          git rev-parse HEAD > evidence/span-compile/source-commit.txt
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/span-compile/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core 2>&1 | tee evidence/span-compile/wasm-build.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: span-compile-evidence
+          path: evidence/span-compile/
+          retention-days: 3
