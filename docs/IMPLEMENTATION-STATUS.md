@@ -2,30 +2,28 @@
 
 ## Current verified implementation
 
-Source `3969e1fdadae2e11d6f220412f8c32cabf7048d1` was verified by [run 40065241089](https://github.com/596050/blended/actions/runs/40065241089). [Open its 503-case public workbench](https://rawcdn.githack.com/596050/blended/a7f55a00388e7b3fb906c307cc52db7968b9a25d/index.html). Later documentation-only commits do not change that runtime implementation.
+Source `2990e30077e368c97e3a7af60d45d7a911ceb988` was verified in [run 40108130160](https://github.com/596050/blended/actions/runs/40108130160). [Open the 512-case public workbench](https://rawcdn.githack.com/596050/blended/15a67995bdca8581e9f1e28b9b95af17ea69d51b/index.html). Later documentation-only commits do not change that implementation.
 
-503 unique Blender runtime cases pass natively and at the actual deployed URL, covering 1,661,377 expected assertion executions. Original C++ versus native Rust and Chromium WebAssembly comparisons passed. Eight native and nine browser floating differences remain in the earlier colour cases within original rules; no tolerance was widened. No additional floating difference comes from the new UTF-8 tests.
+512 unique Blender runtime cases pass in native Rust and at the actual deployed URL, covering 1,661,546 expected assertion executions. Independent original-C++ versus native Rust and Chromium comparisons passed. Eight native and nine browser floating differences remain in earlier colour cases under original rules; no tolerance was widened. The new format tests add no additional differences.
 
-The native Rust total is **542 runtime tests: 503 Blender, three Cycles and 36 product/safety/regression tests**. Six separately tracked compile-time assertions pass positive builds and deliberate-failure checks on both native and wasm32. Repeated stress assertions, extra oracle inputs and mutation probes are not additional upstream cases.
+The native total is **558 runtime tests: 512 Blender, three Cycles and 43 separate product/safety/regression tests**. Six compile-time assertions pass positive builds and deliberate-failure checks separately on native and wasm32. Repeated stress assertions, supplemental oracle inputs and mutation probes are not extra upstream cases.
 
-## Latest functionality and verification
+## Latest functionality
 
-All 39 cases in `BLI_string_utf8_test.cc` are now ported with original stress loops, malformed-byte fixtures, bounds, formatting expectations and cursor inputs. They add 1,627,163 assertion executions. The corresponding implementation covers pinned legacy validation/repair, decoding, length/copying, the tested formatting form and UTF-8/UTF-32 cursor movement.
+Nine enabled original cases now cover half-float scalar/array conversion and normalised integer formats, with 169 original assertions. Five conditional half-performance benchmarks remain explicitly unported and not passing. The Rust implementation retains round-to-nearest-even, finite-result conversion, output sentinels, original normalised truncation and the selected scalar/SSE2 array boundary semantics.
 
-The independent original-C++ oracle exactly matches 68,273 validator results, 137,426 decoded-value/next-offset pairs and 48,640 generated random bytes on both Rust targets. Three implementation-only mutations fail unchanged original cases while controls pass. The exact pinned zero-width interval table is regenerated and its full notice is included in downloadable source. [Detailed UTF-8 report](UTF8-PORT-VERIFICATION.md)
-
-Every original-reference assertion event is still compared. Large transcripts are processed in bounded batches and preserved losslessly as gzip with verified decompressed hashes and sizes. This is an execution/transport improvement, not reduced test scope or a performance-parity claim.
+The independent oracle exactly matches 2,944,570 output words against unedited original C++, including every half encoding, all selected half-rounding boundaries, signed zero, NaN payloads, raw normalised components and array tails. Three deliberately broken implementations fail unchanged original tests with independent controls passing. Native x86_64 tests actually set and restore FTZ/DAZ; browser checks do not claim that inaccessible hardware perturbation. F16C/NEON profiles, ABI layout and SIMD speed remain outside the certification. [Detailed report](PIXEL-FORMAT-PORT-VERIFICATION.md)
 
 ## Separate products and evidence
 
-The workbench tests the compatibility core. The Three.js modeller remains the earlier object-editing alpha; new core tests are not new interactive Blender tools. Its legacy test button still uses the 17-case ABI. The separate Solarxy/WebGPU rendering experiment remains independently blocked.
+The workbench tests the compatibility core. The Three.js modeller remains the earlier object-editing alpha; these additions are not new interactive tools or a complete renderer. Its legacy test button still uses the 17-case ABI. The Solarxy/WebGPU experiment remains independently blocked.
 
-Fresh native compilation, original-reference comparisons, diagnostic browser checks and actual public-URL tests are separate evidence categories. Historical 99/131/211/272/302/338/367/416/464-case records retain their original scope and are not substituted for the new combined build.
+Fresh compilation, original-reference comparisons, diagnostic browser checks and public-URL acceptance are separate evidence categories. Historical smaller records retain their source revisions and scope. Full-event transcripts remain lossless and are compared without sampling, including the earlier 1.6-million-assertion UTF-8 stress case.
 
-## Remaining requirements
+## Unfinished requirements
 
-The complete Blender test port is unfinished and the full-completeness gate remains failed. The current heuristic scan contains **5,859 source candidates, 509 reviewed mappings and 5,350 unmapped declarations**. The runtime denominator remains unknown. Nine previously identified vector type/layout compile-time conditions and extensive application-level families remain outside the verified subset. A historical fixture download does not materialise fixtures for a fresh execution checkout.
+The complete Blender test port remains unfinished and its whole-suite gate remains failed. The latest heuristic scan has **5,859 source candidates, 518 reviewed mappings and 5,341 unmapped declarations**. Full runtime discovery and the remaining runtime count are unknown. Additional vector type/layout compile-time checks, opt-in benchmarks, required configuration matrices and extensive application-level families remain outstanding.
 
-There is no complete mesh/BMesh editor, sculpting, modifier/Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. Full test porting, full-suite execution, feature compatibility and competitive performance remain different milestones.
+There is no complete mesh/BMesh editor, sculpting, modifier/Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. Full test porting, whole-suite conformance, integrated feature compatibility and competitive performance remain separate milestones.
 
 [Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
