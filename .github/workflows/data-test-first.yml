@@ -1,0 +1,51 @@
+name: Data original-test-first evidence
+on:
+  push:
+    branches: [compat/array-csv-hash]
+    paths: ['tools/register_data_batch.py', '.github/workflows/data-test-first.yml']
+permissions:
+  contents: write
+jobs:
+  test-first:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Register reviewed tests while implementation modules are absent
+        run: |
+          set -euo pipefail
+          test ! -f crates/blended-core/src/array_ops.rs
+          test ! -f crates/blended-core/src/csv_fields.rs
+          test ! -f crates/blended-core/src/hash_mm2a.rs
+          test ! -f crates/blended-core/src/disjoint_set.rs
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_data_batch.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit original cases, mappings and instrumentation before implementation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools tests compatibility
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register 49 complete data-test ports; implementation and execution pending'
+          git push origin HEAD:refs/heads/compat/array-csv-hash
+      - name: Execute the missing implementation without suppressing failure
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/data-test-first
+          git rev-parse HEAD > evidence/data-test-first/source-commit.txt
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/data-test-first/native.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: data-test-first-evidence
+          path: evidence/data-test-first/
+          retention-days: 3
