@@ -1,59 +1,70 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "verified_runtime_source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
-  "verified_public_static_commit": "19abc219cd1ccb7e2dd4090c23710638f30959d8",
-  "verified_public_url": "https://rawcdn.githack.com/596050/blended/19abc219cd1ccb7e2dd4090c23710638f30959d8/index.html",
-  "verified_original_cpp_native_wasm_and_public_run": 40019426923,
-  "blender_runtime_cases_native": 367,
-  "blender_runtime_cases_wasm": 367,
-  "blender_runtime_cases_public_url": 367,
+  "verified_runtime_source_commit": "059bfb9b277e8bc5aefb9834dd671879094a0599",
+  "verified_public_static_commit": "63655e85d5b56c357645c92e3874af3940fd161e",
+  "verified_public_url": "https://rawcdn.githack.com/596050/blended/63655e85d5b56c357645c92e3874af3940fd161e/index.html",
+  "verified_original_cpp_native_wasm_and_public_run": 40045600207,
+  "blender_runtime_cases_native": 416,
+  "blender_runtime_cases_wasm": 416,
+  "blender_runtime_cases_public_url": 416,
   "public_browser_errors": [],
-  "assertion_events_compared_per_implementation": 33104,
+  "assertion_events_compared_per_implementation": 33368,
   "native_floating_differences_within_original_rules": 8,
   "browser_floating_differences_within_original_rules": 9,
-  "new_heap_floating_differences": 0,
-  "new_heap_cases": 29,
-  "new_heap_assertion_sites_including_helpers": 66,
-  "new_heap_assertion_events": 16300,
-  "new_complete_runtime_source_files": ["BLI_heap_test.cc", "BLI_heap_simple_test.cc", "BLI_inplace_priority_queue_test.cc"],
-  "heap_test_first_run": 40017475165,
-  "heap_test_first_source_commit": "b81ca35fa1617811220559a2a6fa1cd83d32031b",
-  "heap_test_first_failure": "E0583: implementation module absent; not executed assertion failures",
-  "supplemental_random_input_verification": {
+  "new_data_floating_differences": 0,
+  "new_data_cases": 49,
+  "new_data_assertion_events": 264,
+  "new_complete_runtime_source_files": {
+    "BLI_array_utils_test.cc": {"cases": 35, "assertion_events": 133},
+    "BLI_csv_parse_test.cc": {"cases": 10, "assertion_events": 114},
+    "BLI_hash_mm2a_test.cc": {"cases": 3, "assertion_events": 5},
+    "BLI_disjoint_set_test.cc": {"cases": 1, "assertion_events": 12}
+  },
+  "data_test_first": {
+    "run": 40044605903,
+    "source_commit": "72e52d548f4907dd9836fe33981c4a5a0360c1a3",
+    "failure": "Four E0583 missing implementation modules plus dependent inference errors; not executed assertion failures",
+    "durable_archive": "evidence/data-test-first-evidence.zip",
+    "archive_sha256": "5c565d80aac81bb3a83be15e5ea50c08e205a8e084f659b7d708cd1241bf5f4e",
+    "native_log_sha256": "2e7dd3509d1acf872bbfcd631a22a549102cbf560b9c42f658eb731ccde577fd"
+  },
+  "supplemental_hash_streaming": {
+    "configurations": 10592,
+    "outputs_per_implementation": 31776,
     "original_cpp_vs_native": "exact_match",
     "original_cpp_vs_browser_wasm": "exact_match",
-    "random_values": 15000,
-    "shuffled_items": 3175,
-    "counted_as_upstream_tests": false
+    "seeds": 4,
+    "input_lengths_inclusive": [0, 64],
+    "endian_scope": "Native x86_64 and wasm32 little endian; original hash is endian-sensitive",
+    "counted_as_upstream_cases": false
   },
   "supplemental_negative_controls": {
-    "heap_removal_noop": "detected by unchanged tests in native Rust and browser WASM",
-    "priority_increase_noop": "detected by unchanged tests in native Rust and browser WASM",
-    "independent_controls": "passed",
-    "counted_as_upstream_tests": false
+    "mutations": ["csv_trailing_empty", "hash_drop_pending_tail", "dense_first_indices_reversed", "disjoint_join_noop"],
+    "native_and_browser": "All detected by unchanged tests; independent controls pass; original assertion counts retained",
+    "compiler_error_panic_or_trap_accepted_as_detection": false,
+    "counted_as_upstream_cases": false
   },
   "compile_time_cases_separate_from_runtime": 6,
   "compile_time_native_positive_and_negative": "passed",
   "compile_time_wasm_positive_and_negative": "passed",
   "cycles_native_cases": 3,
-  "product_safety_regression_native_cases": 20,
-  "total_native_rust_runtime_tests": 390,
+  "product_safety_regression_native_cases": 25,
+  "total_native_rust_runtime_tests": 444,
   "source_candidates": 5859,
-  "mapped_source_candidates": 373,
-  "unmapped_source_candidates": 5486,
+  "mapped_source_candidates": 422,
+  "unmapped_source_candidates": 5437,
   "source_counts_are_runtime_denominator": false,
   "runtime_denominator_known": false,
   "unported_runtime_cases": null,
   "complete_blender_test_port": false,
   "full_feature_parity": false,
   "full_completeness_gate": "failed; subset verification and publication are separate",
-  "previous_sampling_verification": {
-    "source_commit": "8bb0e6e43237cc68cf5e3c403dfc0b9419f083ed",
-    "run": 40007823640,
-    "sampling_cases": 36,
-    "sampling_assertion_events": 402,
-    "sensitivity_run": 40007823637
+  "previous_heap_verification": {
+    "source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
+    "run": 40019426923,
+    "runtime_cases": 367,
+    "assertion_events": 33104
   },
   "fixture_verification": {
     "historical_run": 39847680248,
@@ -61,6 +72,6 @@
     "verified_objects": 6691,
     "verified_bytes": 870496042,
     "all_test_dependencies_verified": false,
-    "current_heap_inputs": "source-embedded data and original deterministic generator; independent exact input oracle passed"
+    "current_data_inputs": "Source-embedded fixtures and separately recorded streaming corpus; no .blend payloads needed by this batch"
   }
 }
