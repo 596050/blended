@@ -2,8 +2,8 @@
   "status": "passed",
   "complete_blender_test_port": false,
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "reference_trace_sha256": "5d24a1dc8ddedb03f98d807f9fff34315cecad53a296c0244d602cfbdc584394",
-  "port_trace_sha256": "e6fe63c8ae9e14f5117bbb2abe197cf64337c2188c70b400511eb32b725505d7",
+  "reference_trace_sha256": "53a5c38d6e6677c2d455ea1b610c5067dc814f93a41b0bff12fc5429a5b3565c",
+  "port_trace_sha256": "f85d5335385347fe33d0a4d2550656001d3275d2e6857ea54be865e6fdb24e5b",
   "case_count": 512,
   "case_boundaries_verified": true,
   "assertion_free_cases": [
@@ -23,6 +23,21 @@
       "port": [
         "f:3fe8000000000000",
         "f:3fe8181820000000",
+        "f:3f847ae140000000"
+      ]
+    },
+    {
+      "case": "color.SrgbStraightToSceneLinearPremultiplied",
+      "ordinal": 2,
+      "kind": "NEAR",
+      "reference": [
+        "f:3f947ae140000000",
+        "f:3f9a5a5860000000",
+        "f:3f847ae140000000"
+      ],
+      "port": [
+        "f:3f947ae140000000",
+        "f:3f9a5a5840000000",
         "f:3f847ae140000000"
       ]
     },
@@ -92,7 +107,7 @@
       "kind": "NEAR",
       "reference": [
         "f:3ff0000000000000",
-        "f:3fefffc4a0000000",
+        "f:3fefffc460000000",
         "f:3f847ae147ae147b"
       ],
       "port": [
