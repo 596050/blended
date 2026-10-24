@@ -2,10 +2,13 @@ name: Blender test-port conformance
 on:
   push:
     branches: [main, 'compat/**', 'quality/**']
-    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_embedded_static_ports.py', 'tools/verify_heap_*.py', 'tools/verify_data_*.py', 'tools/verify_string_ops_*.py', 'tools/verify_hash_streaming.py', 'tools/inventory.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
+    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_*.py', 'tools/generate_utf8_tables.py', 'tools/inventory.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity_stream.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: blender-conformance-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   assertion-fidelity:
     permissions:
@@ -13,7 +16,7 @@ jobs:
     uses: ./.github/workflows/assertion-fidelity.yml
   native-and-wasm:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,6 +29,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 tools/fetch_upstreams.py blender
+          python3 tools/generate_utf8_tables.py
           python3 - <<'PY'
           import subprocess,sys
           sys.path.insert(0,'tools')
@@ -33,7 +37,7 @@ jobs:
           for generator in dict.fromkeys(g.generator for g in GROUPS):
               subprocess.run([sys.executable,'tools/'+generator],check=True)
           PY
-          git diff --exit-code -- crates/blended-core/src crates/blended-core/tests compatibility tests/upstream
+          git diff --exit-code -- crates/blended-core/src crates/blended-core/tests compatibility tests/upstream LICENSES
       - name: Run the unmodified native tests
         run: |
           mkdir -p evidence
@@ -74,6 +78,8 @@ jobs:
           python3 tools/verify_data_sensitivity.py --output evidence/data-sensitivity/result.json
           python3 tools/verify_string_ops_oracle.py --output evidence/string-oracle/result.json
           python3 tools/verify_string_ops_sensitivity.py --output evidence/string-sensitivity/result.json
+          python3 tools/verify_utf8_oracle.py --output evidence/utf8-oracle/result.json
+          python3 tools/verify_utf8_sensitivity.py --output evidence/utf8-sensitivity/result.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
       - uses: actions/upload-artifact@v4

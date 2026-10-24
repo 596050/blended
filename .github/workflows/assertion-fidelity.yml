@@ -68,13 +68,14 @@ jobs:
         with:
           toolchain: '1.92.0'
           targets: wasm32-unknown-unknown
-      - name: Test the audit's failure detection and the unmodified Rust suite
+      - name: Test audit failure detection and the unmodified Rust suite
         run: |
           mkdir -p evidence/fidelity
           printf '%s\n' '${{ github.sha }}' > evidence/fidelity/rust-project-commit.txt
           python3 -m unittest discover -s tests -p test_assertion_fidelity.py -v
+          python3 -m unittest discover -s tests -p test_fidelity_stream.py -v
           cargo test --locked --workspace --all-targets > evidence/fidelity/unmodified-native.txt 2>&1
-      - name: Record values in an explicit diagnostic shadow build
+      - name: Record every value in an explicit diagnostic shadow build
         run: |
           set -euo pipefail
           python3 tools/assertion_fidelity.py shadow --output build/fidelity-shadow
@@ -91,7 +92,7 @@ jobs:
   compare-and-preserve:
     needs: [reference, rust-and-browser]
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
@@ -114,6 +115,9 @@ jobs:
       - name: Reconcile every original assertion against Chromium WebAssembly
         if: always()
         run: python3 tools/assertion_fidelity.py compare --reference evidence/fidelity/reference.jsonl --port evidence/fidelity/browser.jsonl --output evidence/fidelity/browser-comparison.json
+      - name: Preserve every event in verified lossless compressed transcripts
+        if: always()
+        run: python3 tools/fidelity_stream.py evidence/fidelity
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -139,5 +143,5 @@ jobs:
           cp evidence/fidelity/*comparison.json published/
           printf '%s\n' '${{ github.sha }}' > published/verified-source-commit.txt
           git -C published add -A
-          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve original C++ versus Rust and browser assertion-level evidence'
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve original C++ versus Rust and browser assertion-level evidence, losslessly compressed'
           git -C published push origin HEAD:refs/heads/assertion-fidelity-evidence
