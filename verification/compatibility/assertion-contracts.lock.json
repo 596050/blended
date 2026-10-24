@@ -628,6 +628,87 @@
         "inplace_priority_queue.ManyPriorityChanges",
         "inplace_priority_queue.IndicesAccess"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_array_utils_test.cc",
+      "source_sha256": "06858c8551a0c0647efcc796fc156b3c9138782d093327b629e2437add49278a",
+      "target_path": "crates/blended-core/src/data_cases.rs",
+      "target_sha256": "628478b06da452f01dfb1674e420ff90c2b97f415f968c4cfd29cbcc0b5d04b4",
+      "case_ids": [
+        "array_utils.ReverseStringEmpty",
+        "array_utils.ReverseStringSingle",
+        "array_utils.ReverseString4",
+        "array_utils.ReverseInt4",
+        "array_utils.FindIndexStringEmpty",
+        "array_utils.FindIndexStringSingle",
+        "array_utils.FindIndexStringSingleMissing",
+        "array_utils.FindIndexString4",
+        "array_utils.FindIndexInt4",
+        "array_utils.FindIndexInt4_DupeEnd",
+        "array_utils.FindIndexInt4_DupeMid",
+        "array_utils.FindIndexPointer",
+        "array_utils.BinaryAndInt4Zero",
+        "array_utils.BinaryAndInt4Mix",
+        "array_utils.BinaryOrInt4Alternate",
+        "array_utils.BinaryOrInt4Mix",
+        "array_utils.DeduplicateOrdered1",
+        "array_utils.DeduplicateOrdered2",
+        "array_utils.DeduplicateOrdered2Same",
+        "array_utils.DeduplicateOrdered3Same",
+        "array_utils.DeduplicateOrdered3",
+        "array_utils.FindAllRanges1",
+        "array_utils.FindAllRanges2",
+        "array_utils.FindAllRanges3",
+        "array_utils.FindAllRanges4",
+        "array_utils.FindAllRanges5",
+        "array_utils.FindMaxElement1",
+        "array_utils.FindMaxElement2",
+        "array_utils.FindMaxElement3",
+        "array_utils.FindMaxElement4",
+        "array_utils.GroupIdsToIndicesEmpty",
+        "array_utils.GroupIdsToIndicesDense",
+        "array_utils.GroupIdsToIndicesSparse",
+        "array_utils.GroupIdsToIndicesMask",
+        "array_utils.GroupIdsToIndicesLarge"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_csv_parse_test.cc",
+      "source_sha256": "802ef8d0c4cbdb32529940f8ce5f3a1fd1b409ac013620dc55384db1ba5c1120",
+      "target_path": "crates/blended-core/src/data_cases.rs",
+      "target_sha256": "628478b06da452f01dfb1674e420ff90c2b97f415f968c4cfd29cbcc0b5d04b4",
+      "case_ids": [
+        "csv_parse.FindEndOfSimpleField",
+        "csv_parse.FindEndOfQuotedField",
+        "csv_parse.ParseRecordFields",
+        "csv_parse.ParseCsvBasic",
+        "csv_parse.ParseCsvMissingEnd",
+        "csv_parse.ParseCsvMultiLine",
+        "csv_parse.ParseCsvEmpty",
+        "csv_parse.ParseCsvTitlesOnly",
+        "csv_parse.ParseCsvTrailingNewline",
+        "csv_parse.UnescapeField"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_hash_mm2a_test.cc",
+      "source_sha256": "2e357f9c998653c6de90eb51799bedd5f3de2d4c3247aeb53524b2f09acd08f4",
+      "target_path": "crates/blended-core/src/data_cases.rs",
+      "target_sha256": "628478b06da452f01dfb1674e420ff90c2b97f415f968c4cfd29cbcc0b5d04b4",
+      "case_ids": [
+        "hash_mm2a.MM2ABasic",
+        "hash_mm2a.MM2AConcatenateStrings",
+        "hash_mm2a.MM2AIntegers"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_disjoint_set_test.cc",
+      "source_sha256": "09aec67cc7ba73aa5536beb0556c8a43a75047c3b059a50bc7c342b8eabafeba",
+      "target_path": "crates/blended-core/src/data_cases.rs",
+      "target_sha256": "628478b06da452f01dfb1674e420ff90c2b97f415f968c4cfd29cbcc0b5d04b4",
+      "case_ids": [
+        "disjoint_set.Test"
+      ]
     }
   ]
 }

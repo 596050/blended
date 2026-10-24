@@ -179,6 +179,23 @@
  // range_fl preserves the reverse write order of the original helper. The safe
  // slice replaces a pointer that was decremented past the beginning after its last use.
  fn range_fl(values:&mut [f32],size:i32){let mut i=size;while i>0{i-=1;values[i as usize]=i as f32;}}
+--- data_cases.rs
++++ shadow/data_cases.rs
+@@ -10,10 +10,10 @@
+ use std::collections::BTreeMap;
+ #[derive(Debug,Default)]pub struct Report{pub assertions:u32,pub failures:Vec<String>}
+ impl Report{pub fn check(&mut self,p:bool,e:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {e}"));}}pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}}
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
+-macro_rules! streq {($r:expr,$a:expr,$b:expr)=>{{$r.check(c_string($a)==c_string($b),stringify!($a C-string-equals $b),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_refs(&$a,&$b),stringify!($a == $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
++macro_rules! streq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::str_eq(c_string($a),c_string($b)),stringify!($a C-string-equals $b),line!());}};}
+ fn c_string(s:&[u8])->&[u8]{&s[..s.iter().position(|&b|b==0).unwrap_or(s.len())]}
+ // EXPECT_EQ_ARRAY expands to exactly N element assertions, with no extra length assertion.
+ macro_rules! array_eq {($r:expr,$a:expr,$b:expr,$n:expr)=>{{let expected=&$a;let actual=&$b;for i in 0..$n{eq!($r,expected[i],actual[i]);}}};}
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
