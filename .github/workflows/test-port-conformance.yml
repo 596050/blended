@@ -80,6 +80,8 @@ jobs:
           python3 tools/verify_string_ops_sensitivity.py --output evidence/string-sensitivity/result.json
           python3 tools/verify_utf8_oracle.py --output evidence/utf8-oracle/result.json
           python3 tools/verify_utf8_sensitivity.py --output evidence/utf8-sensitivity/result.json
+          python3 tools/verify_pixel_formats_oracle.py --output evidence/pixel-formats-oracle/result.json
+          python3 tools/verify_pixel_formats_sensitivity.py --output evidence/pixel-formats-sensitivity/result.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
       - uses: actions/upload-artifact@v4
