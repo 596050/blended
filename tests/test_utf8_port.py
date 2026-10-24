@@ -28,7 +28,7 @@ class Utf8PortTests(unittest.TestCase):
   self.assertIn('src.len()+7',self.target);self.assertIn('u32::MAX',self.target)
   self.assertEqual(sum(c['expected_runtime_assertions'] for c in self.manifest['cases']),1627163)
  def test_full_registry_remains_bijective(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),503);self.assertEqual(len({c['id'] for c in cases}),503);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661377)
+  cases,_=expected_cases();self.assertEqual(len(cases),512);self.assertEqual(len({c['id'] for c in cases}),512);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661546)
  def test_supplemental_corpus_has_every_single_and_two_byte_input(self):
   c=corpus();self.assertEqual(len(c),68273);self.assertEqual(c[0],b'');self.assertEqual(set(c[1:257]),{bytes([b]) for b in range(256)})
   self.assertEqual(len(set(c[257:65793])),65536);self.assertTrue(all(len(v)==2 for v in c[257:65793]));self.assertIn(6,SIZES);self.assertIn(7,SIZES)

@@ -22,8 +22,8 @@ class NumericTypesTests(unittest.TestCase):
     self.assertIn(translated,target)
     self.assertEqual(len(re.findall(r'\bEXPECT_(?:EQ|FLOAT_EQ|NEAR|TRUE|FALSE)\s*\(',comments(body))),len(re.findall(r'\b(?:eq|numeq|feq|near|yes|no)!',translated)))
  def test_unique_case_registry(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),503);self.assertEqual(len({c['id'] for c in cases}),503)
-  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661377)
+  cases,_=expected_cases();self.assertEqual(len(cases),512);self.assertEqual(len({c['id'] for c in cases}),512)
+  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661546)
   self.assertEqual(sum(c['group']=='strings' for c in cases),53)
  def test_vector_static_layout_assertions_are_not_hidden(self):
   src=ROOT/'tests/upstream/blender/BLI_math_vector_types_test.cc'
@@ -34,5 +34,5 @@ class NumericTypesTests(unittest.TestCase):
   text=(ROOT/'crates/blended-core/src/numeric_type_cases.rs').read_text()
   self.assertIn('.set_swizzle(',text);self.assertIn('.swizzle([',text);self.assertIn('v::construct::<u32,2>',text)
  def test_reviewed_targets(self):
-  self.assertEqual(len(contracts(ROOT)['contracts']),36)
+  self.assertEqual(len(contracts(ROOT)['contracts']),38)
 if __name__=='__main__':unittest.main()
