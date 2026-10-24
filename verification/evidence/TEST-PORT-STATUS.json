@@ -1,105 +1,94 @@
 {
   "date": "2026-10-24",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "verified_runtime_source_commit": "3969e1fdadae2e11d6f220412f8c32cabf7048d1",
-  "verified_public_static_commit": "a7f55a00388e7b3fb906c307cc52db7968b9a25d",
-  "verified_public_url": "https://rawcdn.githack.com/596050/blended/a7f55a00388e7b3fb906c307cc52db7968b9a25d/index.html",
-  "verified_original_cpp_native_wasm_and_public_run": 40065241089,
-  "blender_runtime_cases_native": 503,
-  "blender_runtime_cases_wasm": 503,
-  "blender_runtime_cases_public_url": 503,
+  "verified_runtime_source_commit": "2990e30077e368c97e3a7af60d45d7a911ceb988",
+  "verified_public_static_commit": "15a67995bdca8581e9f1e28b9b95af17ea69d51b",
+  "verified_public_url": "https://rawcdn.githack.com/596050/blended/15a67995bdca8581e9f1e28b9b95af17ea69d51b/index.html",
+  "verified_original_cpp_native_wasm_and_public_run": 40108130160,
+  "blender_runtime_cases_native": 512,
+  "blender_runtime_cases_wasm": 512,
+  "blender_runtime_cases_public_url": 512,
   "public_browser_errors": [],
-  "assertion_events_compared_per_implementation": 1661377,
+  "assertion_events_compared_per_implementation": 1661546,
   "native_floating_differences_within_original_rules": 8,
   "browser_floating_differences_within_original_rules": 9,
-  "new_utf8_floating_differences": 0,
-  "new_utf8_cases": 39,
-  "new_utf8_assertion_events": 1627163,
-  "new_complete_runtime_source_file": "BLI_string_utf8_test.cc",
-  "new_upstream_source_sha256": "0821a446fa0de157022ec8d27ffbd5b50ae50d6f9889bb67a9cf7ac0d269b572",
-  "original_invalid_fixture_rows": 78,
-  "original_stress_case": {
-    "id": "string.Utf8AsUnicodeStep",
-    "assertion_events": 1626112,
-    "buffer_sizes_inclusive": [1, 12],
-    "byte_values": 256,
-    "random_fills_per_size": 256,
-    "original_loops_and_padding_comparisons_retained": true,
-    "sampled_or_reduced": false
+  "new_format_floating_differences": 0,
+  "new_format_cases": 9,
+  "new_format_assertion_events": 169,
+  "new_runtime_source_scope": {
+    "BLI_math_half_test.cc": {"enabled_functional_cases": 8, "assertion_events": 162, "conditional_performance_cases_unported": 5, "complete_under_all_configurations": false},
+    "BLI_normalized_int_test.cc": {"cases": 1, "assertion_events": 7}
   },
-  "utf8_test_first": {
-    "run": 40064003518,
-    "source_commit": "d563dbeb1e9246e2242c57082ccbf0dc2bde10eb",
-    "failure": "E0583: missing utf8_compat implementation module; not executed assertion failures",
-    "durable_archive": "evidence/utf8-test-first-evidence.zip",
-    "archive_sha256": "f5f343bff34e296fc2e451091cf8b30e31f1dba5b1330e357acc8145361f1390",
-    "native_log_sha256": "1b549a09cecd52875e397eff107899ce04077fbdce7069c8d20d307ed7c7dc46"
+  "conditional_cases": {
+    "condition": "DO_PERF_TESTS",
+    "status": "unported, not passed, retained in source inventory",
+    "ids": ["math_half_perf.half_to_float_scalar", "math_half_perf.half_to_float_array", "math_half_perf.float_to_half_scalar", "math_half_perf.float_to_half_array", "math_half_perf.float_to_half_make_finite_array"]
   },
-  "supplemental_utf8_oracle": {
-    "byte_sequences": 68273,
-    "all_single_byte_inputs": 256,
-    "all_two_byte_inputs": 65536,
-    "selected_longer_legacy_sequences": 2480,
-    "validator_results": 68273,
-    "decoded_value_next_offset_pairs": 137426,
-    "random_byte_blocks": 4096,
-    "random_bytes": 48640,
-    "random_buffer_lengths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 31, 32, 33],
-    "random_seed": 1,
-    "original_cpp_vs_native": "exact_match",
-    "original_cpp_vs_browser_wasm": "exact_match",
-    "endianness": "x86_64/wasm32 little endian; original byte RNG remains endian-sensitive",
-    "counted_as_upstream_cases": false
+  "format_test_first": {
+    "run": 40107140243,
+    "source_commit": "c094a5be126ceb6c10178f1a42aac4b4d5b2b1f2",
+    "failure": "E0583: missing pixel_formats implementation module; not nine executed assertion failures",
+    "durable_archive": "evidence/pixel-formats-test-first-evidence.zip",
+    "archive_sha256": "1cd22d94fce939c5c2aa4f87fec453ee64cb26b0dfe273306eaf3a59c67b8149",
+    "native_log_sha256": "f777ac2086f4b33c096cc2c153f40a8cb1019b6aa1633ea517cf7fc47bcfa86a"
+  },
+  "supplemental_bit_oracle": {
+    "all_half_patterns": 65536,
+    "float_bit_inputs": 291054,
+    "normalised_component_inputs": 2183,
+    "raw_normalised_component_configurations": 133632,
+    "array_lengths_inclusive": [0, 17],
+    "tail_rotations": 4,
+    "output_words_per_implementation": 2944570,
+    "output_bytes_per_implementation": 11778280,
+    "original_cpp_vs_native": "bit_exact_match",
+    "original_cpp_vs_browser_wasm": "bit_exact_match",
+    "output_sha256_all_three_implementations": "1bb864de0f0688df82bc46f9506ae55e64463a977c501bcd202c8051b094c1c9",
+    "corpus_sha256": "f82ac342305c86c9cc97c4850bf305fb8553781607e0683e0d24fb637be4a9b9",
+    "profile": "x86_64 scalar/SSE2 four-lane arrays, SSE4.1 clamp, nearest-even; no F16C/AVX or NEON",
+    "counted_as_upstream_cases": false,
+    "exhaustive_all_float32_or_multicomponent_normalised_inputs": false
+  },
+  "floating_point_control": {
+    "native_x86_64": "Actual MXCSR FTZ/DAZ enable and exact restoration checked, including nesting",
+    "browser_hardware_control_supported": false,
+    "browser_scope": "Conversion values verified; no claim of inaccessible hardware mode perturbation",
+    "reference_before": 8096,
+    "reference_during": 40928,
+    "reference_after": 8096
   },
   "supplemental_negative_controls": {
-    "mutations": ["substitution_disabled", "copy_disabled", "combining_marks_ignored"],
-    "native_and_browser": "All detected by unchanged original tests; independent controls pass; original assertion counts retained",
+    "mutations": ["rounding_bias_removed", "finite_nan_sign_removed", "half_subnormals_flushed"],
+    "native_and_browser": "All detected by unchanged original tests with independent controls passing and original assertion counts retained",
     "compiler_error_panic_or_trap_accepted_as_detection": false,
     "counted_as_upstream_cases": false
-  },
-  "full_event_fidelity": {
-    "comparison": "Every ordered assertion event through the existing reviewed comparator, in bounded batches",
-    "browser_transfer": "Complete executed diagnostic trace in bounded chunks",
-    "sampled_events": false,
-    "hash_only_equivalence": false,
-    "storage": "Complete lossless .jsonl.gz transcripts with decompressed SHA-256 and byte-count verification",
-    "raw_bytes": {"reference": 159229064, "native": 159216220, "browser": 159216220},
-    "compressed_bytes": {"reference": 3499702, "native": 3501218, "browser": 3501221},
-    "storage_manifest": "assertion-fidelity-evidence/runs/40065241089/TRACE-STORAGE.json"
-  },
-  "width_table": {
-    "upstream_git_blob": "1d337ec47f24e04f427937deeedcd773cc3ea474",
-    "full_original_notice": "LICENSES/wcwidth-original-notice.txt",
-    "included_in_corresponding_source": true,
-    "host_unicode_database_used": false
-  },
-  "compatibility_limits": {
-    "utf8_compat_behaviour": "Pinned legacy validation/decoding, including tested five/six-byte sequences; not strict modern Unicode validation",
-    "formatting": "Tested single-%s adapter, not a complete C varargs formatter",
-    "malformed_cursor_prefix": "Explicit safe start-of-buffer policy, not undefined native pointer behaviour",
-    "previous_string_ops_utf8_step": "Separate valid-Unicode adapter; not automatically certified by this module",
-    "complete_locale_or_all_unicode_behaviour": false
   },
   "compile_time_cases_separate_from_runtime": 6,
   "compile_time_native_positive_and_negative": "passed",
   "compile_time_wasm_positive_and_negative": "passed",
   "cycles_native_cases": 3,
-  "product_safety_regression_native_cases": 36,
-  "total_native_rust_runtime_tests": 542,
+  "product_safety_regression_native_cases": 43,
+  "total_native_rust_runtime_tests": 558,
   "source_candidates": 5859,
-  "mapped_source_candidates": 509,
-  "unmapped_source_candidates": 5350,
+  "mapped_source_candidates": 518,
+  "unmapped_source_candidates": 5341,
   "source_counts_are_runtime_denominator": false,
   "runtime_denominator_known": false,
   "unported_runtime_cases": null,
   "complete_blender_test_port": false,
   "full_feature_parity": false,
-  "full_completeness_gate": "failed; subset verification and publication are separate",
-  "previous_string_verification": {
-    "source_commit": "ab692209e9eb98248054ae90ead9b0258f1ab4da",
-    "run": 40049834310,
-    "runtime_cases": 464,
-    "assertion_events": 34214
+  "full_completeness_gate": "failed; subset verification and publication remain separate",
+  "full_event_fidelity": {
+    "sampled_events": false,
+    "hash_only_equivalence": false,
+    "comparison": "Every ordered assertion event through the reviewed comparator in bounded batches",
+    "storage": "Full lossless .jsonl.gz tapes with verified decompressed SHA-256 and byte counts"
+  },
+  "previous_utf8_verification": {
+    "source_commit": "3969e1fdadae2e11d6f220412f8c32cabf7048d1",
+    "run": 40065241089,
+    "runtime_cases": 503,
+    "assertion_events": 1661377
   },
   "fixture_verification": {
     "historical_run": 39847680248,
@@ -107,6 +96,6 @@
     "verified_objects": 6691,
     "verified_bytes": 870496042,
     "all_test_dependencies_verified": false,
-    "current_utf8_inputs": "Pinned embedded fixtures, original deterministic byte generator and pinned wcwidth table; no .blend payloads required by this batch"
+    "current_format_inputs": "Pinned embedded cases and independently serialised diagnostic corpus; no .blend payloads required by this batch"
   }
 }
