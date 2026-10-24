@@ -1,4 +1,4 @@
-    Checking blended-core v0.1.0 (/tmp/blended-embedded-static-7ze2dy5b/crates/blended-core)
+    Checking blended-core v0.1.0 (/tmp/blended-embedded-static-bb5z4e8s/crates/blended-core)
 warning: unused macro definition: `yes`
   --> crates/blended-core/src/numeric_type_cases.rs:21:14
    |
@@ -63,5 +63,15 @@ warning: unused variable: `i`
 468 |   for i in 0..amount {
     |       ^ help: if this is intentional, prefix it with an underscore: `_i`
 
-warning: `blended-core` (lib) generated 10 warnings (run `cargo fix --lib -p blended-core` to apply 8 suggestions)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.05s
+warning: field `saved` is never read
+   --> crates/blended-core/src/pixel_formats.rs:161:5
+    |
+160 | pub struct ScopedFlushToZero {
+    |            ----------------- field in this struct
+161 |     saved: Option<u32>,
+    |     ^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `blended-core` (lib) generated 11 warnings (run `cargo fix --lib -p blended-core` to apply 8 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.18s

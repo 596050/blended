@@ -1,6 +1,6 @@
 {
   "schema": 3,
-  "source_commit": "4e473817f8ec50e6e562bb51db00112c2b2a6e48",
+  "source_commit": "e83b1b16235c1e104af24f876005293643d69411",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
   "groups": [
     "legacy",
@@ -17,7 +17,8 @@
     "heaps",
     "data",
     "string_ops",
-    "utf8"
+    "utf8",
+    "pixel_formats"
   ],
   "abi": {
     "legacy": [
@@ -94,6 +95,11 @@
       "blended_utf8_case_count",
       "blended_utf8_run_case",
       "blended_utf8_assertion_count"
+    ],
+    "pixel_formats": [
+      "blended_pixel_formats_case_count",
+      "blended_pixel_formats_run_case",
+      "blended_pixel_formats_assertion_count"
     ]
   },
   "total_keys": {
@@ -111,7 +117,8 @@
     "heaps": "heap_assertions",
     "data": "data_assertions",
     "string_ops": "string_ops_assertions",
-    "utf8": "utf8_assertions"
+    "utf8": "utf8_assertions",
+    "pixel_formats": "pixel_format_assertions"
   },
   "legacy": [
     {
@@ -252,7 +259,7 @@
     }
   ],
   "complete_test_port": false,
-  "wasm_sha256": "557dfe38f888fae4aea0739fe2cd569d5b574aec42f23703a75212b6ed568a97",
+  "wasm_sha256": "fd90e16935ec91d62c749554d38942f3ba231e9776ed5ae3d2ee0dc66665ff6a",
   "additional": [
     {
       "id": "math_base.CompareFFRelativeValid",
@@ -6078,6 +6085,116 @@
       "assertion_count": 9,
       "expected_runtime_assertions": 9,
       "index": 38,
+      "status": "ported_unexecuted"
+    }
+  ],
+  "pixel_formats": [
+    {
+      "id": "math_half.half_to_float_scalar",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 17,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "760d09e49da15bca2ab6013a8938ef233ff00bb11129d4ba9a3c79181efde5f0",
+      "rust_function": "math_half__half_to_float_scalar",
+      "assertion_count": 23,
+      "expected_runtime_assertions": 23,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.float_to_half_scalar",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 44,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "8d26f77eb42e3f4b413f2dd73455cd729ca5a64935319da8062a0cca53a9384c",
+      "rust_function": "math_half__float_to_half_scalar",
+      "assertion_count": 32,
+      "expected_runtime_assertions": 32,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.float_to_half_make_finite_scalar",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 82,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "8b1a6c0c5c19b128a4525089ff6b35823d5a21e1b3ac07d8a16603c856ad1aa7",
+      "rust_function": "math_half__float_to_half_make_finite_scalar",
+      "assertion_count": 35,
+      "expected_runtime_assertions": 35,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.half_to_float_array",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 127,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "e09b5d5dbe9fc6c7850dcab20c33ef4b17260807a39e3626183264af606b7d91",
+      "rust_function": "math_half__half_to_float_array",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 14,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.half_to_float_array_flush_to_zero",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 155,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "f13966de2664da0dbaca0cdabe57cb3dbca4b2762498832117399244ad45e2b1",
+      "rust_function": "math_half__half_to_float_array_flush_to_zero",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 8,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.float_to_half_array",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 180,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "5c69084b2a30b5a5df5f2ed68802f5d0bf967d15a66f96c5bd9b29306aa47f03",
+      "rust_function": "math_half__float_to_half_array",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 14,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.float_to_half_clamp_array",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 205,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "6bbc508b910b294216b8e7b246b4596dc6db12d3dd254d4c41a28c094dcfca71",
+      "rust_function": "math_half__float_to_half_clamp_array",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 18,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "math_half.float_to_half_make_finite_array",
+      "path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "line": 251,
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "source_body_sha256": "92636ce906431796bec2e4ffa311505f0746bff208a22796c36b6d0139d51a89",
+      "rust_function": "math_half__float_to_half_make_finite_array",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 18,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "normalized_int.roundtrip",
+      "path": "source/blender/blenlib/tests/BLI_normalized_int_test.cc",
+      "line": 11,
+      "source_sha256": "06537f28199781c45d94ddadf080f386e0c54bec7c907b9413f22d867d1e35c0",
+      "source_body_sha256": "2a9baada445840305ce5013fc569e88c417b602177064043e45d844035d13e8d",
+      "rust_function": "normalized_int__roundtrip",
+      "assertion_count": 7,
+      "expected_runtime_assertions": 7,
+      "index": 8,
       "status": "ported_unexecuted"
     }
   ]

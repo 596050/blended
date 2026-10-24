@@ -828,6 +828,31 @@
         "string.StrCursorStepPrevUtf8Complex",
         "string.StrCursorStepPrevUtf8Invalid"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_math_half_test.cc",
+      "source_sha256": "508ccd5a21a2dd191154b07e7a273fa5b04239be30c1c149737c5dd7f1e5fac9",
+      "target_path": "crates/blended-core/src/pixel_format_cases.rs",
+      "target_sha256": "c8dc019ec24820d8495e52309c5b7030f4f4c158c0cb1dbe68ea428cdb7849ce",
+      "case_ids": [
+        "math_half.half_to_float_scalar",
+        "math_half.float_to_half_scalar",
+        "math_half.float_to_half_make_finite_scalar",
+        "math_half.half_to_float_array",
+        "math_half.half_to_float_array_flush_to_zero",
+        "math_half.float_to_half_array",
+        "math_half.float_to_half_clamp_array",
+        "math_half.float_to_half_make_finite_array"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_normalized_int_test.cc",
+      "source_sha256": "06537f28199781c45d94ddadf080f386e0c54bec7c907b9413f22d867d1e35c0",
+      "target_path": "crates/blended-core/src/pixel_format_cases.rs",
+      "target_sha256": "c8dc019ec24820d8495e52309c5b7030f4f4c158c0cb1dbe68ea428cdb7849ce",
+      "case_ids": [
+        "normalized_int.roundtrip"
+      ]
     }
   ]
 }

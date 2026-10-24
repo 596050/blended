@@ -1,4 +1,4 @@
-[1m[92m   Compiling[0m blended-core v0.1.0 (/tmp/blended-zero-smoke-1ldzp3ti/crates/blended-core)
+[1m[92m   Compiling[0m blended-core v0.1.0 (/tmp/blended-zero-smoke-rturj3ah/crates/blended-core)
 [1m[33mwarning[0m[1m: unused macro definition: `yes`[0m
   [1m[94m--> [0mcrates/blended-core/src/numeric_type_cases.rs:21:14
    [1m[94m|[0m
@@ -63,5 +63,15 @@
 [1m[94m468[0m [1m[94m|[0m   for i in 0..amount {
     [1m[94m|[0m       [1m[33m^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_i`[0m
 
-[1m[33mwarning[0m: `blended-core` (lib) generated 10 warnings (run `cargo fix --lib -p blended-core` to apply 8 suggestions)
-[1m[92m    Finished[0m `release` profile [optimized] target(s) in 7.31s
+[1m[33mwarning[0m[1m: field `saved` is never read[0m
+   [1m[94m--> [0mcrates/blended-core/src/pixel_formats.rs:161:5
+    [1m[94m|[0m
+[1m[94m160[0m [1m[94m|[0m pub struct ScopedFlushToZero {
+    [1m[94m|[0m            [1m[94m-----------------[0m [1m[94mfield in this struct[0m
+[1m[94m161[0m [1m[94m|[0m     saved: Option<u32>,
+    [1m[94m|[0m     [1m[33m^^^^^[0m
+    [1m[94m|[0m
+    [1m[94m= [0m[1mnote[0m: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+[1m[33mwarning[0m: `blended-core` (lib) generated 11 warnings (run `cargo fix --lib -p blended-core` to apply 8 suggestions)
+[1m[92m    Finished[0m `release` profile [optimized] target(s) in 7.66s

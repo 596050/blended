@@ -6,7 +6,7 @@ failures:
 
 ---- bit_span__SetEmpty stdout ----
 
-thread 'bit_span__SetEmpty' (3915) panicked at crates/blended-core/src/bit_spans.rs:64:28:
+thread 'bit_span__SetEmpty' (3921) panicked at crates/blended-core/src/bit_spans.rs:64:28:
 MUTATION_EMPTY_SPAN_EXECUTED
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
@@ -16,7 +16,7 @@ failures:
 
 test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 26 filtered out; finished in 0.00s
 
-[1m[92m   Compiling[0m blended-core v0.1.0 (/tmp/blended-zero-smoke-1ldzp3ti/crates/blended-core)
+[1m[92m   Compiling[0m blended-core v0.1.0 (/tmp/blended-zero-smoke-rturj3ah/crates/blended-core)
 [1m[33mwarning[0m[1m: unused macro definition: `yes`[0m
   [1m[94m--> [0mcrates/blended-core/src/numeric_type_cases.rs:21:14
    [1m[94m|[0m
@@ -82,6 +82,6 @@ test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 26 filtered out;
     [1m[94m|[0m       [1m[33m^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_i`[0m
 
 [1m[33mwarning[0m: `blended-core` (lib) generated 10 warnings (run `cargo fix --lib -p blended-core` to apply 8 suggestions)
-[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 2.32s
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 2.49s
 [1m[92m     Running[0m tests/upstream_bit_spans.rs (target/debug/deps/upstream_bit_spans-77aba765642f6067)
 [1m[91merror[0m: test failed, to rerun pass `--test upstream_bit_spans`

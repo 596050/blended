@@ -1,17 +1,17 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "expected_case_count": 503,
-  "expected_source_commit": "4e473817f8ec50e6e562bb51db00112c2b2a6e48",
-  "started_utc": "2026-10-24T05:30:50.490196+00:00",
+  "expected_case_count": 512,
+  "expected_source_commit": "e83b1b16235c1e104af24f876005293643d69411",
+  "started_utc": "2026-10-24T15:36:38.754631+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "4e473817f8ec50e6e562bb51db00112c2b2a6e48",
+    "source_commit": "e83b1b16235c1e104af24f876005293643d69411",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 503,
+    "passed": 512,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -3537,6 +3537,69 @@
         "passed": true,
         "code": 1,
         "assertions": 9
+      },
+      {
+        "id": "math_half.half_to_float_scalar",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 23
+      },
+      {
+        "id": "math_half.float_to_half_scalar",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 32
+      },
+      {
+        "id": "math_half.float_to_half_make_finite_scalar",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 35
+      },
+      {
+        "id": "math_half.half_to_float_array",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "math_half.half_to_float_array_flush_to_zero",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "math_half.float_to_half_array",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "math_half.float_to_half_clamp_array",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 18
+      },
+      {
+        "id": "math_half.float_to_half_make_finite_array",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 18
+      },
+      {
+        "id": "normalized_int.roundtrip",
+        "group": "pixel_formats",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
       }
     ],
     "errors": [],
@@ -3551,9 +3614,10 @@
     "data_assertions": 264,
     "string_ops_assertions": 846,
     "utf8_assertions": 1627163,
-    "wasm_sha256": "557dfe38f888fae4aea0739fe2cd569d5b574aec42f23703a75212b6ed568a97",
+    "pixel_format_assertions": 169,
+    "wasm_sha256": "fd90e16935ec91d62c749554d38942f3ba231e9776ed5ae3d2ee0dc66665ff6a",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-24T05:30:53.486436+00:00"
+  "finished_utc": "2026-10-24T15:36:41.971863+00:00"
 }
