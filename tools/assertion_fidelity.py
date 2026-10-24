@@ -192,16 +192,8 @@ def compare(reference:list,port:list,expected:list,require_boundaries=False):
 def load_tape(path):return [json.loads(s) for s in Path(path).read_text().splitlines() if s.strip()]
 
 def browser(wasm:Path,output:Path):
-    from playwright.sync_api import sync_playwright
-    import base64
-    with sync_playwright() as p:
-        b=p.chromium.launch(executable_path=shutil.which('google-chrome') or shutil.which('chromium'),headless=True,args=['--no-sandbox'])
-        page=b.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-        tape=page.evaluate('''async data=>{const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));const {instance}=await WebAssembly.instantiate(bytes,{});const w=instance.exports;const n=w.blended_fidelity_run();const ptr=w.blended_fidelity_ptr();return new TextDecoder().decode(new Uint8Array(w.memory.buffer,ptr,n));}''',base64.b64encode(wasm.read_bytes()).decode())
-        output.write_text(tape)
-        output.with_suffix('.environment.json').write_text(json.dumps({'browser':b.version,'wasm_sha256':digest(wasm),'errors':errors,'mode':'local diagnostic overlay, not public deployment'},indent=2)+'\n')
-        b.close()
-        if errors:raise ValueError('Browser errors')
+    from fidelity_stream import browser_tape
+    return browser_tape(wasm,output)
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['cpp','shadow','compare','browser']);p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--upstream',type=Path);p.add_argument('--output',type=Path);p.add_argument('--reference',type=Path);p.add_argument('--port',type=Path);p.add_argument('--wasm',type=Path);a=p.parse_args()
@@ -212,7 +204,8 @@ def main():
         sys.path.insert(0,str(a.root/'tools'));from port_workbench import expected_cases
         expected,pin=expected_cases(a.root)
         report={'status':'failed','complete_blender_test_port':False,'reference_commit':pin,'reference_trace_sha256':digest(a.reference),'port_trace_sha256':digest(a.port)}
-        try:report.update(compare(load_tape(a.reference),load_tape(a.port),expected,require_boundaries=True))
+        from fidelity_stream import compare_files
+        try:report.update(compare_files(a.reference,a.port,expected))
         except Exception as e:report['failure']=str(e)
         a.output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
         return 0 if report['status']=='passed' else 1
