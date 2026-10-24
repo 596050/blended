@@ -71,8 +71,8 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] array_utils.GroupIdsToIndicesMask
 [       OK ] array_utils.GroupIdsToIndicesMask (0 ms)
 [ RUN      ] array_utils.GroupIdsToIndicesLarge
-[       OK ] array_utils.GroupIdsToIndicesLarge (73 ms)
-[----------] 35 tests from array_utils (75 ms total)
+[       OK ] array_utils.GroupIdsToIndicesLarge (116 ms)
+[----------] 35 tests from array_utils (118 ms total)
 
 [----------] 3 tests from binary_search
 [ RUN      ] binary_search.Empty
@@ -139,9 +139,9 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] bit_span.CopyFrom
 [       OK ] bit_span.CopyFrom (0 ms)
 [ RUN      ] bit_span.InPlaceOr
-[       OK ] bit_span.InPlaceOr (6 ms)
+[       OK ] bit_span.InPlaceOr (9 ms)
 [ RUN      ] bit_span.InPlaceAnd
-[       OK ] bit_span.InPlaceAnd (6 ms)
+[       OK ] bit_span.InPlaceAnd (9 ms)
 [ RUN      ] bit_span.ForEach1
 [       OK ] bit_span.ForEach1 (0 ms)
 [ RUN      ] bit_span.ForEach1Cancel
@@ -156,7 +156,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] bit_span.to_index_ranges_small (0 ms)
 [ RUN      ] bit_span.to_index_ranges_all_ones
 [       OK ] bit_span.to_index_ranges_all_ones (0 ms)
-[----------] 19 tests from bit_span (15 ms total)
+[----------] 19 tests from bit_span (21 ms total)
 
 [----------] 11 tests from bit_vector
 [ RUN      ] bit_vector.DefaultConstructor
@@ -341,10 +341,10 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] heap.ReInsertRandom100
 [       OK ] heap.ReInsertRandom100 (0 ms)
 [ RUN      ] heap.ReInsertRandom1024
-[       OK ] heap.ReInsertRandom1024 (3 ms)
+[       OK ] heap.ReInsertRandom1024 (4 ms)
 [ RUN      ] heap.ReInsertRandom2048
-[       OK ] heap.ReInsertRandom2048 (6 ms)
-[----------] 23 tests from heap (20 ms total)
+[       OK ] heap.ReInsertRandom2048 (9 ms)
+[----------] 23 tests from heap (27 ms total)
 
 [----------] 32 tests from index_range
 [ RUN      ] index_range.DefaultConstructor
@@ -437,7 +437,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] inplace_priority_queue.ManyPriorityChanges (1 ms)
 [ RUN      ] inplace_priority_queue.IndicesAccess
 [       OK ] inplace_priority_queue.IndicesAccess (0 ms)
-[----------] 6 tests from inplace_priority_queue (2 ms total)
+[----------] 6 tests from inplace_priority_queue (3 ms total)
 
 [----------] 9 tests from length_parameterize
 [ RUN      ] length_parameterize.FloatSimple
@@ -458,7 +458,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] length_parameterize.ArbitraryFloatSimple (0 ms)
 [ RUN      ] length_parameterize.ArbitraryFloat2
 [       OK ] length_parameterize.ArbitraryFloat2 (0 ms)
-[----------] 9 tests from length_parameterize (0 ms total)
+[----------] 9 tests from length_parameterize (1 ms total)
 
 [----------] 20 tests from math_base
 [ RUN      ] math_base.SafePowf
@@ -958,7 +958,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] string.StringMaxPossibleWordCount (0 ms)
 [ RUN      ] string.StrIsDecimal
 [       OK ] string.StrIsDecimal (0 ms)
-[----------] 21 tests from string (0 ms total)
+[----------] 21 tests from string (1 ms total)
 
 [----------] 10 tests from StringFindSplitWords
 [ RUN      ] StringFindSplitWords.Simple
@@ -1041,5 +1041,5 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [----------] 7 tests from unique_sorted_indices (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 464 tests from 37 test suites ran. (122 ms total)
+[==========] 464 tests from 37 test suites ran. (183 ms total)
 [  PASSED  ] 464 tests.
