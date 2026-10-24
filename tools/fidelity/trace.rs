@@ -31,6 +31,9 @@ fn bytes_value(bytes:&[u8])->String{format!("\"s:{}\"",bytes.iter().map(|b|forma
 impl Value for crate::string_refs::StringRef<'_>{fn encode(&self)->String{bytes_value(self.as_bytes())}}
 impl Value for crate::string_refs::StringRefNull<'_>{fn encode(&self)->String{bytes_value(self.as_bytes())}}
 impl Value for crate::string_refs::Bytes{fn encode(&self)->String{bytes_value(self.as_ref())}}
+impl Value for String {fn encode(&self)->String{bytes_value(self.as_bytes())}}
+impl<T:Value> Value for Vec<T> {fn encode(&self)->String{self.as_slice().encode()}}
+pub fn str_eq(a:&[u8],b:&[u8])->bool{let p=a==b;record("STREQ",p,&[bytes_value(a),bytes_value(b)]);p}
 pub fn eq_refs<A:PartialEq<B>+Value+?Sized,B:Value+?Sized>(a:&A,b:&B)->bool{let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p}
 impl<T:Value,const N:usize> Value for crate::numeric_vectors::V<T,N>{fn encode(&self)->String{self.0.encode()}}
 impl<T:Value,const C:usize,const R:usize> Value for crate::matrix_types::M<T,C,R>{fn encode(&self)->String{self.0.encode()}}
@@ -65,6 +68,7 @@ pub fn run_all()->String {
  for (id,run,count) in crate::sampling_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  for (id,run,count) in crate::curve_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  for (id,run,count) in crate::heap_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
+ for (id,run,n) in crate::data_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

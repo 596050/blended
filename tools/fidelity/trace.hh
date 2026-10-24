@@ -80,6 +80,9 @@ template<> struct Encoder<blender::bits::BitRef> {
 template<class T> struct Encoder<blender::Span<T>> {
  static void write(std::ostream &out,const blender::Span<T> &v){out<<'[';for(int64_t i=0;i<v.size();++i){if(i)out<<',';value(out,v[i]);}out<<']';}
 };
+template<class T,int64_t N,class A> struct Encoder<blender::Vector<T,N,A>> {
+ static void write(std::ostream &out,const blender::Vector<T,N,A>&v){out<<'[';for(int64_t i=0;i<v.size();++i){if(i)out<<',';value(out,v[i]);}out<<']';}
+};
 // String-value assertions record bytes. Pointer-identity assertions remain addresses,
 // expressed relative to the first byte address observed in that same test case.
 inline void byte_pointer_value(std::ostream &out,const char *v) {
@@ -131,6 +134,15 @@ template<class T> void span_eq(const blender::Span<T> expected,const blender::Sp
  if(expected.size()==actual.size())for(int64_t i=0;i<expected.size();++i)record("EQ",bool(::testing::internal::EqHelper::Compare("expected","actual",expected[i],actual[i])),nullptr,nullptr,expected[i],actual[i]);
  ::EXPECT_EQ_SPAN<T>(expected,actual);
 }
+template<class T> void array_eq(const T*expected,const T*actual,size_t n){
+ for(size_t i=0;i<n;++i)record("EQ",bool(::testing::internal::EqHelper::Compare("expected","actual",expected[i],actual[i])),nullptr,nullptr,expected[i],actual[i]);
+ ::EXPECT_EQ_ARRAY(expected,actual,n);
+}
+inline void str_eq(const char*a,const char*b){
+ const bool passed=bool(::testing::internal::CmpHelperSTREQ("a","b",a,b));
+ record("STREQ",passed,nullptr,nullptr,a?std::optional<std::string>(a):std::nullopt,b?std::optional<std::string>(b):std::nullopt);
+ EXPECT_STREQ(a,b);
+}
 template<class A,class B> void eq(const A &a,const B &b) {record("EQ",bool(::testing::internal::EqHelper::Compare("a","b",a,b)),nullptr,nullptr,a,b);EXPECT_EQ(a,b);}
 template<class A,class B> void le(const A &a,const B &b){record("LE",a<=b,nullptr,nullptr,a,b);EXPECT_LE(a,b);}
 template<class A,class B> void gt(const A &a,const B &b) {record("GT",a>b,nullptr,nullptr,a,b);EXPECT_GT(a,b);}
@@ -161,3 +173,7 @@ inline bool fatal_true(bool v){record("ASSERT_TRUE",v,nullptr,nullptr,v);return 
 
 #undef EXPECT_LE
 #define EXPECT_LE(a,b) ::blended_fidelity::le((a),(b))
+
+#define EXPECT_EQ_ARRAY ::blended_fidelity::array_eq
+#undef EXPECT_STREQ
+#define EXPECT_STREQ(a,b) ::blended_fidelity::str_eq((a),(b))

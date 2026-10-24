@@ -153,3 +153,12 @@ pub mod heap_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_heaps_case_count()->u32{heap_cases::CASES.len() as u32}
 #[unsafe(no_mangle)]pub extern "C" fn blended_heaps_run_case(index:u32)->i32{heap_cases::CASES.get(index as usize).map(|(_,run,count)|{let r=run();i32::from(r.passed()&&r.assertions==*count)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_heaps_assertion_count(index:u32)->u32{heap_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod array_ops;
+pub mod csv_fields;
+pub mod hash_mm2a;
+pub mod disjoint_set;
+pub mod data_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_data_case_count()->u32{data_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_data_run_case(index:u32)->i32{data_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_data_assertion_count(index:u32)->u32{data_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}

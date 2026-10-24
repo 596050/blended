@@ -72,9 +72,10 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs']:
         p=src/name;before=p.read_text();after=before
         changes={
+          'macro_rules! streq ': 'macro_rules! streq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::str_eq(c_string($a),c_string($b)),stringify!($a C-string-equals $b),line!());}};}',
           'macro_rules! le ': 'macro_rules! le {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::le($a,$b),stringify!($a <= $b),line!());}};}',
           'macro_rules! fatal_yes ': 'macro_rules! fatal_yes {($r:expr,$a:expr)=>{{let p=crate::fidelity_trace::boolean("ASSERT_TRUE",$a);$r.check(p,stringify!($a),line!());if !p{return $r;}}};}',
           'macro_rules! eq ': 'macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};} ',
@@ -87,7 +88,7 @@ def shadow(root:Path,out:Path):
         }
         # Preserve the original scalar EQ expected-value cast. Structure EQ is same-type.
         if name=='additional_cases.rs':changes['macro_rules! eq ']='macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{let a=$a;$r.check(crate::fidelity_trace::eq(a,$b as _),stringify!($a == $b),line!());}};} '
-        if name in ('string_ref_cases.rs','bit_span_cases.rs'):
+        if name in ('string_ref_cases.rs','bit_span_cases.rs','data_cases.rs'):
             changes['macro_rules! eq ']='macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_refs(&$a,&$b),stringify!($a == $b),line!());}};}'
         for prefix,replacement in changes.items():
             lines=after.splitlines();matches=[i for i,s in enumerate(lines) if s.startswith(prefix)]
@@ -173,7 +174,7 @@ def compare(reference:list,port:list,expected:list,require_boundaries=False):
         if len(a)!=n or len(b)!=n:raise ValueError('Missing, duplicate or extra assertion: '+key)
         for i,(r,p) in enumerate(zip(a,b)):
             if r.get('kind')!=p.get('kind'):raise ValueError(f'Assertion kind differs: {key}:{i}')
-            kind=r['kind'];arity={'EQ':2,'GT':2,'LE':2,'FLOAT_EQ':2,'NEAR':3,'TRUE':1,'FALSE':1,'ASSERT_TRUE':1}.get(kind)
+            kind=r['kind'];arity={'EQ':2,'GT':2,'STREQ':2,'LE':2,'FLOAT_EQ':2,'NEAR':3,'TRUE':1,'FALSE':1,'ASSERT_TRUE':1}.get(kind)
             if not arity or len(r['values'])!=arity or len(p['values'])!=arity:raise ValueError('Malformed assertion arity')
             if r.get('passed') is not True or p.get('passed') is not True:raise ValueError('Failed assertion: '+key)
             rv,pv=normal(r['values']),normal(p['values'])
