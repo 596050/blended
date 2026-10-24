@@ -48,7 +48,7 @@ document.querySelector('#run').addEventListener('click',async()=>{
 });'''
 
 def expected_cases(root=ROOT):
-    """Trusted universe from the checked-out test sources, not the served page's totals."""
+    """Trusted universe from checked-out test sources, not served-page totals."""
     lock=json.loads((root/'upstream.lock.json').read_text())['upstreams']['blender']['commit']
     ids=re.findall(r'\("(math_vector\.[^"]+)"',(root/'crates/blended-core/src/compat_cases.rs').read_text())
     vector=json.loads((root/'compatibility/vector-assertions.json').read_text())
@@ -85,6 +85,11 @@ def validate_result(data,expected,commit,reference):
 def build(commit):
     if not re.fullmatch('[0-9a-f]{40}',commit):raise ValueError('Full source commit required')
     subprocess.run([sys.executable,str(ROOT/'tools/prepare_site.py')],check=True,cwd=ROOT)
+    # Additional build acceptance, not a rewrite of upstream tests: cover the
+    # genuine rotations/reversals accidentally absent from the original helper.
+    # Diagnostic Rust/WASM builds use isolated temporary directories and cannot
+    # replace the production module or silently alter reviewed test expectations.
+    subprocess.run([sys.executable,str(ROOT/'tools/verify_polyfill_oracle.py'),'--output',str(ROOT/'evidence/polyfill-oracle/result.json')],check=True,cwd=ROOT)
     out=ROOT/'build/conformance';out.mkdir(parents=True,exist_ok=True)
     wasm=ROOT/'target/wasm32-unknown-unknown/release/blended_core.wasm'
     shutil.copyfile(wasm,out/'blended_core.wasm')

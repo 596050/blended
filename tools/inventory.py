@@ -18,17 +18,17 @@ def summary(cases):
     if invalid:raise ValueError(f'Unknown execution status: {sorted(invalid)}')
     return {s:counts[s] for s in STATUSES}
 def _mask(text):
-    pattern=r'R"([^ ()\\\t\r\n]{0,16})\([\s\S]*?\)\1"|//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\''
-    # Mask complete C++ preprocessing-number tokens before apostrophes inside
-    # integer/float literals can start a character-literal match. Earlier comments
-    # and strings still consume their whole bodies. See [lex.ppnumber].
+    pattern=r'R"([^ ()\\\t\r\n]{0,16})\([\s\S]*?\)\2"|//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\''
+    # Consume complete preprocessing-number tokens before apostrophes can be
+    # mistaken for character literals. Preserve them: GoogleTest token pasting
+    # permits case arguments such as 3Colinear, unlike standalone identifiers.
     numeric=r"(?<![\w.])(?:[0-9]|\.[0-9])(?:[eEpP][+-]|[\w.]|'(?=\w))*"
-    return re.sub(numeric+'|'+pattern,lambda m:''.join('\n' if c=='\n' else ' ' for c in m[0]),text)
+    return re.sub('(?P<number>'+numeric+')|'+pattern,lambda m:m[0] if m.lastgroup=='number' else ''.join('\n' if c=='\n' else ' ' for c in m[0]),text)
 def _case(path,line,identity,kind,expanded=False):
     return dict(path=path,line=line,identity=identity,kind=kind,requires_runtime_expansion=expanded,execution='not_run',port_status='not_ported')
 def scan_cpp(text,path):
     clean=_mask(text);results=[]
-    pattern=r'\b(TEST|TEST_F|TEST_P|TYPED_TEST|TYPED_TEST_P)\s*\(\s*([A-Za-z_]\w*)\s*,\s*([A-Za-z_]\w*)\s*\)'
+    pattern=r'(?<![\w.])(TEST|TEST_F|TEST_P|TYPED_TEST|TYPED_TEST_P)\s*\(\s*([A-Za-z_]\w*)\s*,\s*([A-Za-z0-9_]\w*)\s*\)'
     for m in re.finditer(pattern,clean):
         row=_case(path,clean.count('\n',0,m.start())+1,f'{m[2]}.{m[3]}',m[1],m[1] in {'TEST_P','TYPED_TEST','TYPED_TEST_P'} or m[2].isupper())
         row['column']=m.start()-clean.rfind('\n',0,m.start());results.append(row)
@@ -36,9 +36,6 @@ def scan_cpp(text,path):
         line=clean.count('\n',0,m.start())+1
         row=_case(path,line,f'static_assert@{line}','static_assert')
         row['column']=m.start()-clean.rfind('\n',0,m.start());results.append(row)
-    # Keep every declaration. Only ambiguous same-line identities gain a column
-    # suffix; existing single-declaration mappings remain stable. This is source
-    # disambiguation, not resolution of duplicate runtime registrations.
     repeated=Counter((c['line'],c['identity']) for c in results)
     for c in results:
         c['declared_identity']=c['identity']
@@ -58,7 +55,6 @@ def scan_python(text,path):
     walk(tree,[]);return found
 
 def scan_rust(text,path):
-    # Do not treat Rust lifetimes ('a) as multi-line character literals.
     pattern=r'//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\\n])\''
     clean=re.sub(pattern,lambda m:''.join('\n' if c=='\n' else ' ' for c in m[0]),text)
     tests=r'#\s*\[\s*(?:test|wasm_bindgen_test)\s*\](?:\s*#\[[^\]]*\])*\s*(?:pub\s+)?(?:async\s+)?fn\s+(\w+)'
