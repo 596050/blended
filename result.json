@@ -1,17 +1,17 @@
 {
-  "url": "https://rawcdn.githack.com/596050/blended/dde910d0ac42299b5781151de58f85b3182d7e2d/index.html",
-  "expected_case_count": 367,
-  "expected_source_commit": "acbc9ea4d3fae3c01a304ecd71a12ca3a4745b21",
-  "started_utc": "2026-10-24T00:24:55.820011+00:00",
+  "url": "https://rawcdn.githack.com/596050/blended/3c63992f595e65e72ae8d8721d520d6e6c4d1f0c/index.html",
+  "expected_case_count": 416,
+  "expected_source_commit": "f33441bd76b8b039ec3d29926923d9949e62ec2f",
+  "started_utc": "2026-10-24T00:33:16.896710+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "acbc9ea4d3fae3c01a304ecd71a12ca3a4745b21",
+    "source_commit": "f33441bd76b8b039ec3d29926923d9949e62ec2f",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 367,
+    "passed": 416,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -2585,6 +2585,349 @@
         "passed": true,
         "code": 1,
         "assertions": 13
+      },
+      {
+        "id": "array_utils.ReverseStringEmpty",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "array_utils.ReverseStringSingle",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "array_utils.ReverseString4",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "array_utils.ReverseInt4",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.FindIndexStringEmpty",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexStringSingle",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexStringSingleMissing",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexString4",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexInt4",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexInt4_DupeEnd",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexInt4_DupeMid",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindIndexPointer",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "array_utils.BinaryAndInt4Zero",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.BinaryAndInt4Mix",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.BinaryOrInt4Alternate",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.BinaryOrInt4Mix",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.DeduplicateOrdered1",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.DeduplicateOrdered2",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "array_utils.DeduplicateOrdered2Same",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.DeduplicateOrdered3Same",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.DeduplicateOrdered3",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "array_utils.FindAllRanges1",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "array_utils.FindAllRanges2",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindAllRanges3",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindAllRanges4",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindAllRanges5",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "array_utils.FindMaxElement1",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "array_utils.FindMaxElement2",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindMaxElement3",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.FindMaxElement4",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "array_utils.GroupIdsToIndicesEmpty",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "array_utils.GroupIdsToIndicesDense",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "array_utils.GroupIdsToIndicesSparse",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "array_utils.GroupIdsToIndicesMask",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "array_utils.GroupIdsToIndicesLarge",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 20
+      },
+      {
+        "id": "csv_parse.FindEndOfSimpleField",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 20
+      },
+      {
+        "id": "csv_parse.FindEndOfQuotedField",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 25
+      },
+      {
+        "id": "csv_parse.ParseRecordFields",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 19
+      },
+      {
+        "id": "csv_parse.ParseCsvBasic",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 17
+      },
+      {
+        "id": "csv_parse.ParseCsvMissingEnd",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "csv_parse.ParseCsvMultiLine",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "csv_parse.ParseCsvEmpty",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "csv_parse.ParseCsvTitlesOnly",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "csv_parse.ParseCsvTrailingNewline",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "csv_parse.UnescapeField",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "hash_mm2a.MM2ABasic",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "hash_mm2a.MM2AConcatenateStrings",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "hash_mm2a.MM2AIntegers",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "disjoint_set.Test",
+        "group": "data",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
       }
     ],
     "errors": [],
@@ -2596,9 +2939,10 @@
     "sampling_assertions": 180,
     "curve_assertions": 222,
     "heap_assertions": 16300,
-    "wasm_sha256": "84df0edd44417e833803d4344ee3a04b16eefbc9110ad52f14b9660de1d335f9",
+    "data_assertions": 264,
+    "wasm_sha256": "97dab03e7e95b70e90ba7014e3d23fb73517be443c838670c7d778fba9120ddd",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-24T00:25:00.256037+00:00"
+  "finished_utc": "2026-10-24T00:33:21.265150+00:00"
 }
