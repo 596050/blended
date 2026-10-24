@@ -5,9 +5,9 @@
   "test_conformance_complete": false,
   "feature_parity": false,
   "source_candidates": 5859,
-  "mapped_source_candidates": 518,
-  "unported_source_candidates": 5341,
-  "unported_source_declarations": 5341,
+  "mapped_source_candidates": 545,
+  "unported_source_candidates": 5314,
+  "unported_source_declarations": 5314,
   "runtime_denominator_known": false,
   "runtime_reference_commit": null,
   "observed_unported_runtime_cases": 0,
@@ -27,6 +27,8 @@
     "fixture_completeness_not_verified",
     "runtime_enumeration_incomplete",
     "runtime_reference_missing_or_stale",
+    "unknown_port:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc::polyfill2d.3Colinear::438",
+    "unknown_port:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc::polyfill2d.4Colinear::445",
     "unported_source_cases",
     "unreadable_source_files",
     "unreconciled_runtime_family:compile_time",
@@ -44949,13 +44951,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.TriangleCCW",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.TriangleCCW:403",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__TriangleCCW"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -44964,13 +44966,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.SquareCCW",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.SquareCCW:410",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__SquareCCW"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -44979,13 +44981,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.SquareCW",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.SquareCW:417",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__SquareCW"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -44994,13 +44996,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Starfleet",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Starfleet:424",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Starfleet"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45009,13 +45011,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.StarfleetDegenerate",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.StarfleetDegenerate:431",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__StarfleetDegenerate"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45024,13 +45026,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.UnorderedColinear",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.UnorderedColinear:452",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__UnorderedColinear"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45039,13 +45041,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.PlusShape",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.PlusShape:459",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__PlusShape"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45054,13 +45056,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.StarShape",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.StarShape:479",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__StarShape"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45069,13 +45071,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.UShape",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.UShape:486",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__UShape"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45084,13 +45086,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Spiral",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Spiral:494",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Spiral"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45099,13 +45101,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.TestFlipCode",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.TestFlipCode:518",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__TestFlipCode"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45114,13 +45116,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.SelfIntersect",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.SelfIntersect:541",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__SelfIntersect"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45129,13 +45131,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.SelfTouch",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.SelfTouch:548",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__SelfTouch"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45144,13 +45146,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.SelfOverlap",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.SelfOverlap:568",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__SelfOverlap"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45159,13 +45161,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.TestDavData",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.TestDavData:588",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__TestDavData"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45174,13 +45176,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Issue815",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Issue815:600",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Issue815"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45189,13 +45191,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Issue207_1",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Issue207_1:616",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Issue207_1"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45204,13 +45206,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Issue207_11",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Issue207_11:636",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Issue207_11"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45219,13 +45221,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Issue1407",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Issue1407:655",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Issue1407"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45234,13 +45236,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Issue1407_pt",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Issue1407_pt:668",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Issue1407_pt"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45249,13 +45251,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.IssueT40777_colinear",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.IssueT40777_colinear:681",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__IssueT40777_colinear"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45264,13 +45266,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.IssueT41986_axis_align",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.IssueT41986_axis_align:692",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__IssueT41986_axis_align"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45279,13 +45281,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.IssueT52834_axis_align_co_linear",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.IssueT52834_axis_align_co_linear:707",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__IssueT52834_axis_align_co_linear"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45294,13 +45296,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.IssueT67109_axis_align_co_linear_a",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.IssueT67109_axis_align_co_linear_a:723",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__IssueT67109_axis_align_co_linear_a"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45309,13 +45311,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.IssueT67109_axis_align_co_linear_b",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.IssueT67109_axis_align_co_linear_b:741",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__IssueT67109_axis_align_co_linear_b"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45324,13 +45326,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.IssueT67109_axis_align_co_linear_c",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.IssueT67109_axis_align_co_linear_c:759",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__IssueT67109_axis_align_co_linear_c"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_polyfill_2d_test.cc",
@@ -45339,13 +45341,13 @@
       "kind": "TEST",
       "requires_runtime_expansion": false,
       "execution": "not_run",
-      "port_status": "not_ported",
+      "port_status": "mapped_reviewed",
       "column": 1,
       "declared_identity": "polyfill2d.Issue103913_axis_align_co_linear_no_zero_area_tri",
       "upstream": "blender",
       "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
       "id": "blender:94363991e7dcf39e2d70614aa002ab6f67764a5d:source/blender/blenlib/tests/BLI_polyfill_2d_test.cc:polyfill2d.Issue103913_axis_align_co_linear_no_zero_area_tri:778",
-      "target_test": null
+      "target_test": "upstream_polyfill::polyfill2d__Issue103913_axis_align_co_linear_no_zero_area_tri"
     },
     {
       "path": "source/blender/blenlib/tests/BLI_pool_test.cc",

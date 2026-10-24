@@ -253,6 +253,23 @@
  
  // source/blender/blenlib/tests/BLI_math_half_test.cc:17
  pub fn math_half__half_to_float_scalar()->Report{let mut report=Report::default();
+--- polyfill_cases.rs
++++ shadow/polyfill_cases.rs
+@@ -10,10 +10,10 @@
+  pub fn check(&mut self,passed:bool,expression:&str,line:u32){self.assertions+=1;if !passed{self.failures.push(format!("line {line}: {expression}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! ne {($r:expr,$a:expr,$b:expr)=>{{$r.check($a!=$b,stringify!($a != $b),line!());}};}
+-macro_rules! yes {($r:expr,$v:expr)=>{{$r.check($v,stringify!($v),line!());}};}
+-macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check((($a as f64)-($b as f64)).abs()<=($e as f64),stringify!($a ~= $b),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! ne {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::ne($a,$b),stringify!($a != $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! near {($r:expr,$a:expr,$b:expr,$e:expr)=>{{$r.check(crate::fidelity_trace::near($a as f64,$b as f64,$e as f64),stringify!($a ~= $b within $e),line!());}};}
+ 
+ // Original test helper maths remain separate from the production implementation.
+ fn cross(a:[f32;2],b:[f32;2],c:[f32;2])->f32{(a[0]-b[0])*(b[1]-c[1])+(a[1]-b[1])*(c[0]-b[0])}
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
