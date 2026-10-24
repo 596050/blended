@@ -1,70 +1,77 @@
 {
   "date": "2026-10-24",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "verified_runtime_source_commit": "059bfb9b277e8bc5aefb9834dd671879094a0599",
-  "verified_public_static_commit": "63655e85d5b56c357645c92e3874af3940fd161e",
-  "verified_public_url": "https://rawcdn.githack.com/596050/blended/63655e85d5b56c357645c92e3874af3940fd161e/index.html",
-  "verified_original_cpp_native_wasm_and_public_run": 40045600207,
-  "blender_runtime_cases_native": 416,
-  "blender_runtime_cases_wasm": 416,
-  "blender_runtime_cases_public_url": 416,
+  "verified_runtime_source_commit": "ab692209e9eb98248054ae90ead9b0258f1ab4da",
+  "verified_public_static_commit": "51d30f5a549da822a9dc0945d353ef6414938092",
+  "verified_public_url": "https://rawcdn.githack.com/596050/blended/51d30f5a549da822a9dc0945d353ef6414938092/index.html",
+  "verified_original_cpp_native_wasm_and_public_run": 40049834310,
+  "blender_runtime_cases_native": 464,
+  "blender_runtime_cases_wasm": 464,
+  "blender_runtime_cases_public_url": 464,
   "public_browser_errors": [],
-  "assertion_events_compared_per_implementation": 33368,
+  "assertion_events_compared_per_implementation": 34214,
   "native_floating_differences_within_original_rules": 8,
   "browser_floating_differences_within_original_rules": 9,
-  "new_data_floating_differences": 0,
-  "new_data_cases": 49,
-  "new_data_assertion_events": 264,
+  "new_string_floating_differences": 0,
+  "new_string_cases": 48,
+  "new_string_assertion_events": 846,
+  "new_string_TEST_declarations": 29,
+  "new_string_TEST_F_declarations": 19,
   "new_complete_runtime_source_files": {
-    "BLI_array_utils_test.cc": {"cases": 35, "assertion_events": 133},
-    "BLI_csv_parse_test.cc": {"cases": 10, "assertion_events": 114},
-    "BLI_hash_mm2a_test.cc": {"cases": 3, "assertion_events": 5},
-    "BLI_disjoint_set_test.cc": {"cases": 1, "assertion_events": 12}
+    "BLI_string_test.cc": {"cases": 43, "assertion_events": 801},
+    "BLI_string_search_test.cc": {"cases": 3, "assertion_events": 31},
+    "BLI_string_utils_test.cc": {"cases": 2, "assertion_events": 14}
   },
-  "data_test_first": {
-    "run": 40044605903,
-    "source_commit": "72e52d548f4907dd9836fe33981c4a5a0360c1a3",
-    "failure": "Four E0583 missing implementation modules plus dependent inference errors; not executed assertion failures",
-    "durable_archive": "evidence/data-test-first-evidence.zip",
-    "archive_sha256": "5c565d80aac81bb3a83be15e5ea50c08e205a8e084f659b7d708cd1241bf5f4e",
-    "native_log_sha256": "2e7dd3509d1acf872bbfcd631a22a549102cbf560b9c42f658eb731ccde577fd"
+  "string_test_first": {
+    "run": 40049137734,
+    "source_commit": "719f4db5f7011cae3e540e1d9c348fa5fc44cf39",
+    "failure": "Two E0583 missing implementation modules and a dependent E0282 inference error; not executed assertion failures",
+    "durable_archive": "evidence/string-ops-test-first-evidence.zip",
+    "archive_sha256": "8c82ce4656e8b3b74a4de54d6c707155a86f1363c96f2e4fded8e02afaa46279",
+    "native_log_sha256": "38525566d0804c9a0e631cb88bcbcaeca77f66330a389a172cef158f6a5a48a7"
   },
-  "supplemental_hash_streaming": {
-    "configurations": 10592,
-    "outputs_per_implementation": 31776,
+  "supplemental_string_oracle": {
+    "input_strings": 56,
+    "ordered_pairs": 3136,
+    "natural_order_values": 3136,
+    "search_offset_values": 21952,
+    "total_results_per_replacement_platform": 25088,
+    "search_lengths": [0, 1, 2, 3, 4, 8, 32],
     "original_cpp_vs_native": "exact_match",
     "original_cpp_vs_browser_wasm": "exact_match",
-    "seeds": 4,
-    "input_lengths_inclusive": [0, 64],
-    "endian_scope": "Native x86_64 and wasm32 little endian; original hash is endian-sensitive",
+    "locale": "C",
+    "corpus": "Explicit ASCII including empty/control/case/numeric-prefix/leading-zero strings",
     "counted_as_upstream_cases": false
   },
   "supplemental_negative_controls": {
-    "mutations": ["csv_trailing_empty", "hash_drop_pending_tail", "dense_first_indices_reversed", "disjoint_join_noop"],
+    "mutations": ["append_noop", "search_wrong_address", "transposition_disabled", "uniqueness_disabled"],
     "native_and_browser": "All detected by unchanged tests; independent controls pass; original assertion counts retained",
     "compiler_error_panic_or_trap_accepted_as_detection": false,
     "counted_as_upstream_cases": false
   },
+  "pointer_recording_scope": "Real equality/nullness uses pair-local alias labels in new string fixture; independent supplemental oracle compares exact search offsets. No allocation-layout claim.",
+  "valid_unicode_scope_only": true,
+  "complete_locale_or_malformed_utf8_compatibility": false,
   "compile_time_cases_separate_from_runtime": 6,
   "compile_time_native_positive_and_negative": "passed",
   "compile_time_wasm_positive_and_negative": "passed",
   "cycles_native_cases": 3,
-  "product_safety_regression_native_cases": 25,
-  "total_native_rust_runtime_tests": 444,
+  "product_safety_regression_native_cases": 30,
+  "total_native_rust_runtime_tests": 497,
   "source_candidates": 5859,
-  "mapped_source_candidates": 422,
-  "unmapped_source_candidates": 5437,
+  "mapped_source_candidates": 470,
+  "unmapped_source_candidates": 5389,
   "source_counts_are_runtime_denominator": false,
   "runtime_denominator_known": false,
   "unported_runtime_cases": null,
   "complete_blender_test_port": false,
   "full_feature_parity": false,
   "full_completeness_gate": "failed; subset verification and publication are separate",
-  "previous_heap_verification": {
-    "source_commit": "df61b87fa3b2b5a0751100e427eab11d7205ad5a",
-    "run": 40019426923,
-    "runtime_cases": 367,
-    "assertion_events": 33104
+  "previous_data_verification": {
+    "source_commit": "059bfb9b277e8bc5aefb9834dd671879094a0599",
+    "run": 40045600207,
+    "runtime_cases": 416,
+    "assertion_events": 33368
   },
   "fixture_verification": {
     "historical_run": 39847680248,
@@ -72,6 +79,6 @@
     "verified_objects": 6691,
     "verified_bytes": 870496042,
     "all_test_dependencies_verified": false,
-    "current_data_inputs": "Source-embedded fixtures and separately recorded streaming corpus; no .blend payloads needed by this batch"
+    "current_string_inputs": "Source-embedded fixture bytes plus separately recorded original-reference corpus; no .blend payloads required by this batch"
   }
 }
