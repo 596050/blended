@@ -1,0 +1,30 @@
+name: Register full UTF8 transcript infrastructure
+on:
+  push:
+    branches: [compat/utf8-boundaries]
+    paths: ['.github/workflows/utf8-streaming-registration.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Wire full-event comparison and deterministic table reproduction
+        run: |
+          set -euo pipefail
+          python3 tools/enable_utf8_streaming.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit only the reviewed infrastructure changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add tools/assertion_fidelity.py tools/fidelity/trace.rs .github/workflows/assertion-fidelity.yml .github/workflows/test-port-conformance.yml
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Preserve every UTF8 stress assertion with bounded-memory comparison and full lossless raw evidence'
+          git push origin HEAD:refs/heads/compat/utf8-boundaries
