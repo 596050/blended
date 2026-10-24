@@ -1,0 +1,1 @@
+import fs from 'node:fs';const bytes=fs.readFileSync(process.argv[2]);const{instance}=await WebAssembly.instantiate(bytes,{});const w=instance.exports,n=w.polygon_probe_run(),ptr=w.polygon_probe_ptr();fs.writeFileSync(process.argv[3],Buffer.from(w.memory.buffer,ptr,n));console.log(JSON.stringify({runtime:process.version,bytes:n}));

@@ -63,8 +63,8 @@
 [1m[94m468[0m [1m[94m|[0m   for i in 0..amount {
     [1m[94m|[0m       [1m[33m^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_i`[0m
 
-[1m[33mwarning[0m: `blended-core` (lib test) generated 10 warnings (run `cargo fix --lib -p blended-core --tests` to apply 8 suggestions)
-[1m[33mwarning[0m: `blended-core` (lib) generated 10 warnings (10 duplicates)
+[1m[33mwarning[0m: `blended-core` (lib) generated 10 warnings (run `cargo fix --lib -p blended-core` to apply 8 suggestions)
+[1m[33mwarning[0m: `blended-core` (lib test) generated 10 warnings (10 duplicates)
 [1m[33mwarning[0m[1m: unused import: `blended_core::cycles_math::*`[0m
  [1m[94m--> [0mcrates/blended-core/tests/upstream_cycles_math.rs:5:5
   [1m[94m|[0m
@@ -74,7 +74,7 @@
   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 [1m[33mwarning[0m: `blended-core` (test "upstream_cycles_math") generated 1 warning (run `cargo fix --test "upstream_cycles_math" -p blended-core` to apply 1 suggestion)
-[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 4.91s
+[1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 4.98s
 [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/blended_core-7c19c97da15a31fb)
 
 running 0 tests
@@ -86,10 +86,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 running 6 tests
 test box_faces_point_outwards ... ok
 test box_has_exact_dimensions ... ok
-test box_has_independent_face_vertices_and_twelve_triangles ... ok
 test invalid_box_dimensions_rejected ... ok
 test invalid_plane_dimensions_rejected ... ok
 test plane_is_xz_with_two_triangles ... ok
+test box_has_independent_face_vertices_and_twelve_triangles ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -133,9 +133,9 @@ test clamp_nan_prefix_and_tail_retain_pinned_difference ... ok
 test normalised_values_truncate_and_raw_minimum_is_not_silently_clamped ... ok
 test half_midpoints_round_to_even_including_subnormals ... ok
 test packed_ten_bit_formats_keep_two_bit_alpha_distinct ... ok
+test scoped_fp_mode_is_real_on_native_and_restored_exactly ... ok
 test signed_zeros_and_nan_payloads_are_preserved_as_profiled ... ok
 test zero_length_conversion_and_tails_keep_sentinels ... ok
-test scoped_fp_mode_is_real_on_native_and_restored_exactly ... ok
 
 test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -144,8 +144,8 @@ test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 running 4 tests
 test empty_extrema_are_explicit ... ok
 test invalid_case_is_not_a_pass ... ok
-test overflow_is_rejected ... ok
 test invalid_divisors_are_rejected ... ok
+test overflow_is_rejected ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -201,12 +201,12 @@ test bit_group_vector__Construct ... ok
 test bit_group_vector__CopyConstruct ... ok
 test bit_group_vector__DefaultConstruct ... ok
 test bit_group_vector__foreachAnd ... ok
-test bit_span__CopyFrom ... ok
 test bit_span__DefaultConstructor ... ok
+test bit_span__CopyFrom ... ok
 test bit_span__FindFirst0Index ... ok
 test bit_span__FindFirst1Index ... ok
-test bit_span__ForEach1 ... ok
 test bit_span__ForEach1Cancel ... ok
+test bit_span__ForEach1 ... ok
 test bit_span__IsBounded ... ok
 test bit_span__Iteration ... ok
 test bit_span__MutableIteration ... ok
@@ -214,13 +214,13 @@ test bit_span__RangeConstructor ... ok
 test bit_span__Set ... ok
 test bit_span__SetEmpty ... ok
 test bit_span__SubscriptOperator ... ok
-test bit_span__or_bools_into_bits ... ok
 test bit_span__SetSliced ... ok
-test bit_span__to_index_ranges_all_ones ... ok
+test bit_span__or_bools_into_bits ... ok
 test bit_span__to_index_ranges_small ... ok
 test bitmap__empty_is_all_unset ... ok
 test bitmap__find_first_unset_empty ... ok
 test bitmap__find_first_unset_full ... ok
+test bit_span__to_index_ranges_all_ones ... ok
 test bitmap__find_first_unset_middle ... ok
 test bit_span__InPlaceAnd ... ok
 test bit_span__InPlaceOr ... ok
@@ -234,28 +234,28 @@ test bit_ref__Cast ... ok
 test bit_ref__MaskFirstNBits ... ok
 test bit_ref__IntContainingBit ... ok
 test bit_ref__MaskLastNBits ... ok
-test bit_ref__MaskSingleBit ... ok
+test bit_ref__MaskRangeBits ... ok
 test bit_ref__Reset ... ok
 test bit_ref__Set ... ok
 test bit_ref__SetBranchless ... ok
 test bit_ref__Test ... ok
 test bit_vector__Append ... ok
-test bit_vector__CopyConstructorInline ... ok
+test bit_ref__MaskSingleBit ... ok
 test bit_vector__AppendMany ... ok
+test bit_vector__CopyConstructorInline ... ok
 test bit_vector__CopyConstructorLarge ... ok
-test bit_ref__MaskRangeBits ... ok
 test bit_vector__DefaultConstructor ... ok
 test bit_vector__IndexAccess ... ok
 test bit_vector__Iterator ... ok
 test bit_vector__MoveConstructorInline ... ok
 test bit_vector__MoveConstructorLarge ... ok
+test bit_vector__SizeConstructor ... ok
 test bit_vector__SizeFillConstructor ... ok
 test index_ranges_builder__Empty ... ok
 test index_ranges_builder__Full ... ok
 test index_ranges_builder__Multiple ... ok
 test index_ranges_builder__Single ... ok
 test unique_sorted_indices__FindContentRange ... ok
-test bit_vector__SizeConstructor ... ok
 test unique_sorted_indices__FindRangeEnd ... ok
 test unique_sorted_indices__FindSizeOfNextRange ... ok
 test unique_sorted_indices__FindStartOfNextRange ... ok
@@ -273,8 +273,8 @@ test length_parameterize__ArbitraryFloatSimple ... ok
 test length_parameterize__Float ... ok
 test length_parameterize__Float2 ... ok
 test length_parameterize__Float2Cyclic ... ok
-test length_parameterize__InterpolateColor ... ok
 test length_parameterize__FloatSimple ... ok
+test length_parameterize__InterpolateColor ... ok
 test length_parameterize__LineMany ... ok
 test length_parameterize__CyclicMany ... ok
 
@@ -295,14 +295,14 @@ running 49 tests
 test array_utils__BinaryAndInt4Mix ... ok
 test array_utils__BinaryAndInt4Zero ... ok
 test array_utils__BinaryOrInt4Alternate ... ok
-test array_utils__DeduplicateOrdered1 ... ok
 test array_utils__BinaryOrInt4Mix ... ok
+test array_utils__DeduplicateOrdered1 ... ok
+test array_utils__DeduplicateOrdered2 ... ok
 test array_utils__DeduplicateOrdered2Same ... ok
 test array_utils__DeduplicateOrdered3 ... ok
-test array_utils__DeduplicateOrdered2 ... ok
+test array_utils__DeduplicateOrdered3Same ... ok
 test array_utils__FindAllRanges1 ... ok
 test array_utils__FindAllRanges2 ... ok
-test array_utils__DeduplicateOrdered3Same ... ok
 test array_utils__FindAllRanges3 ... ok
 test array_utils__FindAllRanges4 ... ok
 test array_utils__FindAllRanges5 ... ok
@@ -333,11 +333,11 @@ test csv_parse__ParseCsvEmpty ... ok
 test csv_parse__ParseCsvMissingEnd ... ok
 test csv_parse__ParseCsvMultiLine ... ok
 test csv_parse__ParseCsvTitlesOnly ... ok
-test csv_parse__ParseCsvTrailingNewline ... ok
 test csv_parse__ParseRecordFields ... ok
+test csv_parse__UnescapeField ... ok
+test csv_parse__ParseCsvTrailingNewline ... ok
 test disjoint_set__Test ... ok
 test hash_mm2a__MM2ABasic ... ok
-test csv_parse__UnescapeField ... ok
 test hash_mm2a__MM2AConcatenateStrings ... ok
 test hash_mm2a__MM2AIntegers ... ok
 test array_utils__GroupIdsToIndicesLarge ... ok
@@ -369,11 +369,11 @@ test math_geom_hh__IsectLineLine3D ... ok
 test math_geom_hh__IsectLinePlane ... ok
 test math_geom_hh__IsectPointPoly ... ok
 test math_geom_hh__IsectPointQuad2D ... ok
-test math_geom_hh__LinePointFactor2D ... ok
 test math_geom_hh__IsectPointTri2D ... ok
+test math_geom_hh__LinePointFactor2D ... ok
 test math_geom_hh__LinePointFactor3D ... ok
-test math_geom_hh__NormalQuad ... ok
 test math_geom_hh__MapToSphere ... ok
+test math_geom_hh__NormalQuad ... ok
 test math_geom_hh__PlaneFromPointNormal ... ok
 test math_geom_hh__PlanePointSide ... ok
 test math_geom_hh__PolyToTriCount ... ok
@@ -388,30 +388,30 @@ test heap__One ... ok
 test heap__Rand1 ... ok
 test heap__Rand2 ... ok
 test heap__Rand100 ... ok
-test heap__RangeRemove ... ok
-test heap__ReInsertRandom1 ... ok
 test heap__Duplicates ... ok
+test heap__ReInsertRandom1 ... ok
 test heap__ReInsertRandom100 ... ok
-test heap__ReInsertRandom2 ... ok
 test heap__Range ... ok
-test heap__RangeReverse ... ok
+test heap__ReInsertRandom2 ... ok
+test heap__RangeRemove ... ok
 test heap__ReInsertRandom1024 ... ok
+test heap__SimpleDuplicates ... ok
 test heap__SimpleEmpty ... ok
 test heap__SimpleOne ... ok
+test heap__RangeReverse ... ok
 test heap__SimpleRand1 ... ok
-test heap__SimpleDuplicates ... ok
-test heap__SimpleRand2 ... ok
 test heap__SimpleRand100 ... ok
+test heap__SimpleRand2 ... ok
 test heap__SimpleRange ... ok
 test inplace_priority_queue__BuildSmall ... ok
 test inplace_priority_queue__DecreasePriority ... ok
 test inplace_priority_queue__IncreasePriority ... ok
 test inplace_priority_queue__IndicesAccess ... ok
 test heap__SimpleRangeReverse ... ok
-test heap__ReInsertSimple ... ok
-test inplace_priority_queue__PopAll ... ok
 test heap__ReInsertRandom2048 ... ok
+test inplace_priority_queue__PopAll ... ok
 test inplace_priority_queue__ManyPriorityChanges ... ok
+test heap__ReInsertSimple ... ok
 
 test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
@@ -428,13 +428,13 @@ test MaxList ... ok
 test MinList ... ok
 test Sign ... ok
 test exp ... ok
+test log ... ok
 test rcp ... ok
 test safe_rcp ... ok
 test safe_sqrt ... ok
 test sqrt ... ok
 test square ... ok
 test test_invert_v3_safe ... ok
-test log ... ok
 
 test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -443,23 +443,23 @@ test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 21 tests
 test math_matrix_types__AddOperator ... ok
 test math_matrix_types__ComponentAccess ... ok
-test math_matrix_types__ComponentMasking ... ok
 test math_matrix_types__DefaultConstructor ... ok
-test math_matrix_types__MatrixMultiplyOperator ... ok
 test math_matrix_types__MultiplyOperator ... ok
-test math_matrix_types__PointerArrayConversion ... ok
-test math_matrix_types__SmallerMatrixConstructor ... ok
-test math_matrix_types__StaticConstructor ... ok
+test math_matrix_types__ComponentMasking ... ok
+test math_matrix_types__MatrixMultiplyOperator ... ok
 test math_matrix_types__PointerConversion ... ok
+test math_matrix_types__SmallerMatrixConstructor ... ok
+test math_matrix_types__PointerArrayConversion ... ok
+test math_matrix_types__StaticConstructor ... ok
 test math_matrix_types__SubtractOperator ... ok
 test math_matrix_types__TypeConversion ... ok
 test math_matrix_types__VectorConstructor ... ok
 test math_matrix_types__VectorMultiplyOperator ... ok
-test math_matrix_types__ViewConstructor ... ok
 test math_matrix_types__ViewAssignment ... ok
 test math_matrix_types__ViewFromCstyleMatrix ... ok
-test math_matrix_types__ViewMatrixMultiplyOperator ... ok
+test math_matrix_types__ViewConstructor ... ok
 test math_matrix_types__ViewMatrixNormalize ... ok
+test math_matrix_types__ViewMatrixMultiplyOperator ... ok
 test math_matrix_types__ViewScalarOperators ... ok
 test math_matrix_types__ViewVectorMultiplyOperator ... ok
 
@@ -469,9 +469,8 @@ test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
 running 40 tests
 test color__SceneLinearByteDecoding ... ok
-test color__SceneLinearPremultipliedToSrgbByte ... ok
 test color__SceneLinearByteEncoding ... ok
-test color__SceneLinearPremultipliedToSrgbFloat ... ok
+test color__SceneLinearPremultipliedToSrgbByte ... ok
 test color__SceneLinearPremultipliedToStraight ... ok
 test color__SceneLinearStraightSrgbByte ... ok
 test color__SceneLinearStraightSrgbFloat ... ok
@@ -480,19 +479,20 @@ test color__SrgbStraightFloatToByte ... ok
 test color__SrgbStraightToSceneLinearPremultiplied ... ok
 test color__ThemeByteToFloat ... ok
 test math_vec_types__Add ... ok
+test color__SceneLinearPremultipliedToSrgbFloat ... ok
 test math_vec_types__AddFloatByVector ... ok
 test math_vec_types__ComponentMasking ... ok
 test math_vec_types__Divide ... ok
 test math_vec_types__DivideFloatByVector ... ok
 test math_vec_types__DivideFloatByVectorSmall ... ok
 test math_vec_types__MixedScalarVectorConstructorVec3 ... ok
-test math_vec_types__MixedScalarVectorConstructorVec4 ... ok
 test math_vec_types__Mul ... ok
-test math_vec_types__MulFloatByVector ... ok
+test math_vec_types__MixedScalarVectorConstructorVec4 ... ok
 test math_vec_types__MultiScalarConstructorVec2 ... ok
 test math_vec_types__MultiScalarConstructorVec3 ... ok
 test math_vec_types__MultiScalarConstructorVec4 ... ok
 test math_vec_types__PointerArrayConversion ... ok
+test math_vec_types__MulFloatByVector ... ok
 test math_vec_types__PointerConversion ... ok
 test math_vec_types__ScalarConstructorDouble ... ok
 test math_vec_types__ScalarConstructorFloat ... ok
@@ -515,14 +515,14 @@ test result: ok. 40 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
 running 9 tests
 test math_half__float_to_half_array ... ok
-test math_half__float_to_half_make_finite_array ... ok
 test math_half__float_to_half_clamp_array ... ok
+test math_half__float_to_half_make_finite_array ... ok
 test math_half__float_to_half_make_finite_scalar ... ok
+test math_half__float_to_half_scalar ... ok
 test math_half__half_to_float_array ... ok
 test math_half__half_to_float_array_flush_to_zero ... ok
 test math_half__half_to_float_scalar ... ok
 test normalized_int__roundtrip ... ok
-test math_half__float_to_half_scalar ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -538,8 +538,8 @@ test polyfill2d__Issue207_1 ... ok
 test polyfill2d__IssueT40777_colinear ... ok
 test polyfill2d__Issue207_11 ... ok
 test polyfill2d__IssueT67109_axis_align_co_linear_a ... ok
-test polyfill2d__IssueT67109_axis_align_co_linear_b ... ok
 test polyfill2d__IssueT41986_axis_align ... ok
+test polyfill2d__IssueT67109_axis_align_co_linear_b ... ok
 test polyfill2d__IssueT67109_axis_align_co_linear_c ... ok
 test polyfill2d__SelfIntersect ... ok
 test polyfill2d__PlusShape ... ok
@@ -550,8 +550,8 @@ test polyfill2d__SquareCW ... ok
 test polyfill2d__StarShape ... ok
 test polyfill2d__Starfleet ... ok
 test polyfill2d__StarfleetDegenerate ... ok
-test polyfill2d__Spiral ... ok
 test polyfill2d__Issue103913_axis_align_co_linear_no_zero_area_tri ... ok
+test polyfill2d__Spiral ... ok
 test polyfill2d__TriangleCCW ... ok
 test polyfill2d__UShape ... ok
 test polyfill2d__UnorderedColinear ... ok
@@ -566,27 +566,27 @@ test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 27 tests
 test math_interp__BilinearCharExactSamples ... ok
 test math_interp__BilinearCharHalfwayUSamples ... ok
-test math_interp__BilinearCharFullyOutsideImage ... ok
 test math_interp__BilinearCharHalfwayVSamples ... ok
+test math_interp__BilinearCharFullyOutsideImage ... ok
 test math_interp__BilinearCharPartiallyOutsideImage ... ok
 test math_interp__BilinearCharPartiallyOutsideImageBorder ... ok
 test math_interp__BilinearCharPartiallyOutsideImageWrap ... ok
-test math_interp__BilinearCharSamples ... ok
 test math_interp__BilinearFloatFullyOutsideImage ... ok
 test math_interp__BilinearFloatPartiallyOutsideImage ... ok
-test math_interp__BilinearFloatPartiallyOutsideImageBorder ... ok
 test math_interp__BilinearFloatPartiallyOutsideImageWrap ... ok
 test math_interp__BilinearFloatSamples ... ok
+test math_interp__BilinearCharSamples ... ok
+test math_interp__BilinearFloatPartiallyOutsideImageBorder ... ok
 test math_interp__CubicBSplineCharExactSamples ... ok
-test math_interp__CubicBSplineCharSamples ... ok
-test math_interp__CubicBSplineFloatPartiallyOutsideImage ... ok
-test math_interp__CubicBSplineFloatSamples ... ok
-test math_interp__CubicMitchellCharExactSamples ... ok
 test math_interp__CubicBSplineCharPartiallyOutsideImage ... ok
-test math_interp__CubicMitchellCharSamples ... ok
+test math_interp__CubicBSplineCharSamples ... ok
+test math_interp__CubicBSplineFloatSamples ... ok
+test math_interp__CubicBSplineFloatPartiallyOutsideImage ... ok
 test math_interp__CubicMitchellCharPartiallyOutsideImage ... ok
-test math_interp__CubicMitchellFloatPartiallyOutsideImage ... ok
+test math_interp__CubicMitchellCharSamples ... ok
 test math_interp__CubicMitchellFloatSamples ... ok
+test math_interp__CubicMitchellCharExactSamples ... ok
+test math_interp__CubicMitchellFloatPartiallyOutsideImage ... ok
 test math_interp__NearestCharExactSamples ... ok
 test math_interp__NearestCharHalfwaySamples ... ok
 test math_interp__NearestFloatExactSamples ... ok
@@ -608,28 +608,27 @@ test StringCasecmpNatural__Period ... ok
 test StringCasecmpNatural__TextAndNumbers ... ok
 test StringCasecmpNatural__TextMixedCase ... ok
 test StringCasecmpNatural__TextOnlyLowerCase ... ok
+test StringCasecmpNatural__Whitespace ... ok
 test StringEscape__Control ... ok
 test StringEscape__Simple ... ok
 test StringFindSplitWords__Blank ... ok
 test StringFindSplitWords__LimitChars ... ok
 test StringFindSplitWords__LimitWords ... ok
 test StringFindSplitWords__Simple ... ok
-test StringCasecmpNatural__Whitespace ... ok
 test StringFindSplitWords__Spacing ... ok
 test StringFindSplitWords__Trailing_Left ... ok
-test StringFindSplitWords__Trailing_Right ... ok
 test StringFindSplitWords__Trailing_LeftRight ... ok
+test StringFindSplitWords__Trailing_Right ... ok
 test StringFindSplitWords__Triple ... ok
 test StringFindSplitWords__Whitespace ... ok
 test string__StrCat ... ok
 test string__StrFormatByteUnits ... ok
 test string__StrFormatDecimalUnits ... ok
 test string__StrFormatIntGrouped ... ok
-test string__StrIsDecimal ... ok
-test string__StrPartition ... ok
 test string__StrFormatIntegerUnits ... ok
-test string__StrJoin_Truncate ... ok
+test string__StrIsDecimal ... ok
 test string__StrFormatUint64Grouped ... ok
+test string__StrPartition ... ok
 test string__StrPartitionEx ... ok
 test string__StrPartitionExUtf8 ... ok
 test string__StrPartitionUtf8 ... ok
@@ -639,11 +638,12 @@ test string__StrReplaceRange ... ok
 test string__StringElemComplex ... ok
 test string__StringElemEmpty ... ok
 test string__StringElemSingle ... ok
-test string__StringMaxPossibleWordCount ... ok
 test string__StringNLen ... ok
+test string__StringMaxPossibleWordCount ... ok
 test string__StringStrncasestr ... ok
-test string_search__extract_normalized_words ... ok
+test string__StrJoin_Truncate ... ok
 test string_search__damerau_levenshtein_distance ... ok
+test string_search__extract_normalized_words ... ok
 test string_search__get_fuzzy_match_errors ... ok
 
 test result: ok. 48 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -653,10 +653,11 @@ test result: ok. 48 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 53 tests
 test string_ref__Add ... ok
 test string_ref__AddCharPtr1 ... ok
-test string_ref__AddCharPtr2 ... ok
 test string_ref__AddString1 ... ok
+test string_ref__AddCharPtr2 ... ok
 test string_ref__AddString2 ... ok
 test string_ref__CStringConstructor ... ok
+test string_ref__CompareEqual ... ok
 test string_ref__CompareEqualCharPtr1 ... ok
 test string_ref__CompareEqualCharPtr2 ... ok
 test string_ref__CompareEqualString1 ... ok
@@ -667,7 +668,6 @@ test string_ref__CopyUtf8Truncated ... ok
 test string_ref__DefaultConstructor ... ok
 test string_ref__DropKnownPrefix ... ok
 test string_ref__DropPrefixLargeN ... ok
-test string_ref__CompareEqual ... ok
 test string_ref__DropPrefixN ... ok
 test string_ref__DropSuffix ... ok
 test string_ref__DropSuffixLargeN ... ok
@@ -700,10 +700,10 @@ test string_ref_null__CompareEqualCharPtr1 ... ok
 test string_ref_null__CompareEqualCharPtr2 ... ok
 test string_ref_null__CompareEqualString1 ... ok
 test string_ref_null__CompareEqualString2 ... ok
+test string_ref_null__CompareEqualStringRef1 ... ok
 test string_ref_null__CompareEqualStringRef2 ... ok
 test string_ref_null__Constexpr ... ok
 test string_ref_null__DefaultConstructor ... ok
-test string_ref_null__CompareEqualStringRef1 ... ok
 
 test result: ok. 53 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -711,25 +711,25 @@ test result: ok. 53 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
 running 54 tests
 test binary_search__Empty ... ok
-test binary_search__Multiple ... ok
 test binary_search__One ... ok
+test binary_search__Multiple ... ok
 test bounds__Center ... ok
 test bounds__Contains ... ok
 test bounds__Empty ... ok
 test bounds__EmptyInt ... ok
 test bounds__IntersectSegment1D ... ok
 test bounds__IntersectSegment2D ... ok
+test bounds__IntersectSegment3D ... ok
 test bounds__MinGreaterThanZero ... ok
 test bounds__MinMax ... ok
-test bounds__IntersectSegment3D ... ok
 test bounds__MinMaxEmpty ... ok
 test bounds__MinMaxFloat ... ok
 test bounds__MinMaxRadii ... ok
 test bounds__Pad ... ok
 test bounds__Recenter ... ok
 test bounds__Resize ... ok
-test bounds__Size ... ok
 test bounds__ScaleFromCenter ... ok
+test bounds__Size ... ok
 test bounds__Translate ... ok
 test index_range__After ... ok
 test index_range__Before ... ok
@@ -742,9 +742,9 @@ test index_range__DropFrontAll ... ok
 test index_range__DropFrontLargeN ... ok
 test index_range__First ... ok
 test index_range__FromBeginEnd ... ok
+test index_range__FromBeginEndInclusive ... ok
 test index_range__FromBeginSize ... ok
 test index_range__FromEndSize ... ok
-test index_range__FromBeginEndInclusive ... ok
 test index_range__FromSingle ... ok
 test index_range__GenericAlgorithms ... ok
 test index_range__Intersect ... ok
@@ -776,17 +776,16 @@ test string__StrCopyUTF8_TerminateEncodingEarly ... ok
 test string__StrCopyUTF8_TruncateEncoding ... ok
 test string__StrCursorStepNextUtf32AllCombining ... ok
 test string__StrCopyUTF8_TruncateEncodingMulti ... ok
-test string__StrCursorStepNextUtf32Empty ... ok
 test string__StrCursorStepNextUtf32Complex ... ok
+test string__StrCursorStepNextUtf32Empty ... ok
 test string__StrCursorStepNextUtf32Simple ... ok
 test string__StrCursorStepNextUtf32Single ... ok
-test string__StrCursorStepNextUtf8AllCombining ... ok
 test string__StrCursorStepNextUtf32Invalid ... ok
+test string__StrCursorStepNextUtf8AllCombining ... ok
 test string__StrCursorStepNextUtf8AllComplex ... ok
-test string__StrCursorStepNextUtf8Empty ... ok
 test string__StrCursorStepNextUtf8Invalid ... ok
-test string__StrCursorStepNextUtf8Single ... ok
 test string__StrCursorStepNextUtf8Simple ... ok
+test string__StrCursorStepNextUtf8Single ... ok
 test string__StrCursorStepPrevUtf32AllCombining ... ok
 test string__StrCursorStepPrevUtf32Complex ... ok
 test string__StrCursorStepPrevUtf32Empty ... ok
@@ -797,16 +796,17 @@ test string__StrCursorStepPrevUtf8AllCombining ... ok
 test string__StrCursorStepPrevUtf8Complex ... ok
 test string__StrCursorStepPrevUtf8Empty ... ok
 test string__StrCursorStepPrevUtf8Invalid ... ok
-test string__StrCursorStepPrevUtf8Simple ... ok
+test string__StrCursorStepNextUtf8Empty ... ok
 test string__StrCursorStepPrevUtf8Single ... ok
 test string__StrPrintfUTF8_ASCII ... ok
 test string__StrPrintfUTF8_TerminateEncodingEarly ... ok
 test string__StrPrintfUTF8_TruncateEncodingMulti ... ok
 test string__StringNLenUTF8 ... ok
+test string__StrCursorStepPrevUtf8Simple ... ok
 test string__StringNLenUTF8_Incomplete ... ok
 test string__Utf8InvalidBytesSubstitutePatterns ... ok
-test string__Utf8InvalidBytesStrip ... ok
 test string__Utf8InvalidBytesSubstitute ... ok
+test string__Utf8InvalidBytesStrip ... ok
 test string__Utf8OffsetFromIndex_ClampedIndex ... ok
 test string__Utf8AsUnicodeStep ... ok
 

@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "supplemental genuine polygon permutations, not extra upstream test cases",
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_hashes": {
+    "intern/polyfill_2d.cc": "54627f28ba1dc29378f5c3fd0bdaddc0ee008eeccc50f5373c288d9f5c265d66",
+    "intern/polyfill_2d_beautify.cc": "ea328c820451911b312b13df02536ae240af5430b1db808a879c2196cfe9edd9",
+    "intern/BLI_heap.cc": "91bf514c89ccfe833346ddd7a4e1df72814bd38f9ecafc716f42c4edc2a0f7df",
+    "intern/BLI_memarena.cc": "b52c803d7b5e32a66a611621563812c68c4f10da8d2cf123c688fb50e92a51ce",
+    "intern/math_geom.cc": "68114c7b9742363686ab606c54791b2d745df3cb8c339aaac057397fd3c0c419",
+    "BLI_math_geom_c.hh": "ffca54ed739d6b5cdd5e687bbcde02201a0cdbbcc13fdc5f75e183b5b16fa0cf",
+    "intern/math_geom_inline.cc": "14fd1a90f4a4c5bc041b6343bb73c7cb57b1f41e1d4c44c987414da4a71452b3",
+    "BLI_math_vector_c.hh": "258fd71cd66927886b91ec313377e64f0963f2550788b112c8ec5683a04582f3",
+    "intern/math_vector_inline.cc": "15c60e8a6119fac59928921d0f7e3dc2a6b3489ccec5b54342c238ff749f9104"
+  },
+  "allocation_scope": "Unedited original algorithm, heap and arena; explicit host malloc/calloc bridge replaces guarded allocator, not allocator-parity evidence",
+  "configurations": 3064,
+  "triangulation_results": 6128,
+  "triangle_triplets": 133968,
+  "beautification_changed_outputs": 2528,
+  "output_words": 566512,
+  "output_sha256": "ef003e530f8ce7cdb380b296e03c6e6d838155f5955273d6fd71bcae92358349",
+  "corpus_sha256": "c36e39389a090fcc3f8169570942a7760a671d21b0fed5fd6b48537407cb3897",
+  "original_binary_sha256": "5c44ad7dd9135e157d3a98abe3d23c7194863d5e67bc04fe742b00ff2772408b",
+  "compiler_flags": [
+    "-std=c++20",
+    "-O2",
+    "-DNDEBUG",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-ffp-contract=off",
+    "-fno-fast-math"
+  ],
+  "source_commit": "efc7799e5050f28de66aa7ba11ed9a976165d21a",
+  "rust_implementation_sha256": "23a604ec3036dffbc65c7d2d4e58aa716373e2d711ead637f48d668cdfb6af3d",
+  "native": "exact_match",
+  "wasm": "exact_match",
+  "wasm_runtime": "Node.js, diagnostic module; production Chromium URL checks are separate",
+  "wasm_sha256": "1cc63dbd8f17db0f4085e346cd87f796ddd2350b993164ad2ca4d586601083a3",
+  "native_output_sha256": "ef003e530f8ce7cdb380b296e03c6e6d838155f5955273d6fd71bcae92358349",
+  "wasm_output_sha256": "ef003e530f8ce7cdb380b296e03c6e6d838155f5955273d6fd71bcae92358349"
+}
