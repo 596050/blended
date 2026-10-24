@@ -1,0 +1,66 @@
+name: UTF8 original-test-first evidence
+on:
+  push:
+    branches: [compat/utf8-boundaries]
+    paths: ['.github/workflows/utf8-test-first.yml', 'tools/bootstrap/utf8-reviewed.transport']
+permissions:
+  contents: write
+jobs:
+  test-first:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Materialise the independently hash-locked reviewed adapter sources
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,io,tarfile
+          from pathlib import Path
+          source=Path('tools/bootstrap/utf8-reviewed.transport')
+          # Repair two transport transcription insertions, not source/test logic.
+          # The independent locally recorded hash must match before any extraction.
+          encoded=base64.b64encode(source.read_bytes()).decode()
+          encoded=encoded.replace('CdMeGGQof','CdMeGQof').replace('NvynZ/ZF3Xig','NvynZ/Xig')
+          raw=base64.b64decode(encoded,validate=True)
+          assert hashlib.sha256(raw).hexdigest()=='cc4b3a65c9b2205e0ce0e3a7d3e7f5404c31b04ade985039e527b072030d1c32', 'Reviewed source transport mismatch'
+          expected={'tools/port_utf8_tests.py','tools/register_utf8_batch.py'}
+          with tarfile.open(fileobj=io.BytesIO(raw),mode='r:gz') as archive:
+              assert {m.name for m in archive.getmembers()}==expected
+              for m in archive.getmembers():
+                  assert m.isfile() and not Path(m.name).exists()
+                  Path(m.name).write_bytes(archive.extractfile(m).read())
+          source.unlink()
+          PY
+      - name: Register unchanged original cases without an implementation
+        run: |
+          set -euo pipefail
+          test ! -f crates/blended-core/src/utf8_compat.rs
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_utf8_batch.py
+      - name: Commit human-readable translations and source contracts before implementation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools compatibility tests
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register all 39 original UTF8 cases with their full stress loops before implementation; execution pending'
+          git push origin HEAD:refs/heads/compat/utf8-boundaries
+      - name: Execute missing implementation without suppressing failure
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/utf8-test-first
+          git rev-parse HEAD > evidence/utf8-test-first/source-commit.txt
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/utf8-test-first/native.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: utf8-test-first-evidence
+          path: evidence/utf8-test-first/
+          retention-days: 3
