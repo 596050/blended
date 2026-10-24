@@ -35,8 +35,8 @@ TEST(numbers, Two) { auto x='\\''; /* } */ EXPECT_EQ(1,1); }
                 self.assertEqual([(c[0],c[2]) for c in discovered],[(c['id'],c['line']) for c in mapped])
                 self.assertTrue(all(c['source_sha256']==hashlib.sha256(source.read_bytes()).hexdigest() for c in mapped))
     def test_current_runtime_universe(self):
-        cases,_=expected_cases();self.assertEqual(len(cases),512)
-        self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661546)
+        cases,_=expected_cases();self.assertEqual(len(cases),541)
+        self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196218)
         self.assertEqual([c['id'] for c in cases if c['expected_runtime_assertions']==0],['bit_span.SetEmpty'])
     def test_removed_group_fails_reviewed_bijection(self):
         cases,_=expected_cases()

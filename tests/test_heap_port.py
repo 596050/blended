@@ -30,7 +30,7 @@ class HeapPorts(unittest.TestCase):
   self.assertEqual(len(re.findall(r'\b(?:eq|le|yes|no)!\(',self.target)),66)
   self.assertEqual(sum(c['expected_runtime_assertions'] for c in self.manifest['cases']),16300)
  def test_independent_registered_universe(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),512);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661546)
+  cases,_=expected_cases();self.assertEqual(len(cases),541);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196218)
   self.assertEqual([c['id'] for c in cases if c['group']=='heaps'],[c['id'] for c in self.manifest['cases']])
  def test_actual_pointer_payload_and_live_priority_storage(self):
   self.assertEqual(self.target.count('b"test\\0".as_ptr()'),2)

@@ -6,7 +6,7 @@ from port_polyfill_tests import ROOT,PIN,SOURCE,SHA,HEADER,parse,extract
 FIXTURE='''
 /// Source-locked input data, not expectations produced by the triangulator.
 pub fn fixture(name:&str)->Vec<[f32;2]>{
- const SOURCE:&str=include_str!("../../../tests/upstream/blender/BLI_polyfill_2d_test.cc");
+ const SOURCE:&str=include_str!("polyfill_fixture.cc");
  let marker=format!("TEST(polyfill2d, {name})");
  let body=SOURCE.split_once(&marker).expect("Unknown original case").1;
  let values=body.split_once("const float poly[][2] = {").expect("Original fixture declaration").1.split_once("};").expect("Original fixture terminator").0;
@@ -29,6 +29,7 @@ def generate(root=ROOT):
  (root/'crates/blended-core/src/polyfill_cases.rs').write_text(out)
  (root/'crates/blended-core/tests/upstream_polyfill.rs').write_text(native)
  (root/'tests/upstream/blender/BLI_polyfill_2d_test.cc').write_bytes(raw)
+ (root/'crates/blended-core/src/polyfill_fixture.cc').write_bytes(raw)
  data=dict(schema=1,upstream_commit=PIN,source_sha256=SHA,cases=cases,complete_blender_test_port=False,helper_scope='Original 12 shared EXPECT sites and full loops; both plain and beautified output. Original reversal/cycling modifies a copy but tests the unmodified poly; genuine permutations are supplemental.',configurations={'USE_COMBINATIONS_ALL':True,'USE_BEAUTIFY':True,'USE_OBJ_PREVIEW':False})
  (root/'compatibility/polyfill-ports.json').write_text(json.dumps(data,separators=(',',':'))+'\n')
  return cases

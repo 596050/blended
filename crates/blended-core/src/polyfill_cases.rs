@@ -90,7 +90,7 @@ fn run_original(report:&mut Report,flag:u32,poly:&[[f32;2]]){
 
 /// Source-locked input data, not expectations produced by the triangulator.
 pub fn fixture(name:&str)->Vec<[f32;2]>{
- const SOURCE:&str=include_str!("../../../tests/upstream/blender/BLI_polyfill_2d_test.cc");
+ const SOURCE:&str=include_str!("polyfill_fixture.cc");
  let marker=format!("TEST(polyfill2d, {name})");
  let body=SOURCE.split_once(&marker).expect("Unknown original case").1;
  let values=body.split_once("const float poly[][2] = {").expect("Original fixture declaration").1.split_once("};").expect("Original fixture terminator").0;

@@ -40,6 +40,7 @@ impl<T:Value,const C:usize,const R:usize> Value for crate::matrix_types::M<T,C,R
 pub fn record(kind:&str,passed:bool,values:&[String]) {
  TAPE.with(|t|{let mut t=t.borrow_mut();let line=format!("{{\"case\":\"{}\",\"kind\":\"{}\",\"passed\":{},\"values\":[{}]}}\n",t.0,kind,passed,values.join(","));t.1.push_str(&line);});
 }
+pub fn ne<T:PartialEq+Value>(a:T,b:T)->bool{let p=a!=b;record("NE",p,&[a.encode(),b.encode()]);p}
 pub fn eq<T:PartialEq+Value>(a:T,b:T)->bool {let p=a==b;record("EQ",p,&[a.encode(),b.encode()]);p}
 pub fn le<T:PartialOrd+Value>(a:T,b:T)->bool{let p=a<=b;record("LE",p,&[a.encode(),b.encode()]);p}
 pub fn pointer_pair(a:*const u8,b:*const u8)->bool {
@@ -78,6 +79,7 @@ pub fn run_all()->String {
  for (id,run,n) in crate::string_ops_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::utf8_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::pixel_format_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
+ for (id,run,n) in crate::polyfill_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  TAPE.with(|t|core::mem::take(&mut t.borrow_mut().1))
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

@@ -16,7 +16,8 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(p:Path)->str:return hashlib.sha256(p.read_bytes()).hexdigest()
 
 def contracts(root:Path):
-    data=json.loads((root/'compatibility/assertion-contracts.lock.json').read_text())
+    from contract_registry import load_contracts
+    data=load_contracts(root)
     pin=json.loads((root/'upstream.lock.json').read_text())['upstreams']['blender']['commit']
     if data['reference_commit']!=pin:raise ValueError('Contract/reference mismatch')
     for c in data['contracts']:
@@ -32,7 +33,8 @@ def cpp(root:Path,upstream:Path):
         seen.add(c['source_path'])
         p=upstream/c['source_path'];before=p.read_text()
         if digest(p)!=c['source_sha256']:raise ValueError('Actual upstream source differs from reviewed snapshot')
-        header=(root/'tools/fidelity/trace.hh').resolve().as_posix()
+        recording_header='polyfill.hh' if Path(c['source_path']).name=='BLI_polyfill_2d_test.cc' else 'trace.hh'
+        header=(root/'tools/fidelity'/recording_header).resolve().as_posix()
         # Include after original includes but before namespaces. Test bodies stay byte-for-byte intact.
         at=before.index('namespace ')
         after=before[:at]+f'#include "{header}"\n'+before[at:]
@@ -72,11 +74,12 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs','string_ops_cases.rs','utf8_cases.rs','pixel_format_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs','string_ops_cases.rs','utf8_cases.rs','pixel_format_cases.rs','polyfill_cases.rs']:
         p=src/name;before=p.read_text();after=before
         if name=='pixel_format_cases.rs':
             after=after.replace('fn array_eq<T:PartialEq+Copy>', 'fn array_eq<T:PartialEq+Copy+crate::fidelity_trace::Value>')
         changes={
+          'macro_rules! ne ': 'macro_rules! ne {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::ne($a,$b),stringify!($a != $b),line!());}};}',
           'macro_rules! peq ': 'macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::pointer_pair($a,$b),stringify!($a pointer-equals $b),line!());}};}',
           'macro_rules! lt ': 'macro_rules! lt {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::lt($a,$b),stringify!($a < $b),line!());}};}',
           'macro_rules! streq ': 'macro_rules! streq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::str_eq(c_string($a),c_string($b)),stringify!($a C-string-equals $b),line!());}};}',
@@ -179,7 +182,7 @@ def compare(reference:list,port:list,expected:list,require_boundaries=False):
         if len(a)!=n or len(b)!=n:raise ValueError('Missing, duplicate or extra assertion: '+key)
         for i,(r,p) in enumerate(zip(a,b)):
             if r.get('kind')!=p.get('kind'):raise ValueError(f'Assertion kind differs: {key}:{i}')
-            kind=r['kind'];arity={'EQ':2,'GT':2,'LT':2,'STREQ':2,'LE':2,'FLOAT_EQ':2,'NEAR':3,'TRUE':1,'FALSE':1,'ASSERT_TRUE':1}.get(kind)
+            kind=r['kind'];arity={'EQ':2,'NE':2,'GT':2,'LT':2,'STREQ':2,'LE':2,'FLOAT_EQ':2,'NEAR':3,'TRUE':1,'FALSE':1,'ASSERT_TRUE':1}.get(kind)
             if not arity or len(r['values'])!=arity or len(p['values'])!=arity:raise ValueError('Malformed assertion arity')
             if r.get('passed') is not True or p.get('passed') is not True:raise ValueError('Failed assertion: '+key)
             rv,pv=normal(r['values']),normal(p['values'])

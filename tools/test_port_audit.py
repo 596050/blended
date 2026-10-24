@@ -88,8 +88,8 @@ def load_ports(inventory):
             start=text.find('TEST(math_vector, '+c['identity'].split('.',1)[1]+')');end=text.find('\nTEST(',start+1)
             body=text[start:end if end>=0 else len(text)]
             ports.append(dict(path=path,id=c['identity'],line=c['line'],source_sha256=hashes[path],assertion_count=len(re.findall(r'\bEXPECT_[A-Z_]+\(',body)),semantics_reviewed=False,target_path='crates/blended-core/src/compat_cases.rs',target_test='upstream_math_vector::'+c['identity'].split('.',1)[1],target_sha256=hashlib.sha256(original.read_bytes()).hexdigest()))
-    contract_file=ROOT/'compatibility/assertion-contracts.lock.json'
-    contract=json.loads(contract_file.read_text()) if contract_file.exists() else {}
+    from contract_registry import load_contracts
+    contract=load_contracts(ROOT)
     for p in ports:
         p['semantics_reviewed']=contract.get('reference_commit')==inventory['commit'] and any(
             c.get('source_path')==p['path'] and c.get('source_sha256')==p['source_sha256']
