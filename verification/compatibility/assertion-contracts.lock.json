@@ -781,6 +781,53 @@
         "BLI_string_utils.BLI_string_replace",
         "BLI_string_utils.BLI_uniquename_cb"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_string_utf8_test.cc",
+      "source_sha256": "0821a446fa0de157022ec8d27ffbd5b50ae50d6f9889bb67a9cf7ac0d269b572",
+      "target_path": "crates/blended-core/src/utf8_cases.rs",
+      "target_sha256": "7ec53012a8245ded8e04b19ccf5549c7b022772f04aa45d5a55ecc4ed00c17d5",
+      "case_ids": [
+        "string.Utf8InvalidBytesStrip",
+        "string.Utf8InvalidBytesSubstitute",
+        "string.Utf8InvalidBytesSubstitutePatterns",
+        "string.StringNLenUTF8",
+        "string.StringNLenUTF8_Incomplete",
+        "string.StrCopyUTF8_ASCII",
+        "string.StrCopyUTF8_ASCII_Truncate",
+        "string.StrCopyUTF8_TruncateEncoding",
+        "string.StrCopyUTF8_TruncateEncodingMulti",
+        "string.StrCopyUTF8_TerminateEncodingEarly",
+        "string.StrPrintfUTF8_ASCII",
+        "string.StrPrintfUTF8_TerminateEncodingEarly",
+        "string.StrPrintfUTF8_TruncateEncodingMulti",
+        "string.Utf8OffsetFromIndex_ClampedIndex",
+        "string.Utf8AsUnicodeStep",
+        "string.StrCursorStepNextUtf32Empty",
+        "string.StrCursorStepNextUtf32Single",
+        "string.StrCursorStepNextUtf32Simple",
+        "string.StrCursorStepNextUtf32AllCombining",
+        "string.StrCursorStepNextUtf32Complex",
+        "string.StrCursorStepNextUtf32Invalid",
+        "string.StrCursorStepPrevUtf32Empty",
+        "string.StrCursorStepPrevUtf32Single",
+        "string.StrCursorStepPrevUtf32Simple",
+        "string.StrCursorStepPrevUtf32AllCombining",
+        "string.StrCursorStepPrevUtf32Complex",
+        "string.StrCursorStepPrevUtf32Invalid",
+        "string.StrCursorStepNextUtf8Empty",
+        "string.StrCursorStepNextUtf8Single",
+        "string.StrCursorStepNextUtf8Simple",
+        "string.StrCursorStepNextUtf8AllCombining",
+        "string.StrCursorStepNextUtf8AllComplex",
+        "string.StrCursorStepNextUtf8Invalid",
+        "string.StrCursorStepPrevUtf8Empty",
+        "string.StrCursorStepPrevUtf8Single",
+        "string.StrCursorStepPrevUtf8Simple",
+        "string.StrCursorStepPrevUtf8AllCombining",
+        "string.StrCursorStepPrevUtf8Complex",
+        "string.StrCursorStepPrevUtf8Invalid"
+      ]
     }
   ]
 }

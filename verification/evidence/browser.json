@@ -1,17 +1,17 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "expected_case_count": 464,
-  "expected_source_commit": "40416a6730bf7f2918b7b896b93bf2e9caae7e8a",
-  "started_utc": "2026-10-24T01:42:43.377283+00:00",
+  "expected_case_count": 503,
+  "expected_source_commit": "3969e1fdadae2e11d6f220412f8c32cabf7048d1",
+  "started_utc": "2026-10-24T05:17:32.873745+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "40416a6730bf7f2918b7b896b93bf2e9caae7e8a",
+    "source_commit": "3969e1fdadae2e11d6f220412f8c32cabf7048d1",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 464,
+    "passed": 503,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -3264,6 +3264,279 @@
         "passed": true,
         "code": 1,
         "assertions": 12
+      },
+      {
+        "id": "string.Utf8InvalidBytesStrip",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 156
+      },
+      {
+        "id": "string.Utf8InvalidBytesSubstitute",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 234
+      },
+      {
+        "id": "string.Utf8InvalidBytesSubstitutePatterns",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "string.StringNLenUTF8",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "string.StringNLenUTF8_Incomplete",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 44
+      },
+      {
+        "id": "string.StrCopyUTF8_ASCII",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrCopyUTF8_ASCII_Truncate",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrCopyUTF8_TruncateEncoding",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 24
+      },
+      {
+        "id": "string.StrCopyUTF8_TruncateEncodingMulti",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 216
+      },
+      {
+        "id": "string.StrCopyUTF8_TerminateEncodingEarly",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 63
+      },
+      {
+        "id": "string.StrPrintfUTF8_ASCII",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrPrintfUTF8_TerminateEncodingEarly",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 63
+      },
+      {
+        "id": "string.StrPrintfUTF8_TruncateEncodingMulti",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 81
+      },
+      {
+        "id": "string.Utf8OffsetFromIndex_ClampedIndex",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "string.Utf8AsUnicodeStep",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 1626112
+      },
+      {
+        "id": "string.StrCursorStepNextUtf32Empty",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepNextUtf32Single",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepNextUtf32Simple",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "string.StrCursorStepNextUtf32AllCombining",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrCursorStepNextUtf32Complex",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StrCursorStepNextUtf32Invalid",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf32Empty",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf32Single",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf32Simple",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf32AllCombining",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf32Complex",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf32Invalid",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "string.StrCursorStepNextUtf8Empty",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepNextUtf8Single",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepNextUtf8Simple",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "string.StrCursorStepNextUtf8AllCombining",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "string.StrCursorStepNextUtf8AllComplex",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "string.StrCursorStepNextUtf8Invalid",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf8Empty",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf8Single",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf8Simple",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf8AllCombining",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf8Complex",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "string.StrCursorStepPrevUtf8Invalid",
+        "group": "utf8",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
       }
     ],
     "errors": [],
@@ -3277,9 +3550,10 @@
     "heap_assertions": 16300,
     "data_assertions": 264,
     "string_ops_assertions": 846,
-    "wasm_sha256": "253a825dea36d00f646d3108cbe7839171d2e67e136b20b90199a22d6395e501",
+    "utf8_assertions": 1627163,
+    "wasm_sha256": "557dfe38f888fae4aea0739fe2cd569d5b574aec42f23703a75212b6ed568a97",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-24T01:42:45.394791+00:00"
+  "finished_utc": "2026-10-24T05:17:35.827636+00:00"
 }

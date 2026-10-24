@@ -1,0 +1,77 @@
+UNCHANGED_ASSERTIONS_DETECT_MUTANT_WITHOUT_PANIC
+[1m[33mwarning[0m[1m: unused macro definition: `yes`[0m
+  [1m[94m--> [0mcrates/blended-core/src/numeric_type_cases.rs:21:14
+   [1m[94m|[0m
+[1m[94m21[0m [1m[94m|[0m macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+   [1m[94m|[0m              [1m[33m^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: `#[warn(unused_macros)]` (part of `#[warn(unused)]`) on by default
+
+[1m[33mwarning[0m[1m: unused macro definition: `no`[0m
+  [1m[94m--> [0mcrates/blended-core/src/numeric_type_cases.rs:22:14
+   [1m[94m|[0m
+[1m[94m22[0m [1m[94m|[0m macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
+   [1m[94m|[0m              [1m[33m^^[0m
+
+[1m[33mwarning[0m[1m: unused variable: `bit_index`[0m
+  [1m[94m--> [0mcrates/blended-core/src/bit_span_cases.rs:84:9
+   [1m[94m|[0m
+[1m[94m84[0m [1m[94m|[0m     for bit_index in m::iter_1_indices(data2.get()) {
+   [1m[94m|[0m         [1m[33m^^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_bit_index`[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+[1m[33mwarning[0m[1m: unused variable: `input`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:161:7
+    [1m[94m|[0m
+[1m[94m161[0m [1m[94m|[0m   for input in 0..items_total {
+    [1m[94m|[0m       [1m[33m^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_input`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `out_test`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:164:7
+    [1m[94m|[0m
+[1m[94m164[0m [1m[94m|[0m   for out_test in 0..items_total {
+    [1m[94m|[0m       [1m[33m^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_out_test`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `input`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:351:7
+    [1m[94m|[0m
+[1m[94m351[0m [1m[94m|[0m   for input in 0..items_total {
+    [1m[94m|[0m       [1m[33m^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_input`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `out_test`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:354:7
+    [1m[94m|[0m
+[1m[94m354[0m [1m[94m|[0m   for out_test in 0..items_total {
+    [1m[94m|[0m       [1m[33m^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_out_test`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `i`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:440:7
+    [1m[94m|[0m
+[1m[94m440[0m [1m[94m|[0m   for i in 0..amount {
+    [1m[94m|[0m       [1m[33m^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_i`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `i`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:462:7
+    [1m[94m|[0m
+[1m[94m462[0m [1m[94m|[0m   for i in 0..amount {
+    [1m[94m|[0m       [1m[33m^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_i`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `i`[0m
+   [1m[94m--> [0mcrates/blended-core/src/heap_cases.rs:468:7
+    [1m[94m|[0m
+[1m[94m468[0m [1m[94m|[0m   for i in 0..amount {
+    [1m[94m|[0m       [1m[33m^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_i`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `src`[0m
+   [1m[94m--> [0mcrates/blended-core/src/utf8_compat.rs:127:34
+    [1m[94m|[0m
+[1m[94m127[0m [1m[94m|[0m pub fn copy_into(dst: &mut [u8], src: &[u8], capacity: usize) -> usize {dst[0]=0;0}
+    [1m[94m|[0m                                  [1m[33m^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_src`[0m
+
+[1m[33mwarning[0m[1m: unused variable: `capacity`[0m
+   [1m[94m--> [0mcrates/blended-core/src/utf8_compat.rs:127:46
+    [1m[94m|[0m
+[1m[94m127[0m [1m[94m|[0m pub fn copy_into(dst: &mut [u8], src: &[u8], capacity: usize) -> usize {dst[0]=0;0}
+    [1m[94m|[0m                                              [1m[33m^^^^^^^^[0m [1m[33mhelp: if this is intentional, prefix it with an underscore: `_capacity`[0m
+
