@@ -6,7 +6,7 @@ from port_workbench import expected_cases,validate_result
 class WorkbenchContractTests(unittest.TestCase):
     def setUp(self):
         self.expected=[{'id':'old.case','group':'legacy','expected_runtime_assertions':6},{'id':'new.case','group':'additional','expected_runtime_assertions':3},{'id':'bounds.case','group':'structures','expected_runtime_assertions':8}]
-        self.data={'source_commit':'a'*40,'reference_commit':'b'*40,'complete_test_port':False,'wasm_sha256':'c'*64,'status':'passed','passed':3,'vector_assertions':6,'additional_assertions':3,'structure_assertions':8,'collection_assertions':0,'string_assertions':0,'bit_span_assertions':0,'numeric_type_assertions':0,'matrix_type_assertions':0,'geometry_math_assertions':0,'sampling_assertions':0,'curve_assertions':0,'heap_assertions':0,'data_assertions':0,'string_ops_assertions':0,'invalid_index_rejected':True,'errors':[], 'cases':[dict(id=c['id'],group=c['group'],assertions=c['expected_runtime_assertions'],passed=True,code=1) for c in self.expected]}
+        self.data={'source_commit':'a'*40,'reference_commit':'b'*40,'complete_test_port':False,'wasm_sha256':'c'*64,'status':'passed','passed':3,'vector_assertions':6,'additional_assertions':3,'structure_assertions':8,'collection_assertions':0,'string_assertions':0,'bit_span_assertions':0,'numeric_type_assertions':0,'matrix_type_assertions':0,'geometry_math_assertions':0,'sampling_assertions':0,'curve_assertions':0,'heap_assertions':0,'data_assertions':0,'string_ops_assertions':0,'utf8_assertions':0,'invalid_index_rejected':True,'errors':[], 'cases':[dict(id=c['id'],group=c['group'],assertions=c['expected_runtime_assertions'],passed=True,code=1) for c in self.expected]}
     def check(self):validate_result(self.data,self.expected,'a'*40,'b'*40)
     def test_exact_valid_result(self):self.check()
     def test_missing_test_cannot_reduce_denominator(self):
@@ -43,6 +43,6 @@ class WorkbenchContractTests(unittest.TestCase):
         self.data['invalid_index_rejected']=False
         with self.assertRaises(ValueError):self.check()
     def test_current_universe_has_unique_upstream_identities(self):
-        cases,commit=expected_cases();self.assertEqual(len(cases),464);self.assertEqual(len(commit),40)
+        cases,commit=expected_cases();self.assertEqual(len(cases),503);self.assertEqual(len(commit),40)
         self.assertEqual(sum(c['expected_runtime_assertions'] or 0 for c in cases if c['group']=='structures'),235)
 if __name__=='__main__':unittest.main()

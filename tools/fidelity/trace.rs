@@ -76,6 +76,7 @@ pub fn run_all()->String {
  for (id,run,count) in crate::heap_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*count);}
  for (id,run,n) in crate::data_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::string_ops_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
+ for (id,run,n) in crate::utf8_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  TAPE.with(|t|t.borrow().1.clone())
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

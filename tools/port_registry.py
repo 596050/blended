@@ -31,6 +31,7 @@ GROUPS=(
     Group('heaps','heap-ports.json','heap_cases','upstream_heaps','port_heap_tests.py','heap_assertions',('blended_heaps_case_count','blended_heaps_run_case','blended_heaps_assertion_count')),
     Group('data','data-ports.json','data_cases','upstream_data','port_data_tests.py','data_assertions',('blended_data_case_count','blended_data_run_case','blended_data_assertion_count')),
     Group('string_ops','string-ops-ports.json','string_ops_cases','upstream_string_ops','port_string_ops_tests.py','string_ops_assertions',('blended_string_ops_case_count','blended_string_ops_run_case','blended_string_ops_assertion_count')),
+    Group('utf8','utf8-ports.json','utf8_cases','upstream_utf8','port_utf8_tests.py','utf8_assertions',('blended_utf8_case_count','blended_utf8_run_case','blended_utf8_assertion_count')),
 )
 TOTAL_KEYS={'legacy':'vector_assertions',**{g.name:g.total_key for g in GROUPS}}
 ABI={'legacy':('blended_case_count','blended_run_case','blended_case_assertion_count'),**{g.name:g.abi for g in GROUPS}}

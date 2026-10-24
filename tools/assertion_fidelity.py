@@ -72,7 +72,7 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs','string_ops_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs','string_ops_cases.rs','utf8_cases.rs']:
         p=src/name;before=p.read_text();after=before
         changes={
           'macro_rules! peq ': 'macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::pointer_pair($a,$b),stringify!($a pointer-equals $b),line!());}};}',

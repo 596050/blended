@@ -36,5 +36,5 @@ class SamplingPorts(unittest.TestCase):
   with self.assertRaises(ValueError):image_translate('res = interpolate_nearest_border_fl(data);')
  def test_exact_integrated_registry_and_assertion_counts(self):
   from port_workbench import expected_cases
-  cases,_=expected_cases();self.assertEqual(len(cases),464);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),34214)
+  cases,_=expected_cases();self.assertEqual(len(cases),503);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),1661377)
 if __name__=='__main__':unittest.main()
