@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "scope": "negative implementation controls, not new upstream cases",
+  "complete_blender_test_port": false,
+  "source_commit": "2990e30077e368c97e3a7af60d45d7a911ceb988",
+  "unchanged_test_sha256": "c8dc019ec24820d8495e52309c5b7030f4f4c158c0cb1dbe68ea428cdb7849ce",
+  "checks": [
+    {
+      "mutation": "rounding_bias_removed",
+      "case": "math_half.float_to_half_scalar",
+      "control": "math_half.half_to_float_scalar",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 9,
+        "target": 0,
+        "target_assertions": 32,
+        "control": 1,
+        "control_assertions": 23,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "2975f59ee34dc3274a6b0f9fac91e9696f9ce07817f8f15af10a0abe93c1b01f",
+      "mutated_implementation_sha256": "cb6a4970c6d2d0715a7af2da48dd3527cb49753d98ffc21942038d9ffe48abdc",
+      "wasm_sha256": "77c001366c17454eef3d8ee828c77590e0f530a38fbf806ed749c7ee68114883"
+    },
+    {
+      "mutation": "finite_nan_sign_removed",
+      "case": "math_half.float_to_half_make_finite_scalar",
+      "control": "math_half.half_to_float_scalar",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 9,
+        "target": 0,
+        "target_assertions": 35,
+        "control": 1,
+        "control_assertions": 23,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "2975f59ee34dc3274a6b0f9fac91e9696f9ce07817f8f15af10a0abe93c1b01f",
+      "mutated_implementation_sha256": "901ff4eb6858f1e34e0bbcc41b655cd73aa885f66b080de64bde4c8e5414d8ee",
+      "wasm_sha256": "4376c4e529e190167866d0b882714cacac5a218c2065fa1112fb9411f88598c7"
+    },
+    {
+      "mutation": "half_subnormals_flushed",
+      "case": "math_half.half_to_float_array_flush_to_zero",
+      "control": "normalized_int.roundtrip",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 9,
+        "target": 0,
+        "target_assertions": 8,
+        "control": 1,
+        "control_assertions": 7,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "2975f59ee34dc3274a6b0f9fac91e9696f9ce07817f8f15af10a0abe93c1b01f",
+      "mutated_implementation_sha256": "b382f8b0897613760656f8e1b74857a75c066ee5967d32668a980120fc0d493f",
+      "wasm_sha256": "4b2f331b8eb410b366989684e20811301cb92732ba8e79c00f34060a0e6468aa"
+    }
+  ],
+  "browser_version": "155.0.8059.39"
+}

@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "supplemental bit-exact conversion corpus; not extra Blender test cases",
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_commit": "2990e30077e368c97e3a7af60d45d7a911ceb988",
+  "source_hashes": {
+    "intern/math_half.cc": "91a1cfc2f736da48c1ffb21a64901712a8549f1be822c01907cd72c61f4dc55d",
+    "BLI_math_half.hh": "91e5404626be809de1b084aaa6dccbc104058b4aaeceb42cddf96b9b80b145aa",
+    "BLI_normalized_int_types.hh": "b5f2e03d9b1b7cc00ca869613844017a427e5f91e5e902214a1a3f87a2a8d033",
+    "BLI_simd.hh": "84af823ff645fcdc73080f109157b782560dfe24fa2ca9cd2002822901f56230"
+  },
+  "reference_profile": "x86_64 scalar/SSE2 four-lane arrays, SSE4.1 clamp; nearest-even; no F16C/AVX or NEON",
+  "browser_version": "155.0.8059.39",
+  "browser_errors": [],
+  "browser_hardware_fp_control": false,
+  "native": "bit_exact_match",
+  "browser": "bit_exact_match",
+  "all_half_patterns": 65536,
+  "float_bit_inputs": 291054,
+  "normalised_component_inputs": 2183,
+  "output_u32_words": 2944570,
+  "output_bytes": 11778280,
+  "raw_normalised_component_patterns": 133632,
+  "array_lengths": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "tail_rotations": 4,
+  "clamp_bounds": [
+    [
+      -10.0,
+      1000.0
+    ],
+    [
+      1.0,
+      2.0
+    ],
+    [
+      -2.0,
+      -1.0
+    ]
+  ],
+  "native_hardware_fp_control": true,
+  "reference_fp_control": {
+    "hardware_fp_control": true,
+    "before": 8096,
+    "during": 40928,
+    "after": 8096,
+    "restored": true,
+    "output_words": 2944570
+  },
+  "browser_fp_scope": "Output check only; WebAssembly cannot set MXCSR. Native guard actually toggles/restores FTZ/DAZ.",
+  "compiler_flags": [
+    "-std=c++20",
+    "-O2",
+    "-DNDEBUG",
+    "-msse4.1",
+    "-mno-avx",
+    "-mno-f16c",
+    "-fno-fast-math",
+    "-ffp-contract=off"
+  ],
+  "corpus_sha256": "f82ac342305c86c9cc97c4850bf305fb8553781607e0683e0d24fb637be4a9b9",
+  "original_binary_sha256": "3b59e8e0b87e90fb562dbcd682351ec1198eb8be04408e73f19a1e40c433e209",
+  "reference_output_sha256": "1bb864de0f0688df82bc46f9506ae55e64463a977c501bcd202c8051b094c1c9",
+  "native_output_sha256": "1bb864de0f0688df82bc46f9506ae55e64463a977c501bcd202c8051b094c1c9",
+  "browser_output_sha256": "1bb864de0f0688df82bc46f9506ae55e64463a977c501bcd202c8051b094c1c9",
+  "wasm_sha256": "d20f73e5c85e44144da4a128b24ff28fa3a2153cb082e62baa62971ed3c1edb3",
+  "mode": "local diagnostic original C++/Rust/Chromium; production public URL verification is separate"
+}
