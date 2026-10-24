@@ -1,17 +1,17 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "expected_case_count": 416,
-  "expected_source_commit": "c5b9098780bc6f42b45759f10f5aef60d9270c99",
-  "started_utc": "2026-10-24T01:19:51.035975+00:00",
+  "expected_case_count": 464,
+  "expected_source_commit": "0fa1c99bd72333a599cab36a5381aebf44e1a5c4",
+  "started_utc": "2026-10-24T01:24:15.313811+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "c5b9098780bc6f42b45759f10f5aef60d9270c99",
+    "source_commit": "0fa1c99bd72333a599cab36a5381aebf44e1a5c4",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 416,
+    "passed": 464,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -2928,6 +2928,342 @@
         "passed": true,
         "code": 1,
         "assertions": 12
+      },
+      {
+        "id": "string.StrCat",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "string.StrReplaceRange",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "string.StrPartition",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 15
+      },
+      {
+        "id": "string.StrRPartition",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 15
+      },
+      {
+        "id": "string.StrPartitionEx",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StrPartitionUtf8",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 15
+      },
+      {
+        "id": "string.StrRPartitionUtf8",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 15
+      },
+      {
+        "id": "string.StrPartitionExUtf8",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StrFormatIntGrouped",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 10
+      },
+      {
+        "id": "string.StrFormatUint64Grouped",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StrFormatByteUnits",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 22
+      },
+      {
+        "id": "string.StrFormatDecimalUnits",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 41
+      },
+      {
+        "id": "string.StrFormatIntegerUnits",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 42
+      },
+      {
+        "id": "string.StringNLen",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "string.StrJoin_Truncate",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 166
+      },
+      {
+        "id": "StringFindSplitWords.Simple",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "StringFindSplitWords.Triple",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "StringFindSplitWords.Spacing",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "StringFindSplitWords.Trailing_Left",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "StringFindSplitWords.Trailing_Right",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 8
+      },
+      {
+        "id": "StringFindSplitWords.Trailing_LeftRight",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "StringFindSplitWords.Blank",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "StringFindSplitWords.Whitespace",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "StringFindSplitWords.LimitWords",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 18
+      },
+      {
+        "id": "StringFindSplitWords.LimitChars",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 24
+      },
+      {
+        "id": "string.StringElemEmpty",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StringElemSingle",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "string.StringElemComplex",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 14
+      },
+      {
+        "id": "string.StringStrncasestr",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string.StringMaxPossibleWordCount",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "string.StrIsDecimal",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 13
+      },
+      {
+        "id": "StringCasecmpNatural.Empty",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "StringCasecmpNatural.Whitespace",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "StringCasecmpNatural.TextOnlyLowerCase",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 15
+      },
+      {
+        "id": "StringCasecmpNatural.TextMixedCase",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 39
+      },
+      {
+        "id": "StringCasecmpNatural.Period",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 10
+      },
+      {
+        "id": "StringCasecmpNatural.OnlyNumbers",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "StringCasecmpNatural.TextAndNumbers",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 16
+      },
+      {
+        "id": "StringEscape.Simple",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 70
+      },
+      {
+        "id": "StringEscape.Control",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 55
+      },
+      {
+        "id": "BLI_string.bounded_strcpy",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "BLI_string.StartsWith",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "BLI_string.EndsWith",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "string_search.damerau_levenshtein_distance",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "string_search.get_fuzzy_match_errors",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "string_search.extract_normalized_words",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 13
+      },
+      {
+        "id": "BLI_string_utils.BLI_string_replace",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "BLI_string_utils.BLI_uniquename_cb",
+        "group": "string_ops",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
       }
     ],
     "errors": [],
@@ -2940,9 +3276,10 @@
     "curve_assertions": 222,
     "heap_assertions": 16300,
     "data_assertions": 264,
-    "wasm_sha256": "97dab03e7e95b70e90ba7014e3d23fb73517be443c838670c7d778fba9120ddd",
+    "string_ops_assertions": 846,
+    "wasm_sha256": "253a825dea36d00f646d3108cbe7839171d2e67e136b20b90199a22d6395e501",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-24T01:19:53.765898+00:00"
+  "finished_utc": "2026-10-24T01:24:17.865051+00:00"
 }

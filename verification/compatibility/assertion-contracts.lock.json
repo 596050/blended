@@ -709,6 +709,78 @@
       "case_ids": [
         "disjoint_set.Test"
       ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_string_test.cc",
+      "source_sha256": "aa13f49f37424ccf376f1b91434dc7bc2a1dd0867408c29a89b5ebb718bac7d4",
+      "target_path": "crates/blended-core/src/string_ops_cases.rs",
+      "target_sha256": "0475fae905b0b314cc0bd6c1a6ef0c2060426bd6569416dea954c83f5b2b4b91",
+      "case_ids": [
+        "string.StrCat",
+        "string.StrReplaceRange",
+        "string.StrPartition",
+        "string.StrRPartition",
+        "string.StrPartitionEx",
+        "string.StrPartitionUtf8",
+        "string.StrRPartitionUtf8",
+        "string.StrPartitionExUtf8",
+        "string.StrFormatIntGrouped",
+        "string.StrFormatUint64Grouped",
+        "string.StrFormatByteUnits",
+        "string.StrFormatDecimalUnits",
+        "string.StrFormatIntegerUnits",
+        "string.StringNLen",
+        "string.StrJoin_Truncate",
+        "StringFindSplitWords.Simple",
+        "StringFindSplitWords.Triple",
+        "StringFindSplitWords.Spacing",
+        "StringFindSplitWords.Trailing_Left",
+        "StringFindSplitWords.Trailing_Right",
+        "StringFindSplitWords.Trailing_LeftRight",
+        "StringFindSplitWords.Blank",
+        "StringFindSplitWords.Whitespace",
+        "StringFindSplitWords.LimitWords",
+        "StringFindSplitWords.LimitChars",
+        "string.StringElemEmpty",
+        "string.StringElemSingle",
+        "string.StringElemComplex",
+        "string.StringStrncasestr",
+        "string.StringMaxPossibleWordCount",
+        "string.StrIsDecimal",
+        "StringCasecmpNatural.Empty",
+        "StringCasecmpNatural.Whitespace",
+        "StringCasecmpNatural.TextOnlyLowerCase",
+        "StringCasecmpNatural.TextMixedCase",
+        "StringCasecmpNatural.Period",
+        "StringCasecmpNatural.OnlyNumbers",
+        "StringCasecmpNatural.TextAndNumbers",
+        "StringEscape.Simple",
+        "StringEscape.Control",
+        "BLI_string.bounded_strcpy",
+        "BLI_string.StartsWith",
+        "BLI_string.EndsWith"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_string_search_test.cc",
+      "source_sha256": "cb9933e4e03afce0c64003e182ef2940e2ada6865dd990f1124a7aba7007f9d0",
+      "target_path": "crates/blended-core/src/string_ops_cases.rs",
+      "target_sha256": "0475fae905b0b314cc0bd6c1a6ef0c2060426bd6569416dea954c83f5b2b4b91",
+      "case_ids": [
+        "string_search.damerau_levenshtein_distance",
+        "string_search.get_fuzzy_match_errors",
+        "string_search.extract_normalized_words"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_string_utils_test.cc",
+      "source_sha256": "0cf9854d8ef84186abe772ce890c09e6dbec14855e8029201a4ed23bcf3b52b4",
+      "target_path": "crates/blended-core/src/string_ops_cases.rs",
+      "target_sha256": "0475fae905b0b314cc0bd6c1a6ef0c2060426bd6569416dea954c83f5b2b4b91",
+      "case_ids": [
+        "BLI_string_utils.BLI_string_replace",
+        "BLI_string_utils.BLI_uniquename_cb"
+      ]
     }
   ]
 }

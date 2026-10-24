@@ -196,6 +196,31 @@
  fn c_string(s:&[u8])->&[u8]{&s[..s.iter().position(|&b|b==0).unwrap_or(s.len())]}
  // EXPECT_EQ_ARRAY expands to exactly N element assertions, with no extra length assertion.
  macro_rules! array_eq {($r:expr,$a:expr,$b:expr,$n:expr)=>{{let expected=&$a;let actual=&$b;for i in 0..$n{eq!($r,expected[i],actual[i]);}}};}
+--- string_ops_cases.rs
++++ shadow/string_ops_cases.rs
+@@ -7,14 +7,14 @@
+ use crate::string_refs::Bytes;
+ #[derive(Debug,Default)]pub struct Report{pub assertions:u32,pub failures:Vec<String>}
+ impl Report{pub fn check(&mut self,p:bool,e:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {e}"));}}pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}}
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{let a:*const u8=$a;let b:*const u8=$b;$r.check(a==b,stringify!($a pointer-equals $b),line!());}};}
+-macro_rules! le {($r:expr,$a:expr,$b:expr)=>{{$r.check($a<=$b,stringify!($a <= $b),line!());}};}
+-macro_rules! lt {($r:expr,$a:expr,$b:expr)=>{{$r.check($a<$b,stringify!($a < $b),line!());}};}
+-macro_rules! gt {($r:expr,$a:expr,$b:expr)=>{{$r.check($a>$b,stringify!($a > $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
+-macro_rules! streq {($r:expr,$a:expr,$b:expr)=>{{$r.check(c_string($a)==c_string($b),stringify!($a C-string-equals $b),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_refs(&$a,&$b),stringify!($a == $b),line!());}};}
++macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::pointer_pair($a,$b),stringify!($a pointer-equals $b),line!());}};}
++macro_rules! le {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::le($a,$b),stringify!($a <= $b),line!());}};}
++macro_rules! lt {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::lt($a,$b),stringify!($a < $b),line!());}};}
++macro_rules! gt {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::gt($a,$b),stringify!($a > $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
++macro_rules! streq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::str_eq(c_string($a),c_string($b)),stringify!($a C-string-equals $b),line!());}};}
+ fn c_string(a:&[u8])->&[u8]{&a[..a.iter().position(|&v|v==0).unwrap_or(a.len())]}
+ // Preserve EXPECT_EQ_VECTOR's length assertion and conditional element checks.
+ fn words_test(r:&mut Report,text:&[u8],max_length:usize,expected:&[[i32;2]],max_words:Option<usize>){
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
