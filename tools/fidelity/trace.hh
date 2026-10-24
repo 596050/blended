@@ -18,6 +18,7 @@
 #include <optional>
 #include <sstream>
 #include <type_traits>
+namespace blender {struct WordInfo;}
 namespace blended_fidelity {
 template<class T> struct Encoder {
  static void write(std::ostream &out, const T &v) {
@@ -36,6 +37,13 @@ template<class T> struct Encoder {
  }
 };
 template<class T> void value(std::ostream &out,const T &v) {Encoder<T>::write(out,v);}
+// Defined by the original test after the overlay include. Dependent member
+// access is instantiated only once that original type is complete.
+template<> struct Encoder<blender::WordInfo> {
+ template<class T> static void write(std::ostream &out,const T&v){out<<'[';value(out,v.start);out<<',';value(out,v.end);out<<']';}
+};
+struct PointerAlias {const void *value;const void *origin;};
+template<> struct Encoder<PointerAlias> {static void write(std::ostream&out,PointerAlias v){out<<"\"palias:"<<(v.value==nullptr?"null":v.value==v.origin?"a":"b")<<"\"";}};
 template<class T,int N> struct Encoder<blender::VecBase<T,N>> {
  static void write(std::ostream &out,const blender::VecBase<T,N> &v) {out << '[';for(int i=0;i<N;i++){if(i)out<<',';value(out,v[i]);}out<<']';}
 };
@@ -143,8 +151,26 @@ inline void str_eq(const char*a,const char*b){
  record("STREQ",passed,nullptr,nullptr,a?std::optional<std::string>(a):std::nullopt,b?std::optional<std::string>(b):std::nullopt);
  EXPECT_STREQ(a,b);
 }
-template<class A,class B> void eq(const A &a,const B &b) {record("EQ",bool(::testing::internal::EqHelper::Compare("a","b",a,b)),nullptr,nullptr,a,b);EXPECT_EQ(a,b);}
+template<class A,class B> void eq(const A &a,const B &b) {
+ const bool passed=bool(::testing::internal::EqHelper::Compare("a","b",a,b));
+ if constexpr(std::is_pointer_v<A> && std::is_pointer_v<B>){
+  // Different input literals in the string fixture have unrelated allocation
+  // layouts across C++ and Rust. Preserve real equality/nullness with pair-local
+  // alias labels; do not apply this normalization to older pointer-offset tests.
+  if(std::strcmp(::testing::UnitTest::GetInstance()->current_test_info()->test_suite_name(),"string")==0){
+   const void *aa=static_cast<const void*>(a),*bb=static_cast<const void*>(b),*origin=aa?aa:bb;
+   record("EQ",passed,nullptr,nullptr,PointerAlias{aa,origin},PointerAlias{bb,origin});
+  }else record("EQ",passed,nullptr,nullptr,a,b);
+ }else record("EQ",passed,nullptr,nullptr,a,b);
+ EXPECT_EQ(a,b);
+}
 template<class A,class B> void le(const A &a,const B &b){record("LE",a<=b,nullptr,nullptr,a,b);EXPECT_LE(a,b);}
+template<class A,class B> void lt(const A &a,const B &b){record("LT",a<b,nullptr,nullptr,a,b);EXPECT_LT(a,b);}
+template<class T> void vector_eq(const std::vector<T>&expected,const std::vector<T>&actual){
+ record("EQ",expected.size()==actual.size(),nullptr,nullptr,expected.size(),actual.size());
+ if(expected.size()==actual.size())for(size_t i=0;i<expected.size();++i)record("EQ",bool(::testing::internal::EqHelper::Compare("expected","actual",expected[i],actual[i])),nullptr,nullptr,expected[i],actual[i]);
+ ::EXPECT_EQ_VECTOR(expected,actual);
+}
 template<class A,class B> void gt(const A &a,const B &b) {record("GT",a>b,nullptr,nullptr,a,b);EXPECT_GT(a,b);}
 inline void feq(float a,float b,const char *ea,const char *eb) {record("FLOAT_EQ",bool(::testing::internal::CmpHelperFloatingPointEQ<float>("a","b",a,b)),ea,eb,a,b);EXPECT_FLOAT_EQ(a,b);}
 inline void near(double a,double b,double e,const char *ea,const char *eb) {record("NEAR",bool(::testing::internal::DoubleNearPredFormat("a","b","e",a,b,e)),ea,eb,a,b,e);EXPECT_NEAR(a,b,e);}
@@ -177,3 +203,7 @@ inline bool fatal_true(bool v){record("ASSERT_TRUE",v,nullptr,nullptr,v);return 
 #define EXPECT_EQ_ARRAY ::blended_fidelity::array_eq
 #undef EXPECT_STREQ
 #define EXPECT_STREQ(a,b) ::blended_fidelity::str_eq((a),(b))
+
+#undef EXPECT_LT
+#define EXPECT_LT(a,b) ::blended_fidelity::lt((a),(b))
+#define EXPECT_EQ_VECTOR ::blended_fidelity::vector_eq

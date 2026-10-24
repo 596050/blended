@@ -162,3 +162,10 @@ pub mod data_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_data_case_count()->u32{data_cases::CASES.len() as u32}
 #[unsafe(no_mangle)]pub extern "C" fn blended_data_run_case(index:u32)->i32{data_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_data_assertion_count(index:u32)->u32{data_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod string_ops;
+pub mod string_search;
+pub mod string_ops_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_string_ops_case_count()->u32{string_ops_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_string_ops_run_case(index:u32)->i32{string_ops_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_string_ops_assertion_count(index:u32)->u32{string_ops_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
