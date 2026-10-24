@@ -6,7 +6,7 @@ from verify_heap_inputs import definition
 ROOT=Path(__file__).resolve().parents[1]
 PIN='94363991e7dcf39e2d70614aa002ab6f67764a5d'
 HASHES={'intern/string_utf8.cc':'882da073f7421c63dd5c81a09aed66ae6eb21bcdf3f9c1e098465b846c4ec0f3','intern/rand.cc':'aac6c52e01cf6271419bdbfd47a6ad140912432fd598d8330df82b9a039373f5','BLI_rand.hh':'4226aa1b035ae085f87a3ac1c2467b7f2fc0235c354a5f2553e2cdd5cea82c82'}
-SIZES=(1,2,3,4,5,6,7,8,16,31,32,33)
+SIZES=tuple(range(1,13))+(16,31,32,33)
 def corpus():
     result=[b'']+[bytes([a]) for a in range(256)]+[bytes([a,b]) for a in range(256) for b in range(256)]
     for first in range(0xc0,0xfe):

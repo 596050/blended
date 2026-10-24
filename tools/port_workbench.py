@@ -100,7 +100,7 @@ def build(commit):
     subprocess.run([sys.executable,str(ROOT/'tools/inventory.py'),'--root',str(ROOT/'.upstream/blender'),'--name','blender','--commit',added['upstream_commit'],'--output',str(ROOT/'build/blender-inventory.json')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tools/test_port_audit.py'),'--inventory',str(ROOT/'build/blender-inventory.json'),'--output',str(out/'audit.json')],check=True)
     with tarfile.open(out/'source.tar.gz','w:gz') as tar:
-        for name in ('crates','tools','tests','compatibility','docs','Cargo.toml','Cargo.lock','rust-toolchain.toml','NOTICE.md','upstream.lock.json'):
+        for name in ('crates','tools','tests','compatibility','docs','LICENSES','Cargo.toml','Cargo.lock','rust-toolchain.toml','NOTICE.md','upstream.lock.json'):
             p=ROOT/name
             if p.exists():tar.add(p,arcname='blended/'+name,filter=lambda i:None if '__pycache__' in i.name or i.issym() else i)
         for p in (ROOT/'.upstream/blender').glob('COPYING*'):
