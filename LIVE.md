@@ -2,12 +2,14 @@
 
 ## [Launch the browser modeller alpha](https://rawcdn.githack.com/596050/blended/15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38/index.html)
 
-This is the modelling application, not the test workbench. It remains the earlier verified object-editing alpha, not a complete Blender replacement. Use public sample files on this shared-origin preview and save work locally. Verified source: `25e641c0d311f61c473755d1c7ee821289a27d15`; [public build/deployment test](https://github.com/596050/blended/actions/runs/39860686907).
+This is the modelling application, not the test workbench. It remains the earlier verified object-editing alpha, not a complete Blender replacement. Use public sample models on this shared-origin preview and save work locally. Verified source: `25e641c0d311f61c473755d1c7ee821289a27d15`; [public deployment test](https://github.com/596050/blended/actions/runs/39860686907).
 
-## [Run the deployed 416-case Blender test workbench](https://rawcdn.githack.com/596050/blended/63655e85d5b56c357645c92e3874af3940fd161e/index.html)
+## [Run the deployed 464-case Blender test workbench](https://rawcdn.githack.com/596050/blended/51d30f5a549da822a9dc0945d353ef6414938092/index.html)
 
-This page executes all currently registered Blender runtime ports, not all of Blender. Source `059bfb9b277e8bc5aefb9834dd671879094a0599`, static build `63655e85d5b56c357645c92e3874af3940fd161e`, was tested at this actual public URL in [run 40045600207](https://github.com/596050/blended/actions/runs/40045600207). All 416 cases passed with no recorded browser errors. The original-C++ comparisons cover 33,368 ordered assertion events per implementation.
+This separate page executes all currently registered Blender runtime ports, not all Blender tests. Source `ab692209e9eb98248054ae90ead9b0258f1ab4da`, static build `51d30f5a549da822a9dc0945d353ef6414938092`, was tested at this actual public URL in [run 40049834310](https://github.com/596050/blended/actions/runs/40049834310). All 464 cases and their 34,214 expected assertion executions passed, with no recorded browser errors.
 
-[Original C++/native/browser comparison records](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40045600207) · [Streaming-hash oracle](https://github.com/596050/blended/blob/63655e85d5b56c357645c92e3874af3940fd161e/verification/evidence/hash-streaming/result.json) · [Negative implementation controls](https://github.com/596050/blended/blob/63655e85d5b56c357645c92e3874af3940fd161e/verification/evidence/data-sensitivity/result.json)
+[Original C++/Rust/browser transcripts](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40049834310) · [Published string oracle](https://github.com/596050/blended/blob/51d30f5a549da822a9dc0945d353ef6414938092/verification/evidence/string-oracle/result.json) · [Published mutation controls](https://github.com/596050/blended/blob/51d30f5a549da822a9dc0945d353ef6414938092/verification/evidence/string-sensitivity/result.json)
 
-Production public-URL execution is distinct from local diagnostic Chromium comparisons. The complete Blender test port is unfinished and its whole-suite gate remains failed. Both application links are immutable builds. [Current status](evidence/TEST-PORT-STATUS.json) · [Latest scope and limitations](docs/DATA-PORT-VERIFICATION.md)
+Diagnostic local Chromium execution and public-URL acceptance are separate verification layers. The whole-suite completeness gate remains failed. Immutable application URLs do not advance with documentation commits or evidence branches.
+
+[Current machine-readable status](evidence/TEST-PORT-STATUS.json) · [Accuracy and scope](docs/STRING-OPS-PORT-VERIFICATION.md) · [Unfinished full-suite requirements](docs/COMPLETE-TEST-PORT.md)

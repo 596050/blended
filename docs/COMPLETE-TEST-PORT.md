@@ -2,16 +2,16 @@
 
 ## Current result: incomplete
 
-The target remains the complete suite at Blender commit `94363991e7dcf39e2d70614aa002ab6f67764a5d`, not the implemented subset. Every declaration, parameter expansion, fixture instance, assertion and setup/teardown contract needs a traceable destination. Unsupported, ignored, unavailable, unreviewed and unexecuted work must remain visible.
+The target remains the complete suite at Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`, not the passing subset. Every declaration, parameter expansion, fixture instance, assertion and setup/teardown contract needs a traceable destination. Unsupported, unavailable, unreviewed, ignored and unexecuted work remains visible.
 
-[Run 40045600207](https://github.com/596050/blended/actions/runs/40045600207) verifies **416 Blender runtime cases** natively and at the actual public URL. Original-C++ versus native Rust and Chromium WebAssembly comparisons check **33,368 ordered assertion events** per implementation. Six separately tracked compile-time assertions pass positive builds and deliberately broken negative checks on both targets. They are not extra runtime passes.
+[Run 40049834310](https://github.com/596050/blended/actions/runs/40049834310) verifies **464 unique Blender runtime cases** in native Rust and at the actual deployed Chromium URL. Independent original-C++ comparisons check **34,214 assertion events** in each replacement implementation. Six separately tracked compile-time cases pass positive builds and deliberate-failure checks on native and WebAssembly. They are not extra runtime passes.
 
-| Source group | Runtime cases | Expected assertion executions |
+| Source group | Runtime cases | Executed assertions |
 | --- | ---: | ---: |
 | Vector maths | 17 | 68 |
 | Scalar maths, bits, solvers and time | 28 | 225 |
 | Index ranges, binary search and bounds | 54 | 235 |
-| Bit references, bit vectors, range building, sorted indices | 32 | 521 |
+| Bit references/vectors, range building, sorted indices | 32 | 521 |
 | String references | 53 | 191 |
 | Bit spans, groups and bitmap | 27 | 14,460 |
 | Vector and colour types | 40 | 259 |
@@ -20,25 +20,23 @@ The target remains the complete suite at Blender commit `94363991e7dcf39e2d70614
 | Image sampling | 27 | 180 |
 | Curve sampling | 9 | 222 |
 | Heaps and in-place priority queue | 29 | 16,300 |
-| Array utilities | 35 | 133 |
-| CSV parsing | 10 | 114 |
-| Murmur2A hashing | 3 | 5 |
-| Disjoint sets | 1 | 12 |
-| Total | 416 | 33,368 |
+| Array, CSV, Murmur2A and disjoint sets | 49 | 264 |
+| String operations, fuzzy search and naming | 48 | 846 |
+| Total | 464 | 34,214 |
 
-The complete native Rust suite has 444 runtime tests: 416 Blender, three Cycles and 25 product/safety/regression cases. The original colour cases retain eight native and nine browser floating differences within their original rules. No tolerance was widened. Supplemental hash configurations and mutation controls are not counted as new Blender cases.
+The full native Rust run passed 497 runtime tests: 464 Blender, three Cycles and 30 separate product/safety/regression tests. Eight native and nine browser floating differences remain only under original rules. No tolerance was widened. This is not bitwise equality or a complete-suite certificate.
 
-## Source inventory is not full runtime enumeration
+## Source inventory versus runtime discovery
 
-The heuristic scan has **5,859 candidates**, with **422 reviewed mappings and 5,437 unmapped declarations**. Mappings comprise 416 runtime and six compile-time cases. Numeric-literal and same-line-declaration regressions prevent previously observed omissions. Older candidate totals remain historical.
+The current heuristic scanner finds **5,859 candidates, 470 reviewed mappings and 5,389 unmapped declarations**. Mappings are 464 runtime plus six compile-time cases. Numeric-literal and same-line-declaration regressions prevent previously observed omissions. Historical totals must not replace the current ledger.
 
-Candidates include conditional, third-party, compile-time and unexpanded declarations. They are not a complete runtime denominator or a feature percentage. Missing, partial or stale runtime inventories report the remaining runtime total as unknown, never zero. Historical BLI_test discovery listed 1,644 registrations and 1,643 distinct labels, retaining duplicate `stack.Peek` as ambiguous. That was one executable/configuration, not all Blender. Current assertion-comparison runs execute the mapped subset, not every historical registration.
+Source candidates include conditional, external, compile-time and unexpanded declarations, so they are not a complete runtime denominator or a feature percentage. Missing, partial or stale runtime discovery reports the remaining runtime total as unknown, never zero. Historical BLI_test discovery retained 1,644 registrations/1,643 distinct labels and an ambiguous duplicate stack.Peek label. That was one executable/configuration, not all Blender. Current original-reference comparisons execute the mapped subset rather than every historical registration.
 
 ## Evidence and reproduction
 
-[Assertion methodology](ASSERTION-FIDELITY.md) · [Latest data verification](DATA-PORT-VERIFICATION.md) · [Current status](../evidence/TEST-PORT-STATUS.json) · [Completion issue #3](https://github.com/596050/blended/issues/3).
+[Accuracy methodology](ASSERTION-FIDELITY.md) · [Current string verification](STRING-OPS-PORT-VERIFICATION.md) · [Status JSON](../evidence/TEST-PORT-STATUS.json) · [Completion issue #3](https://github.com/596050/blended/issues/3)
 
-Reviewed source and target hashes are in `compatibility/assertion-contracts.lock.json`. Runtime groups are in `tools/port_registry.py`; original identities and expected counts are in `compatibility/` manifests. Compile-time provenance is separate. Frozen original tests are under `tests/upstream/blender`. Runtime execution evidence is bound to actual source commits and is not inferred from a manifest's declaration status.
+Reviewed source and target hashes are in `compatibility/assertion-contracts.lock.json`. Runtime groups are explicitly registered in `tools/port_registry.py`; per-group manifests retain identities/counts/provenance. Compile-time provenance remains in `compatibility/compile-time-ports.json`. Original snapshots are under `tests/upstream/blender`. Durable run-specific C++/Rust/WASM transcripts are on `assertion-fidelity-evidence`, and immutable `test-port-build` commits retain the production module, corresponding source, oracles, mutation probes and native/browser results.
 
 ```sh
 cargo test --locked --workspace --all-targets
@@ -54,20 +52,20 @@ python3 tools/inventory.py --root .upstream/blender --name blender --commit 9436
 python3 tools/test_port_audit.py --inventory build/blender-inventory.json --output evidence/complete-test-port.json --require-complete
 ```
 
-The last command must currently exit nonzero. Do not use `continue-on-error`, reduce its scope or interpret a passing subset as whole-suite completion. Missing-module test-first runs are compilation failures, not evidence of individually executed assertion failures.
+The last command must currently exit nonzero. Do not convert this to an expected pass, use continue-on-error, reduce its scope or interpret green subset publication as complete coverage. Test-first missing-module errors are compilation evidence, not executed assertion failures.
 
-## Fixtures and dependencies
+## Fixture recovery is not execution
 
-Historical run `39847680248` downloaded and hash/size-verified all 6,691 LFS objects under pinned `tests/files/**`, totalling 870,496,042 bytes including 2,145 .blend files. Durable per-object metadata is at commit `950ea85b0f4438bc5e082a0f9a402973f01d4de3`, `fixture-evidence/`. Payloads were not mirrored as repository blobs.
+Historical run 39847680248 downloaded and hash/size-verified all 6,691 LFS objects under pinned tests/files/**: 870,496,042 bytes, including 2,145 .blend files. Durable object metadata is in commit `950ea85b0f4438bc5e082a0f9a402973f01d4de3`, fixture-evidence/. Large payloads were not mirrored as repository blobs or retained as large billable artifacts.
 
-A fresh checkout still contains pointers until its execution job materialises the required inputs. Other dependencies need separate verification. A historical download is neither a current fixture nor a test pass. The latest audit still reports unavailable inputs in its checkout. The new data cases use source-embedded inputs and a separately recorded supplemental hash corpus; they do not require .blend fixtures.
+A fresh checkout still has pointers until execution materialises needed assets. Other dependencies need separate verification. A historical successful download is neither a current fixture nor a passed test. Current string cases use source-embedded data; their supplemental oracle preserves explicit input bytes separately. They do not require .blend payloads.
 
 ## Outstanding requirements
 
-1. Discover every required reference configuration and test family, preserving CTest, GoogleTest and Python/runner discovery, disabled cases, generated/typed/parameterised instances and build options. Reconcile ambiguity and unreadable/template sources.
-2. Port remaining assertions, fixtures, setup/teardown and failure semantics. Mesh/BMesh, modifiers, nodes, dependency graph, file I/O, animation, rigging, simulation, rendering, compositor, Python and UI families are not covered by this library subset.
-3. Execute the exact mapped universe natively and in browsers, binding evidence to reference/source revisions, fixture hashes, device configuration and comparison rules. Handle compile-time assertions separately.
-4. Materialise dependencies during execution and retain outputs. Rendering sampling, colour management, tolerances and backend differences require explicit contracts.
-5. Make the whole-suite gate pass legitimately, then evaluate feature/workflow compatibility and performance separately. A complete test port, full test conformance and complete application parity are different milestones.
+1. Discover and reconcile all required reference configurations and test families, including CTest, GoogleTest, Python/runner discovery, disabled tests, generated/typed/parameterised instances, platform options and unreadable/template sources.
+2. Port remaining assertions, fixtures, setup/teardown and failure semantics. Mesh/BMesh, modifiers, nodes, dependency graph, file I/O, animation, rigging, simulation, rendering, compositor, Python and UI families remain outside this core-library subset.
+3. Execute the exact mapped universe natively and in browsers, binding evidence to source/reference revisions, assets, device configuration and comparison policy. Reconcile compile-time assertions separately, including unported type/layout conditions.
+4. Materialise dependencies in execution jobs and retain outputs. Rendering requires explicit colour-management, sampling, tolerance and backend contracts.
+5. Make whole-suite completeness pass legitimately. Assess application/workflow compatibility and performance as separate milestones; complete test translation, complete conformance and full feature parity are not interchangeable.
 
-The separate Three.js modeller has not been replaced by this compatibility workbench. The workbench is not a complete Blender application or rendering engine.
+The Three.js modeller remains separate from this compatibility workbench. No larger passing library subset can by itself establish a complete Blender modelling/rendering application.

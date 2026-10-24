@@ -75,9 +75,9 @@ pub fn find_split_words(text:&[u8],max_length:usize,delimiter:u8,words:&mut[[i32
 }
 
 /// UTF-8 decoding for the valid Unicode inputs covered by the pinned tests.
-/// Invalid lead/continuation sequences consume one byte and preserve its value,
-/// matching BLI's safe fallback for those bytes; obsolete five/six-byte encodings
-/// and surrogate/overlong acceptance are not claimed by this Unicode adapter.
+/// Invalid sequences consume one byte as a safe adapter policy. Invalid-byte
+/// return values and obsolete five/six-byte, surrogate or overlong encodings
+/// are outside this port's verified compatibility scope.
 pub fn utf8_step(bytes:&[u8],offset:usize)->(u32,usize) {
     let first=bytes[offset];if first<0x80{return(first as u32,1);}
     let n=match first{0xc2..=0xdf=>2,0xe0..=0xef=>3,0xf0..=0xf4=>4,_=>return(first as u32,1)};

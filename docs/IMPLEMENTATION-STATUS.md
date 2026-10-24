@@ -1,23 +1,25 @@
 # Implementation status
 
-## Verified implementation and deployment
+## Verified source and deployment
 
-Source `059bfb9b277e8bc5aefb9834dd671879094a0599` passed [run 40045600207](https://github.com/596050/blended/actions/runs/40045600207). [Open the 416-case workbench](https://rawcdn.githack.com/596050/blended/63655e85d5b56c357645c92e3874af3940fd161e/index.html). Documentation commits may follow without changing this verified runtime implementation.
+The currently documented runtime implementation is `ab692209e9eb98248054ae90ead9b0258f1ab4da`, verified by [run 40049834310](https://github.com/596050/blended/actions/runs/40049834310). [Open the 464-case workbench](https://rawcdn.githack.com/596050/blended/51d30f5a549da822a9dc0945d353ef6414938092/index.html). Documentation and source-comment-only corrections may follow that tested runtime revision.
 
-416 unique Blender runtime cases pass in native Rust and at the actual public URL. Original-C++ comparisons check 33,368 assertion events in native Rust and Chromium WebAssembly. Eight native and nine browser colour differences stay within original rules; no tolerances were loosened. Native Rust totals 444 tests: 416 Blender, three Cycles and 25 product/safety/regression cases. Six compile-time assertions pass positive and negative checks on both targets.
+464 unique Blender runtime cases pass natively and at the actual public URL, with 34,214 expected assertion events. Original C++ versus native Rust and Chromium WebAssembly comparisons passed. Eight native and nine browser floating differences remain within original rules; no original tolerance or exact-equality rule was loosened. The full native Rust run passed 497 tests: 464 Blender, three Cycles and 30 product/safety/regression cases. Six compile-time assertions remain separate and pass positive/negative checks on both targets.
 
-The newest batch adds 49 cases from four complete original runtime test files: array utilities, CSV parsing, Murmur2A and disjoint sets. Their implementations retain the exercised input and assertion semantics, including 100,000-element grouping cases. A separate streaming oracle matches 31,776 outputs exactly across 10,592 configurations. Four native/browser mutation controls detect deliberately broken code using unchanged source tests. [Detailed evidence and limits](DATA-PORT-VERIFICATION.md)
+The latest 48-case batch ports the complete runtime declarations in BLI_string_test.cc, BLI_string_search_test.cc and BLI_string_utils_test.cc. Actual implementations cover bounded byte strings, natural comparison, formatting, splitting, escaping, naming and tested fuzzy-search operations. Original TEST_F fixture/helper behaviour is retained. An independent original-C++ oracle matched 3,136 natural-order results and 21,952 search offsets exactly. Four native/browser mutations fail unchanged tests while independent controls pass. [Details](STRING-OPS-PORT-VERIFICATION.md).
 
 ## Separate products and evidence layers
 
-The compatibility workbench is not the modeller. The Three.js modeller remains an object-editing alpha with transforms, bounded undo/redo, basic materials, scene JSON, static OBJ/STL interchange and PNG output. Its legacy test button still uses the 17-case ABI. These library ports do not add corresponding interactive tools. The Solarxy/WebGPU experiment remains independently blocked by rendering failures.
+The compatibility workbench is not the modeller. The Three.js application remains an object-editing alpha with transforms, bounded undo/redo, basic materials, scene JSON, static OBJ/STL interchange and PNG output. Its legacy test button retains 17 cases. The new library tests do not add corresponding interactive Blender tools. The Solarxy/WebGPU renderer experiment remains independently blocked.
 
-Fresh builds, original-reference comparisons, diagnostic browser probes and actual public-URL tests remain separate evidence categories. Supplemental corpora, mutated implementations and product regressions are not counted as upstream Blender cases. Historical evidence retains its own source revisions and scope.
+Fresh production builds, original-reference comparisons, local diagnostic browser checks and actual public-URL acceptance are distinct evidence categories. Historical 99/131/211/272/302/338/367/416-case records retain their original scope. Supplemental oracle inputs, mutation controls and infrastructure tests are not counted as extra upstream ports.
 
-## Still unfinished
+## Unfinished requirements
 
-The full Blender test port and whole-suite execution are unfinished; the completeness gate remains failed. The heuristic scan has 5,859 candidates, 422 mappings and 5,437 unmapped declarations. A complete runtime denominator is still unknown. Additional compile-time conditions and extensive mesh/BMesh, modifier, node, animation, simulation, rendering, file-format, Python and UI families remain unported. Historical fixture verification does not materialise data in fresh execution checkouts.
+The complete Blender test port is not finished. The whole-suite completeness gate remains failed. The latest heuristic source audit contains 5,859 candidates, 470 mappings and 5,389 unmapped declarations. The complete runtime denominator is unknown. Previously identified vector type/layout compile-time conditions and extensive application-level families remain unported. Historical fixture downloads do not materialise payloads in a fresh checkout.
 
-There is no complete Blender modelling/rendering application, native .blend support or Cycles/EEVEE parity. Full tests, feature/workflow compatibility, broad browser coverage and performance remain distinct requirements.
+There is no full mesh/BMesh editor, sculpting, modifier or Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. The string batch does not implement the whole native search/ranking or UTF-8 subsystem, all locales or arbitrary invalid-input behaviour.
 
-[Current status JSON](../evidence/TEST-PORT-STATUS.json) · [Complete-suite requirements](COMPLETE-TEST-PORT.md) · [Completion issue #3](https://github.com/596050/blended/issues/3)
+A complete port, complete-suite execution, application/workflow compatibility and competitive performance remain separate milestones.
+
+[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Open completion issue #3](https://github.com/596050/blended/issues/3)

@@ -2,28 +2,30 @@
 
 ## Current verified subset
 
-[Run 40045600207](https://github.com/596050/blended/actions/runs/40045600207), source `059bfb9b277e8bc5aefb9834dd671879094a0599`, checks **416 Blender runtime cases and 33,368 assertion events** against Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Native Rust and Chromium WebAssembly comparisons pass. Eight native and nine browser colour differences are explicitly retained within original floating rules. No tolerance was widened. This is not bitwise equality or a complete-suite certificate.
+[Run 40049834310](https://github.com/596050/blended/actions/runs/40049834310), source `ab692209e9eb98248054ae90ead9b0258f1ab4da`, verifies **464 Blender runtime cases and 34,214 assertion events** against Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Native Rust and Chromium WebAssembly comparisons pass. Eight native and nine browser differences remain explicitly recorded within the corresponding original floating rules. The new string cases introduce no floating differences. No tolerance was widened.
 
-[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40045600207/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40045600207/browser-comparison.json) · [Raw transcripts and build metadata](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40045600207)
+[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40049834310/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40049834310/browser-comparison.json) · [Raw transcripts/build metadata](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40049834310)
 
 ## Preservation and comparison
 
-Registered identities map to pinned source snapshots and reviewed target hashes. Generators reproduce committed translations from original sources. The executable registry must match the reviewed contracts exactly. Six compile-time mappings remain separate. Missing work stays visible to the completeness audit.
+Source snapshots and reviewed target hashes bind the registered identities. Generators must reproduce committed tests. Executable registries form an exact bijection with reviewed runtime contracts. Six compile-time mappings remain separate; unsupported/unported work remains visible to the completeness audit.
 
-Original C++ bodies are unchanged. An include-only diagnostic overlay records evaluated operands once and invokes pinned GoogleTest assertions. Rust instrumentation uses an explicit shadow build; production tests and implementations are not edited. Case boundaries, assertion order, kinds, operands, results and counts are compared. Assertion-free smoke cases have boundary and negative-execution checks rather than fabricated assertions.
+Original C++ test bodies are unchanged. An include-only recording overlay evaluates operands once and invokes pinned GoogleTest assertions. Rust recording runs in an explicit shadow checkout, not by altering production tests. Both record case boundaries and ordered assertion kinds, operands, outcomes and counts. Assertion-free smoke cases require boundary and negative-execution evidence, not invented assertions.
 
-Exact equality remains exact. Original near tolerances and floating-equality ULP rules are preserved. Numeric representation, symmetric equality operand order, upstream empty-range equality and relative pointer encodings have documented normalisations. Ordered comparisons do not allow operand reversal. Fatal assertions retain stop-on-failure behaviour. New C-string assertions use the explicit STREQ kind; original array helpers expand to the same number of individual assertions. Whole-span equality remains one event containing all compared values.
+Exact equality stays exact. Original near tolerances and floating-equality rules are retained. Literal floating expectations are fixed. Equivalent numeric representations, symmetric equality operand order and upstream empty-range equality have documented normalisations. Ordered comparisons never permit operand reversal. Original vector-helper size checks and conditional element assertions remain. C-string comparisons are not converted into pointer comparisons, or vice versa. Fatal assertions preserve stop-on-failure behaviour with separate negative evidence.
 
-The diagnostic Chromium run is separate from deployment. Production WebAssembly is freshly built, published and tested at the actual immutable URL, with independent case identities, counts and binary SHA-256 checks.
+## Pointer identity and additional original-reference oracles
 
-## Supplemental evidence, not inflated upstream counts
+New string tests compare actual returned storage pointers against original offsets. Their recorded addresses use pair-local alias/null labels for the string fixture because separate static literals have unrelated allocation layouts across implementations. This preserves the original equality assertion, not global allocation-layout parity. Older pointer-offset encodings remain unchanged. A wrong-address mutation fails the unchanged original test in native Rust and browser WebAssembly.
 
-The latest data batch retains the original 100,000-element group inputs and masks. An unedited original-C++ hash oracle matches 31,776 results across 10,592 explicit streaming configurations exactly in Rust and browser WebAssembly. Four deliberately broken implementations are detected by unchanged source tests while controls pass. Compilation failures, panics and traps do not satisfy negative assertion checks. [Data verification](DATA-PORT-VERIFICATION.md)
+The independent original-C++ string oracle additionally compares exact relative offsets for 21,952 bounded searches and exact natural-order return values for 3,136 ordered pairs. All 25,088 results match in native Rust and browser WASM. The corpus is explicitly ASCII and C-locale scoped. [Current string details](STRING-OPS-PORT-VERIFICATION.md)
 
-Prior heap verification checks exact original random inputs and mutations; prior sampling verification checks borders, endpoints and execution of the original infinity-input smoke call. Their evidence remains separately scoped in [HEAP-PORT-VERIFICATION.md](HEAP-PORT-VERIFICATION.md) and [SAMPLING-PORT-VERIFICATION.md](SAMPLING-PORT-VERIFICATION.md).
+Earlier oracles retain their own scope: 15,000 exact random values/3,175 shuffle items and 31,776 streaming-hash outputs. These are supplemental differential inputs, not extra Blender ports. Likewise, deliberately broken implementations and infrastructure regressions do not increase upstream case totals.
 
-Infrastructure regressions reject missing/extra/reordered cases, changed assertions, widened tolerances, false success flags, stale references, altered hashes and fabricated runtime denominators. Hashes and transcripts establish the exercised contracts, not every possible input or native implementation detail.
+The diagnostic browser runs are local CI checks. The production workbench is separately built, published and tested at its immutable public URL, verifying independent identities/counts and the WASM hash rather than trusting displayed totals.
 
-## Completion remains separate
+## Failures and completion
 
-The whole-suite completeness job still fails. This subset does not establish unported-family coverage, full Blender feature parity, cross-browser parity or competitive performance. Historical verification runs retain their original scope and are not substituted for current combined-build evidence.
+Infrastructure regressions reject removed/extra/reordered/substituted assertions, changed kinds, loosened tolerances, false success flags, stale references, changed hashes and fabricated runtime denominators. Implementation mutations must produce the intended assertion failures while controls pass; compiler errors, panics and traps cannot substitute for detection.
+
+Whole-suite completeness still fails. The implemented subset does not certify missing test-family coverage, arbitrary malformed inputs, every locale, full feature parity or competitive performance. Historical smaller runs retain their original scope and are not substituted for the latest combined execution.
