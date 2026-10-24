@@ -2,7 +2,7 @@ name: Blender test-port conformance
 on:
   push:
     branches: [main, 'compat/**', 'quality/**']
-    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_embedded_static_ports.py', 'tools/verify_heap_*.py', 'tools/inventory.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
+    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_static_port.py', 'tools/verify_embedded_static_ports.py', 'tools/verify_heap_*.py', 'tools/verify_data_*.py', 'tools/verify_hash_streaming.py', 'tools/inventory.py', 'tools/verify_zero_assertion_case.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -70,6 +70,8 @@ jobs:
           python3 tools/verify_zero_assertion_case.py --output evidence/zero-assertion-probe.json
           python3 tools/verify_heap_inputs.py --output evidence/heap-inputs/result.json
           python3 tools/verify_heap_sensitivity.py --output evidence/heap-sensitivity/result.json
+          python3 tools/verify_hash_streaming.py --output evidence/hash-streaming/result.json
+          python3 tools/verify_data_sensitivity.py --output evidence/data-sensitivity/result.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
       - uses: actions/upload-artifact@v4
