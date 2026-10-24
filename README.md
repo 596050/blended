@@ -2,39 +2,43 @@
 
 ## [Launch the deployed browser modeller](https://rawcdn.githack.com/596050/blended/15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38/index.html)
 
-### [Run the verified 464-case Blender test workbench](https://rawcdn.githack.com/596050/blended/51d30f5a549da822a9dc0945d353ef6414938092/index.html)
+### [Run the verified 503-case Blender test workbench](https://rawcdn.githack.com/596050/blended/a7f55a00388e7b3fb906c307cc52db7968b9a25d/index.html)
 
-[Deployment details](LIVE.md) · [Implementation status](docs/IMPLEMENTATION-STATUS.md) · [String-test verification](docs/STRING-OPS-PORT-VERIFICATION.md) · [Complete-suite requirements](docs/COMPLETE-TEST-PORT.md)
+[Deployment details](LIVE.md) · [Implementation status](docs/IMPLEMENTATION-STATUS.md) · [Latest UTF-8 verification](docs/UTF8-PORT-VERIFICATION.md) · [Complete-suite requirements](docs/COMPLETE-TEST-PORT.md)
 
 **A browser modeller alpha and test-driven Blender compatibility project, not a complete Blender clone. The complete Blender test port remains unfinished.**
 
-The modeller and compatibility workbench are separate applications. The modeller remains the earlier object-editing alpha. The linked workbench was freshly compiled and publicly verified from source `ab692209e9eb98248054ae90ead9b0258f1ab4da`. Documentation/comment-only commits may follow the verified implementation revision.
+The modelling application and compatibility workbench are separate. The modeller remains the earlier object-editing alpha. The workbench was freshly compiled and publicly verified from source `3969e1fdadae2e11d6f220412f8c32cabf7048d1`. Documentation-only commits may follow that verified implementation revision.
 
 ## Verified compatibility subset
 
-**464 unique Blender runtime cases pass natively and at the actual deployed Chromium URL.** Independent original-C++ versus native Rust and Chromium WebAssembly comparisons check **34,214 ordered assertion events** per implementation. Eight native and nine browser floating differences remain within the original comparison rules; no tolerance was widened. The newest string cases introduce no floating differences.
+**503 unique Blender runtime cases pass natively and in the actual deployed Chromium browser.** Independent original-C++ versus native Rust and Chromium WebAssembly comparisons check **1,661,377 ordered assertion events per implementation**. Eight native and nine browser floating differences remain in older colour cases within their original rules. No tolerance was widened and the new UTF-8 cases add no floating differences.
 
-The complete native Rust run passed **497 runtime tests**: 464 Blender ports, three Cycles integer-maths cases and 30 separate product/safety/regression tests. Six separately tracked compile-time assertions pass positive builds and deliberate-failure checks on native and wasm32. These are not additional runtime cases.
+The native Rust run passed **542 runtime tests**: 503 Blender ports, three Cycles integer-maths cases and 36 separate product/safety/regression tests. Six compile-time assertions separately pass positive builds and deliberate-failure checks on native and wasm32. Repeated assertions and supplemental oracle inputs are not extra Blender test cases.
 
-[Combined verification run](https://github.com/596050/blended/actions/runs/40049834310) · [Immutable-run original assertion evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40049834310) · [Machine-readable status](evidence/TEST-PORT-STATUS.json)
+[Combined verification run](https://github.com/596050/blended/actions/runs/40065241089) · [Original-reference assertion evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40065241089) · [Machine-readable status](evidence/TEST-PORT-STATUS.json)
 
-The latest batch ports every runtime case from `BLI_string_test.cc` (43), `BLI_string_search_test.cc` (3) and `BLI_string_utils_test.cc` (2): **48 cases and 846 assertion executions**. Original TEST/TEST_F fixtures, helper expansions, byte literals, pointer comparisons, buffer limits and loops are retained. Implementations cover bounded strings, natural ordering, formatting, word splitting, escaping, unique names and the tested fuzzy-search operations. These are core-library additions, not new interactive modelling tools or a complete search/ranking system.
+## Latest implementation: full UTF-8 test file
 
-A separately compiled original-C++ oracle checks **3,136 natural-order results and 21,952 bounded-search pointer offsets** exactly against native Rust and browser WebAssembly. Four deliberate implementation mutations fail unchanged original tests while independent controls pass. These supplemental checks do not inflate the Blender test count. [Evidence and verified scope](docs/STRING-OPS-PORT-VERIFICATION.md)
+Every runtime case in `BLI_string_utf8_test.cc` is ported: **39 cases / 1,627,163 assertion executions**. The Rust implementation covers malformed-byte detection/removal/substitution, bounded length/copying, the tested formatting form, decoding and consumed-byte offsets, and UTF-8/UTF-32 cursor movement. The 78 malformed fixtures, original helper expansions, all 256 byte values, buffer sizes 1 through 12 and original random stress loops remain intact. These are core-library additions, not new interactive editor tools.
 
-## Accuracy controls and limits
+An independent original-C++ oracle checks **68,273 byte sequences**, including every single-byte and two-byte input, plus explicit longer legacy/truncated sequences. All **68,273 validator results, 137,426 decoded-value/next-offset pairs and 48,640 random bytes** match native Rust and browser WebAssembly exactly. Three deliberately broken implementations are detected by unchanged original tests while controls pass. [Detailed scope, provenance and evidence](docs/UTF8-PORT-VERIFICATION.md)
 
-Pinned source snapshots, original case identities, reviewed target hashes and generator reproduction are required. The executable registry must exactly match reviewed contracts. Include-only C++ instrumentation leaves original test bodies unchanged; an explicit Rust shadow records corresponding values and case boundaries. Comparisons preserve assertion kind, operands, order, outcomes, counts, helper semantics and original tolerance. Production WebAssembly is separately tested at its real public URL.
+The pinned legacy behaviour intentionally differs from strict modern Unicode validation. It retains tested five/six-byte sequences and original selective validity rules. The formatting adapter is the tested single-`%s` form, not a complete C varargs formatter. Cursor width decisions use the exact pinned combining table, with full original notices included in corresponding source. Safe Rust boundary policies and limits are documented explicitly.
 
-Pointers are real returned addresses, not substituted string comparisons. New string-fixture transcript values use pair-local alias labels because unrelated static literals have different allocation layouts across implementations; actual pointer equality/nullness is still asserted, and the supplemental search oracle checks numeric offsets independently. C-locale comparison and valid-Unicode decoding are verified only within the documented scope. Invalid-byte decoding, every locale, arbitrary native memory layouts and all search-ranking features are not certified.
+## Accuracy at stress-test scale
 
-The whole-suite completeness gate remains genuinely failed: **5,859 source candidates, 470 reviewed mappings and 5,389 unmapped declarations**. Mappings comprise 464 runtime and six compile-time cases. These are heuristic source counts, not a complete runtime denominator or feature percentage. Missing runtime enumeration is unknown, never zero. [Completion blocker #3](https://github.com/596050/blended/issues/3)
+Pinned source snapshots, original identities, reviewed target hashes and source-generator reproduction are required. Executable and reviewed-case registries must match exactly. Include-only C++ instrumentation leaves original test bodies unchanged; Rust diagnostic recording uses a separate shadow build. Every event is compared with the same reviewed assertion rules, not sampled or replaced by a summary hash. Case boundaries, order, operands, outcomes, counts and tolerances remain checked.
 
-## Limited modeller and separate renderer experiment
+The comparison now processes large traces in bounded batches. Chromium transfers the complete diagnostic trace in chunks rather than one giant response. All C++/Rust/browser raw events are stored losslessly as `.jsonl.gz`, with decompressed SHA-256 and byte counts verified before removing duplicate raw copies. Production WebAssembly is separately tested at its actual public URL. [Fidelity methodology](docs/ASSERTION-FIDELITY.md)
 
-The Three.js WebGL 2 alpha provides orbit/pan/zoom, object selection and transforms, duplicate/delete, bounded undo/redo, basic materials, scene JSON save/reopen, static OBJ/STL interchange and PNG viewport output. Rust/WebAssembly generates boxes and planes; Three.js generates spheres. Its legacy test button retains the earlier 17-case interface; use the separate workbench for all implemented compatibility cases.
+The whole-suite completeness job remains genuinely failed. The latest heuristic scan has **5,859 source candidates, 509 reviewed mappings and 5,350 unmapped declarations**. The mappings comprise 503 runtime cases and six compile-time cases. These are not a full runtime denominator or a feature percentage. Missing or incomplete runtime discovery remains unknown, never zero. [Completion issue #3](https://github.com/596050/blended/issues/3)
 
-There is no comprehensive mesh editor, sculpting, Blender modifier or Geometry Nodes suite, animation/rigging/physics suite, compositor, Python add-on compatibility, native `.blend` support or Cycles/EEVEE parity. OBJ export does not include materials. The Solarxy/WebGPU experiment remains separately blocked by rendering/device-loss failures. This modeller does not inherit that editor's procedural features. [Renderer blocker #1](https://github.com/596050/blended/issues/1)
+## Limited modeller and separate rendering experiment
+
+The Three.js WebGL 2 alpha provides orbit/pan/zoom, object selection/transforms, duplication/deletion, bounded undo/redo, basic materials, scene JSON save/reopen, static OBJ/STL interchange and PNG viewport output. Rust/WebAssembly generates boxes and planes; Three.js generates spheres. Its historical public acceptance run checked rendered pixels and editing workflows. Its legacy test button still uses the 17-case interface; use the separate workbench for the full implemented subset.
+
+There is no complete mesh/BMesh editor, sculpting, modifier or Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on compatibility, native `.blend` support or Cycles/EEVEE parity. The Solarxy/WebGPU rendering experiment remains independently blocked by blank-viewport/device-loss failures; the successful Three.js modeller is not a fix for that experiment. [Renderer blocker #1](https://github.com/596050/blended/issues/1)
 
 ## Reproduce
 
@@ -48,8 +52,8 @@ python3 -m unittest discover -s tests -v
 node --test modeller/model.test.mjs
 ```
 
-Conformance CI additionally fetches pinned Blender sources, reproduces all translations, builds the original reference, compares native/browser transcripts, exercises supplemental oracles and negative controls, publishes the explicitly incomplete subset and tests its actual public URL. Whole-suite completion is a separate requirement. Earlier data, heap and sampling reports retain their historical scope.
+Conformance CI additionally fetches pinned Blender, reproduces source translations and tables, builds the original reference, executes native/browser comparisons and diagnostic controls, publishes the explicitly incomplete subset, and tests its public URL. Whole-suite completion is a separate requirement. Earlier [string](docs/STRING-OPS-PORT-VERIFICATION.md), [data](docs/DATA-PORT-VERIFICATION.md), [heap](docs/HEAP-PORT-VERIFICATION.md) and [sampling](docs/SAMPLING-PORT-VERIFICATION.md) evidence retains its historical scope.
 
-## Hosting and attribution
+## Hosting and notices
 
-Source, static builds and durable evidence are stored in this public repository. No paid backend or remote GPU service was provisioned. The preview uses a third-party shared-origin CDN: use public sample models only and save work locally. GitHub Pages workflows are supplied. Preserve each component's SPDX identifier, copyright and licence notices; see [NOTICE.md](NOTICE.md). Blended is independent of the Blender Foundation and Solarxy's author.
+Source, static builds and durable evidence remain in this public repository. No paid backend or remote GPU service was provisioned. The preview uses a third-party shared-origin CDN: use public sample models only and save work locally. GitHub Pages workflows are also supplied. Component-specific licences and attribution apply; consult each file's SPDX identifier, [NOTICE.md](NOTICE.md) and `LICENSES/`. Blended is independent of the Blender Foundation and Solarxy's author.

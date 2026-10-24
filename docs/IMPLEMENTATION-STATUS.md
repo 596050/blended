@@ -1,25 +1,31 @@
 # Implementation status
 
-## Verified source and deployment
+## Current verified implementation
 
-The currently documented runtime implementation is `ab692209e9eb98248054ae90ead9b0258f1ab4da`, verified by [run 40049834310](https://github.com/596050/blended/actions/runs/40049834310). [Open the 464-case workbench](https://rawcdn.githack.com/596050/blended/51d30f5a549da822a9dc0945d353ef6414938092/index.html). Documentation and source-comment-only corrections may follow that tested runtime revision.
+Source `3969e1fdadae2e11d6f220412f8c32cabf7048d1` was verified by [run 40065241089](https://github.com/596050/blended/actions/runs/40065241089). [Open its 503-case public workbench](https://rawcdn.githack.com/596050/blended/a7f55a00388e7b3fb906c307cc52db7968b9a25d/index.html). Later documentation-only commits do not change that runtime implementation.
 
-464 unique Blender runtime cases pass natively and at the actual public URL, with 34,214 expected assertion events. Original C++ versus native Rust and Chromium WebAssembly comparisons passed. Eight native and nine browser floating differences remain within original rules; no original tolerance or exact-equality rule was loosened. The full native Rust run passed 497 tests: 464 Blender, three Cycles and 30 product/safety/regression cases. Six compile-time assertions remain separate and pass positive/negative checks on both targets.
+503 unique Blender runtime cases pass natively and at the actual deployed URL, covering 1,661,377 expected assertion executions. Original C++ versus native Rust and Chromium WebAssembly comparisons passed. Eight native and nine browser floating differences remain in the earlier colour cases within original rules; no tolerance was widened. No additional floating difference comes from the new UTF-8 tests.
 
-The latest 48-case batch ports the complete runtime declarations in BLI_string_test.cc, BLI_string_search_test.cc and BLI_string_utils_test.cc. Actual implementations cover bounded byte strings, natural comparison, formatting, splitting, escaping, naming and tested fuzzy-search operations. Original TEST_F fixture/helper behaviour is retained. An independent original-C++ oracle matched 3,136 natural-order results and 21,952 search offsets exactly. Four native/browser mutations fail unchanged tests while independent controls pass. [Details](STRING-OPS-PORT-VERIFICATION.md).
+The native Rust total is **542 runtime tests: 503 Blender, three Cycles and 36 product/safety/regression tests**. Six separately tracked compile-time assertions pass positive builds and deliberate-failure checks on both native and wasm32. Repeated stress assertions, extra oracle inputs and mutation probes are not additional upstream cases.
 
-## Separate products and evidence layers
+## Latest functionality and verification
 
-The compatibility workbench is not the modeller. The Three.js application remains an object-editing alpha with transforms, bounded undo/redo, basic materials, scene JSON, static OBJ/STL interchange and PNG output. Its legacy test button retains 17 cases. The new library tests do not add corresponding interactive Blender tools. The Solarxy/WebGPU renderer experiment remains independently blocked.
+All 39 cases in `BLI_string_utf8_test.cc` are now ported with original stress loops, malformed-byte fixtures, bounds, formatting expectations and cursor inputs. They add 1,627,163 assertion executions. The corresponding implementation covers pinned legacy validation/repair, decoding, length/copying, the tested formatting form and UTF-8/UTF-32 cursor movement.
 
-Fresh production builds, original-reference comparisons, local diagnostic browser checks and actual public-URL acceptance are distinct evidence categories. Historical 99/131/211/272/302/338/367/416-case records retain their original scope. Supplemental oracle inputs, mutation controls and infrastructure tests are not counted as extra upstream ports.
+The independent original-C++ oracle exactly matches 68,273 validator results, 137,426 decoded-value/next-offset pairs and 48,640 generated random bytes on both Rust targets. Three implementation-only mutations fail unchanged original cases while controls pass. The exact pinned zero-width interval table is regenerated and its full notice is included in downloadable source. [Detailed UTF-8 report](UTF8-PORT-VERIFICATION.md)
 
-## Unfinished requirements
+Every original-reference assertion event is still compared. Large transcripts are processed in bounded batches and preserved losslessly as gzip with verified decompressed hashes and sizes. This is an execution/transport improvement, not reduced test scope or a performance-parity claim.
 
-The complete Blender test port is not finished. The whole-suite completeness gate remains failed. The latest heuristic source audit contains 5,859 candidates, 470 mappings and 5,389 unmapped declarations. The complete runtime denominator is unknown. Previously identified vector type/layout compile-time conditions and extensive application-level families remain unported. Historical fixture downloads do not materialise payloads in a fresh checkout.
+## Separate products and evidence
 
-There is no full mesh/BMesh editor, sculpting, modifier or Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. The string batch does not implement the whole native search/ranking or UTF-8 subsystem, all locales or arbitrary invalid-input behaviour.
+The workbench tests the compatibility core. The Three.js modeller remains the earlier object-editing alpha; new core tests are not new interactive Blender tools. Its legacy test button still uses the 17-case ABI. The separate Solarxy/WebGPU rendering experiment remains independently blocked.
 
-A complete port, complete-suite execution, application/workflow compatibility and competitive performance remain separate milestones.
+Fresh native compilation, original-reference comparisons, diagnostic browser checks and actual public-URL tests are separate evidence categories. Historical 99/131/211/272/302/338/367/416/464-case records retain their original scope and are not substituted for the new combined build.
 
-[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Open completion issue #3](https://github.com/596050/blended/issues/3)
+## Remaining requirements
+
+The complete Blender test port is unfinished and the full-completeness gate remains failed. The current heuristic scan contains **5,859 source candidates, 509 reviewed mappings and 5,350 unmapped declarations**. The runtime denominator remains unknown. Nine previously identified vector type/layout compile-time conditions and extensive application-level families remain outside the verified subset. A historical fixture download does not materialise fixtures for a fresh execution checkout.
+
+There is no complete mesh/BMesh editor, sculpting, modifier/Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. Full test porting, full-suite execution, feature compatibility and competitive performance remain different milestones.
+
+[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
