@@ -238,6 +238,21 @@
  fn c_string(a:&[u8])->&[u8]{&a[..a.iter().position(|&v|v==0).unwrap_or(a.len())]}
  fn copy_call(dst:&mut[u8],src:&[u8],cap:usize,formatting:bool)->usize{
   if formatting{u::printf_s(dst,src,cap,true)}else{u::copy_into(dst,src,cap)}
+--- pixel_format_cases.rs
++++ shadow/pixel_format_cases.rs
+@@ -8,9 +8,9 @@
+  pub fn check(&mut self,p:bool,e:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {e}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! yes {($r:expr,$v:expr)=>{{$r.check($v,stringify!($v),line!());}};}
+-fn array_eq<T:PartialEq+Copy>(report:&mut Report,a:&[T],b:&[T],n:usize){for i in 0..n{eq!(report,a[i],b[i]);}}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++fn array_eq<T:PartialEq+Copy+crate::fidelity_trace::Value>(report:&mut Report,a:&[T],b:&[T],n:usize){for i in 0..n{eq!(report,a[i],b[i]);}}
+ 
+ // source/blender/blenlib/tests/BLI_math_half_test.cc:17
+ pub fn math_half__half_to_float_scalar()->Report{let mut report=Report::default();
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
