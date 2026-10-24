@@ -1,101 +1,104 @@
 {
   "date": "2026-10-24",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "verified_runtime_source_commit": "2990e30077e368c97e3a7af60d45d7a911ceb988",
-  "verified_public_static_commit": "15a67995bdca8581e9f1e28b9b95af17ea69d51b",
-  "verified_public_url": "https://rawcdn.githack.com/596050/blended/15a67995bdca8581e9f1e28b9b95af17ea69d51b/index.html",
-  "verified_original_cpp_native_wasm_and_public_run": 40108130160,
-  "blender_runtime_cases_native": 512,
-  "blender_runtime_cases_wasm": 512,
-  "blender_runtime_cases_public_url": 512,
+  "verified_runtime_source_commit": "efc7799e5050f28de66aa7ba11ed9a976165d21a",
+  "verified_public_static_commit": "c3edd21e2e953d5275768223b869cbbb9a22d42e",
+  "verified_public_url": "https://rawcdn.githack.com/596050/blended/c3edd21e2e953d5275768223b869cbbb9a22d42e/index.html",
+  "verified_original_cpp_native_wasm_and_public_run": 40142038492,
+  "blender_runtime_cases_native": 541,
+  "blender_runtime_cases_wasm": 541,
+  "blender_runtime_cases_public_url": 541,
   "public_browser_errors": [],
-  "assertion_events_compared_per_implementation": 1661546,
+  "assertion_events_compared_per_implementation": 3196218,
   "native_floating_differences_within_original_rules": 8,
   "browser_floating_differences_within_original_rules": 9,
-  "new_format_floating_differences": 0,
-  "new_format_cases": 9,
-  "new_format_assertion_events": 169,
-  "new_runtime_source_scope": {
-    "BLI_math_half_test.cc": {"enabled_functional_cases": 8, "assertion_events": 162, "conditional_performance_cases_unported": 5, "complete_under_all_configurations": false},
-    "BLI_normalized_int_test.cc": {"cases": 1, "assertion_events": 7}
+  "new_polygon_floating_differences": 0,
+  "new_polygon_cases": 29,
+  "new_polygon_assertion_events": 1534672,
+  "new_complete_runtime_source_file": "BLI_polyfill_2d_test.cc",
+  "new_original_source_sha256": "10bbd9b39d4cf465f4df070e517b2d41d5b55c8cfba5a380f23dfa23f468652b",
+  "reviewed_polygon_test_sha256": "924798e48ffa92420d8ab912e3da41075a4dbce6f80d44e6ae6a30f9d29abe76",
+  "original_polygon_test_scope": {
+    "shared_expectation_sites": 12,
+    "full_loops_retained": true,
+    "use_combinations_all": true,
+    "use_beautify": true,
+    "use_obj_preview": false,
+    "known_upstream_gap": "Reversal/cycling modifies poly_copy but tests original poly; original behaviour retained, genuine permutations checked separately",
+    "assertion_repetitions_counted_as_extra_cases": false
   },
-  "conditional_cases": {
-    "condition": "DO_PERF_TESTS",
-    "status": "unported, not passed, retained in source inventory",
-    "ids": ["math_half_perf.half_to_float_scalar", "math_half_perf.half_to_float_array", "math_half_perf.float_to_half_scalar", "math_half_perf.float_to_half_array", "math_half_perf.float_to_half_make_finite_array"]
-  },
-  "format_test_first": {
-    "run": 40107140243,
-    "source_commit": "c094a5be126ceb6c10178f1a42aac4b4d5b2b1f2",
-    "failure": "E0583: missing pixel_formats implementation module; not nine executed assertion failures",
-    "durable_archive": "evidence/pixel-formats-test-first-evidence.zip",
-    "archive_sha256": "1cd22d94fce939c5c2aa4f87fec453ee64cb26b0dfe273306eaf3a59c67b8149",
-    "native_log_sha256": "f777ac2086f4b33c096cc2c153f40a8cb1019b6aa1633ea517cf7fc47bcfa86a"
-  },
-  "supplemental_bit_oracle": {
-    "all_half_patterns": 65536,
-    "float_bit_inputs": 291054,
-    "normalised_component_inputs": 2183,
-    "raw_normalised_component_configurations": 133632,
-    "array_lengths_inclusive": [0, 17],
-    "tail_rotations": 4,
-    "output_words_per_implementation": 2944570,
-    "output_bytes_per_implementation": 11778280,
-    "original_cpp_vs_native": "bit_exact_match",
-    "original_cpp_vs_browser_wasm": "bit_exact_match",
-    "output_sha256_all_three_implementations": "1bb864de0f0688df82bc46f9506ae55e64463a977c501bcd202c8051b094c1c9",
-    "corpus_sha256": "f82ac342305c86c9cc97c4850bf305fb8553781607e0683e0d24fb637be4a9b9",
-    "profile": "x86_64 scalar/SSE2 four-lane arrays, SSE4.1 clamp, nearest-even; no F16C/AVX or NEON",
+  "supplemental_polygon_oracle": {
+    "configurations": 3064,
+    "triangulation_results": 6128,
+    "triangle_triplets": 133968,
+    "output_words": 566512,
+    "output_bytes": 2266048,
+    "beautification_changed_output_sequences": 2528,
+    "changed_sequences_are_not_diagonal_flip_count": true,
+    "original_cpp_vs_native": "exact_match",
+    "original_cpp_vs_node_wasm": "exact_match",
+    "wasm_runtime": "Node.js v22.23.3; production Chromium URL and original assertion-level Chromium runs are separate",
+    "output_sha256_all_three": "ef003e530f8ce7cdb380b296e03c6e6d838155f5955273d6fd71bcae92358349",
+    "corpus_sha256": "c36e39389a090fcc3f8169570942a7760a671d21b0fed5fd6b48537407cb3897",
+    "original_binary_sha256": "5c44ad7dd9135e157d3a98abe3d23c7194863d5e67bc04fe742b00ff2772408b",
+    "rust_implementation_sha256": "23a604ec3036dffbc65c7d2d4e58aa716373e2d711ead637f48d668cdfb6af3d",
+    "wasm_sha256": "1cc63dbd8f17db0f4085e346cd87f796ddd2350b993164ad2ca4d586601083a3",
+    "allocation_scope": "Original algorithms, heap and arena; explicit host allocation bridge, not guarded-allocator parity",
     "counted_as_upstream_cases": false,
-    "exhaustive_all_float32_or_multicomponent_normalised_inputs": false
+    "required_before_workbench_publication": true
   },
-  "floating_point_control": {
-    "native_x86_64": "Actual MXCSR FTZ/DAZ enable and exact restoration checked, including nesting",
-    "browser_hardware_control_supported": false,
-    "browser_scope": "Conversion values verified; no claim of inaccessible hardware mode perturbation",
-    "reference_before": 8096,
-    "reference_during": 40928,
-    "reference_after": 8096
+  "polygon_test_first": {
+    "run": 40139574705,
+    "source_commit": "55ad0076acfe841c390f01e136b408fb79c7e945",
+    "failure": "29 E0433 unresolved polyfill_cases diagnostics before implementation, not executed assertion failures",
+    "summary_path": "evidence/polyfill-test-first-summary.json",
+    "full_original_log": "Actions rust-tdd-evidence artifact; retention applies"
   },
-  "supplemental_negative_controls": {
-    "mutations": ["rounding_bias_removed", "finite_nan_sign_removed", "half_subnormals_flushed"],
-    "native_and_browser": "All detected by unchanged original tests with independent controls passing and original assertion counts retained",
-    "compiler_error_panic_or_trap_accepted_as_detection": false,
-    "counted_as_upstream_cases": false
+  "polygon_specific_implementation_mutation_probes_added": false,
+  "new_python_source_and_audit_regression_tests": 13,
+  "required_review_contracts": 39,
+  "historical_base_lock_unchanged": true,
+  "required_polygon_contract_shard": "compatibility/polyfill-assertion-contract.lock.json",
+  "inventory_fix": {
+    "digit_prefixed_gtest_arguments_retained": true,
+    "newly_discovered_source_declarations": 8,
+    "newly_discovered_declarations_are_not_automatically_ported": true,
+    "declarations": ["polyfill2d.3Colinear", "polyfill2d.4Colinear", "ArrayND.1DConstructor", "ArrayND.2DConstructor", "ArrayND.3DConstructor", "ArrayND.1DAccessor", "ArrayND.2DAccessor", "ArrayND.3DAccessor"]
   },
   "compile_time_cases_separate_from_runtime": 6,
   "compile_time_native_positive_and_negative": "passed",
   "compile_time_wasm_positive_and_negative": "passed",
   "cycles_native_cases": 3,
   "product_safety_regression_native_cases": 43,
-  "total_native_rust_runtime_tests": 558,
-  "source_candidates": 5859,
-  "mapped_source_candidates": 518,
-  "unmapped_source_candidates": 5341,
+  "total_native_rust_runtime_tests": 587,
+  "source_candidates": 5867,
+  "mapped_source_candidates": 547,
+  "unmapped_source_candidates": 5320,
   "source_counts_are_runtime_denominator": false,
   "runtime_denominator_known": false,
   "unported_runtime_cases": null,
   "complete_blender_test_port": false,
   "full_feature_parity": false,
-  "full_completeness_gate": "failed; subset verification and publication remain separate",
+  "full_completeness_gate": "failed; implemented-subset verification and publication remain separate",
   "full_event_fidelity": {
     "sampled_events": false,
     "hash_only_equivalence": false,
-    "comparison": "Every ordered assertion event through the reviewed comparator in bounded batches",
-    "storage": "Full lossless .jsonl.gz tapes with verified decompressed SHA-256 and byte counts"
+    "comparison": "Every ordered assertion event using reviewed comparison rules in bounded batches",
+    "storage": "Full lossless transcripts with decompressed SHA-256 and byte-count verification"
   },
-  "previous_utf8_verification": {
-    "source_commit": "3969e1fdadae2e11d6f220412f8c32cabf7048d1",
-    "run": 40065241089,
-    "runtime_cases": 503,
-    "assertion_events": 1661377
+  "compatibility_limits": {
+    "polygon_scope": "Finite single-boundary polygons with at least three vertices; original index-topology fallback for degeneracy/self-intersection",
+    "holes_or_complete_bmesh": false,
+    "nonoverlapping_fill_for_self_intersections": false,
+    "native_allocator_or_abi_parity": false,
+    "performance_parity": false,
+    "interactive_mesh_editor_added": false
   },
-  "fixture_verification": {
-    "historical_run": 39847680248,
-    "scope": "tests/files/**",
-    "verified_objects": 6691,
-    "verified_bytes": 870496042,
-    "all_test_dependencies_verified": false,
-    "current_format_inputs": "Pinned embedded cases and independently serialised diagnostic corpus; no .blend payloads required by this batch"
+  "previous_format_verification": {
+    "source_commit": "2990e30077e368c97e3a7af60d45d7a911ceb988",
+    "run": 40108130160,
+    "runtime_cases": 512,
+    "assertion_events": 1661546,
+    "conditional_half_performance_benchmarks_still_unported": 5
   }
 }
