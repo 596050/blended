@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "scope": "negative implementation controls, not new upstream cases",
+  "complete_blender_test_port": false,
+  "source_commit": "ab692209e9eb98248054ae90ead9b0258f1ab4da",
+  "unchanged_test_sha256": "0475fae905b0b314cc0bd6c1a6ef0c2060426bd6569416dea954c83f5b2b4b91",
+  "checks": [
+    {
+      "mutation": "append_noop",
+      "case": "string.StrCat",
+      "control": "BLI_string.bounded_strcpy",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 48,
+        "target": 0,
+        "target_assertions": 14,
+        "control": 1,
+        "control_assertions": 2,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "ec351bfeb2ac9cf0ce3b8525a19766e7ac1d70dce142a00398d4461bd80cbfbc",
+      "mutated_implementation_sha256": "c57afe10db2324ac1d011ef6817d1a28da777240986e6143d0c68b1aa5efb701",
+      "wasm_sha256": "f0495d5b519f069ee66fd02d055745ffe7116cb3624e1418e18282311c423d8f"
+    },
+    {
+      "mutation": "search_wrong_address",
+      "case": "string.StringStrncasestr",
+      "control": "string.StringNLen",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 48,
+        "target": 0,
+        "target_assertions": 6,
+        "control": 1,
+        "control_assertions": 11,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "ec351bfeb2ac9cf0ce3b8525a19766e7ac1d70dce142a00398d4461bd80cbfbc",
+      "mutated_implementation_sha256": "1f4037bd4c3706ce1015d641afa728ac77da728f50ce8fe2969adaecb60c2d26",
+      "wasm_sha256": "09ef90d1c254a9ad8be1f894b7b753ab621945f16b44ff6d782eb8740b5dd4b9"
+    },
+    {
+      "mutation": "transposition_disabled",
+      "case": "string_search.damerau_levenshtein_distance",
+      "control": "string_search.extract_normalized_words",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 48,
+        "target": 0,
+        "target_assertions": 12,
+        "control": 1,
+        "control_assertions": 13,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "a9b19264e657667f33fac9d9297fc89841a7602ceb94b52823cc5306c442b890",
+      "mutated_implementation_sha256": "15d3f88e59fb956fd414e7aa2654214fc995587d9bed23c83ad5bc880280a381",
+      "wasm_sha256": "60276202c297e3e5a1a87edab708b48205ed6874f35630f5533f58f5ac43f863"
+    },
+    {
+      "mutation": "uniqueness_disabled",
+      "case": "BLI_string_utils.BLI_uniquename_cb",
+      "control": "BLI_string_utils.BLI_string_replace",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 48,
+        "target": 0,
+        "target_assertions": 12,
+        "control": 1,
+        "control_assertions": 2,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "ec351bfeb2ac9cf0ce3b8525a19766e7ac1d70dce142a00398d4461bd80cbfbc",
+      "mutated_implementation_sha256": "9aeb68af11e6d7fa9a2d24d759d56885298d23717aa55160d29da468bcaeec7b",
+      "wasm_sha256": "9d9b14c03174ef3246399423bd30027163f18484d9ab2f755926fa9b39540b89"
+    }
+  ],
+  "browser_version": "155.0.8059.39"
+}
