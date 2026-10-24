@@ -2,28 +2,32 @@
 
 ## Current verified implementation
 
-Source `2990e30077e368c97e3a7af60d45d7a911ceb988` was verified in [run 40108130160](https://github.com/596050/blended/actions/runs/40108130160). [Open the 512-case public workbench](https://rawcdn.githack.com/596050/blended/15a67995bdca8581e9f1e28b9b95af17ea69d51b/index.html). Later documentation-only commits do not change that implementation.
+Source `efc7799e5050f28de66aa7ba11ed9a976165d21a` was verified in [run 40142038492](https://github.com/596050/blended/actions/runs/40142038492). [Open its 541-case workbench](https://rawcdn.githack.com/596050/blended/c3edd21e2e953d5275768223b869cbbb9a22d42e/index.html). Subsequent documentation-only commits do not change the tested executable implementation.
 
-512 unique Blender runtime cases pass in native Rust and at the actual deployed URL, covering 1,661,546 expected assertion executions. Independent original-C++ versus native Rust and Chromium comparisons passed. Eight native and nine browser floating differences remain in earlier colour cases under original rules; no tolerance was widened. The new format tests add no additional differences.
+541 unique Blender runtime cases pass in native Rust and at the actual deployed Chromium URL, covering 3,196,218 expected assertion events. Independent original-C++ comparisons pass for native Rust and Chromium WebAssembly. Eight native and nine browser floating differences remain in older colour cases under original rules; no tolerances were widened. The polygon cases add no floating differences.
 
-The native total is **558 runtime tests: 512 Blender, three Cycles and 43 separate product/safety/regression tests**. Six compile-time assertions pass positive builds and deliberate-failure checks separately on native and wasm32. Repeated stress assertions, supplemental oracle inputs and mutation probes are not extra upstream cases.
+The complete native run passed **587 runtime tests: 541 Blender, three Cycles and 43 separate product/safety/regression tests**. Six compile-time assertions separately pass positive and deliberate-failure checks on native and wasm32. Repeated stress assertions and diagnostic corpus configurations are not extra Blender tests.
 
 ## Latest functionality
 
-Nine enabled original cases now cover half-float scalar/array conversion and normalised integer formats, with 169 original assertions. Five conditional half-performance benchmarks remain explicitly unported and not passing. The Rust implementation retains round-to-nearest-even, finite-result conversion, output sentinels, original normalised truncation and the selected scalar/SSE2 array boundary semantics.
+All 29 runtime cases in `BLI_polyfill_2d_test.cc` now have a Rust implementation and source-locked helpers. Ear clipping, concave-vertex KD-tree pruning, cached ear checks and heap-driven half-edge beautification reproduce the pinned results on the tested inputs. Both the original plain and beautified outputs are checked, preserving the original flags, topology, winding and area assertions.
 
-The independent oracle exactly matches 2,944,570 output words against unedited original C++, including every half encoding, all selected half-rounding boundaries, signed zero, NaN payloads, raw normalised components and array tails. Three deliberately broken implementations fail unchanged original tests with independent controls passing. Native x86_64 tests actually set and restore FTZ/DAZ; browser checks do not claim that inaccessible hardware perturbation. F16C/NEON profiles, ABI layout and SIMD speed remain outside the certification. [Detailed report](PIXEL-FORMAT-PORT-VERIFICATION.md)
+The upstream rotation/reversal helper modifies a copy but passes the original polygon. That behaviour is explicitly preserved in the port. A separate original-C++ oracle covers 3,064 genuinely transformed configurations and checks 6,128 output triangulations, including index order, exactly against native Rust and Node.js WASM. The original full suite is separately run in Chromium at the deployed URL. [Detailed report](POLYFILL-PORT-VERIFICATION.md)
 
-## Separate products and evidence
+The new contract shard is explicitly required by all review/execution consumers. The original lock remains unchanged. Inventory scanning now discovers digit-prefixed test arguments, recovering eight declarations previously hidden from the source scan. Newly discovered tests are not automatically considered ported.
 
-The workbench tests the compatibility core. The Three.js modeller remains the earlier object-editing alpha; these additions are not new interactive tools or a complete renderer. Its legacy test button still uses the 17-case ABI. The Solarxy/WebGPU experiment remains independently blocked.
+## Separate products and limits
 
-Fresh compilation, original-reference comparisons, diagnostic browser checks and public-URL acceptance are separate evidence categories. Historical smaller records retain their source revisions and scope. Full-event transcripts remain lossless and are compared without sampling, including the earlier 1.6-million-assertion UTF-8 stress case.
+The workbench tests the compatibility core. These mesh-library operations are not yet an interactive polygon editor or a complete BMesh system. The Three.js modeller remains the earlier object-editing alpha and its test button still uses the 17-case interface. The Solarxy/WebGPU experiment remains independently blocked.
 
-## Unfinished requirements
+Fresh native compilation, original assertion comparison, supplemental native/Node differential outputs and actual public Chromium acceptance remain separate evidence categories. Original geometric tests are not secretly strengthened: their known gap is addressed by a separately labelled corpus. No polygon-specific implementation-mutation probe was added in this batch; existing earlier-family probes still run.
 
-The complete Blender test port remains unfinished and its whole-suite gate remains failed. The latest heuristic scan has **5,859 source candidates, 518 reviewed mappings and 5,341 unmapped declarations**. Full runtime discovery and the remaining runtime count are unknown. Additional vector type/layout compile-time checks, opt-in benchmarks, required configuration matrices and extensive application-level families remain outstanding.
+The implementation accepts finite single-boundary polygons with checked indices. It does not promise hole support, non-overlapping fills for self-intersections, native allocator/ABI identity or competitive performance on arbitrary inputs.
 
-There is no complete mesh/BMesh editor, sculpting, modifier/Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. Full test porting, whole-suite conformance, integrated feature compatibility and competitive performance remain separate milestones.
+## Remaining work
 
-[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
+The complete Blender test port remains unfinished and the whole-suite gate remains failed. The latest heuristic audit contains **5,867 source candidates, 547 reviewed mappings and 5,320 unmapped declarations**. The mappings are 541 runtime plus six compile-time cases, not a complete runtime denominator. Full runtime discovery remains unknown.
+
+Five conditional half-performance benchmarks remain unported, as do further vector type/layout compile-time conditions, configuration matrices and extensive application-level families. Complete mesh editing, sculpting, modifiers, Geometry Nodes, animation, rigging, simulation, compositing, video/tracking, Python add-ons, native `.blend` support and Cycles/EEVEE compatibility are still outstanding. Full test porting, all-tests-passing, feature parity and performance are different milestones.
+
+[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirement](COMPLETE-TEST-PORT.md) · [Open completion issue #3](https://github.com/596050/blended/issues/3)
