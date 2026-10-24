@@ -1,0 +1,40 @@
+name: Complete UTF8 source notices and fixture lengths
+on:
+  push:
+    branches: [compat/utf8-boundaries]
+    paths: ['.github/workflows/utf8-source-notices.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Preserve all notices and all original random-buffer lengths
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          changes={
+              'tools/port_workbench.py':("'docs','Cargo.toml'", "'docs','LICENSES','Cargo.toml'"),
+              'tools/verify_utf8_oracle.py':('SIZES=(1,2,3,4,5,6,7,8,16,31,32,33)', 'SIZES=tuple(range(1,13))+(16,31,32,33)'),
+          }
+          for name,(old,new) in changes.items():
+              path=Path(name);text=path.read_text()
+              assert text.count(old)==1, 'Reviewed patch target changed: '+name
+              path.write_text(text.replace(old,new))
+          assert Path('LICENSES/wcwidth-original-notice.txt').is_file()
+          PY
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit the checked source-only changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add tools/port_workbench.py tools/verify_utf8_oracle.py
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Include full wcwidth notices in corresponding source and every original UTF8 RNG buffer length in the exact oracle'
+          git push origin HEAD:refs/heads/compat/utf8-boundaries
