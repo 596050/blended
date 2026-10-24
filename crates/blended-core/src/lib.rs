@@ -182,3 +182,9 @@ pub mod pixel_format_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_pixel_formats_run_case(index:u32)->i32{pixel_format_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_pixel_formats_assertion_count(index:u32)->u32{pixel_format_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_pixel_formats_hardware_fp_control()->u32{u32::from(pixel_formats::ScopedFlushToZero::hardware_supported())}
+
+pub mod polyfill;
+pub mod polyfill_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_polyfill_case_count()->u32{polyfill_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_polyfill_run_case(index:u32)->i32{polyfill_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_polyfill_assertion_count(index:u32)->u32{polyfill_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}

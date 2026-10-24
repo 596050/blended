@@ -1,6 +1,4 @@
-// SPDX-FileCopyrightText: 2023 Blender Authors
 // SPDX-License-Identifier: Apache-2.0
-// Source identities and original loop-expanded counts. Implementation follows.
 macro_rules! original {($name:ident,$n:expr)=>{#[test] #[allow(non_snake_case)] fn $name(){let r=blended_core::polyfill_cases::$name();assert!(r.passed(),"{:?}",r.failures);assert_eq!(r.assertions,$n);}};}
 original!(polyfill2d__TriangleCCW,1008);
 original!(polyfill2d__SquareCCW,2048);
