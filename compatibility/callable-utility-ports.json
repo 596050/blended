@@ -1,0 +1,220 @@
+{
+  "schema": 1,
+  "upstream_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_files": {
+    "BLI_function_ref_test.cc": {
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "git_blob": "ee9458878af005b5ae56e2709f873018e6144b44",
+      "sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e"
+    },
+    "BLI_random_access_iterator_mixin_test.cc": {
+      "path": "source/blender/blenlib/tests/BLI_random_access_iterator_mixin_test.cc",
+      "git_blob": "2de8d82ff2bfe45e0b223c238e66931a79ed0df3",
+      "sha256": "c3100113d8b5a14f3f90127b75b2a17b71679b8dabe34ec40e4ad58f89d40034"
+    },
+    "BLI_session_uid_test.cc": {
+      "path": "source/blender/blenlib/tests/BLI_session_uid_test.cc",
+      "git_blob": "5aa9c203af6eed766691a1870085813ec41316df",
+      "sha256": "5a4634b1119f9176e7459715498befb068456f5135e3d4c848660c0672356fa8"
+    }
+  },
+  "cases": [
+    {
+      "id": "function_ref.StatelessLambda",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 16,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "52485d9a26d2e1bd29763a6992e5902ad60d853f9ae25e6fd0154eb1082486f1",
+      "rust_function": "function_ref__StatelessLambda",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.StatefullLambda",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 22,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "db0af3c34a15f9ee0d2fe52793e576480eadf9230456e931d6bd5ba3bce294e3",
+      "rust_function": "function_ref__StatefullLambda",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.StandaloneFunction",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 35,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "163ed904a503c7ead9f42d09758dc1a4b42bab44c8603601ad512e3a2b98bf26",
+      "rust_function": "function_ref__StandaloneFunction",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.ConstantFunction",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 41,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "0a2907d58feb86ea2fd8811f1775bd95e82139d725122ae91164751d6d6ea4f0",
+      "rust_function": "function_ref__ConstantFunction",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.MutableStatefullLambda",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 48,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "0b258f5f8a0a2a445a067a45be6df1441c75cd9fc44e659380efbfebb272cc5a",
+      "rust_function": "function_ref__MutableStatefullLambda",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.Null",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 58,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "a829196ea2322fc10d402c05f9f72177fe02d06513aee3916066a87b1935b280",
+      "rust_function": "function_ref__Null",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.CopyDoesNotReferenceFunctionRef",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 71,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "968190cc7cfa4d335d09dabaa3b01a428fe794cd533b20d9641e5227177700da",
+      "rust_function": "function_ref__CopyDoesNotReferenceFunctionRef",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.CopyDoesNotReferenceFunctionRef2",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 81,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "b4be617c9c6f44277920dab15500bc824ef1766909a1961d95a7f82de8fe04bb",
+      "rust_function": "function_ref__CopyDoesNotReferenceFunctionRef2",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.ReferenceAnotherFunctionRef",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 92,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "89f2eda9ec9392588d976449b6b2de392504877d664bc46cc99fe43926cf1747",
+      "rust_function": "function_ref__ReferenceAnotherFunctionRef",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 8,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.InitializeWithNull",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 104,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "62bb4d7ad71123ddfe3988d32a0bdf4346c456e60fc49d3715e9c88efb9742c0",
+      "rust_function": "function_ref__InitializeWithNull",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 9,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.OverloadSelection",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 120,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "af2c88112185bd082e20284de67ea23ad7603ad62b33375a2cb0077f4e8f47a6",
+      "rust_function": "function_ref__OverloadSelection",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 10,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.FalsyStdFunction",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 129,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "ba790e7c2c378d958357cdf8ea3cfba077a591e80075f3a54f0b2f76f3bf2cfb",
+      "rust_function": "function_ref__FalsyStdFunction",
+      "assertion_count": 4,
+      "expected_runtime_assertions": 4,
+      "index": 11,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "function_ref.FalsyFunctionPointer",
+      "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "line": 144,
+      "kind": "TEST",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "source_body_sha256": "ffcafa7dbed810e1750d464fb34d99ace599e1b7d850ec4c085c55aeb844788a",
+      "rust_function": "function_ref__FalsyFunctionPointer",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 12,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "random_access_iterator_mixin.DoublingIterator",
+      "path": "source/blender/blenlib/tests/BLI_random_access_iterator_mixin_test.cc",
+      "line": 33,
+      "kind": "TEST",
+      "source_sha256": "c3100113d8b5a14f3f90127b75b2a17b71679b8dabe34ec40e4ad58f89d40034",
+      "source_body_sha256": "90ea62eb04c7383906e73804b8116b5ce4e57310f923d89d298de20e66223752",
+      "rust_function": "random_access_iterator_mixin__DoublingIterator",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 13,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "SessionUID.GenerateBasic",
+      "path": "source/blender/blenlib/tests/BLI_session_uid_test.cc",
+      "line": 11,
+      "kind": "TEST",
+      "source_sha256": "5a4634b1119f9176e7459715498befb068456f5135e3d4c848660c0672356fa8",
+      "source_body_sha256": "45d79cb4dc900ac7db37a5d4d4ef9329d042dc726d84c1aec9d208c2d5b37370",
+      "rust_function": "SessionUID__GenerateBasic",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 14,
+      "status": "ported_unexecuted"
+    }
+  ],
+  "complete_blender_test_port": false,
+  "notes": "Three complete enabled runtime source files. FunctionRef is a non-owning callable reference with copy-by-underlying-callable semantics. The Rust overload-selection case preserves typed dispatch results but does not claim C++ overload-resolution language equivalence. SessionUID preserves non-zero session uniqueness. Iterator coverage is the exact doubling-iterator behavior exercised upstream, not the entire C++ operator surface."
+}
