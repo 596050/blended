@@ -29,7 +29,7 @@ class PixelFormatPortTests(unittest.TestCase):
     self.assertEqual(count,c['expected_runtime_assertions']);self.assertEqual(hashlib.sha256(body.encode()).hexdigest(),c['source_body_sha256'])
  def test_assertion_counts_and_total_universe(self):
   self.assertEqual(sum(c['expected_runtime_assertions'] for c in self.manifest['cases']),169)
-  cases,_=expected_cases();self.assertEqual(len(cases),596);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196692)
+  cases,_=expected_cases();self.assertEqual(len(cases),609);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196744)
  def test_actual_fp_guard_not_a_browser_capability_claim(self):
   self.assertIn('let _flush_to_zero=m::ScopedFlushToZero::new();',self.target)
   code=(ROOT/'crates/blended-core/src/pixel_formats.rs').read_text()

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "contracts": [
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "target_path": "crates/blended-core/src/container_view_cases.rs",
+      "target_sha256": "81c2e6de279b3fdb9e70259f59b6f9762dba75686103356461935c9dc9737c8c",
+      "case_ids": [
+        "multi_value_map.LookupNotExistant",
+        "multi_value_map.LookupExistant",
+        "multi_value_map.LookupMutable",
+        "multi_value_map.AddMultiple",
+        "multi_value_map.Keys",
+        "multi_value_map.Values",
+        "multi_value_map.Items",
+        "multi_value_map.UniquePtr",
+        "multi_value_map.MutableItems"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "source_sha256": "82a5c3d10cdc7a7665df1b0900ef50fcbbea4bfd538be90f6c1ea761ecf92b16",
+      "target_path": "crates/blended-core/src/container_view_cases.rs",
+      "target_sha256": "81c2e6de279b3fdb9e70259f59b6f9762dba75686103356461935c9dc9737c8c",
+      "case_ids": [
+        "GenericSpanTest.TypeConstructor",
+        "GenericSpanTest.BufferAndSizeConstructor",
+        "GenericSpanTest.MutableTypeConstructor",
+        "GenericSpanTest.MutableBufferAndSizeConstructor"
+      ]
+    }
+  ]
+}

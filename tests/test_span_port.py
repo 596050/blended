@@ -37,7 +37,7 @@ class SpanPorts(unittest.TestCase):
   for old,new,code in MUTATIONS:
    self.assertEqual(self.target.count(old),1);self.assertNotEqual(old,new);self.assertIn(code,{'E0080','E0277','E0283'})
  def test_all_executable_cases_and_static_counts_are_independent(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),596);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196692)
+  cases,_=expected_cases();self.assertEqual(len(cases),609);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196744)
   self.assertEqual([c['id'] for c in cases if c['expected_runtime_assertions']==0],['bit_span.SetEmpty','span.ImplicitConversions'])
  def test_cell_backing_and_actual_pointer_equality_not_snapshots(self):
   self.assertIn('array[1].set(10)',BODIES['IsReferencing']);self.assertIn('peq!(report,new_a_span.at(0)',BODIES['CastSameSize'])

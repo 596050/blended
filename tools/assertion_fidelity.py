@@ -33,7 +33,7 @@ def cpp(root:Path,upstream:Path):
         seen.add(c['source_path'])
         p=upstream/c['source_path'];before=p.read_text()
         if digest(p)!=c['source_sha256']:raise ValueError('Actual upstream source differs from reviewed snapshot')
-        recording_header={'BLI_polyfill_2d_test.cc':'polyfill.hh','BLI_span_test.cc':'span.hh','BLI_index_mask_expression_test.cc':'mask_expression.hh'}.get(Path(c['source_path']).name,'trace.hh')
+        recording_header={'BLI_polyfill_2d_test.cc':'polyfill.hh','BLI_span_test.cc':'span.hh','BLI_index_mask_expression_test.cc':'mask_expression.hh','BLI_generic_span_test.cc':'generic_span.hh'}.get(Path(c['source_path']).name,'trace.hh')
         header=(root/'tools/fidelity'/recording_header).resolve().as_posix()
         # Include after original includes but before namespaces. Test bodies stay byte-for-byte intact.
         at=before.index('namespace ')
@@ -74,7 +74,7 @@ def shadow(root:Path,out:Path):
     shutil.copyfile(root/'tools/fidelity/trace.rs',src/'fidelity_trace.rs')
     with (src/'lib.rs').open('a') as f:f.write('\npub mod fidelity_trace;\n')
     modifications=[]
-    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs','string_ops_cases.rs','utf8_cases.rs','pixel_format_cases.rs','polyfill_cases.rs','span_cases.rs','mask_expression_cases.rs']:
+    for name in ['additional_cases.rs','structure_cases.rs','collection_cases.rs','string_ref_cases.rs','bit_span_cases.rs','numeric_type_cases.rs','matrix_type_cases.rs','sampling_cases.rs','curve_cases.rs','geometry_math_cases.rs','heap_cases.rs','data_cases.rs','string_ops_cases.rs','utf8_cases.rs','pixel_format_cases.rs','polyfill_cases.rs','span_cases.rs','mask_expression_cases.rs','container_view_cases.rs']:
         p=src/name;before=p.read_text();after=before
         if name=='pixel_format_cases.rs':
             after=after.replace('fn array_eq<T:PartialEq+Copy>', 'fn array_eq<T:PartialEq+Copy+crate::fidelity_trace::Value>')
@@ -93,6 +93,8 @@ def shadow(root:Path,out:Path):
           'macro_rules! yes ': 'macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};} ',
           'macro_rules! no ': 'macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};} ',
         }
+        if name=='container_view_cases.rs':
+            changes['macro_rules! peq ']='macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq(($a) as *const u8,($b) as *const u8),stringify!($a pointer-equals $b),line!());}};}'
         if name=='span_cases.rs':
             changes['macro_rules! peq ']='macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::pointer_pair(($a) as *const u8,($b) as *const u8),stringify!($a pointer-equals $b),line!());}};}'
         # Preserve the original scalar EQ expected-value cast. Structure EQ is same-type.

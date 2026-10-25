@@ -200,3 +200,9 @@ pub mod mask_expression_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_mask_expressions_case_count()->u32{mask_expression_cases::CASES.len() as u32}
 #[unsafe(no_mangle)]pub extern "C" fn blended_mask_expressions_run_case(index:u32)->i32{mask_expression_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_mask_expressions_assertion_count(index:u32)->u32{mask_expression_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod container_views;
+pub mod container_view_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_container_views_case_count()->u32{container_view_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_container_views_run_case(index:u32)->i32{container_view_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_container_views_assertion_count(index:u32)->u32{container_view_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}

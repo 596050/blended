@@ -5,7 +5,7 @@ small independently reviewed shards, and every consumer reads the same union.
 """
 from pathlib import Path
 import json
-EXTENSIONS=("compatibility/polyfill-assertion-contract.lock.json","compatibility/span-assertion-contract.lock.json","compatibility/mask-expression-assertion-contract.lock.json")
+EXTENSIONS=("compatibility/polyfill-assertion-contract.lock.json","compatibility/span-assertion-contract.lock.json","compatibility/mask-expression-assertion-contract.lock.json","compatibility/container-view-assertion-contract.lock.json")
 def load_contracts(root:Path)->dict:
     base=json.loads((root/"compatibility/assertion-contracts.lock.json").read_text())
     if base.get("schema")!=1 or not base.get("contracts"):raise ValueError("Invalid base contracts")

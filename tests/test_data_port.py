@@ -32,7 +32,7 @@ class DataPorts(unittest.TestCase):
   self.assertEqual(dict(counts),{'array_utils':35,'csv_parse':10,'hash_mm2a':3,'disjoint_set':1})
   self.assertEqual(dict(totals),{'array_utils':133,'csv_parse':114,'hash_mm2a':5,'disjoint_set':12})
  def test_registered_runtime_and_source_contracts_are_bijective(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),596);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196692)
+  cases,_=expected_cases();self.assertEqual(len(cases),609);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196744)
   self.assertEqual([c['id'] for c in cases if c['group']=='data'],[c['id'] for c in self.manifest['cases']])
  def test_large_original_input_and_mask_are_not_subsampled(self):
   self.assertIn('vec![0_i32;100000]',self.target);self.assertEqual(self.target.count('vec![0_i32;100000]'),2)
