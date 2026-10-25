@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "supplemental original-header values, aliases and within-allocation pointer offsets; not extra upstream cases",
+  "original_api_limit": {
+    "operation": "MultiValueMap<int,int>::clear_and_shrink()",
+    "original_instantiation": "fails: underlying Map has no clear_and_shrink member",
+    "equivalence_certified": false,
+    "corpus_clear_points": "supported clear() on both targets",
+    "failure_record": "evidence/container-oracle-reference-limit.json"
+  },
+  "source_commit": "7a3dec93c2c02605834330b5de6872d6f1dbe4ad",
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "original_cpp_vs_native": "exact_match",
+  "original_cpp_vs_chromium": "exact_match",
+  "all_three_vs_independent_model": "exact_match",
+  "output_words": 107101,
+  "output_bytes": 428404,
+  "output_sha256": "3f34c070d7abcbd62e81025361335b3f47395b59a8d727ed2c70fb98fbd1e6b4",
+  "map_operations": 1024,
+  "integer_view_lengths": [
+    0,
+    64
+  ],
+  "float_view_lengths": [
+    0,
+    16
+  ],
+  "native_map_iteration_order_certified": false,
+  "memory_safety_or_abi_proved": false
+}
