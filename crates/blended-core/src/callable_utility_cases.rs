@@ -82,8 +82,8 @@ pub fn function_ref__FalsyStdFunction()->Report{
  no!(report,fn_ref3.is_some());yes!(report,fn_ref4.is_some());report
 }
 pub fn function_ref__FalsyFunctionPointer()->Report{
- let mut report=Report::default();let fn_ref1=FunctionRef0::<()>::from_fn_ptr(None);
- fn do_nothing(){} let fn_ref2=FunctionRef0::<()>::from_fn_ptr(Some(do_nothing));
+ let mut report=Report::default();let fn_ref1=FunctionRef0::<()>::empty();
+ fn do_nothing(){} let mut function_pointer:fn()=do_nothing;let fn_ref2=FunctionRef0::new(&mut function_pointer);
  no!(report,fn_ref1.is_some());yes!(report,fn_ref2.is_some());report
 }
 pub fn random_access_iterator_mixin__DoublingIterator()->Report{
