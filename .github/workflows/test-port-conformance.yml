@@ -87,6 +87,7 @@ jobs:
           python3 tools/verify_span_oracle.py --output evidence/span-oracle/result.json
           python3 tools/verify_span_sensitivity.py --output evidence/span-sensitivity/result.json
           python3 tools/verify_mask_expression_sensitivity.py --output evidence/mask-expression-sensitivity/result.json
+          python3 tools/verify_callable_utility_sensitivity.py --output evidence/callable-utility-sensitivity/result.json
           python3 tools/verify_container_view_sensitivity.py --output evidence/container-view-sensitivity/result.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
