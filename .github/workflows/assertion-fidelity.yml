@@ -32,7 +32,7 @@ jobs:
           git -C .upstream/blender/lib/linux_x64 lfs install --local
           git -C .upstream/blender/lib/linux_x64 config lfs.https://projects.blender.org/blender/lib-linux_x64.git/info/lfs.access none
           GIT_TERMINAL_PROMPT=0 git -C .upstream/blender/lib/linux_x64 lfs pull --include='' --exclude='llvm/**,usd/**,materialx/**,openvdb/**,openimagedenoise/**,embree/**,ffmpeg/**,osl/**,python/**,numpy/**,opencollada/**,alembic/**,openpgl/**'
-      - name: Record assertions and independent input/output data without changing original test bodies
+      - name: Record assertions and independent observations without changing original test bodies
         run: |
           set -euo pipefail
           python3 tools/assertion_fidelity.py cpp --upstream .upstream/blender
@@ -52,6 +52,7 @@ jobs:
           export BLENDED_MASK_ORACLE="$PWD/evidence/fidelity/mask-reference.bin"
           sha256sum "$EXE" > evidence/fidelity/reference-binary-sha256.txt
           "$EXE" --gtest_filter="$(cat evidence/fidelity/filter.txt)" --gtest_output="xml:$PWD/evidence/fidelity/reference-results.xml" --test-assets-dir "$PWD/.upstream/blender/tests/files" --test-release-dir "$PWD/build/fidelity-reference/bin" > evidence/fidelity/reference-run.log 2>&1
+          test -s evidence/fidelity/container-reference.bin
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -86,6 +87,8 @@ jobs:
           python3 tools/assertion_fidelity.py browser --wasm build/fidelity-shadow/target/wasm32-unknown-unknown/release/blended_core.wasm --output evidence/fidelity/browser.jsonl
       - name: Execute full original random-helper workload and independent set-expression corpus
         run: python3 tools/verify_mask_expression_oracle.py build --output evidence/fidelity
+      - name: Observe map ordering and type-erased backing storage against an independent model
+        run: python3 tools/verify_container_view_oracle.py build --output evidence/fidelity/container-oracle
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -121,6 +124,9 @@ jobs:
       - name: Require exact original-C++ randomized inputs and expression results
         if: always()
         run: python3 tools/verify_mask_expression_oracle.py compare --reference evidence/fidelity/mask-reference.bin --root evidence/fidelity --output evidence/fidelity/mask-comparison.json
+      - name: Require exact original-header map values, live aliases and pointer offsets
+        if: always()
+        run: python3 tools/verify_container_view_oracle.py compare --reference evidence/fidelity/container-reference.bin --root evidence/fidelity/container-oracle --output evidence/fidelity/container-comparison.json
       - name: Preserve every event in verified lossless compressed transcripts
         if: always()
         run: python3 tools/fidelity_stream.py evidence/fidelity
@@ -149,5 +155,5 @@ jobs:
           cp evidence/fidelity/*comparison.json published/
           printf '%s\n' '${{ github.sha }}' > published/verified-source-commit.txt
           git -C published add -A
-          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve original C++ versus Rust and browser assertions plus complete mask-input oracle evidence'
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve original C++/Rust/browser assertions and independent mask/container observation evidence'
           git -C published push origin HEAD:refs/heads/assertion-fidelity-evidence
