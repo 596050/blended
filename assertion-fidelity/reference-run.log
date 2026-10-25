@@ -71,8 +71,8 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] array_utils.GroupIdsToIndicesMask
 [       OK ] array_utils.GroupIdsToIndicesMask (0 ms)
 [ RUN      ] array_utils.GroupIdsToIndicesLarge
-[       OK ] array_utils.GroupIdsToIndicesLarge (91 ms)
-[----------] 35 tests from array_utils (94 ms total)
+[       OK ] array_utils.GroupIdsToIndicesLarge (108 ms)
+[----------] 35 tests from array_utils (110 ms total)
 
 [----------] 3 tests from binary_search
 [ RUN      ] binary_search.Empty
@@ -139,9 +139,9 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] bit_span.CopyFrom
 [       OK ] bit_span.CopyFrom (0 ms)
 [ RUN      ] bit_span.InPlaceOr
-[       OK ] bit_span.InPlaceOr (8 ms)
+[       OK ] bit_span.InPlaceOr (4 ms)
 [ RUN      ] bit_span.InPlaceAnd
-[       OK ] bit_span.InPlaceAnd (8 ms)
+[       OK ] bit_span.InPlaceAnd (4 ms)
 [ RUN      ] bit_span.ForEach1
 [       OK ] bit_span.ForEach1 (0 ms)
 [ RUN      ] bit_span.ForEach1Cancel
@@ -156,7 +156,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] bit_span.to_index_ranges_small (0 ms)
 [ RUN      ] bit_span.to_index_ranges_all_ones
 [       OK ] bit_span.to_index_ranges_all_ones (0 ms)
-[----------] 19 tests from bit_span (19 ms total)
+[----------] 19 tests from bit_span (11 ms total)
 
 [----------] 11 tests from bit_vector
 [ RUN      ] bit_vector.DefaultConstructor
@@ -316,9 +316,9 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] heap.SimpleRange
 [       OK ] heap.SimpleRange (1 ms)
 [ RUN      ] heap.SimpleRangeReverse
-[       OK ] heap.SimpleRangeReverse (1 ms)
+[       OK ] heap.SimpleRangeReverse (0 ms)
 [ RUN      ] heap.SimpleDuplicates
-[       OK ] heap.SimpleDuplicates (1 ms)
+[       OK ] heap.SimpleDuplicates (0 ms)
 [ RUN      ] heap.SimpleRand1
 [       OK ] heap.SimpleRand1 (0 ms)
 [ RUN      ] heap.SimpleRand2
@@ -330,13 +330,13 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] heap.One
 [       OK ] heap.One (0 ms)
 [ RUN      ] heap.Range
-[       OK ] heap.Range (1 ms)
+[       OK ] heap.Range (0 ms)
 [ RUN      ] heap.RangeReverse
-[       OK ] heap.RangeReverse (1 ms)
+[       OK ] heap.RangeReverse (0 ms)
 [ RUN      ] heap.RangeRemove
 [       OK ] heap.RangeRemove (0 ms)
 [ RUN      ] heap.Duplicates
-[       OK ] heap.Duplicates (1 ms)
+[       OK ] heap.Duplicates (0 ms)
 [ RUN      ] heap.Rand1
 [       OK ] heap.Rand1 (0 ms)
 [ RUN      ] heap.Rand2
@@ -352,10 +352,10 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] heap.ReInsertRandom100
 [       OK ] heap.ReInsertRandom100 (0 ms)
 [ RUN      ] heap.ReInsertRandom1024
-[       OK ] heap.ReInsertRandom1024 (3 ms)
+[       OK ] heap.ReInsertRandom1024 (2 ms)
 [ RUN      ] heap.ReInsertRandom2048
-[       OK ] heap.ReInsertRandom2048 (7 ms)
-[----------] 23 tests from heap (24 ms total)
+[       OK ] heap.ReInsertRandom2048 (6 ms)
+[----------] 23 tests from heap (17 ms total)
 
 [----------] 15 tests from index_mask_expression
 [ RUN      ] index_mask_expression.Union
@@ -387,8 +387,8 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] index_mask_expression.SubtractSelf
 [       OK ] index_mask_expression.SubtractSelf (0 ms)
 [ RUN      ] index_mask_expression.Fuzzy
-[       OK ] index_mask_expression.Fuzzy (526 ms)
-[----------] 15 tests from index_mask_expression (531 ms total)
+[       OK ] index_mask_expression.Fuzzy (669 ms)
+[----------] 15 tests from index_mask_expression (674 ms total)
 
 [----------] 32 tests from index_range
 [ RUN      ] index_range.DefaultConstructor
@@ -481,7 +481,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] inplace_priority_queue.ManyPriorityChanges (1 ms)
 [ RUN      ] inplace_priority_queue.IndicesAccess
 [       OK ] inplace_priority_queue.IndicesAccess (0 ms)
-[----------] 6 tests from inplace_priority_queue (3 ms total)
+[----------] 6 tests from inplace_priority_queue (2 ms total)
 
 [----------] 9 tests from length_parameterize
 [ RUN      ] length_parameterize.FloatSimple
@@ -885,64 +885,64 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 
 [----------] 29 tests from polyfill2d
 [ RUN      ] polyfill2d.TriangleCCW
-[       OK ] polyfill2d.TriangleCCW (1 ms)
+[       OK ] polyfill2d.TriangleCCW (0 ms)
 [ RUN      ] polyfill2d.SquareCCW
-[       OK ] polyfill2d.SquareCCW (3 ms)
+[       OK ] polyfill2d.SquareCCW (1 ms)
 [ RUN      ] polyfill2d.SquareCW
-[       OK ] polyfill2d.SquareCW (3 ms)
+[       OK ] polyfill2d.SquareCW (1 ms)
 [ RUN      ] polyfill2d.Starfleet
-[       OK ] polyfill2d.Starfleet (3 ms)
+[       OK ] polyfill2d.Starfleet (1 ms)
 [ RUN      ] polyfill2d.StarfleetDegenerate
-[       OK ] polyfill2d.StarfleetDegenerate (5 ms)
+[       OK ] polyfill2d.StarfleetDegenerate (3 ms)
 [ RUN      ] polyfill2d.3Colinear
-[       OK ] polyfill2d.3Colinear (1 ms)
+[       OK ] polyfill2d.3Colinear (0 ms)
 [ RUN      ] polyfill2d.4Colinear
-[       OK ] polyfill2d.4Colinear (3 ms)
+[       OK ] polyfill2d.4Colinear (1 ms)
 [ RUN      ] polyfill2d.UnorderedColinear
-[       OK ] polyfill2d.UnorderedColinear (5 ms)
+[       OK ] polyfill2d.UnorderedColinear (3 ms)
 [ RUN      ] polyfill2d.PlusShape
-[       OK ] polyfill2d.PlusShape (33 ms)
+[       OK ] polyfill2d.PlusShape (20 ms)
 [ RUN      ] polyfill2d.StarShape
-[       OK ] polyfill2d.StarShape (14 ms)
+[       OK ] polyfill2d.StarShape (8 ms)
 [ RUN      ] polyfill2d.UShape
-[       OK ] polyfill2d.UShape (22 ms)
+[       OK ] polyfill2d.UShape (13 ms)
 [ RUN      ] polyfill2d.Spiral
-[       OK ] polyfill2d.Spiral (60 ms)
+[       OK ] polyfill2d.Spiral (36 ms)
 [ RUN      ] polyfill2d.TestFlipCode
-[       OK ] polyfill2d.TestFlipCode (52 ms)
+[       OK ] polyfill2d.TestFlipCode (32 ms)
 [ RUN      ] polyfill2d.SelfIntersect
-[       OK ] polyfill2d.SelfIntersect (4 ms)
+[       OK ] polyfill2d.SelfIntersect (2 ms)
 [ RUN      ] polyfill2d.SelfTouch
-[       OK ] polyfill2d.SelfTouch (33 ms)
+[       OK ] polyfill2d.SelfTouch (20 ms)
 [ RUN      ] polyfill2d.SelfOverlap
-[       OK ] polyfill2d.SelfOverlap (32 ms)
+[       OK ] polyfill2d.SelfOverlap (19 ms)
 [ RUN      ] polyfill2d.TestDavData
-[       OK ] polyfill2d.TestDavData (150 ms)
+[       OK ] polyfill2d.TestDavData (92 ms)
 [ RUN      ] polyfill2d.Issue815
-[       OK ] polyfill2d.Issue815 (14 ms)
+[       OK ] polyfill2d.Issue815 (8 ms)
 [ RUN      ] polyfill2d.Issue207_1
-[       OK ] polyfill2d.Issue207_1 (26 ms)
+[       OK ] polyfill2d.Issue207_1 (16 ms)
 [ RUN      ] polyfill2d.Issue207_11
-[       OK ] polyfill2d.Issue207_11 (298 ms)
+[       OK ] polyfill2d.Issue207_11 (183 ms)
 [ RUN      ] polyfill2d.Issue1407
-[       OK ] polyfill2d.Issue1407 (3 ms)
+[       OK ] polyfill2d.Issue1407 (1 ms)
 [ RUN      ] polyfill2d.Issue1407_pt
-[       OK ] polyfill2d.Issue1407_pt (5 ms)
+[       OK ] polyfill2d.Issue1407_pt (3 ms)
 [ RUN      ] polyfill2d.IssueT40777_colinear
-[       OK ] polyfill2d.IssueT40777_colinear (96 ms)
+[       OK ] polyfill2d.IssueT40777_colinear (58 ms)
 [ RUN      ] polyfill2d.IssueT41986_axis_align
-[       OK ] polyfill2d.IssueT41986_axis_align (300 ms)
+[       OK ] polyfill2d.IssueT41986_axis_align (185 ms)
 [ RUN      ] polyfill2d.IssueT52834_axis_align_co_linear
-[       OK ] polyfill2d.IssueT52834_axis_align_co_linear (569 ms)
+[       OK ] polyfill2d.IssueT52834_axis_align_co_linear (352 ms)
 [ RUN      ] polyfill2d.IssueT67109_axis_align_co_linear_a
-[       OK ] polyfill2d.IssueT67109_axis_align_co_linear_a (22 ms)
+[       OK ] polyfill2d.IssueT67109_axis_align_co_linear_a (14 ms)
 [ RUN      ] polyfill2d.IssueT67109_axis_align_co_linear_b
-[       OK ] polyfill2d.IssueT67109_axis_align_co_linear_b (22 ms)
+[       OK ] polyfill2d.IssueT67109_axis_align_co_linear_b (14 ms)
 [ RUN      ] polyfill2d.IssueT67109_axis_align_co_linear_c
-[       OK ] polyfill2d.IssueT67109_axis_align_co_linear_c (22 ms)
+[       OK ] polyfill2d.IssueT67109_axis_align_co_linear_c (14 ms)
 [ RUN      ] polyfill2d.Issue103913_axis_align_co_linear_no_zero_area_tri
-[       OK ] polyfill2d.Issue103913_axis_align_co_linear_no_zero_area_tri (399 ms)
-[----------] 29 tests from polyfill2d (2211 ms total)
+[       OK ] polyfill2d.Issue103913_axis_align_co_linear_no_zero_area_tri (257 ms)
+[----------] 29 tests from polyfill2d (1372 ms total)
 
 [----------] 39 tests from span
 [ RUN      ] span.FromSmallVector
@@ -1301,7 +1301,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [ RUN      ] string.Utf8OffsetFromIndex_ClampedIndex
 [       OK ] string.Utf8OffsetFromIndex_ClampedIndex (0 ms)
 [ RUN      ] string.Utf8AsUnicodeStep
-[       OK ] string.Utf8AsUnicodeStep (2235 ms)
+[       OK ] string.Utf8AsUnicodeStep (1448 ms)
 [ RUN      ] string.StrCursorStepNextUtf32Empty
 [       OK ] string.StrCursorStepNextUtf32Empty (0 ms)
 [ RUN      ] string.StrCursorStepNextUtf32Single
@@ -1350,7 +1350,7 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [       OK ] string.StrCursorStepPrevUtf8Complex (0 ms)
 [ RUN      ] string.StrCursorStepPrevUtf8Invalid
 [       OK ] string.StrCursorStepPrevUtf8Invalid (0 ms)
-[----------] 60 tests from string (2238 ms total)
+[----------] 60 tests from string (1450 ms total)
 
 [----------] 10 tests from StringFindSplitWords
 [ RUN      ] StringFindSplitWords.Simple
@@ -1433,5 +1433,5 @@ Note: Google Test filter = math_vector.ClampVecWithFloats:math_vector.test_inver
 [----------] 7 tests from unique_sorted_indices (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 609 tests from 45 test suites ran. (5132 ms total)
+[==========] 609 tests from 45 test suites ran. (3646 ms total)
 [  PASSED  ] 609 tests.
