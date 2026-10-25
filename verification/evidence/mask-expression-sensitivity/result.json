@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "implementation-only negative controls, not additional upstream cases",
+  "source_commit": "f86fae88ce889175fcaa11dcb982d3bbc4fce5ca",
+  "unchanged_test_sha256": "84f8039f2797880492b283ab58f9f455cd30ef9b7e97d18b0275813d8a596a23",
+  "checks": [
+    {
+      "mutation": "union_ignores_other",
+      "case": "index_mask_expression.Union",
+      "control": "index_mask_expression.IntersectMulti",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 15,
+        "target": 0,
+        "target_assertions": 1,
+        "control": 1,
+        "control_assertions": 1,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "e945340e997d5568d7f2c258e3444f4914d0e9190007ab590bd1cfc224e173f9",
+      "mutated_implementation_sha256": "8852f9260ce644e1d94cc4f0d91d2506a67e586662939108950c8a04027609f6",
+      "wasm_sha256": "01ad3626d71d3423958c23a10de1482875e8c758dab64d8a9dd4c267e4628e64"
+    },
+    {
+      "mutation": "intersection_is_union",
+      "case": "index_mask_expression.Intersection",
+      "control": "index_mask_expression.Difference",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 15,
+        "target": 0,
+        "target_assertions": 1,
+        "control": 1,
+        "control_assertions": 1,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "e945340e997d5568d7f2c258e3444f4914d0e9190007ab590bd1cfc224e173f9",
+      "mutated_implementation_sha256": "911a9d987fcba44dff0c960305e8b5cac3e96fdeb4f0a3e1f5f290bee0d5b97d",
+      "wasm_sha256": "05c61612677aa08a99c6f0855a730dbff4866777dde775c0406a556b6ebdd835"
+    },
+    {
+      "mutation": "subtraction_disabled",
+      "case": "index_mask_expression.Difference",
+      "control": "index_mask_expression.Union",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 15,
+        "target": 0,
+        "target_assertions": 1,
+        "control": 1,
+        "control_assertions": 1,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "e945340e997d5568d7f2c258e3444f4914d0e9190007ab590bd1cfc224e173f9",
+      "mutated_implementation_sha256": "a6a514e290c843c13cf992bb76222323e0e71525a013794962b1b29efe915ca1",
+      "wasm_sha256": "a6bf59a66b06a6793e4b29c98c7da2f088defd666c22286cfe323a765fce4caf"
+    }
+  ],
+  "browser_version": "155.0.8059.39"
+}

@@ -287,6 +287,19 @@
  fn span_eq(report:&mut Report,expected:&[i32],actual:&[i32]){
   eq!(report,expected.len(),actual.len());
   if expected.len()==actual.len(){for i in 0..expected.len(){eq!(report,expected[i],actual[i]);}}
+--- mask_expression_cases.rs
++++ shadow/mask_expression_cases.rs
+@@ -10,8 +10,8 @@
+  pub fn check(&mut self,p:bool,e:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {e}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq_refs(&$a,&$b),stringify!($a == $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
+ // Tuples are (start, size), exactly like the original IndexRange initializers.
+ fn mask(ranges:&[(i64,i64)])->IndexMask{IndexMask::from_ranges(ranges.iter().map(|&(start,size)|IndexRange::new(start,size)))}
+ fn random_bools(rng:&mut BlenderRng,size:usize)->Vec<bool>{
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
