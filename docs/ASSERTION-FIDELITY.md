@@ -1,33 +1,37 @@
 # Assertion-level fidelity
 
-[Run 40145587317](https://github.com/596050/blended/actions/runs/40145587317), runtime source `8952a0ef18a83bb7a56656dd8519095bd0fb2cd2`, verifies **581 Blender runtime cases and 3,196,371 assertion events per implementation** against Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Native Rust and Chromium comparisons passed. Eight native and nine browser floating differences remain in older colour tests under their original rules; no tolerance was widened and the span cases add none.
+## Current verified subset
 
-[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40145587317/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40145587317/browser-comparison.json) · [Full lossless transcripts](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40145587317).
+[Run 40149763130](https://github.com/596050/blended/actions/runs/40149763130), source `f86fae88ce889175fcaa11dcb982d3bbc4fce5ca`, verifies **596 Blender runtime cases and 3,196,692 assertion events per implementation** against Blender `94363991e7dcf39e2d70614aa002ab6f67764a5d`. Original C++ versus native Rust and Chromium comparisons passed. Eight native and nine browser differences remain in older colour cases under the original rules. The new mask cases add none and no tolerances were widened. This is not full-suite or universal bitwise equivalence.
 
-## Required identity and source contracts
+[Native comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40149763130/native-comparison.json) · [Browser comparison](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40149763130/browser-comparison.json) · [Complete execution evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40149763130).
 
-Original identities, paths, source/body hashes and reviewed target hashes are preserved. Generators must reproduce committed test bodies. Runtime registries form an exact bijection with the reviewed runtime contracts. Required polygon and span contract shards augment, rather than overwrite, the historical base lock.
+## Source and execution contracts
 
-Nineteen compile-time predicates are independently mapped by the required union of `compile-time-ports.json` and `span-static-ports.json`. Positive/negative compiler checks execute for both native and wasm32. The original static-only `span.ImplicitConversions` case retains zero runtime assertions; its case boundaries are executed, and its eight actual conversion constraints are compiled. No runtime Boolean replaces those type properties. The earlier assertion-free `bit_span.SetEmpty` retains its own execution probe.
+Original identities map to pinned snapshots, body/input provenance and reviewed target hashes. Generators reproduce committed translations. Required assertion-contract shards and the explicit runtime registry form a bijection. Nineteen compile-time predicates remain separately mapped and verified; their required union cannot silently shrink. Disabled or unsupported work remains in the completeness audit, never treated as passing.
 
-## What is compared
+Include-only C++ instrumentation leaves original test/helper bodies unchanged, evaluates operands once and invokes the original GoogleTest assertions. Rust recording uses a separate diagnostic shadow, not changed production tests. Executed case boundaries, ordered comparison kinds, operands, outcomes, counts and tolerances are reconciled. The static-only span declaration and earlier assertion-free bit-span case retain zero runtime assertions, with independent compile/execution evidence rather than invented checks.
 
-Original C++ bodies remain unchanged. Include-only recording evaluates operands once and invokes pinned GoogleTest assertions. Rust diagnostic recording uses a separate shadow build. Case boundaries, ordered assertion kinds, operands, results, counts and tolerances are reconciled. Fatal assertions preserve their stop-on-failure semantics.
+Exact equality remains exact. Original near tolerances and floating-equality rules are retained. Literal expectations are fixed. Numeric representation, symmetric equality operand order, upstream empty-range equality and cross-process pointer relationships have documented normalisations. Ordered comparisons cannot reverse operands. Fatal assertions retain their stopping behaviour with negative-execution evidence. Every permitted numerical difference stays listed.
 
-Exact comparisons remain exact, literal expectations are fixed, and original near/ULP rules remain unchanged. Documented representation normalisations handle symmetric equality order, empty-range equality and cross-process pointer identities. Ordered comparisons never permit operand reversal. Actual pointer equality is tested before recording pair-local alias labels; supplementary oracles compare numeric offsets and live aliasing separately.
+## Full masks, not counts or hashes
 
-Every event is compared in bounded batches, including the full UTF-8 and polygon stress loops. No sampling, repetition removal or hash-only equivalence is used. Complete transcripts are stored losslessly as `.jsonl.gz`, with decompressed hashes and sizes verified. These integrity hashes do not replace the actual value comparisons.
+An index mask's assertion operand includes its entire selected set, losslessly encoded as canonical maximal runs and unsigned LEB128 gap/length bytes. Native adjacent ranges are merged independently of their physical segmentation. Different equal-cardinality masks produce different exact records. This is a reversible representation, not a hash, sample or approximate summary. Tests explicitly reject altered membership and corrupted encodings.
 
-## Independent evidence beyond original examples
+The same original test may generate expected masks from its own randomized inputs, so successful assertions alone do not prove the fixtures were preserved. A required independent original-C++ listener calls the unedited helper and records all 14,573,457 Boolean inputs. A separate corpus records absolute input configurations and 147,456 expression results, including all 370,176 selected-index values. C++, native Rust and Chromium tapes match byte-for-byte. [Oracle report](https://github.com/596050/blended/blob/assertion-fidelity-evidence/runs/40149763130/mask-comparison.json).
 
-Pinned original-C++ oracles separately check random inputs, streaming hashes, string/search offsets, UTF-8 operations, graphics formats, polygon index sequences and span aliasing. The latest span corpus matches all 473,659 observations exactly on native Rust and Chromium. Supplemental observations and mutation probes are not additional upstream cases.
+An initial out-of-domain supplemental input was rejected by the pinned static constructor and publication stopped. The corrected supplemental corpus respects the original bound without modifying original tests. Larger Rust-only capabilities are not claimed as parity with that rejected reference path. [Scope and retained failure](MASK-EXPRESSION-PORT-VERIFICATION.md).
 
-The span oracle exposes an original type-trait/constructor discrepancy: a declared mutable pointer-span conversion cannot actually instantiate in the pinned C++ header. The declared predicate is ported, but the broken constructor is explicitly excluded from executable-equivalence claims. The Rust implementation of that capability is documented separately. [Span details](SPAN-PORT-VERIFICATION.md).
+## Full-event processing and independent negative evidence
 
-Implementation-only mutation checks keep original test bodies/counts intact, require intended assertion failures and passing independent controls, and reject compiler errors/panics/traps as substitutes. Separately, deliberately false static predicates must be rejected by the intended compiler diagnostic, not an arbitrary build failure.
+Every assertion event, including millions from earlier UTF-8 and polygon loops, is compared in bounded batches. No event sampling, deduplication or hash-only replacement is used. Missing, extra, reordered, substituted and out-of-case events fail. Hashes before/after guard transcript integrity but do not replace operand comparison.
 
-Production WASM is built independently of diagnostic instrumentation and tested at its actual immutable public URL, checking identities, counts, source/reference revisions and module digest. Local diagnostic Chromium execution does not replace deployed-site verification.
+Chromium runs the full diagnostic module and transfers its complete tape in bounded chunks. Diagnostic memory is not claimed to be universally constant. Full transcripts are preserved losslessly as `.jsonl.gz`, with decompressed sizes and SHA-256 checked before removing duplicate raw files. Independent binary oracle outputs are also retained.
+
+Implementation-only mutation probes retain original test bodies and expected counts. Incorrect union, intersection and subtraction are detected while independent controls pass. Compiler failures, panics and browser traps are not valid assertion-failure evidence. Earlier input, bit-format, hash, string, pointer and compiler-negative checks remain in the pipeline. Supplemental observations and probes are not additional upstream cases.
+
+The production module is separately built, published and tested at its **actual immutable public URL**, verifying case identities, counts, source/reference revisions and WASM digest independently of displayed status. A successful local diagnostic browser run is not substituted for deployed acceptance.
 
 ## Completion remains separate
 
-The complete Blender test port, all-input correctness, every platform/configuration, full application features and performance parity are not established. The whole-suite completeness job remains failed. Earlier evidence retains its historical revision and scope rather than being substituted for the latest combined run.
+Whole-suite completeness still fails. The verified subset does not establish unported-family coverage, every possible input, all platform behaviours, complete Blender features or competitive performance. Historical reports retain their source/configuration/scope and cannot replace current combined verification.
