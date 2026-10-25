@@ -17,7 +17,7 @@ pub fn mask_diagnostic_tape()->Vec<u8>{
   for _ in 0..3{let values=random_bools(&mut rng,size);out.extend(values.into_iter().map(u8::from));}
  }
  emit(&mut out,3*2*64*64);
- for origin in [0_i64,16380,1_i64<<40]{for stride in [1_i64,17]{
+ for origin in [0_i64,16380,(1_i64<<31)-128]{for stride in [1_i64,17]{
   for abits in 0..64{for bbits in 0..64{
    let cbits=((abits*17)^(bbits*31))&63;
    let build=|bits:i32|IndexMask::from_indices((0..6).filter(|i|bits&(1<<i)!=0).map(|i|origin+i*stride));
@@ -65,7 +65,7 @@ def inspect_tape(path):
   if count!=24576:raise ValueError('Supplemental configuration count changed')
   observations=0
   # Decode independently of the expression implementation and trace run codec.
-  for _origin in (0,16380,1<<40):
+  for _origin in (0,16380,(1<<31)-128):
    for _stride in (1,17):
     for a in range(64):
      for b in range(64):
@@ -76,7 +76,7 @@ def inspect_tape(path):
        if bits!=result or size!=result.bit_count():raise ValueError('Observed set differs from independent truth-table result')
        observations+=1
   if f.read(1):raise ValueError('Unaccounted output bytes')
- return dict(random_iterations=50,random_lengths=sizes,random_boolean_values=sum(sizes)*3,mask_configurations=count,mask_results=observations,mask_count_and_membership_words=observations*2)
+ return dict(mask_origins=[0,16380,(1<<31)-128],mask_strides=[1,17],original_static_range_limit=1<<31,rust_above_reference_limit_certified=False,random_iterations=50,random_lengths=sizes,random_boolean_values=sum(sizes)*3,mask_configurations=count,mask_results=observations,mask_count_and_membership_words=observations*2)
 def equal_bytes(a,b):
  if a.stat().st_size!=b.stat().st_size:raise ValueError('Truncated/extra diagnostic output')
  with a.open('rb') as x,b.open('rb') as y:

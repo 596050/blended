@@ -99,7 +99,7 @@ class MaskExpressionTests(unittest.TestCase):
   text=(ROOT/'tools/fidelity/mask_expression.hh').read_text()
   self.assertIn('blender::index_mask::tests::random_bools(rng,size)',text)
   self.assertIn('iteration<50',text);self.assertIn('rng.get_int32(200000)+1',text)
-  self.assertIn('1)<<40',text);self.assertNotIn('sha256',text)
+  self.assertIn('1)<<31)-128',text);self.assertNotIn('sha256',text)
  def test_mutation_targets_are_unique_and_independent(self):
   code=(ROOT/'crates/blended-core/src/mask_expressions.rs').read_text();ids={c['id'] for c in self.manifest['cases']}
   for name,signature,replacement,target,control in MUTATIONS:

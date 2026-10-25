@@ -44,7 +44,7 @@ class MaskOracleListener final:public ::testing::EmptyTestEventListener {
   }
   using namespace blender;using namespace blender::index_mask;
   u64(3*2*64*64);
-  for(int64_t origin:{int64_t(0),int64_t(16380),int64_t(1)<<40}){
+  for(int64_t origin:{int64_t(0),int64_t(16380),(int64_t(1)<<31)-128}){
    for(int64_t stride:{int64_t(1),int64_t(17)}){
     for(int abits=0;abits<64;abits++)for(int bbits=0;bbits<64;bbits++){
      const int cbits=((abits*17)^(bbits*31))&63;IndexMaskMemory memory;
