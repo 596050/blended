@@ -1,0 +1,45 @@
+name: Register callable utility Blender ports
+on:
+  push:
+    branches: [compat/callable-iterator-session]
+    paths: ['.github/workflows/callable-utility-registration.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Reproduce pinned originals and register reviewed subset
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/callable-registration
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_callable_utility_batch.py
+          python3 tools/port_callable_utility_tests.py | tee evidence/callable-registration/generator.json
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/callable-registration/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core 2>&1 | tee evidence/callable-registration/wasm-build.txt
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit reviewed registry, contracts and fidelity wiring
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools compatibility tests
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register all 15 callable, iterator and SessionUID source cases; full Blender port remains incomplete'
+          git push origin HEAD:refs/heads/compat/callable-iterator-session
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: callable-registration-evidence
+          path: evidence/callable-registration/
+          retention-days: 3
