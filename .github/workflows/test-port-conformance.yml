@@ -2,7 +2,7 @@ name: Blender test-port conformance
 on:
   push:
     branches: [main, 'compat/**', 'quality/**']
-    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_*.py', 'tools/generate_utf8_tables.py', 'tools/inventory.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity_stream.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
+    paths: ['crates/**', 'compatibility/**', 'tools/port_*.py', 'tools/verify_*.py', 'tools/static_port_registry.py', 'tools/generate_utf8_tables.py', 'tools/inventory.py', 'tools/test_port_audit.py', 'tools/assertion_fidelity.py', 'tools/fidelity_stream.py', 'tools/fidelity/**', 'tests/**', '.github/workflows/assertion-fidelity.yml', '.github/workflows/test-port-conformance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -55,14 +55,15 @@ jobs:
           from test_port_audit import load_ports
           from port_workbench import expected_cases
           from port_registry import verify_runtime_contract_bijection
+          from static_port_registry import load_static_cases
           ports=load_ports(json.load(open('build/blender-inventory.json')))
           expected,_=expected_cases()
           verify_runtime_contract_bijection(Path.cwd(),expected)
           runtime_ports=[p for p in ports if p.get('kind')!='static_assert']
           static_ports=[p for p in ports if p.get('kind')=='static_assert']
-          static_contract=json.load(open('compatibility/compile-time-ports.json'))['cases']
+          static_contract=load_static_cases(Path.cwd())
           assert expected and len(runtime_ports)==len(expected)
-          assert len(static_contract)==6 and len(static_ports)==len(static_contract)
+          assert len(static_contract)==19 and len(static_ports)==len(static_contract)
           assert {(p['path'],p['id']) for p in static_ports}=={(c['path'],c['id']) for c in static_contract}, 'Compile-time mapping lost or substituted'
           assert all(p['semantics_reviewed'] for p in ports), 'Reviewed assertion contract changed'
           assert {p['id'] for p in runtime_ports}=={p['id'] for p in expected}, 'Audit and executable registries diverged'
@@ -70,6 +71,7 @@ jobs:
           python3 -m unittest discover -s tests -v
           python3 tools/verify_static_port.py --output evidence/static-port.json
           python3 tools/verify_embedded_static_ports.py --output evidence/embedded-static-ports.json
+          python3 tools/verify_span_static.py --output evidence/span-static/result.json
           python3 -m pip install playwright==1.57.0
           python3 tools/verify_zero_assertion_case.py --output evidence/zero-assertion-probe.json
           python3 tools/verify_heap_inputs.py --output evidence/heap-inputs/result.json
@@ -82,6 +84,8 @@ jobs:
           python3 tools/verify_utf8_sensitivity.py --output evidence/utf8-sensitivity/result.json
           python3 tools/verify_pixel_formats_oracle.py --output evidence/pixel-formats-oracle/result.json
           python3 tools/verify_pixel_formats_sensitivity.py --output evidence/pixel-formats-sensitivity/result.json
+          python3 tools/verify_span_oracle.py --output evidence/span-oracle/result.json
+          python3 tools/verify_span_sensitivity.py --output evidence/span-sensitivity/result.json
           python3 -m http.server 8765 --directory build/conformance >/tmp/http.log 2>&1 &
           python3 tools/port_workbench.py test --url http://127.0.0.1:8765/ --commit "${{ github.sha }}" --output evidence/browser.json
       - uses: actions/upload-artifact@v4
