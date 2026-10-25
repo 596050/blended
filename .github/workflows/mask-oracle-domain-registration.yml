@@ -1,0 +1,69 @@
+name: Reconcile supplemental mask corpus with original range limits
+on:
+  push:
+    branches: [compat/index-mask-expressions]
+    paths: ['.github/workflows/mask-oracle-domain-registration.yml']
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Change only supplemental offsets, not original test inputs or expectations
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          original_test=Path('crates/blended-core/src/mask_expression_cases.rs')
+          reviewed='84f8039f2797880492b283ab58f9f455cd30ef9b7e97d18b0275813d8a596a23'
+          assert hashlib.sha256(original_test.read_bytes()).hexdigest()==reviewed
+          edits={
+            'tools/fidelity/mask_expression.hh': [('int64_t(1)<<40', '(int64_t(1)<<31)-128')],
+            'tools/verify_mask_expression_oracle.py': [
+              ('1_i64<<40', '(1_i64<<31)-128'),
+              ('for _origin in (0,16380,1<<40):', 'for _origin in (0,16380,(1<<31)-128):'),
+              ('return dict(random_iterations=50,', 'return dict(mask_origins=[0,16380,(1<<31)-128],mask_strides=[1,17],original_static_range_limit=1<<31,rust_above_reference_limit_certified=False,random_iterations=50,'),
+            ],
+            'tests/test_mask_expression_port.py': [("self.assertIn('1)<<40',text)", "self.assertIn('1)<<31)-128',text)")],
+          }
+          for name,changes in edits.items():
+              path=Path(name);text=path.read_text()
+              for old,new in changes:
+                  assert text.count(old)==1, 'Unexpected supplemental corpus baseline: '+name
+                  text=text.replace(old,new)
+              path.write_text(text)
+          assert hashlib.sha256(original_test.read_bytes()).hexdigest()==reviewed
+          evidence={
+            'source_commit':'cc682cec57a73cad966b96ccecb2fce1771731d3',
+            'run':40148762471,
+            'status':'failed supplemental reference probe; not a passing verification run',
+            'original_runtime_tests_before_failure':596,
+            'failure':'BLI_assert in intern/index_mask.cc:67: get_static_index_mask_for_min_size requires min_size <= 2^31',
+            'supplemental_offset_that_exceeded_original_domain':1<<40,
+            'corrected_supplemental_offset':(1<<31)-128,
+            'original_case_bodies_or_expected_values_changed':False,
+            'unchanged_reviewed_case_sha256':reviewed,
+            'raw_reference_evidence_artifact':12582416745,
+            'artifact_sha256':'53028a8d8211062d41c604022f187348798dcf4c23f4ac7106e3c487f465a900',
+            'artifact_retention_applies':True,
+            'rust_64_bit_product_test':'Retained as a Rust capability; not claimed as original-C++ conformance beyond the pinned constructor limit',
+            'complete_blender_test_port':False,
+          }
+          Path('evidence/mask-oracle-domain-failure.json').write_text(json.dumps(evidence,indent=2)+'\n')
+          PY
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit the checked source-only correction and retain the rejected original-domain attempt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add tools/fidelity/mask_expression.hh tools/verify_mask_expression_oracle.py tests/test_mask_expression_port.py evidence/mask-oracle-domain-failure.json
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Bound supplemental mask offsets by the original static 2^31 constructor domain; retain failed probe and unchanged original cases'
+          git push origin HEAD:refs/heads/compat/index-mask-expressions
