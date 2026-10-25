@@ -2,15 +2,15 @@
   "status": "passed",
   "complete_blender_test_port": false,
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
-  "reference_trace_sha256": "2e3c0f412ceda7a28200aaafbfafd0c9fa7d97069b371254422d8e055684b916",
-  "port_trace_sha256": "707aa82d4c607d035e49ef58de4e2a6f888478872131743eb4066b6249fb8f95",
-  "case_count": 581,
+  "reference_trace_sha256": "e91c88ffeaf5c39e50208ac66716b6e05b558f139968811e9f6754c6a3bf1d07",
+  "port_trace_sha256": "81fcc968cf222cd3c80f4dfad448847295b324188cf267fec299431af79c83c3",
+  "case_count": 596,
   "case_boundaries_verified": true,
   "assertion_free_cases": [
     "bit_span.SetEmpty",
     "span.ImplicitConversions"
   ],
-  "assertions_compared": 3196371,
+  "assertions_compared": 3196692,
   "floating_differences_within_original_rule": [
     {
       "case": "color.ThemeByteToFloat",
@@ -24,6 +24,21 @@
       "port": [
         "f:3fe8000000000000",
         "f:3fe8181820000000",
+        "f:3f847ae140000000"
+      ]
+    },
+    {
+      "case": "color.SrgbStraightToSceneLinearPremultiplied",
+      "ordinal": 2,
+      "kind": "NEAR",
+      "reference": [
+        "f:3f947ae140000000",
+        "f:3f9a5a5860000000",
+        "f:3f847ae140000000"
+      ],
+      "port": [
+        "f:3f947ae140000000",
+        "f:3f9a5a5840000000",
         "f:3f847ae140000000"
       ]
     },
@@ -93,7 +108,7 @@
       "kind": "NEAR",
       "reference": [
         "f:3ff0000000000000",
-        "f:3fefffc4a0000000",
+        "f:3fefffc460000000",
         "f:3f847ae147ae147b"
       ],
       "port": [
