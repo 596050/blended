@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """Supplemental exact-mask and random-input comparison, not upstream case counts.
-The reference tape is produced by the original C++ listener in mask_expression.hh.
-Rust calls the actual translated random helper. Every binary byte is compared.
+The reference tape is produced by original C++ in mask_expression.hh. Rust calls
+its actual translated helper. Full bytes, absolute indices and input offsets are
+compared, within the original constructor's static 2^31 range domain.
 """
 from pathlib import Path
 import argparse,base64,hashlib,json,shutil,struct,subprocess,tempfile
 ROOT=Path(__file__).resolve().parents[1]
 REVIEWED_CASES='84f8039f2797880492b283ab58f9f455cd30ef9b7e97d18b0275813d8a596a23'
+ORIGINS=(0,16380,(1<<31)-128)
+STRIDES=(1,17)
 PROBE=r'''
 // Appended only in a diagnostic shadow. Original test/helper bodies unchanged.
 pub fn mask_diagnostic_tape()->Vec<u8>{
  fn emit(out:&mut Vec<u8>,v:u64){out.extend_from_slice(&v.to_le_bytes());}
- let mut out=b"MASKORC1".to_vec();emit(&mut out,50);let mut rng=BlenderRng::new(0);
+ let mut out=b"MASKORC2".to_vec();emit(&mut out,50);let mut rng=BlenderRng::new(0);
  for _ in 0..50{
   let size=(rng.get_int32()%200000+1) as usize;emit(&mut out,size as u64);
   for _ in 0..3{let values=random_bools(&mut rng,size);out.extend(values.into_iter().map(u8::from));}
@@ -20,9 +23,14 @@ pub fn mask_diagnostic_tape()->Vec<u8>{
  for origin in [0_i64,16380,(1_i64<<31)-128]{for stride in [1_i64,17]{
   for abits in 0..64{for bbits in 0..64{
    let cbits=((abits*17)^(bbits*31))&63;
+   for value in [origin,stride,abits as i64,bbits as i64,cbits as i64]{emit(&mut out,value as u64);}
    let build=|bits:i32|IndexMask::from_indices((0..6).filter(|i|bits&(1<<i)!=0).map(|i|origin+i*stride));
    let a=build(abits);let b=build(bbits);let c=build(cbits);let universe=build(63);let builder=ExprBuilder::new();
-   let mut write_mask=|mask:IndexMask|{let mut bits=0_u64;for i in 0..6{if mask.contains(origin+i*stride){bits|=1_u64<<i;}}emit(&mut out,mask.len() as u64);emit(&mut out,bits);};
+   let mut write_mask=|mask:IndexMask|{
+    let mut bits=0_u64;for i in 0..6{if mask.contains(origin+i*stride){bits|=1_u64<<i;}}
+    emit(&mut out,mask.len() as u64);emit(&mut out,bits);
+    for index in mask.iter(){emit(&mut out,index as u64);}
+   };
    write_mask(builder.merge([(&a).into(),(&b).into(),(&c).into()]).evaluate());
    write_mask(builder.intersect([(&a).into(),(&b).into()]).evaluate());
    write_mask(builder.subtract((&a).into(),[(&b).into(),(&c).into()]).evaluate());
@@ -46,9 +54,17 @@ def command(args,cwd,log,stdout=None):
  else:
   p=subprocess.run(args,cwd=cwd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=240);log.write_bytes(p.stdout)
  if p.returncode:raise RuntimeError('Diagnostic command failed, not equivalence: '+str(args))
+def read_mask_observation(number,origin,stride,expected_bits):
+ size,bits=number(),number()
+ if bits!=expected_bits or size!=expected_bits.bit_count():raise ValueError('Observed set differs from independent truth-table result')
+ values=[number() for _ in range(size)]
+ expected=[origin+i*stride for i in range(6) if expected_bits&(1<<i)]
+ if values!=expected:raise ValueError('Absolute selected indices differ from the independent input positions')
+ return size
+
 def inspect_tape(path):
  with Path(path).open('rb') as f:
-  if f.read(8)!=b'MASKORC1':raise ValueError('Wrong tape identity')
+  if f.read(8)!=b'MASKORC2':raise ValueError('Wrong tape identity')
   def number():
    raw=f.read(8)
    if len(raw)!=8:raise ValueError('Truncated tape')
@@ -63,20 +79,19 @@ def inspect_tape(path):
    sizes.append(size)
   count=number()
   if count!=24576:raise ValueError('Supplemental configuration count changed')
-  observations=0
-  # Decode independently of the expression implementation and trace run codec.
-  for _origin in (0,16380,(1<<31)-128):
-   for _stride in (1,17):
+  observations=selected_values=0
+  # Validate independently of the expression implementation and trace codec.
+  for origin in ORIGINS:
+   for stride in STRIDES:
     for a in range(64):
      for b in range(64):
       c=((a*17)^(b*31))&63
+      if [number() for _ in range(5)]!=[origin,stride,a,b,c]:raise ValueError('Supplemental absolute input configuration changed')
       expected=(a|b|c,a&b,a&~b&~c,63&~a,b&~a,(a|b)&~(b&c))
       for result in expected:
-       size,bits=number(),number()
-       if bits!=result or size!=result.bit_count():raise ValueError('Observed set differs from independent truth-table result')
-       observations+=1
+       selected_values+=read_mask_observation(number,origin,stride,result);observations+=1
   if f.read(1):raise ValueError('Unaccounted output bytes')
- return dict(mask_origins=[0,16380,(1<<31)-128],mask_strides=[1,17],original_static_range_limit=1<<31,rust_above_reference_limit_certified=False,random_iterations=50,random_lengths=sizes,random_boolean_values=sum(sizes)*3,mask_configurations=count,mask_results=observations,mask_count_and_membership_words=observations*2)
+ return dict(mask_origins=list(ORIGINS),mask_strides=list(STRIDES),original_static_range_limit=1<<31,rust_above_reference_limit_certified=False,random_iterations=50,random_lengths=sizes,random_boolean_values=sum(sizes)*3,mask_configurations=count,mask_results=observations,configuration_words=count*5,mask_count_and_membership_words=observations*2,absolute_selected_index_values=selected_values)
 def equal_bytes(a,b):
  if a.stat().st_size!=b.stat().st_size:raise ValueError('Truncated/extra diagnostic output')
  with a.open('rb') as x,b.open('rb') as y:
@@ -131,7 +146,7 @@ def build(output):
  (output/'mask-rust-status.json').write_text(json.dumps(report,indent=2)+'\n')
  print(json.dumps(report,indent=2))
 def compare(reference,root,output):
- report={'status':'failed','complete_blender_test_port':False,'scope':'supplemental exact original-C++ inputs and set results, not extra Blender cases'}
+ report={'status':'failed','complete_blender_test_port':False,'scope':'supplemental exact original-C++ inputs and absolute selected-index results, not extra Blender cases'}
  try:
   metadata=json.loads((root/'mask-rust-status.json').read_text())
   if metadata['status']!='passed':raise ValueError('Rust/browser probe did not pass')
@@ -141,6 +156,6 @@ def compare(reference,root,output):
  except Exception as e:report['failure']=str(e);output.write_text(json.dumps(report,indent=2)+'\n');raise
  output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['build','compare']);p.add_argument('--output',required=True,type=Path);p.add_argument('--reference',type=Path);p.add_argument('--root',type=Path);a=p.parse_args()
- if a.command=='build':build(a.output)
- else:compare(a.reference,a.root,a.output)
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('command',choices=['build','compare']);parser.add_argument('--output',required=True,type=Path);parser.add_argument('--reference',type=Path);parser.add_argument('--root',type=Path);args=parser.parse_args()
+ if args.command=='build':build(args.output)
+ else:compare(args.reference,args.root,args.output)

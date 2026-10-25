@@ -30,7 +30,7 @@ class MaskOracleListener final:public ::testing::EmptyTestEventListener {
  public:
  void OnTestProgramEnd(const ::testing::UnitTest&)override{
   const char*path=std::getenv("BLENDED_MASK_ORACLE");if(!path)return;
-  std::ofstream out(path,std::ios::binary);if(!out)std::abort();out.write("MASKORC1",8);
+  std::ofstream out(path,std::ios::binary);if(!out)std::abort();out.write("MASKORC2",8);
   auto u64=[&](uint64_t v){for(int j=0;j<8;j++)out.put(char(v>>(8*j)));};
   blender::RandomNumberGenerator rng(0);
   // Exact original helper and all 50 iterations; raw booleans, not trace codec.
@@ -44,13 +44,22 @@ class MaskOracleListener final:public ::testing::EmptyTestEventListener {
   }
   using namespace blender;using namespace blender::index_mask;
   u64(3*2*64*64);
+  // The original static range constructor accepts a maximum size of 2^31.
+  // Retain the earlier rejected 2^40 attempt as failure evidence, not parity.
   for(int64_t origin:{int64_t(0),int64_t(16380),(int64_t(1)<<31)-128}){
    for(int64_t stride:{int64_t(1),int64_t(17)}){
     for(int abits=0;abits<64;abits++)for(int bbits=0;bbits<64;bbits++){
-     const int cbits=((abits*17)^(bbits*31))&63;IndexMaskMemory memory;
+     const int cbits=((abits*17)^(bbits*31))&63;
+     u64(origin);u64(stride);u64(abits);u64(bbits);u64(cbits);
+     IndexMaskMemory memory;
      auto build=[&](int bits){Vector<int64_t>indices;for(int i=0;i<6;i++)if(bits&(1<<i))indices.append(origin+i*stride);return IndexMask::from_indices<int64_t>(indices,memory);};
      const IndexMask a=build(abits),b=build(bbits),c=build(cbits),universe=build(63);ExprBuilder builder;
-     auto emit=[&](const IndexMask&m){uint64_t bits=0;for(int i=0;i<6;i++)if(m.contains(origin+i*stride))bits|=uint64_t(1)<<i;u64(m.size());u64(bits);};
+     auto emit=[&](const IndexMask&m){
+      uint64_t bits=0;for(int i=0;i<6;i++)if(m.contains(origin+i*stride))bits|=uint64_t(1)<<i;
+      u64(m.size());u64(bits);
+      // Absolute ordered values independently detect offset or iterator defects.
+      m.foreach_index([&](int64_t index){u64(index);});
+     };
      emit(evaluate_expression(builder.merge({&a,&b,&c}),memory));
      emit(evaluate_expression(builder.intersect({&a,&b}),memory));
      emit(evaluate_expression(builder.subtract(&a,{&b,&c}),memory));
