@@ -4,17 +4,14 @@
   "source_files": {
     "BLI_function_ref_test.cc": {
       "path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
-      "git_blob": "ee9458878af005b5ae56e2709f873018e6144b44",
       "sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e"
     },
     "BLI_random_access_iterator_mixin_test.cc": {
       "path": "source/blender/blenlib/tests/BLI_random_access_iterator_mixin_test.cc",
-      "git_blob": "2de8d82ff2bfe45e0b223c238e66931a79ed0df3",
       "sha256": "c3100113d8b5a14f3f90127b75b2a17b71679b8dabe34ec40e4ad58f89d40034"
     },
     "BLI_session_uid_test.cc": {
       "path": "source/blender/blenlib/tests/BLI_session_uid_test.cc",
-      "git_blob": "5aa9c203af6eed766691a1870085813ec41316df",
       "sha256": "5a4634b1119f9176e7459715498befb068456f5135e3d4c848660c0672356fa8"
     }
   },
@@ -216,5 +213,5 @@
     }
   ],
   "complete_blender_test_port": false,
-  "notes": "Three complete enabled runtime source files. FunctionRef is a non-owning callable reference with copy-by-underlying-callable semantics. The Rust overload-selection case preserves typed dispatch results but does not claim C++ overload-resolution language equivalence. SessionUID preserves non-zero session uniqueness. Iterator coverage is the exact doubling-iterator behavior exercised upstream, not the entire C++ operator surface."
+  "notes": "Three complete enabled runtime source files. FunctionRef is non-owning and copied by underlying callable identity. The Rust typed-dispatch adaptation preserves the two overload results but does not claim C++ overload-resolution language equivalence. SessionUID preserves non-zero session uniqueness. Iterator coverage is the exact doubling-iterator behavior exercised upstream."
 }

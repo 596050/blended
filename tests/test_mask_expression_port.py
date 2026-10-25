@@ -68,8 +68,8 @@ class MaskExpressionTests(unittest.TestCase):
   self.assertEqual(case['id'],'index_mask_expression.Benchmark');self.assertEqual(case['condition'],'#if 0')
   self.assertEqual(case['status'],'unported_disabled_benchmark');self.assertFalse(self.manifest['complete_blender_test_port'])
  def test_current_registry_and_required_contract(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),609);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196744)
-  contracts=load_contracts(ROOT)['contracts'];self.assertEqual(len(contracts),43)
+  cases,_=expected_cases();self.assertEqual(len(cases),624);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196774)
+  contracts=load_contracts(ROOT)['contracts'];self.assertEqual(len(contracts),46)
   self.assertEqual(next(c for c in contracts if c['source_path']==PATH)['target_sha256'],REVIEWED_CASES)
  def test_lossless_codec_distinguishes_equal_cardinality_sets(self):
   self.assertEqual(encode([0,1,2,5,6]),'00030202');self.assertEqual(decode('00030202'),[[0,3],[5,7]])

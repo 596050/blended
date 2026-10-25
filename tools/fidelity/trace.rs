@@ -83,6 +83,7 @@ pub fn run_all()->String {
  for (id,run,n) in crate::span_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::mask_expression_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::container_view_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
+ for (id,run,n) in crate::callable_utility_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  TAPE.with(|t|core::mem::take(&mut t.borrow_mut().1))
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}

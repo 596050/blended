@@ -31,8 +31,8 @@ class ContainerViewPorts(unittest.TestCase):
   self.assertEqual(self.target.count('generic_span_suite_setup();'),4)
   self.assertEqual(sum(c['kind']=='TEST_F' for c in self.manifest['cases']),4)
  def test_exact_runtime_universe(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),609)
-  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196744)
+  cases,_=expected_cases();self.assertEqual(len(cases),624)
+  self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196774)
   self.assertEqual([c['id'] for c in cases if c['group']=='container_views'],[c['id'] for c in self.manifest['cases']])
  def test_pointer_identity_and_live_cells_are_not_value_snapshots(self):
   self.assertIn('core::ptr::eq',HEAD)

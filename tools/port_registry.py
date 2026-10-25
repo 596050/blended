@@ -37,6 +37,7 @@ GROUPS=(
     Group('spans','span-ports.json','span_cases','upstream_spans','port_span_tests.py','span_assertions',('blended_spans_case_count','blended_spans_run_case','blended_spans_assertion_count')),
     Group('mask_expressions','mask-expression-ports.json','mask_expression_cases','upstream_mask_expressions','port_mask_expression_tests.py','mask_expression_assertions',('blended_mask_expressions_case_count','blended_mask_expressions_run_case','blended_mask_expressions_assertion_count')),
     Group('container_views','container-view-ports.json','container_view_cases','upstream_container_views','port_container_view_tests.py','container_view_assertions',('blended_container_views_case_count','blended_container_views_run_case','blended_container_views_assertion_count')),
+    Group('callable_utils','callable-utility-ports.json','callable_utility_cases','upstream_callable_utils','port_callable_utility_tests.py','callable_utility_assertions',('blended_callable_utils_case_count','blended_callable_utils_run_case','blended_callable_utils_assertion_count')),
 )
 TOTAL_KEYS={'legacy':'vector_assertions',**{g.name:g.total_key for g in GROUPS}}
 ABI={'legacy':('blended_case_count','blended_run_case','blended_case_assertion_count'),**{g.name:g.abi for g in GROUPS}}

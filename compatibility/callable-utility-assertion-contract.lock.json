@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "contracts": [
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_function_ref_test.cc",
+      "source_sha256": "1e71ba20e88a316d3b5a9328000d9c3059e3c3ff4411515d5581b2b6841eda1e",
+      "target_path": "crates/blended-core/src/callable_utility_cases.rs",
+      "target_sha256": "4e6e3cc65fc4799d9e7f90e4b2ddca0eab31598495d86d66c700958956f4c3bb",
+      "case_ids": [
+        "function_ref.StatelessLambda",
+        "function_ref.StatefullLambda",
+        "function_ref.StandaloneFunction",
+        "function_ref.ConstantFunction",
+        "function_ref.MutableStatefullLambda",
+        "function_ref.Null",
+        "function_ref.CopyDoesNotReferenceFunctionRef",
+        "function_ref.CopyDoesNotReferenceFunctionRef2",
+        "function_ref.ReferenceAnotherFunctionRef",
+        "function_ref.InitializeWithNull",
+        "function_ref.OverloadSelection",
+        "function_ref.FalsyStdFunction",
+        "function_ref.FalsyFunctionPointer"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_random_access_iterator_mixin_test.cc",
+      "source_sha256": "c3100113d8b5a14f3f90127b75b2a17b71679b8dabe34ec40e4ad58f89d40034",
+      "target_path": "crates/blended-core/src/callable_utility_cases.rs",
+      "target_sha256": "4e6e3cc65fc4799d9e7f90e4b2ddca0eab31598495d86d66c700958956f4c3bb",
+      "case_ids": [
+        "random_access_iterator_mixin.DoublingIterator"
+      ]
+    },
+    {
+      "source_path": "source/blender/blenlib/tests/BLI_session_uid_test.cc",
+      "source_sha256": "5a4634b1119f9176e7459715498befb068456f5135e3d4c848660c0672356fa8",
+      "target_path": "crates/blended-core/src/callable_utility_cases.rs",
+      "target_sha256": "4e6e3cc65fc4799d9e7f90e4b2ddca0eab31598495d86d66c700958956f4c3bb",
+      "case_ids": [
+        "SessionUID.GenerateBasic"
+      ]
+    }
+  ]
+}

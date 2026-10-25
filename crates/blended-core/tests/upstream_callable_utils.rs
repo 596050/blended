@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: Apache-2.0
-// Native wrappers for the complete mapped source cases.
 use blended_core::callable_utility_cases as c;
 macro_rules! check {($name:ident,$func:ident,$count:expr)=>{#[test]fn $name(){let r=c::$func();assert!(r.passed(),"{:?}",r.failures);assert_eq!(r.assertions,$count);}}}
 check!(function_ref_StatelessLambda,function_ref__StatelessLambda,1);

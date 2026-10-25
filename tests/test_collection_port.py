@@ -16,9 +16,9 @@ class CollectionPortTests(unittest.TestCase):
    raw=(ROOT/'tests/upstream/blender'/name).read_bytes();self.assertEqual(hashlib.sha256(raw).hexdigest(),sha)
    ids.extend(i for i,b,l in extract(raw.decode()))
   self.assertEqual(ids,[c['id'] for c in m['cases']])
- def test_reviewed_hashes_match(self):self.assertEqual(len(contracts(ROOT)['contracts']),43)
+ def test_reviewed_hashes_match(self):self.assertEqual(len(contracts(ROOT)['contracts']),46)
  def test_full_runtime_registry(self):
-  c,_=expected_cases();self.assertEqual(len(c),609);self.assertEqual(sum(x['expected_runtime_assertions'] for x in c),3196744)
+  c,_=expected_cases();self.assertEqual(len(c),624);self.assertEqual(sum(x['expected_runtime_assertions'] for x in c),3196774)
  def test_shared_reference_not_boolean_snapshot(self):
   s=(ROOT/'crates/blended-core/src/collection_cases.rs').read_text();self.assertIn('let read_ref = mutable_ref.as_read();',s);self.assertIn('yes!(r, read_ref.test());',s)
  def test_move_keeps_observable_source_empty(self):
