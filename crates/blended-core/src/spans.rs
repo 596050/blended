@@ -218,15 +218,19 @@ impl<'a, T> From<MutableSpan<'a, *mut T>> for MutableSpan<'a, *const T> {
 // valid. References, bools, enums, structs with padding and zero-sized types are
 // deliberately excluded. Unaligned reads are supported without creating &U.
 mod sealed {
-    pub trait Bits: Copy {}
-    macro_rules! primitive {($($t:ty),*)=>{$(impl Bits for $t {})*};}
+    pub trait Scalar: Copy {}
+    pub trait CastTo<U: Copy>: Copy {}
+    macro_rules! primitive {($($t:ty),*)=>{$(impl Scalar for $t {})*};}
     primitive!(i8,u8,i16,u16,i32,u32,i64,u64,isize,usize,f32,f64);
-    impl<T> Bits for *const T {}
-    impl<T> Bits for *mut T {}
+    impl<T:Scalar,U:Scalar> CastTo<U> for T {}
+    impl<T,U> CastTo<*const U> for *const T {}
+    impl<T,U> CastTo<*mut U> for *mut T {}
+    impl<T,U> CastTo<*const U> for *mut T {}
+    impl<T,U> CastTo<*mut U> for *const T {}
 }
 #[allow(private_bounds)]
-impl<'a, T: sealed::Bits> Span<'a, T> {
-    pub fn cast<U: sealed::Bits>(self) -> Span<'a, U> {
+impl<'a, T: Copy> Span<'a, T> {
+    pub fn cast<U: Copy>(self) -> Span<'a, U> where T: sealed::CastTo<U> {
         let bytes = self.size_in_bytes();
         assert_eq!(bytes % size_of::<U>(), 0, "Span cast length is not a whole number of destination elements");
         Span { ptr: self.ptr.cast(), len: bytes / size_of::<U>(), _borrow: PhantomData }

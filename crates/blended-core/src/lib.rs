@@ -188,3 +188,9 @@ pub mod polyfill_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_polyfill_case_count()->u32{polyfill_cases::CASES.len() as u32}
 #[unsafe(no_mangle)]pub extern "C" fn blended_polyfill_run_case(index:u32)->i32{polyfill_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_polyfill_assertion_count(index:u32)->u32{polyfill_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod spans;
+pub mod span_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_spans_case_count()->u32{span_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_spans_run_case(index:u32)->i32{span_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_spans_assertion_count(index:u32)->u32{span_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}

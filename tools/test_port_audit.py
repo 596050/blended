@@ -10,6 +10,7 @@ import re
 import sys
 ROOT=Path(__file__).resolve().parents[1]
 from port_registry import GROUPS
+from static_port_registry import STATIC_MANIFESTS
 FAMILIES=('ctest','gtest','python','render','ui','compile_time')
 def key(c):return f"{c['path']}::{c.get('identity',c.get('id'))}::{c.get('line',1)}"
 def evaluate(inventory,ports,runtime=None,execution=None):
@@ -67,7 +68,7 @@ def evaluate(inventory,ports,runtime=None,execution=None):
 
 def load_ports(inventory):
     hashes={f['path']:f['sha256'] for f in inventory['files']};ports=[]
-    for manifest,target_path,module in [*( (g.manifest,'crates/blended-core/src/'+g.module+'.rs',g.native_suite) for g in GROUPS),('compile-time-ports.json','crates/blended-core/src/compile_time_cases.rs','compile_time_cases')]:
+    for manifest,target_path,module in [*( (g.manifest,'crates/blended-core/src/'+g.module+'.rs',g.native_suite) for g in GROUPS),*((name,'crates/blended-core/src/compile_time_cases.rs','compile_time_cases') for name in STATIC_MANIFESTS)]:
         generated=ROOT/'compatibility'/manifest
         if not generated.exists():continue
         data=json.loads(generated.read_text())
