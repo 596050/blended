@@ -1,17 +1,17 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "expected_case_count": 596,
-  "expected_source_commit": "bddefb934e2871b106039043c1414e15683c88cc",
-  "started_utc": "2026-10-25T01:35:41.600430+00:00",
+  "expected_case_count": 609,
+  "expected_source_commit": "7a3dec93c2c02605834330b5de6872d6f1dbe4ad",
+  "started_utc": "2026-10-25T16:06:06.300346+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "bddefb934e2871b106039043c1414e15683c88cc",
+    "source_commit": "7a3dec93c2c02605834330b5de6872d6f1dbe4ad",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 596,
+    "passed": 609,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -4188,6 +4188,97 @@
         "passed": true,
         "code": 1,
         "assertions": 300
+      },
+      {
+        "id": "multi_value_map.LookupNotExistant",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "multi_value_map.LookupExistant",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "multi_value_map.LookupMutable",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "multi_value_map.AddMultiple",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 10
+      },
+      {
+        "id": "multi_value_map.Keys",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "multi_value_map.Values",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "multi_value_map.Items",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "multi_value_map.UniquePtr",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "multi_value_map.MutableItems",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "GenericSpanTest.TypeConstructor",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "GenericSpanTest.BufferAndSizeConstructor",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 7
+      },
+      {
+        "id": "GenericSpanTest.MutableTypeConstructor",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "GenericSpanTest.MutableBufferAndSizeConstructor",
+        "group": "container_views",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
       }
     ],
     "errors": [],
@@ -4206,9 +4297,10 @@
     "polyfill_assertions": 1534672,
     "span_assertions": 153,
     "mask_expression_assertions": 321,
-    "wasm_sha256": "c96f05635e863fb6ec7609512b1734d65dcedb80b5b7466e0952d37da75e8efc",
+    "container_view_assertions": 52,
+    "wasm_sha256": "41757bbfe2e5a6811be1e3a0271585a6780ad54004fe7bf1ca83f82357df0a7b",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-25T01:35:45.377193+00:00"
+  "finished_utc": "2026-10-25T16:06:09.419881+00:00"
 }

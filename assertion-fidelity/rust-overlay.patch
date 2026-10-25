@@ -300,6 +300,23 @@
  // Tuples are (start, size), exactly like the original IndexRange initializers.
  fn mask(ranges:&[(i64,i64)])->IndexMask{IndexMask::from_ranges(ranges.iter().map(|&(start,size)|IndexRange::new(start,size)))}
  fn random_bools(rng:&mut BlenderRng,size:usize)->Vec<bool>{
+--- container_view_cases.rs
++++ shadow/container_view_cases.rs
+@@ -6,10 +6,10 @@
+ use core::cell::Cell;
+ #[derive(Debug,Default)]pub struct Report{pub assertions:u32,pub failures:Vec<String>}
+ impl Report{pub fn check(&mut self,p:bool,e:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {e}"));}}pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}}
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(core::ptr::eq(($a) as *const u8,($b) as *const u8),stringify!($a pointer-equals $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq(($a) as *const u8,($b) as *const u8),stringify!($a pointer-equals $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ fn generic_span_suite_setup(){static SETUP:std::sync::Once=std::sync::Once::new();SETUP.call_once(register_test_types);}
+ 
+ // source/blender/blenlib/tests/BLI_multi_value_map_test.cc:11
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@

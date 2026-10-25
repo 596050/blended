@@ -1,6 +1,6 @@
 {
   "schema": 3,
-  "source_commit": "bddefb934e2871b106039043c1414e15683c88cc",
+  "source_commit": "7a3dec93c2c02605834330b5de6872d6f1dbe4ad",
   "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
   "groups": [
     "legacy",
@@ -21,7 +21,8 @@
     "pixel_formats",
     "polyfill",
     "spans",
-    "mask_expressions"
+    "mask_expressions",
+    "container_views"
   ],
   "abi": {
     "legacy": [
@@ -118,6 +119,11 @@
       "blended_mask_expressions_case_count",
       "blended_mask_expressions_run_case",
       "blended_mask_expressions_assertion_count"
+    ],
+    "container_views": [
+      "blended_container_views_case_count",
+      "blended_container_views_run_case",
+      "blended_container_views_assertion_count"
     ]
   },
   "total_keys": {
@@ -139,7 +145,8 @@
     "pixel_formats": "pixel_format_assertions",
     "polyfill": "polyfill_assertions",
     "spans": "span_assertions",
-    "mask_expressions": "mask_expression_assertions"
+    "mask_expressions": "mask_expression_assertions",
+    "container_views": "container_view_assertions"
   },
   "legacy": [
     {
@@ -280,7 +287,7 @@
     }
   ],
   "complete_test_port": false,
-  "wasm_sha256": "c96f05635e863fb6ec7609512b1734d65dcedb80b5b7466e0952d37da75e8efc",
+  "wasm_sha256": "41757bbfe2e5a6811be1e3a0271585a6780ad54004fe7bf1ca83f82357df0a7b",
   "additional": [
     {
       "id": "math_base.CompareFFRelativeValid",
@@ -7290,6 +7297,177 @@
       "assertion_count": 6,
       "expected_runtime_assertions": 300,
       "index": 14,
+      "status": "ported_unexecuted"
+    }
+  ],
+  "container_views": [
+    {
+      "id": "multi_value_map.LookupNotExistant",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 11,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "9dea6fbebdc48c1b65568b1d285c8449cca589a93ceb7a7313ef9147378a790e",
+      "rust_function": "multi_value_map__LookupNotExistant",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 0,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.LookupExistant",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 19,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "4b57103b4c6392d33789babb5903e264a0d1620e3b73fe80a641c5ccc518b35b",
+      "rust_function": "multi_value_map__LookupExistant",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 1,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.LookupMutable",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 34,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "734856bf78fc5974ecaf65e9f3401780ec332e47a42f115f8156ad10d6551421",
+      "rust_function": "multi_value_map__LookupMutable",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 2,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.AddMultiple",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 55,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "82e3254b5f8415f9876dec2ea2b18ab7d2a4214dfc31408ac29bf309e3c8f459",
+      "rust_function": "multi_value_map__AddMultiple",
+      "assertion_count": 10,
+      "expected_runtime_assertions": 10,
+      "index": 3,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.Keys",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 75,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "ed7b3a905a17e5dfefe3a3857b66a77e3f71d4340279913fa3412408644696d0",
+      "rust_function": "multi_value_map__Keys",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 4,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.Values",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 92,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "077724db3c8286f3f95f41d453bee279624c6bfaeceed6a1b9f035200e507c23",
+      "rust_function": "multi_value_map__Values",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 5,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.Items",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 107,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "96cb650cde6abcab2758f2e581933607af8c0b2b10da512ee2a04fc34fd8496e",
+      "rust_function": "multi_value_map__Items",
+      "assertion_count": 5,
+      "expected_runtime_assertions": 5,
+      "index": 6,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.UniquePtr",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 123,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "c3ec385341521a228b86218b43c3154a2a100b2fe62dd6948a3d9b259715b1a5",
+      "rust_function": "multi_value_map__UniquePtr",
+      "assertion_count": 1,
+      "expected_runtime_assertions": 1,
+      "index": 7,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "multi_value_map.MutableItems",
+      "path": "source/blender/blenlib/tests/BLI_multi_value_map_test.cc",
+      "line": 132,
+      "kind": "TEST",
+      "source_sha256": "858a23ba5f319ca69f0c675e1bce0a22cb1886bdd377115f79e8dbaed95ade26",
+      "source_body_sha256": "9b5bc3b29fa8b115efe26d3791f80a841a7804872bc12dba9df28f0c1f6afd76",
+      "rust_function": "multi_value_map__MutableItems",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 8,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "GenericSpanTest.TypeConstructor",
+      "path": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "line": 19,
+      "kind": "TEST_F",
+      "source_sha256": "82a5c3d10cdc7a7665df1b0900ef50fcbbea4bfd538be90f6c1ea761ecf92b16",
+      "source_body_sha256": "ec2cdd4288686ffcab809326187f2dcdbdf2b89847cadf7c9cfe29dc42cd428a",
+      "rust_function": "GenericSpanTest__TypeConstructor",
+      "assertion_count": 3,
+      "expected_runtime_assertions": 3,
+      "index": 9,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "GenericSpanTest.BufferAndSizeConstructor",
+      "path": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "line": 27,
+      "kind": "TEST_F",
+      "source_sha256": "82a5c3d10cdc7a7665df1b0900ef50fcbbea4bfd538be90f6c1ea761ecf92b16",
+      "source_body_sha256": "ea2f26517ccc51f376298930607deda7ba1be6ec42dcc33d4538cabb83efec3c",
+      "rust_function": "GenericSpanTest__BufferAndSizeConstructor",
+      "assertion_count": 7,
+      "expected_runtime_assertions": 7,
+      "index": 10,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "GenericSpanTest.MutableTypeConstructor",
+      "path": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "line": 41,
+      "kind": "TEST_F",
+      "source_sha256": "82a5c3d10cdc7a7665df1b0900ef50fcbbea4bfd538be90f6c1ea761ecf92b16",
+      "source_body_sha256": "2b32d325bf7927b1c05ed0769ea402e73897050905bd8d626a71b059f6b5bbbe",
+      "rust_function": "GenericSpanTest__MutableTypeConstructor",
+      "assertion_count": 2,
+      "expected_runtime_assertions": 2,
+      "index": 11,
+      "status": "ported_unexecuted"
+    },
+    {
+      "id": "GenericSpanTest.MutableBufferAndSizeConstructor",
+      "path": "source/blender/blenlib/tests/BLI_generic_span_test.cc",
+      "line": 48,
+      "kind": "TEST_F",
+      "source_sha256": "82a5c3d10cdc7a7665df1b0900ef50fcbbea4bfd538be90f6c1ea761ecf92b16",
+      "source_body_sha256": "796976bddfece4505eb790151712bcb40b3c898715172be74e89ebdec2cc3098",
+      "rust_function": "GenericSpanTest__MutableBufferAndSizeConstructor",
+      "assertion_count": 6,
+      "expected_runtime_assertions": 6,
+      "index": 12,
       "status": "ported_unexecuted"
     }
   ]

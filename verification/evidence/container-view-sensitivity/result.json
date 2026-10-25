@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "supplemental negative controls, not extra upstream cases",
+  "source_commit": "7a3dec93c2c02605834330b5de6872d6f1dbe4ad",
+  "unchanged_test_sha256": "81c2e6de279b3fdb9e70259f59b6f9762dba75686103356461935c9dc9737c8c",
+  "checks": [
+    {
+      "mutation": "multiple_reversed",
+      "case": "multi_value_map.AddMultiple",
+      "control": "multi_value_map.LookupExistant",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 13,
+        "target": 0,
+        "target_assertions": 10,
+        "control": 1,
+        "control_assertions": 5,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "97a9bde8bd5d234829fd0085b12600fd61a12a93fd255700fb88c243b5962de5",
+      "mutated_implementation_sha256": "7004ac4c42868a48759a01f8b071404459ef8a39e525d96154f7a32e6d245bd5",
+      "wasm_sha256": "48fe3c163a128a0684104cb10462716ef871addca3ddee503248853c031ffec5"
+    },
+    {
+      "mutation": "prepend_instead_of_append",
+      "case": "multi_value_map.LookupExistant",
+      "control": "GenericSpanTest.TypeConstructor",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 13,
+        "target": 0,
+        "target_assertions": 5,
+        "control": 1,
+        "control_assertions": 3,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "97a9bde8bd5d234829fd0085b12600fd61a12a93fd255700fb88c243b5962de5",
+      "mutated_implementation_sha256": "00acb845cbcbb666936225065c99aa4a56b06066d258900ab61a4a85234b2c11",
+      "wasm_sha256": "14c70b3015f03a3a57a1c4cd5a8c7485b0b5454eb60042eff03e9c29b46bc537"
+    },
+    {
+      "mutation": "typed_write_ignored",
+      "case": "GenericSpanTest.MutableBufferAndSizeConstructor",
+      "control": "GenericSpanTest.BufferAndSizeConstructor",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 13,
+        "target": 0,
+        "target_assertions": 6,
+        "control": 1,
+        "control_assertions": 7,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "97a9bde8bd5d234829fd0085b12600fd61a12a93fd255700fb88c243b5962de5",
+      "mutated_implementation_sha256": "16e6630f37e4b460dcc8b9231a2cf8d6331eb523fb2280eb8e976f06e306e5b2",
+      "wasm_sha256": "6688213b30374a0714fc687d17cd58c3e6db90579ad1e21cb2e43a618c93a2ba"
+    },
+    {
+      "mutation": "pointer_stride_zero",
+      "case": "GenericSpanTest.BufferAndSizeConstructor",
+      "control": "multi_value_map.Keys",
+      "status": "passed",
+      "native_assertion_failure_observed": true,
+      "browser": {
+        "count": 13,
+        "target": 0,
+        "target_assertions": 7,
+        "control": 1,
+        "control_assertions": 3,
+        "invalid": -1
+      },
+      "original_implementation_sha256": "97a9bde8bd5d234829fd0085b12600fd61a12a93fd255700fb88c243b5962de5",
+      "mutated_implementation_sha256": "dee5741f36b27d9da86d24d8856f7ddd1ed96101dce64381819d9ab996825842",
+      "wasm_sha256": "74c932e60b76e50f0758813026efe495ef9c97ee6e1358a9bc560654e7da209d"
+    }
+  ],
+  "browser_version": "155.0.8059.39"
+}
