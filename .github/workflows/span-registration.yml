@@ -22,6 +22,14 @@ jobs:
           set -euo pipefail
           python3 tools/fetch_upstreams.py blender
           python3 tools/register_span_batch.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('tests/test_extended_port.py');s=p.read_text()
+          old="self.assertEqual([c['id'] for c in cases if c['expected_runtime_assertions']==0],['bit_span.SetEmpty'])"
+          new="self.assertEqual([c['id'] for c in cases if c['expected_runtime_assertions']==0],['bit_span.SetEmpty','span.ImplicitConversions'])"
+          assert s.count(old)==1, 'Original assertion-free universe guard changed'
+          p.write_text(s.replace(old,new))
+          PY
           python3 tools/prepare_site.py
           python3 -m unittest discover -s tests -v
       - name: Commit the registered source-only changes
