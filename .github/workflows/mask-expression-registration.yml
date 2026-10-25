@@ -1,0 +1,47 @@
+name: Register original mask-expression cases
+on:
+  push:
+    branches: [compat/index-mask-expressions]
+    paths: ['.github/workflows/mask-expression-registration.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Register reviewed original tests and retain all random iterations
+        run: |
+          set -euo pipefail
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_mask_expression_batch.py
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Compile and execute the real Rust implementation
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/mask-expression-compile
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/mask-expression-compile/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core 2>&1 | tee evidence/mask-expression-compile/wasm-build.txt
+      - name: Commit registered source-only changes after successful compilation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools compatibility tests
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register fifteen enabled original mask-expression cases with 321 assertions; full suite and disabled benchmark remain unfinished'
+          git push origin HEAD:refs/heads/compat/index-mask-expressions
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mask-expression-compile-evidence
+          path: evidence/mask-expression-compile/
+          retention-days: 3
