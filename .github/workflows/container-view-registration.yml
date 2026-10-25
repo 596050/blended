@@ -1,0 +1,44 @@
+name: Register original map and generic-view cases
+on:
+  push:
+    branches: [compat/multimap-and-erased-spans]
+    paths: ['.github/workflows/container-view-registration.yml']
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: '1.92.0'
+          targets: wasm32-unknown-unknown
+      - name: Materialise reviewed original cases and verify their registration
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/container-view-registration
+          python3 tools/fetch_upstreams.py blender
+          python3 tools/register_container_view_batch.py | tee evidence/container-view-registration/registration.json
+          cargo test --locked --workspace --all-targets 2>&1 | tee evidence/container-view-registration/native.txt
+          cargo build --locked --release --target wasm32-unknown-unknown -p blended-core 2>&1 | tee evidence/container-view-registration/wasm-build.txt
+          python3 tools/prepare_site.py
+          python3 -m unittest discover -s tests -v
+      - name: Commit the reviewed sources and mappings only after successful checks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git add crates tools compatibility tests
+          gh auth setup-git
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m 'Register thirteen complete original map/view cases with their independent provenance locks; full-suite completion remains false'
+          git push origin HEAD:refs/heads/compat/multimap-and-erased-spans
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: container-view-registration-evidence
+          path: evidence/container-view-registration/
+          retention-days: 3
