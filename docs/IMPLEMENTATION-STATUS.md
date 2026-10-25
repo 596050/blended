@@ -2,30 +2,26 @@
 
 ## Current verified implementation
 
-Source `f86fae88ce889175fcaa11dcb982d3bbc4fce5ca` was verified in [run 40149763130](https://github.com/596050/blended/actions/runs/40149763130). [Open its 596-case public workbench](https://rawcdn.githack.com/596050/blended/4cc3dade093dd7da5899ed995e02ce3689225fb2/index.html). Later documentation-only commits do not change the tested runtime.
+Runtime source `7a3dec93c2c02605834330b5de6872d6f1dbe4ad` was verified by [run 40209288469](https://github.com/596050/blended/actions/runs/40209288469). [Open the 609-case public workbench](https://rawcdn.githack.com/596050/blended/55479ba6a6249846abc4c36d36440b27bfe106b4/index.html). Later documentation-only commits do not change that runtime implementation.
 
-596 unique Blender runtime cases pass natively and at the actual deployed URL, covering 3,196,692 expected assertion executions. Original-C++ versus native Rust and Chromium comparisons passed. Eight native and nine browser differences remain in earlier colour cases under original rules; no tolerance was widened. The new mask-expression cases add no floating differences.
+609 unique Blender cases pass natively and at the actual deployed Chromium URL, with 3,196,744 assertion executions. Independent original-C++ versus native Rust and browser comparisons passed. Eight native and nine browser floating differences remain in older colour cases under original rules; no tolerance was widened. The latest map/view cases add no differences.
 
-The native total is **656 runtime tests: 596 Blender, three Cycles and 57 product/safety/regression tests**. Nineteen compile-time predicates remain separately verified with positive builds and deliberate-failure checks on native and wasm32. Repeated stress assertions, supplemental oracle inputs and negative probes are not extra upstream cases.
+The full native suite passes **679 runtime tests: 609 Blender, three Cycles and 67 separate product/safety/regression tests**. Nineteen compile-time predicates remain separately verified on both targets with deliberately false checks. Repeated assertions, diagnostic observations and mutation probes are not extra upstream cases.
 
-## Latest functionality
+## Latest implementation and evidence
 
-Fifteen enabled original index-mask expression cases now cover set unions/intersections/differences, complements, range terms, sparse and large masks, and nested expressions. They retain all original randomized iterations and add 321 runtime assertions. One disabled benchmark remains unported.
+The complete multivalue-map and generic-span test files add 13 runtime cases and 52 assertions. The implementation retains bucket insertion order, duplicates, live mutable lookups, owning-pointer key identity, exact type descriptors, pointer offsets and type-erased aliases to actual backing memory. Original fixture setup and all original comparisons are preserved. Ten supplemental product tests and seventeen Python source/audit regressions remain separate from the Blender count.
 
-The Rust implementation stores canonical intervals and evaluates expressions without expanding every index of a large contiguous range. Original arena allocation, native segment representation, TBB scheduling, complete IndexMask API and performance parity are not established. Small segment-count observations in the original cases are preserved without claiming general internal-layout identity.
+An original-header oracle matches 107,101 output words against native Rust, Chromium and an independent Python model, covering 1,024 map operations and integer/floating view lengths. Four deliberate implementation mutations fail unchanged original tests while controls pass. The first original-header build exposed a broken `clear_and_shrink()` declaration; that failure blocked publication and is retained. The supplemental corpus now uses supported `clear()` on both targets, with no original test changes and no claim of parity for the broken method. [Detailed verification](CONTAINER-VIEW-PORT-VERIFICATION.md)
 
-A separate original-C++ probe matches all 14,573,457 random Boolean inputs and 147,456 supplemental mask results, including 370,176 absolute selected indices, against native Rust and Chromium. The first supplemental attempt exceeded a pinned constructor's 2^31 static range and failed; the corrected probe respects that domain without editing original tests. Three implementation-only mutations fail unchanged source cases while controls pass. [Detailed report](MASK-EXPRESSION-PORT-VERIFICATION.md)
+Corresponding-source downloads now include workflow files and small reference-limit fixtures required by existing regression tests. A fresh extraction passed all 304 Python tests. That local archive check did not rerun Rust/C++; those are separately verified in the cited CI run.
 
-## Separate products and evidence
+## Remaining requirements and limits
 
-The workbench tests the compatibility core. The Three.js modeller remains the earlier object-editing alpha; these library additions are not new interactive tools or a complete renderer. Its legacy test button still uses the 17-case ABI. The Solarxy/WebGPU experiment remains independently blocked.
+The complete Blender test port remains unfinished and the whole-suite gate remains failed. The current heuristic source audit has **5,867 candidates, 628 mappings and 5,239 unmapped declarations**. Mappings comprise 609 runtime and 19 compile-time cases. The complete runtime denominator remains unknown. Conditional benchmarks, additional compile-time predicates, required platform/configuration coverage and extensive application-level families remain outstanding.
 
-Fresh native compilation, original-reference comparison, local diagnostic browser execution and actual deployed-URL acceptance are separate verification layers. Earlier smaller runs retain their original revisions and scope. Every current assertion event is compared without sampling and full diagnostic tapes are retained losslessly.
+This batch does not certify all template types, arbitrary C++ lifecycle operations, native hash iteration, ABI, allocators, parallel scheduling, every input's memory safety or performance parity. Type-erased safe adapters cover Copy values and checked descriptors; raw constructors retain explicit unsafe preconditions. Primitive registration is the subset used by the original fixture, not the whole CPPType registry.
 
-## Unfinished requirements
+The workbench remains separate from the Three.js object-modeller alpha. New library tests are not new interactive tools or a rendering engine. The editor's legacy test button uses a 17-case ABI. The Solarxy/WebGPU experiment remains independently blocked. There is still no full mesh/BMesh editor, sculpting, modifiers/Geometry Nodes, animation/rigging/simulation, compositor/video/tracking, Python add-on compatibility, native `.blend` support or Cycles/EEVEE parity.
 
-The complete Blender test port is unfinished and the whole-suite gate remains failed. The latest heuristic scan has **5,867 source candidates, 615 reviewed mappings and 5,252 unmapped declarations**. Complete runtime discovery and its remaining count are unknown. Conditional benchmarks, further compile-time checks, platform/configuration matrices and extensive application-level families remain outstanding.
-
-There is no complete mesh/BMesh editor, sculpting, modifier/Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on API compatibility, native `.blend` support or Cycles/EEVEE parity. Complete test porting, whole-suite conformance, integrated feature compatibility and competitive performance remain distinct milestones.
-
-[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Completion blocker #3](https://github.com/596050/blended/issues/3)
+[Machine-readable status](../evidence/TEST-PORT-STATUS.json) · [Whole-suite requirements](COMPLETE-TEST-PORT.md) · [Completion issue #3](https://github.com/596050/blended/issues/3)
