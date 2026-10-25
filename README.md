@@ -2,45 +2,45 @@
 
 ## [Launch the deployed browser modeller](https://rawcdn.githack.com/596050/blended/15752e8b7c31cc1ea3aa4ec32ab7457b0736ab38/index.html)
 
-### [Run the verified 541-case Blender test workbench](https://rawcdn.githack.com/596050/blended/c3edd21e2e953d5275768223b869cbbb9a22d42e/index.html)
+### [Run the verified 581-case Blender test workbench](https://rawcdn.githack.com/596050/blended/d32122067882b90b631adc1e4f765f708f10fe33/index.html)
 
-[Deployment details](LIVE.md) · [Implementation status](docs/IMPLEMENTATION-STATUS.md) · [Polygon verification](docs/POLYFILL-PORT-VERIFICATION.md) · [Whole-suite requirements](docs/COMPLETE-TEST-PORT.md)
+[Deployment details](LIVE.md) · [Implementation status](docs/IMPLEMENTATION-STATUS.md) · [Latest span verification](docs/SPAN-PORT-VERIFICATION.md) · [Whole-suite requirements](docs/COMPLETE-TEST-PORT.md)
 
 **A browser modeller alpha and test-driven Blender compatibility project, not a complete Blender clone. The complete Blender test port remains unfinished.**
 
-The modeller and test workbench are separate applications. The modeller remains the earlier object-editing alpha. The workbench was freshly compiled and publicly verified from source `efc7799e5050f28de66aa7ba11ed9a976165d21a`. Documentation-only commits may follow that runtime revision.
+The modelling application and test workbench are separate. The modeller remains the earlier object-editing alpha. The workbench was freshly compiled and publicly verified from source `8952a0ef18a83bb7a56656dd8519095bd0fb2cd2`. Documentation-only commits may follow that verified implementation.
 
 ## Verified compatibility subset
 
-**541 unique Blender runtime cases pass natively and in the actual deployed Chromium browser.** Independent comparisons against original Blender C++ execution check **3,196,218 ordered assertion events per implementation**. Eight native and nine browser floating differences remain in earlier colour cases within their original comparison rules. No tolerances were widened, and the new polygon cases add no floating differences.
+**581 unique Blender runtime cases pass natively and at the actual deployed Chromium URL.** Original-C++ versus native Rust and Chromium WebAssembly comparisons check **3,196,371 ordered assertion events per implementation**. Eight native and nine browser floating differences remain in older colour cases under the original comparison rules. No tolerance was widened; the latest span cases introduce no additional differences.
 
-The native Rust run passed **587 runtime tests**: 541 Blender ports, three Cycles integer-maths cases and 43 separate product/safety/regression tests. Six compile-time assertions separately pass positive builds and deliberate-failure checks on native and wasm32. Repeated assertions and supplemental diagnostic inputs are not extra Blender cases.
+The full native Rust suite passed **634 runtime tests: 581 Blender ports, three Cycles cases and 50 separate product/safety/regression tests**. **Nineteen compile-time assertions** are separately mapped and verified on native and wasm32, including deliberately false checks. Supplemental observations, repeated assertions and negative probes are not extra Blender runtime cases.
 
-[Combined verification run](https://github.com/596050/blended/actions/runs/40142038492) · [Original-reference evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40142038492) · [Machine-readable status](evidence/TEST-PORT-STATUS.json)
+[Combined verification run](https://github.com/596050/blended/actions/runs/40145587317) · [Original-reference evidence](https://github.com/596050/blended/tree/assertion-fidelity-evidence/runs/40145587317) · [Machine-readable status](evidence/TEST-PORT-STATUS.json)
 
-## Latest implementation: polygon triangulation
+## Latest implementation: borrowed array views and compile-time contracts
 
-All **29 runtime cases in `BLI_polyfill_2d_test.cc`** are ported, preserving **1,534,672 assertion executions** across the original loops, sign flips, topology/area checks and pre/post-beautification results. The Rust core implements ear clipping with concave-vertex KD-tree pruning and the original heap-driven half-edge beautification algorithm. It retains checked index storage rather than native pointer/arena layouts. These are mesh-library operations, not yet interactive mesh-editing tools.
+All **40 runtime declarations and 13 compile-time predicates in `BLI_span_test.cc`** are now mapped. They add 153 runtime assertion executions. One original case contains only static conversion checks; it remains an executed zero-runtime-assertion case, not a fabricated assertion count.
 
-The pinned upstream helper has a coverage gap: it rotates/reverses a copy but tests the original polygon. The port preserves that observable behaviour rather than silently changing upstream tests. A separate mandatory oracle genuinely exercises all cyclic shifts, both reversals and four coordinate-sign combinations for all original polygons: **3,064 configurations / 6,128 triangulation results / 133,968 triangle triplets**. Native Rust and Node.js WebAssembly match original C++ exactly, including triangle index order. The ordinary 541-case suite is separately tested in Chromium at its actual public URL. [Scope and evidence](docs/POLYFILL-PORT-VERIFICATION.md)
+The Rust core provides borrowed read-only/mutable views, slicing, bounded dropping/taking, element search, filling/copying/reversal, reverse iteration, pointer relationships and restricted byte-preserving casts. Cell-backed storage preserves live aliasing rather than snapshotting the original array. Compile-time constant evaluation and allowed/forbidden conversion capabilities are checked as compiler properties, not runtime Boolean substitutes.
 
-Degenerate/self-intersecting inputs retain the pinned index-topology behaviour, not a promise of a non-overlapping geometric fill. Holes, complete BMesh operations, allocator parity and performance parity are outside this batch.
+All 13 new predicates compile on both targets. Each deliberately false predicate is separately rejected with the expected diagnostic: **26 negative compilations**, not 26 additional tests. An independent original-C++ oracle matches **473,659 observations exactly** in native Rust and Chromium. Three implementation-only mutations are detected by unchanged original cases while controls pass. [Detailed provenance and limits](docs/SPAN-PORT-VERIFICATION.md)
+
+The oracle also exposes a pinned-source limitation: a mutable pointer-span conversion is declared convertible by the original type trait, but its C++ constructor fails when instantiated. That discrepancy is recorded explicitly, not claimed as successful operational equivalence. The Rust adapter implements the declared capability; this is not a claim that the original constructor worked.
 
 ## Accuracy and completion controls
 
-Source snapshots, original identities, reviewed target hashes and generator reproduction are required. The executable registry must match all mandatory reviewed contracts. The historical lock file is unchanged; the polygon family uses an explicitly required contract shard, not an optional file discovered by a glob. Missing, duplicate or mismatched contracts fail rather than reducing scope.
+Original source snapshots, case identities, reviewed hashes and source-generator reproduction are required. Runtime registries and reviewed contracts must match exactly. Compile-time manifests are a separate required union; deleting one cannot silently shrink the accepted scope. Include-only C++ recording leaves original test bodies unchanged. Rust diagnostics run in a separate shadow build. Every assertion event is compared, not sampled or replaced by hashes. Full transcripts are retained losslessly. Production WebAssembly is separately tested at its public URL. [Fidelity method](docs/ASSERTION-FIDELITY.md)
 
-Original C++ test bodies remain unchanged under include-only recording; Rust diagnostics run in a separate shadow build. Every assertion event is compared, not sampled or replaced by a summary hash. Complete transcripts are retained losslessly with verified decompressed hashes and sizes. Production WASM is separately tested at its immutable public URL. [Methodology](docs/ASSERTION-FIDELITY.md)
+The whole-suite completeness job remains genuinely failed. The source audit has **5,867 candidates, 600 reviewed mappings and 5,267 unmapped declarations**. Mappings consist of 581 runtime cases and 19 compile-time assertions. These are source declarations, not a full runtime denominator or feature percentage. Incomplete runtime discovery remains unknown, never zero. [Completion issue #3](https://github.com/596050/blended/issues/3)
 
-The scanner now retains digit-prefixed GoogleTest arguments such as `3Colinear`, recovering eight previously missed declarations. The latest heuristic audit has **5,867 source candidates, 547 reviewed mappings and 5,320 unmapped declarations**. The mappings comprise 541 runtime and six compile-time cases. These are not a complete runtime denominator or feature percentage. The whole-suite completeness job remains failed, and incomplete runtime discovery is unknown, never zero. [Completion issue #3](https://github.com/596050/blended/issues/3)
+## Limited modeller and separate rendering experiment
 
-## Separate modeller and rendering experiment
+The Three.js WebGL 2 alpha provides orbit/pan/zoom, object transforms, duplication/deletion, bounded undo/redo, basic materials, scene JSON save/reopen, static OBJ/STL interchange and PNG output. Rust/WASM generates boxes and planes; Three.js generates spheres. Its legacy test button uses the 17-case interface; use the separate workbench for the full implemented subset.
 
-The Three.js WebGL 2 alpha provides orbit/pan/zoom, object selection/transforms, duplication/deletion, bounded undo/redo, basic materials, scene JSON save/reopen, static OBJ/STL interchange and PNG output. Rust/WASM generates boxes and planes; Three.js generates spheres. Its legacy test button still uses the 17-case interface; use the separate workbench for the full implemented subset.
+There is no complete mesh/BMesh editor, sculpting, modifier or Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on compatibility, native `.blend` support or Cycles/EEVEE parity. New library ports are not new interactive tools. The Solarxy/WebGPU experiment remains independently blocked by blank-viewport/device-loss failures. [Renderer issue #1](https://github.com/596050/blended/issues/1)
 
-There is no complete mesh/BMesh editor, sculpting, modifier/Geometry Nodes system, animation/rigging/simulation suite, compositor/video/tracking suite, Python add-on compatibility, native `.blend` support or Cycles/EEVEE parity. The Solarxy/WebGPU experiment remains independently blocked by blank-viewport/device-loss failures. [Renderer blocker #1](https://github.com/596050/blended/issues/1)
-
-## Reproduce
+## Reproduce and hosting
 
 Use the pinned Rust toolchain, Node.js 22+, Python 3.12+ and Git:
 
@@ -52,8 +52,6 @@ python3 -m unittest discover -s tests -v
 node --test modeller/model.test.mjs
 ```
 
-Conformance CI additionally fetches pinned Blender, reproduces translations/tables, builds original C++, executes exact-reference and diagnostic checks, publishes the explicitly incomplete subset and tests its public URL. The workbench build now requires the genuine polygon-permutation oracle before publication. Existing workflows were not changed for this batch. Earlier verification reports retain their historical source and scope.
+CI additionally fetches pinned Blender, reproduces source tests/tables, builds original C++, compares native/browser results, verifies negative controls, publishes the explicitly incomplete subset and tests its public URL. Earlier polygon, format, UTF-8, string and collection reports retain their historical revisions and scope.
 
-## Hosting and notices
-
-Source, static builds and durable evidence remain in this public repository. No paid backend or remote GPU was provisioned. The preview uses a third-party shared-origin CDN: use public sample models only and save work locally. GitHub Pages workflows are also supplied. Component-specific licences and attribution apply; consult source SPDX identifiers, [NOTICE.md](NOTICE.md) and `LICENSES/`. Original polygon source retains the LIBGDX ear-clipping attribution. Blended is independent of the Blender Foundation and Solarxy's author.
+Source, static builds and durable evidence are stored in this public repository. No paid backend or remote GPU was provisioned. The preview uses a third-party shared-origin CDN: use public sample models only and save work locally. GitHub Pages workflows are also supplied. Component-specific licences apply; consult file SPDX identifiers, [NOTICE.md](NOTICE.md) and `LICENSES/`. Blended is independent of the Blender Foundation and Solarxy's author.
