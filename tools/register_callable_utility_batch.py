@@ -46,7 +46,7 @@ def main():
  # Exact subset totals and reviewed-contract totals. Do not touch snapshots.
  guard_files=[
   "test_collection_port.py","test_container_view_port.py","test_data_port.py","test_extended_port.py",
-  "test_geometry_math_port.py","test_heap_port.py","test_mask_expression_port.py","test_pixel_format_port.py",
+  "test_geometry_math_port.py","test_heap_port.py","test_mask_expression_port.py","test_numeric_types.py","test_pixel_format_port.py",
   "test_polyfill_port.py","test_sampling_port.py","test_span_port.py","test_string_ops_port.py",
   "test_utf8_port.py","test_sampling_integration.py",
  ]
