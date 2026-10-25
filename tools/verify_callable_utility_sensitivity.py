@@ -9,8 +9,8 @@ import argparse,base64,hashlib,json,shutil,subprocess,tempfile
 ROOT=Path(__file__).resolve().parents[1]
 MUTATIONS=(
  ("function_ref_truthiness_broken","function_ref_compat.rs",
-  "pub fn is_some(&self)->bool{self.callback.is_some()}",
-  "pub fn is_some(&self)->bool{true}",
+  "pub fn is_some(&self)->bool{self.callback.is_some()}\\n pub fn call(&mut self)->R{unsafe{self.callback.expect(\\\"calling empty FunctionRef\\\")(self.data)}}",
+  "pub fn is_some(&self)->bool{true}\\n pub fn call(&mut self)->R{unsafe{self.callback.expect(\\\"calling empty FunctionRef\\\")(self.data)}}",
   "function_ref.Null","function_ref.ConstantFunction"),
  ("iterator_not_doubled","random_access_compat.rs",
   "self.slice[self.index as usize]*2",
