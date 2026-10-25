@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Supplemental exact observations. Unordered key traversal is canonicalised;
 within-key insertion order, real backing storage and pointer offsets are not.
-The complete original source-test comparisons remain separate.
+The original clear_and_shrink declaration fails to instantiate, so this corpus
+uses supported clear() on both targets and does not certify the former operation.
 """
 from pathlib import Path
 import argparse,base64,hashlib,json,shutil,struct,subprocess,tempfile
 ROOT=Path(__file__).resolve().parents[1]
+LIMIT={'operation':'MultiValueMap<int,int>::clear_and_shrink()', 'original_instantiation':'fails: underlying Map has no clear_and_shrink member', 'equivalence_certified':False, 'corpus_clear_points':'supported clear() on both targets', 'failure_record':'evidence/container-oracle-reference-limit.json'}
 RUST=r'''
 use crate::container_views::{MultiValueMap,OwnedKey,GMutableSpan};use core::cell::Cell;
 fn emit(out:&mut Vec<u8>,v:i64){out.extend_from_slice(&(v as u32).to_le_bytes());}
@@ -15,7 +17,7 @@ let mut values:Vec<Vec<i32>>=m.values().map(|v|v.to_vec()).collect();values.sort
 let mut items:Vec<(i32,Vec<i32>)>=m.items().map(|(&k,v)|(k,v.to_vec())).collect();items.sort();emit(out,items.len() as i64);for (key,v) in items{emit(out,key as i64);bucket(out,&v);}}
 pub fn generate()->Vec<u8>{let mut out=Vec::new();emit(&mut out,0x43564f31);emit(&mut out,16);emit(&mut out,64);
 for seed in 0..16{let mut map=MultiValueMap::<i32,i32>::new();for step in 0..64{let key=(step*7+seed*3)%11-5;let v=(step*13+seed*17)%53-26;
-match step%8{0=>map.add(key,v),1=>map.add_multiple(key,&[v,v+1,v]),2=>map.add_multiple(key,&[]),3=>{map.add_non_duplicates(key,v);map.add_non_duplicates(key,v);},4=>{for(i,x)in map.lookup_mut(&key).iter_mut().enumerate(){*x+=i as i32+1;}},5=>{for(&k,values)in map.items_mut(){for x in values{*x+=k;}}},6=>bucket(&mut out,map.lookup(&999)),7=>{let copy=map.clone();map.add(key,v);snapshot(&mut out,&copy);if step==31{map.clear();}if step==63{map.clear_and_shrink();}},_=>unreachable!()};snapshot(&mut out,&map);}}
+match step%8{0=>map.add(key,v),1=>map.add_multiple(key,&[v,v+1,v]),2=>map.add_multiple(key,&[]),3=>{map.add_non_duplicates(key,v);map.add_non_duplicates(key,v);},4=>{for(i,x)in map.lookup_mut(&key).iter_mut().enumerate(){*x+=i as i32+1;}},5=>{for(&k,values)in map.items_mut(){for x in values{*x+=k;}}},6=>bucket(&mut out,map.lookup(&999)),7=>{let copy=map.clone();map.add(key,v);snapshot(&mut out,&copy);if step==31||step==63{map.clear();}},_=>unreachable!()};snapshot(&mut out,&map);}}
 for n in 0..=64{let values:[Cell<i32>;64]=core::array::from_fn(|i|Cell::new(i as i32*13-n as i32));let m=GMutableSpan::from_cells(&values[..n]);let s=m.as_readonly();emit(&mut out,s.len() as i64);emit(&mut out,(s.len()*s.descriptor().size()) as i64);emit(&mut out,i64::from(s.is_empty()));emit(&mut out,i64::from(s.typed::<i32>().is_ok()));
 for i in 0..n{emit(&mut out,(s.pointer_at(i) as usize-values.as_ptr() as usize) as i64);emit(&mut out,s.typed::<i32>().unwrap().get(i) as i64);if i%2==1{unsafe{let p=m.pointer_at(i).cast::<i32>();p.write(p.read()+7);}}else{let v=m.typed::<i32>().unwrap();v.set(i,v.get(i)+7);}emit(&mut out,values[i].get() as i64);emit(&mut out,s.typed::<i32>().unwrap().get(i) as i64);}
 for i in 0..n{values[i].set(-values[i].get());emit(&mut out,s.typed::<i32>().unwrap().get(i) as i64);}}
@@ -81,7 +83,7 @@ def command(args,cwd,log,stdout=None):
 def build(directory):
  from playwright.sync_api import sync_playwright
  directory=directory.resolve();directory.mkdir(parents=True,exist_ok=True)
- report={'status':'failed','complete_blender_test_port':False,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'scope':'supplemental map/view observations, not extra upstream cases','original_cpp_comparison':'pending separate comparison'}
+ report={'status':'failed','complete_blender_test_port':False,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'scope':'supplemental map/view observations, not extra upstream cases','original_cpp_comparison':'pending separate comparison','original_api_limit':LIMIT}
  try:
   with tempfile.TemporaryDirectory(prefix='blended-container-oracle-') as d:
    root=Path(d)
@@ -106,10 +108,10 @@ def build(directory):
  except Exception as e:report['failure']=str(e);(directory/'container-rust-status.json').write_text(json.dumps(report,indent=2)+'\n');raise
  (directory/'container-rust-status.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 def compare(reference,directory,output):
- report={'status':'failed','complete_blender_test_port':False,'scope':'supplemental original-header values, aliases and within-allocation pointer offsets; not extra upstream cases'}
+ report={'status':'failed','complete_blender_test_port':False,'scope':'supplemental original-header values, aliases and within-allocation pointer offsets; not extra upstream cases','original_api_limit':LIMIT}
  try:
   metadata=json.loads((directory/'container-rust-status.json').read_text())
-  if metadata['status']!='passed':raise ValueError('Replacement probe incomplete')
+  if metadata['status']!='passed' or metadata.get('original_api_limit')!=LIMIT:raise ValueError('Replacement probe incomplete or wrong scope')
   count=check(reference)
   for name in ('container-native.bin','container-browser.bin'):
    check(directory/name)

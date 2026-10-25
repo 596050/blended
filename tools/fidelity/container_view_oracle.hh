@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Supplemental observer. No upstream test bodies or assertion expectations change.
+// The pinned MultiValueMap::clear_and_shrink declaration cannot be instantiated:
+// underlying Map has no such method. This corpus uses working clear() at both
+// clear points; it does not certify the Rust clear_and_shrink adapter as C++ parity.
 #pragma once
 #include "BLI_multi_value_map.hh"
 #include "BLI_generic_span.hh"
@@ -32,7 +35,7 @@ inline std::vector<uint32_t> generate(){
     case 4:{auto values=map.lookup(key);for(int i=0;i<values.size();++i)values[i]+=i+1;break;}
     case 5:for(auto&&item:map.items())for(int &x:item.value)x+=item.key;break;
     case 6:bucket(out,map.lookup(999));break;
-    case 7:{auto copy=map;map.add(key,v);snapshot(out,copy);if(step==31)map.clear();if(step==63)map.clear_and_shrink();break;}
+    case 7:{auto copy=map;map.add(key,v);snapshot(out,copy);if(step==31||step==63)map.clear();break;}
    }snapshot(out,map);
   }
  }
