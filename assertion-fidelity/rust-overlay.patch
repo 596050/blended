@@ -270,6 +270,23 @@
  
  // Original test helper maths remain separate from the production implementation.
  fn cross(a:[f32;2],b:[f32;2],c:[f32;2])->f32{(a[0]-b[0])*(b[1]-c[1])+(a[1]-b[1])*(c[0]-b[0])}
+--- span_cases.rs
++++ shadow/span_cases.rs
+@@ -10,10 +10,10 @@
+  // The original ImplicitConversions case has only compile-time assertions.
+  pub fn passed(&self)->bool{self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check($a==$b,stringify!($a == $b),line!());}};}
+-macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(core::ptr::eq($a,$b),stringify!($a pointer-equals $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check($a,stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!$a,stringify!(!$a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! peq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::pointer_pair(($a) as *const u8,($b) as *const u8),stringify!($a pointer-equals $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ fn span_eq(report:&mut Report,expected:&[i32],actual:&[i32]){
+  eq!(report,expected.len(),actual.len());
+  if expected.len()==actual.len(){for i in 0..expected.len(){eq!(report,expected[i],actual[i]);}}
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@

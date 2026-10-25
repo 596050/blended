@@ -1,0 +1,474 @@
+{
+  "status": "passed",
+  "complete_blender_test_port": false,
+  "scope": "13 original compile-time predicates, not 13 runtime tests",
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "source_commit": "8952a0ef18a83bb7a56656dd8519095bd0fb2cd2",
+  "target_sha256": "2ca5f78a2ea21751394c6f41f7a227acb202158fd5ed2a712f3d38e6510b968c",
+  "rustc": "rustc 1.92.0 (ded5c06cf 2025-12-08)\nbinary: rustc\ncommit-hash: ded5c06cf21d2b93bffd5d884aa6e96934ee4234\ncommit-date: 2025-12-08\nhost: x86_64-unknown-linux-gnu\nrelease: 1.92.0\nLLVM version: 21.1.3\n",
+  "positive_builds": [
+    {
+      "target": "native",
+      "returncode": 0,
+      "log": "native-positive.log",
+      "log_sha256": "b34b17fa5f71f0ec910d7e8a11cb5238edf9a906ddb132b90f957cf4e4814941",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 0,
+      "log": "wasm32-unknown-unknown-positive.log",
+      "log_sha256": "cf5fd636ed3ec29f7a74558a28ed897e77635b452779db6637769bdd2087794a",
+      "passed": true
+    }
+  ],
+  "negative_checks": [
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "0-native-negative.log",
+      "log_sha256": "2945bfeeeaea389c8f41f0a43984d2c62d868f49a4356677a2cbd79b2b9b5a8b",
+      "source_assertion": "static_assert@415",
+      "source_line": 415,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(SPAN.at(2)==1);",
+      "mutation_after": "const _:()=assert!(SPAN.at(1)==1);",
+      "mutated_sha256": "aa7dad28eea321db964a43d267fb747d9a20794a3661c25b1d8a724b9b1e52e8",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "0-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "2945bfeeeaea389c8f41f0a43984d2c62d868f49a4356677a2cbd79b2b9b5a8b",
+      "source_assertion": "static_assert@415",
+      "source_line": 415,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(SPAN.at(2)==1);",
+      "mutation_after": "const _:()=assert!(SPAN.at(1)==1);",
+      "mutated_sha256": "aa7dad28eea321db964a43d267fb747d9a20794a3661c25b1d8a724b9b1e52e8",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "1-native-negative.log",
+      "log_sha256": "1254229f29e0cf8fd0a1751a01e0734a0f7053d8cc81a75b7ab783db9af6151f",
+      "source_assertion": "static_assert@416",
+      "source_line": 416,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(SPAN.len()==3);",
+      "mutation_after": "const _:()=assert!(SPAN.take_front(2).len()==3);",
+      "mutated_sha256": "57e48f2a2edce7a48ca24e94e167ef9b3cc43f0f4a18edeed9af65fdc500387b",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "1-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "1254229f29e0cf8fd0a1751a01e0734a0f7053d8cc81a75b7ab783db9af6151f",
+      "source_assertion": "static_assert@416",
+      "source_line": 416,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(SPAN.len()==3);",
+      "mutation_after": "const _:()=assert!(SPAN.take_front(2).len()==3);",
+      "mutated_sha256": "57e48f2a2edce7a48ca24e94e167ef9b3cc43f0f4a18edeed9af65fdc500387b",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "2-native-negative.log",
+      "log_sha256": "a049a4d3bd89a3a4b789096bdaa4559b611686cd946a6d074f7b80f8d84cc8b5",
+      "source_assertion": "static_assert@417",
+      "source_line": 417,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(SPAN.slice(1,2).len()==2);",
+      "mutation_after": "const _:()=assert!(SPAN.slice(1,1).len()==2);",
+      "mutated_sha256": "4bda4c3ee98a7848b7b96bb4b2bdeeef790f17afe45f25eb8a05a422649431a1",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "2-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "a049a4d3bd89a3a4b789096bdaa4559b611686cd946a6d074f7b80f8d84cc8b5",
+      "source_assertion": "static_assert@417",
+      "source_line": 417,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(SPAN.slice(1,2).len()==2);",
+      "mutation_after": "const _:()=assert!(SPAN.slice(1,1).len()==2);",
+      "mutated_sha256": "4bda4c3ee98a7848b7b96bb4b2bdeeef790f17afe45f25eb8a05a422649431a1",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "3-native-negative.log",
+      "log_sha256": "4288753b119eab90ca5af86c60a28d1c457813bde11976ab387b7c77d7abeb21",
+      "source_assertion": "static_assert@418",
+      "source_line": 418,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(!SPAN.has_duplicates_linear());",
+      "mutation_after": "const _:()=assert!(!Span::from_slice(&[3,3,1]).has_duplicates_linear());",
+      "mutated_sha256": "045435026a43b074d13e2e1edf80e9f68b3752cdb156fbc6289c10a21b6c35e9",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "3-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "4288753b119eab90ca5af86c60a28d1c457813bde11976ab387b7c77d7abeb21",
+      "source_assertion": "static_assert@418",
+      "source_line": 418,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const _:()=assert!(!SPAN.has_duplicates_linear());",
+      "mutation_after": "const _:()=assert!(!Span::from_slice(&[3,3,1]).has_duplicates_linear());",
+      "mutated_sha256": "045435026a43b074d13e2e1edf80e9f68b3752cdb156fbc6289c10a21b6c35e9",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "4-native-negative.log",
+      "log_sha256": "1377114fc83d9d3f397faf3897e09a1667e15b6970d0d3d2f27b7b5614aea914",
+      "source_assertion": "static_assert@421",
+      "source_line": 421,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const IC:bool=SPAN.first_index(1)==2;",
+      "mutation_after": "const IC:bool=SPAN.first_index(3)==2;",
+      "mutated_sha256": "877f5d3532f2b67e51f4db6b47e2d0a56a49a1e5d4c99b3b0b6d648af166fa5c",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "4-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "1377114fc83d9d3f397faf3897e09a1667e15b6970d0d3d2f27b7b5614aea914",
+      "source_assertion": "static_assert@421",
+      "source_line": 421,
+      "category": "const_value",
+      "expected_error_code": "E0080",
+      "observed_error_codes": [
+        "E0080"
+      ],
+      "mutation_before": "const IC:bool=SPAN.first_index(1)==2;",
+      "mutation_after": "const IC:bool=SPAN.first_index(3)==2;",
+      "mutated_sha256": "877f5d3532f2b67e51f4db6b47e2d0a56a49a1e5d4c99b3b0b6d648af166fa5c",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "5-native-negative.log",
+      "log_sha256": "07273bd002a5008438c3634df812f272945ec6ba30ab4c337ffb7a840b0826a3",
+      "source_assertion": "static_assert@428",
+      "source_line": 428,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src0,Dst0>;",
+      "mutation_after": "const _:fn()=require_into::<Dst0,Src0>;",
+      "mutated_sha256": "895b14b414ba083ca2acb1c57c433d7f36392ff63390f85780fae7c251be54d4",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "5-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "07273bd002a5008438c3634df812f272945ec6ba30ab4c337ffb7a840b0826a3",
+      "source_assertion": "static_assert@428",
+      "source_line": 428,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src0,Dst0>;",
+      "mutation_after": "const _:fn()=require_into::<Dst0,Src0>;",
+      "mutated_sha256": "895b14b414ba083ca2acb1c57c433d7f36392ff63390f85780fae7c251be54d4",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "6-native-negative.log",
+      "log_sha256": "b5ce6d46a8e0e7e6574f32ac1cc4e12ddfb89da706bce8dc51b1c72466de4225",
+      "source_assertion": "static_assert@429",
+      "source_line": 429,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src1,Dst1>;",
+      "mutation_after": "const _:fn()=require_into::<Dst1,Src1>;",
+      "mutated_sha256": "b465f584cf91876ade608560e37e7eab712066449a7d1402993cd884500f3274",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "6-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "b5ce6d46a8e0e7e6574f32ac1cc4e12ddfb89da706bce8dc51b1c72466de4225",
+      "source_assertion": "static_assert@429",
+      "source_line": 429,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src1,Dst1>;",
+      "mutation_after": "const _:fn()=require_into::<Dst1,Src1>;",
+      "mutated_sha256": "b465f584cf91876ade608560e37e7eab712066449a7d1402993cd884500f3274",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "7-native-negative.log",
+      "log_sha256": "212409aa57e31fbbcfb912fd621f812534f1de304c3a67bf985fa02cebee57bc",
+      "source_assertion": "static_assert@430",
+      "source_line": 430,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src2,Dst2>;",
+      "mutation_after": "const _:fn()=require_into::<Dst2,Src2>;",
+      "mutated_sha256": "e2fd6143efbd74dc1f46ed3e07a943d4e1abe203b9b5073ba2942a9af745f0a5",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "7-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "212409aa57e31fbbcfb912fd621f812534f1de304c3a67bf985fa02cebee57bc",
+      "source_assertion": "static_assert@430",
+      "source_line": 430,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src2,Dst2>;",
+      "mutation_after": "const _:fn()=require_into::<Dst2,Src2>;",
+      "mutated_sha256": "e2fd6143efbd74dc1f46ed3e07a943d4e1abe203b9b5073ba2942a9af745f0a5",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "8-native-negative.log",
+      "log_sha256": "0c83b4add508cbc15c264d700c13d82be6c1a7677ca9c45e42c9060aeb8c67fa",
+      "source_assertion": "static_assert@431",
+      "source_line": 431,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src3,Dst3>;",
+      "mutation_after": "const _:fn()=require_into::<Dst3,Src3>;",
+      "mutated_sha256": "d08787676992dfa3421bbb7bf3942966ef4ac1df3d2315402de4d50bcd139874",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "8-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "0c83b4add508cbc15c264d700c13d82be6c1a7677ca9c45e42c9060aeb8c67fa",
+      "source_assertion": "static_assert@431",
+      "source_line": 431,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src3,Dst3>;",
+      "mutation_after": "const _:fn()=require_into::<Dst3,Src3>;",
+      "mutated_sha256": "d08787676992dfa3421bbb7bf3942966ef4ac1df3d2315402de4d50bcd139874",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "9-native-negative.log",
+      "log_sha256": "2f3526c9fa40b930d252208f7d422b771f9bb559f7509c42912e75d7dc15266e",
+      "source_assertion": "static_assert@432",
+      "source_line": 432,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src4,Dst4>;",
+      "mutation_after": "const _:fn()=require_into::<Dst4,Src4>;",
+      "mutated_sha256": "ba8ede0edb64cc06ed108da128e51ac7cca7842d9a904c85c390f10ea702d591",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "9-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "2f3526c9fa40b930d252208f7d422b771f9bb559f7509c42912e75d7dc15266e",
+      "source_assertion": "static_assert@432",
+      "source_line": 432,
+      "category": "allowed_conversion",
+      "expected_error_code": "E0277",
+      "observed_error_codes": [
+        "E0277"
+      ],
+      "mutation_before": "const _:fn()=require_into::<Src4,Dst4>;",
+      "mutation_after": "const _:fn()=require_into::<Dst4,Src4>;",
+      "mutated_sha256": "ba8ede0edb64cc06ed108da128e51ac7cca7842d9a904c85c390f10ea702d591",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "10-native-negative.log",
+      "log_sha256": "9c1c358ccb797aaf4578247652611bda59a62b5619c606de0463e668566d139a",
+      "source_assertion": "static_assert@433",
+      "source_line": 433,
+      "category": "forbidden_conversion",
+      "expected_error_code": "E0283",
+      "observed_error_codes": [
+        "E0283"
+      ],
+      "mutation_before": "not_into!(Src5,Dst5);",
+      "mutation_after": "not_into!(Dst5,Src5);",
+      "mutated_sha256": "2c8354108d9e615d596bbca9a583d762ebcd1736526fa9a6c0b726175b8b50f8",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "10-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "9c1c358ccb797aaf4578247652611bda59a62b5619c606de0463e668566d139a",
+      "source_assertion": "static_assert@433",
+      "source_line": 433,
+      "category": "forbidden_conversion",
+      "expected_error_code": "E0283",
+      "observed_error_codes": [
+        "E0283"
+      ],
+      "mutation_before": "not_into!(Src5,Dst5);",
+      "mutation_after": "not_into!(Dst5,Src5);",
+      "mutated_sha256": "2c8354108d9e615d596bbca9a583d762ebcd1736526fa9a6c0b726175b8b50f8",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "11-native-negative.log",
+      "log_sha256": "05ad52cdc4a0ae399a2137e3279c77a51c3efd290cbd1f3755e04fdc4fb5ecc3",
+      "source_assertion": "static_assert@434",
+      "source_line": 434,
+      "category": "forbidden_conversion",
+      "expected_error_code": "E0283",
+      "observed_error_codes": [
+        "E0283"
+      ],
+      "mutation_before": "not_into!(Src6,Dst6);",
+      "mutation_after": "not_into!(Dst6,Src6);",
+      "mutated_sha256": "5ec5d0c9a156f976bf70a15f8f38c0ad59a0c8e78de13c19050f746e76f13ae5",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "11-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "05ad52cdc4a0ae399a2137e3279c77a51c3efd290cbd1f3755e04fdc4fb5ecc3",
+      "source_assertion": "static_assert@434",
+      "source_line": 434,
+      "category": "forbidden_conversion",
+      "expected_error_code": "E0283",
+      "observed_error_codes": [
+        "E0283"
+      ],
+      "mutation_before": "not_into!(Src6,Dst6);",
+      "mutation_after": "not_into!(Dst6,Src6);",
+      "mutated_sha256": "5ec5d0c9a156f976bf70a15f8f38c0ad59a0c8e78de13c19050f746e76f13ae5",
+      "passed": true
+    },
+    {
+      "target": "native",
+      "returncode": 101,
+      "log": "12-native-negative.log",
+      "log_sha256": "2703f34d12af57720b40ceec77cae85003e9a1623c828921baadff98dc950390",
+      "source_assertion": "static_assert@435",
+      "source_line": 435,
+      "category": "forbidden_conversion",
+      "expected_error_code": "E0283",
+      "observed_error_codes": [
+        "E0283"
+      ],
+      "mutation_before": "not_into!(Src7,Dst7);",
+      "mutation_after": "not_into!(Src3,Dst3);",
+      "mutated_sha256": "7df3e09d46bf1fdb54647a53247b43a1b1b3e10a62dd14e73f606824ec6c6114",
+      "passed": true
+    },
+    {
+      "target": "wasm32-unknown-unknown",
+      "returncode": 101,
+      "log": "12-wasm32-unknown-unknown-negative.log",
+      "log_sha256": "2703f34d12af57720b40ceec77cae85003e9a1623c828921baadff98dc950390",
+      "source_assertion": "static_assert@435",
+      "source_line": 435,
+      "category": "forbidden_conversion",
+      "expected_error_code": "E0283",
+      "observed_error_codes": [
+        "E0283"
+      ],
+      "mutation_before": "not_into!(Src7,Dst7);",
+      "mutation_after": "not_into!(Src3,Dst3);",
+      "mutated_sha256": "7df3e09d46bf1fdb54647a53247b43a1b1b3e10a62dd14e73f606824ec6c6114",
+      "passed": true
+    }
+  ],
+  "original_predicates": 13,
+  "native_predicates": 13,
+  "wasm_predicates": 13,
+  "negative_compilations": 26,
+  "mutations_change_inputs_not_expected_values": true
+}

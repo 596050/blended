@@ -1,17 +1,17 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "expected_case_count": 541,
-  "expected_source_commit": "70197c7eb798c943a792c6932a049185ef43cad1",
-  "started_utc": "2026-10-24T23:37:45.219020+00:00",
+  "expected_case_count": 581,
+  "expected_source_commit": "8952a0ef18a83bb7a56656dd8519095bd0fb2cd2",
+  "started_utc": "2026-10-25T00:18:57.919420+00:00",
   "status": "passed",
   "errors": [],
   "complete_test_port": false,
   "wasm": {
-    "source_commit": "70197c7eb798c943a792c6932a049185ef43cad1",
+    "source_commit": "8952a0ef18a83bb7a56656dd8519095bd0fb2cd2",
     "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
     "status": "passed",
     "complete_test_port": false,
-    "passed": 541,
+    "passed": 581,
     "vector_assertions": 68,
     "additional_assertions": 225,
     "structure_assertions": 235,
@@ -3803,6 +3803,286 @@
         "passed": true,
         "code": 1,
         "assertions": 274560
+      },
+      {
+        "id": "span.FromSmallVector",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "span.AddConstToPointer",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "span.IsReferencing",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.DropBack",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.DropBackAll",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "span.DropFront",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "span.DropFrontLargeN",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "span.DropFrontAll",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "span.TakeFront",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.TakeFrontLargeN",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "span.TakeBack",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.TakeBackLargeN",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "span.Slice",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.SliceEmpty",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "span.SliceRange",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.SliceLargeN",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "span.Contains",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "mutable_span.Contains",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "span.Count",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "span.FromInitializerList",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "span.FromVector",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "span.FromArray",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.Fill",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "span.FillIndices",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "span.SizeInBytes",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "span.FirstLast",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "span.FirstLast_OneElement",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.ContainsPtr",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "span.FirstIndex",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 3
+      },
+      {
+        "id": "span.CastSameSize",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 4
+      },
+      {
+        "id": "span.CastSmallerSize",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "span.CastLargerSize",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 2
+      },
+      {
+        "id": "span.VoidPointerSpan",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "span.CopyFrom",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 5
+      },
+      {
+        "id": "span.ReverseIterator",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 6
+      },
+      {
+        "id": "span.ReverseMutableSpan",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 12
+      },
+      {
+        "id": "span.MutableReverseIterator",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 11
+      },
+      {
+        "id": "span.Constexpr",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 1
+      },
+      {
+        "id": "span.ImplicitConversions",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 0
+      },
+      {
+        "id": "span.Comparison",
+        "group": "spans",
+        "passed": true,
+        "code": 1,
+        "assertions": 9
       }
     ],
     "errors": [],
@@ -3819,9 +4099,10 @@
     "utf8_assertions": 1627163,
     "pixel_format_assertions": 169,
     "polyfill_assertions": 1534672,
-    "wasm_sha256": "f4d4e9e6b6538d6e95b750b9964eb18017d4c2dac96a5ecbb2cf2310e6195feb",
+    "span_assertions": 153,
+    "wasm_sha256": "f37375a7910082b1816ea09edc510586eba9690d0dfbcf9ccbfa3a3ac65f7fd6",
     "invalid_index_rejected": true
   },
   "browser_version": "155.0.8059.39",
-  "finished_utc": "2026-10-24T23:37:47.645108+00:00"
+  "finished_utc": "2026-10-25T00:19:01.092512+00:00"
 }
