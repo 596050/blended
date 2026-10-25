@@ -1,0 +1,17 @@
+{
+  "reference_commit": "94363991e7dcf39e2d70614aa002ab6f67764a5d",
+  "failed_project_commit": "8b952cc715e461ffa6a23dac199844c41811979b",
+  "failed_run": 40207913645,
+  "reference_artifact_id": 12605195880,
+  "reference_artifact_sha256": "ec1626bd526ee7a30b6bfc4ab1caeb190f26dc4931dbc403756e73f8e7e16150",
+  "upstream_header": "source/blender/blenlib/BLI_multi_value_map.hh",
+  "upstream_header_sha256": "2be24eeea81fb6d40e5397a5079d26fc6182c4af36872445f565b466dadccbf4",
+  "operation": "MultiValueMap<int,int>::clear_and_shrink()",
+  "diagnostic": "BLI_multi_value_map.hh:183:10: error: no member named 'clear_and_shrink' in 'blender::Map<int, blender::Vector<int>>'",
+  "original_reference_tests_executed_in_failed_job": false,
+  "publication_blocked": true,
+  "original_test_bodies_or_expectations_changed": false,
+  "supplemental_correction": "Use the supported clear() operation at both corpus clear points on both C++ and Rust targets",
+  "rust_clear_and_shrink_equivalence_certified": false,
+  "scope": "Recorded original-header API instantiation limitation outside the original tests; not a passing comparison"
+}
