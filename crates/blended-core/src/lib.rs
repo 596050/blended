@@ -206,3 +206,11 @@ pub mod container_view_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_container_views_case_count()->u32{container_view_cases::CASES.len() as u32}
 #[unsafe(no_mangle)]pub extern "C" fn blended_container_views_run_case(index:u32)->i32{container_view_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_container_views_assertion_count(index:u32)->u32{container_view_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod function_ref_compat;
+pub mod random_access_compat;
+pub mod session_uid_compat;
+pub mod callable_utility_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_callable_utils_case_count()->u32{callable_utility_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_callable_utils_run_case(index:u32)->i32{callable_utility_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_callable_utils_assertion_count(index:u32)->u32{callable_utility_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
