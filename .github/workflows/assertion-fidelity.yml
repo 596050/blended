@@ -32,7 +32,7 @@ jobs:
           git -C .upstream/blender/lib/linux_x64 lfs install --local
           git -C .upstream/blender/lib/linux_x64 config lfs.https://projects.blender.org/blender/lib-linux_x64.git/info/lfs.access none
           GIT_TERMINAL_PROMPT=0 git -C .upstream/blender/lib/linux_x64 lfs pull --include='' --exclude='llvm/**,usd/**,materialx/**,openvdb/**,openimagedenoise/**,embree/**,ffmpeg/**,osl/**,python/**,numpy/**,opencollada/**,alembic/**,openpgl/**'
-      - name: Record assertions without changing original test bodies
+      - name: Record assertions and independent input/output data without changing original test bodies
         run: |
           set -euo pipefail
           python3 tools/assertion_fidelity.py cpp --upstream .upstream/blender
@@ -49,6 +49,7 @@ jobs:
           LIBPATH=$(find "$PWD/.upstream/blender/lib/linux_x64" -type d \( -name lib -o -name lib64 \) -printf '%p:')
           export LD_LIBRARY_PATH="${LIBPATH}${LD_LIBRARY_PATH:-}"
           export BLENDED_ASSERTION_TRACE="$PWD/evidence/fidelity/reference.jsonl"
+          export BLENDED_MASK_ORACLE="$PWD/evidence/fidelity/mask-reference.bin"
           sha256sum "$EXE" > evidence/fidelity/reference-binary-sha256.txt
           "$EXE" --gtest_filter="$(cat evidence/fidelity/filter.txt)" --gtest_output="xml:$PWD/evidence/fidelity/reference-results.xml" --test-assets-dir "$PWD/.upstream/blender/tests/files" --test-release-dir "$PWD/build/fidelity-reference/bin" > evidence/fidelity/reference-run.log 2>&1
       - uses: actions/upload-artifact@v4
@@ -59,7 +60,7 @@ jobs:
           retention-days: 1
   rust-and-browser:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -83,6 +84,8 @@ jobs:
           (cd build/fidelity-shadow && cargo build --locked --release --target wasm32-unknown-unknown -p blended-core)
           python3 -m pip install playwright==1.57.0
           python3 tools/assertion_fidelity.py browser --wasm build/fidelity-shadow/target/wasm32-unknown-unknown/release/blended_core.wasm --output evidence/fidelity/browser.jsonl
+      - name: Execute full original random-helper workload and independent set-expression corpus
+        run: python3 tools/verify_mask_expression_oracle.py build --output evidence/fidelity
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -115,6 +118,9 @@ jobs:
       - name: Reconcile every original assertion against Chromium WebAssembly
         if: always()
         run: python3 tools/assertion_fidelity.py compare --reference evidence/fidelity/reference.jsonl --port evidence/fidelity/browser.jsonl --output evidence/fidelity/browser-comparison.json
+      - name: Require exact original-C++ randomized inputs and expression results
+        if: always()
+        run: python3 tools/verify_mask_expression_oracle.py compare --reference evidence/fidelity/mask-reference.bin --root evidence/fidelity --output evidence/fidelity/mask-comparison.json
       - name: Preserve every event in verified lossless compressed transcripts
         if: always()
         run: python3 tools/fidelity_stream.py evidence/fidelity
@@ -143,5 +149,5 @@ jobs:
           cp evidence/fidelity/*comparison.json published/
           printf '%s\n' '${{ github.sha }}' > published/verified-source-commit.txt
           git -C published add -A
-          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve original C++ versus Rust and browser assertion-level evidence, losslessly compressed'
+          git -C published -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit --allow-empty -m 'Preserve original C++ versus Rust and browser assertions plus complete mask-input oracle evidence'
           git -C published push origin HEAD:refs/heads/assertion-fidelity-evidence
