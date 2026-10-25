@@ -317,6 +317,21 @@
  fn generic_span_suite_setup(){static SETUP:std::sync::Once=std::sync::Once::new();SETUP.call_once(register_test_types);}
  
  // source/blender/blenlib/tests/BLI_multi_value_map_test.cc:11
+--- callable_utility_cases.rs
++++ shadow/callable_utility_cases.rs
+@@ -15,9 +15,9 @@
+  pub fn check(&mut self,p:bool,e:&str,line:u32){self.assertions+=1;if !p{self.failures.push(format!("line {line}: {e}"));}}
+  pub fn passed(&self)->bool{self.assertions>0&&self.failures.is_empty()}
+ }
+-macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(($a)==($b),stringify!($a == $b),line!());}};}
+-macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(bool::from($a),stringify!($a),line!());}};}
+-macro_rules! no {($r:expr,$a:expr)=>{{$r.check(!bool::from($a),stringify!(!$a),line!());}};}
++macro_rules! eq {($r:expr,$a:expr,$b:expr)=>{{$r.check(crate::fidelity_trace::eq($a,$b),stringify!($a == $b),line!());}};}
++macro_rules! yes {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("TRUE",$a),stringify!($a),line!());}};}
++macro_rules! no {($r:expr,$a:expr)=>{{$r.check(crate::fidelity_trace::boolean("FALSE",$a),stringify!(!$a),line!());}};}
+ 
+ fn perform_binary_operation(mut operation:FunctionRef2<'_,i32,i32,i32>,a:i32,b:i32)->i32{operation.call(a,b)}
+ fn add_two_numbers(a:i32,b:i32)->i32{a+b}
 --- compat_cases.rs
 +++ shadow/compat_cases.rs
 @@ -16,10 +16,10 @@
