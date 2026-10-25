@@ -25,7 +25,7 @@ class PolygonPorts(unittest.TestCase):
  def test_both_plain_and_beautified_checks_remain(self):
   self.assertEqual(self.target.count('check(report,flag,poly,tris);'),2);self.assertIn('p::beautify(poly,tris);',self.target)
  def test_counts_are_execution_counts_not_features(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),581);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196371)
+  cases,_=expected_cases();self.assertEqual(len(cases),596);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196692)
   self.assertEqual(sum(c['expected_runtime_assertions'] for c in self.cases),1534672);self.assertEqual(sum(c['polygon_size'] for c in self.cases)*8,3064)
  def test_digit_prefixed_test_arguments_are_discovered(self):
   found={(c['identity'],c['line']) for c in scan_cpp(self.text,SOURCE)}
@@ -44,7 +44,7 @@ class RequiredContractShards(unittest.TestCase):
   self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name)
   for name in ('compatibility/assertion-contracts.lock.json',*EXTENSIONS):
    p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,p)
- def test_current_union_is_exact(self):self.assertEqual(len(load_contracts(self.root)['contracts']),40)
+ def test_current_union_is_exact(self):self.assertEqual(len(load_contracts(self.root)['contracts']),41)
  def test_missing_shard_is_an_error_not_reduced_scope(self):
   (self.root/EXTENSIONS[0]).unlink()
   with self.assertRaises(FileNotFoundError):load_contracts(self.root)

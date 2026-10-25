@@ -24,7 +24,7 @@ class StringOperationsPort(unittest.TestCase):
    for identity,body,_,_ in extract_cases((ROOT/'tests/upstream/blender'/name).read_text()):
     code,n=translator(identity,body);self.assertIn(code,self.target);self.assertEqual(n,by_id[identity]['expected_runtime_assertions']);self.assertEqual(hashlib.sha256(body.encode()).hexdigest(),by_id[identity]['body_sha256'])
  def test_runtime_registry_bijection(self):
-  cases,_=expected_cases();self.assertEqual(len(cases),581);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196371)
+  cases,_=expected_cases();self.assertEqual(len(cases),596);self.assertEqual(sum(c['expected_runtime_assertions'] for c in cases),3196692)
   self.assertEqual([c['id'] for c in cases if c['group']=='string_ops'],[c['id'] for c in self.manifest['cases']])
  def test_counts_include_conditional_vector_helper_and_original_loops(self):
   by_id={c['id']:c for c in self.manifest['cases']};self.assertEqual(sum(c['expected_runtime_assertions'] for c in by_id.values()),846)

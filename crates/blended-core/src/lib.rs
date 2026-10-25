@@ -194,3 +194,9 @@ pub mod span_cases;
 #[unsafe(no_mangle)]pub extern "C" fn blended_spans_case_count()->u32{span_cases::CASES.len() as u32}
 #[unsafe(no_mangle)]pub extern "C" fn blended_spans_run_case(index:u32)->i32{span_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
 #[unsafe(no_mangle)]pub extern "C" fn blended_spans_assertion_count(index:u32)->u32{span_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}
+
+pub mod mask_expressions;
+pub mod mask_expression_cases;
+#[unsafe(no_mangle)]pub extern "C" fn blended_mask_expressions_case_count()->u32{mask_expression_cases::CASES.len() as u32}
+#[unsafe(no_mangle)]pub extern "C" fn blended_mask_expressions_run_case(index:u32)->i32{mask_expression_cases::CASES.get(index as usize).map(|(_,run,n)|{let r=run();i32::from(r.passed()&&r.assertions==*n)}).unwrap_or(-1)}
+#[unsafe(no_mangle)]pub extern "C" fn blended_mask_expressions_assertion_count(index:u32)->u32{mask_expression_cases::CASES.get(index as usize).map(|(_,run,_)|run().assertions).unwrap_or(0)}

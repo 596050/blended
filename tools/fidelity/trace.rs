@@ -81,8 +81,19 @@ pub fn run_all()->String {
  for (id,run,n) in crate::pixel_format_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::polyfill_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  for (id,run,n) in crate::span_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
+ for (id,run,n) in crate::mask_expression_cases::CASES{start(id);let r=run();end(r.passed()&&r.assertions==*n);}
  TAPE.with(|t|core::mem::take(&mut t.borrow_mut().1))
 }
 thread_local!{static OUTPUT:RefCell<Vec<u8>>=const{RefCell::new(Vec::new())};}
 #[unsafe(no_mangle)]pub extern "C" fn blended_fidelity_run()->usize{let s=run_all();let n=s.len();OUTPUT.with(|o|*o.borrow_mut()=s.into_bytes());n}
 #[unsafe(no_mangle)]pub extern "C" fn blended_fidelity_ptr()->*const u8{OUTPUT.with(|o|o.borrow().as_ptr())}
+
+// Reversible canonical run encoding, not a cardinality or hash surrogate.
+impl Value for crate::mask_expressions::IndexMask {
+ fn encode(&self)->String {
+  fn varint(out:&mut Vec<u8>,mut v:u64){loop{let b=(v&127) as u8;v>>=7;out.push(b|if v==0{0}else{128});if v==0{break;}}}
+  let mut bytes=Vec::new();let mut previous_end=0_i64;
+  for &[start,end] in self.canonical_ranges(){varint(&mut bytes,(start-previous_end) as u64);varint(&mut bytes,(end-start) as u64);previous_end=end;}
+  format!("{{\"mask_runs\":{}}}",bytes_value(&bytes))
+ }
+}
